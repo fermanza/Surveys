@@ -36,7 +36,7 @@
                                 </ul>
                             </li>
 
-                            <? 
+                            <?php 
                                 $actualB = explode("/",strrev($_SERVER['PHP_SELF']), -1);
                                 $actualB = strrev($actualB[0]);
                                 $menu = array(
@@ -44,13 +44,13 @@
                                 );
                             ?>
 
-                            <? foreach($menu as $nombre=>$archivo) { ?>
+                            <?php foreach($menu as $nombre=>$archivo) { ?>
 
-                                <li class="dropdown<? if ($actualB == $archivo) echo ' active'; ?>">
-                                     <a href="<? echo $archivo; ?>" class="dropdown-toggle"><? echo $nombre; ?></a>
+                                <li class="dropdown<?php if ($actualB == $archivo) echo ' active'; ?>">
+                                     <a href="<?php echo $archivo; ?>" class="dropdown-toggle"><? echo $nombre; ?></a>
                                 </li>
 
-                            <? } ?>
+                            <?php } ?>
                             
 
                             <li class="lang"><a href="#">ES</a> | <a href="#">EN</a></li>
