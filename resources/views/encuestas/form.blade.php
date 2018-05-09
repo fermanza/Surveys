@@ -143,7 +143,17 @@
                         <!-- end accordion --> --}}
 
         <!-- end accordions style 04 section -->
-
+            <div class="col-md-3" align="right"></div>
+                     <div class="panel-group accordion-style22" id="accordion-main">
+                <div class="panel-heading active-accordion">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse1">
+                                        <div class="panel-title">
+                                            <span>Tipo de pregunta <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                                            <i class="fa fa-angle-up pull-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                     <div class="col-md-12">
 
                         <div id="fb-editor"></div>
@@ -180,10 +190,7 @@
 
                                 <br /><br />
 
-                                <div class="guardar">
-                                    <a href="{{ url()->previous() }}">Cancelar</a>
-                                    <button class="btn" type="submit">Guardar</button>
-                                </div>
+                                
                             </form>
  --}}
                             {{-- <a href="#" class="sig"><i class="fa fa-plus-square-o"></i> Siguiente pregunta</a> --}}
@@ -193,6 +200,12 @@
 
                         </div> --}}
                     </div>
+                       <div class="settings" id="survey_content" name="survey_content">
+                         <div class="guardar">
+                                    <a href="{{ url()->previous() }}">Cancelar</a>
+                                    <button class="btn" id="save-data">Guardar</button>
+                        </div>
+                        </div>
 
                 </div>
             </div>
@@ -203,18 +216,31 @@
 @push('script')
   <script>
   $(document).ready(function() {
-    var options = {
-  i18n: {
-    locale: 'es-ES'
-    //location: 'http://languagefile.url/directory/'
-    //extension: '.ext'
-    //preloaded: {
-    //    'en-US': {...}
-    //}
+        var options = {
+      i18n: {
+        locale: 'es-ES'
+      },
+      controlPosition: 'left'
+    };
+
+let fields = [{
+  label: 'Star Rating',
+  attrs: {
+    type: 'starRating'
   },
-  showActionButtons:false
+  icon: '🌟'
+}];
+let templates = {
+  starRating: function(fieldData) {
+    return {
+      field: '<span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+      }
+    };
+  }
 };
-        $(document.getElementById('fb-editor')).formBuilder(options);
+    $(document.getElementById('fb-editor')).formBuilder(options);
 });
   </script>
 

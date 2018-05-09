@@ -192,12 +192,17 @@
  
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
+       
+
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
         
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-       
+        
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
+        
+        
         @stack('script')
     </body>
 </html>

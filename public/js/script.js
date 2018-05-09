@@ -32,6 +32,14 @@ $(document).ready(function(){
     $('#table-mis-encuestas').DataTable();
 } );
 
+
+
+ $("#save-data").on('click', function () {
+  var fbEditor = document.getElementById('fb-editor');
+    alert(fbEditor.actions.getData('json'));
+ });
+
+
     $(document).ready( function () {
     $('#table-mi-cuenta').DataTable();
 } );
