@@ -58,10 +58,10 @@
         <section class="encuesta">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+
                         <!-- start accordions style 04 section -->
 
-                        <!-- start accordion -->
+                        {{-- <!-- start accordion -->
                         <div class="panel-group accordion-style22" id="accordion-main">
                             <!-- start tab content -->
                             <div class="panel panel-default">
@@ -140,21 +140,23 @@
                             </div>
                             <!-- end tab content -->
                         </div>
-                        <!-- end accordion -->
+                        <!-- end accordion --> --}}
 
         <!-- end accordions style 04 section -->
-                    </div>
 
-                    <div class="col-md-9">
+                    <div class="col-md-12">
+
+                        <div id="fb-editor"></div>
+                      {{--   <div id="fb-editor"></div>
                         <div class="settings" id="survey_content" name="survey_content">
-                            <div class="logo">
+                            <div class="logo"> --}}
                                 {{-- <img src="{{ asset('images/logo-survenia-color.png') }}" widht="30" height="30" alt=""> --}}
                              {{--    <a href="#">
                                     <i class="fa fa-plus-square-o"></i> LOGO
                                 </a>
                                 <br>
                                 <br> --}}
-                                <input type="hidden" name="_token" value="{{ Session::token() }}" />
+                            {{--     <input type="hidden" name="_token" value="{{ Session::token() }}" />
                                 <div class="col-md-12" align="center">
                                     <pre>+ LOGO {{ (!empty($result) ? print_r($result, 1) : '') }}</pre>
                                 </div>
@@ -170,11 +172,11 @@
                             <input type="hidden" name="template_name" class="form-control" value="{{ $template->name }}">
                             <input type="hidden" name="template_id" class="form-control" value="{{ $template->id }}">
                                 <input type="hidden" name="questions_count" id="questions_count" value="0" />
-                                <div id="template-container" name="template-container">
+                                <div id="template-container" name="template-container"> --}}
                                     {{-- All Survey Content --}}
 
     
-                                </div>
+                  {{--               </div>
 
                                 <br /><br />
 
@@ -183,18 +185,38 @@
                                     <button class="btn" type="submit">Guardar</button>
                                 </div>
                             </form>
-
+ --}}
                             {{-- <a href="#" class="sig"><i class="fa fa-plus-square-o"></i> Siguiente pregunta</a> --}}
 
 
-                            <div style="clear:both"></div>
+        {{--                     <div style="clear:both"></div>
 
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
             </div>
         </section>
+
+@stop
+
+@push('script')
+  <script>
+  $(document).ready(function() {
+    var options = {
+  i18n: {
+    locale: 'es-ES'
+    //location: 'http://languagefile.url/directory/'
+    //extension: '.ext'
+    //preloaded: {
+    //    'en-US': {...}
+    //}
+  },
+};
+        $(document.getElementById('fb-editor')).formBuilder(options);
+});
+  </script>
+
 
         <script>
 var x, i, j, selElmnt, a, b, c;
@@ -269,5 +291,4 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);</script>
-
-@stop
+@endpush
