@@ -43,10 +43,11 @@ $router->resource('/mis_encuestas', 'MisEncuestasController');
 $router->resource('/my_account','MyAccountController');
 
 //paypal
-Route::get('paypal/ec-checkout', 'PayPalController@getExpressCheckout');
-Route::get('paypal/ec-checkout-success', 'PayPalController@getExpressCheckoutSuccess');
+Route::get('checkout', 'PayPalController@getExpressCheckout');
+Route::get('checkout-success', 'PayPalController@getExpressCheckoutSuccess');
 Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
 Route::post('paypal/notify', 'PayPalController@notify');
+Route::get('creditos','PayPalController@index');
 
 
 //Login with Facebook 

@@ -19,6 +19,11 @@ class PaypalController extends Controller
         $this->provider = new ExpressCheckout();
     }
 
+    public function index()
+    {
+        return view('paypal.index');
+    }
+
     public function getIndex(Request $request)
     {
         $response = [];
@@ -43,7 +48,7 @@ class PaypalController extends Controller
     public function getExpressCheckout(Request $request)
     {
         $recurring = ($request->get('mode') === 'recurring') ? true : false;
-        $cart = $this->getCheckoutData($recurring);
+        $cart = $this->getCheckoutData($recurring,$_GET['plan']);
 
         try {
             $response = $this->provider->setExpressCheckout($cart, $recurring);
@@ -68,7 +73,7 @@ class PaypalController extends Controller
         $token = $request->get('token');
         $PayerID = $request->get('PayerID');
 
-        $cart = $this->getCheckoutData($recurring);
+        $cart = $this->getCheckoutData($recurring,1);
 
         // Verify Express Checkout Token
         $response = $this->provider->getExpressCheckoutDetails($token);
@@ -88,14 +93,15 @@ class PaypalController extends Controller
             }
 
             $invoice = $this->createInvoice($cart, $status);
-
+            $paidstatus=0;
             if ($invoice->paid) {
-                session()->put(['code' => 'success', 'message' => "La factura $invoice->id ha sido pagada correctamente!"]);
-            } else {
-                session()->put(['code' => 'danger', 'message' => "Ocurrió un error en el pago: factura #$invoice->id!"]);
-            }
+                $paidstatus=1;
+            } 
 
-            return redirect('/');
+            print_r($payment_status);
+            die();
+
+            return redirect('/creditos?status');
         }
     }
 
@@ -152,7 +158,7 @@ class PaypalController extends Controller
      *
      * @return array
      */
-    protected function getCheckoutData($recurring = false)
+    protected function getCheckoutData($recurring = false,$plan)
     {
         $data = [];
 
@@ -170,25 +176,51 @@ class PaypalController extends Controller
             $data['return_url'] = url('/paypal/ec-checkout-success?mode=recurring');
             $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
         } else {
+
+            $name="";
+            $price=0;
+
+            switch($plan)
+            {
+                case 1:
+                $name="1 crédito - Survenia";
+                $price=3;
+                break;
+                case 2:
+                $name="10 créditos - Survenia";
+                $price=25.5;
+                break;
+                case 3:
+                $name="50 créditos - Survenia";
+                $price=112.5;
+                break;
+                case 4:
+                $name="100 créditos - Survenia";
+                $price=195;
+                break;
+                case 5:
+                $name="250 créditos - Survenia";
+                $price=412.5;
+                break;
+                case 6:
+                $name="500 créditos - Survenia";
+                $price=600;
+                break;
+            }
             $data['items'] = [
                 [
-                    'name'  => 'Product 1',
-                    'price' => 9.99,
+                    'name'  => $name,
+                    'price' => $price,
                     'qty'   => 1,
-                ],
-                [
-                    'name'  => 'Product 2',
-                    'price' => 4.99,
-                    'qty'   => 2,
-                ],
+                ]
             ];
 
-            $data['return_url'] = url('/paypal/ec-checkout-success');
+            $data['return_url'] = url('/checkout-success');
         }
 
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
-        $data['cancel_url'] = url('/');
+        $data['cancel_url'] = url('/checkout');
 
         $total = 0;
         foreach ($data['items'] as $item) {

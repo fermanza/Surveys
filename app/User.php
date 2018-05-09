@@ -96,4 +96,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(SocialEntity::class);
     }
+    public function creditos()
+    {
+        
+    }
 }
