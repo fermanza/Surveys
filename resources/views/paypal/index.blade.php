@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Mi Cuenta')
 
-@extends('includes.headerlog')
+@extends('includes.header')
 @section('content')
 <style>
 .btn{
