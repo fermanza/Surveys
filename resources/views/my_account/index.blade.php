@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Mi Cuenta')
 
-@extends('includes.headerlog')
+@extends('includes.header')
 @section('content')
 
         <!-- start page title section -->
@@ -52,7 +52,7 @@
                                 <p>GRATUITO (cuenta básica)</p>
                             </div>
                         </div>
-                        <a href="#"><i class="fa fa-caret-right"></i> Ampliar</a>
+                        <a href="{{ URL('creditos') }}"><i class="fa fa-caret-right"></i> Ampliar</a>
                     </div>
                 </div>
                 <section class="tabla">
