@@ -386,7 +386,7 @@
                                 <tr>
                                     <td> <a href="{{ URL('encuestas/contestar') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
                                     <td>{{ $template->created_at->diffForHumans() }}</td>
-                                    <td> {{ $template->answered }} </td>
+                                    <td> {{ $template->answersnumber }} </td>
                                     <td><a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}"><i class="fa fa-file"></i></a></td>
                                     <td><a href=""><i class="fa fa-times"></i></a></td>
                                     <td><a href="{{ route('mis_encuestas.edit', [$template]) }}">

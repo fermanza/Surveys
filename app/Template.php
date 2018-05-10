@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Answer;
 
 class Template extends Model
 {
@@ -18,8 +19,10 @@ class Template extends Model
      * @var array
      */
     protected $fillable = [
-        'name','title','description',
+        'name','title','description','answersnumber'
     ];
+
+    protected $appends = ['answersnumber'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -34,4 +37,13 @@ class Template extends Model
     {
         return $this->hasMany(Questions::class);
     }
+
+
+    public function getAnswersnumberAttribute()
+    {
+        $respuestas=Answer::where('id_template','=',$this->id)->where('position','=',0)->get();
+        return count($respuestas);
+    }
+
+    
 }

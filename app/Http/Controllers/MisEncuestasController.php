@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Template;
 use App\Options;
 use App\Questions;
+use App\Answer;
 
 class MisEncuestasController extends Controller
 {
@@ -17,7 +18,6 @@ class MisEncuestasController extends Controller
     public function index()
     {
         $templates = Template::get();
-        
         return view('mis_encuestas.index',compact('templates'));
     }
 
