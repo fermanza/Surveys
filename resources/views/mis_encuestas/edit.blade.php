@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Editar Encuesta')
 
-@extends('includes.headerlog')
+@extends('includes.header')
 
 @section('content')
     @include('mis_encuestas.form')

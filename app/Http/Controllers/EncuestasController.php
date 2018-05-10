@@ -166,8 +166,24 @@ class EncuestasController extends Controller
         //$question->options_questions_id=
         $question->save();
 
-        return redirect()->route('mis_encuestas.index');
     }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function answerTemplate($id)
+    {
+
+        $template = Template::find($id);
+        $question=Questions::where('template_id','=',$id)->first();
+
+
+        return view('encuestas.answer', compact('template','question'));
+    }
+
 
       /**
      * Show the form for the specified resource.

@@ -70,7 +70,7 @@ visibility:hidden;
                                     <a href="{{ url()->previous() }}">Cancelar</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">Guardar</button>
+                                    <button class="btn" id="save-data">Contestar</button>
                         </div>
                         </div>
 
@@ -98,22 +98,22 @@ var options = {
       controlPosition: 'left'
     };
 
-    var formBuilder = $(fbRender).formBuilder(options);
+    //var formBuilder = $(fbRender).formBuilder(options);
 
 
-  /*var formRenderOpts = {
+  var formRenderOpts = {
       fbRender,
     formData,
     dataType: 'json'
-  };*/
+  };
 
   console.log(formData);
 
- // $(fbRender).formRender(formRenderOpts);
+ $(fbRender).formRender(formRenderOpts);
 
 
     document.getElementById('save-data').addEventListener('click', function() {
-    var jsondata=formBuilder.actions.getData('json');
+    var jsondata=fbRender.actions.getData('json');
     var templateid=document.getElementById('template_id');
     var token=document.getElementById('csrf-token');
 
