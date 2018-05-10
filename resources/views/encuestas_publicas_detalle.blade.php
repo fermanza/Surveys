@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Encuestas Publicas Detalle')
 
-@extends('includes.headerencuestas')
+@extends('includes.header')
 @section('content')
 
         <!-- start page title section -->

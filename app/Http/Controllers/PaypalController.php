@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Srmklive\PayPal\Services\AdaptivePayments;
 use Srmklive\PayPal\Services\ExpressCheckout;
+use Auth;
+use App\UserCredit;
+use DB;
 
 class PaypalController extends Controller
 {
@@ -22,13 +25,19 @@ class PaypalController extends Controller
 
     public function index()
     {
+        $creditos=DB::table("user_credit")->sum('credits');
 
         $msgError="";
         if(isset($_GET['cancel_invoice']))
         {
             $msgError="Tu compra no pudo ser completada";
         }
-        return view('paypal.index',compact('msgError'));
+        $statusmsg="";
+        if(isset($_GET['status']))
+        {
+            $statusmsg="Tus creditos se han cargado correctamente";
+        }
+        return view('paypal.index',compact('msgError','statusmsg','creditos'));
     }
     
 
@@ -62,7 +71,7 @@ class PaypalController extends Controller
             $response = $this->provider->setExpressCheckout($cart, $recurring);
             return redirect($response['paypal_link']);
         } catch (\Exception $e) {
-            $invoice = $this->createInvoice($cart, 'Invalid');
+            //$invoice = $this->createInvoice($cart, 'Invalid');
 
             session()->put(['code' => 'danger', 'message' => "Error processing PayPal payment for Order $invoice->id!"]);
         }
@@ -79,37 +88,26 @@ class PaypalController extends Controller
     {
         $recurring = ($request->get('mode') === 'recurring') ? true : false;
         $token = $request->get('token');
-        $PayerID = $request->get('PayerID');
+        $payerID = $request->get('PayerID');
+        $plan=$request->get('plan');
+        $user_id=$request->get('user_id');
 
-        $cart = $this->getCheckoutData($recurring,1);
+        //$cart = $this->getCheckoutData($recurring,1);
 
         // Verify Express Checkout Token
         $response = $this->provider->getExpressCheckoutDetails($token);
 
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            if ($recurring === true) {
-                $response = $this->provider->createMonthlySubscription($response['TOKEN'], 9.99, $cart['subscription_desc']);
-                if (!empty($response['PROFILESTATUS']) && in_array($response['PROFILESTATUS'], ['ActiveProfile', 'PendingProfile'])) {
-                    $status = 'Processed';
-                } else {
-                    $status = 'Invalid';
-                }
-            } else {
+            
                 // Perform transaction on PayPal
-                $payment_status = $this->provider->doExpressCheckoutPayment($cart, $token, $PayerID);
+                $cart = $this->getCheckoutData($recurring,$plan);
+                $payment_status = $this->provider->doExpressCheckoutPayment($cart, $token, $payerID);
                 $status = $payment_status['PAYMENTINFO_0_PAYMENTSTATUS'];
-            }
+                $invoice = $this->createInvoice($user_id, $plan,$token,$payerID);
 
-            $invoice = $this->createInvoice($cart, $status);
-            $paidstatus=0;
-            if ($invoice->paid) {
-                $paidstatus=1;
-            } 
 
-            print_r($payment_status);
-            die();
 
-            return redirect('/creditos?status');
+            return redirect('/creditos?status=success');
         }
     }
 
@@ -170,7 +168,7 @@ class PaypalController extends Controller
     {
         $data = [];
 
-        $order_id = Invoice::all()->count() + 10;
+        $order_id = UserCredit::all()->count() + 200;
 
         if ($recurring === true) {
             $data['items'] = [
@@ -187,32 +185,39 @@ class PaypalController extends Controller
 
             $name="";
             $price=0;
+            $credits=0;
 
             switch($plan)
             {
                 case 1:
                 $name="1 crédito - Survenia";
                 $price=3;
+                $credits=1;
                 break;
                 case 2:
                 $name="10 créditos - Survenia";
                 $price=25.5;
+                $credits=10;
                 break;
                 case 3:
                 $name="50 créditos - Survenia";
                 $price=112.5;
+                $credits=50;
                 break;
                 case 4:
                 $name="100 créditos - Survenia";
                 $price=195;
+                $credits=100;
                 break;
                 case 5:
                 $name="250 créditos - Survenia";
                 $price=412.5;
+                $credits=250;
                 break;
                 case 6:
                 $name="500 créditos - Survenia";
                 $price=600;
+                $credits=500;
                 break;
             }
             $data['items'] = [
@@ -223,7 +228,7 @@ class PaypalController extends Controller
                 ]
             ];
 
-            $data['return_url'] = url('/checkout-success');
+            $data['return_url'] = url('/checkout-success?plan='.$plan.'&user_id='.Auth::user()->id);
         }
 
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
@@ -248,27 +253,39 @@ class PaypalController extends Controller
      *
      * @return \App\Invoice
      */
-    protected function createInvoice($cart, $status)
+    protected function createInvoice($userId, $plan,$paypalToken,$payerId)
     {
-        $invoice = new Invoice();
-        $invoice->title = $cart['invoice_description'];
-        $invoice->price = $cart['total'];
-        if (!strcasecmp($status, 'Completed') || !strcasecmp($status, 'Processed')) {
-            $invoice->paid = 1;
-        } else {
-            $invoice->paid = 0;
-        }
+        $credits=0;
+
+            switch($plan)
+            {
+                case 1:
+                $credits=1;
+                break;
+                case 2:
+                $credits=10;
+                break;
+                case 3:
+                $credits=50;
+                break;
+                case 4:
+                $credits=100;
+                break;
+                case 5:
+                $credits=250;
+                break;
+                case 6:
+                $credits=500;
+                break;
+            }
+
+        $invoice = new UserCredit;
+        $invoice->user_id=$userId;
+        $invoice->credits=$credits;
+        $invoice->paypalToken=$paypalToken;
+        $invoice->payerId=$payerId;
+        
         $invoice->save();
-
-        collect($cart['items'])->each(function ($product) use ($invoice) {
-            $item = new Item();
-            $item->invoice_id = $invoice->id;
-            $item->item_name = $product['name'];
-            $item->item_price = $product['price'];
-            $item->item_qty = $product['qty'];
-
-            $item->save();
-        });
 
         return $invoice;
     }
