@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
+use App\Answer;
 
 class EncuestasController extends Controller
 {
@@ -215,5 +216,36 @@ class EncuestasController extends Controller
         //$value = $type == 'multi' ? 'Multiple Choice' : 'Star Rating';
 
         return Options::where('type', $type)->get()->first(); 
+    }
+
+    public function saveAnswer(Request $request)
+    {
+        $id_template=$request->id_template;
+        $respuestas=json_decode($request->answer);
+        $pos=0;
+       
+
+        foreach($respuestas as $respuesta)
+        {
+            $answer=new Answer;
+            $answer->id_template=$id_template;
+            $answer->position=$pos;
+            $answer->answer=$respuesta->value;
+            $answer->save();
+            $pos++;
+            
+        }
+        return response()->json('ok',200);
+    }
+
+    public function getRespuestas($id)
+    {
+        $template=Template::find($id);
+        
+        $preguntasJson=Questions::where('template_id','=',$id)->first();
+        $tmp=json_encode($preguntasJson->content);
+        $preguntas=json_decode($tmp);
+        $respuestas=Answer::where('id_template','=',$id)->get();
+        return view('mis_encuestas.respuestas',compact('template','preguntas','respuestas'));
     }
 }

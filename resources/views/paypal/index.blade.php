@@ -75,6 +75,12 @@
             <strong>{{$msgError}}</strong>
         </div>
         @endif
+
+        @if($statusmsg!="")
+        <div class="alert alert-success">
+            <strong>{{$statusmsg}}</strong>
+        </div>
+        @endif
         
         <section class="titulo">
 
@@ -275,7 +281,7 @@
                     <div class="col-md-12">
                         <img src="images/mi-cuenta/user.png" alt="">
                         <p>Nombre de usuario</p>
-                        <p>Créditos disponibles 20</p>
+                        <p>Créditos disponibles: {{$creditos}}</p>
                     </div>
                 </div>
             </div>
