@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Crear Encuesta')
+@section('title', 'Responder Encuesta')
 
 @extends('includes.header')
 @section('content')
@@ -18,7 +18,7 @@ visibility:hidden;
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Creación de encuesta</h1>
+                            <h1 class="no-margin-bottom">Responder encuesta</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -33,7 +33,7 @@ visibility:hidden;
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">Creación de encuesta</a></li>
+                                <li><a href="crear-encuesta.php" class="text-dark-gray">Responder encuesta</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MyAccount;
+use App\User;
+use Auth;
 
 class MyAccountController extends Controller
 {
@@ -14,9 +16,11 @@ class MyAccountController extends Controller
      */
     public function index()
     {
-        $my_accounts = MyAccount::get();
+        $id = Auth::id();
+        $user = User::find($id);
+        //dd($users);
 
-        return view('my_account.index',compact('my_accounts'));
+        return view('my_account.index',compact('user'));
     }
 
     /**

@@ -67,8 +67,8 @@
                                     <button class="btn btn-primary">
                                     Login</button>
                                 </div>
-                                <div class="col-md-12">
-                                    <p class="text-extra-dark-gray cuenta">¿No tienes una cuenta? <a href="registro.php">Registrarse</a></p>
+                                <div class="col-md-12"><br>
+                                    <p class="text-extra-dark-gray cuenta">¿No tienes una cuenta? <a href="{{ URL('registro') }}">Registrarse</a></p>
                                 </div>
                             </div>
                         </form>

@@ -40,7 +40,7 @@ Route::get('/encuestas/show', 'EncuestasController@show');
 Route::get('/get-options/{type}', 'EncuestasController@getOptions');
 Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
 Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
-Route::get('/encuestas/contestar/{id}', 'EncuestasController@answerTemplate');
+Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
 

@@ -44,7 +44,8 @@
                         <h5 class="font-weight-700 text-extra-dark-gray">Crear cuenta</h5>
                     </div>  
                     <div class="col1 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin" style="border-right:1px solid rgba(0,0,0,0.1);">
-                        <form id="project-contact-form" action="javascript:void(0)" method="post">
+                        <form method="POST" action="{{ route('register') }}">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     <h6 class="text-extra-dark-gray">Para crear una nueva cuenta, completar el formulario a continuación</h6>
@@ -58,15 +59,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lastName" align="left">* Apellido: </label>
-                                    <input type="text" name="lastName" id="lastName">
+                                    <input type="text" name="last_name" id="lastName">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="email" align="left">* E-mail: </label>
                                     <input type="email" name="email" id="email">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="role" align="left">* Rol: </label>
-                                    {!! Form::mySelect('role', '', config('variables.role')) !!}
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" align="left">* Clave de acceso: </label>
@@ -78,26 +75,26 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="direccion" align="left">* Direcci&oacute;n: </label>
-                                    <input type="text" name="direccion" id="direccion">
+                                    <input type="text" name="address" id="direccion">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ciudad" align="left">* Ciudad: </label>
-                                    <input type="text" name="ciudad" id="ciudad">
+                                    <input type="text" name="city" id="ciudad">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="pais" align="left">* Pa&iacute;s: </label>
-                                    <input type="text" name="pais" id="pais">
+                                    <input type="text" name="country" id="pais">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="empresa" align="left">* Empresa </label>
-                                    <input type="text" name="empresa" id="empresa">
+                                    <input type="text" name="company" id="empresa">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="telefono" align="left">* Tel&eacute;fono: </label>
-                                    <input type="text" name="telefono" id="telefono">
+                                    <input type="text" name="phone" id="telefono">
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="button" class="btn-success" name="ingresar" id="ingresar" value="CREAR CUENTA">
+                                   <button type="submit" class="btn btn-success">CREAR CUENTA</button>
                                 </div>
                             </div>
                         </form>
@@ -111,10 +108,10 @@
                                 <p class="text-extra-dark-gray">Es rápido, fácil y seguro; sus datos y encuestas son completamente privados.</p>
                             </div>
                             <div class="col-md-12">
-                                <a href="#"><i class="fa fa-facebook"></i> Ingresar con Facebook</a>
+                                <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook"></i> Ingresar con Facebook</a>
                             </div>
                             <div class="col-md-12">
-                                <a href="#" class="google"><i class="fa fa-google"></i> Ingresar con Google</a>
+                                <a href="{{ route('redirectSocialLite', ['provider' => 'google']) }}" class="google"><i class="fa fa-google"></i> Ingresar con Google</a>
                             </div>
                             
                         </div>

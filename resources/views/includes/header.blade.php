@@ -31,7 +31,7 @@
 
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">@lang('app.miCuenta') </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="mi_cuenta2">@lang('app.gestionDeCreditos') </a></li>
+                                    <li><a href="/creditos">@lang('app.gestionDeCreditos') </a></li>
                                     <li><a href="/my_account">@lang('app.datosPersonales') </a></li>
                                     <li><a href="/logout"> @lang('app.cerrarSesion')  </a></li>
                                 </ul>

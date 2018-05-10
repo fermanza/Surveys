@@ -134,6 +134,8 @@ var options = {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         console.log("Hooray, it worked!");
+        alert("Encuesta guardada correctamente.");
+        $(location).attr('href', '/mis_encuestas')
     });
 
     // Callback handler that will be called on failure

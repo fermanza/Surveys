@@ -16,11 +16,15 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('last_name');
+            $table->string('company');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->string('address');
+            $table->string('phone');
+            $table->string('city');
+            $table->string('country');
             $table->integer('role')->default(0);
-            $table->text('bio')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -28,11 +32,15 @@ class CreateUsersTable extends Migration
         \DB::table('users')->insert(
             array(
                 'name' => 'Admin',
+                'last_name' => 'Admin',
+                'company' => 'Survenia',
                 'email' => 'admin@app.com',
                 'password' => '$2y$10$KX4UjNjeJCRmmAjejf5Jl.OwFAuzP9OKKlzY06rWT7Qf00CRpYXAG',
-                'avatar' => 'user2-160x160.jpg',
+                'address' => '123 Argentina Main',
+                'phone' => '123456789',
+                'city' => 'Buenos Aires',
+                'country' => 'Argentina',
                 'role' => '10',
-                'bio' => 'Mock Turtle to the seaside once in a louder tone. \'ARE you to learn?\' \'Well, there was a different person then.\' \'Explain all that,\' said Alice. \'What IS a long time with the name of the fact. \'I.',
                 'remember_token' => '9Sen24QXVyDsrFS94NAYhZVlTntHFaUsgEQYHq77COXyWHcBX8ZWawMCxLQk'
             )
         );

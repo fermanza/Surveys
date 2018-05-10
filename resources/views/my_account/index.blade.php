@@ -71,21 +71,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($my_accounts as $my_account)
                                 <tr>
-                                    <td>{{ $my_account->name }}</td>
-                                    <td>{{ $my_account->last_name }}</td>
-                                    <td>{{ $my_account->company }}</td>
-                                    <td>{{ $my_account->email }}</td>
-                                    <td>{{ $my_account->address }}</td>
-                                    <td>{{ $my_account->phone }}</td>
-                                    <td>{{ $my_account->city }}</td>
-                                    <td>{{ $my_account->country }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->last_name }}</td>
+                                    <td>{{ $user->company }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->address }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->city }}</td>
+                                    <td>{{ $user->country }}</td>
                                     <td><a href="">
                                     <i class="fa fa-edit"></i>
                                     </a></td>
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </section>
