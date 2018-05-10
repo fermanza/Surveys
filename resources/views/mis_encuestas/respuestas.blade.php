@@ -372,39 +372,23 @@
                         <table id="table-mis-encuestas">
                             <thead>
                                 <tr>
-                                    <th>Título</th>
-                                    <th>Fecha de Creación</th>
-                                    <th>Respuestas</th>
-                                    <th>Reportes</th>
-                                    <th>Cerrar Encuesta</th>
-                                    <th>Editar Encuesta</th>
-                                    <th>Eliminar</th>
+                                    @foreach($preguntas as $pregunta)
+                                    <th>{{$pregunta->label}}</th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($templates as $template)
-                                <tr>
-                                    <td> <a href="{{ URL('encuestas/contestar') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
-                                    <td>{{ $template->created_at->diffForHumans() }}</td>
-                                    <td> {{ $template->answered }} </td>
-                                    <td><a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}"><i class="fa fa-file"></i></a></td>
-                                    <td><a href=""><i class="fa fa-times"></i></a></td>
-                                    <td><a href="{{ route('mis_encuestas.edit', [$template]) }}">
-                                    <i class="fa fa-edit"></i>
-                                    </a></td>
-                                    <td> {!! Form::open([
-                                            'class'=>'delete',
-                                            'url'  => route('mis_encuestas.destroy', $template), 
-                                            'method' => 'DELETE',
-                                            ]) 
-                                        !!}
-                                            <br>
-                                            <button title="Eliminar" id="deleteTemp"><i class="fa fa-trash"></i></button>
-                                            
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
+                                
+                                
+                                @foreach ($respuestas->chunk(count($preguntas)) as $chunk)
+                                    <tr>
+                                        @foreach($chunk as $respuesta)
+                                            <td>{{$respuesta->answer}}</td>
+                                        @endforeach
+                                    </tr>
                                 @endforeach
+                                
+                                
                             </tbody>
                         </table>
                     </div>

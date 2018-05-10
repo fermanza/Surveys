@@ -40,6 +40,9 @@ Route::resource('/mis_encuestas', 'MisEncuestasController');
 
 Route::resource('/my_account','MyAccountController');
 
+Route::post('/saveAnswer', 'EncuestasController@saveAnswer');
+
+
 
 
 /*Route::resource('/encuestas', 'EncuestasController');
@@ -65,6 +68,8 @@ Route::group(['middleware' => ['Authuser']], function () {
     
 
     Route::resource('/mis_encuestas', 'MisEncuestasController');
+
+    Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
 
     Route::resource('/my_account','MyAccountController');
 

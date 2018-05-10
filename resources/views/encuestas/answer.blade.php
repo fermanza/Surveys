@@ -113,41 +113,36 @@ var options = {
 
 
     document.getElementById('save-data').addEventListener('click', function() {
-    var jsondata=fbRender.actions.getData('json');
-    var templateid=document.getElementById('template_id');
-    var token=document.getElementById('csrf-token');
-
-    var data={
-        content:jsondata,
-        template_id:templateid.value,
-        _token:token.value
-    };
-    console.log(data);
-    // Fire off the request to /form.php
+        var $form = $("#fb-editor");
+        var formdata = JSON.stringify($form.serializeArray());
+        var id_template=$("#template_id").val();
+        var token=$("#csrf-token").val();
+    
     request = $.ajax({
-        url: '{{url('saveQuestion')}}',
+        url: '{{url('saveAnswer')}}',
         type: "post",
-        data: data
+        data: {
+            answer:formdata,
+            id_template:id_template,
+            _token:token
+        }
     });
 
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-        console.log("Hooray, it worked!");
+        console.log(response);
+        alert('Tus respuestas fueron guardadas correctamente');
     });
 
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown){
         // Log the error to the console
         console.error(
-            "The following error occurred: "+
+            "Ha ocurrido un error: "+
             textStatus, errorThrown
         );
     });
-
-  });
-
-
+    });
 
 });
   </script>
