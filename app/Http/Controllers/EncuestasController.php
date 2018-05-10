@@ -152,7 +152,7 @@ class EncuestasController extends Controller
         //
     }
 
-    function saveQuestion(Request $request)
+    public function saveQuestion(Request $request)
     {
         $question=Questions::where('template_id','=',$request->template_id)->first();
         if(!$question)
@@ -165,6 +165,8 @@ class EncuestasController extends Controller
         $question->template_id=$request->template_id;
         //$question->options_questions_id=
         $question->save();
+
+        return redirect()->route('mis_encuestas.index');
     }
 
       /**
