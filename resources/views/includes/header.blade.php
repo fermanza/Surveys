@@ -25,20 +25,20 @@
                      
                                 @auth
                                 <li><a href="{{ URL('encuestas') }}">@lang('app.crearEncuesta')</a></li>
-                                <li><a href="{{ URL('mis_encuestas') }}">Mis Encuestas</a></li>
-                                <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
-                                <li><a href="{{ URL('articulos') }}">Artículos</a></li>
+                                <li><a href="{{ URL('mis_encuestas') }}"> @lang('app.misEncuestas')</a></li>
+                                <li><a href="{{ URL('encuestas_publicas') }}">@lang('app.encuestasPublicas')  </a></li>
+                                <li><a href="{{ URL('articulos') }}"> @lang('app.articulos') </a></li> 
 
-                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Mi cuenta </a>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">@lang('app.miCuenta') </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="mi_cuenta2">Gestión de Créditos</a></li>
-                                    <li><a href="/my_account">Datos personales</a></li>
-                                    <li><a href="/logout">Logout</a></li>
+                                    <li><a href="mi_cuenta2">@lang('app.gestionDeCreditos') </a></li>
+                                    <li><a href="/my_account">@lang('app.datosPersonales') </a></li>
+                                    <li><a href="/logout"> @lang('app.cerrarSesion')  </a></li>
                                 </ul>
                             </li>
 
     
-                            <li><a href="{{ URL('contacto') }}">Contacto</a></li>
+                            <li><a href="{{ URL('contacto') }}"> @lang('app.contacto')   </a></li>
                                 @else
                                 <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
                                 <li><a href="{{ URL('articulos') }}">Artículos</a></li>
