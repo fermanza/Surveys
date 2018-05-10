@@ -22,19 +22,35 @@
 
                         <ul id="accordion" class="nav navbar-nav navbar-left no-margin main-font text-normal" data-in="fadeIn" data-out="fadeOut">
 
+                     
+                                @auth
+                                <li><a href="{{ URL('encuestas') }}">@lang('app.crearEncuesta')</a></li>
+                                <li><a href="{{ URL('mis_encuestas') }}">Mis Encuestas</a></li>
+                                <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
+                                <li><a href="{{ URL('articulos') }}">Artículos</a></li>
+
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Mi cuenta </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="mi_cuenta2">Gestión de Créditos</a></li>
+                                    <li><a href="/my_account">Datos personales</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                </ul>
+                            </li>
+
+    
+                            <li><a href="{{ URL('contacto') }}">Contacto</a></li>
+                                @else
                                 <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
                                 <li><a href="{{ URL('articulos') }}">Artículos</a></li>
                                 <li><a href="{{ URL('plantillas') }}">Plantillas</a></li>
                                 <li><a href="{{ URL('planes') }}">Planes y Precios</a></li>
-                                @auth
-                                    <li><a href="{{ URL('mis_encuestas') }}">Ingresar</a></li>
-                                @else
                                     <li><a href="{{ URL('inicio_sesion') }}">Ingresar</a></li>
+                                    <li><a href="{{ URL('contacto') }}">Contacto</a></li>
                                 @endauth
-                                <li><a href="{{ URL('contacto') }}">Contacto</a></li>
+                                
 
 
-                            <li class="lang"><a href="#">ES</a> | <a href="#">EN</a></li>
+                              <li class="lang"><a href="{{url('setLanguage/es')}}">ES</a> | <a href="{{url('setLanguage/en')}}">EN</a></li>
                         </ul>
                     </div>
                 </div>
