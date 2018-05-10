@@ -23,7 +23,7 @@
                         <ul id="accordion" class="nav navbar-nav navbar-left no-margin main-font text-normal" data-in="fadeIn" data-out="fadeOut">
 
             
-                                <li><a href="{{ URL('encuestas') }}">Crear Encuesta</a></li>
+                                <li><a href="{{ URL('encuestas') }}">@lang('app.crearEncuesta')</a></li>
                                 <li><a href="{{ URL('mis_encuestas') }}">Mis Encuestas</a></li>
                                 <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
                                 <li><a href="{{ URL('articulos') }}">Artículos</a></li>
@@ -53,7 +53,7 @@
                             <?php } ?>
                             
 
-                            <li class="lang"><a href="#">ES</a> | <a href="#">EN</a></li>
+                            <li class="lang"><a href="{{url('setLanguage/es')}}">ES</a> | <a href="{{url('setLanguage/en')}}">EN</a></li>
                         </ul>
                     </div>
                 </div>

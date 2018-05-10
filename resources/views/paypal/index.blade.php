@@ -69,6 +69,12 @@
             </div>
         </section>
         <!-- end page title section -->
+
+        @if($msgError!="")
+        <div class="alert alert-danger">
+            <strong>{{$msgError}}</strong>
+        </div>
+        @endif
         
         <section class="titulo">
 
