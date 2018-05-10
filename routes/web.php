@@ -29,12 +29,8 @@ Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
 Route::get('/planes', 'SurveniaWebPagesController@planes');	
 Route::resource('/inicio_sesion','InicioSesionController');
 
-Route::resource('/encuestas', 'EncuestasController');
-Route::get('/encuestas/{id}', 'EncuestasController@create');
-Route::get('/encuestas/show', 'EncuestasController@show');
-Route::get('/get-options/{type}', 'EncuestasController@getOptions');
-Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
-Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
+
+
 Route::get('/encuestas/contestar/{id}', 'EncuestasController@answerTemplate');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
@@ -65,7 +61,8 @@ Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['Authuser']], function () {
+    
 
     Route::resource('/mis_encuestas', 'MisEncuestasController');
 
@@ -81,6 +78,13 @@ Route::group(['middleware' => ['auth']], function () {
     //encuesta guardar
     Route::post('saveQuestion','EncuestasController@saveQuestion');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::resource('/encuestas', 'EncuestasController');
+Route::get('/encuestas/{id}', 'EncuestasController@create');
+Route::get('/encuestas/show', 'EncuestasController@show');
+Route::get('/get-options/{type}', 'EncuestasController@getOptions');
+Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
+Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
 });
 
 
