@@ -26,7 +26,13 @@ return [
 	"reset_password"     => "Reset Password",
 	"reset_password_btn" => "Send reset link",
 	"connect"            => "Loggin",
-	'crearEncuesta'=> 'Create survey'
+	'crearEncuesta'=> 'Create survey',
+	"misEncuestas" = > "My surveys ",
+	"encuestasPublicas" => "public surveys",
+	"articulos" => "articles",
+	"gestionDeCreditos" => "Credits management",
+	"datosPersonales" => "personal information",
+	"cerrarSesion" => "logout"
 
 
 
