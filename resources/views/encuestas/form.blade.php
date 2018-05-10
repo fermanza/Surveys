@@ -149,75 +149,19 @@ visibility:hidden;
                         </div>
                         <!-- end accordion --> --}}
 
-        <!-- end accordions style 04 section -->
-            <div class="col-md-3" align="right"></div>
-                     <div class="panel-group accordion-style22" id="accordion-main">
-                <div class="panel-heading active-accordion">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse1">
-                                        <div class="panel-title">
-                                            <span>Tipo de pregunta <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
-                                            <i class="fa fa-angle-up pull-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                    <div class="col-md-12">
-
+                <div class="settings" id="survey_content" name="survey_content">
+                    <div class="titulo">{{ $template->name }}</div>
                         <div id="fb-editor"></div>
-                      {{--   <div id="fb-editor"></div>
-                        <div class="settings" id="survey_content" name="survey_content">
-                            <div class="logo"> --}}
-                                {{-- <img src="{{ asset('images/logo-survenia-color.png') }}" widht="30" height="30" alt=""> --}}
-                             {{--    <a href="#">
-                                    <i class="fa fa-plus-square-o"></i> LOGO
-                                </a>
-                                <br>
-                                <br> --}}
-                            {{--     <input type="hidden" name="_token" value="{{ Session::token() }}" />
-                                <div class="col-md-12" align="center">
-                                    <pre>+ LOGO {{ (!empty($result) ? print_r($result, 1) : '') }}</pre>
-                                </div>
-                                <div>
-                                    <input type="file" name="file">
-                                </div>
-                            </div>
-                            <br />
-                            <div class="titulo">{{ $template->name }}</div>
-                            <br />
-                            <form action="/encuestas/storeSurveyContent" method="POST" id="templateform">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="template_name" class="form-control" value="{{ $template->name }}">
-                            <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                <input type="hidden" name="questions_count" id="questions_count" value="0" />
-                                <div id="template-container" name="template-container"> --}}
-                                    {{-- All Survey Content --}}
-
-    
-                  {{--               </div>
-
-                                <br /><br />
-
-                                
-                            </form>
- --}}
-                            {{-- <a href="#" class="sig"><i class="fa fa-plus-square-o"></i> Siguiente pregunta</a> --}}
-
-
-        {{--                     <div style="clear:both"></div>
-
-                        </div> --}}
-                    </div>
-                       <div class="settings" id="survey_content" name="survey_content">
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                     <button class="btn" id="save-data">Guardar</button>
                         </div>
-                        </div>
-
                 </div>
+
             </div>
+        </div>
         </section>
 
 @stop
@@ -275,6 +219,8 @@ let templates = {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         console.log("Hooray, it worked!");
+        alert("Encuesta guardada correctamente.");
+        $(location).attr('href', '/mis_encuestas')
     });
 
     // Callback handler that will be called on failure
