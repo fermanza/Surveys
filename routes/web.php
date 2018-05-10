@@ -29,11 +29,20 @@ Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
 Route::get('/planes', 'SurveniaWebPagesController@planes');	
 Route::resource('/inicio_sesion','InicioSesionController');
 
+Route::resource('/encuestas', 'EncuestasController');
+Route::get('/encuestas/{id}', 'EncuestasController@create');
+Route::get('/encuestas/show', 'EncuestasController@show');
+Route::get('/get-options/{type}', 'EncuestasController@getOptions');
+Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
+Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
+Route::get('/encuestas/contestar/{id}', 'EncuestasController@answerTemplate');
+
+Route::resource('/mis_encuestas', 'MisEncuestasController');
 
 //Route::get('/mi_cuenta','SurveniaWebPagesController@miCuenta');
 
-//Route::get('/mis_encuestas', 'SurveniaWebPagesController@misEncuestas');
-//Route::get('/crear_encuesta2', 'SurveniaWebPagesController@crearEncuesta2');
+
+Route::resource('/my_account','MyAccountController');
 
 
 

@@ -384,7 +384,7 @@
                             <tbody>
                                 @foreach($templates as $template)
                                 <tr>
-                                    <td> {{ $template->name }} </td>
+                                    <td> <a href="{{ URL('encuestas/contestar') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
                                     <td>{{ $template->created_at->diffForHumans() }}</td>
                                     <td> {{ $template->answered }} </td>
                                     <td><a href=""><i class="fa fa-file"></i></a></td>

@@ -61,7 +61,7 @@
                                     <label for="check" class="text-extra-dark-gray">Recordarme</label>
                                 </div>
                                 <div class="col-md-6 col-sm-6" style="text-align:right;">
-                                    <a href="#" class="text-extra-dark-gray">Recuperar contraseña</a>
+                                    <a href="{{ route('password.request') }}" class="text-extra-dark-gray">Recuperar contraseña</a>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn btn-primary">

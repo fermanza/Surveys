@@ -6,7 +6,7 @@
             <div class="row">
                 <!-- start logo -->
                 <div class="col-md-2 col-xs-5">
-                    <a href="/" class="logo"><img src="images/logo-survenia.png" class="logo-dark" alt="Survenia"><img src="images/logo-survenia.png" alt="Survenia" class="logo-light default"></a>
+                    <a href="/" class="logo"><img src="{{ asset('images/logo-survenia.png') }}" class="logo-dark" alt="Survenia"><img src="{{ asset('images/logo-survenia.png') }}" alt="Survenia" class="logo-light default"></a>
                 </div>
                 <!-- end logo -->
                 <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">

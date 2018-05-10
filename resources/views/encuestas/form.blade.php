@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Crear Encuesta')
 
-@extends('includes.headerlog')
+@extends('includes.header')
 @section('content')
 
 <style>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Editar Mi Cuenta')
 
-@extends('includes.headerlog')
+@extends('includes.header')
 
 @section('content')
     @include('my_account.form')
