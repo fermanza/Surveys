@@ -26,7 +26,7 @@ return [
 	"reset_password"     => "Reset Password",
 	"reset_password_btn" => "Send reset link",
 	"connect"            => "Loggin",
-	'crearEncuesta'=> 'Create survey'
+	'crearEncuesta'=> 'Crear encuesta'
 
 
 

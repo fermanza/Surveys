@@ -17,12 +17,20 @@ class PaypalController extends Controller
     public function __construct()
     {
         $this->provider = new ExpressCheckout();
+
     }
 
     public function index()
     {
-        return view('paypal.index');
+
+        $msgError="";
+        if(isset($_GET['cancel_invoice']))
+        {
+            $msgError="Tu compra no pudo ser completada";
+        }
+        return view('paypal.index',compact('msgError'));
     }
+    
 
     public function getIndex(Request $request)
     {
@@ -162,7 +170,7 @@ class PaypalController extends Controller
     {
         $data = [];
 
-        $order_id = Invoice::all()->count() + 1;
+        $order_id = Invoice::all()->count() + 10;
 
         if ($recurring === true) {
             $data['items'] = [
@@ -219,8 +227,8 @@ class PaypalController extends Controller
         }
 
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
-        $data['invoice_description'] = "Order #$order_id Invoice";
-        $data['cancel_url'] = url('/checkout');
+        $data['invoice_description'] = "Compra de créditos - Survenia";
+        $data['cancel_url'] = url('/creditos?cancel_invoice=1');
 
         $total = 0;
         foreach ($data['items'] as $item) {
