@@ -34,10 +34,7 @@ $(document).ready(function(){
 
 
 
- $("#save-data").on('click', function () {
-  var fbEditor = document.getElementById('fb-editor');
-    alert(fbEditor.actions.getData('json'));
- });
+ 
 
 
     $(document).ready( function () {

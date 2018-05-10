@@ -191,7 +191,10 @@
         <!-- setting -->
  
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
+        <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
+        <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+
+        
        
 
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>

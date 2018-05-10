@@ -49,6 +49,9 @@ Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
 Route::post('paypal/notify', 'PayPalController@notify');
 Route::get('creditos','PayPalController@index');
 
+//encuesta guardar
+Route::post('saveQuestion','EncuestasController@saveQuestion');
+
 
 //Login with Facebook 
 $router->get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');

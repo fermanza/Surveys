@@ -4,6 +4,13 @@
 @extends('includes.headerlog')
 @section('content')
 
+<style>
+.clear-all,.get-data,.save-template
+{
+visibility:hidden;
+}
+</style>
+
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -11,7 +18,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Editar encuesta</h1>
+                            <h1 class="no-margin-bottom">Creación de encuesta</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,7 +33,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">Editar encuesta</a></li>
+                                <li><a href="crear-encuesta.php" class="text-dark-gray">Creación de encuesta</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -58,10 +65,10 @@
         <section class="encuesta">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+
                         <!-- start accordions style 04 section -->
 
-                        <!-- start accordion -->
+                        {{-- <!-- start accordion -->
                         <div class="panel-group accordion-style22" id="accordion-main">
                             <!-- start tab content -->
                             <div class="panel panel-default">
@@ -140,21 +147,33 @@
                             </div>
                             <!-- end tab content -->
                         </div>
-                        <!-- end accordion -->
+                        <!-- end accordion --> --}}
 
         <!-- end accordions style 04 section -->
-                    </div>
+            <div class="col-md-3" align="right"></div>
+                     <div class="panel-group accordion-style22" id="accordion-main">
+                <div class="panel-heading active-accordion">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse1">
+                                        <div class="panel-title">
+                                            <span>Tipo de pregunta <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                                            <i class="fa fa-angle-up pull-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    <div class="col-md-12">
 
-                    <div class="col-md-9">
+                        <form id="fb-editor"></form>
+                      {{--   <div id="fb-editor"></div>
                         <div class="settings" id="survey_content" name="survey_content">
-                            <div class="logo">
+                            <div class="logo"> --}}
                                 {{-- <img src="{{ asset('images/logo-survenia-color.png') }}" widht="30" height="30" alt=""> --}}
                              {{--    <a href="#">
                                     <i class="fa fa-plus-square-o"></i> LOGO
                                 </a>
                                 <br>
                                 <br> --}}
-                                <input type="hidden" name="_token" value="{{ Session::token() }}" />
+                            {{--     <input type="hidden" name="_token" value="{{ Session::token() }}" />
                                 <div class="col-md-12" align="center">
                                     <pre>+ LOGO {{ (!empty($result) ? print_r($result, 1) : '') }}</pre>
                                 </div>
@@ -165,42 +184,132 @@
                             <br />
                             <div class="titulo">{{ $template->name }}</div>
                             <br />
-                            <form action="{!! route('mis_encuestas.update', $template) !!}" method="PATCH" id="templateform">
+                            <form action="/encuestas/storeSurveyContent" method="POST" id="templateform">
                             {{ csrf_field() }}
                             <input type="hidden" name="template_name" class="form-control" value="{{ $template->name }}">
-                            <input type="hidden" name="template_id" class="form-control" value="{{ $template->id }}">
+                            <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                 <input type="hidden" name="questions_count" id="questions_count" value="0" />
-                                <div id="template-container" name="template-container">
+                                <div id="template-container" name="template-container"> --}}
                                     {{-- All Survey Content --}}
-                                    @foreach($questions as $data)
-                                    
-                                        <h6>{{ $data->content->question0}}</h6><br>
-                                        
-                                        <h6>{{ $data->content->option0}}</h6><br>
 
-                             {{--            <h6>{{ $data->content->question1}}</h6><br>
-                                        
-                                        <h6>{{ $data->content->option1}}</h6><br> --}}
+    
+                  {{--               </div>
 
+                                <br /><br />
 
-                                    @endforeach
-                                </div>
-
-                                <div class="guardar">
-                                    <a href="{{ url()->previous() }}">Cancelar</a>
-                                    <button class="btn" type="submit">Guardar</button>
-                                </div>
+                                
                             </form>
-
+ --}}
                             {{-- <a href="#" class="sig"><i class="fa fa-plus-square-o"></i> Siguiente pregunta</a> --}}
 
 
-                            <div style="clear:both"></div>
+        {{--                     <div style="clear:both"></div>
 
-                        </div>
+                        </div> --}}
                     </div>
+                       <div class="settings" id="survey_content" name="survey_content">
+                         <div class="guardar">
+                                    <a href="{{ url()->previous() }}">Cancelar</a>
+                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                                    <button class="btn" id="save-data">Guardar</button>
+                        </div>
+                        </div>
 
                 </div>
             </div>
         </section>
+
 @stop
+
+@push('script')
+  <script>
+  $(document).ready(function() {
+      
+        var options = {
+      i18n: {
+        locale: 'es-ES'
+      },
+      controlPosition: 'left'
+    };
+
+let fields = [{
+  label: 'Star Rating',
+  attrs: {
+    type: 'starRating'
+  },
+  icon: '🌟'
+}];
+let templates = {
+  starRating: function(fieldData) {
+    return {
+      field: '<span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+      }
+    };
+  }
+};
+var fbRender = document.getElementById('fb-editor');
+var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
+var options = {
+      defaultFields: formData,
+      controlPosition: 'left'
+    };
+
+    var formBuilder = $(fbRender).formBuilder(options);
+
+
+  /*var formRenderOpts = {
+      fbRender,
+    formData,
+    dataType: 'json'
+  };*/
+
+  console.log(formData);
+
+ // $(fbRender).formRender(formRenderOpts);
+
+
+    document.getElementById('save-data').addEventListener('click', function() {
+    var jsondata=formBuilder.actions.getData('json');
+    var templateid=document.getElementById('template_id');
+    var token=document.getElementById('csrf-token');
+
+    var data={
+        content:jsondata,
+        template_id:templateid.value,
+        _token:token.value
+    };
+    console.log(data);
+    // Fire off the request to /form.php
+    request = $.ajax({
+        url: '{{url('saveQuestion')}}',
+        type: "post",
+        data: data
+    });
+
+    // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        console.log("Hooray, it worked!");
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+  });
+
+
+
+});
+  </script>
+
+
+@endpush

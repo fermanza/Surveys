@@ -4,6 +4,13 @@
 @extends('includes.headerlog')
 @section('content')
 
+<style>
+.clear-all,.get-data,.save-template
+{
+visibility:hidden;
+}
+</style>
+
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -180,7 +187,7 @@
                             <form action="/encuestas/storeSurveyContent" method="POST" id="templateform">
                             {{ csrf_field() }}
                             <input type="hidden" name="template_name" class="form-control" value="{{ $template->name }}">
-                            <input type="hidden" name="template_id" class="form-control" value="{{ $template->id }}">
+                            <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                 <input type="hidden" name="questions_count" id="questions_count" value="0" />
                                 <div id="template-container" name="template-container"> --}}
                                     {{-- All Survey Content --}}
@@ -203,6 +210,8 @@
                        <div class="settings" id="survey_content" name="survey_content">
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
+                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                     <button class="btn" id="save-data">Guardar</button>
                         </div>
                         </div>
@@ -216,6 +225,7 @@
 @push('script')
   <script>
   $(document).ready(function() {
+      
         var options = {
       i18n: {
         locale: 'es-ES'
@@ -240,7 +250,46 @@ let templates = {
     };
   }
 };
-    $(document.getElementById('fb-editor')).formBuilder(options);
+    var fbEditor = document.getElementById('fb-editor');
+    var formBuilder = $(fbEditor).formBuilder(options);
+
+    document.getElementById('save-data').addEventListener('click', function() {
+    var jsondata=formBuilder.actions.getData('json');
+    var templateid=document.getElementById('template_id');
+    var token=document.getElementById('csrf-token');
+
+    var data={
+        content:jsondata,
+        template_id:templateid.value,
+        _token:token.value
+    };
+    console.log(data);
+    // Fire off the request to /form.php
+    request = $.ajax({
+        url: '{{url('saveQuestion')}}',
+        type: "post",
+        data: data
+    });
+
+    // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        console.log("Hooray, it worked!");
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+  });
+
+
+
 });
   </script>
 

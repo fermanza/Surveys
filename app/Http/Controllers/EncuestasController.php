@@ -152,6 +152,21 @@ class EncuestasController extends Controller
         //
     }
 
+    function saveQuestion(Request $request)
+    {
+        $question=Questions::where('template_id','=',$request->template_id)->first();
+        if(!$question)
+        {
+            $question=new Questions;
+        }
+        
+        $question->position=0;
+        $question->content=json_decode($request->content);
+        $question->template_id=$request->template_id;
+        //$question->options_questions_id=
+        $question->save();
+    }
+
       /**
      * Show the form for the specified resource.
      *

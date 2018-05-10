@@ -64,10 +64,11 @@ class MisEncuestasController extends Controller
         // $ip = \Request::getClientIp();
         // dd($ip);
         $template = Template::find($id);
+        $question=Questions::where('template_id','=',$id)->first();
         $action = 'edit';
         $view = 'mis_encuestas.edit';
 
-        return $this->form($template, $action, $view);
+        return $this->form($template, $action, $view,$question);
     }
 
     /**
@@ -110,21 +111,23 @@ class MisEncuestasController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($template, $action, $view)
+    protected function form($template, $action, $view,$question)
     { 
         $template->load('questions');
         //dd($template->questions[0]->content);
-        $questions = $template->questions->map(function($item){
+        /*$questions = $template->questions->map(function($item){
             $item->content = json_decode($item->content);
             return $item;
-        });
+        });*/
         $cont = 0;
         $options = Options::get();
         //dd($value);
         //dd($questions);
-        $params = compact('template', 'action', 'cont','options','questions');
+        $params = compact('template', 'action', 'cont','options','question');
         //dd($params);
 
+        //echo json_encode($question->content);
+        //die();
         return view($view, $params);
     }
 
