@@ -53,7 +53,7 @@ visibility:hidden;
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{ $template->name }}</h5>
                         <div class="btns">
-                            <a href="#"><i class="fa fa-eye"></i> Vista previa</a>
+                            {{-- <a href="#"><i class="fa fa-eye"></i> Vista previa</a> --}}
                         </div>
                     </div>
                 </div>
@@ -64,94 +64,22 @@ visibility:hidden;
         <!-- end form section -->
         <section class="encuesta">
             <div class="container">
+                
                 <div class="row">
 
-                        <!-- start accordions style 04 section -->
-
-                        {{-- <!-- start accordion -->
-                        <div class="panel-group accordion-style22" id="accordion-main">
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading active-accordion">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse1">
-                                        <div class="panel-title">
-                                            <span>Tipo de pregunta <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
-                                            <i class="fa fa-angle-up pull-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <ul class="fa-ul">
-                                            <li><div class="item-enc"><i class="fa fa-list-ul"></i> Multiple Choice</div> <a href="#" data-type="multi" class="agregar">Agregar</a></li>
-
-                                            <li><div class="item-enc"><i class="fa fa-check-square-o"></i> Star Rating</div> <a href="#" data-type="star" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-align-justify"></i> Single TextBox</div> <a href="#" data-type="single" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-commenting"></i> Comment Box</div> <a href="#" data-type="comment" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-caret-square-o-down"></i> Dropdown</div> <a href="#" data-type="dropdown" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-server"></i> Matrix</div> <a href="#" data-type="matrix" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-bar-chart"></i> Ranking</div> <a href="#" data-type="rank" class="agregar">Agregar</a></li>
-                                            <!--<li><div class="item-enc"><i class="fa fa-table"></i> Matrix Rating Scale</div> <a href="#" data-type="multi" class="agregar">Agregar</a></li>-->
-                                            <li><div class="item-enc"><i class="fa fa-sliders"></i> Slider</div> <a href="#" data-type="slider" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-indent"></i> Multiple Textbooks</div> <a href="#" data-type="textbooks" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-comments"></i> Contact information</div> <a href="#" data-type="cntform" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-file-image-o"></i> Imagen</div> <a href="#" data-type="imagen" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-align-justify"></i> Texto</div> <a href="#" data-type="texto" class="agregar">Agregar</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse2">
-                                        <div class="panel-title">
-                                            <span>Templates <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></span>
-                                            <i class="fa fa-angle-down pull-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapse2" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="fa-ul">
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Multiple Choice</div> <a href="#" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Star Rating</div> <a href="#" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Single TextBox</div> <a href="#" class="agregar">Agregar</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapse3">
-                                        <div class="panel-title">
-                                            <span>Lógica <span class="q" data-toggle="tooltip" data-placement="right" title="Ayuda"><i class="fa fa-question-circle"></i></span></span>
-                                            <i class="fa fa-angle-down pull-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapse3" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="fa-ul">
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Multiple Choice</div> <a href="#" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Star Rating</div> <a href="#" class="agregar">Agregar</a></li>
-                                            <li><div class="item-enc"><i class="fa fa-check"></i> Single TextBox</div> <a href="#" class="agregar">Agregar</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-                        </div>
-                        <!-- end accordion --> --}}
-
                 <div class="settings" id="survey_content" name="survey_content">
-                    {{-- <div class="titulo">{{ $template->name }}</div> --}}
-                        <div id="fb-editor"></div>
+                    <br>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                                <div class="panel-heading active">
+                                    <div class="panel-title">
+                                            <span class="btn btn-success">Tipo de pregunta <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <br><br>
+                        <form id="fb-editor"></form>
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
@@ -188,10 +116,6 @@ let templates = {
       }
     };
   }
-
-
-
-
 };
 
 
@@ -203,10 +127,11 @@ let templates = {
       controlPosition: 'left',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
        controlOrder: [
-      'text',
-      'textarea'
+        'title',
+        'text',
+        'textarea'
        ],
-      disableFields: ['file', 'date', 'autocomplete'] 
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number'] 
     };
 
 

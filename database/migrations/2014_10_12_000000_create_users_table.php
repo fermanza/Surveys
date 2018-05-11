@@ -15,15 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('company');
+            $table->string('name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('company')->nullable();
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('city');
-            $table->string('country');
+            $table->string('password')->nullable();
+            $table->string('password2')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
             $table->integer('role')->default(0);
             $table->rememberToken();
             $table->timestamps();
@@ -36,6 +37,7 @@ class CreateUsersTable extends Migration
                 'company' => 'Survenia',
                 'email' => 'admin@app.com',
                 'password' => '$2y$10$KX4UjNjeJCRmmAjejf5Jl.OwFAuzP9OKKlzY06rWT7Qf00CRpYXAG',
+                'password2' => '$2y$10$KX4UjNjeJCRmmAjejf5Jl.OwFAuzP9OKKlzY06rWT7Qf00CRpYXAG',
                 'address' => '123 Argentina Main',
                 'phone' => '123456789',
                 'city' => 'Buenos Aires',

@@ -20,27 +20,6 @@ class CreateQuestionsTable extends Migration
             $table->binary('content');
             $table->timestamps();
         });
-
-         // Insert some stuff
-        \DB::table('questions')->insert(
-            array(
-                array(
-                    'position' => '1',
-                    'content' => '{}',
-                    'created_at' => Carbon::now()
-                ),
-                array(
-                    'position' => '2',
-                    'content' => '{}',
-                    'created_at' => Carbon::now()
-                ),
-                array(
-                    'position' => '3',
-                    'content' => '{}',
-                    'created_at' => Carbon::now()
-                )
-            )
-        );
     }
 
     /**

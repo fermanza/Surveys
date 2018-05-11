@@ -23,28 +23,7 @@ class CreateTemplateTable extends Migration
             $table->string('hash')->nullable();
             $table->timestamps();
         });
-
-        // Insert some stuff
-        \DB::table('template')->insert(
-            array(
-                array(
-                    'user_id' => '1',
-                    'name' => 'Encuesta de Prueba',
-                    'title' => 'Title Test numero uno',
-                    'description' => 'Description testing for number one',
-                    'hash' => base64_encode(Hash::make(Carbon::now())),
-                    'created_at' => Carbon::now()
-                ),
-                array(
-                    'user_id' => '1',
-                    'name' => 'Survey Test',
-                    'title' => 'Title Test numero dos',
-                    'description' => 'Description testing for number two',
-                    'hash' => base64_encode(Hash::make(Carbon::now())),
-                    'created_at' => Carbon::now()
-                )
-            )
-        );
+        
     }
 
     /**

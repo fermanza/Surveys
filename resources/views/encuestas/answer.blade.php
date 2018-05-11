@@ -64,7 +64,7 @@ visibility:hidden;
                 <div class="row">
         
                        <div class="settings" id="survey_content" name="survey_content">
-                        <div class="titulo">{{ $template->name }}</div>
+                        <br>
                          <form id="fb-editor"></form>
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
@@ -94,6 +94,7 @@ visibility:hidden;
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 var options = {
+      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',        
       defaultFields: formData,
       controlPosition: 'left'
     };
@@ -131,7 +132,7 @@ var options = {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         console.log(response);
-        alert('Tus respuestas fueron guardadas correctamente');
+        alert('Tus respuestas fueron guardadas correctamente.');
         $(location).attr('href', '/mis_encuestas')
     });
 
