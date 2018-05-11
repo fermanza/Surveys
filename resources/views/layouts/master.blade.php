@@ -48,6 +48,7 @@
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
         <!-- Datatables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     </head>
     <body>
 
@@ -193,7 +194,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
         <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
-
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         
 
         
@@ -205,7 +206,7 @@
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
         
-         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
+        
         
         
         @stack('script')

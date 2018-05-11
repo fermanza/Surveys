@@ -191,9 +191,7 @@ you can use the generic selector below, but it's slower:
 .icon-layers:before {
 	content: "\e031";
 }
-.icon-pencil:before {
-	content: "\e032";
-}
+
 .icon-tools:before {
 	content: "\e033";
 }

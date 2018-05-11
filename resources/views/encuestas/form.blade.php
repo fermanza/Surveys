@@ -150,7 +150,7 @@ visibility:hidden;
                         <!-- end accordion --> --}}
 
                 <div class="settings" id="survey_content" name="survey_content">
-                    <div class="titulo">{{ $template->name }}</div>
+                    {{-- <div class="titulo">{{ $template->name }}</div> --}}
                         <div id="fb-editor"></div>
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
@@ -170,12 +170,7 @@ visibility:hidden;
   <script>
   $(document).ready(function() {
       
-        var options = {
-      i18n: {
-        locale: 'es-ES'
-      },
-      controlPosition: 'left'
-    };
+
 
 let fields = [{
   label: 'Star Rating',
@@ -193,7 +188,28 @@ let templates = {
       }
     };
   }
+
+
+
+
 };
+
+
+  var options = {
+    fields, templates,
+      i18n: {
+        locale: 'es-ES'
+      },
+      controlPosition: 'left',
+      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
+       controlOrder: [
+      'text',
+      'textarea'
+       ],
+      disableFields: ['file', 'date', 'autocomplete'] 
+    };
+
+
     var fbEditor = document.getElementById('fb-editor');
     var formBuilder = $(fbEditor).formBuilder(options);
 

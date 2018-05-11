@@ -11,7 +11,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Mis encuestas</h1>
+                            <h1 class="no-margin-bottom">Respuestas</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Mis encuestas</li>
+                                <li class="text-dark-gray">Respuestas</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -38,17 +38,6 @@
 
         <section class="tabla">
             <div class="container">
-                <div class="col-md-12">
-                    <div class="select-style big-select">
-                        <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                             <option value="">Todas las encuestas</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <a class="btn" a href="{{ URL('encuestas') }}">Crear encuesta</a>
-                </div>
                 <div class="col-md-12">
                     <div class="panel panel-default">
 

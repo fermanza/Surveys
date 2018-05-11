@@ -31,7 +31,7 @@ Route::resource('/inicio_sesion','InicioSesionController');
 
 
 
-Route::get('/encuestas/contestar/{id}', 'EncuestasController@answerTemplate');
+Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
 

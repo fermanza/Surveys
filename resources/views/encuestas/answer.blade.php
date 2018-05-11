@@ -132,6 +132,7 @@ var options = {
     request.done(function (response, textStatus, jqXHR){
         console.log(response);
         alert('Tus respuestas fueron guardadas correctamente');
+        $(location).attr('href', '/mis_encuestas')
     });
 
     // Callback handler that will be called on failure
