@@ -70,18 +70,18 @@
                                         {{ csrf_field() }}
                                         {{ $action == 'edit' ? method_field('PATCH') : '' }}
                                         <div class="row" align="center">
-                                            <div class="col-md-12"">
-                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input">
+                                            <div class="col-md-6"">
+                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input" required>
                                             </div>
-                                         {{--    <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="select-style big-select">
-                                                    <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                                                         <option value="">Tipo de encuesta</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
+                                                    <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
+                                                        <option value="">Tipo de encuesta</option>
+                                                        <option value="1">Pública</option>
+                                                        <option value="0">Privada</option>
                                                     </select>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-large margin-20px-top">Crear encuesta</button>
                                             </div>

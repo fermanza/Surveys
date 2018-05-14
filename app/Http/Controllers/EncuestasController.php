@@ -53,13 +53,13 @@ class EncuestasController extends Controller
      */
     public function storeTemplate(Request $request)
     {
-        // dd($request);
+        //dd($request);
         $template = new Template;
         $id = Auth::id();
         //dd($id);
         $template->user_id = $id;
         $template->name = $request->name;
-        $template->title = '';
+        $template->type = $request->tipo;
         $template->description = '';
         //$myJSON = json_encode($template);
         //dd($myJSON);

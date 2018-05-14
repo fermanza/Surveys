@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Item;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,6 +27,9 @@ class PaypalController extends Controller
     public function index()
     {
         $creditos=DB::table("user_credit")->sum('credits');
+        $id = Auth::id();
+        $user = User::find($id);
+        //dd($user);
 
         $msgError="";
         if(isset($_GET['cancel_invoice']))
@@ -37,7 +41,7 @@ class PaypalController extends Controller
         {
             $statusmsg="Tus creditos se han cargado correctamente";
         }
-        return view('paypal.index',compact('msgError','statusmsg','creditos'));
+        return view('paypal.index',compact('msgError','statusmsg','creditos','user'));
     }
     
 
