@@ -5460,7 +5460,7 @@ h6 {
     padding: 15px;
 }
 
-aside .temas .title {
+aside .temas-encuesta .title {
     background: #84c34e;
     color: #fff;
     font-size: 15px;
@@ -5469,30 +5469,30 @@ aside .temas .title {
     padding: 15px 20px;
     margin-bottom: 15px;
 }
-aside .temas .select-style {
+aside .temas-encuesta .select-style {
     margin-bottom: 15px;
     background: url(../images/select-arrow.png) no-repeat 94% 50%;
 }
-aside .temas .select-style select {
+aside .temas-encuesta .select-style select {
     padding: 15px 20px;
     font-size: 16px;
     line-height: 16px;
     color: #000;
 }
-aside .temas .buscar input {
+aside .temas-encuesta .buscar-encuesta input {
     padding: 15px 20px;
     font-size: 16px;
     line-height: 16px;
     border-color: #d1d1d1;
 }
-aside .temas .buscar ::-webkit-input-placeholder {
+aside .temas-encuesta .buscar-encuesta ::-webkit-input-placeholder {
     color: #000;
 }
-aside .temas .buscar button[type="submit"] i {
+aside .temas-encuesta .buscar-encuesta button[type="submit"] i {
     font-size: 16px;
     padding: 10px 12px;
 }
-aside .temas .buscar button[type="submit"] {
+aside .temas-encuesta .buscar-encuesta button[type="submit"] {
     right: -10px;
 }
 
@@ -6994,10 +6994,10 @@ aside .temas .buscar button[type="submit"] {
     text-align: center;
     line-height: 30px;
 }
-.tab-style2 .tab-pane .buscar {
+.tab-style2 .tab-pane .buscar-encuesta {
     position: relative;
 }
-.tab-style2 .tab-pane .buscar i {
+.tab-style2 .tab-pane .buscar-encuesta i {
     position: absolute;
     right: 30px;
     top: 17px;

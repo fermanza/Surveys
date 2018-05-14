@@ -22,7 +22,7 @@ Route::get('/terminos', 'SurveniaWebPagesController@terminos');
 Route::get('/contacto', 'SurveniaWebPagesController@contacto');
 Route::get('/plantillas', 'SurveniaWebPagesController@plantillas');
 Route::get('/articulos', 'SurveniaWebPagesController@articulos');
-Route::get('/encuestas_publicas', 'SurveniaWebPagesController@encuestasPublicas');
+//Route::get('/encuestas_publicas', 'SurveniaWebPagesController@encuestasPublicas');
 Route::get('/encuestas_publicas_detalle', 'SurveniaWebPagesController@encuestasPublicasDetalle');
 Route::get('/como_funciona', 'SurveniaWebPagesController@comoFunciona');
 Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
@@ -63,6 +63,8 @@ Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')
 
 
 Auth::routes();
+
+Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
 Route::group(['middleware' => ['Authuser']], function () {
     

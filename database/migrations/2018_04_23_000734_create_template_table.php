@@ -19,6 +19,7 @@ class CreateTemplateTable extends Migration
             $table->integer('user_id');
             $table->string('name')->nullable();
             $table->string('type')->nullable();
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('hash')->nullable();
             $table->timestamps();

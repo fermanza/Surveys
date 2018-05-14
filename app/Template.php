@@ -45,5 +45,10 @@ class Template extends Model
         return count($respuestas);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     
 }

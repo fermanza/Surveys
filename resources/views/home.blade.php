@@ -55,7 +55,7 @@
                                      style="z-index: 7; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 400; color:#000;">Crea, distribuye y analiza tus encuestas y cuestionarios<br>rápidamente</div>
                                 <!-- layer nr. 5 -->
                                 
-                                <a href="#" class="tp-caption btn btn-medium z-index-5 btn1" 
+                                <a href="{{ URL('encuestas') }}" class="tp-caption btn btn-medium z-index-5 btn1" 
                                    data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']" 
                                    data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']" 
                                    data-fontsize="['15','15','15','15']"
