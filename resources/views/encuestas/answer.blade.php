@@ -100,9 +100,44 @@ var options = {
     };
 
     //var formBuilder = $(fbRender).formBuilder(options);
+    let fields = [{
+  label: 'Star Rating',
+  attrs: {
+    type: 'starRating'
+  },
+  icon: '🌟'
+},
+{
+  label: 'Slider',
+  attrs: {
+    type: 'slider'
+  },
+  icon: ''
+}
 
+];
+let templates = {
+  starRating: function(fieldData) {
+    return {
+      field: '<span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+      }
+    };
+  },
+  slider: function(fieldData) {
+    return {
+      field: '<input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rangeslider();
+      }
+    };
+  }
+
+};
 
   var formRenderOpts = {
+    fields, templates,
       fbRender,
     formData,
     dataType: 'json'

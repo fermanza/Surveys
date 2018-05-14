@@ -80,13 +80,22 @@ visibility:hidden;
   <script>
   $(document).ready(function() {
       
-let fields = [{
+    let fields = [{
   label: 'Star Rating',
   attrs: {
     type: 'starRating'
   },
   icon: '🌟'
-}];
+},
+{
+  label: 'Slider',
+  attrs: {
+    type: 'slider'
+  },
+  icon: ''
+}
+
+];
 let templates = {
   starRating: function(fieldData) {
     return {
@@ -95,7 +104,16 @@ let templates = {
         $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
       }
     };
+  },
+  slider: function(fieldData) {
+    return {
+      field: '<input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rangeslider();
+      }
+    };
   }
+
 };
 
 
