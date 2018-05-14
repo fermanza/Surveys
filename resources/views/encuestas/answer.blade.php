@@ -113,23 +113,53 @@ var options = {
     type: 'slider'
   },
   icon: ''
+},
+{
+  label: 'Matriz',
+  attrs: {
+    type: 'matriz'
+  },
+  icon: ''
 }
 
 ];
 let templates = {
-  starRating: function(fieldData) {
+    starRating: function(fieldData) {
     return {
-      field: '<span id="'+fieldData.name+'">',
+      field: '<input type="hidden" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
       onRender: function() {
-        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+        $(document.getElementById(fieldData.name)).rateYo({
+ 
+ onSet: function (rating, rateYoInstance) {
+
+   $(document.getElementById('star'+fieldData.name)).val(rating);
+ }
+});
       }
     };
   },
   slider: function(fieldData) {
     return {
-      field: '<input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
+      field: '<input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
       onRender: function() {
-        $(document.getElementById(fieldData.name)).rangeslider();
+        $(document.getElementById(fieldData.name)).slider({
+      range: "max",
+      min: 0,
+      max: 100,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#slider"+fieldData.name ).val( ui.value );
+      }
+    });
+    
+    }
+    }
+  },
+  matriz: function(fieldData) {
+    return {
+      field: '<div id='+fieldData.name+'></div>',
+      onRender: function() {
+        
       }
     };
   }
