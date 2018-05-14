@@ -86,8 +86,8 @@
                                 <li class="width-50 pull-left"><a href="como_funciona" class="text-light-gray">Cómo funciona</a></li>
                                 <li class="width-50 pull-left"><a href="plantillas" class="text-light-gray">Plantillas</a></li>
                                 <li class="width-50 pull-left"><a href="planes" class="text-light-gray">Planes y Precios</a></li>
-                                <li class="width-50 pull-left"><a href="crear-encuesta" class="text-light-gray">Creación de encuesta</a></li>
-                                <li class="width-50 pull-left"><a href="encuestas-publicas" class="text-light-gray">Encuestas Públicas</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas" class="text-light-gray">Creación de encuesta</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas_publicas" class="text-light-gray">Encuestas Públicas</a></li>
                                 <li class="width-50 pull-left"><a href="articulos" class="text-light-gray">Artículos</a></li>
                                 <li class="width-50 pull-left"><a href="contacto" class="text-light-gray">Contacto</a></li>
                             </ul>

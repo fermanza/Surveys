@@ -65,6 +65,7 @@ visibility:hidden;
         
                        <div class="settings" id="survey_content" name="survey_content">
                         <br>
+                         <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor"></form>
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
@@ -93,8 +94,7 @@ visibility:hidden;
 
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
-var options = {
-      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',        
+var options = {        
       defaultFields: formData,
       controlPosition: 'left'
     };

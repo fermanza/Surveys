@@ -13,6 +13,9 @@ use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
 use App\Answer;
+use App\UserCredit;
+use App\Discounts;
+use DB;
 
 class EncuestasController extends Controller
 {
@@ -53,11 +56,26 @@ class EncuestasController extends Controller
      */
     public function storeTemplate(Request $request)
     {
+        $ip = \Request::ip();
+        dd($ip);
+
         //dd($request);
+        if($request->tipo == 0)
+        {
+            $creditos=DB::table("user_credit")->sum('credits');
+            $discounts=DB::table("discounts")->sum('credits');
+            $tot = $creditos-$discounts;
+
+            //dd($tot);
+            if($tot <= 0)
+                return redirect('mis_encuestas');
+        }
+        //dd($creditos);
         $template = new Template;
         $id = Auth::id();
         //dd($id);
         $template->user_id = $id;
+        $template->ip;
         $template->name = $request->name;
         $template->type = $request->tipo;
         $template->description = '';
@@ -65,6 +83,13 @@ class EncuestasController extends Controller
         //dd($myJSON);
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
+
+        $discount = new Discounts;
+        $discount->credits = 1;
+        $discount->template_id = $template->id;
+        $discount->user_id = $id;
+
+        $discount->save();
 
         return redirect()->route('encuestas.create', ['id' => $template->id]);
     }

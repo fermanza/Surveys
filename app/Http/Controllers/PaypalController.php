@@ -27,6 +27,9 @@ class PaypalController extends Controller
     public function index()
     {
         $creditos=DB::table("user_credit")->sum('credits');
+        $discounts=DB::table("discounts")->sum('credits');
+        $tot = $creditos-$discounts;
+
         $id = Auth::id();
         $user = User::find($id);
         //dd($user);
@@ -41,7 +44,7 @@ class PaypalController extends Controller
         {
             $statusmsg="Tus creditos se han cargado correctamente";
         }
-        return view('paypal.index',compact('msgError','statusmsg','creditos','user'));
+        return view('paypal.index',compact('msgError','statusmsg','tot','user'));
     }
     
 

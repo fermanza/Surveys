@@ -281,7 +281,7 @@
                     <div class="col-md-12">
                         <img src="images/mi-cuenta/user.png" alt="">
                         <p>{{ $user->name }}</p>
-                        <p>Créditos disponibles: {{$creditos}}</p>
+                        <p>Créditos disponibles: {{$tot}}</p>
                     </div>
                 </div>
             </div>
