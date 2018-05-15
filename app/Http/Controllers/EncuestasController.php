@@ -56,9 +56,6 @@ class EncuestasController extends Controller
      */
     public function storeTemplate(Request $request)
     {
-        $ip = \Request::ip();
-        dd($ip);
-
         //dd($request);
         if($request->tipo == 0)
         {
@@ -70,17 +67,12 @@ class EncuestasController extends Controller
             if($tot <= 0)
                 return redirect('mis_encuestas');
         }
-        //dd($creditos);
         $template = new Template;
         $id = Auth::id();
-        //dd($id);
         $template->user_id = $id;
-        $template->ip;
         $template->name = $request->name;
         $template->type = $request->tipo;
         $template->description = '';
-        //$myJSON = json_encode($template);
-        //dd($myJSON);
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
 
@@ -245,7 +237,15 @@ class EncuestasController extends Controller
 
     public function saveAnswer(Request $request)
     {
+        $ip = \Request::ip();
         $id_template=$request->id_template;
+        //dd($ip);
+        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+        if($answer)
+        {
+            return response()->json('pene',500);
+        }
+
         $respuestas=json_decode($request->answer);
         $pos=0;
        
@@ -256,6 +256,7 @@ class EncuestasController extends Controller
             $answer->id_template=$id_template;
             $answer->position=$pos;
             $answer->answer=$respuesta->value;
+            $answer->ip = $ip;
             $answer->save();
             $pos++;
             

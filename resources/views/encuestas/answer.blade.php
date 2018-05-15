@@ -208,6 +208,8 @@ let templates = {
             "Ha ocurrido un error: "+
             textStatus, errorThrown
         );
+        alert('Ya has respondido esta encuesta. Intenta con otra.');
+        $(location).attr('href', '/')
     });
     });
 
