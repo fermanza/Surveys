@@ -246,21 +246,14 @@ class EncuestasController extends Controller
             return response()->json('pene',500);
         }
 
-        $respuestas=json_decode($request->answer);
-        $pos=0;
-       
 
-        foreach($respuestas as $respuesta)
-        {
             $answer=new Answer;
             $answer->id_template=$id_template;
-            $answer->position=$pos;
-            $answer->answer=$respuesta->value;
+            $answer->position=0;
+            $answer->answer=$request->answer;
             $answer->ip = $ip;
             $answer->save();
-            $pos++;
-            
-        }
+
         return response()->json('ok',200);
     }
 

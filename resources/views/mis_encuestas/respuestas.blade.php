@@ -41,27 +41,17 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
 
+                    @foreach($preguntas as $pregunta)
+                                    <h5>{{$pregunta->label}}</h5>
 
-                        <table id="table-mis-encuestas">
-                            <thead>
-                                <tr>
-                                    @foreach($preguntas as $pregunta)
-                                    <th>{{$pregunta->label}}</th>
+                                    @foreach($respuestas as $respuesta)
+
+                                    <?php $respuestajson=json_decode($respuesta->answer)?>
+                                    <ul>
+                                        <li>{{$respuestajson[$loop->parent->index]->value}}</li>
+                                    </ul>
                                     @endforeach
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                @foreach ($respuestas->chunk(count($preguntas)) as $chunk)
-                                    <tr>
-                                        @foreach($chunk as $respuesta)
-                                            <td>{{$respuesta->answer}}</td>
-                                        @endforeach
-                                    </tr>
-                                @endforeach
-                                
-                            </tbody>
-                        </table>
+                    @endforeach
                     </div>
 
                 </div>

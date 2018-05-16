@@ -126,7 +126,7 @@ var options = {
 let templates = {
     starRating: function(fieldData) {
     return {
-      field: '<input type="hidden" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
+      field: '<input type="hidden" name="star'+fieldData.name+'" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
       onRender: function() {
         $(document.getElementById(fieldData.name)).rateYo({
  

@@ -26,12 +26,14 @@ class PaypalController extends Controller
 
     public function index()
     {
-        $creditos=DB::table("user_credit")->sum('credits');
-        $discounts=DB::table("discounts")->sum('credits');
-        $tot = $creditos-$discounts;
+        
 
         $id = Auth::id();
         $user = User::find($id);
+
+        $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
+        $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
+        $tot = $creditos-$discounts;
         //dd($user);
 
         $msgError="";
@@ -175,7 +177,7 @@ class PaypalController extends Controller
     {
         $data = [];
 
-        $order_id = UserCredit::all()->count() + 200;
+        $order_id = UserCredit::all()->count() + 500;
 
         if ($recurring === true) {
             $data['items'] = [
