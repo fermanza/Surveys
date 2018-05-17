@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/mis_encuestas';
+    protected $redirectTo = '/my_account';
 
     /**
      * Create a new controller instance.

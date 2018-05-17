@@ -57,7 +57,7 @@ class EncuestasController extends Controller
     public function storeTemplate(Request $request)
     {
         //dd($request);
-        if($request->tipo == 0)
+        if($request->plan == 1)
         {
             $creditos=DB::table("user_credit")->sum('credits');
             $discounts=DB::table("discounts")->sum('credits');
@@ -65,7 +65,7 @@ class EncuestasController extends Controller
 
             //dd($tot);
             if($tot <= 0)
-                return redirect('mis_encuestas');
+                return redirect('encuestas');
         }
         $template = new Template;
         $id = Auth::id();
