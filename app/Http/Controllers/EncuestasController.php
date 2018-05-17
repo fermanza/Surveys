@@ -65,13 +65,14 @@ class EncuestasController extends Controller
 
             //dd($tot);
             if($tot <= 0)
-                return redirect('encuestas');
+                return redirect('encuestas')->with('msg','No tienes los créditos suficientes para este tipo de encuesta');
         }
         $template = new Template;
         $id = Auth::id();
         $template->user_id = $id;
         $template->name = $request->name;
         $template->type = $request->tipo;
+        $template->plan = $request->plan;
         $template->description = '';
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
@@ -95,6 +96,8 @@ class EncuestasController extends Controller
     public function storeSurveyContent(Request $request)
     {
         //dd($request);
+
+        
 
         $input = Input::all();
         $json_data = json_encode($input);
@@ -172,6 +175,16 @@ class EncuestasController extends Controller
 
     public function saveQuestion(Request $request)
     {
+
+        $template=Template::find($request->template_id);
+        $preguntas=json_decode($request->content);
+
+        if($template->plan==0 && count($preguntas)>10)
+        {
+            return response()->json("exceso",500);
+        }
+
+        
         $question=Questions::where('template_id','=',$request->template_id)->first();
         if(!$question)
         {
@@ -237,13 +250,26 @@ class EncuestasController extends Controller
 
     public function saveAnswer(Request $request)
     {
+        
         $ip = \Request::ip();
         $id_template=$request->id_template;
+
+        $template=Template::find($id_template);
+        $totalAnswer=Answer::where('id_template','=',$id_template)->get();
+
+        
+        if($template->plan==0)
+        {
+            if(count($totalAnswer)>=2)
+            {
+                return response()->json('maximo',500);
+            }
+        }
         //dd($ip);
         $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
         if($answer)
         {
-            return response()->json('pene',500);
+            return response()->json('ip',500);
         }
 
 

@@ -58,6 +58,8 @@
                                 <tr>
                                     <th>Título</th>
                                     <th>Fecha de Creación</th>
+                                    <th>Tipo de encuesta</th>
+                                    <th>Tipo de plan</th>
                                     <th>Respuestas</th>
                                     <th>Reportes</th>
                                     <th>Cerrar Encuesta</th>
@@ -70,6 +72,20 @@
                                 <tr>
                                     <td> <a href="{{ URL('encuestas/responder') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
                                     <td>{{ $template->created_at->diffForHumans() }}</td>
+                                    @if($template->type==0)
+                                    <td>Pública</td>
+                                    @else
+                                    <td>Privada</td>
+                                    @endif
+
+                                    @if($template->plan==0)
+                                    <td>Gratuita</td>
+                                    @else
+                                    <td>Premium</td>
+                                    @endif
+
+
+
                                     <td> {{ $template->answersnumber }} </td>
                                     <td><a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}"><i class="fa fa-file"></i></a></td>
                                     <td><a href=""><i class="fa fa-times"></i></a></td>

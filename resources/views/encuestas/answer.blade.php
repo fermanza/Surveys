@@ -204,12 +204,28 @@ let templates = {
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown){
         // Log the error to the console
-        console.error(
+
+        console.log(jqXHR);
+
+        if(jqXHR.responseText=='"maximo"')
+        {
+            alert('Esta encuesta ha alcanzado el límite máximo de respuestas');
+            $(location).attr('href', '/')
+        }
+
+        if(jqXHR.responseText=='"ip"')
+        {
+            alert('Ya has respondido esta encuesta. Intenta con otra.');
+            $(location).attr('href', '/')
+        }
+
+        /*console.error(
             "Ha ocurrido un error: "+
             textStatus, errorThrown
         );
         alert('Ya has respondido esta encuesta. Intenta con otra.');
-        $(location).attr('href', '/')
+        $(location).attr('href', '/')*/
+
     });
     });
 

@@ -112,7 +112,7 @@ let fields = [{
   attrs: {
     type: 'slider'
   },
-  icon: ''
+  icon: '↔️'
 }
 
 ];
@@ -185,10 +185,11 @@ let templates = {
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown){
         // Log the error to the console
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
+        console.log(jqXHR.responseText);
+        if(jqXHR.responseText=='"exceso"')
+        {
+            alert('El número de preguntas es mayor al límite permitido en una encuesta gratuita');
+        }
     });
 
   });
