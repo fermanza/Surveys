@@ -65,7 +65,7 @@ class EncuestasController extends Controller
 
             //dd($tot);
             if($tot <= 0)
-                return redirect('encuestas')->with('msg','No tienes los créditos suficientes para este tipo de encuesta');
+                return redirect('encuestas?error=1');
         }
         $template = new Template;
         $id = Auth::id();
@@ -260,7 +260,7 @@ class EncuestasController extends Controller
         
         if($template->plan==0)
         {
-            if(count($totalAnswer)>=2)
+            if(count($totalAnswer)>=100)
             {
                 return response()->json('maximo',500);
             }
