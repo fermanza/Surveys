@@ -269,10 +269,6 @@ let templates = {
 
 
   var options = {
-    disabledAttrs: [
-    'name',
-    'className'
-  ],
     fields, templates,
       i18n: {
         locale: 'es-ES'
@@ -290,10 +286,6 @@ let templates = {
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 var options = {
-  disabledAttrs: [
-    'name',
-    'className'
-  ],
   fields, templates,
   i18n: {
         locale: 'es-ES'
