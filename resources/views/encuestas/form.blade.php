@@ -138,10 +138,6 @@ let templates = {
 
 
   var options = {
-    disabledAttrs: [
-    'name',
-    'className'
-  ],
     fields, templates,
       i18n: {
         locale: 'es-ES'
