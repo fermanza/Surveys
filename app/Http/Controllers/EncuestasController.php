@@ -77,12 +77,16 @@ class EncuestasController extends Controller
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
 
+        
+        if($request->plan == 1)
+        {
         $discount = new Discounts;
         $discount->credits = 1;
         $discount->template_id = $template->id;
         $discount->user_id = $id;
 
         $discount->save();
+        }
 
         return redirect()->route('encuestas.create', ['id' => $template->id]);
     }

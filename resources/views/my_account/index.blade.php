@@ -67,6 +67,7 @@
                                     <th>Teléfono</th>
                                     <th>Ciudad</th>
                                     <th>País</th>
+                                    <th>Plan</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -80,6 +81,11 @@
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->city }}</td>
                                     <td>{{ $user->country }}</td>
+                                    @if($total>0)
+                                    <td>Premium</td>
+                                    @else
+                                    <td>Gratuito</td>
+                                    @endif
                                     <td><a href="{{ route('my_account.edit', [$user]) }}">
                                     <i class="fa fa-edit"></i>
                                     </a></td>

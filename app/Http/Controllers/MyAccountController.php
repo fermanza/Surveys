@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\MyAccount;
 use App\User;
 use Auth;
-
+use DB;
 class MyAccountController extends Controller
 {
     /**
@@ -18,9 +18,12 @@ class MyAccountController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
+        $creditos=DB::table("user_credit")->sum('credits');
+        $discounts=DB::table("discounts")->sum('credits');
+        $total = $creditos-$discounts;
         //dd($users);
 
-        return view('my_account.index',compact('user'));
+        return view('my_account.index',compact('user','total'));
     }
 
     /**
