@@ -49,7 +49,11 @@
                             <img src="{{ asset('images/mi-cuenta/i1.png') }}" alt="">
                             <div>
                                 <p><b>Tipo de plan</b></p>
-                                <p>GRATUITO (cuenta básica)</p>
+                                <p>@if($total>0)
+                                    Premium
+                                    @else
+                                    Gratuito
+                                    @endif</p>
                             </div>
                         </div>
                         <a href="{{ URL('creditos') }}"><i class="fa fa-caret-right"></i> Ampliar</a>

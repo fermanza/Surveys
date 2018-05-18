@@ -304,8 +304,12 @@
                         <div>
                             <img src="images/mi-cuenta/i2.png" alt="">
                             <div>
-                                <p><b>Tipo de plan</b></p>
-                                <p>GRATUITO (cuenta básica)</p>
+                                <p><b> Tipo de plan</b></p>
+                                <p>@if($tot>0)
+                                     Premium
+                                    @else
+                                     Gratuito
+                                    @endif</p>
                             </div>
                         </div>
                         <a href="#"><i class="fa fa-caret-right"></i> Ampliar</a>
