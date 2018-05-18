@@ -6442,37 +6442,37 @@ aside .temas-encuesta .buscar-encuesta button[type="submit"] {
     margin-bottom: 0;
 }
 
-.encuesta .settings form .radio {
+.encuesta .settings form .radio-form {
     position: relative;
     margin: 0;
 }
-.encuesta .settings form .radio .text-edit {
+.encuesta .settings form .radio-form .text-edit {
     position: absolute;
     right: 70px;
     top: -23px;
     background: #6b787e;
     padding: 0 5px;
 }
-.encuesta .settings form .radio .text-edit a {
+.encuesta .settings form .radio-form .text-edit a {
     color: #fff;
     font-size: 14px;
     line-height: 14px;
     margin-right: 7px;
 }
-.encuesta .settings form .radio .text-edit a:last-of-type {
+.encuesta .settings form .radio-form .text-edit a:last-of-type {
     margin-right: 0;
 }
-.encuesta .settings form .radio input[type="radio"] {
+.encuesta .settings form .radio-form input[type="radio"] {
     height: calc(100% - 20px);
     margin-top: 0;
     width: 42px;
     margin-left: 0;
 }
-.encuesta .settings form .radio label {
+.encuesta .settings form .radio-form label {
     width: calc(100% - 92px);
     margin-left: 22px;
 }
-.encuesta .settings form .radio > a {
+.encuesta .settings form .radio-form > a {
     color: #232323;
     opacity: 0.2;
     border: 2px solid #232323;
@@ -6483,10 +6483,10 @@ aside .temas-encuesta .buscar-encuesta button[type="submit"] {
     display: inline-block;
     text-align: center;
 }
-.encuesta .settings form .radio > a:first-of-type {
+.encuesta .settings form .radio-form > a:first-of-type {
     margin-left: 13px;
 }
-.encuesta .settings form .radio > a:hover {
+.encuesta .settings form .radio-form > a:hover {
     color: #5ba01f;
     border-color: #5ba01f;
     opacity: 1;
@@ -6620,7 +6620,7 @@ aside .temas-encuesta .buscar-encuesta button[type="submit"] {
     .encuesta .settings .sig {
         margin-left: 20px;
     }
-    .encuesta .settings form .radio .text-edit {
+    .encuesta .settings form .radio-form .text-edit {
         top: -19px;
     }
     .encuesta .settings form .check label {
@@ -6692,10 +6692,10 @@ aside .temas-encuesta .buscar-encuesta button[type="submit"] {
         left: 0;
         margin-left: 15px;
     }
-    .encuesta .settings form .radio input[type="radio"] {
+    .encuesta .settings form .radio-form input[type="radio"] {
         width: 30px;
     }
-    .encuesta .settings form .radio label {
+    .encuesta .settings form .radio-form label {
         margin-left: 10px;
     }
     .encuesta .settings form .check input[type="checkbox"] {
@@ -6710,15 +6710,15 @@ aside .temas-encuesta .buscar-encuesta button[type="submit"] {
         border: 0;
         padding: 40px 15px;
     }
-    .encuesta .settings form .radio > a {
+    .encuesta .settings form .radio-form > a {
         width: 20px;
         height: 20px;
         line-height: 19px;
     }
-    .encuesta .settings form .radio label {
+    .encuesta .settings form .radio-form label {
         width: calc(100% - 69px);
     }
-    .encuesta .settings form .radio .text-edit {
+    .encuesta .settings form .radio-form .text-edit {
         position: absolute;
         right: 59px;
     }

@@ -212,7 +212,7 @@ visibility:hidden;
   attrs: {
     type: 'slider'
   },
-  icon: ''
+  icon: '↔️'
 },
 {
   label: 'Matriz',
@@ -298,7 +298,7 @@ var options = {
         'text',
         'textarea'
        ],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number'] 
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','matriz'] 
     };
 
     var formBuilder = $(fbRender).formBuilder(options);
@@ -337,8 +337,13 @@ var options = {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         console.log("Hooray, it worked!");
-        alert("Encuesta editada correctamente.");
-        $(location).attr('href', '/mis_encuestas')
+        swal({
+          position: 'center',
+          title: 'Encuesta editada.',
+          type: 'success'
+      }).then(function() {
+          window.location = "/mis_encuestas";
+      });
     });
 
     // Callback handler that will be called on failure

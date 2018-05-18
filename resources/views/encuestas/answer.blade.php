@@ -197,8 +197,13 @@ let templates = {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         console.log(response);
-        alert('Tus respuestas fueron guardadas correctamente.');
-        $(location).attr('href', '/mis_encuestas')
+        swal({
+                position: 'center',
+                title: 'Tus respuestas fueron guardadas correctamente.',
+                type: 'success'
+            }).then(function() {
+                window.location = "/mis_encuestas";
+            });
     });
 
     // Callback handler that will be called on failure
@@ -209,14 +214,26 @@ let templates = {
 
         if(jqXHR.responseText=='"maximo"')
         {
-            alert('Esta encuesta ha alcanzado el límite máximo de respuestas');
-            $(location).attr('href', '/')
+            {{-- alert('');
+            $(location).attr('href', '/') --}}
+            swal({
+                position: 'center',
+                title: 'Esta encuesta ha alcanzado el límite máximo de respuestas.',
+                type: 'error'
+            }).then(function() {
+                window.location = "/mis_encuestas";
+            });
         }
 
         if(jqXHR.responseText=='"ip"')
         {
-            alert('Ya has respondido esta encuesta. Intenta con otra.');
-            $(location).attr('href', '/')
+            swal({
+                position: 'center',
+                title: 'Ya has respondido esta encuesta.<br>Intenta con otra.',
+                type: 'error'
+            }).then(function() {
+                window.location = "/mis_encuestas";
+            });
         }
 
         /*console.error(

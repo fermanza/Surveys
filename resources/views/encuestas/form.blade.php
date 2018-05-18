@@ -178,8 +178,13 @@ let templates = {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         console.log("Hooray, it worked!");
-        alert("Encuesta guardada correctamente.");
-        $(location).attr('href', '/mis_encuestas')
+        swal({
+          position: 'center',
+          title: 'Encuesta creada.',
+          type: 'success'
+      }).then(function() {
+          window.location = "/mis_encuestas";
+      });
     });
 
     // Callback handler that will be called on failure
@@ -188,7 +193,11 @@ let templates = {
         console.log(jqXHR.responseText);
         if(jqXHR.responseText=='"exceso"')
         {
-            alert('El número de preguntas es mayor al límite permitido en una encuesta gratuita');
+            swal({
+                position: 'center',
+                title: 'El número de preguntas <br> es mayor al límite permitido <br>en una encuesta gratuita.',
+                type: 'error'
+            })
         }
     });
 

@@ -17,7 +17,7 @@ class EncuestasPublicasController extends Controller
      */
     public function index()
     {
-        $templates = Template::with('user')->where('type', '=', '1')->get();
+        $templates = Template::with('user')->where('type', '=', '0')->get();
 
         $user = User::all();
 
