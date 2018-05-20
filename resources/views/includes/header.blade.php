@@ -31,9 +31,9 @@
 
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">@lang('app.miCuenta') </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/creditos">@lang('app.gestionDeCreditos') </a></li>
-                                    <li><a href="/my_account">@lang('app.datosPersonales') </a></li>
-                                    <li><a href="/logout"> @lang('app.cerrarSesion')  </a></li>
+                                    <li><a href="{{ URL('creditos')}}">@lang('app.gestionDeCreditos') </a></li>
+                                    <li><a href="{{ URL('my_account') }}">@lang('app.datosPersonales') </a></li>
+                                    <li><a href="{{ URL('logout') }}"> @lang('app.cerrarSesion')  </a></li>
                                 </ul>
                             </li>
 
