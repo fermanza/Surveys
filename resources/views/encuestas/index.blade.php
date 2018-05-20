@@ -75,7 +75,7 @@
                                 <div class="display-table-cell vertical-align-middle">
                                     <h6 class="text-extra-dark-gray margin-20px-bottom">Nombrar la encuesta</h6>
 
-                                    <form action="/encuestas/storeTemplate" method="POST" id="usrform">
+                                    <form action="{{ URL('encuestas/storeTemplate') }}" method="POST" id="usrform">
                                         {{ csrf_field() }}
                                         {{ $action == 'edit' ? method_field('PATCH') : '' }}
                                         <div class="row" align="center">
