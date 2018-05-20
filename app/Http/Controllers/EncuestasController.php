@@ -16,6 +16,7 @@ use App\Answer;
 use App\UserCredit;
 use App\Discounts;
 use DB;
+use Bitly;
 
 class EncuestasController extends Controller
 {
@@ -296,5 +297,24 @@ class EncuestasController extends Controller
         $preguntas=json_decode($tmp);
         $respuestas=Answer::where('id_template','=',$id)->get();
         return view('mis_encuestas.respuestas',compact('template','preguntas','respuestas'));
+    }
+
+    public function bitly($id)
+    {
+        $template=Template::find($id);
+        $url=url('/responder').'/'.$template->hash;
+        //$urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
+        return response()->json($url,200);
+
+    }
+
+    public function responderEncuesta($token)
+    {
+        $template=Template::where('hash','=',$token)->first();
+        $question=Questions::where('template_id','=',$template->id)->first();
+
+
+        return view('encuestas.answer', compact('template','question'));
+
     }
 }
