@@ -84,7 +84,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::get('checkout-success', 'PayPalController@getExpressCheckoutSuccess');
     Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
     Route::post('paypal/notify', 'PayPalController@notify');
-    Route::get('creditos','PayPalController@index');
+    Route::get('creditos','PaypalController@index');
 
     //encuesta guardar
     Route::post('saveQuestion','EncuestasController@saveQuestion');
