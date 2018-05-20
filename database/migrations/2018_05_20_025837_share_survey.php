@@ -14,7 +14,7 @@ class ShareSurvey extends Migration
     public function up()
     {
         Schema::table('template', function (Blueprint $table) {
-            $table->string('url')->after('plan');
+            $table->string('url')->after('plan')->nullable();
         });
     }
 
