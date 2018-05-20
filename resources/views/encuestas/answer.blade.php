@@ -202,7 +202,7 @@ let templates = {
                 title: 'Tus respuestas fueron guardadas correctamente.',
                 type: 'success'
             }).then(function() {
-                window.location = "/encuestas_publicas";
+                window.location = "{{url('encuestas_publicas')}}";
             });
     });
 
@@ -221,7 +221,7 @@ let templates = {
                 title: 'Esta encuesta ha alcanzado el límite máximo de respuestas.<br>Intenta con otra.',
                 type: 'error'
             }).then(function() {
-                window.location = "/encuestas_publicas";
+                window.location = "{{url('encuestas_publicas')}}";
             });
         }
 
@@ -232,7 +232,7 @@ let templates = {
                 title: 'Ya has respondido esta encuesta.<br>Intenta con otra.',
                 type: 'error'
             }).then(function() {
-                window.location = "/encuestas_publicas";
+                window.location = "{{url('encuestas_publicas')}}";
             });
         }
 

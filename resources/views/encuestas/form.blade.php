@@ -183,7 +183,7 @@ let templates = {
           title: 'Encuesta creada.',
           type: 'success'
       }).then(function() {
-          window.location = "/mis_encuestas";
+          window.location = "{{url('mis_encuestas')}}";
       });
     });
 

@@ -341,7 +341,7 @@ var options = {
           title: 'Encuesta editada.',
           type: 'success'
       }).then(function() {
-          window.location = "/mis_encuestas";
+          window.location = "{{url('mis_encuestas')}}";
       });
     });
 
