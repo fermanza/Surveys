@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52df2fe4e27ab332c82c11a422ba0243",
+    "content-hash": "f49f8b76108d78abc659d0624ca239e3",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -73,6 +73,62 @@
                 "webprofiler"
             ],
             "time": "2018-03-06T08:35:31+00:00"
+        },
+        {
+            "name": "dirape/token",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/F54it/laravel-token.git",
+                "reference": "bd2f99fff5e0c3f2d45c1365862e4c8d746da66a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/F54it/laravel-token/zipball/bd2f99fff5e0c3f2d45c1365862e4c8d746da66a",
+                "reference": "bd2f99fff5e0c3f2d45c1365862e4c8d746da66a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0 || ~4.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dirape\\Token\\TokenServiceProvider"
+                    ],
+                    "aliases": {
+                        "Token": "Dirape\\Token\\Facades\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dirape\\Token\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MustafaKhaled",
+                    "email": "MustafaKhaled.dev@gmail.com"
+                }
+            ],
+            "description": "Unique Token Generator For Laravel",
+            "keywords": [
+                "PHP token",
+                "generate",
+                "laravel",
+                "laravel token",
+                "token",
+                "token generator",
+                "unique token"
+            ],
+            "time": "2018-05-10T14:41:29+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1887,6 +1943,54 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "shivella/laravel-bitly",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shivella/laravel-bitly.git",
+                "reference": "f54dfaced5d7369abe619a8ab9d4029b52a50146"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shivella/laravel-bitly/zipball/f54dfaced5d7369abe619a8ab9d4029b52a50146",
+                "reference": "f54dfaced5d7369abe619a8ab9d4029b52a50146",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/support": "^5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1",
+                "symfony/http-foundation": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Shivella\\Bitly": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wessel Strengholt",
+                    "email": "wessel.strengholt@gmail.com"
+                }
+            ],
+            "description": "Laravel package for generating bitly url",
+            "homepage": "https://github.com/Shivella/laravel-bitly",
+            "keywords": [
+                "bitly",
+                "laravel",
+                "package"
+            ],
+            "time": "2017-09-29T07:54:06+00:00"
         },
         {
             "name": "srmklive/paypal",

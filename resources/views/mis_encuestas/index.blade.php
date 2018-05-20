@@ -4,6 +4,13 @@
 @extends('includes.header')
 @section('content')
 
+<style>
+.swal2-container
+{
+    z-index:9999;
+}
+</style>
+
 
 
         <!-- start page title section -->
@@ -66,6 +73,7 @@
                                     <th>Reportes</th>
                                     <th>Cerrar Encuesta</th>
                                     <th>Editar Encuesta</th>
+                                    <th>Compartir</th>
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
@@ -94,6 +102,9 @@
                                     <td><a href="{{ route('mis_encuestas.edit', [$template]) }}">
                                     <i class="fa fa-edit"></i>
                                     </a></td>
+                                    <td>
+                                    <a href="#" onClick="getLink({{$template->id}})"><i class="fa fa-share-square"></i></a>
+                                    </td>
                                     <td> {!! Form::open([
                                             'class'=>'delete',
                                             'url'  => route('mis_encuestas.destroy', $template), 
@@ -101,10 +112,11 @@
                                             ]) 
                                         !!}
                                             <br>
-                                            <button title="Eliminar" id="deleteTemp"><i class="fa fa-trash"></i></button>
+                                            <button title="Eliminar"  id="deleteTemp"><i class="fa fa-trash"></i></button>
                                             
                                         {!! Form::close() !!}
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -114,4 +126,52 @@
                 </div>
             </div>
         </section>
+
+        @push('script')
+        <script>
+        function getLink(id)
+        {
+
+            request = $.ajax({
+        url: '{{url('bitly')}}/'+id,
+        type: "get"
+    });
+
+        request.done(function (response, textStatus, jqXHR){
+            swal({
+  title: '',
+  type: 'success',
+  html:'<p>Puedes usar el siguiente link para compartir tu encuesta</p>' +
+    '<input id="txtshare" value="'+response+'" type="text" class="form-control">',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-copy"></i> Copiar',
+}).then((result) => {
+    var copyText = document.getElementById("txtshare");
+  copyText.select();
+  document.execCommand("copy");
+
+  swal({
+        type: 'success',
+        html: 'Enlace copiado'
+      })
+})
+            
+  });
+
+  // Callback handler that will be called on failure
+  request.fail(function (jqXHR, textStatus, errorThrown){
+      
+  });
+
+
+            
+        }
+
+        
+        </script>
+
+        @endpush
 @stop

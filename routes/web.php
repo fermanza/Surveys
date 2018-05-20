@@ -29,9 +29,13 @@ Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
 Route::get('/planes', 'SurveniaWebPagesController@planes');	
 Route::resource('/inicio_sesion','InicioSesionController');
 
+Route::get('/bitly/{id}','EncuestasController@bitly');
+
 
 
 Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
+
+Route::get('/responder/{token}','EncuestasController@responderEncuesta');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
 
