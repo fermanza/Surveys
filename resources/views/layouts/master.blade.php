@@ -127,6 +127,7 @@
                         <!-- start copyright -->
                         <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
                         <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
+                        <a href="{{ URL('login') }}">Admin</a>
                         <!-- end copyright -->
                     </div>
                 </div>

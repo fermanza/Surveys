@@ -12,6 +12,6 @@
           <span class="icon-holder">
             <i class="c-brown-500 ti-user"></i>
           </span>
-          <span class="title">Users</span>
+          <span class="title">Users Information</span>
         </a>
       </li>
