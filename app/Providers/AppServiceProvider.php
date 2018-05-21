@@ -14,11 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
         if (!defined('ADMIN')) {
            define('ADMIN', config('variables.APP_ADMIN', 'admin'));
         }
         require_once base_path('resources/macros/form.php');
         Schema::defaultStringLength(191);
+        view()->composer('layouts.master', 'App\Http\Composers\MasterComposer');
     }
 
     /**

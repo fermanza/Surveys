@@ -60,7 +60,6 @@
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
     <body>
-
         @yield('content')
 
         <!-- start footer --> 
@@ -110,18 +109,18 @@
                         <!-- start newsletter -->
                         <div class="col-md-5 col-xs-12 widget">
                             <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Últimos Artículos</div>
-                            <div class="footer-post">
-                                <a href="#">
-                                    <img src="images/home/fp1.jpg" alt="">
-                                    <p class="text-light-gray">Lorem ipsum dolor sit aet, consectetur adipiscing elt.</p>
+               
+                            @foreach($articulos as $articulo)
+                            <div class="col-md-12 footer-post">
+                                <a href="{{url('articulos')}}/{{$articulo->id}}">
+                                      
+                                    <img src="{{$articulo->img}}" width="20%" alt="">
+                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;">{{$articulo->title}}</p>
+                                   
                                 </a>
                             </div>
-                            <div class="footer-post">
-                                <a href="#">
-                                    <img src="images/home/fp2.jpg" alt="">
-                                    <p class="text-light-gray">Lorem ipsum dolor sit aet, consectetur adipiscing elt.</p>
-                                </a>
-                            </div>
+                            @endforeach
+                            
                         </div>
                         <!-- end newsletter -->
                     </div>
