@@ -22,16 +22,20 @@ Route::get('/terminos', 'SurveniaWebPagesController@terminos');
 Route::get('/contacto', 'SurveniaWebPagesController@contacto');
 Route::get('/plantillas', 'SurveniaWebPagesController@plantillas');
 Route::get('/articulos', 'SurveniaWebPagesController@articulos');
-Route::get('/encuestas_publicas', 'SurveniaWebPagesController@encuestasPublicas');
+//Route::get('/encuestas_publicas', 'SurveniaWebPagesController@encuestasPublicas');
 Route::get('/encuestas_publicas_detalle', 'SurveniaWebPagesController@encuestasPublicasDetalle');
 Route::get('/como_funciona', 'SurveniaWebPagesController@comoFunciona');
 Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
 Route::get('/planes', 'SurveniaWebPagesController@planes');	
 Route::resource('/inicio_sesion','InicioSesionController');
 
+Route::get('/bitly/{id}','EncuestasController@bitly');
+
 
 
 Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
+
+Route::get('/responder/{token}','EncuestasController@responderEncuesta');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
 
@@ -64,6 +68,8 @@ Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')
 
 Auth::routes();
 
+Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
+
 Route::group(['middleware' => ['Authuser']], function () {
     
 
@@ -81,7 +87,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::get('checkout-success', 'PayPalController@getExpressCheckoutSuccess');
     Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
     Route::post('paypal/notify', 'PayPalController@notify');
-    Route::get('creditos','PayPalController@index');
+    Route::get('creditos','PaypalController@index');
 
     //encuesta guardar
     Route::post('saveQuestion','EncuestasController@saveQuestion');

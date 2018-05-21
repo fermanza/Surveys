@@ -280,8 +280,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <img src="images/mi-cuenta/user.png" alt="">
-                        <p>Nombre de usuario</p>
-                        <p>Créditos disponibles: {{$creditos}}</p>
+                        <p>{{ $user->name }}</p>
+                        <p>Créditos disponibles: {{$tot}}</p>
                     </div>
                 </div>
             </div>
@@ -304,8 +304,12 @@
                         <div>
                             <img src="images/mi-cuenta/i2.png" alt="">
                             <div>
-                                <p><b>Tipo de plan</b></p>
-                                <p>GRATUITO (cuenta básica)</p>
+                                <p><b> Tipo de plan</b></p>
+                                <p>@if($tot>0)
+                                     Premium
+                                    @else
+                                     Gratuito
+                                    @endif</p>
                             </div>
                         </div>
                         <a href="#"><i class="fa fa-caret-right"></i> Ampliar</a>

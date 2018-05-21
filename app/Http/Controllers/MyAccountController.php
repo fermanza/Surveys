@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\MyAccount;
 use App\User;
 use Auth;
-
+use DB;
 class MyAccountController extends Controller
 {
     /**
@@ -18,9 +18,12 @@ class MyAccountController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
+        $creditos=DB::table("user_credit")->sum('credits');
+        $discounts=DB::table("discounts")->sum('credits');
+        $total = $creditos-$discounts;
         //dd($users);
 
-        return view('my_account.index',compact('user'));
+        return view('my_account.index',compact('user','total'));
     }
 
     /**
@@ -61,12 +64,14 @@ class MyAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $action = 'edit';
         $view = 'my_account.edit';
+        $id = Auth::id();
+        $user = User::find($id);
 
-        return $this->form($action, $view);
+        //dd($user);
+        return $this->form($view, $user);
     }
 
     /**
@@ -76,9 +81,26 @@ class MyAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        //dd($request);
+
+        $id = Auth::id();
+        $user = User::findOrNew($id);
+
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->country = $request->country;
+        $user->company = $request->company;
+        $user->phone = $request->phone;
+
+        $user->save();
+
+        return redirect()->route('my_account.index');
+
     }
 
     /**
@@ -100,8 +122,12 @@ class MyAccountController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($action, $view)
+    protected function form($view, $user)
     {
-        return view($view, $params);
+        //dd($user);
+        $id = Auth::id();
+        $user = User::find($id);
+//dd($user);
+        return view($view, compact('user'));
     }
 }

@@ -1,14 +1,14 @@
 @extends('admin.default')
 
 @section('page-header')
-    Users <small>{{ trans('app.manage') }}</small>
+    Información de <big>{{ trans('Usuarios') }}</big>
 @endsection
 
 @section('content')
 
 <div class="mB-20">
     <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
-        {{ trans('app.add_button') }}
+        {{ trans('Agregar Usuario') }}
     </a>
 </div>
 
@@ -19,17 +19,31 @@
             
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Empresa</th>
+                        <th>E-mail</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Ciudad</th>
+                        <th>País</th>
+                        <th>Plan</th>
+                        <th></th>
                     </tr>
                 </thead>
              
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Empresa</th>
+                        <th>E-mail</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Ciudad</th>
+                        <th>País</th>
+                        <th>Plan</th>
+                        <th></th>
                     </tr>
                 </tfoot>
              
@@ -37,8 +51,19 @@
                     @foreach ($items as $item)
                         <tr>
                             <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
+                            <td>{{ $item->last_name }}</td>
+                            <td>{{ $item->company }}</td>
                             <td>{{ $item->email }}</td>
-                            <td>
+                            <td>{{ $item->address }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->city }}</td>
+                            <td>{{ $item->country }}</td>
+                            @if($total>0)
+                                    <td>Premium</td>
+                                    @else
+                                    <td>Gratuito</td>
+                                    @endif</td>
+                                 <td>   
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <a href="{{ route(ADMIN . '.users.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>

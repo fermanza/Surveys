@@ -49,7 +49,11 @@
                             <img src="{{ asset('images/mi-cuenta/i1.png') }}" alt="">
                             <div>
                                 <p><b>Tipo de plan</b></p>
-                                <p>GRATUITO (cuenta básica)</p>
+                                <p>@if($total>0)
+                                    Premium
+                                    @else
+                                    Gratuito
+                                    @endif</p>
                             </div>
                         </div>
                         <a href="{{ URL('creditos') }}"><i class="fa fa-caret-right"></i> Ampliar</a>
@@ -67,6 +71,7 @@
                                     <th>Teléfono</th>
                                     <th>Ciudad</th>
                                     <th>País</th>
+                                    <th>Plan</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -80,7 +85,12 @@
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->city }}</td>
                                     <td>{{ $user->country }}</td>
-                                    <td><a href="">
+                                    @if($total>0)
+                                    <td>Premium</td>
+                                    @else
+                                    <td>Gratuito</td>
+                                    @endif
+                                    <td><a href="{{ route('my_account.edit', [$user]) }}">
                                     <i class="fa fa-edit"></i>
                                     </a></td>
                                 </tr>

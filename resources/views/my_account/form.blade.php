@@ -11,7 +11,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Editar Mi cuenta</h1>
+                            <h1 class="no-margin-bottom">Editar cuenta</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -28,6 +28,7 @@
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li class="text-dark-gray"><a href="mi-cuenta.php">Mi cuenta</a></li>
                                 <li class="text-dark-gray">Datos personales</li>
+                                <li class="text-dark-gray">Editar cuenta</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -41,70 +42,106 @@
 
             <div class="container">
                 <div class="row">
-                    <h5 class="title text-extra-dark-gray">Detalle de la cuenta</h5> 
+                    <h5 class="title text-extra-dark-gray">Editar cuenta</h5> 
                 </div>
                 <div class="row">
-                    <div class="col-md-12 p1">
-                        <div>
-                            <img src="images/mi-cuenta/i1.png" alt="">
-                            <div>
-                                <p><b>Tipo de plan</b></p>
-                                <p>GRATUITO (cuenta básica)</p>
-                            </div>
-                        </div>
-                        <a href="#"><i class="fa fa-caret-right"></i> Ampliar</a>
-                    </div>
-                    <div class="col-md-12 p2">
-                        <div class="cuenta-col">
-                            <div>
-                                <div class="item">
-                                    <h6>Nombre</h6>
-                                    <p>Juan Manuel <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>Apellido</h6>
-                                    <p>Perez <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>Empresa</h6>
-                                    <p>Nombre de la Empresa <a href="#">Editar</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cuenta-col">
-                            <div>
-                                <div class="item">
-                                    <h6>E-mail</h6>
-                                    <p>Juan Manuel <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>Clave de acceso</h6>
-                                    <p>******* <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>Dirección</h6>
-                                    <p>Av. Del Libertador 3840 5ºA <a href="#">Editar</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cuenta-col">
-                            <div>
-                                <div class="item">
-                                    <h6>Teléfono</h6>
-                                    <p>(011) 4659-3023 <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>Ciudad</h6>
-                                    <p>Capital Federal <a href="#">Editar</a></p>
-                                </div>
-                                <div class="item">
-                                    <h6>País</h6>
-                                    <p>Argentina <a href="#">Editar</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
+                <form action="{{ route('my_account.update', [$user]) }}" method="POST">
+    {{ csrf_field() }}
+     {{ method_field('PATCH') }}
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name">@lang('Nombre(s)')</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required />
+                @if ($errors->has('name'))
+                    <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
+                @endif
+            </div>
+
+            <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                <label for="last_name">@lang('Apellidos')</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}" required />
+                @if ($errors->has('last_name'))
+                    <span class="help-block"><strong>{{ $errors->first('last_name') }}</strong></span>
+                @endif
+            </div>
+    </div>
+
+        <div class="col-md-6">
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <label for="email">@lang('Correo electrónico')</label>
+                <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}" required />
+                @if ($errors->has('email'))
+                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                @endif
+            </div>
+
+            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                <label for="address">@lang('Dirección')</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}" required />
+                @if ($errors->has('address'))
+                    <span class="help-block"><strong>{{ $errors->first('address') }}</strong></span>
+                @endif
+            </div>
+
+    </div>
+</div>
+
+  <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                <label for="city">@lang('Ciudad')</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{ $user->city }}" required />
+                @if ($errors->has('city'))
+                    <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
+                @endif
+            </div>
+
+            <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                <label for="country">@lang('País')</label>
+                <input type="text" class="form-control" id="country" name="country" value="{{ $user->country }}" required />
+                @if ($errors->has('country'))
+                    <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
+                @endif
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            
+            <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
+                <label for="company">@lang('Empresa')</label>
+                <input type="text" class="form-control" id="company" name="company" value="{{ $user->company }}" required/>
+                @if ($errors->has('company'))
+                    <span class="help-block"><strong>{{ $errors->first('company') }}</strong></span>
+                @endif
+            </div>
+
+            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                <label for="phone">@lang('Teléfono')</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phone }}" required />
+                @if ($errors->has('phone'))
+                    <span class="help-block"><strong>{{ $errors->first('phone') }}</strong></span>
+                @endif
+            </div>
+
+        </div>
+    </div>
+
+    <hr />
+    
+    <div class="row">
+        <div class="guardar">
+        <div class="col-md-12 text-center">
+            <a href="{{ url()->previous() }}" class="btn">Cancelar</a>
+            <button class="btn">Guardar</button>
+        </div>
+    </div>
+    </div>
+</form>
+
                 </div>
             </div>
         </section>

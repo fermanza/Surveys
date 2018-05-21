@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Template;
 use App\User;
-use DB; 
+use Auth;
+use DB;
 
-class UserController extends Controller
+class EncuestasPublicasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $items = User::latest('updated_at')->get();
-        $creditos=DB::table("user_credit")->sum('credits');
-        $discounts=DB::table("discounts")->sum('credits');
-        $total = $creditos-$discounts;
+        $templates = Template::with('user')->where('type', '=', '0')->latest()->get();
 
-        return view('admin.users.index', compact('items','total'));
+        $user = User::all();
+
+        return view('encuestas_publicas.index',compact('templates'));
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        //
     }
 
     /**
@@ -42,11 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, User::rules());
-        
-        User::create($request->all());
-
-        return back()->withSuccess(trans('app.success_store'));
+        //
     }
 
     /**
@@ -68,9 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $item = User::findOrFail($id);
-
-        return view('admin.users.edit', compact('item'));
+        //
     }
 
     /**
@@ -82,13 +76,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, User::rules(true, $id));
-
-        $item = User::findOrFail($id);
-
-        $item->update($request->all());
-
-        return redirect()->route(ADMIN . '.users.index')->withSuccess(trans('app.success_update'));
+        //
     }
 
     /**
@@ -99,9 +87,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
-
-        return back()->withSuccess(trans('app.success_destroy')); 
+        //
     }
 }
-

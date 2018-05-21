@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Carbon\Carbon;
 
-class CreateQuestionsTable extends Migration
+class PlanTemplate extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,8 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('position');
-            $table->binary('content');
-            $table->timestamps();
+        Schema::table('template', function (Blueprint $table) {
+            $table->string('plan')->after('type');
         });
     }
 
@@ -29,8 +25,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        //
     }
 }
-
-

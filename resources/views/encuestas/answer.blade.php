@@ -64,7 +64,8 @@ visibility:hidden;
                 <div class="row">
         
                        <div class="settings" id="survey_content" name="survey_content">
-                        <div class="titulo">{{ $template->name }}</div>
+                        <br>
+                         <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor"></form>
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">Cancelar</a>
@@ -93,15 +94,80 @@ visibility:hidden;
 
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
-var options = {
+var options = {        
       defaultFields: formData,
       controlPosition: 'left'
     };
 
     //var formBuilder = $(fbRender).formBuilder(options);
+    let fields = [{
+  label: 'Star Rating',
+  attrs: {
+    type: 'starRating'
+  },
+  icon: '🌟'
+},
+{
+  label: 'Slider',
+  attrs: {
+    type: 'slider'
+  },
+  icon: ''
+},
+{
+  label: 'Matriz',
+  attrs: {
+    type: 'matriz'
+  },
+  icon: ''
+}
 
+];
+let templates = {
+    starRating: function(fieldData) {
+    return {
+      field: '<input type="hidden" name="star'+fieldData.name+'" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({
+ 
+ onSet: function (rating, rateYoInstance) {
+
+   $(document.getElementById('star'+fieldData.name)).val(rating);
+ }
+});
+      }
+    };
+  },
+  slider: function(fieldData) {
+    return {
+      field: '<input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).slider({
+      range: "max",
+      min: 0,
+      max: 100,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#slider"+fieldData.name ).val( ui.value );
+      }
+    });
+    
+    }
+    }
+  },
+  matriz: function(fieldData) {
+    return {
+      field: '<div id='+fieldData.name+'></div>',
+      onRender: function() {
+        
+      }
+    };
+  }
+
+};
 
   var formRenderOpts = {
+    fields, templates,
       fbRender,
     formData,
     dataType: 'json'
@@ -131,17 +197,52 @@ var options = {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         console.log(response);
-        alert('Tus respuestas fueron guardadas correctamente');
-        $(location).attr('href', '/mis_encuestas')
+        swal({
+                position: 'center',
+                title: 'Tus respuestas fueron guardadas correctamente.',
+                type: 'success'
+            }).then(function() {
+                window.location = "{{url('encuestas_publicas')}}";
+            });
     });
 
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown){
         // Log the error to the console
-        console.error(
+
+        console.log(jqXHR);
+
+        if(jqXHR.responseText=='"maximo"')
+        {
+            {{-- alert('');
+            $(location).attr('href', '/') --}}
+            swal({
+                position: 'center',
+                title: 'Esta encuesta ha alcanzado el límite máximo de respuestas.<br>Intenta con otra.',
+                type: 'error'
+            }).then(function() {
+                window.location = "{{url('encuestas_publicas')}}";
+            });
+        }
+
+        if(jqXHR.responseText=='"ip"')
+        {
+            swal({
+                position: 'center',
+                title: 'Ya has respondido esta encuesta.<br>Intenta con otra.',
+                type: 'error'
+            }).then(function() {
+                window.location = "{{url('encuestas_publicas')}}";
+            });
+        }
+
+        /*console.error(
             "Ha ocurrido un error: "+
             textStatus, errorThrown
         );
+        alert('Ya has respondido esta encuesta. Intenta con otra.');
+        $(location).attr('href', '/')*/
+
     });
     });
 

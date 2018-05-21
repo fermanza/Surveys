@@ -7,6 +7,8 @@ use App\Template;
 use App\Options;
 use App\Questions;
 use App\Answer;
+use DB;
+use Auth;
 
 class MisEncuestasController extends Controller
 {
@@ -16,8 +18,14 @@ class MisEncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $templates = Template::get();
+    {   
+
+        //$templates = Template::where('type','=', 0)->get();
+        $id = Auth::id();
+        $templates = Template::where('user_id', '=', $id)->get();
+        //$templates = DB::table('template')->where('type','=', 1)->get();
+        //dd($templates);
+
         return view('mis_encuestas.index',compact('templates'));
     }
 
@@ -80,7 +88,7 @@ class MisEncuestasController extends Controller
      */
     public function update(Request $request, Template $template)
     {
-        dd($request);
+        //dd($request);
         $input = Input::all();
         $json_data = json_encode($input);
         $template = Template::findOrNew($input['template_id']);

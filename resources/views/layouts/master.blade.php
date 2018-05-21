@@ -55,6 +55,9 @@
         <!-- Datatables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+        <link rel="stylesheed" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
     <body>
 
@@ -90,8 +93,8 @@
                                 <li class="width-50 pull-left"><a href="como_funciona" class="text-light-gray">Cómo funciona</a></li>
                                 <li class="width-50 pull-left"><a href="plantillas" class="text-light-gray">Plantillas</a></li>
                                 <li class="width-50 pull-left"><a href="planes" class="text-light-gray">Planes y Precios</a></li>
-                                <li class="width-50 pull-left"><a href="crear-encuesta" class="text-light-gray">Creación de encuesta</a></li>
-                                <li class="width-50 pull-left"><a href="encuestas-publicas" class="text-light-gray">Encuestas Públicas</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas" class="text-light-gray">Creación de encuesta</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas_publicas" class="text-light-gray">Encuestas Públicas</a></li>
                                 <li class="width-50 pull-left"><a href="articulos" class="text-light-gray">Artículos</a></li>
                                 <li class="width-50 pull-left"><a href="contacto" class="text-light-gray">Contacto</a></li>
                             </ul>
@@ -130,6 +133,7 @@
                         <!-- start copyright -->
                         <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
                         <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
+                        <a href="{{ URL('login') }}">Admin</a>
                         <!-- end copyright -->
                     </div>
                 </div>
@@ -201,7 +205,7 @@
         <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
         <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.js"></script>
 
         
        
@@ -221,6 +225,7 @@
         
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.20.6/dist/sweetalert2.all.js"></script>
         
         
         

@@ -66,7 +66,7 @@
             <div class="row"> 
                 <!-- start copyright -->
                 <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
-                <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com">Designed by Rednodo</a></div>
+                <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com">Designed by Rednodo</a>
                 <!-- end copyright -->
             </div>
         </div>

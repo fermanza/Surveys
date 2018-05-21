@@ -19,7 +19,7 @@ class Template extends Model
      * @var array
      */
     protected $fillable = [
-        'name','title','description','answersnumber'
+        'name','type','description','answersnumber'
     ];
 
     protected $appends = ['answersnumber'];
@@ -43,6 +43,11 @@ class Template extends Model
     {
         $respuestas=Answer::where('id_template','=',$this->id)->where('position','=',0)->get();
         return count($respuestas);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     

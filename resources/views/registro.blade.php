@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" align="left">* Clave de acceso: </label>
-                                    <input type="password" name="password" id="password">
+                                     <input type="password" name="password" id="password" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password2" align="left">* Repetir clave de acceso: </label>

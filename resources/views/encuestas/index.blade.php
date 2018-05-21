@@ -4,6 +4,7 @@
 @extends('includes.header')
 @section('content')
 
+
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -40,6 +41,14 @@
         <section class="wow fadeIn registro-form login-form" id="start-your-project">
             <div class="container">
                 <div class="row">
+                @if(isset($_GET['error']))
+                    @if($_GET['error']==1)
+                    <div class="alert alert-danger">
+                        No tienes los créditos suficientes para este tipo de encuesta
+                    </div>
+                    @endif
+                @endif
+
                     <div class="col-lg-12 col-md-12 center-col margin-50px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <h5 class="font-weight-700 text-extra-dark-gray">¿Cómo quieres comenzar?</h5>
                     </div>
@@ -66,22 +75,31 @@
                                 <div class="display-table-cell vertical-align-middle">
                                     <h6 class="text-extra-dark-gray margin-20px-bottom">Nombrar la encuesta</h6>
 
-                                    <form action="/encuestas/storeTemplate" method="POST" id="usrform">
+                                    <form action="{{ URL('encuestas/storeTemplate') }}" method="POST" id="usrform">
                                         {{ csrf_field() }}
                                         {{ $action == 'edit' ? method_field('PATCH') : '' }}
                                         <div class="row" align="center">
-                                            <div class="col-md-12"">
-                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input">
+                                            <div class="col-md-4">
+                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input" required>
                                             </div>
-                                         {{--    <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="select-style big-select">
-                                                    <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                                                         <option value="">Tipo de encuesta</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
+                                                    <select name="plan" id="plan" class="bg-transparent no-margin-bottom" required>
+                                                        <option value="">Tipo de plan de la encuesta</option>
+                                                        <option value="0">Gratuita</option>
+                                                        <option value="1">Premium</option>
                                                     </select>
                                                 </div>
-                                            </div> --}}
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="select-style big-select">
+                                                    <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
+                                                        <option value="">Tipo de encuesta</option>
+                                                        <option value="0">Pública</option>
+                                                        <option value="1">Privada</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-large margin-20px-top">Crear encuesta</button>
                                             </div>
@@ -103,21 +121,31 @@
 
                                     <form action="/encuestas/copyTemplate" method="POST" id="usrform">
                                         <div class="row" align="center">
-                                            <div class="col-md-6">
-                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input">
+                                            <div class="col-md-4"">
+                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input" required>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="select-style big-select">
-                                                    <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                                                         <option value="">Tipo de encuesta</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
+                                                    <select name="plan" id="plan" class="bg-transparent no-margin-bottom" required>
+                                                        <option value="">Tipo de plan de la encuesta</option>
+                                                        <option value="0">Gratuita</option>
+                                                        <option value="1">Premium</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="select-style big-select">
+                                                    <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
+                                                        <option value="">Tipo de encuesta</option>
+                                                        <option value="0">Pública</option>
+                                                        <option value="1">Privada</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-large margin-20px-top">Crear encuesta</button>
                                             </div>
+                                            
                                         </div>
                                     </form>
 

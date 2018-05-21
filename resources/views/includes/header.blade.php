@@ -6,7 +6,7 @@
             <div class="row">
                 <!-- start logo -->
                 <div class="col-md-2 col-xs-5">
-                    <a href="/" class="logo"><img src="{{ asset('images/logo-survenia.png') }}" class="logo-dark" alt="Survenia"><img src="{{ asset('images/logo-survenia.png') }}" alt="Survenia" class="logo-light default"></a>
+                    <a href="{{url('/')}}" class="logo"><img src="{{ asset('images/logo-survenia.png') }}" class="logo-dark" alt="Survenia"><img src="{{ asset('images/logo-survenia.png') }}" alt="Survenia" class="logo-light default"></a>
                 </div>
                 <!-- end logo -->
                 <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
@@ -31,9 +31,9 @@
 
                             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">@lang('app.miCuenta') </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/creditos">@lang('app.gestionDeCreditos') </a></li>
-                                    <li><a href="/my_account">@lang('app.datosPersonales') </a></li>
-                                    <li><a href="/logout"> @lang('app.cerrarSesion')  </a></li>
+                                    <li><a href="{{ URL('creditos')}}">@lang('app.gestionDeCreditos') </a></li>
+                                    <li><a href="{{ URL('my_account') }}">@lang('app.datosPersonales') </a></li>
+                                    <li><a href="{{ URL('logout') }}"> @lang('app.cerrarSesion')  </a></li>
                                 </ul>
                             </li>
 

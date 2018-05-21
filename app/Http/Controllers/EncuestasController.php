@@ -13,6 +13,10 @@ use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
 use App\Answer;
+use App\UserCredit;
+use App\Discounts;
+use DB;
+use Bitly;
 
 class EncuestasController extends Controller
 {
@@ -53,18 +57,37 @@ class EncuestasController extends Controller
      */
     public function storeTemplate(Request $request)
     {
-        // dd($request);
+        //dd($request);
+        if($request->plan == 1)
+        {
+            $creditos=DB::table("user_credit")->sum('credits');
+            $discounts=DB::table("discounts")->sum('credits');
+            $tot = $creditos-$discounts;
+
+            //dd($tot);
+            if($tot <= 0)
+                return redirect('encuestas?error=1');
+        }
         $template = new Template;
         $id = Auth::id();
-        //dd($id);
         $template->user_id = $id;
         $template->name = $request->name;
-        $template->title = '';
+        $template->type = $request->tipo;
+        $template->plan = $request->plan;
         $template->description = '';
-        //$myJSON = json_encode($template);
-        //dd($myJSON);
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
+
+        
+        if($request->plan == 1)
+        {
+        $discount = new Discounts;
+        $discount->credits = 1;
+        $discount->template_id = $template->id;
+        $discount->user_id = $id;
+
+        $discount->save();
+        }
 
         return redirect()->route('encuestas.create', ['id' => $template->id]);
     }
@@ -78,6 +101,8 @@ class EncuestasController extends Controller
     public function storeSurveyContent(Request $request)
     {
         //dd($request);
+
+        
 
         $input = Input::all();
         $json_data = json_encode($input);
@@ -155,6 +180,16 @@ class EncuestasController extends Controller
 
     public function saveQuestion(Request $request)
     {
+
+        $template=Template::find($request->template_id);
+        $preguntas=json_decode($request->content);
+
+        if($template->plan==0 && count($preguntas)>10)
+        {
+            return response()->json("exceso",500);
+        }
+
+        
         $question=Questions::where('template_id','=',$request->template_id)->first();
         if(!$question)
         {
@@ -220,21 +255,36 @@ class EncuestasController extends Controller
 
     public function saveAnswer(Request $request)
     {
+        
+        $ip = \Request::ip();
         $id_template=$request->id_template;
-        $respuestas=json_decode($request->answer);
-        $pos=0;
-       
 
-        foreach($respuestas as $respuesta)
+        $template=Template::find($id_template);
+        $totalAnswer=Answer::where('id_template','=',$id_template)->get();
+
+        
+        if($template->plan==0)
         {
+            if(count($totalAnswer)>=100)
+            {
+                return response()->json('maximo',500);
+            }
+        }
+        //dd($ip);
+        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+        if($answer)
+        {
+            return response()->json('ip',500);
+        }
+
+
             $answer=new Answer;
             $answer->id_template=$id_template;
-            $answer->position=$pos;
-            $answer->answer=$respuesta->value;
+            $answer->position=0;
+            $answer->answer=$request->answer;
+            $answer->ip = $ip;
             $answer->save();
-            $pos++;
-            
-        }
+
         return response()->json('ok',200);
     }
 
@@ -247,5 +297,24 @@ class EncuestasController extends Controller
         $preguntas=json_decode($tmp);
         $respuestas=Answer::where('id_template','=',$id)->get();
         return view('mis_encuestas.respuestas',compact('template','preguntas','respuestas'));
+    }
+
+    public function bitly($id)
+    {
+        $template=Template::find($id);
+        $url=url('/responder').'/'.$template->hash;
+        //$urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
+        return response()->json($url,200);
+
+    }
+
+    public function responderEncuesta($token)
+    {
+        $template=Template::where('hash','=',$token)->first();
+        $question=Questions::where('template_id','=',$template->id)->first();
+
+
+        return view('encuestas.answer', compact('template','question'));
+
     }
 }
