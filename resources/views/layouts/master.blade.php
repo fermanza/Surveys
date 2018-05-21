@@ -46,6 +46,12 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
+
+        {{-- trumbowyg --}}
+        
+
+        <link rel="stylesheet" href="{{ asset('dist/ui/trumbowyg.css') }}">
+
         <!-- Datatables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
@@ -202,6 +208,16 @@
 
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('js/articulosScript.js') }}"></script>
+
+
+
+        <script src="{{ asset('dist/trumbowyg.js') }}"></script>
+        <script src="{{ asset('dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js') }}"></script>
+        <script src="{{ asset('dist/plugins/pasteimage/trumbowyg.pasteimage.min.js') }}"></script>
+      
+        
         
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>

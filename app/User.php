@@ -100,4 +100,11 @@ class User extends Authenticatable
     {
         
     }
+
+
+    public function articulos()
+    {
+        return $this->hasMany(Articulo::class);
+    }
+
 }

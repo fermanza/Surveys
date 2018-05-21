@@ -40,12 +40,12 @@
     
                             <li><a href="{{ URL('contacto') }}"> @lang('app.contacto')   </a></li>
                                 @else
-                                <li><a href="{{ URL('encuestas_publicas') }}">Encuestas Públicas</a></li>
-                                <li><a href="{{ URL('articulos') }}">Artículos</a></li>
-                                <li><a href="{{ URL('plantillas') }}">Plantillas</a></li>
-                                <li><a href="{{ URL('planes') }}">Planes y Precios</a></li>
-                                    <li><a href="{{ URL('inicio_sesion') }}">Ingresar</a></li>
-                                    <li><a href="{{ URL('contacto') }}">Contacto</a></li>
+                                <li><a href="{{ URL('encuestas_publicas') }}">@lang('app.encuestasPublicas') </a></li>
+                                <li><a href="{{ URL('articulos') }}">@lang('app.articulos')</a></li>
+                                <li><a href="{{ URL('plantillas') }}">@lang('home.plantillas')</a></li>
+                                <li><a href="{{ URL('planes') }}">@lang('home.planes')</a></li>
+                                    <li><a href="{{ URL('inicio_sesion') }}">@lang('home.ingresar')</a></li>
+                                    <li><a href="{{ URL('contacto') }}">@lang('home.contacto')</a></li>
                                 @endauth
                                 
 

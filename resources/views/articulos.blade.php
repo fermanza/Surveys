@@ -140,7 +140,11 @@
                                     <button type="submit" class="bg-transparent  btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
+                        
                         </div>
+                            <div class="col-md-12" >
+                               <a href=""   class=" margin-30px-bottom xs-margin-25px-bottom btn btn-primary">Crear post</a>
+                            </div>
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
                                 <h6>¿Querés crear tu propia encuesta?</h6>

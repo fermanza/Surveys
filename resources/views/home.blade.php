@@ -33,7 +33,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 8; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 600; letter-spacing: -1px; color: #000;">Crea tu encuesta<br>online</div>
+                                     style="z-index: 8; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 600; letter-spacing: -1px; color: #000;">@lang('home.creaTuEncuesta')<br>online</div>
                                 
                                 <!-- layer nr. 3 -->
                                 <div class="tp-caption NotGeneric-Title tp-resizeme" 
@@ -52,7 +52,9 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 7; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 400; color:#000;">Crea, distribuye y analiza tus encuestas y cuestionarios<br>rápidamente</div>
+                                     style="z-index: 7; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 400; color:#000;">
+                                     @lang('home.creaDistribuye')
+                                     <br>@lang('home.rapidamente')</div>
                                 <!-- layer nr. 5 -->
                                 
                                 <a href="#" class="tp-caption btn btn-medium z-index-5 btn1" 
@@ -70,7 +72,7 @@
                                    data-paddingtop="[2,2,2,2]"
                                    data-paddingright="[26,26,26,26]"
                                    data-paddingbottom="[2,2,2,2]"
-                                   data-paddingleft="[26,26,26,26]" style="border-radius: 50px; background-color: #5ba01f;font-family:'Roboto', sans-serif !important;">Crear encuesta</a>
+                                   data-paddingleft="[26,26,26,26]" style="border-radius: 50px; background-color: #5ba01f;font-family:'Roboto', sans-serif !important;"> @lang('home.creaEncuesta') </a>
                                
                                    <!-- layer nr. 5 -->
                                 <a href="#" class="tp-caption btn btn-transparent-black btn-medium z-index-5 btn2" 
@@ -88,7 +90,7 @@
                                    data-paddingtop="[3,3,3,3]"
                                    data-paddingright="[26,26,26,26]"
                                    data-paddingbottom="[2,2,2,2]"
-                                   data-paddingleft="[26,26,26,26]" style="border-radius: 50px;color: #000 !important;font-family:'Roboto', sans-serif !important;">Ver reportes</a>
+                                   data-paddingleft="[26,26,26,26]" style="border-radius: 50px;color: #000 !important;font-family:'Roboto', sans-serif !important;"> @lang('home.verReportes') </a>
                             </li>
                         </ul>
                     </div>
@@ -109,10 +111,14 @@
                     <div class="eq-info col-md-3 no-padding position-relative wow fadeIn sm-text-center" data-wow-delay="0.2s">
                         <div class="display-table width-100 height-100">
                             <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
-                                <div class="text-light-gray margin-10px-bottom">Cómo funciona</div>
-                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">Crea, envía y analiza encuestas de manera fácil e intuitiva</div>
-                                <p>Emplea múltiples tipos de preguntas, inserta imágenes y vídeos, añade tu logotipo y los colores de tu marca para crear encuestas a tu medida. Usa filtros para crear informes personalizados...</p>
-                                <a href="about-us-simple.html" class="btn btn-transparent-white btn-small border-radius-4">Ver instructivo</a>
+                                <div class="text-light-gray margin-10px-bottom"> @lang('home.comoFunciona')  </div>
+                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">
+                                 @lang('home.creaEnvia')   
+                                </div>
+                                <p>
+                                 @lang('home.empleaMultiplesTiposDePreguntas')
+                                </p>
+                                <a href="about-us-simple.html" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verInstructivo')   </a>
                             </div>
                         </div>
                     </div>
@@ -124,10 +130,13 @@
                     <div class="eq-info col-md-3 no-padding position-relative wow fadeIn sm-text-center" data-wow-delay="0.6s">
                         <div class="display-table width-100 height-100">
                             <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
-                                <div class="text-light-gray margin-10px-bottom">Plantillas</div>
-                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">Modelos de cuestionario para hacer todo más fácil</div>
-                                <p>Con nuestras plantillas de encuestas especialmente diseñadas, puedes crear muchos tipos de encuestas y obtener respuestas rápidamente para tomar mejores decisiones.</p>
-                                <a href="#" class="btn btn-transparent-white btn-small border-radius-4">Ver plantillas</a>
+                                <div class="text-light-gray margin-10px-bottom">@lang('home.plantillas')   </div>
+                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">
+                                @lang('home.modelosDeCuestionarios') </div>
+                                <p>  
+                                @lang('home.conNuestrasPlantillas')    
+                                </p>
+                                <a href="#" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verPlantillas')</a>
                             </div>
                         </div>
                     </div>
@@ -142,8 +151,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
-                        <p class="width-80 center-col display-inline-block xs-width-100">Encuestas Online</p>
-                        <h5 class="text-extra-dark-gray font-weight-600">Características del Servicio</h5>
+                        <p class="width-80 center-col display-inline-block xs-width-100"> @lang('home.encuestasOnline')</p>
+                        <h5 class="text-extra-dark-gray font-weight-600"> @lang('home.caracteristicasDelServicio') </h5>
                         
                     </div>
                 </div>
@@ -154,8 +163,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s1.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Fácil de usar</div>
-                            <p class="width-75 center-col text-dark-gray">Con nuestras herramientas intuitivas puedes generar encuestas y compartirlas en minutos por correo electrónico, redes sociales, sitios web y más.</p>
+                            <div class="text text-extra-dark-gray font-weight-600">@lang('home.facilDeUsar') </div>
+                            <p class="width-75 center-col text-dark-gray"> @lang('home.nuestrasHerramientas')  </p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -165,8 +174,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s2.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Resultados instantáneos</div>
-                            <p class="width-75 center-col text-dark-gray">Sigue tus resultados en tiempo real, con tablas y gráficas generadas en forma automática.</p>
+                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.resultadosInstantaneos')  </div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.sigueTusResultados') </p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -176,8 +185,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s3.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Encuestas móviles</div>
-                            <p class="width-75 center-col text-dark-gray">Con la interface optimizada para celular, los encuestados pueden responder desde cualquier sitio.</p>
+                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.encuestasMoviles')  </div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.conLaInterfaceOptimizada')    </p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -187,8 +196,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s4.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Económico</div>
-                            <p class="width-75 center-col text-dark-gray">Survenia no te obliga a suscribirte por plazos de tiempo innecesarios, puedes comprar las encuestas que necesites y ahorrar dinero.</p>
+                            <div class="text text-extra-dark-gray font-weight-600">@lang('home.economico')</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.surveniaNoTeObliga')  </p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -198,8 +207,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s5.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Plantillas</div>
-                            <p class="width-75 center-col text-dark-gray">Utiliza las plantillas predeterminadas de Survenia para crear las tuyas rápidamente.</p>
+                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.plantillas')</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.utilizaLasPlantillas') </p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -209,8 +218,8 @@
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s6.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Suvenia Blog</div>
-                            <p class="width-75 center-col text-dark-gray">Publica tus encuestas en nuestro Blog y difunde tu trabajo a miles de usuarios.</p>
+                            <div class="text text-extra-dark-gray font-weight-600">Survenia Blog</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.publicaTusEncuestas') .</p>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -225,19 +234,19 @@
                 <div class="row"> 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right wow fadeIn">
                         <div class="col-lg-12 col-md-12 sm-text-center xs-no-padding-lr last-paragraph-no-margin sm-margin-30px-bottom">
-                            <h5 class="text-white font-weight-600">Planes y Precios</h5>
+                            <h5 class="text-white font-weight-600">@lang('home.planes') </h5>
                         </div> 
                         <div class="cont">                         
                         <!-- star feature box item -->
                         <div class="col-md-6 col-sm-6 xs-margin-30px-bottom last-paragraph-no-margin xs-no-padding-lr sm-text-center flex-plan">
                             <div class="feature-content">
-                                <div class="subtitle font-weight-600 text-white margin-5px-bottom">Gratuito</div>
+                                <div class="subtitle font-weight-600 text-white margin-5px-bottom">@lang('home.gratuito') </div>
                                 <ul class="fa-ul">
-                                    <li><i class="fa fa-check"></i> <div>10 preguntas</div></li>
-                                    <li><i class="fa fa-check"></i> <div>100 respuestas</div></li>
-                                    <li><i class="fa fa-check"></i> <div>Funcionalidades especiales</div></li><br>
+                                    <li><i class="fa fa-check"></i> <div>10 @lang('home.preguntas') </div></li>
+                                    <li><i class="fa fa-check"></i> <div>100 @lang('home.respuestas') </div></li>
+                                    <li><i class="fa fa-check"></i> <div>@lang('home.funcionalidades') </div></li><br>
                                 </ul>
-                                <a href="registro" class="btn">Registrarse</a>
+                                <a href="registro" class="btn">@lang('home.registrarse')</a>
                             </div> 
                         </div>
                         <!-- end feature box item -->
@@ -246,12 +255,12 @@
                             <div class="feature-content">
                                 <div class="subtitle font-weight-600 text-white margin-5px-bottom">Premium</div>
                                 <ul class="fa-ul">
-                                    <li><i class="fa fa-check"></i> <div>Preguntas ilimitadas</div></li>
-                                    <li><i class="fa fa-check"></i> <div>Respuestas ilimitadas</div></li>
-                                    <li><i class="fa fa-check"></i> <div>Funcionalidades especiales</div></li>
-                                    <li><i class="fa fa-check"></i> <div>Paquete de encuestas</div></li>
+                                    <li><i class="fa fa-check"></i> <div> @lang('home.preguntas') @lang('home.ilimitadas')  </div></li>
+                                    <li><i class="fa fa-check"></i> <div> @lang('home.respuestas') @lang('home.ilimitadas')</div></li>
+                                    <li><i class="fa fa-check"></i> <div>@lang('home.funcionalidades')</div></li>
+                                    <li><i class="fa fa-check"></i> <div>@lang('home.paqueteEncuestas') </div></li>
                                 </ul>
-                                <a href="#" class="btn btn2">Contratar</a>
+                                <a href="#" class="btn btn2">@lang('home.contratar')</a>
                             </div> 
                         </div>
                         <!-- end feature box item -->
@@ -266,8 +275,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
-                        <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">Envianos tu consulta</h5>
-                        <p>Nuestro equipo de soporte está listo para ayudar con cualquier problema que pueda tener.<br>Puede encontrar más información aquí <a href="mailto:info@survenia.com">info@survenia.com</a></p>
+                        <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">@lang('home.envianosTusConsultas')  </h5>
+                        <p>@lang('home.nuestroEquipoDeSoporte')  <br>@lang('home.puedeEncontrar')  <a href="mailto:info@survenia.com">info@survenia.com</a></p>
                     </div>  
                 </div>
                 <form id="project-contact-form" action="javascript:void(0)" method="post">
@@ -276,10 +285,10 @@
                             <div id="success-project-contact-form" class="no-margin-lr"></div>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="name" id="name" placeholder="Nombre *" class="big-input">
+                            <input type="text" name="name" id="name" placeholder="@lang('home.nombre') *" class="big-input">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="phone" id="phone" placeholder="Teléfono *" class="big-input">
+                            <input type="text" name="phone" id="phone" placeholder="@lang('home.telefono') *" class="big-input">
                         </div>
                         <div class="col-md-6">
                             <input type="text" name="email" id="email" placeholder="E-mail *" class="big-input">
@@ -294,10 +303,10 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <textarea name="comment" id="comment" placeholder="Comentarios" rows="6" class="big-textarea"></textarea>
+                            <textarea name="comment" id="comment" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
                         </div>
                         <div class="col-md-12 text-center">
-                            <button id="project-contact-us-button" type="submit" class="btn btn-transparent-dark-gray btn-large margin-20px-top">Enviar</button>
+                            <button id="project-contact-us-button" type="submit" class="btn btn-transparent-dark-gray btn-large margin-20px-top">@lang('home.enviar') </button>
                         </div>
                     </div>
                 </form>

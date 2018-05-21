@@ -11,7 +11,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Planes y Precios</h1>
+                            <h1 class="no-margin-bottom">@lang('home.planesPrecios') </h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Planes y Precios</li>
+                                <li class="text-dark-gray">@lang('home.planesPrecios')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -41,8 +41,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col text-center last-paragraph-no-margin">
-                        <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">Planes y precios</h5>
-                        <p>En Survenia tenemos dos tipos de servicio: Gratuito y Premium.</p>
+                        <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">@lang('home.planesPrecios')</h5>
+                        <p>@lang('home.enSurveniaTenemos')</p>
                     </div>  
                 </div>
             </div>
@@ -60,8 +60,8 @@
                     <div class="eq-info col-md-3 no-padding position-relative wow fadeIn sm-text-center" data-wow-delay="0.2s">
                         <div class="display-table width-100 height-100">
                             <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
-                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom text-uppercase">Servicio Gratuito</div>
-                                <p>El Servicio Gratuito te permitirá conocer nuestra herramienta, cuenta con un número limitado de preguntas y respuestas pero las funciones disponibles son las mismas que las del Servicio Premium.</p>
+                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom text-uppercase">@lang('home.servicioGratuito')</div>
+                                <p>@lang('home.elServicioGratuito')</p>
                             </div>
                         </div>
                     </div>
@@ -73,8 +73,8 @@
                     <div class="eq-info col-md-3 no-padding position-relative wow fadeIn sm-text-center" data-wow-delay="0.6s">
                         <div class="display-table width-100 height-100">
                             <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
-                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom text-uppercase">Servicio Premium</div>
-                                <p>El Servicio Premium de Survenia no tiene ningún tipo de limitaciones y se distingue en el mercado porque no te cobramos suscripciones mensuales o anuales cuando no es eso lo que necesitas. </p>
+                                <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom text-uppercase">@lang('home.servicioPremium')</div>
+                                <p>@lang('home.elServicioPremiumDeSurvenia')</p>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
         <!-- end section -->
 
         <section class="green-planes">
-            <p>Con Survenia puedes adquirir la cantidad de encuestas que quieras, sin pagar de más.</p>
+            <p>@lang('home.conSurveniapPuedesAdquirir')</p>
         </section>
 
         <section class="tabla-planes">
@@ -96,103 +96,103 @@
                           <thead>
                             <tr>
                               <th scope="col"></th>
-                              <th scope="col">Servicio Gratuito</th>
-                              <th scope="col">Servicio Premium</th>
+                              <th scope="col">@lang('home.servicioGratuito')</th>
+                              <th scope="col">@lang('home.servicioPremium')</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row">Precio</th>
-                              <td><b>GRATIS</b></td>
-                              <td><b>3 USD/Encuesta</b></td>
+                              <th scope="row">@lang('home.precio')</th>
+                              <td><b>@lang('home.gratisM') </b></td>
+                              <td><b>3 USD/@lang('home.encuesta')</b></td>
                             </tr>
                             <tr>
                               <th scope="row">Target</th>
-                              <td>Para encuestas pequeñas y sencillas, o simplemente para probar nuestro sistema.</td>
-                              <td>Para encuestas profesionales de corto, mediano y largo plazo.</td>
+                              <td>@lang('home.paraEncuestasSencillas')</td>
+                              <td>@lang('home.paraEncuestasProfesionales')</td>
                             </tr>
                             <tr>
-                              <th scope="row">Número de preguntas</th>
+                              <th scope="row"></th>
                               <td>Máx. 10</td>
-                              <td>Ilimitado</td>
+                              <td>@lang('home.ilimitadas')</td>
                             </tr>
                             <tr>
-                              <th scope="row">Número de respuestas</th>
+                              <th scope="row">@lang('home.numeroDeRespuestas')</th>
                               <td>Máx. 100</td>
-                              <td>Ilimitado</td>
+                              <td>@lang('home.ilimitadas')</td>
                             </tr>
                             <tr>
-                              <th scope="row">Soporte en línea gratuito</th>
+                              <th scope="row">@lang('home.soporteEnLinea')</th>
                               <td>-</td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Sin contrato o renovación automática</th>
+                              <th scope="row">@lang('home.sinContrato')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Tipos de pregunta variados</th>
+                              <th scope="row">@lang('home.tiposDePreguntas')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Secuencia lógica (si... entonces...)</th>
+                              <th scope="row">@lang('home.secuenciaLogica')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Fotos, imágenes e ilustraciones</th>
+                              <th scope="row">@lang('home.fotosImagenes')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Diseño individual del cuestionario</th>
+                              <th scope="row">@lang('home.disenoIndividual')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Inserte su propio logotipo</th>
+                              <th scope="row">@lang('home.inserteSuPropioLogo')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Optimizado para móviles, para participantes desde teléfonos inteligentes y tabletas</th>
+                              <th scope="row">@lang('home.optimizadoParaMoviles')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Protección por contraseña para participar en la encuesta</th>
+                              <th scope="row">@lang('home.proteccionPorContra')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>                            
                             <tr>
-                              <th scope="row">Diversas medidas para impedir participaciones múltiples</th>
+                              <th scope="row">@lang('home.diversasMedidas')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Limitar tiempo para participar en la encuesta</th>
+                              <th scope="row">@lang('home.limitarTiempo')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Evaluación automática en línea en tiempo real, incluyendo tabulación cruzada</th>
+                              <th scope="row">@lang('home.evaluacionAutomatica')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Descargar preguntas como PDF y archivo de Microsoft Excel™</th>
+                              <th scope="row">@lang('home.descargarPreguntasComoPdf')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Publicar/compartir los resultados de su encuesta en línea directamente con un enlace</th>
+                              <th scope="row">@lang('home.publicarCompartir')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
                             <tr>
-                              <th scope="row">Filtrar resultados por contenido dinámico</th>
+                              <th scope="row">@lang('home.filtrarResultados')</th>
                               <td><img src="images/planes/check.png" alt=""></td>
                               <td><img src="images/planes/check-w.png" alt=""></td>
                             </tr>
@@ -205,11 +205,11 @@
                         </table>
                     </div>
                     <div class="col-md-8 col-md-offset-4">
-                        <a href="#">Registrarse</a>
-                        <a href="#">Ver planes de descuentos por créditos</a>
+                        <a href="#">@lang('home.registrarse')</a>
+                        <a href="#">@lang('home.verPlanes')</a>
                     </div>
                     <div class="col-md-4 col-md-offset-8">
-                        <a href="#">Contratar</a>
+                        <a href="#">@lang('home.contratar')</a>
                     </div>
                 </div>
             </div>

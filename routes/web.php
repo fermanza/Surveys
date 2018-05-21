@@ -53,7 +53,7 @@ Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
 Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
 */
 
-//Login with Facebook 
+//Login with Facebook/ 
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
@@ -67,6 +67,9 @@ Auth::routes();
 Route::group(['middleware' => ['Authuser']], function () {
     
 
+
+	
+ 
     Route::resource('/mis_encuestas', 'MisEncuestasController');
 
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
@@ -85,11 +88,22 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
     Route::resource('/encuestas', 'EncuestasController');
+    Route::resource('/articulos', 'ArticulosController');
+
+    // display single post   
+    Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
+
+  
+
+
 Route::get('/encuestas/{id}', 'EncuestasController@create');
 Route::get('/encuestas/show', 'EncuestasController@show');
 Route::get('/get-options/{type}', 'EncuestasController@getOptions');
 Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
 Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
+
+
+
 });
 
 
