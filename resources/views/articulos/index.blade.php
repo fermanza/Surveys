@@ -48,7 +48,16 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>   <a href="{{route('articulos.destroy', $articulo->id)}}">Eliminar</a></span></div>
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+                                        <div>
+                                            <a style="display: inline-block;"  class="btn btn-primary" href="{{route('articulos.edit', $articulo->id)}}">Editar</a>  
+                                             <form style="display: inline-block;" method="POST" action="/articulos/{{ $articulo->id }}">
+                                                  {{ method_field('DELETE') }}
+                                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                   <button class="btn btn-primary ">Eliminar</button>
+                                             </form>      
+                                        </div>        
+                                   </div>
                                     <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
                                       <p id="preview"> 
                                         @php
