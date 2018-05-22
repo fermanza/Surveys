@@ -55,7 +55,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name" align="left">* Nombre: </label>
-                                    <input type="text" name="name" id="name">
+                                    <input type="text" name="name" id="name" value="{{ old('name')}}">
+                                    @if ($errors->has('name'))
+                                        <div class="error">{{ $errors->first('name') }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lastName" align="left">* Apellido: </label>
@@ -64,14 +67,23 @@
                                 <div class="col-md-12">
                                     <label for="email" align="left">* E-mail: </label>
                                     <input type="email" name="email" id="email">
+                                    @if ($errors->has('email'))
+                                        <div class="error">{{ $errors->first('email') }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" align="left">* Clave de acceso: </label>
                                      <input type="password" name="password" id="password" required>
+                                     @if ($errors->has('password'))
+                                        <div class="error">{{ $errors->first('password') }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="password2" align="left">* Repetir clave de acceso: </label>
-                                    <input type="password" name="password2" id="password2">
+                                    <label for="password_confirmation" align="left">* Repetir clave de acceso: </label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation">
+                                    @if ($errors->has('password_confirmation'))
+                                        <div class="error">{{ $errors->first('password_confirmation') }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-12">
                                     <label for="direccion" align="left">* Direcci&oacute;n: </label>

@@ -68,6 +68,9 @@ Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')
 
 Auth::routes();
 
+Route::post('login','LoginController@authenticate');
+Route::get('login','LoginController@getLogin');
+
 Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
 Route::group(['middleware' => ['Authuser']], function () {
@@ -97,7 +100,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::resource('/articulos', 'ArticulosController');
 
     // display single post   
-    Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
+    //Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
 
   
 
