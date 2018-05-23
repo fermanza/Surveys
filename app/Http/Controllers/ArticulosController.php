@@ -112,6 +112,7 @@ class ArticulosController extends Controller
     public function destroy($id)
     {
         $articulo = Articulo::find($id);
+        $res = FileControl::deleteFile($articulo->img, 'articles');
         $articulo->delete();
 
         return redirect('/articulos');
