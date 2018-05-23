@@ -11,14 +11,24 @@
 
 <section class="padding-25px-tb margin-bread">
 	<div class="container">
-     <form method="post" action="{{route('articulos.update', $articulo->id)}}" enctype="multipart/form-data">			
+
+    
+     <form method="POST" action="{{route('articulos.update', $articulo->id)}}" enctype="multipart/form-data">	
+     	{{ method_field('PATCH')}}
+     	 @csrf
 		<label>Titulo</label>
 		<input type="text" name="title" value="{{ $articulo->title }}">
 		<div id="blog">	
 		</div>
 
+
+		<div>
+		 <img src="{{$articulo->img}}" style="width: 950px; height: 450px;">
+		</div> 
+
 		<label>Subir imagen</label>
 		<input type="file" name="img">
+		 <br> 	
 		<button class="btn btn-primary" type="submit">Guardar</button>
 	</form>	
 	</div>

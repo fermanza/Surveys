@@ -92,9 +92,12 @@ class ArticulosController extends Controller
     public function update(Request $request, $id)
     {
         $articulo = Articulo::find($id);
+
+
         if($request->hasFile('img')) {
               $fileName = FileControl::updateFile($articulo->img, $request->img, 'articles');
-              $request->img = "/articulos/{$fileName}"; 
+              $request->img = "/articles/{$fileName}"; 
+              $articulo->img = $request->img;
         }
         $articulo->title = $request->title;
         $articulo->body = $request->blog;
