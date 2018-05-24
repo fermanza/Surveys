@@ -16,9 +16,9 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-
         $articulos = Articulo::all();
-        return view('articulos.index', compact('articulos'));
+        $user = Auth::user();
+        return view('articulos.index', compact('articulos', 'user'));
     }
 
     /**
