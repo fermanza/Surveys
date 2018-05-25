@@ -49,10 +49,12 @@
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
                                     <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">Editar</a>   </span> @endif
 
-                                      @if($user->id == 1)  
+                                      @if($user->id == 1)
+
                                         <div>
-                                            <a style="display: inline-block;"  class="btn btn-primary" href="{{route('articulos.edit', $articulo->id)}}">Editar</a>  
+                                           
                                              <form style="display: inline-block;" method="POST" action="/articulos/{{ $articulo->id }}">
                                                   {{ method_field('DELETE') }}
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -112,13 +114,9 @@
                             </form>
                         
                         </div>
-                            <div class="col-md-12" >
-
                              @if($user->id == 1) 
                                <a href="{{route('articulos.create')}}"   class=" margin-30px-bottom xs-margin-25px-bottom btn btn-primary">Crear post</a>
-                             @endif  
-                            
-                            </div>
+                             @endif           
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
                                 <h6>¿Querés crear tu propia encuesta?</h6>
