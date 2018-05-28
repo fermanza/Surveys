@@ -8,10 +8,10 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Survenia') }}</title>
 
   <!-- Styles -->
-  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+  <link href="{{ URL('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">  
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
