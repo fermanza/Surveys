@@ -205,11 +205,11 @@
                         </table>
                     </div>
                     <div class="col-md-8 col-md-offset-4">
-                        <a href="#">@lang('home.registrarse')</a>
+                        <a href="{{ URL('registro') }}">@lang('home.registrarse')</a>
                         <a href="#">@lang('home.verPlanes')</a>
                     </div>
                     <div class="col-md-4 col-md-offset-8">
-                        <a href="#">@lang('home.contratar')</a>
+                        <a href="{{ URL('creditos') }}">@lang('home.contratar')</a>
                     </div>
                 </div>
             </div>

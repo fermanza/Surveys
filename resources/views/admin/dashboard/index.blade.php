@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2>Bienvenido al dashboard</h2>
+    <h2 align="center">Bienvenido al Dashboard de Survenia</h2>
    {{--  <div class="row gap-20 masonry pos-r">
         <div class="masonry-sizer col-md-6"></div>
         <div class="masonry-item  w-100">

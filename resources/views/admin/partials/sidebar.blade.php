@@ -8,11 +8,11 @@
             <div class="peers ai-c fxw-nw">
               <div class="peer">
                 <div class="logo">
-                  <img src="/images/logo.png" alt="">
+                <img src="{{ asset('images/logo-survenia-color.png') }}" class="logo-dark" alt="Survenia" width="250px" height="65px">
                 </div>
               </div>
               <div class="peer peer-greed">
-                <h5 class="lh-1 mB-0 logo-text">Survenia</h5>
+
               </div>
             </div>
           </a>

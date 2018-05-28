@@ -75,7 +75,7 @@
                                    data-paddingleft="[26,26,26,26]" style="border-radius: 50px; background-color: #5ba01f;font-family:'Roboto', sans-serif !important;"> @lang('home.creaEncuesta') </a>
                                
                                    <!-- layer nr. 5 -->
-                                <a href="#" class="tp-caption btn btn-transparent-black btn-medium z-index-5 btn2" 
+                                <a href="{{ URL('encuestas_publicas') }}" class="tp-caption btn btn-transparent-black btn-medium z-index-5 btn2" 
                                    data-x="['left','left','left','left']" data-hoffset="['210%','210%','210%','210%']" 
                                    data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']" 
                                    data-fontsize="['15','15','15','15']"

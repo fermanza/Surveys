@@ -18,8 +18,8 @@ class MyAccountController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        $creditos=DB::table("user_credit")->sum('credits');
-        $discounts=DB::table("discounts")->sum('credits');
+        $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
+        $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
         $total = $creditos-$discounts;
         //dd($users);
 

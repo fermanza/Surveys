@@ -43,7 +43,7 @@
                 <!-- end contact information -->
                 <!-- start newsletter -->
                 <div class="col-md-5 col-xs-12 widget">
-                    <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Últimos Artículos</div>
+                    <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">fasdfasdf Artículos</div>
                     <div class="footer-post">
                         <a href="#">
                             <img src="images/home/fp1.jpg" alt="">
@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row"> 
                 <!-- start copyright -->
-                <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
+                <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - Todos los derechos reservados. Survenia</div>
                 <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com">Designed by Rednodo</a>
                 <!-- end copyright -->
             </div>

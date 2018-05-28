@@ -227,8 +227,6 @@
         <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.20.6/dist/sweetalert2.all.js"></script>
         
         
-        
-        
         @stack('script')
     </body>
 </html>

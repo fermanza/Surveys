@@ -1,21 +1,22 @@
+
 @extends('admin.default')
 
 @section('page-header')
-    Información de <big>{{ trans('Usuarios') }}</big>
+    Informaci&oacute;n de <big>{{ trans('Usuarios') }}</big>
 @endsection
 
 @section('content')
-
+{{-- 
 <div class="mB-20">
     <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
         {{ trans('Agregar Usuario') }}
     </a>
-</div>
+</div> --}}
 
 <div class="row">
     <div class="col-md-12">
       <div class="bgc-white bd bdrs-3 p-20 mB-20">
-        <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="dataTable" class="display nowrap" style="width:100%">
             
                 <thead>
                     <tr>
@@ -23,10 +24,10 @@
                         <th>Apellido</th>
                         <th>Empresa</th>
                         <th>E-mail</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
+                        <th>Direcci&oacute;n</th>
+                        <th>Tel&eacute;fono</th>
                         <th>Ciudad</th>
-                        <th>País</th>
+                        <th>Pa&iacute;s</th>
                         <th>Plan</th>
                         <th></th>
                     </tr>
@@ -38,10 +39,10 @@
                         <th>Apellido</th>
                         <th>Empresa</th>
                         <th>E-mail</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
+                        <th>Direcci&oacute;n</th>
+                        <th>Tel&eacute;fono</th>
                         <th>Ciudad</th>
-                        <th>País</th>
+                        <th>Pa&iacute;s</th>
                         <th>Plan</th>
                         <th></th>
                     </tr>
@@ -79,6 +80,8 @@
                                             
                                         {!! Form::close() !!}
                                     </li>
+                                    <li class="list-inline-item">
+                                        <a href="{{ route(ADMIN . '.users.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-success btn-sm"><span class="ti-gift"></span></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -90,4 +93,30 @@
     </div>
   </div>
 
+@push('script')
+
+<script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+<script src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js'></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel'
+                ]
+            } );
+        } );
+    </script>
+
+@endpush
+
 @endsection
+

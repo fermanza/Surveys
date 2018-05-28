@@ -113,7 +113,7 @@
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="#" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-bar-chart margin-5px-right"></i>Reporte simple</a>
+                                                <a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-bar-chart margin-5px-right"></i>Reporte simple</a>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                         @endforeach
                         <!-- end post item -->
                         <div class="pag">
-                            <p>Total de las encuestas: 4 de 17</p>
+                            {{-- <p>Total de las encuestas: 4 de 17</p> --}}
                             <div align="left">
                                 <a href="#">Anterior</a>
                             </div>

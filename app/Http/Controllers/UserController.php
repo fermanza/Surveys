@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use DB; 
+use Auth;
 
 class UserController extends Controller
 {
@@ -17,8 +18,9 @@ class UserController extends Controller
     public function index()
     {
         $items = User::latest('updated_at')->get();
-        $creditos=DB::table("user_credit")->sum('credits');
-        $discounts=DB::table("discounts")->sum('credits');
+        $id = Auth::id();
+        $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
+        $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
         $total = $creditos-$discounts;
 
         return view('admin.users.index', compact('items','total'));

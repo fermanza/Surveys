@@ -12,6 +12,9 @@
 
   <!-- Styles -->
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
 </head>
 <body class="app">
 
@@ -43,11 +46,13 @@
         <!-- ### $App Screen Footer ### -->
         <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
           <span>Copyright © 2018 <a href="https://rednodo.com" target='_blank' title="Colorlib">Rednodo</a>. All rights reserved.</span>
+          <div class="col-md-6" align="right">
+          </div>
         </footer>
       </div>
     </div>
-  
-    <script src="{{ mix('/js/app.js') }}"></script>
+    
+    @stack('script')
 
 </body>
 </html>
