@@ -8,10 +8,10 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Survenia') }}</title>
 
   <!-- Styles -->
-  <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+  <link href="{{ URL('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="app">
 
