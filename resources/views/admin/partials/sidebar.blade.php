@@ -4,7 +4,7 @@
     <div class="sidebar-logo">
       <div class="peers ai-c fxw-nw">
         <div class="peer peer-greed">
-          <a class='sidebar-link td-n' href="/" class="td-n">
+          <a class='sidebar-link td-n' href="{{ URL('/')}}" class="td-n">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
                 <div class="logo">
