@@ -43,7 +43,7 @@
                 <div class="row">
                 	<aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            <div class="title">Reportes</div>
+                            <div class="temas-title">Reportes</div>
                             <form>
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
-                                    <button type="submit" class="bg-transparent  btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
+                                    <button type="submit" class="bg-transparent btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         </div>
@@ -71,7 +71,8 @@
                             <div class="display-inline-block width-100">
                                 <h6>¿Querés crear tu propia encuesta?</h6>
                                 <p>Suscríbete gratis</p>
-                                <form id="project-contact-form" action="javascript:void(0)" method="post">
+                                <form method="POST" action="{{ URL('register') }}">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-12">
                                             <input type="text" name="name" id="name" placeholder="Nombre">
@@ -82,15 +83,48 @@
                                         <div class="col-md-12">
                                             <input type="password" name="password" id="password" placeholder="Contraseña">
                                         </div>
+    
+                                        <div class="col-md-6">
+                                    <input type="hidden" name="last_name" id="lastName">
+                                </div>
+                                <div class="col-md-6">
+                                     <input type="hidden" name="password" id="password" required>
+                                     @if ($errors->has('password'))
+                                        <div class="error">{{ $errors->first('password') }}</div>
+                                    @endif
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="password_confirmation" id="password_confirmation">
+                                    @if ($errors->has('password_confirmation'))
+                                        <div class="error">{{ $errors->first('password_confirmation') }}</div>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="hidden" name="address" id="direccion">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="city" id="ciudad">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="country" id="pais">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="company" id="empresa">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="phone" id="telefono">
+                                </div>
+
                                         <div class="col-md-12" style="text-align:left;">
-                                            <input type="checkbox" id="check">
-                                            <label for="check" class="text-extra-dark-gray">Acepto los <a href="terminos-condiciones.php">Términos y condiciones</a></label>
+                                            <input type="checkbox" id="check" required>
+                                            <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="button" name="ingresar" id="ingresar" value="Crear encuesta">
+                                            {{-- <input type="button" name="ingresar" id="ingresar" value="Crear encuesta"> --}}
+                                            <button type="submit" class="btn btn-success">CREAR CUENTA</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="text-extra-dark-gray">Para obtener mas potencia<br><a href="planes.php">Ver planes premium</a></p>
+                                            <p class="text-extra-dark-gray">Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
                                         </div>
                                     </div>
                                 </form>
@@ -105,7 +139,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">                        
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at->diffForHumans() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span></div>
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at->diffForHumans() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#" onClick="getLink({{$template->id}})">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span></div>
                                     <a href="{{ URL('encuestas/responder') }}/{{ $template->id }}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block">{{ $template->name }}</a>
                                     <p>{{ $template->description }}</p>
                                 </div>
@@ -155,4 +189,52 @@
             <p> <img src="images/encuestas/warning.png" alt="" width="40px" height="40px"> Survenia no valida ni verifica la metodología utilizada por los usuarios para confeccionar la encuesta y recolectar datos, sólo brinda el espacio para que los mismos puedan publicar sus trabajos.</p>
             </div>
         </section>
+
+          @push('script')
+        <script>
+        function getLink(id)
+        {
+
+            request = $.ajax({
+        url: '{{url('bitly')}}/'+id,
+        type: "get"
+    });
+
+        request.done(function (response, textStatus, jqXHR){
+            swal({
+  title: '',
+  type: 'success',
+  html:'<p>Puedes usar el siguiente link para compartir tu encuesta</p>' +
+    '<input id="txtshare" value="'+response+'" type="text" class="form-control">',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-copy"></i> Copiar',
+}).then((result) => {
+    var copyText = document.getElementById("txtshare");
+  copyText.select();
+  document.execCommand("copy");
+
+  swal({
+        type: 'success',
+        html: 'Enlace copiado'
+      })
+})
+            
+  });
+
+  // Callback handler that will be called on failure
+  request.fail(function (jqXHR, textStatus, errorThrown){
+      
+  });
+
+
+            
+        }
+
+        
+        </script>
+
+        @endpush
 @stop

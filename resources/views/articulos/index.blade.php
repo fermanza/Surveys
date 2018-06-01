@@ -95,9 +95,12 @@
          
                         <!-- end post item -->
                     </main>
+                    @if($user->id == 1) 
+                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-primary">Crear Artículo</a>
+                             @endif  
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
-                        <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temasB">
-                            <div class="title">Temas</div>
+                        <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
+                            <div class="temas-title">Temas</div>
                             <form>
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
@@ -107,21 +110,19 @@
                                         <option value="3">3</option>
                                     </select>
                                 </div>
-                                <div class="buscarB position-relative">
+                                <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
                                     <button type="submit" class="bg-transparent  btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         
-                        </div>
-                             @if($user->id == 1) 
-                               <a href="{{route('articulos.create')}}"   class=" margin-30px-bottom xs-margin-25px-bottom btn btn-primary">Crear Artículo</a>
-                             @endif           
+                        </div>         
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
                                 <h6>¿Querés crear tu propia encuesta?</h6>
                                 <p>Suscríbete gratis</p>
-                                <form id="project-contact-form" action="javascript:void(0)" method="post">
+                                <form method="POST" action="{{ URL('register') }}">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-12">
                                             <input type="text" name="name" id="name" placeholder="Nombre">
@@ -137,7 +138,7 @@
                                             <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="button" name="ingresar" id="ingresar" value="Crear encuesta">
+                                             <button type="submit" class="btn btn-success">CREAR CUENTA</button>
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>

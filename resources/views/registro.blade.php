@@ -134,7 +134,7 @@
         <!-- end form section -->
         <section class="term">
             <div class="container">
-                <p>Al crear una cuenta, confirma que está de acuerdo con los <a href="terminos-condiciones.php">Términos y condiciones</a> y las <a href="terminos-condiciones.php">Políticas de privacidad</a>.<br>
+                <p>Al crear una cuenta, confirma que está de acuerdo con los <a href="{{ URL('terminos')}}">Términos y condiciones</a> y las <a href="terminos-condiciones.php">Políticas de privacidad</a>.<br>
                 También acepta recibir correos electrónicos con noticias y sugerencias.</p>
             </div>
         </section>

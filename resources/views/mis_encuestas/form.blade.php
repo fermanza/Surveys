@@ -298,7 +298,8 @@ var options = {
         'text',
         'textarea'
        ],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','matriz'] 
+      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph'] 
     };
 
     var formBuilder = $(fbRender).formBuilder(options);

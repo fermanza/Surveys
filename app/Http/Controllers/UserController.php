@@ -71,6 +71,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $item = User::findOrFail($id);
+        //dd($item);
 
         return view('admin.users.edit', compact('item'));
     }
@@ -104,6 +105,17 @@ class UserController extends Controller
         User::destroy($id);
 
         return back()->withSuccess(trans('app.success_destroy')); 
+    }
+
+      /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function creditos($id)
+    {
+        return view('admin.users.creditos');
     }
 }
 
