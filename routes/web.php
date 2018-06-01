@@ -79,6 +79,10 @@ Route::get('login','LoginController@getLogin');
 
 Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
+
+Route::post('/copyTemplate', 'EncuestasController@copyTemplate');
+
+
 Route::group(['middleware' => ['Authuser']], function () {
     
 
