@@ -39,20 +39,23 @@
 
 	<section class="padding-25px-tb margin-bread">
 		
-		<h2>{{ $articulo->title }}</h2>
-		<img src="{{$articulo->img}}" style="width: 950px; height: 450px;">
+		<h5 align="center">Tema: {{ $articulo->title }}</h5>
+        <h6 align="right">Fecha: {{ $articulo->created_at }}</h6>
+        <h6 align="right">Autor: {{ $articulo->user->name }}</h6>
+        <div align="center">
+        <hr />
+		<img src="{{$articulo->img}}" style="width: 700px; height: 450px;">
+		<br><br><br>
+		<h5 style="color: black"> {!! $articulo->body !!} </h5>
+        </div>
+	<div align="center">
+        <hr />
+        <a class="btn" href="{{ url()->previous() }}">Volver a Artículos</a>
+        </div>
 
-		<br>
-		<p style="color: black"> {!! $articulo->body !!} </p>
-	</section>
-
-
-	<button id="back" class="btn btn-primary" align="center"> Regresar </button>
-
-    <div class="guardar">
-                                    <a href="{{ url()->previous() }}">Cancelar</a>
-                            </div>
+    </section>
 </div>
+
 	
 
 

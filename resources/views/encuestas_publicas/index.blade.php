@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
-                                    <button type="submit" class="bg-transparent btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
+                                    <button type="submit" class="bg-transparent position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         </div>
@@ -120,7 +120,7 @@
                                             <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                            <br><button type="submit">CREAR ENCUESTA</button>
+                                            <br><button type="submit" class="btn-info">CREAR ENCUESTA</button>
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray"><br>Para obtener más potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
