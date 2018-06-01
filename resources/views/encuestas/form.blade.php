@@ -127,7 +127,7 @@ let templates = {
   },
   slider: function(fieldData) {
     return {
-      field: '<input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
+      field: '<h6 align="left">0</h6><input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
       onRender: function() {
         $(document.getElementById(fieldData.name)).rangeslider();
       }
@@ -149,7 +149,8 @@ let templates = {
         'text',
         'textarea'
        ],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number'] 
+      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph'] 
     };
 
 

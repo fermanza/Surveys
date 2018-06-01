@@ -72,7 +72,6 @@ Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('/social/redirect/{provider}', 'Auth\SocialController@getSocialRedirect')->name('redirectSocialLite');
 Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')->name('handleSocialLite');
 
-
 Auth::routes();
 
 Route::post('login','LoginController@authenticate');
@@ -93,10 +92,10 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::resource('/my_account','MyAccountController');
 
     //paypal
-    Route::get('checkout', 'PayPalController@getExpressCheckout');
-    Route::get('checkout-success', 'PayPalController@getExpressCheckoutSuccess');
-    Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
-    Route::post('paypal/notify', 'PayPalController@notify');
+    Route::get('checkout', 'PaypalController@getExpressCheckout');
+    Route::get('checkout-success', 'PaypalController@getExpressCheckoutSuccess');
+    Route::get('paypal/adaptive-pay', 'PaypalController@getAdaptivePay');
+    Route::post('paypal/notify', 'PaypalController@notify');
     Route::get('creditos','PaypalController@index');
 
     //encuesta guardar
@@ -137,5 +136,6 @@ Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestio
 
 $router->group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Role:0']], function($router) {
     Route::get('/', 'DashboardController@index')->name('dash');
+    Route::get('users/creditos/{id}','UserController@creditos')->name('admin.users.creditos');
     Route::resource('users', 'UserController');
 });

@@ -4293,11 +4293,11 @@ footer .widget.links {
 
 /*HOME-SERVICIOS*/
 
-{
+.servicios {
     background: url(../images/home/bg-s.jpg) no-repeat;
     background-size: cover;
 }
-p {
+.servicios p {
     color: #84c34e;
     font-size: 17px;
     margin-bottom: 10px !important;
@@ -5460,7 +5460,7 @@ h6 {
     padding: 15px;
 }
 
-aside .temasB-encuesta .title {
+aside .temas-title {
     background: #84c34e;
     color: #fff;
     font-size: 15px;
@@ -5469,30 +5469,30 @@ aside .temasB-encuesta .title {
     padding: 15px 20px;
     margin-bottom: 15px;
 }
-aside .temasB-encuesta .select-style {
+aside .select-style {
     margin-bottom: 15px;
     background: url(../images/select-arrow.png) no-repeat 94% 50%;
 }
-aside .temasB-encuesta .select-style select {
+aside .select-style select {
     padding: 15px 20px;
     font-size: 16px;
     line-height: 16px;
     color: #000;
 }
-aside .temasB-encuesta .buscarB input {
+aside .buscar input {
     padding: 15px 20px;
     font-size: 16px;
     line-height: 16px;
     border-color: #d1d1d1;
 }
-aside .temasB-encuesta .buscarB ::-webkit-input-placeholder {
+aside .buscar ::-webkit-input-placeholder {
     color: #000;
 }
-aside .temasB-encuesta .buscarB button[type="submit"] i {
-    font-size: 16px;
+aside .buscar button[type="submit"] i {
+    font-size: px;
     padding: 10px 12px;
 }
-aside .temasB-encuesta .buscarB button[type="submit"] {
+aside .buscar button[type="submit"] {
     right: -10px;
 }
 
@@ -5583,7 +5583,7 @@ aside .temasB-encuesta .buscarB button[type="submit"] {
 
 /*ENCUESTAS PUBLICAS 0*/
 
-.encuestas-public .main > h3 {
+.main > h3 {
     font-size: 30px;
     color: #232323;
     font-weight: 600;

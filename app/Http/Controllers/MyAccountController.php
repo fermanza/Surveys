@@ -83,7 +83,7 @@ class MyAccountController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //dd($request);
+        //dd($request->all());
 
         $id = Auth::id();
         $user = User::findOrNew($id);
@@ -96,6 +96,8 @@ class MyAccountController extends Controller
         $user->country = $request->country;
         $user->company = $request->company;
         $user->phone = $request->phone;
+        $user->password = $request->password;
+        $user->password2 = $request->password2;
 
         $user->save();
 

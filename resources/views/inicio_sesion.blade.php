@@ -44,7 +44,7 @@
                         <h5 class="font-weight-700 text-extra-dark-gray">Login</h5>
                     </div>  
                     <div class="col1 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin" style="border-right:1px solid rgba(0,0,0,0.1);">
-                        <form class="form-horizontal" method="POST" action="{{ url('login') }}">
+                        <form class="form-horizontal" method="POST" action="{{ URL('login') }}">
                         {{ csrf_field() }}
                             <div class="row">
                                  <div class="col-md-12">
@@ -64,7 +64,7 @@
                                     <a href="{{ route('password.request') }}" class="text-extra-dark-gray">Recuperar contraseña</a>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary">
                                     Login</button>
                                 </div>
                                 <div class="col-md-12"><br>

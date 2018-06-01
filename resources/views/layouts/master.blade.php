@@ -18,7 +18,7 @@
         <link rel="manifest" href="{{ asset('icons/manifest.json') }}">
         <link rel="mask-icon" href="{{ asset('icons/safari-pinned-tab.svg') }}" color="#112b3e">
         <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}">
-        <meta name="msapplication-config" content="icons/browserconfig.xml">
+        <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
         <meta name="theme-color" content="#ffffff">
         <!-- animation -->
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>

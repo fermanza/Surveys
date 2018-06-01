@@ -17,7 +17,7 @@ class CreateAnswerTable extends Migration
             $table->increments('id');
             $table->integer('id_template');
             $table->integer('position');
-            $table->string('answer');
+            $table->binary('answer');
             $table->timestamps();
         });
     }

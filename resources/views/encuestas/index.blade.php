@@ -119,26 +119,17 @@
                                 <div class="display-table-cell vertical-align-middle">
                                     <h6 class="text-extra-dark-gray margin-20px-bottom">Nombrar la encuesta</h6>
 
-                                    <form action="/encuestas/copyTemplate" method="POST" id="usrform">
+                                    <form action="{{ URL('encuestas/copyTemplate') }}" method="POST" id="usrform">
                                         <div class="row" align="center">
-                                            <div class="col-md-4"">
+                                            <div class="col-md-6"">
                                                 <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input" required>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="select-style big-select">
                                                     <select name="plan" id="plan" class="bg-transparent no-margin-bottom" required>
-                                                        <option value="">Tipo de plan de la encuesta</option>
+                                                        <option value="">Copiar la encuesta</option>
                                                         <option value="0">Gratuita</option>
                                                         <option value="1">Premium</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="select-style big-select">
-                                                    <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
-                                                        <option value="">Tipo de encuesta</option>
-                                                        <option value="0">Pública</option>
-                                                        <option value="1">Privada</option>
                                                     </select>
                                                 </div>
                                             </div>

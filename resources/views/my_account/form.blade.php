@@ -130,6 +130,35 @@
         </div>
     </div>
 
+    <div class="row">
+        <h5 class="title text-extra-dark-gray">Editar contraseña</h5> 
+
+         <div class="col-md-3">
+
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <label for="password">@lang('Nueva contraseña')</label>
+                <input type="password" class="form-control" id="password" name="password" value="{{ $user->password }}" required />
+                @if ($errors->has('password'))
+                    <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
+                @endif
+            </div>
+
+        </div>
+
+         <div class="col-md-3">
+
+            <div class="form-group{{ $errors->has('password2') ? ' has-error' : '' }}">
+                <label for="password2">@lang('Repetir contraseña')</label>
+                <input type="password" class="form-control" id="password2" name="password2" value="{{ $user->password2 }}" required />
+                @if ($errors->has('password2'))
+                    <span class="help-block"><strong>{{ $errors->first('password2') }}</strong></span>
+                @endif
+            </div>
+
+        </div>
+    </div>
+
+
     <hr />
     
     <div class="row">

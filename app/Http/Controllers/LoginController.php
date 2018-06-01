@@ -15,6 +15,7 @@ class LoginController extends Controller
     
     public function authenticate(Request $request)
     {
+        //dd($request);
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -22,16 +23,12 @@ class LoginController extends Controller
             if(Auth::user()->role==10)
             {
                 return redirect()->intended('/admin');
-            }else{
-                return redirect()->intended('my_account');
+            }elseif(Auth::user()->role==0){
+                dd($request->all());
+                return redirect()->intended('/my_account');
             }
             
         }
-    }
-
-    public function register()
-    {
-        
     }
 
 }

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'T&eacite;rminos y Condiciones')
+@section('title', 'Términos y Condiciones')
 
 @extends('includes.header')
 @section('content')

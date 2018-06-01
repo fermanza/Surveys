@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Encuestas Publicas Detalle')
+@section('title', 'Home')
 
 @extends('includes.header')
 @section('content')
@@ -117,8 +117,8 @@
                                 </div>
                                 <p>
                                  @lang('home.empleaMultiplesTiposDePreguntas')
-                                </p>
-                                <a href="about-us-simple.html" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verInstructivo')   </a>
+                                </p><br>
+                                <a href="{{ URL('como_funciona') }}" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verInstructivo')   </a>
                             </div>
                         </div>
                     </div>
@@ -135,8 +135,8 @@
                                 @lang('home.modelosDeCuestionarios') </div>
                                 <p>  
                                 @lang('home.conNuestrasPlantillas')    
-                                </p>
-                                <a href="#" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verPlantillas')</a>
+                                </p><br>
+                                <a href="{{ URL('plantillas') }}" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verPlantillas')</a>
                             </div>
                         </div>
                     </div>
