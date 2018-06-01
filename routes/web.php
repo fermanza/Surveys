@@ -65,9 +65,11 @@ Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('/social/redirect/{provider}', 'Auth\SocialController@getSocialRedirect')->name('redirectSocialLite');
 Route::get('/social/handle/{provider}', 'Auth\SocialController@getSocialHandle')->name('handleSocialLite');
 
+Route::post('iniciarsesion','LoginController@authenticate');
+
 Auth::routes();
 
-Route::post('login','LoginController@authenticate');
+
 Route::get('login','LoginController@getLogin');
 
 Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');

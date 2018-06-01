@@ -20,11 +20,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
+           
             if(Auth::user()->role==10)
             {
                 return redirect()->intended('/admin');
-            }elseif(Auth::user()->role==0){
-                dd($request->all());
+            }else{
                 return redirect()->intended('/my_account');
             }
             
