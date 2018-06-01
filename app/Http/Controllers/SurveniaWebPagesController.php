@@ -11,6 +11,7 @@ use App\Groups;
 use App\Incremental;
 use App\SatisfactionRatings;
 use App\Zendesk\AppZendesk;
+use App\User;
 
 class SurveniaWebPagesController extends Controller
 {
@@ -174,6 +175,7 @@ class SurveniaWebPagesController extends Controller
     {
         return view('registro');
     }
+
 
 
 }

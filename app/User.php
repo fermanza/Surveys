@@ -37,8 +37,7 @@ class User extends Authenticatable
     {
         $commun = [
             'email'    => "required|email|unique:users,email,$id",
-            'password' => 'nullable|confirmed',
-            'avatar' => 'image',
+            'avatar' => 'image'
         ];
 
         if ($update) {
@@ -47,7 +46,7 @@ class User extends Authenticatable
 
         return array_merge($commun, [
             'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
     }
 

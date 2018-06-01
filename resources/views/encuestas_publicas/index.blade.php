@@ -12,7 +12,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Encuestas Públicas</h1>
+                            <h1 class="no-margin-bottom">@lang('encuestas_publicas.encuestasPublicas')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Encuestas Públicas</li>
+                                <li class="text-dark-gray">@lang('encuestas_publicas.encuestasPublicas')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -154,7 +154,7 @@
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="#" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>Reporte avanzado</a>
+                                                <a href="/reporte_avanzado/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>Reporte avanzado</a>
                                             </div>
                                         </div>
                                     </div>
