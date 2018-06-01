@@ -37,13 +37,14 @@
         <!-- end page title section -->
         
         <!-- start form section -->
-        <section class="wow fadeIn registro-form login-form" id="start-your-project">
+        <section class="wow fadeIn registro-form login-form">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col margin-50px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <h5 class="font-weight-700 text-extra-dark-gray">Crear cuenta</h5>
                     </div>  
                     <div class="col1 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin" style="border-right:1px solid rgba(0,0,0,0.1);">
+
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
                             <div class="row">
@@ -107,10 +108,13 @@
                                 </div>
                                 <div class="col-md-12">
                                    <button type="submit" class="btn btn-success">CREAR CUENTA</button>
+
                                 </div>
                             </div>
                         </form>
                     </div>
+
+
                     <div class="col2 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <div class="row">
                             <div class="col-md-12">

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','last_name','email','password','password2','remember_token','address','city','country','company','phone',
+        'name','last_name','email','password','remember_token','address','city','country','company','phone',
     ];
 
     /**
@@ -37,8 +37,7 @@ class User extends Authenticatable
     {
         $commun = [
             'email'    => "required|email|unique:users,email,$id",
-            'password' => 'nullable|confirmed',
-            'avatar' => 'image',
+            'avatar' => 'image'
         ];
 
         if ($update) {
@@ -47,7 +46,7 @@ class User extends Authenticatable
 
         return array_merge($commun, [
             'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -59,7 +58,6 @@ class User extends Authenticatable
     public function setPasswordAttribute($value='')
     {
         $this->attributes['password'] = bcrypt($value);
-        $this->attributes['password2'] = bcrypt($value);
     }
     
     public function getAvatarAttribute($value)
