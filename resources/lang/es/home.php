@@ -11,7 +11,7 @@ return [
 	'comoFunciona' => 'Cómo funciona',
 	'creaEnvia' => 'Crea, envía y analiza encuestas de manera fácil e intuitiva',
 	'empleaMultiplesTiposDePreguntas' => 'Emplea múltiples tipos de preguntas, inserta imágenes y vídeos, añade tu logotipo y los colores de tu marca para crear encuestas a tu medida. Usa filtros para crear informes personalizados',
-	'verInstrcutivo' => 'Ver instructivo',
+	'verInstructivo' => 'Ver instructivo',
 	'plantillas' => 'Plantillas',
 	'modelosDeCuestionarios' => 'Modelos de cuestionario para hacer todo más fácil',
 	'conNuestrasPlantillas' => 'Con nuestras plantillas de encuestas especialmente diseñadas, puedes crear muchos tipos de encuestas y obtener respuestas rápidamente para tomar mejores decisiones.',

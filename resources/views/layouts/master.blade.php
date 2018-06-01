@@ -72,7 +72,7 @@
                             <!-- start logo -->
                             <a href="/" class="margin-20px-bottom display-inline-block"><img class="footer-logo" src="{{ asset('images/logo-survenia.png') }}" alt="Survenia"></a>
                             <!-- end logo -->
-                            <p class="text-light-gray"><b>¿Por qué elegirnos?</b><br>Seguridad y Respaldo. Resultados en tiempo real. Asesoramiento profesional. Innovación y Tecnología.</p>
+                            <p class="text-light-gray"><b>@lang('footer.porqueElegirnos')</b><br> @lang('footer.seguridadYrespaldo')</p>
                             <!-- start social media -->
                             <div class="social-icon-style-8 display-inline-block vertical-align-middle">
                                 <ul class="small-icon no-margin-bottom">
@@ -88,27 +88,27 @@
                         <div class="links widget border-right xs-margin-30px-bottom">
                             <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Links</div>
                             <ul class="list-unstyled">
-                                <li class="width-50 pull-left"><a href="/" class="text-light-gray">Inicio</a></li>
-                                <li class="width-50 pull-left"><a href="como_funciona" class="text-light-gray">Cómo funciona</a></li>
-                                <li class="width-50 pull-left"><a href="plantillas" class="text-light-gray">Plantillas</a></li>
-                                <li class="width-50 pull-left"><a href="planes" class="text-light-gray">Planes y Precios</a></li>
-                                <li class="width-50 pull-left"><a href="encuestas" class="text-light-gray">Creación de encuesta</a></li>
-                                <li class="width-50 pull-left"><a href="encuestas_publicas" class="text-light-gray">Encuestas Públicas</a></li>
-                                <li class="width-50 pull-left"><a href="articulos" class="text-light-gray">Artículos</a></li>
-                                <li class="width-50 pull-left"><a href="contacto" class="text-light-gray">Contacto</a></li>
+                                <li class="width-50 pull-left"><a href="/" class="text-light-gray">@lang('footer.inicio')</a></li>
+                                <li class="width-50 pull-left"><a href="como_funciona" class="text-light-gray">@lang('footer.comoFunciona')</a></li>
+                                <li class="width-50 pull-left"><a href="plantillas" class="text-light-gray">@lang('footer.plantillas')</a></li>
+                                <li class="width-50 pull-left"><a href="planes" class="text-light-gray">@lang('footer.planesPrecios')</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas" class="text-light-gray">@lang('footer.creacionEncuesta')</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas_publicas" class="text-light-gray">@lang('footer.encuestasPublicas')</a></li>
+                                <li class="width-50 pull-left"><a href="articulos" class="text-light-gray">@lang('footer.articulos')</a></li>
+                                <li class="width-50 pull-left"><a href="contacto" class="text-light-gray">@lang('footer.contacto')</a></li>
                             </ul>
                         </div>
                         <!-- end social media -->
                         <!-- start contact information -->
                         <div class="contactor widget border-right xs-margin-30px-bottom">
-                            <div class="widget-title alt-font text-extra-small text-uppercase text-light-gray font-weight-600">Contacto</div>
+                            <div class="widget-title alt-font text-extra-small text-uppercase text-light-gray font-weight-600">@lang('footer.contacto')</div>
                             <div class="line-height-24 text-light-gray">Email: <a href="mailto:info@survenia.com" class="text-light-gray">info@survenia.com</a></div>
                             <div class="line-height-24 text-light-gray"><a href="http://www.survenia.com" class="text-light-gray">www.survenia.com</a></div>
                         </div>
                         <!-- end contact information -->
                         <!-- start newsletter -->
                         <div class="col-md-5 col-xs-12 widget">
-                            <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Últimos Artículos</div>
+                            <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">@lang('footer.ultimosArticulos')</div>
                
                             @foreach($articulos as $articulo)
                             <div class="col-md-12 footer-post">
@@ -206,8 +206,9 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.js"></script>
 
-        
-       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
         <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>

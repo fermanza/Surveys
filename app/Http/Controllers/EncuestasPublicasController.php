@@ -21,6 +21,8 @@ class EncuestasPublicasController extends Controller
 
         $user = User::all();
 
+
+
         return view('encuestas_publicas.index',compact('templates'));
     }
 
@@ -89,4 +91,28 @@ class EncuestasPublicasController extends Controller
     {
         //
     }
+
+
+
+    public function showAdvancedReport($idEncuesta)
+    {
+
+        $questions = DB::table('questions')->select('content')->where('template_id', $idEncuesta)->first();
+
+        return view('encuestas_publicas.advanced_report', compact('questions'));
+    }
+
+
+    public function getQuestions($idEncuesta)
+    {
+        
+
+        dd($questions);
+
+
+    }
+
+
+
+
 }

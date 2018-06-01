@@ -17,7 +17,14 @@
 
 Route::get('setLanguage/{lang}','HomeController@setLanguage');
 Route::get('/', 'SurveniaWebPagesController@index');
+
+
+//Route::post('/registrar', 'SurveniaWebPagesController@registrar');
+
 Route::get('/registro','SurveniaWebPagesController@registro');
+
+
+
 Route::get('/terminos', 'SurveniaWebPagesController@terminos');
 Route::get('/contacto', 'SurveniaWebPagesController@contacto');
 Route::get('/plantillas', 'SurveniaWebPagesController@plantillas');
@@ -110,6 +117,11 @@ Route::get('/encuestas/show', 'EncuestasController@show');
 Route::get('/get-options/{type}', 'EncuestasController@getOptions');
 Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
 Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
+
+
+Route::get('/reporte_avanzado/{idEncuesta}', 'EncuestasPublicasController@showAdvancedReport');
+
+Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestions');
 
 
 
