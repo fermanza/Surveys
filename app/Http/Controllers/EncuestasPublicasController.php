@@ -107,7 +107,6 @@ class EncuestasPublicasController extends Controller
     {
         
 
-        dd($questions);
 
 
     }

@@ -30,7 +30,9 @@ class EncuestasController extends Controller
         $template = Template::find(1);
         $action = 'create';
 
-        return view('encuestas.index', compact('template','action'));
+       $templates = Template::where('type', 0)->get();
+
+        return view('encuestas.index', compact('template','action', 'templates'));
     }
 
     /**
@@ -317,4 +319,32 @@ class EncuestasController extends Controller
         return view('encuestas.answer', compact('template','question'));
 
     }
+
+
+    public function copyTemplate(Request $request)
+    {
+
+        $templateContent = Questions::where('template_id', $request->encuesta)->first();
+        $template = new Template;
+        $template->description = '';
+        $template->user_id = Auth::id();
+        $template->name = $request->name;
+        $template->answered = 0;
+        $template->type = 0; // all public
+        $template->plan = 0;
+        $template->hash =  base64_encode(Hash::make(Carbon::now()));
+        
+        $template->save();
+
+
+        $questions = new Questions;
+        $questions->content = $templateContent->content;
+        $questions->template_id = $template->id;
+        $questions->position = 0;
+        $questions->save();
+
+        return redirect()->route('mis_encuestas.index');
+
+    }
+
 }
