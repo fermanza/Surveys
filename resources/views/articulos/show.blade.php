@@ -48,6 +48,10 @@
 
 
 	<button id="back" class="btn btn-primary" align="center"> Regresar </button>
+
+    <div class="guardar">
+                                    <a href="{{ url()->previous() }}">Cancelar</a>
+                            </div>
 </div>
 	
 

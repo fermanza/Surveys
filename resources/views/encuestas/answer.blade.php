@@ -45,17 +45,6 @@ visibility:hidden;
         <!-- end page title section -->
 
         {{-- <div class="titulo">{{ $template->name }}</div>  --}}
-
-        <!-- start form section -->
-        <section class="wow fadeIn titulo" id="start-your-project">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 center-col">
-                        <h5 class="font-weight-700 text-extra-dark-gray">{{ $template->name }}</h5>
-                    </div>
-                </div>
-            </div>
-        </section>
         
         
         <!-- end form section -->
@@ -71,7 +60,7 @@ visibility:hidden;
                                     <a href="{{ url()->previous() }}">Cancelar</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">Contestar</button>
+                                    <button class="btn" id="save-data">Responder</button>
                         </div>
                         </div>
 
