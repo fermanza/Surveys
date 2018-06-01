@@ -177,7 +177,7 @@ class PaypalController extends Controller
     {
         $data = [];
 
-        $order_id = UserCredit::all()->count() + 10000;
+        $order_id = UserCredit::all()->count() + 12000;
 
         if ($recurring === true) {
             $data['items'] = [
