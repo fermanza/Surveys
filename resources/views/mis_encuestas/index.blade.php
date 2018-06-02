@@ -20,7 +20,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Mis encuestas</h1>
+                            <h1 class="no-margin-bottom">@lang('mis_encuestas.misEncuestas')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Mis encuestas</li>
+                                <li class="text-dark-gray">@lang('mis_encuestas.misEncuestas')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -50,13 +50,13 @@
                 <div class="col-md-12">
                     <div class="select-style big-select">
                         <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                             <option value="">Todas las encuestas</option>
+                             <option value="">@lang('mis_encuestas.todasLasEncuestas')</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
                     </div>
-                    <a class="btn" a href="{{ URL('encuestas') }}">Crear encuesta</a>
+                    <a class="btn" a href="{{ URL('encuestas') }}">@lang('mis_encuestas.crearEncuesta')</a>
                 </div>
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -65,16 +65,16 @@
                         <table id="table-mis-encuestas">
                             <thead>
                                 <tr>
-                                    <th>Título</th>
-                                    <th>Fecha de Creación</th>
-                                    <th>Tipo de encuesta</th>
-                                    <th>Tipo de plan</th>
-                                    <th>Respuestas</th>
-                                    <th>Reportes</th>
-                                    <th>Cerrar Encuesta</th>
-                                    <th>Editar Encuesta</th>
-                                    <th>Compartir</th>
-                                    <th>Eliminar</th>
+                                    <th>@lang('mis_encuestas.titulo')</th>
+                                    <th>@lang('mis_encuestas.fechaCreacion')</th>
+                                    <th>@lang('mis_encuestas.tipoDeEncuesta')</th>
+                                    <th>@lang('mis_encuestas.tipoDePlan')</th>
+                                    <th>@lang('mis_encuestas.respuestas')</th>
+                                    <th>@lang('mis_encuestas.reportes')</th>
+                                    <th>@lang('mis_encuestas.cerrarEncuesta')</th>
+                                    <th>@lang('mis_encuestas.editarEncuesta')</th>
+                                    <th>@lang('mis_encuestas.compartir')</th>
+                                    <th>@lang('mis_encuestas.eliminar')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,13 +83,13 @@
                                     <td> <a href="{{ URL('encuestas/responder') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
                                     <td>{{ $template->created_at->diffForHumans() }}</td>
                                     @if($template->type==0)
-                                    <td>Pública</td>
+                                    <td>@lang('mis_encuestas.publica')</td>
                                     @else
-                                    <td>Privada</td>
+                                    <td>@lang('mis_encuestas.privada')</td>
                                     @endif
 
                                     @if($template->plan==0)
-                                    <td>Gratuita</td>
+                                    <td>@lang('mis_encuestas.gratis')</td>
                                     @else
                                     <td>Premium</td>
                                     @endif

@@ -43,11 +43,11 @@
                 <div class="row">
                 	<aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            <div class="temas-title">Reportes</div>
+                            <div class="temas-title">@lang('encuestas_publicas.reportes')</div>
                             <form>
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                                         <option value="">Seleccionar Tipo de reporte</option>
+                                         <option value="">@lang('encuestas_publicas.seleccionarTipoReporte')</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="select-style big-select">
                                     <select name="budget2" id="budget2" class="bg-transparent no-margin-bottom">
-                                         <option value="">Seleccionar por categoría</option>
+                                         <option value="">@lang('encuestas_publicas.seleccionarCategoria')</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -69,19 +69,19 @@
                         </div>
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
-                                <h6>¿Querés crear tu propia encuesta?</h6>
+                                <h6>@lang('encuestas_publicas.quieresCrearEncuesta')</h6>
                                 <p>Suscríbete gratis</p>
                                 <form method="POST" action="{{ URL('register') }}">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" name="name" id="name" placeholder="Nombre">
+                                            <input type="text" name="name" id="name" placeholder="@lang('encuestas_publicas.nombre')">
                                         </div>
                                         <div class="col-md-12">
                                             <input type="email" name="email" id="email" placeholder="E-mail">
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="password" name="password" id="password" placeholder="Contraseña">
+                                            <input type="password" name="password" id="password" placeholder="@lang('encuestas_publicas.contra')">
                                         </div>
     
                                         <div class="col-md-6">
@@ -117,14 +117,14 @@
 
                                         <div class="col-md-12" style="text-align:left;">
                                             <input type="checkbox" id="check" required>
-                                            <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
+                                            <label for="check" class="text-extra-dark-gray">@lang('encuestas_publicas.aceptoLos') <a href="{{ URL('terminos')}}">@lang('encuestas_publicas.terminos')</a></label>
                                         </div>
                                         <div class="col-md-12">
                                             {{-- <input type="button" name="ingresar" id="ingresar" value="Crear encuesta"> --}}
-                                            <button type="submit" class="btn btn-success">CREAR CUENTA</button>
+                                            <button type="submit" class="btn btn-success">@lang('encuestas_publicas.crearCuenta')</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="text-extra-dark-gray">Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
+                                            <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
                                         </div>
                                     </div>
                                 </form>
@@ -133,7 +133,7 @@
                         
                     </aside>
                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
-                        <h3>Encuestas destacadas</h3>
+                        <h3>@lang('encuestas_publicas.encuestasDestacadas')</h3>
                         <!-- start post item --> 
                         @foreach($templates as $template)
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">                        
@@ -147,21 +147,21 @@
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-bar-chart margin-5px-right"></i>Reporte simple</a>
+                                                <a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-bar-chart margin-5px-right"></i>@lang('encuestas_publicas.reporteSimple')</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="/reporte_avanzado/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>Reporte avanzado</a>
+                                                <a href="/reporte_avanzado/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>@lang('encuestas_publicas.reporteAvanzado')</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="#" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>Exportar reporte</a>
+                                                <a href="#" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
                                             </div>
                                         </div>
                                     </div>
@@ -173,10 +173,10 @@
                         <div class="pag">
                             {{-- <p>Total de las encuestas: 4 de 17</p> --}}
                             <div align="left">
-                                <a href="#">Anterior</a>
+                                <a href="#">@lang('encuestas_publicas.anterior')</a>
                             </div>
                             <div align="right">
-                                <a href="#">Siguiente</a>
+                                <a href="#">@lang('encuestas_publicas.siguiente')</a>
                             </div>
                         </div>
                     </main>
@@ -186,7 +186,7 @@
         <!-- end blog content section -->
         <section class="disclaimer">
             <div class="container">
-            <p> <img src="images/encuestas/warning.png" alt="" width="40px" height="40px"> Survenia no valida ni verifica la metodología utilizada por los usuarios para confeccionar la encuesta y recolectar datos, sólo brinda el espacio para que los mismos puedan publicar sus trabajos.</p>
+            <p> <img src="images/encuestas/warning.png" alt="" width="40px" height="40px"> @lang('encuestas_publicas.surveniaNoValida')</p>
             </div>
         </section>
 

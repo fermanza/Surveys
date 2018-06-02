@@ -12,7 +12,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Creación de encuesta</h1>
+                            <h1 class="no-margin-bottom">@lang('crear_encuesta.creacionEncuesta')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Creación de encuesta</li>
+                                <li class="text-dark-gray">@lang('crear_encuesta.creacionEncuesta')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -44,13 +44,13 @@
                 @if(isset($_GET['error']))
                     @if($_GET['error']==1)
                     <div class="alert alert-danger">
-                        No tienes los créditos suficientes para este tipo de encuesta
+                       @lang('crear_encuesta.noTienesCreditos')
                     </div>
                     @endif
                 @endif
 
                     <div class="col-lg-12 col-md-12 center-col margin-50px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
-                        <h5 class="font-weight-700 text-extra-dark-gray">¿Cómo quieres comenzar?</h5>
+                        <h5 class="font-weight-700 text-extra-dark-gray">@lang('crear_encuesta.comoQuieresComenzar')</h5>
                     </div>
 
 
@@ -60,8 +60,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <!-- start tab navigation -->
                         <ul class="nav nav-tabs display-inherit text-center">
-                            <li class="active"><a href="#tab_sec1" data-toggle="tab"><i class="fa fa-edit"></i> Crear encuesta desde cero</a></li>
-                            <li><a href="#tab_sec2" data-toggle="tab"><i class="fa fa-copy"></i> Copiar una escuesta existente</a></li>
+                            <li class="active"><a href="#tab_sec1" data-toggle="tab"><i class="fa fa-edit"></i>@lang('crear_encuesta.crearEncuesta')</a></li>
+                            <li><a href="#tab_sec2" data-toggle="tab"><i class="fa fa-copy"></i>@lang('crear_encuesta.copiarEncuesta')</a></li>
                         </ul>
                         <!-- end tab navigation -->
                     </div>
@@ -73,7 +73,7 @@
                         <div class="row equalize">
                             <div class="col-md-12 col-sm-12 col-xs-12 display-table">
                                 <div class="display-table-cell vertical-align-middle">
-                                    <h6 class="text-extra-dark-gray margin-20px-bottom">Nombrar la encuesta</h6>
+                                    <h6 class="text-extra-dark-gray margin-20px-bottom">@lang('crear_encuesta.nombrarEncuesta')</h6>
 
                                     <form action="{{ URL('encuestas/storeTemplate') }}" method="POST" id="usrform">
                                         {{ csrf_field() }}
@@ -85,8 +85,8 @@
                                             <div class="col-md-4">
                                                 <div class="select-style big-select">
                                                     <select name="plan" id="plan" class="bg-transparent no-margin-bottom" required>
-                                                        <option value="">Tipo de plan de la encuesta</option>
-                                                        <option value="0">Gratuita</option>
+                                                        <option value="">@lang('crear_encuesta.tipoPlanEncuesta')</option>
+                                                        <option value="0">@lang('crear_encuesta.gratis')</option>
                                                         <option value="1">Premium</option>
                                                     </select>
                                                 </div>
@@ -94,14 +94,14 @@
                                             <div class="col-md-4">
                                                 <div class="select-style big-select">
                                                     <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
-                                                        <option value="">Tipo de encuesta</option>
-                                                        <option value="0">Pública</option>
-                                                        <option value="1">Privada</option>
+                                                        <option value="">@lang('crear_encuesta.tipoDeEncuesta')</option>
+                                                        <option value="0">@lang('crear_encuesta.publica')</option>
+                                                        <option value="1">@lang('crear_encuesta.privada')</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-large margin-20px-top">Crear encuesta</button>
+                                                <button type="submit" class="btn btn-large margin-20px-top">@lang('crear_encuesta.crearEncuesta')</button>
                                             </div>
                                             
                                         </div>
@@ -117,7 +117,7 @@
                         <div class="row equalize">
                             <div class="col-md-12 col-sm-12 col-xs-12 display-table">
                                 <div class="display-table-cell vertical-align-middle">
-                                    <h6 class="text-extra-dark-gray margin-20px-bottom">Nombrar la encuesta</h6>
+                                    <h6 class="text-extra-dark-gray margin-20px-bottom">@lang('crear_encuesta.nombrarEncuesta')</h6>
                                     <form action="{{ URL('/copyTemplate') }}" method="POST" id="usrform">
                                         <div class="row" align="center">
                                             <div class="col-md-6"">
@@ -126,7 +126,7 @@
                                             <div class="col-md-6">
                                                 <div class="select-style big-select">
                                                     <select name="encuesta" id="plan" class="bg-transparent no-margin-bottom" required>
-                                                       <option value="">Copiar la encuesta</option>
+                                                       <option value="">@lang('crear_encuesta.copiarEncuesta')</option>
                                                        @foreach($templates as $template)   
                                                          <option value="{{ $template->id }}">{{ $template->name }}</option>
                                                        @endforeach  
@@ -134,7 +134,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-large margin-20px-top">Crear encuesta</button>
+                                                <button type="submit" class="btn btn-large margin-20px-top">@lang('crear_encuesta.crearEncuesta')</button>
                                             </div>
                                         </div>
                                     </form>
