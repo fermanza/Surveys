@@ -28,6 +28,9 @@ class LoginController extends Controller
                 return redirect()->intended('/my_account');
             }
             
+        }else{
+            die(dd($credentials));
+            return redirect()->intended('/inicio_sesion');
         }
     }
 

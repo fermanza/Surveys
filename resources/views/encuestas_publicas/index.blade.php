@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
-                                    <button type="submit" class="bg-transparent btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
+                                    <button type="submit" class="bg-transparent position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         </div>
@@ -73,7 +73,7 @@
                                 <p>Suscríbete gratis</p>
                                 <form method="POST" action="{{ URL('register') }}">
                                     {{ csrf_field() }}
-                                    <div class="row">
+                                    <div class="row" align="center">
                                         <div class="col-md-12">
                                             <input type="text" name="name" id="name" placeholder="@lang('encuestas_publicas.nombre')">
                                         </div>
@@ -139,7 +139,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">                        
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at->diffForHumans() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#" onClick="getLink({{$template->id}})">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span></div>
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at->diffForHumans() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#" onClick="getLink({{$template->id}})">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{{ URL('plantillas') }}">Tipo de encuestas</a></span></div>
                                     <a href="{{ URL('encuestas/responder') }}/{{ $template->id }}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block">{{ $template->name }}</a>
                                     <p>{{ $template->description }}</p>
                                 </div>

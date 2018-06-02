@@ -108,6 +108,12 @@ let fields = [{
   icon: '🌟'
 },
 {
+      label: "Email",
+      type: "text",
+      subtype: "email",
+      icon: "✉️"
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -149,8 +155,8 @@ let templates = {
         'text',
         'textarea'
        ],
-      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph'] 
+      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header'] 
     };
 
 

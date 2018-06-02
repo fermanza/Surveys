@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','last_name','email','password','password2','remember_token','address','city','country','company','phone',
+        'name','last_name','email','password','remember_token','address','city','country','company','phone',
     ];
 
     /**
@@ -58,7 +58,6 @@ class User extends Authenticatable
     public function setPasswordAttribute($value='')
     {
         $this->attributes['password'] = bcrypt($value);
-        $this->attributes['password2'] = bcrypt($value);
     }
     
     public function getAvatarAttribute($value)

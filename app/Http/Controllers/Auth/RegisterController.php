@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -74,7 +75,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'company' => $data['company'],
             'phone' => $data['phone'],
-            'password' => bcrypt($data['password_confirmation'])
+            'password' => $data['password']
         ]);
     }
 }

@@ -49,18 +49,14 @@
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
                                     <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
-                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">Editar</a>   </span> @endif
+                                    </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">Editar</a>   </span> @endif
 
                                       @if($user->id == 1)
-
-                                        <div>
-                                           
                                              <form style="display: inline-block;" method="POST" action="/articulos/{{ $articulo->id }}">
                                                   {{ method_field('DELETE') }}
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                   <button class="btn btn-primary ">Eliminar</button>
-                                             </form>      
-                                        </div>        
+                                                   &nbsp;&nbsp;&nbsp;<button>Eliminar</button>
+                                             </form>            
                                       @endif  
                                    </div>
                                     <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
@@ -112,7 +108,7 @@
                                 </div>
                                 <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
-                                    <button type="submit" class="bg-transparent  btn position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
+                                    <button type="submit" class="bg-transparent position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         
@@ -123,7 +119,7 @@
                                 <p>Suscríbete gratis</p>
                                 <form method="POST" action="{{ URL('register') }}">
                                     {{ csrf_field() }}
-                                    <div class="row">
+                                    <div class="row" align="center">
                                         <div class="col-md-12">
                                             <input type="text" name="name" id="name" placeholder="Nombre">
                                         </div>
@@ -138,10 +134,10 @@
                                             <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                             <button type="submit" class="btn btn-success">CREAR CUENTA</button>
+                                             <br><button type="submit" class="btn-info">CREAR CUENTA</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="text-extra-dark-gray">Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
+                                            <p class="text-extra-dark-gray"><br>Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
                                         </div>
                                     </div>
                                 </form>
