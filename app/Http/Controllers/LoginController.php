@@ -29,7 +29,7 @@ class LoginController extends Controller
             }
             
         }else{
-            die(dd($credentials));
+            //die(dd($credentials));
             return redirect()->intended('/inicio_sesion');
         }
     }
