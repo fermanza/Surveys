@@ -27,7 +27,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">@lang('encuestas_publicas.encuestasPublicas')</li>
+                                <li class="text-dark-gray"> @lang('encuestas_publicas.encuestasPublicas')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>

@@ -4,7 +4,7 @@ return [
 
 	'encuestasPublicas' => 'Encuestas Públicas',
 	'reportes' => 'Reportes',
-	'seleccionarReporte' => 'Seleccionar Tipo de reporte',
+	'seleccionarTipoReporte' => 'Seleccionar Tipo de reporte',
 	'seleccionarCategoria' => 'Seleccionar por categoría',
 	'quieresCrearEncuesta' => '¿Querés crear tu propia encuesta?',
 	'aceptoLos' => 'Acepto los',
@@ -12,7 +12,7 @@ return [
 	'crearCuenta' => 'CREAR CUENTA',
 	'obtenerPotencia' => 'Para obtener mas potencia',
 	'verPlanes' => 'Ver planes premium',
-	'escuestasDestacadas' => 'Encuestas destacadas',
+	'encuestasDestacadas' => 'Encuestas destacadas',
 	'reporteSimple' => 'Reporte simple',
 	'reporteAvanzado' => 'Reporte avanzado',
 	'exportarReporte' => 'Exportar reporte',
