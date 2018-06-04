@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             {{-- <input type="button" name="ingresar" id="ingresar" value="Crear encuesta"> --}}
-                                            <button type="submit" class="btn btn-success">@lang('encuestas_publicas.crearCuenta')</button>
+                                            <br><button type="submit" class="btn-info">@lang('encuestas_publicas.crearCuenta')</button><br><br>
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
