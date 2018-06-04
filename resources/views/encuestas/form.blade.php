@@ -114,6 +114,12 @@ let fields = [{
       icon: "✉️"
 },
 {
+      label: "Imagen",
+      type: "file",
+      subtype: "file",
+      icon: "✉️"
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -128,6 +134,14 @@ let templates = {
       field: '<span id="'+fieldData.name+'">',
       onRender: function() {
         $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+      }
+    };
+  },
+  imagen: function(fieldData) {
+    return {
+      field: '<label>Subir Imagen</label><input type="file" id="'+fieldData.name+'" name="img">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name));
       }
     };
   },

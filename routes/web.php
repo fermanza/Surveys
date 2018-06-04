@@ -144,4 +144,5 @@ $router->group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', '
     Route::get('/', 'DashboardController@index')->name('dash');
     Route::get('users/creditos/{id}','UserController@creditos')->name('admin.users.creditos');
     Route::resource('users', 'UserController');
+    Route::resource('surveys','SurveyController');
 });

@@ -15,3 +15,11 @@
           <span class="title">Información de Usuarios</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class='sidebar-link' href="{{ route(ADMIN . '.surveys.index') }}">
+          <span class="icon-holder">
+            <i class="c-brown-500 ti-files"></i>
+          </span>
+          <span class="title">Encuestas</span>
+        </a>
+      </li>
