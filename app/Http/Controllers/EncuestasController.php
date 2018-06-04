@@ -305,8 +305,8 @@ class EncuestasController extends Controller
     {
         $template=Template::find($id);
         $url=url('/responder').'/'.$template->hash;
-        //$urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
-        return response()->json($url,200);
+        $urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
+        return response()->json($urlbit,200);
 
     }
 
