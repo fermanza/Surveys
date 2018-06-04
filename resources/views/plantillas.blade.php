@@ -11,7 +11,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Plantillas</h1>
+                            <h1 class="no-margin-bottom">@lang('plantillas.plantillas')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Plantillas</li>
+                                <li class="text-dark-gray">@lang('plantillas.plantillas')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -43,8 +43,8 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
                         <div class="position-relative overflow-hidden width-100">
-                            <h5 class="text-extra-dark-gray font-weight-600">Plantillas</h5>
-                            <p class="text-extra-dark-gray center-col display-inline-block xs-width-100">Con Survenia puedes desarrollar todos los tipos de encuestas que necesites utilizando nuestros modelos predeterminados para hacer tu tarea más fácil:</p>
+                            <h5 class="text-extra-dark-gray font-weight-600">@lang('plantillas.plantillas')</h5>
+                            <p class="text-extra-dark-gray center-col display-inline-block xs-width-100">@lang('plantillas.conSurveniaPuedes')</p>
                         </div>
                     </div>
                 </div>
@@ -52,36 +52,36 @@
                     <!-- start features box item -->
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center last-paragraph-no-margin margin-70px-bottom sm-margin-40px-bottom xs-margin-30px-bottom wow fadeInUp" data-wow-delay="0.2s">                       
                         <img src="images/plantillas/i1.png" alt="">
-                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">Satisfacción del cliente</div>
-                        <p class="text-extra-dark-gray center-col xs-width-100">Conozca las opiniones de sus Clientes y mejore sus oportunidades de negocio con una encuesta de satisfacción.</p>                      
+                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">@lang('plantillas.satisfaccionCliente')</div>
+                        <p class="text-extra-dark-gray center-col xs-width-100">@lang('plantillas.conozcaOpiniones')</p>                      
                     </div>
                     <!-- end features box item -->
                     <!-- start features box item -->
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center last-paragraph-no-margin margin-70px-bottom sm-margin-40px-bottom xs-margin-30px-bottom wow fadeInUp" data-wow-delay="0.4s">                       
                         <img src="images/plantillas/i2.png" alt="">
-                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">Clima laboral</div>
-                        <p class="text-extra-dark-gray center-col xs-width-100">Ayude a mejorar el ambiente, la productividad y la retención de tu personal con encuestas en línea de satisfacción de empleados y evaluaciones 360°</p>                      
+                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">@lang('plantillas.climaLaboral')</div>
+                        <p class="text-extra-dark-gray center-col xs-width-100">@lang('plantillas.ayudeAmejorarAmbiente')</p>                      
                     </div>
                     <!-- end features box item -->
                     <!-- start features box item -->
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center last-paragraph-no-margin margin-70px-bottom sm-margin-40px-bottom xs-margin-30px-bottom wow fadeInUp" data-wow-delay="0.6s">                       
                         <img src="images/plantillas/i3.png" alt="">
-                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">Planificación de eventos</div>
-                        <p class="text-extra-dark-gray center-col xs-width-100">Cree una encuesta sobre planificación de eventos en cualquier etapa: antes, después o durante el evento.</p>                      
+                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">@lang('plantillas.planificacionEventos')</div>
+                        <p class="text-extra-dark-gray center-col xs-width-100">@lang('plantillas.creeEncuestaSobrePlanificacion')</p>                      
                     </div>                                        
                     <!-- end features box item -->
                     <!-- start features box item -->
                     <div class="col-md-offset-2 col-md-4 col-sm-6 col-xs-12 text-center last-paragraph-no-margin sm-margin-40px-bottom xs-margin-30px-bottom wow fadeInUp" data-wow-delay="0.8s">                       
                         <img src="images/plantillas/i4.png" alt="">
-                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">Educación y escuelas</div>
-                        <p class="text-extra-dark-gray center-col xs-width-100">Genere encuestas para hacer investigaciones para proyectos, planificar el plan de estudios, evaluar el curso, hacer encuestas sobre el desempeño de la escuela y mucho más.</p>                      
+                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">@lang('plantillas.educacionEscuelas')</div>
+                        <p class="text-extra-dark-gray center-col xs-width-100">@lang('plantillas.genereEncuestas')</p>                      
                     </div>
                     <!-- end features box item -->
                     <!-- start features box item -->
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center last-paragraph-no-margin xs-margin-30px-bottom wow fadeInUp" data-wow-delay="1s">                       
                         <img src="images/plantillas/i5.png" alt="">
-                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">Investigación de mercado</div>
-                        <p class="text-extra-dark-gray center-col xs-width-100">Determine cuál es el precio óptimo de un nuevo producto, mejore la retención de clientes o evalúe la efectividad de sus campañas publicitarias más recientes.</p>                      
+                        <div class="margin-10px-bottom sm-margin-5px-bottom font-weight-600">@lang('plantillas.investigacionDeMercado')</div>
+                        <p class="text-extra-dark-gray center-col xs-width-100">@lang('plantillas.determineCualEsElPrecio')</p>                      
                     </div> 
                     <!-- end features box item -->
                 </div>
@@ -96,7 +96,7 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center">
                         <div class="position-relative overflow-hidden width-100">
-                            <h5 class="text-extra-dark-gray font-weight-600">Plantillas disponibles</h5>
+                            <h5 class="text-extra-dark-gray font-weight-600">@lang('plantillas.plantillasDisponibles')</h5>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -108,7 +108,7 @@
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapseOne">
                                         <div class="panel-title">
                                             <span class="tab-tag">01</span>
-                                            <span class="xs-width-80 display-inline-block">Satisfacción al cliente</span>
+                                            <span class="xs-width-80 display-inline-block">@lang('plantillas.satisfaccionAlCliente')</span>
                                             <i class="fa fa-angle-up pull-right"></i>
                                         </div>
                                     </a>
@@ -116,13 +116,13 @@
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Satisfacción del cliente (general)</a></li>
-                                            <li><a href="#">Satisfacción del cliente – Hotel</a></li>
-                                            <li><a href="#">Satisfacción del cliente – Restaurante</a></li>
-                                            <li><a href="#">Satisfacción del cliente - Servicio de transporte</a></li>
-                                            <li><a href="#">Satisfacción del cliente – Servicio de atención al cliente</a></li>
-                                            <li><a href="#">Satisfacción del cliente – Centro Médico</a></li>
-                                            <li><a href="#">Satisfacción del cliente – Entidad Bancaria</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') (general)</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') – Hotel</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') – @lang('plantillas.restaurante')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') - @lang('plantillas.servicioTransporte')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') – @lang('plantillas.servicioAtencionCliente')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') – @lang('plantillas.centroMedico')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionCliente') – @lang('plantillas.entidadBancaria')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main" href="#collapseTwo">
                                         <div class="panel-title">
                                             <span class="tab-tag">02</span>
-                                            <span class="xs-width-80 display-inline-block">Clima laboral</span>
+                                            <span class="xs-width-80 display-inline-block">@lang('plantillas.climaLaboral')</span>
                                             <i class="indicator fa fa-angle-down pull-right"></i>
                                         </div>
                                     </a>
@@ -142,14 +142,14 @@
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Formación y desarrollo profesional</a></li>
-                                            <li><a href="#">Entrevista de salida</a></li>
-                                            <li><a href="#">Clima laboral</a></li>
-                                            <li><a href="#">Evaluación del desempeño del empleado</a></li>
-                                            <li><a href="#">Evaluación 360º</a></li>
-                                            <li><a href="#">Conciliación de vida laboral y familiar</a></li>
-                                            <li><a href="#">Satisfacción del empleado</a></li>
-                                            <li><a href="#">Valoración de departamentos de la empresa</a></li>
+                                            <li><a href="#">@lang('plantillas.formacionProfesional')</a></li>
+                                            <li><a href="#">@lang('plantillas.entrevistaSalida')</a></li>
+                                            <li><a href="#">@lang('plantillas.climaLaboral')</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacionEmpleado')</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacion') 360º</a></li>
+                                            <li><a href="#">@lang('plantillas.conciliacionVidaLaboral')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionEmpleado')</a></li>
+                                            <li><a href="#">@lang('plantillas.valoracionDepartamentos')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main2" href="#collapseThree">
                                         <div class="panel-title">
                                             <span class="tab-tag">03</span>
-                                            <span class="xs-width-80 display-inline-block">Planificación de Eventos</span>
+                                            <span class="xs-width-80 display-inline-block">@lang('plantillas.planificacionEventos')</span>
                                             <i class="indicator fa fa-angle-down pull-right"></i>
                                         </div>
                                     </a>
@@ -174,9 +174,9 @@
                                 <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Planificación de un evento
-                                            <li><a href="#">Evaluación de un evento</a></li>
-                                            <li><a href="#">Eficacia de una reunión</a></li>
+                                            <li><a href="#">@lang('plantillas.planificacionEventos') </a> </li>
+                                            <li><a href="#">@lang('plantillas.evaluacionEvento')</a></li>
+                                            <li><a href="#">@lang('plantillas.eficaciaReunion')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main2" href="#collapse4">
                                         <div class="panel-title">
                                             <span class="tab-tag">04</span>
-                                            <span class="xs-width-80 display-inline-block">Educación y escuelas</span>
+                                            <span class="xs-width-80 display-inline-block">@lang('plantillas.educacionEscuelas')</span>
                                             <i class="indicator fa fa-angle-down pull-right"></i>
                                         </div>
                                     </a>
@@ -196,11 +196,11 @@
                                 <div id="collapse4" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Evaluación de un curso de formación</a></li>
-                                            <li><a href="#">Evaluación del profesor</a></li>
-                                            <li><a href="#">Formulario de Inscripción en un Curso</a></li>
-                                            <li><a href="#">Satisfacción del profesor</a></li>
-                                            <li><a href="#">Evaluación de una asignatura</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacionCurso')</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacionProfesor')</a></li>
+                                            <li><a href="#">@lang('plantillas.formularionInscripcion')</a></li>
+                                            <li><a href="#">@lang('plantillas.satisfaccionProfesor')</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacionAsignatura')</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -212,7 +212,7 @@
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-main2" href="#collapse5">
                                         <div class="panel-title">
                                             <span class="tab-tag">05</span>
-                                            <span class="xs-width-80 display-inline-block">Investigación de Mercado</span>
+                                            <span class="xs-width-80 display-inline-block">@lang('plantillas.investigacionDeMercado')</span>
                                             <i class="indicator fa fa-angle-down pull-right"></i>
                                         </div>
                                     </a>
@@ -220,14 +220,14 @@
                                 <div id="collapse5" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Lanzamiento de un nuevo servicio</a></li>
-                                            <li><a href="#">Evaluación de la comunicación interna</a></li>
-                                            <li><a href="#">Test de producto</a></li>
-                                            <li><a href="#">Lanzamiento de un nuevo producto</a></li>
-                                            <li><a href="#">Test de concepto</a></li>
-                                            <li><a href="#">Test de nombre</a></li>
-                                            <li><a href="#">Test de precio</a></li>
-                                            <li><a href="#">Imagen de marca</a></li>
+                                            <li><a href="#">@lang('plantillas.lanzamientoServicio')</a></li>
+                                            <li><a href="#">@lang('plantillas.evaluacionComunicacionInterna')</a></li>
+                                            <li><a href="#">@lang('plantillas.testProducto')</a></li>
+                                            <li><a href="#">@lang('plantillas.lanzamientoProducto')</a></li>
+                                            <li><a href="#">Test @lang('plantillas.de') @lang('plantillas.concepto')</a></li>
+                                            <li><a href="#">Test @lang('plantillas.de')  @lang('plantillas.nombre') </a></li>
+                                            <li><a href="#">Test @lang('plantillas.de') @lang('plantillas.precio') </a></li>
+                                            <li><a href="#">@lang('plantillas.imagen') @lang('plantillas.de') @lang('plantillas.marca')</a></li>
                                         </ul>
                                     </div>
                                 </div>
