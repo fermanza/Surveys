@@ -44,7 +44,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Mi cuenta</h1>
+                            <h1 class="no-margin-bottom">@lang('creditos.miCuenta')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -59,8 +59,8 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray"><a href="mi-cuenta.php">Mi cuenta</a></li>
-                                <li class="text-dark-gray">Gestión de créditos</li>
+                                <li class="text-dark-gray"><a href="mi-cuenta.php">@lang('creditos.miCuenta')</a></li>
+                                <li class="text-dark-gray">@lang('creditos.gestionCreditos')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -86,8 +86,8 @@
 
             <div class="container">
                 <div class="row">
-                    <h5 class="title text-extra-dark-gray text-center">Gestión de créditos</h5>
-                    <p class="text-extra-dark-gray text-center">Cada crédito equivale a una encuesta que podrás crear. Mientras más créditos sumes a tu cartera más ahorras.</p> 
+                    <h5 class="title text-extra-dark-gray text-center">@lang('creditos.gestionCreditos')</h5>
+                    <p class="text-extra-dark-gray text-center">@lang('creditos.cadaCredito')</p> 
                 </div>
             </div>
         </section>
@@ -108,7 +108,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">1</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 0%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 0%<br>
                                             <b>USD 3,00</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -117,7 +117,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=1')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=1')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -137,7 +137,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">10</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 15%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 15%<br>
                                             <b>USD 25,50</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -146,7 +146,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=2')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=2')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -166,7 +166,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">50</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 25%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 25%<br>
                                             <b>USD 112,50</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -175,7 +175,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=3')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=3')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -195,7 +195,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">100</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 35%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 35%<br>
                                             <b>USD 195,00</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -204,7 +204,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=4')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=4')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -224,7 +224,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">250</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 45%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 45%<br>
                                             <b>USD 412,50</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -233,7 +233,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=5')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=5')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -253,7 +253,7 @@
                                     <!-- start pricing price -->
                                     <div class="pricing-price">
                                         <h4 class="text-extra-dark-gray no-margin-bottom">500</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 60%<br>
+                                        <div class="text-extra-small text-black margin-20px-top">@lang('creditos.ahorra') 60%<br>
                                             <b>USD 600,00</b></div>
                                     </div>
                                     <!-- end pricing price -->
@@ -262,7 +262,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=6')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
+                                        <a href="{{url('checkout?plan=6')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -281,7 +281,7 @@
                     <div class="col-md-12">
                         <img src="images/mi-cuenta/user.png" alt="">
                         <p>{{ $user->name }}</p>
-                        <p>Créditos disponibles: {{$tot}}</p>
+                        <p>@lang('creditos.creditosDisponibles') {{$tot}}</p>
                     </div>
                 </div>
             </div>
@@ -290,9 +290,7 @@
         <section class="text">
             <div class="container">
                 <div class="row">
-                    <p class="text-center">Los créditos duran un año a partir de la compra<br>
-                        No se renuevan automáticamente; simplemente, compra más cuando lo necesites.<br>
-                    Cada encuesta creada cuesta 1 crédito</p>
+                    <p class="text-center">@lang('creditos.losCreditosDuran')</p>
                 </div>
             </div>
         </section>
@@ -304,15 +302,15 @@
                         <div>
                             <img src="images/mi-cuenta/i2.png" alt="">
                             <div>
-                                <p><b> Tipo de plan</b></p>
+                                <p><b> @lang('creditos.tipoPlan')</b></p>
                                 <p>@if($tot>0)
                                      Premium
                                     @else
-                                     Gratuito
+                                     @lang('creditos.gratis')
                                     @endif</p>
                             </div>
                         </div>
-                        <a href="#"><i class="fa fa-caret-right"></i> Ampliar</a>
+                        <a href="#"><i class="fa fa-caret-right"></i> @lang('creditos.ampliar')</a>
                     </div>
                 </div>
             </div>

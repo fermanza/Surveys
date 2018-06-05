@@ -20,7 +20,11 @@ return [
 	'siguiente' => 'Siguiente',
 	'surveniaNoValida' => 'Survenia no valida ni verifica la metodología utilizada por los usuarios para confeccionar la encuesta y recolectar datos, sólo brinda el espacio para que los mismos puedan publicar sus trabajos.',
 	'nombre' => 'Nombre',
-	'contra' => 'Contraseña'
+	'contra' => 'Contraseña',
+	'compartir' => 'Compartir',
+	'tipoEncuesta' => 'Tipos de encuestas',
+	'buscar' => 'Buscar',
+	'suscribete' => 'Suscríbete gratis'
 
 
 

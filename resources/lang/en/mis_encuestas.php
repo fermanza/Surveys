@@ -17,7 +17,17 @@ return [
 	'eliminar' => 'Delete',
 	'publica' => 'Public',
 	'privada' => 'Private',
-	'gratis' => 'Free'
+	'gratis' => 'Free',
+
+
+	// ceacion encuesta
+
+	'creacionEncuesta' => 'Survey creation',
+	'tipoPregunta' => 'Type of question',
+	'cancelar' => 'Cancel',
+	'guardar' => 'Save'
+
+
 
 
 

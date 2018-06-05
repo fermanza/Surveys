@@ -20,7 +20,11 @@ return [
 	'siguiente' => 'Next',
 	'surveniaNoValida' => 'Survenia does not validate or verify the methodology used by users to prepare the survey and collect data, it only provides the space for them to publish their work.',
 	'nombre' => 'Name',
-	'contra' => 'Password'
+	'contra' => 'Password',
+	'compartir' => 'Share',
+	'tiposEncuestas' => 'Type of surveys',
+	'buscar' => 'Find',
+	'suscribete' => 'Subscribe for free'
 
 	
 
