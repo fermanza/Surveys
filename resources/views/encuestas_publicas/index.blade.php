@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="buscar position-relative">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="@lang('encuestas_publicas.buscar')">
-                                    <button type="submit" class="bg-transparent position-absolute right-0 top-1"><i class="fa fa-search no-margin-left"></i></button>
+                                    <button type="submit" class="bg-transparent position-absolute right-0 top-8" style="border: none;"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
                             </form>
                         </div>
@@ -86,6 +86,12 @@
     
                                         <div class="col-md-6">
                                     <input type="hidden" name="last_name" id="lastName">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" name="password" id="password">
+                                    @if ($errors->has('password'))
+                                        <div class="error">{{ $errors->first('password') }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
                                     <input type="hidden" name="password_confirmation" id="password_confirmation">
