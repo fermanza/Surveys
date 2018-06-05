@@ -18,7 +18,7 @@ visibility:hidden;
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Editar encuesta</h1>
+                            <h1 class="no-margin-bottom">@lang('editar_encuesta.editarEncuesta')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -33,7 +33,7 @@ visibility:hidden;
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">Editar encuesta</a></li>
+                                <li><a href="crear-encuesta.php" class="text-dark-gray">@lang('editar_encuesta.editarEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -56,7 +56,7 @@ visibility:hidden;
                               <div class="panel panel-default">
                                       <div class="panel-heading active">
                                           <div class="panel-title">
-                                                  <span class="btn btn-success">Tipo de pregunta <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                                                  <span class="btn btn-success">@lang('editar_encuesta.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
                                           </div>
                                       </div>
                               </div>
@@ -64,10 +64,10 @@ visibility:hidden;
                           <br><br>
                          <form id="fb-editor"></form>
                             <div class="guardar">
-                                    <a href="{{ url()->previous() }}">Cancelar</a>
+                                    <a href="{{ url()->previous() }}">@lang('editar_encuesta.cancelar')</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">Guardar</button>
+                                    <button class="btn" id="save-data">@lang('editar_encuesta.guardar')</button>
                             </div>
                         </div>
                 </div>

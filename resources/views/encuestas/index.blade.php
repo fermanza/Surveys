@@ -80,7 +80,7 @@
                                         {{ $action == 'edit' ? method_field('PATCH') : '' }}
                                         <div class="row" align="center">
                                             <div class="col-md-4">
-                                                <input type="text" name="name" id="name" placeholder="Nombrar la encuesta" class="big-input" required>
+                                                <input type="text" name="name" id="name" placeholder="@lang('crear_encuesta.nombrarEncuesta')" class="big-input" required>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="select-style big-select">

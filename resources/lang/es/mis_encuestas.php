@@ -17,7 +17,15 @@ return [
 	'eliminar' => 'Eliminar',
 	'publica' => 'Pública',
 	'privada' => 'Privada',
-	'gratis' => 'Gratuita'
+	'gratis' => 'Gratuita',
+
+	//creacion de encuesta
+
+	'creacionEncuesta' => 'Creación de encuesta',
+	'tipoPregunta' => 'Tipo de pregunta',
+	'cancelar' => 'Cancelar',
+	'guardar' => 'Guardar'
+
 
 
 ];

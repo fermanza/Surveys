@@ -2,7 +2,7 @@
 
 return [
 
-    'creacionEncuesta' => 'survey creation',
+    'creacionEncuesta' => 'Survey creation',
     'noTienesCreditos' => 'You do not have enough credits for this type of survey',
     'comoQuieresComenzar' => 'How do you want to start?',
     'crearEncuesta' => 'Create survey form scratch',

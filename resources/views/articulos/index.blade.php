@@ -11,7 +11,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Art&iacute;culos</h1>
+                            <h1 class="no-margin-bottom">@lang('articulos.articulos')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray">Art&iacute;culos</li>
+                                <li class="text-dark-gray">@lang('articulos.articulos')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -48,14 +48,14 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Compartir</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">Tipo de encuestas</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
-                                    </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">Editar</a>   </span> @endif
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.tipoEncuestas')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+                                    </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
 
                                       @if($user->id == 1)
                                              <form style="display: inline-block;" method="POST" action="/articulos/{{ $articulo->id }}">
                                                   {{ method_field('DELETE') }}
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                   &nbsp;&nbsp;&nbsp;<button>Eliminar</button>
+                                                   &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
                                              </form>            
                                       @endif  
                                    </div>
@@ -92,15 +92,15 @@
                         <!-- end post item -->
                     </main>
                     @if($user->id == 1) 
-                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-primary">Crear Artículo</a>
+                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-primary">@lang('articulos.crearArticulo')</a>
                              @endif  
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            <div class="temas-title">Temas</div>
+                            <div class="temas-title">@lang('articulos.temas')</div>
                             <form>
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                                         <option value="">Seleccionar categoría</option>
+                                         <option value="">@lang('articulos.seleccionarCategoria')</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -115,35 +115,35 @@
                         </div>         
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
-                                <h6>¿Querés crear tu propia encuesta?</h6>
-                                <p>Suscríbete gratis</p>
+                                <h6>@lang('articulos.quieresCrear')</h6>
+                                <p>@lang('articulos.suscribeteGratis')</p>
                                 <form method="POST" action="{{ URL('register') }}">
                                     {{ csrf_field() }}
                                     <div class="row" align="center">
                                         <div class="col-md-12">
-                                            <input type="text" name="name" id="name" placeholder="Nombre">
+                                            <input type="text" name="name" id="name" placeholder="@lang('articulos.nombre')">
                                         </div>
                                         <div class="col-md-12">
                                             <input type="email" name="email" id="email" placeholder="E-mail">
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="password" name="password" id="password" placeholder="Contraseña">
+                                            <input type="password" name="password" id="password" placeholder="@lang('articulos.contra')">
                                         </div>
                                         <div class="col-md-12" style="text-align:left;">
                                             <input type="checkbox" id="check">
-                                            <label for="check" class="text-extra-dark-gray">Acepto los <a href="{{ URL('terminos')}}">Términos y condiciones</a></label>
+                                            <label for="check" class="text-extra-dark-gray">@lang('articulos.aceptoLos')<a href="{{ URL('terminos')}}">@lang('articulos.terminos')</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                             <br><button type="submit" class="btn-info">CREAR CUENTA</button>
+                                             <br><button type="submit" class="btn-info">@lang('articulos.crearCuenta')</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="text-extra-dark-gray"><br>Para obtener mas potencia<br><a href="{{ URL('planes')}}">Ver planes premium</a></p>
+                                            <p class="text-extra-dark-gray"><br>@lang('articulos.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('articulos.verPlanes')</a></p>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="margin-45px-bottom xs-margin-25px-bottom archivo">
+                       {{-- <div class="margin-45px-bottom xs-margin-25px-bottom archivo">
                             <div class="text-extra-dark-gray margin-20px-bottom text-uppercase">Archivo</div>
                             <ul class="list-style-6 margin-50px-bottom text-small">
                                 <li><a href="#"><i class="fa fa-calendar"></i> Octubre 2017</a></li>
@@ -151,7 +151,7 @@
                                 <li><a href="#"><i class="fa fa-calendar"></i> Agosto 2017</a></li>
                                 <li><a href="#"><i class="fa fa-calendar"></i> Julio 2017</a></li>
                             </ul>   
-                        </div>
+                        </div> --}}
                         
                     </aside>
                 </div>

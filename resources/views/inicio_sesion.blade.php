@@ -54,21 +54,21 @@
                                     <input type="email" name="email" id="email" placeholder="E-mail *">
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="password" name="password" id="password" placeholder="Contraseña *">
+                                    <input type="password" name="password" id="password" placeholder="@lang('login.contra') *">
                                 </div>
                                 <div class="col-md-6 col-sm-6" style="text-align:left;">
                                     <input type="checkbox" id="check">
-                                    <label for="check" class="text-extra-dark-gray">Recordarme</label>
+                                    <label for="check" class="text-extra-dark-gray">@lang('login.recordarme')</label>
                                 </div>
                                 <div class="col-md-6 col-sm-6" style="text-align:right;">
-                                    <a href="{{ route('password.request') }}" class="text-extra-dark-gray">Recuperar contraseña</a>
+                                    <a href="{{ route('password.request') }}" class="text-extra-dark-gray">@lang('login.recuperarContra')</a>
                                 </div>
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary">
                                     Login</button>
                                 </div>
                                 <div class="col-md-12"><br>
-                                    <p class="text-extra-dark-gray cuenta">¿No tienes una cuenta? <a href="{{ URL('registro') }}">Registrarse</a></p>
+                                    <p class="text-extra-dark-gray cuenta">@lang('login.noTienesCuenta') <a href="{{ URL('registro') }}">@lang('login.registrarse')</a></p>
                                 </div>
                             </div>
                         </form>
@@ -76,13 +76,13 @@
                     <div class="col2 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook"></i> Ingresar con Facebook</a>
+                                <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook"></i> @lang('login.ingresarFace')</a>
                             </div>
                             <div class="col-md-12">
-                                <a href="{{ route('redirectSocialLite', ['provider' => 'google']) }}" class="google"><i class="fa fa-google"></i> Ingresar con Google</a>
+                                <a href="{{ route('redirectSocialLite', ['provider' => 'google']) }}" class="google"><i class="fa fa-google"></i> @lang('login.ingresarGoogle')</a>
                             </div>
                             <div class="col-md-12">
-                                <p class="text-extra-dark-gray">Es rápido, fácil y seguro; sus datos y encuestas son completamente privados.</p>
+                                <p class="text-extra-dark-gray">@lang('login.esRapidoFacil')</p>
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@ visibility:hidden;
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Responder encuesta</h1>
+                            <h1 class="no-margin-bottom">@lang('answer.responderEncuesta')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -33,7 +33,7 @@ visibility:hidden;
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">Responder encuesta</a></li>
+                                <li><a href="crear-encuesta.php" class="text-dark-gray">@lang('answer.responderEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -57,10 +57,10 @@ visibility:hidden;
                          <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor"></form>
                          <div class="guardar">
-                                    <a href="{{ url()->previous() }}">Cancelar</a>
+                                    <a href="{{ url()->previous() }}">@lang('answer.cancelar')</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">Responder</button>
+                                    <button class="btn" id="save-data">@lang('answer.responder')</button>
                         </div>
                         </div>
 
