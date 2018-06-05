@@ -47,19 +47,19 @@
                                     @foreach($respuestas as $respuesta)
 
                                     <?php $respuestajson=json_decode($respuesta->answer)?>
-                                    {{-- {{ dd($respuestajson) }} --}}
+  {{--   {{ dd($pregunta->label) }}  --}}
                                     
-                                    @if($pregunta->label=='Contact Information')
+                                    @if($pregunta->type=="contactInformation")
                                         <ul>
                                             <li>{{$respuestajson[$loop->parent->index]->value}}</li>
                                             <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
                                             <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
                                         </ul>
-                                    @elseif($pregunta->label == 'Multiple Textbox')
+                                    @elseif($pregunta->type=="multipleText")
                                         <ul>
-                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
                                             <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+3]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+4]->value}}</li>
                                         </ul>
                                     @else
                                         <ul>
