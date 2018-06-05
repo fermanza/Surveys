@@ -40,32 +40,35 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-
+                    <?php $cont=0; ?>
                     @foreach($preguntas as $pregunta)
                                     <h5>{{$pregunta->label}}</h5>
-
+                                    
                                     @foreach($respuestas as $respuesta)
 
                                     <?php $respuestajson=json_decode($respuesta->answer)?>
-  {{--   {{ dd($pregunta->label) }}  --}}
-                                    
-                                    @if($pregunta->type=="contactInformation")
-                                        <ul>
-                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
-                                        </ul>
-                                    @elseif($pregunta->type=="multipleText")
-                                        <ul>
-                                            <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+3]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+4]->value}}</li>
-                                        </ul>
-                                    @else
-                                        <ul>
-                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
-                                        </ul>
-                                    @endif   
+                                    {{--   {{ dd($pregunta->label) }}  --}}
+
+                                        @if($pregunta->type=="contactInformation")
+                                            <ul>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont]->value}}</li>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont+1]->value}}</li>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont+2]->value}}</li>
+                                            </ul>
+                                            @php $cont=$cont+2 @endphp
+                                        @elseif($pregunta->type=="multipleText")
+                                            <ul>
+                                            
+                                                <li>{{$respuestajson[$loop->parent->index+$cont]->value}}</li>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont+1]->value}}</li>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont+2]->value}}</li>
+                                            </ul>
+                                            @php $cont=$cont+2 @endphp
+                                        @else
+                                            <ul>
+                                                <li>{{$respuestajson[$loop->parent->index+$cont]->value}}</li>
+                                            </ul>
+                                        @endif 
                                     @endforeach
                     @endforeach
                     </div>
