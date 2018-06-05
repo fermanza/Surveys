@@ -215,6 +215,13 @@ visibility:hidden;
     icon: 'ℹ️'
 },
 {
+      label: 'Multiple Textbox',
+      attrs: {
+      type: 'multipleText'
+    },
+    icon: '📖'
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -267,6 +274,16 @@ let templates = {
      field: '<form id="'+fieldData.name+'"><input type="text" class="form-control" value="Nombre"><br><input type="text" class="form-control" value="Email"><br><textarea class="form-control" rows="4" cols="50">Mensaje</textarea></form>',
      onRender: function() {
        $(document.getElementById(fieldData.name));
+     }
+   };
+ },
+ multipleText: function(fieldData) {
+   return {
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Primer box" name="first"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Segundo box" name="second"><br><input type="text" id="'+fieldData.name+'2" class="form-control" value="Tercer box" name="third">',
+     onRender: function() {
+       $(document.getElementById(fieldData.name));
+       $(document.getElementById(fieldData.name+1));
+       $(document.getElementById(fieldData.name+2));
      }
    };
  },

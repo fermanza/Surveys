@@ -55,6 +55,12 @@
                                             <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
                                             <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
                                         </ul>
+                                    @elseif($pregunta->label == 'Multiple Textbox')
+                                        <ul>
+                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
+                                        </ul>
                                     @else
                                         <ul>
                                             <li>{{$respuestajson[$loop->parent->index]->value}}</li>

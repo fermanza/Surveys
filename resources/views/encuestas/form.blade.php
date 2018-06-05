@@ -115,6 +115,13 @@ let fields = [{
     icon: 'ℹ️'
 },
 {
+      label: 'Multiple Textbox',
+      attrs: {
+      type: 'multipleText'
+    },
+    icon: '📖'
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -135,6 +142,16 @@ let templates = {
  contactInformation: function(fieldData) {
    return {
      field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><textarea id="'+fieldData.name+'2" name="message" class="form-control" rows="4" cols="50">Mensaje</textarea>',
+     onRender: function() {
+       $(document.getElementById(fieldData.name));
+       $(document.getElementById(fieldData.name+1));
+       $(document.getElementById(fieldData.name+2));
+     }
+   };
+ },
+  multipleText: function(fieldData) {
+   return {
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Primer box" name="first"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Segundo box" name="second"><br><input type="text" id="'+fieldData.name+'2" class="form-control" value="Tercer box" name="third">',
      onRender: function() {
        $(document.getElementById(fieldData.name));
        $(document.getElementById(fieldData.name+1));
