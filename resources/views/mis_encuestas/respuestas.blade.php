@@ -57,9 +57,9 @@
                                         </ul>
                                     @elseif($pregunta->type=="multipleText")
                                         <ul>
-                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
-                                            <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
                                             <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+3]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+4]->value}}</li>
                                         </ul>
                                     @else
                                         <ul>
