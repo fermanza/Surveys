@@ -16,12 +16,19 @@ return [
     'repetir' => 'Repeat',
     'tambienPuedesRegistrarte' => 'You can also register using your Facebook or Google account',
     'rapidoFacilSeguro' => "It's fast, easy and safe; Your data and surveys are completely private.",
-     'ingresarFace' => 'Login with Facebook',
-     'ingresarGoogle' => 'Login with Google',
-     'alCrearUnaCuenta' => 'When you create an account, confirm that you agree with the',
-     'terminos' => 'Terms and Conditions',
-     'yLas' => 'and the',
-     'politicas' => 'Privacy policies',
-     'aceptaRecibirCorreos' => 'You also agree to receive emails with news and suggestions.'
+    'ingresarFace' => 'Login with Facebook',
+    'ingresarGoogle' => 'Login with Google',
+    'alCrearUnaCuenta' => 'When you create an account, confirm that you agree with the',
+    'terminos' => 'Terms and Conditions',
+    'yLas' => 'and the',
+    'politicas' => 'Privacy policies',
+    'aceptaRecibirCorreos' => 'You also agree to receive emails with news and suggestions.',
+    'editarCuenta' => 'Edit account',
+    'contra' => 'Password',
+    'miCuenta' => 'My account',
+    'datosPersonales' => 'Personal information',
+    'editarContra' => 'Edir password',
+    'cancelar' => 'Cancel',
+    'guardar' => 'Save'
 
 ];
