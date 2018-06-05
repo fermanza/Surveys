@@ -18,7 +18,12 @@ return [
      'temas'=> 'Topics',
      'seleccionarCategoria' => 'Select Category',
      'quieresCrear' => 'Do you want to create your own survey?',
-     'suscribeteGratis' => 'Subscribe for free'
+     'suscribeteGratis' => 'Subscribe for free',
+     'creacionArticulo' => 'Create article',
+     'guardar' => 'Save',
+     'cancelar' => 'Cancel',
+     'titulo' => 'Title',
+     'subirImagen' => 'Upload image'
 
 
 ];

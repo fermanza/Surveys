@@ -18,7 +18,12 @@ return [
     'temas' => 'Temas',
     'seleccionarCategoria' => 'Seleccionar categoría',
     'quieresCrear' => '¿Querés crear tu propia encuesta?',
-    'suscribeteGratis' => 'Suscríbete gratis'
-
+    'suscribeteGratis' => 'Suscríbete gratis',
+    'creacionArticulo' => 'Creación de Artículo',
+    'guardar' => 'Guardar',
+    'cancelar' => 'Cancelar',
+    'titulo' => 'Título',
+    'subirImagen' => 'Subir imagen'
+ 
 
 ];
