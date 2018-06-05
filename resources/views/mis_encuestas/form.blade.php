@@ -208,10 +208,11 @@ visibility:hidden;
   icon: '🌟'
 },
 {
-      label: "Email",
-      type: "text",
-      subtype: "email",
-      icon: "✉️"
+      label: 'Contact Information',
+      attrs: {
+      type: 'contactInformation'
+    },
+    icon: 'ℹ️'
 },
 {
   label: 'Slider',
@@ -261,6 +262,14 @@ let templates = {
     }
     }
   },
+  contactInformation: function(fieldData) {
+   return {
+     field: '<form id="'+fieldData.name+'"><input type="text" class="form-control" value="Nombre"><br><input type="text" class="form-control" value="Email"><br><textarea class="form-control" rows="4" cols="50">Mensaje</textarea></form>',
+     onRender: function() {
+       $(document.getElementById(fieldData.name));
+     }
+   };
+ },
   matriz: function(fieldData) {
     return {
       field: '<button style="color:#FFF;" class="btn">Nueva Fila</button> <button style="color:#FFF;" class="btn">Nueva Columna</button><table id='+fieldData.name+'><tr><td></td><td><input type="text"></td></tr><tr><td><input type="text"></td><td><input type="checkbox"></td></tr></table>',

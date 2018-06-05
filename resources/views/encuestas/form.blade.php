@@ -108,16 +108,11 @@ let fields = [{
   icon: '🌟'
 },
 {
-      label: "Email",
-      type: "text",
-      subtype: "email",
-      icon: "✉️"
-},
-{
-      label: "Imagen",
-      type: "file",
-      subtype: "file",
-      icon: "✉️"
+      label: 'Contact Information',
+      attrs: {
+      type: 'contactInformation'
+    },
+    icon: 'ℹ️'
 },
 {
   label: 'Slider',
@@ -137,14 +132,16 @@ let templates = {
       }
     };
   },
-  imagen: function(fieldData) {
-    return {
-      field: '<label>Subir Imagen</label><input type="file" id="'+fieldData.name+'" name="img">',
-      onRender: function() {
-        $(document.getElementById(fieldData.name));
-      }
-    };
-  },
+ contactInformation: function(fieldData) {
+   return {
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><textarea id="'+fieldData.name+'2" name="message" class="form-control" rows="4" cols="50">Mensaje</textarea>',
+     onRender: function() {
+       $(document.getElementById(fieldData.name));
+       $(document.getElementById(fieldData.name+1));
+       $(document.getElementById(fieldData.name+2));
+     }
+   };
+ },
   slider: function(fieldData) {
     return {
       field: '<h6 align="left">0</h6><input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',

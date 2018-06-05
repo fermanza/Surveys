@@ -182,7 +182,7 @@ class EncuestasController extends Controller
 
     public function saveQuestion(Request $request)
     {
-
+        //dd($request);
         $template=Template::find($request->template_id);
         $preguntas=json_decode($request->content);
 

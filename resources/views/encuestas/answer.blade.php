@@ -97,6 +97,13 @@ var options = {
   icon: '🌟'
 },
 {
+      label: 'Contact Information',
+      attrs: {
+      type: 'contactInformation'
+    },
+    icon: 'ℹ️'
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -144,6 +151,16 @@ let templates = {
     }
     }
   },
+  contactInformation: function(fieldData) {
+   return {
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><textarea id="'+fieldData.name+'2" name="message" class="form-control" rows="4" cols="50">Mensaje</textarea>',
+     onRender: function() {
+       $(document.getElementById(fieldData.name));
+       $(document.getElementById(fieldData.name+1));
+       $(document.getElementById(fieldData.name+2));
+     }
+   };
+ },
   matriz: function(fieldData) {
     return {
       field: '<div id='+fieldData.name+'></div>',
@@ -172,7 +189,9 @@ let templates = {
         var formdata = JSON.stringify($form.serializeArray());
         var id_template=$("#template_id").val();
         var token=$("#csrf-token").val();
-    
+      
+      console.log(formdata);
+
     request = $.ajax({
         url: '{{url('saveAnswer')}}',
         type: "post",

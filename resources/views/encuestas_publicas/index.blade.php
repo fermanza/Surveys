@@ -88,12 +88,6 @@
                                     <input type="hidden" name="last_name" id="lastName">
                                 </div>
                                 <div class="col-md-6">
-                                     <input type="hidden" name="password" id="password" required>
-                                     @if ($errors->has('password'))
-                                        <div class="error">{{ $errors->first('password') }}</div>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
                                     <input type="hidden" name="password_confirmation" id="password_confirmation">
                                     @if ($errors->has('password_confirmation'))
                                         <div class="error">{{ $errors->first('password_confirmation') }}</div>

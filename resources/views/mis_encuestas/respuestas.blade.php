@@ -47,9 +47,19 @@
                                     @foreach($respuestas as $respuesta)
 
                                     <?php $respuestajson=json_decode($respuesta->answer)?>
-                                    <ul>
-                                        <li>{{$respuestajson[$loop->parent->index]->value}}</li>
-                                    </ul>
+                                    {{-- {{ dd($respuestajson) }} --}}
+                                    
+                                    @if($pregunta->label=='Contact Information')
+                                        <ul>
+                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+1]->value}}</li>
+                                            <li>{{$respuestajson[$loop->parent->index+2]->value}}</li>
+                                        </ul>
+                                    @else
+                                        <ul>
+                                            <li>{{$respuestajson[$loop->parent->index]->value}}</li>
+                                        </ul>
+                                    @endif   
                                     @endforeach
                     @endforeach
                     </div>
