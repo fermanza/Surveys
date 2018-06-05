@@ -11,7 +11,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 display-table">
                         <div class="display-table-cell vertical-align-middle text-left xs-text-center">
                             <!-- start page title -->
-                            <h1 class="no-margin-bottom">Creación de Artículo</h1>
+                            <h1 class="no-margin-bottom">@lang('articulos.creacionArticulo')</h1>
                             <!-- end page title -->
                         </div>
                     </div>
@@ -26,8 +26,8 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('home')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="{{ URL('articulos')}}" class="text-dark-gray">Artículos</a></li>
-                                <li><a href="#" class="text-dark-gray">Creación de artículo</a></li>
+                                <li><a href="{{ URL('articulos')}}" class="text-dark-gray">@lang('articulos.articulos')</a></li>
+                                <li><a href="#" class="text-dark-gray">@lang('articulos.creacionArticulo')</a></li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -39,17 +39,17 @@
 <section class="padding-25px-tb margin-bread">
 	<div class="container">
      <form method="post" action="{{route('articulos.store')}}" enctype="multipart/form-data">			
-		<label>Título</label>
+		<label>@lang('articulos.titulo')</label>
 		<input type="text" name="title">
 
-		<label>Subir imagen</label>
+		<label>@lang('articulos.subirImagen')</label>
 		<input type="file" name="img">
 		<div id="blog">	
 		</div>
 
 		<div align="center">
-		<a class="btn" href="{{ url()->previous() }}">Cancelar</a>
-		<button class="btn btn-primary" type="submit">Guardar</button>
+		<a class="btn" href="{{ url()->previous() }}">@lang('articulos.cancelar')</a>
+		<button class="btn btn-primary" type="submit">@lang('articulos.guardar')</button>
 		</div>
 	</form>	
 	</div>

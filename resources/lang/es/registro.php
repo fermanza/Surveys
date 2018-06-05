@@ -13,8 +13,8 @@ return [
     'pais' => 'País ',
     'empresa' => 'Company',
     'contra' => 'Clave de acceso',
-     'repetir' => 'Repetir',
-     'tambienPuedesRegistrarte' => 'También podes registrarte usando tu cuenta de Facebook o Google',
+    'repetir' => 'Repetir',
+    'tambienPuedesRegistrarte' => 'También podes registrarte usando tu cuenta de Facebook o Google',
      'rapidoFacilSeguro' => 'Es rápido, fácil y seguro; sus datos y encuestas son completamente privados.',
      'ingresarFace' => 'Ingresar con Facebook',
      'ingresarGoogle' => 'Ingresar con Google',
@@ -22,6 +22,14 @@ return [
      'terminos' => 'Términos y condiciones',
      'yLas' => 'y las',
      'politicas' => 'Políticas de privacidad',
-     'aceptaRecibirCorreos' => ' También acepta recibir correos electrónicos con noticias y sugerencias.'
+     'aceptaRecibirCorreos' => ' También acepta recibir correos electrónicos con noticias y sugerencias.',
+     'editarCuenta' => 'Editar cuenta',
+     'contra' => 'Contraseña',
+     'miCuenta' => 'Mi cuenta',
+     'datosPersonales' => 'Datos personales',
+     'editarContra' => 'Editar contraseña',
+     'cancelar' => 'Cancelar',
+     'guardar' => 'Guardar'
 
+ 
 ];

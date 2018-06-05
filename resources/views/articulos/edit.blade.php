@@ -16,7 +16,7 @@
      <form method="POST" action="{{route('articulos.update', $articulo->id)}}" enctype="multipart/form-data">	
      	{{ method_field('PATCH')}}
      	 @csrf
-		<label>Titulo</label>
+		<label>@lang('articulos.titulo')</label>
 		<input type="text" name="title" value="{{ $articulo->title }}">
 		<div id="blog">	
 		</div>
@@ -26,10 +26,10 @@
 		 <img src="{{$articulo->img}}" style="width: 950px; height: 450px;">
 		</div> 
 
-		<label>Subir imagen</label>
+		<label>@lang('articulos.subirImagen')</label>
 		<input type="file" name="img">
 		 <br> 	
-		<button class="btn btn-primary" type="submit">Guardar</button>
+		<button class="btn btn-primary" type="submit">@lang('articulos.guardar')</button>
 	</form>	
 	</div>
 
