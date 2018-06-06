@@ -92,7 +92,7 @@
                         <!-- end post item -->
                     </main>
                     @if($user->id == 1) 
-                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-primary">@lang('articulos.crearArticulo')</a>
+                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-success">@lang('articulos.crearArticulo')</a>
                              @endif  
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
@@ -134,7 +134,7 @@
                                             <label for="check" class="text-extra-dark-gray">@lang('articulos.aceptoLos')<a href="{{ URL('terminos')}}">@lang('articulos.terminos')</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                             <br><button type="submit" class="btn-info">@lang('articulos.crearCuenta')</button>
+                                             <br><button type="submit" class="btn-success">@lang('articulos.crearCuenta')</button>
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray"><br>@lang('articulos.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('articulos.verPlanes')</a></p>

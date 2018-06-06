@@ -48,8 +48,8 @@
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('encuestas_publicas.seleccionarTipoReporte')</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option value="1">Reporte Simple</option>
+                                        <option value="2">Reporte Avanzado</option>
                                         <option value="3">3</option>
                                     </select>
                                 </div>
@@ -77,51 +77,40 @@
                                         <div class="col-md-12">
                                             <input type="text" name="name" id="name" placeholder="@lang('encuestas_publicas.nombre')">
                                         </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="last_name" id="lastName">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="company" id="empresa">
+                                        </div>
                                         <div class="col-md-12">
                                             <input type="email" name="email" id="email" placeholder="E-mail">
                                         </div>
                                         <div class="col-md-12">
                                             <input type="password" name="password" id="password" placeholder="@lang('encuestas_publicas.contra')">
                                         </div>
-    
                                         <div class="col-md-6">
-                                    <input type="hidden" name="last_name" id="lastName">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="password" id="password">
-                                    @if ($errors->has('password'))
-                                        <div class="error">{{ $errors->first('password') }}</div>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="password_confirmation" id="password_confirmation">
-                                    @if ($errors->has('password_confirmation'))
-                                        <div class="error">{{ $errors->first('password_confirmation') }}</div>
-                                    @endif
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="hidden" name="address" id="direccion">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="city" id="ciudad">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="country" id="pais">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="company" id="empresa">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="hidden" name="phone" id="telefono">
-                                </div>
-
+                                            <input type="hidden" name="password_confirmation" id="password_confirmation">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="hidden" name="address" id="direccion">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="phone" id="telefono">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="city" id="ciudad">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="country" id="pais">
+                                        </div>
                                         <div class="col-md-12" style="text-align:left;">
                                             <input type="checkbox" id="check" required>
                                             <label for="check" class="text-extra-dark-gray">@lang('encuestas_publicas.aceptoLos') <a href="{{ URL('terminos')}}">@lang('encuestas_publicas.terminos')</a></label>
                                         </div>
                                         <div class="col-md-12">
                                             {{-- <input type="button" name="ingresar" id="ingresar" value="Crear encuesta"> --}}
-                                            <br><button type="submit" class="btn-info">@lang('encuestas_publicas.crearCuenta')</button><br><br>
+                                            <br><button type="submit" class="btn-success">@lang('encuestas_publicas.crearCuenta')</button><br><br>
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>

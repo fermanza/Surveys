@@ -49,14 +49,9 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="select-style big-select">
-                        <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
-                             <option value="">@lang('mis_encuestas.todasLasEncuestas')</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
+                        
                     </div>
-                    <a class="btn" a href="{{ URL('encuestas') }}">@lang('mis_encuestas.crearEncuesta')</a>
+                    <a class="btn" a href="{{ URL('encuestas') }}">@lang('mis_encuestas.crearEncuesta')</a><br><br>
                 </div>
                 <div class="col-md-12">
                     <div class="panel panel-default">
