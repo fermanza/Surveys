@@ -87,7 +87,19 @@
                             </div>
                         </div>
 
-                    @endforeach    
+                    @endforeach   
+
+                    @if($articulos->count() == 5)
+                        <div class="pag">
+                            {{-- <p>Total de las encuestas: 4 de 17</p> --}}
+                            <div align="left">
+                                <a href="#">@lang('encuestas_publicas.siguiente')</a>
+                            </div>
+                            <div align="right">
+                                <a href="#">@lang('encuestas_publicas.anterior')</a>
+                            </div>
+                        </div>
+                    @endif 
          
                         <!-- end post item -->
                     </main>
