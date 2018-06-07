@@ -132,8 +132,11 @@
                         <!-- start copyright -->
                         <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
                         <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
+                      @if(Auth::check() && Auth::user()->id == 1)
                         <a href="{{ URL('login') }}">Admin</a>
+                      @endif    
                         <!-- end copyright -->
+                      
                     </div>
                 </div>
             </div>
