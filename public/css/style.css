@@ -3543,6 +3543,7 @@ header.sticky nav.navbar.brand-center ul.nav > li > a {padding: 20px; margin: 0 
 .pagination li { display: inline; }
 .pagination a { float: left; padding: 0 18px; line-height: 40px; text-decoration: none; border: 1px solid #ddd; border-left-width: 0; background: #fff }
 .pagination a:hover {background-color: #232323; color: #fff }
+.pagination span {background-color: red;}
 .pagination .active a {background-color: #f5f5f5;}
 .pagination .active a { color: #999999; cursor: default; }
 .pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover { color: #999999; background-color: transparent; cursor: default; }
@@ -4209,6 +4210,10 @@ footer .widget.links {
 
 /*HOME-COMO FUNCIONA*/
 
+.equalize .eq-info p {
+    margin-bottom: 0;
+}
+
 .equalize .eq-info {
     background-image: url(../images/home/fp1.png);
     background-color: #0b2a3e;
@@ -4253,10 +4258,10 @@ footer .widget.links {
     .equalize .cover-background {
         height: 250px !important;
     }
-    .planes .cont {
+    .index .planes .cont {
         float: initial;
     }
-    .planes .cont .col-md-6 {
+    .index .planes .cont .col-md-6 {
         text-align: center;
     }
     .planes .flex-plan .btn {
@@ -4274,13 +4279,13 @@ footer .widget.links {
 }
 
 @media (max-width: 767px){
-    .planes .cont {
+    .index .planes .cont {
         display: block;
     }
     .planes .flex-plan .btn {
         position: initial !important;
     }
-    .planes .cont .col-md-6 {
+    .index .planes .cont .col-md-6 {
         max-width: 300px;
         width: 100%;
         text-align: center;
@@ -4311,6 +4316,7 @@ footer .widget.links {
 }
 .servicio > div {
     padding: 35px 0;
+    padding-bottom: 0px;
 }
 .servicio .icon-round-small {
     width: 110px;

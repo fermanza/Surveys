@@ -33,7 +33,7 @@
                                      data-paddingright="[0,0,0,0]"
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[0,0,0,0]"
-                                     style="z-index: 8; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 600; letter-spacing: -1px; color: #000;">@lang('home.creaTuEncuesta')<br>online</div>
+                                     style="z-index: 8; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 600; letter-spacing: -1px; color: #000;">@lang('home.creaTuEncuesta')<br>online<br><br></div>
                                 
                                 <!-- layer nr. 3 -->
                                 <div class="tp-caption NotGeneric-Title tp-resizeme" 
@@ -152,74 +152,74 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
                         <p class="width-80 center-col display-inline-block xs-width-100"> @lang('home.encuestasOnline')</p>
-                        <h5 class="text-extra-dark-gray font-weight-600"> @lang('home.caracteristicasDelServicio') </h5>
+                        <h5 class="text-extra-dark-gray font-weight-600"> @lang('home.caracteristicasDelServicio') </h5><br><br><br>
                         
                     </div>
                 </div>
                 <div class="row equalize">
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 sm-margin-30px-bottom wow fadeInUp last-paragraph-no-margin">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s1.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">@lang('home.facilDeUsar') </div>
-                            <p class="width-75 center-col text-dark-gray"> @lang('home.nuestrasHerramientas')  </p>
+                            <div class="text-extra-dark-gray font-weight-600">@lang('home.facilDeUsar') </div>
+                            <p class="width-75 center-col text-dark-gray"> @lang('home.nuestrasHerramientas')  </p><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 sm-margin-30px-bottom wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s2.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.resultadosInstantaneos')  </div>
-                            <p class="width-75 center-col text-dark-gray">@lang('home.sigueTusResultados') </p>
+                            <div class="text-extra-dark-gray font-weight-600"> @lang('home.resultadosInstantaneos')  </div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.sigueTusResultados') </p><br><br><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s3.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.encuestasMoviles')  </div>
-                            <p class="width-75 center-col text-dark-gray">@lang('home.conLaInterfaceOptimizada')    </p>
+                            <div class="text-extra-dark-gray font-weight-600"> @lang('home.encuestasMoviles')  </div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.conLaInterfaceOptimizada')    </p><br><br><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s4.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">@lang('home.economico')</div>
-                            <p class="width-75 center-col text-dark-gray">@lang('home.surveniaNoTeObliga')  </p>
+                            <div class="text-extra-dark-gray font-weight-600">@lang('home.economico')</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.surveniaNoTeObliga')  </p><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.8s">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s5.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600"> @lang('home.plantillas')</div>
-                            <p class="width-75 center-col text-dark-gray">@lang('home.utilizaLasPlantillas') </p>
+                            <div class="text-extra-dark-gray font-weight-600"> @lang('home.plantillas')</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.utilizaLasPlantillas') </p><br><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
                     <!-- start features box item -->
                     <div class="servicio col-md-4 col-sm-6 col-xs-12 wow fadeInUp last-paragraph-no-margin" data-wow-delay="1s">
-                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative inner-match-height">
+                        <div class="bg-white border-color-extra-medium-gray border-solid border-width-1 text-center border-radius-4 position-relative">
                             <div class="display-inline-block icon-round-small">
                                 <img src="images/home/s6.png" alt="">
                             </div>
-                            <div class="text text-extra-dark-gray font-weight-600">Survenia Blog</div>
-                            <p class="width-75 center-col text-dark-gray">@lang('home.publicaTusEncuestas') .</p>
+                            <div class="text-extra-dark-gray font-weight-600">Survenia Blog</div>
+                            <p class="width-75 center-col text-dark-gray">@lang('home.publicaTusEncuestas') .</p><br><br>
                         </div>
                     </div>
                     <!-- end feature box item -->
@@ -260,7 +260,7 @@
                                     <li><i class="fa fa-check"></i> <div>@lang('home.funcionalidades')</div></li>
                                     <li><i class="fa fa-check"></i> <div>@lang('home.paqueteEncuestas') </div></li>
                                 </ul>
-                                <a href="#" class="btn btn2">@lang('home.contratar')</a>
+                                <a href="{{ URL('registro')}}" class="btn btn2">@lang('home.contratar')</a>
                             </div> 
                         </div>
                         <!-- end feature box item -->

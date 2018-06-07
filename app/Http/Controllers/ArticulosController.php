@@ -39,6 +39,7 @@ class ArticulosController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
     
         if($request->hasFile('img')) {
             $fileName = FileControl::storeFile($request->img, 'articles');

@@ -115,7 +115,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
-                                        </div>
+                                        </div5
                                     </div>
                                 </form>
                             </div>
@@ -123,7 +123,9 @@
                         
                     </aside>
                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
-                        <h3>@lang('encuestas_publicas.encuestasDestacadas')</h3>
+                        <div class="container">
+                        <strong><h5 align="left">@lang('encuestas_publicas.encuestasDestacadas')</h5></strong>
+                        </div>
                         <!-- start post item --> 
                         @foreach($templates as $template)
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">                        
@@ -160,26 +162,24 @@
                         </div>
                         @endforeach
                         <!-- end post item -->
-                          
-                        @if($templates->count() == 5)
-                            <div class="pag">
-                                {{-- <p>Total de las encuestas: 4 de 17</p> --}}
-                                <div align="left">
-                                    <a href="#">@lang('encuestas_publicas.siguiente')</a>
-                                </div>
-                                <div align="right">
-                                    <a href="#">@lang('encuestas_publicas.anterior')</a>
-                                </div>
-                            </div>
+                            
+                        @if($templates->count() > 0)
+                        <div class="pag" align="right">
+                            <p>Total de las encuestas: {{ $templates->count() }}</p>
+                                Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
+                                {{ $templates->links() }}
+                        </div>
                         @endif 
+                            
                     </main>
                 </div>
             </div>
         </section>
         <!-- end blog content section -->
         <section class="disclaimer">
-            <div class="container">
-            <p> <img src="images/encuestas/warning.png" alt="" width="40px" height="40px"> @lang('encuestas_publicas.surveniaNoValida')</p>
+            <div class="container" align="center">
+            <img src="images/encuestas/warning.png" alt="" width="40px" height="40px">
+            <p align="justify">@lang('encuestas_publicas.surveniaNoValida')</p>
             </div>
         </section>
 

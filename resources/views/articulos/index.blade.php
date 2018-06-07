@@ -88,18 +88,15 @@
                         </div>
 
                     @endforeach   
-
-                    @if($articulos->count() == 5)
-                        <div class="pag">
-                            {{-- <p>Total de las encuestas: 4 de 17</p> --}}
-                            <div align="left">
-                                <a href="#">@lang('encuestas_publicas.siguiente')</a>
-                            </div>
-                            <div align="right">
-                                <a href="#">@lang('encuestas_publicas.anterior')</a>
-                            </div>
-                        </div>
+                    
+                    @if($articulos->count() > 0)
+                    <div class="pag" align="right">
+                            <p>Total de los artículos: {{ $articulos->count() }}</p>
+                            Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
+                            {{ $articulos->links() }}
+                    </div>
                     @endif 
+                
          
                         <!-- end post item -->
                     </main>

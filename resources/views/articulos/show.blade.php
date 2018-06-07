@@ -50,7 +50,7 @@
         </div>
 	<div align="center">
         <hr />
-        <a class="btn" href="{{ url()->previous() }}">Volver a Artículos</a>
+        <a class="btn" href="{{ URL('articulos') }}">Volver a Artículos</a>
         </div>
 
     </section>

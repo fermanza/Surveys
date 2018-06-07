@@ -9,7 +9,7 @@ return [
 	'quieresCrearEncuesta' => '¿Querés crear tu propia encuesta?',
 	'aceptoLos' => 'Acepto los',
 	'terminos' => 'Términos y condiciones',
-	'crearCuenta' => 'CREAR CUENTA',
+	'crearCuenta' => 'CREAR ENCUESTA',
 	'obtenerPotencia' => 'Para obtener mas potencia',
 	'verPlanes' => 'Ver planes premium',
 	'encuestasDestacadas' => 'Encuestas destacadas',

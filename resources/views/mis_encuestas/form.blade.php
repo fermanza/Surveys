@@ -5,12 +5,11 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap
 {
 visibility:hidden;
-}
+} 
 </style>
-
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -330,7 +329,8 @@ var options = {
         'text',
         'textarea'
        ],
-      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required','inline','toggle'],
+      hiddenAttrs: ['className'],
+      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph', 'header'] 
     };
 

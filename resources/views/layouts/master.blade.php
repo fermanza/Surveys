@@ -22,7 +22,7 @@
         <meta name="theme-color" content="#ffffff">
  --}}
         <!-- Fav Icon --> 
-        <link rel="icon" href="{{ asset('icons/favicon.ico') }}" sizes="64x64" >
+        <link rel="icon" href="icons/favicon.ico" sizes="64x64" >
         <!-- animation -->
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>
         <!-- bootstrap -->
@@ -62,7 +62,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
-    <body>
+    <body class="index">
         @yield('content')
 
         <!-- start footer --> 
@@ -116,10 +116,7 @@
                             @foreach($articulos as $articulo)
                             <div class="col-md-12 footer-post">
                                 <a href="{{url('articulos')}}/{{$articulo->id}}">
-                                      
-                                    <img src="{{$articulo->img}}" width="20%" alt="">
-                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;">{{$articulo->title}}</p>
-                                   
+                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;"><img src="{{$articulo->img}}" width="20%" alt="">&nbsp;&nbsp;&nbsp;{{$articulo->title}}<br><br>{{ $articulo->body}}</p>
                                 </a>
                             </div>
                             @endforeach
