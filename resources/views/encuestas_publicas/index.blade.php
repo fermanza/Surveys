@@ -50,7 +50,6 @@
                                          <option value="">@lang('encuestas_publicas.seleccionarTipoReporte')</option>
                                         <option value="1">Reporte Simple</option>
                                         <option value="2">Reporte Avanzado</option>
-                                        <option value="3">3</option>
                                     </select>
                                 </div>
                                 <div class="select-style big-select">
