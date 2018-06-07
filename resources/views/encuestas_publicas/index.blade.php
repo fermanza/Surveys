@@ -160,15 +160,18 @@
                         </div>
                         @endforeach
                         <!-- end post item -->
-                        <div class="pag">
-                            {{-- <p>Total de las encuestas: 4 de 17</p> --}}
-                            <div align="left">
-                                <a href="#">@lang('encuestas_publicas.anterior')</a>
+                          
+                        @if($templates->count() == 5)
+                            <div class="pag">
+                                {{-- <p>Total de las encuestas: 4 de 17</p> --}}
+                                <div align="left">
+                                    <a href="#">@lang('encuestas_publicas.siguiente')</a>
+                                </div>
+                                <div align="right">
+                                    <a href="#">@lang('encuestas_publicas.anterior')</a>
+                                </div>
                             </div>
-                            <div align="right">
-                                <a href="#">@lang('encuestas_publicas.siguiente')</a>
-                            </div>
-                        </div>
+                        @endif 
                     </main>
                 </div>
             </div>

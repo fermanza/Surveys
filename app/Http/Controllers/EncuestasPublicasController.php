@@ -18,10 +18,11 @@ class EncuestasPublicasController extends Controller
     public function index(Request $request)
     {
 
-        $templates = Template::Search($request->title)->with('user')->where('type', '=', '0')->latest()->get();
+        $templates = Template::Search($request->title)->with('user')->where('type', '=', '0')->latest()->paginate(5);
         $user = User::all();
+        //dd($templates->count());
 
-        return view('encuestas_publicas.index',compact('templates'));
+        return view('encuestas_publicas.index',compact('templates','user'));
     }
 
     /**

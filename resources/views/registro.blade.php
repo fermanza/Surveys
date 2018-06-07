@@ -124,6 +124,7 @@
                                 <p class="text-extra-dark-gray">@lang('registro.rapidoFacilSeguro').</p>
                             </div>
                             <div class="col-md-12">
+                                <br>
                                 <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook"></i> @lang('registro.ingresarFace')</a>
                             </div>
                             <div class="col-md-12">

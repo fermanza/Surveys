@@ -12,7 +12,7 @@
         <!-- keywords -->
         <meta name="keywords" content="">
         <!-- favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/apple-touch-icon.png') }}"/>
+{{--         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/apple-touch-icon.png') }}"/>
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/favicon-32x32.png') }}"/>
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon-16x16.png') }}"/>
         <link rel="manifest" href="{{ asset('icons/manifest.json') }}">
@@ -20,6 +20,9 @@
         <link rel="shortcut icon" href="{{ asset('icons/favicon.ico') }}">
         <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
         <meta name="theme-color" content="#ffffff">
+ --}}
+        <!-- Fav Icon --> 
+        <link rel="icon" href="{{ asset('icons/favicon.ico') }}" sizes="64x64" >
         <!-- animation -->
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>
         <!-- bootstrap -->
