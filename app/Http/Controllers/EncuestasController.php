@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
+use App\Notifications\ApprovalNotification;
 use App\Answer;
 use App\UserCredit;
 use App\Discounts;
@@ -28,11 +29,13 @@ class EncuestasController extends Controller
     public function index()
     {   
         $template = Template::find(1);
+        $users = DB::table('users')->where('role', '=', '10')->get();
         $action = 'create';
+        //dd($user);
 
-       $templates = Template::where('type', 0)->get();
+        $templates = Template::where('type', 0)->get();
 
-        return view('encuestas.index', compact('template','action', 'templates'));
+        return view('encuestas.index', compact('template','users','action', 'templates'));
     }
 
     /**
@@ -59,7 +62,11 @@ class EncuestasController extends Controller
      */
     public function storeTemplate(Request $request)
     {
-        //dd($request);
+        $input = Input::all();
+        $user = User::findOrNew($input['user_id']);
+        //dd($user);
+        //dd($request->all());
+
         if($request->plan == 1)
         {
             $creditos=DB::table("user_credit")->sum('credits');
@@ -80,6 +87,14 @@ class EncuestasController extends Controller
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
 
+        // if($request->tipo == 0)
+        // {
+        //     $user->name = $request->name;
+        //     $user->email = $request->email;
+        //     $user->notify(new ApprovalNotification($user, $template));
+
+        //     return redirect()->route('encuestas_publicas.index');
+        // }
         
         if($request->plan == 1)
         {
@@ -182,7 +197,7 @@ class EncuestasController extends Controller
 
     public function saveQuestion(Request $request)
     {
-        //dd($request);
+        //dd($request->all());
         $template=Template::find($request->template_id);
         $preguntas=json_decode($request->content);
 
@@ -273,11 +288,13 @@ class EncuestasController extends Controller
             }
         }
         //dd($ip);
-        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        //if($answer)
-       // {
-        //    return response()->json('ip',500);
-       // }
+
+        // $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+        // if($answer)
+        // {
+        //     return response()->json('ip',500);
+        // }
+
 
 
             $answer=new Answer;

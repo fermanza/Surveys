@@ -78,6 +78,13 @@
                                     <form action="{{ URL('encuestas/storeTemplate') }}" method="POST" id="usrform">
                                         {{ csrf_field() }}
                                         {{ $action == 'edit' ? method_field('PATCH') : '' }}
+
+                                        @foreach($users as $user)
+                                        <input type="hidden" name="userName" class="form-control" value="{{ $user->name }}">
+                                        <input type="hidden" name="email" class="form-control" value="{{ $user->email }}">
+                                        <input type="hidden" name="user_id" class="form-control" value="{{ $user->id }}">
+                                        @endforeach
+            
                                         <div class="row" align="center">
                                             <div class="col-md-4">
                                                 <input type="text" name="name" id="name" placeholder="@lang('crear_encuesta.nombrarEncuesta')" class="big-input" required>

@@ -18,6 +18,7 @@ class FileControl
 
 	 public static function storeFile($file, $location)
 	 {
+	 	  //dd($file);
 	 	  $date = new DateTime();
 	 	  $fileName = "{$date->getTimestamp()}_{$file->getClientOriginalName()}";
 	 	  Storage::disk($location)->put($fileName, File::get($file));

@@ -23,7 +23,7 @@ return [
      'guardar' => 'Save',
      'cancelar' => 'Cancel',
      'titulo' => 'Title',
-     'subirImagen' => 'Upload image'
+     'subirImagen' => 'Upload image (max size 1Mb)'
 
 
 ];

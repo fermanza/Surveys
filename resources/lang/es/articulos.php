@@ -5,7 +5,7 @@ return [
     'articulos' => 'Art&iacute;culos',
     'aceptoLos' => 'Acepto los',
     'terminos' => 'Términos y condiciones',
-    'crearCuenta' => 'CREAR CUENTA',
+    'crearCuenta' => 'CREAR ENCUESTA',
     'obtenerPotencia' => 'Para obtener mas potencia',
     'verPlanes' => 'Ver planes premium',
     'nombre' => 'Nombre',
@@ -23,7 +23,7 @@ return [
     'guardar' => 'Guardar',
     'cancelar' => 'Cancelar',
     'titulo' => 'Título',
-    'subirImagen' => 'Subir imagen'
+    'subirImagen' => 'Subir imagen (tamaño máximo 1Mb)'
  
 
 ];
