@@ -44,7 +44,7 @@
                 	<aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
                             <div class="temas-title">@lang('encuestas_publicas.reportes')</div>
-                            <form>
+                            
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('encuestas_publicas.seleccionarTipoReporte')</option>
@@ -62,10 +62,12 @@
                                     </select>
                                 </div>
                                 <div class="buscar position-relative">
-                                    <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="@lang('encuestas_publicas.buscar')">
+                                 <form method="GET" action= "{{ route('encuestas_publicas.index') }}" >   
+                                    <input type="text" name="title" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="@lang('encuestas_publicas.buscar')">
                                     <button type="submit" class="bg-transparent position-absolute right-0 top-8" style="border: none;"><i class="fa fa-search no-margin-left"></i></button>
+                                 </form>   
                                 </div>  
-                            </form>
+                            
                         </div>
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
