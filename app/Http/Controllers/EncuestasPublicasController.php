@@ -94,10 +94,10 @@ class EncuestasPublicasController extends Controller
 
     public function showAdvancedReport($idEncuesta)
     {
-
+        $answers = DB::table('answer')->select('answer')->where('id_template', $idEncuesta)->get();
         $questions = DB::table('questions')->select('content')->where('template_id', $idEncuesta)->first();
 
-        return view('encuestas_publicas.advanced_report', compact('questions'));
+        return view('encuestas_publicas.advanced_report', compact('questions', 'answers'));
     }
 
 
