@@ -28,7 +28,7 @@ return [
 	"connect"            => "Loggin",
 	'crearEncuesta'=> 'Crear encuesta',
 	"misEncuestas" => "Mis encuestas",
-	"encuestasPublicas" => "Encuestas publicas",
+	"encuestasPublicas" => "Encuestas públicas",
 	"articulos" => "Artículos",
 	"gestionDeCreditos" => "Gestión de Créditos",
 	"datosPersonales" => "Datos personales",

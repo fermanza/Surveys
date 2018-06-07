@@ -50,5 +50,10 @@ class Template extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeSearch($query, $title) 
+    {
+        return $query->where('name', 'LIKE' , "%$title%");
+    }
+
     
 }

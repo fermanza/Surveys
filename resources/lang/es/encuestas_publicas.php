@@ -22,7 +22,7 @@ return [
 	'nombre' => 'Nombre',
 	'contra' => 'Contraseña',
 	'compartir' => 'Compartir',
-	'tipoEncuesta' => 'Tipos de encuestas',
+	'tiposEncuestas' => 'Tipos de encuestas',
 	'buscar' => 'Buscar',
 	'suscribete' => 'Suscríbete gratis'
 
