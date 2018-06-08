@@ -60,6 +60,13 @@ return [
             'root' => public_path('articles')
         ],
 
+
+        'imagenesEncuestas' => [
+            'driver' => 'local',
+            'root' => public_path('imagenesEncuestas')
+        ],
+
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

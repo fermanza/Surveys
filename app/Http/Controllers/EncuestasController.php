@@ -13,6 +13,7 @@ use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
 use App\Notifications\ApprovalNotification;
+use App\FileControl\FileControl;
 use App\Answer;
 use App\UserCredit;
 use App\Discounts;
@@ -199,6 +200,15 @@ class EncuestasController extends Controller
     {
         //dd($request->all());
         $template=Template::find($request->template_id);
+        if($request->hasFile('saveImage')) {
+            $fileName = FileControl::storeFile($request->saveImage, 'imagenesEncuestas');
+            $request->saveImage = "/imagenesEncuestas/{$fileName}"; 
+            $template->url = $request->saveImage;
+            $template->save();
+        }
+
+        //dd($fileName);
+
         $preguntas=json_decode($request->content);
 
         if($template->plan==0 && count($preguntas)>10)
@@ -206,7 +216,6 @@ class EncuestasController extends Controller
             return response()->json("exceso",500);
         }
 
-        
         $question=Questions::where('template_id','=',$request->template_id)->first();
         if(!$question)
         {

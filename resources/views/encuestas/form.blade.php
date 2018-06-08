@@ -4,12 +4,8 @@
 @extends('includes.header')
 @section('content')
 
-<style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap
-{
-visibility:hidden;
-} 
-</style>
+
+
 
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
@@ -242,6 +238,20 @@ let fields = [{
     icon: '📖'
 },
 {
+      label: 'Imagen',
+      attrs: {
+      type: 'file'
+    },
+    icon: '🖼️'
+},
+{
+      label: 'Ranking',
+      attrs: {
+      type: 'select'
+    },
+    icon: '🖼️'
+},
+{
   label: 'Slider',
   attrs: {
     type: 'slider'
@@ -261,7 +271,7 @@ let templates = {
   },
  contactInformation: function(fieldData) {
    return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><textarea id="'+fieldData.name+'2" name="message" class="form-control" rows="4" cols="50">Mensaje</textarea>',
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br>',
      onRender: function() {
        $(document.getElementById(fieldData.name));
        $(document.getElementById(fieldData.name+1));
@@ -281,7 +291,7 @@ let templates = {
  },
   slider: function(fieldData) {
     return {
-      field: '<h6 align="left">0</h6><input id='+fieldData.name+' type="range" min="0" max="100" step="10" data-orientation="vertical">',
+      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><input id='+fieldData.name+' type="range" min="0" max="100" step="50" data-orientation="vertical">',
       onRender: function() {
         $(document.getElementById(fieldData.name)).rangeslider();
       }
@@ -304,7 +314,7 @@ let templates = {
         'textarea'
        ],
       disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header'] 
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph'] 
     };
 
 
@@ -316,17 +326,29 @@ let templates = {
     var templateid=document.getElementById('template_id');
     var token=document.getElementById('csrf-token');
 
-    var data={
-        content:jsondata,
-        template_id:templateid.value,
-        _token:token.value
-    };
-    console.log(data);
+    // var data={
+    //     content:jsondata,
+    //     template_id:templateid.value,
+    //     _token:token.value
+    // };
+
+    var formData = new FormData();
+
+    formData.append('content',jsondata);
+    formData.append('template_id',templateid.value);
+    formData.append('_token',token.value);
+    formData.append('saveImage',$('input:file')[0].files[0]);
+
+    // console.log($('input:file')[0].files[0]);
+    // console.log(data);
+
     // Fire off the request to /form.php
     request = $.ajax({
         url: '{{url('saveQuestion')}}',
         type: "post",
-        data: data
+        data: formData,
+        contentType: false,
+        processData: false
     });
 
     // Callback handler that will be called on success

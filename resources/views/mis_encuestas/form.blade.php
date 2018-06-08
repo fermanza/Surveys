@@ -61,7 +61,12 @@ visibility:hidden;
                               </div>
                           </div>
                           <br><br>
-                         <form id="fb-editor"></form>
+                         <form id="fb-editor">
+                          <div class="row" align="center">
+                          <img src="{{ URL($template->url) }}" style="margin-left: 250px; width: 100px; height:100px;">
+                          </div>
+                          </form>
+
                             <div class="guardar">
                                     <a href="{{ url()->previous() }}">@lang('editar_encuesta.cancelar')</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
@@ -253,12 +258,13 @@ let templates = {
   },
   slider: function(fieldData) {
     return {
-      field: '<input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
       onRender: function() {
         $(document.getElementById(fieldData.name)).slider({
       range: "max",
       min: 0,
       max: 100,
+      step: 50,
       value: 1,
       slide: function( event, ui ) {
         $( "#slider"+fieldData.name ).val( ui.value );
