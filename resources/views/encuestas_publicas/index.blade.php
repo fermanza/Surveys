@@ -26,7 +26,7 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li class="text-dark-gray"> @lang('encuestas_publicas.encuestasPublicas')</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -72,7 +72,7 @@
                             <div class="display-inline-block width-100">
                                 <h6>@lang('encuestas_publicas.quieresCrearEncuesta')</h6>
                                 <p>@lang('encuestas_publicas.suscribete')</p>
-                                <form method="POST" action="{{ URL('register') }}">
+                                <form method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
                                     <div class="row" align="center">
                                         <div class="col-md-12">
