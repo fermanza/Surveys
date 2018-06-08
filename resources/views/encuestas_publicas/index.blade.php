@@ -146,7 +146,7 @@
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="/reporte_avanzado/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>@lang('encuestas_publicas.reporteAvanzado')</a>
+                                                <a href="{{ URL('/reporte_avanzado')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-pie-chart margin-5px-right"></i>@lang('encuestas_publicas.reporteAvanzado')</a>
                                             </div>
                                         </div>
                                     </div>
