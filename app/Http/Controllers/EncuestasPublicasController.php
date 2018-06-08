@@ -101,14 +101,16 @@ class EncuestasPublicasController extends Controller
         $questions = json_decode($questions1->content);
 
 
+
           foreach($questions as $ques) {
                
-                    if($ques->type == "textarea" || $ques->type == "text") {
+                if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
                         continue;
                     }
                  foreach($ques->values as $v) {
                      $match = 0; 
                        foreach($answers as $answer) { 
+
                             $ans = json_decode($answer->answer);
 
                               foreach($ans as $a) {

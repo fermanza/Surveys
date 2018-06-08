@@ -85,18 +85,14 @@
 
 
 
-                              @foreach($questions as $question) 
-
+            @foreach($questions as $question) 
+                       @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" )        
                                     <div class="pregunta">     
                                         <p>{{ $question->label }}</p>
                                         <div class="todo">                                          
                                           <div class="titulo">  
                                               <button class="mybutton buton" value="{{$loop->index}}" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
                                           </div>
-
-                                      {{--    <div class="tabla">
-                                             espacio para la grafica
-                                          </div> --}}
 
                                        <section>
                                             <div class="container">
@@ -117,15 +113,37 @@
                                                   </tr>
                                                 </thead>
                                               <tbody>  
-                                               @if($question->type == 'textarea' || $question->type == 'text' )
+                                            {{--   @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" ) --}}
 
-                                                  <tr>
+                                                  {{--<tr>
                                                     <td>{{$question->label}}</td>
                                                     <td></td>
                                                     <td></td>
-                                                  </tr> 
-                                               @else
-                                                     @php   
+                                                  </tr> --}}
+
+                                                      @php   
+                                                        $total =0;
+                                                     @endphp
+                                                  @foreach($question->values as $q) 
+                                                          <tr>
+                                                            <td>{{$q->label}}</td>
+                                                            <td></td>
+                                                            <td>{{ $q->match }}</td>
+                                                          </tr>
+                                                              @php   
+                                                                $total = $total + $q->match;
+                                                             @endphp 
+                                                     @if($loop->last)
+                                                          <tr>
+                                                            <td>Total</td>
+                                                            <td></td>
+                                                            <td> {{$total}}</td>
+                                                          </tr>
+                                                     @endif        
+
+                                                  @endforeach 
+                                              {{-- @else --}}
+                                             {{--        @php   
                                                         $total =0;
                                                      @endphp
                                                    @foreach($question->values as $q) 
@@ -145,14 +163,15 @@
                                                           </tr>
                                                      @endif        
 
-                                                    @endforeach  
-                                              @endif 
+                                                    @endforeach --}} 
+                                             {{-- @endif  --}}
                                              </tbody>  
                                               </table>
                                           </div>
                                         </div>
                                     </div>
-                             @endforeach       
+              @endif    {{-- principal if for validation--}}           
+          @endforeach       
 
                                 </div>
                             </div>
@@ -197,14 +216,16 @@
 
         let question =  $(item).data('question');
 
-        if(question.type == "textarea" || question.type == "text"){
+
+       
+        if(question.type == "textarea" || question.type == "text" || question.type == "slider" || question.type == "starRating"){
             return true;
         } 
          
          question.data = question.values.flatMap(x => x.match);
          question.labels = question.values.flatMap(y => y.label);
 
-         console.log(question.labels);
+        // console.log(question.labels);
 
 
          nColors = question.data.length;
