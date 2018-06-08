@@ -103,7 +103,7 @@ class EncuestasPublicasController extends Controller
 
           foreach($questions as $ques) {
                
-                    if($ques->type == "textarea") {
+                    if($ques->type == "textarea" || $ques->type == "text") {
                         continue;
                     }
                  foreach($ques->values as $v) {

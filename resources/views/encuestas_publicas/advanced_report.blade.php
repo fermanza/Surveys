@@ -117,7 +117,7 @@
                                                   </tr>
                                                 </thead>
                                               <tbody>  
-                                               @if($question->type == 'textarea' || $question->type == 'textarea' )
+                                               @if($question->type == 'textarea' || $question->type == 'text' )
 
                                                   <tr>
                                                     <td>{{$question->label}}</td>
@@ -197,7 +197,7 @@
 
         let question =  $(item).data('question');
 
-        if(question.type == "textarea"){
+        if(question.type == "textarea" || question.type == "text"){
             return true;
         } 
          
