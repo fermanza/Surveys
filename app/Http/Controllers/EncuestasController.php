@@ -351,6 +351,9 @@ class EncuestasController extends Controller
     {
 
         $templateContent = Questions::where('template_id', $request->encuesta)->first();
+
+        $template_img = Template::where('id', $request->encuesta)->first();
+
         $template = new Template;
         $template->description = '';
         $template->user_id = Auth::id();
@@ -358,6 +361,7 @@ class EncuestasController extends Controller
         $template->answered = 0;
         $template->type = 0; // all public
         $template->plan = 0;
+        $template->url = $template_img->url;
         $template->hash =  base64_encode(Hash::make(Carbon::now()));
         
         $template->save();
