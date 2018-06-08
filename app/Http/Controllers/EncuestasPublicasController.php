@@ -101,49 +101,28 @@ class EncuestasPublicasController extends Controller
         $questions = json_decode($questions1->content);
 
 
-        foreach($answers as $answer) {
-              $ans = json_decode($answer->answer);
-
-              $counter = 0;  
-
-            foreach($questions as $ques) {
-
-               if($ques->type == "textarea") {
-                  continue;
-               }
-
-                foreach($ans as $a) {
-                     $a->name = str_replace("[]", '', $a->name);   
-                    if($a->name == $ques->name) {    
-                        foreach($ques->values as $v) {
-                             if($a->value == $v->value) {
-                                  // $counter++;
-                               $v->counter += 1;    
-                             }
-                             
-                        }
-                    
+          foreach($questions as $ques) {
+               
+                    if($ques->type == "textarea") {
+                        continue;
                     }
-                }
-                
-            }  
-        } 
+                 foreach($ques->values as $v) {
+                     $match = 0; 
+                       foreach($answers as $answer) { 
+                            $ans = json_decode($answer->answer);
+
+                              foreach($ans as $a) {
+                                    $a->name = str_replace("[]", '', $a->name);
+                                     if($a->name == $ques->name && $a->value == $v->value ) {
+                                         $match++;
+                                     }
+                              }
+                       }
+                   $v->match = $match;            
+                 } 
+              }
 
 
-        
-
-
-
-
-        
-
-
-        dd($questions);
-
-
-        
-
-        
 
         return view('encuestas_publicas.advanced_report', compact('questions', 'answers', 'survey', 'questions1'));
     }

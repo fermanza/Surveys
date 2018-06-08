@@ -7,7 +7,7 @@
                     <!-- start logo -->
                     <a href="index.html" class="margin-20px-bottom display-inline-block"><img class="footer-logo" src="images/logo-survenia.png" alt="Survenia"></a>
                     <!-- end logo -->
-                    <p class="text-light-gray"><b>¿Por qué elegirnos?</b><br>Seguridad y Respaldo. Resultados en tiempo real. Asesoramiento profesional. Innovación y Tecnología.</p>
+                    <p class="text-light-gray"><b>@lang('footer.porqueElegirnos')</b><br> @lang('footer.seguridadYrespaldo') </p>
                     <!-- start social media -->
                     <div class="social-icon-style-8 display-inline-block vertical-align-middle">
                         <ul class="small-icon no-margin-bottom">
@@ -23,11 +23,11 @@
                 <div class="links widget border-right xs-margin-30px-bottom">
                     <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Links</div>
                     <ul class="list-unstyled">
-                        <li class="width-50 pull-left"><a href="index.php" class="text-light-gray">Inicio</a></li>
-                        <li class="width-50 pull-left"><a href="como-funciona.php" class="text-light-gray">Cómo funciona</a></li>
-                        <li class="width-50 pull-left"><a href="plantillas.php" class="text-light-gray">Plantillas</a></li>
-                        <li class="width-50 pull-left"><a href="planes.php" class="text-light-gray">Planes y Precios</a></li>
-                        <li class="width-50 pull-left"><a href="crear-encuesta.php" class="text-light-gray">Creación de encuesta</a></li>
+                        <li class="width-50 pull-left"><a href="index.php" class="text-light-gray">@lang('footer.inicio')</a></li>
+                        <li class="width-50 pull-left"><a href="como-funciona.php" class="text-light-gray">@lang('footer.comoFunciona')</a></li>
+                        <li class="width-50 pull-left"><a href="plantillas.php" class="text-light-gray">@lang('footer.plantillas')</a></li>
+                        <li class="width-50 pull-left"><a href="planes.php" class="text-light-gray">@lang('footer.planesPrecios')</a></li>
+                        <li class="width-50 pull-left"><a href="crear-encuesta.php" class="text-light-gray">@lang('footer.creacionEncuesta')</a></li>
                         <li class="width-50 pull-left"><a href="encuestas-publicas.php" class="text-light-gray">Encuestas Públicas</a></li>
                         <li class="width-50 pull-left"><a href="articulos.php" class="text-light-gray">Artículos</a></li>
                         <li class="width-50 pull-left"><a href="contacto.php" class="text-light-gray">Contacto</a></li>
