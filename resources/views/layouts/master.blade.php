@@ -116,7 +116,7 @@
                             @foreach($articulos as $articulo)
                             <div class="col-md-12 footer-post">
                                 <a href="{{url('articulos')}}/{{$articulo->id}}">
-                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;"><img src="{{$articulo->img}}" width="20%" alt="">&nbsp;&nbsp;&nbsp;{{$articulo->title}}<br><br>{{ $articulo->body}}</p>
+                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;"><img src="{{URL($articulo->img)}}" width="20%" alt="">&nbsp;&nbsp;&nbsp;{{$articulo->title}} </p>
                                 </a>
                             </div>
                             @endforeach

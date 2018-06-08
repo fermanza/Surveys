@@ -95,10 +95,57 @@ class EncuestasPublicasController extends Controller
 
     public function showAdvancedReport($idEncuesta)
     {
+        $answers = DB::table('answer')->select('answer')->where('id_template', $idEncuesta)->get();
+        $questions1 = DB::table('questions')->select('content')->where('template_id', $idEncuesta)->first();
+        $survey = DB::table('template')->select('name')->where('id', $idEncuesta)->first();
+        $questions = json_decode($questions1->content);
 
-        $questions = DB::table('questions')->select('content')->where('template_id', $idEncuesta)->first();
 
-        return view('encuestas_publicas.advanced_report', compact('questions'));
+        foreach($answers as $answer) {
+              $ans = json_decode($answer->answer);
+
+              $counter = 0;  
+
+            foreach($questions as $ques) {
+
+               if($ques->type == "textarea") {
+                  continue;
+               }
+
+                foreach($ans as $a) {
+                     $a->name = str_replace("[]", '', $a->name);   
+                    if($a->name == $ques->name) {    
+                        foreach($ques->values as $v) {
+                             if($a->value == $v->value) {
+                                  // $counter++;
+                               $v->counter += 1;    
+                             }
+                             
+                        }
+                    
+                    }
+                }
+                
+            }  
+        } 
+
+
+        
+
+
+
+
+        
+
+
+        dd($questions);
+
+
+        
+
+        
+
+        return view('encuestas_publicas.advanced_report', compact('questions', 'answers', 'survey', 'questions1'));
     }
 
 

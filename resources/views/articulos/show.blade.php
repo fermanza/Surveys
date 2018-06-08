@@ -44,7 +44,7 @@
         <h6 align="right">Autor: {{ $articulo->user->name }}</h6>
         <div align="center">
         <hr />
-		<img src="{{$articulo->img}}" style="width: 700px; height: 450px;">
+		<img src="{{URL($articulo->img)}}" style="width: 700px; height: 450px;">
 		<br><br><br>
 		<h5 style="color: black"> {!! $articulo->body !!} </h5>
         </div>
