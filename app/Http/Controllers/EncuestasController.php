@@ -319,13 +319,50 @@ class EncuestasController extends Controller
     public function getRespuestas($id)
     {
         $template=Template::find($id);
-        
         $preguntasJson=Questions::where('template_id','=',$id)->first();
         $tmp=json_encode($preguntasJson->content);
         $preguntas=json_decode($tmp);
         $respuestas=Answer::where('id_template','=',$id)->get();
+
+
+        $answers = DB::table('answer')->select('answer')->where('id_template', $id)->get();
+        $questions1 = DB::table('questions')->select('content')->where('template_id', $id)->first();
+        $survey = DB::table('template')->select('name')->where('id', $id)->first();
+        $questions = json_decode($questions1->content);
+
+
+        // dd($answers,$questions);
+            foreach($questions as $ques) {
+               
+                if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
+                        foreach ($answers as $answer) {
+                             $ans = json_decode($answer->answer);
+
+                            foreach($ans as $a){
+                                if($a->name == $ques->name){
+                                   // dd($a->value,$ques->name);
+                                }
+                            }
+                        }
+                    }
+                 // foreach($ques->values as $v) {
+                 //     $match = 0; 
+                 //       foreach($answers as $answer) { 
+
+                 //            $ans = json_decode($answer->answer);
+
+                 //              foreach($ans as $a) {
+                 //                    $a->name = str_replace("[]", '', $a->name);
+                 //                     if($a->name == $ques->name && $a->value == $v->value ) {
+                 //                         $match++;
+                 //                     }
+                 //              }
+                 //       }
+                 //   $v->match = $match;            
+                 // } 
+            }
         
-        return view('mis_encuestas.respuestas',compact('template','preguntas','respuestas'));
+        return view('mis_encuestas.respuestas',compact('template','answers','questions'));
     }
 
     public function bitly($id)

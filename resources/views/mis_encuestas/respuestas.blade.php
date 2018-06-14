@@ -40,49 +40,28 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-
-                    @foreach($preguntas as $pregunta)
-                             @if($pregunta->type=="file")
+                    <?php $cont=0 ?>
+                    @foreach($questions as $question)
+                             @if($ans->type=="file")
                                 <div class="col-md-12" align="center">
                                  <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
                                  <h5>{{ $template->name }}</h5>
                                  </div>
                             @endif
 
-                           @if($pregunta->label!="Imagen") 
+                           @if($ans->label!="Imagen") 
                             <h5>Pregunta: {{$pregunta->label}}</h5>
                            @endif
-                           @foreach($respuestas as $respuesta)
+                           @foreach($answers as $ans)
                             
-                            <?php $cont=0; ?>
-                            <?php $respuestajson=json_decode($respuesta->answer)?>
-                                        
+                            <?php $respuestajson=json_decode($ans->answer)?>
 
-                                @if($pregunta->type=="contactInformation")
-                                    <ul>
-                                        <li>{{$respuestajson[$loop->parent->index+$cont]->value}}</li>
-                                        <li>{{$respuestajson[$loop->parent->index+$cont+1]->value}}</li>
-                                        <li>{{$respuestajson[$loop->parent->index+$cont+2]->value}}</li>
-                                    </ul>
-                                    @php $cont=$cont+2 @endphp
-                                @elseif($pregunta->type=="file")
+                            @php dd($respuestajson); @endphp
+                            
+                           
 
-                                    @php $cont=$cont+1 @endphp
-
-                                @elseif($pregunta->type=="multipleText")
-                                    <ul>
-                                    
-                                        <li>{{$respuestajson[$loop->parent->index+$cont]->value}}</li>
-                                        <li>{{$respuestajson[$loop->parent->index+$cont+1]->value}}</li>
-                                        <li>{{$respuestajson[$loop->parent->index+$cont+2]->value}}</li>
-                                    </ul>
-                                    @php $cont=$cont+2 @endphp
-                                @else
-                                    <ul style="list-style-type: none">
-                                        <h6><li>{{$loop->iteration}}.- {{$respuestajson[$loop->index+$cont]->value}}</li></h6>
-                                    </ul>
-                                @endif 
-
+                             <?php $cont=$cont+1 ?>
+                            
                            @endforeach
                     @endforeach
 
