@@ -106,52 +106,76 @@
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
                             <div class="temas-title">@lang('articulos.temas')</div>
-                            <form>
-                                <div class="select-style big-select">
+                                {{-- <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('articulos.seleccionarCategoria')</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="buscar position-relative">
-                                    <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
+                             <form method="GET" action="{{ route('articulos.index') }}">   
+                                    <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" name="articulo" placeholder="Buscar">
                                     <button type="submit" class="bg-transparent position-absolute right-0 top-8" style="border: none;"><i class="fa fa-search no-margin-left"></i></button>
-                                </div>  
                             </form>
+                                </div> 
                         
                         </div>         
+                        @if(Auth::check() == false) 
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
-                                <h6>@lang('articulos.quieresCrear')</h6>
-                                <p>@lang('articulos.suscribeteGratis')</p>
-                                <form method="POST" action="{{ URL('register') }}">
+                                <h6>@lang('encuestas_publicas.quieresCrearEncuesta')</h6>
+                                <p>@lang('encuestas_publicas.suscribete')</p>
+                                <form method="POST" action="{{ route('register') }}">
                                     {{ csrf_field() }}
                                     <div class="row" align="center">
                                         <div class="col-md-12">
-                                            <input type="text" name="name" id="name" placeholder="@lang('articulos.nombre')">
+                                            <input type="text" name="name" id="name" placeholder="@lang('encuestas_publicas.nombre')">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="last_name" id="lastName">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="company" id="empresa">
                                         </div>
                                         <div class="col-md-12">
                                             <input type="email" name="email" id="email" placeholder="E-mail">
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="password" name="password" id="password" placeholder="@lang('articulos.contra')">
+                                            <input type="password" name="password" id="password" placeholder="@lang('encuestas_publicas.contra')">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="password_confirmation" id="password_confirmation">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="hidden" name="address" id="direccion">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="phone" id="telefono">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="city" id="ciudad">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="hidden" name="country" id="pais">
                                         </div>
                                         <div class="col-md-12" style="text-align:left;">
-                                            <input type="checkbox" id="check">
-                                            <label for="check" class="text-extra-dark-gray">@lang('articulos.aceptoLos')<a href="{{ URL('terminos')}}">@lang('articulos.terminos')</a></label>
+                                            <input type="checkbox" id="check" required>
+                                            <label for="check" class="text-extra-dark-gray">@lang('encuestas_publicas.aceptoLos') <a href="{{ URL('terminos')}}">@lang('encuestas_publicas.terminos')</a></label>
                                         </div>
                                         <div class="col-md-12">
-                                             <br><button type="submit" class="btn-success">@lang('articulos.crearCuenta')</button>
+                                            {{-- <input type="button" name="ingresar" id="ingresar" value="Crear encuesta"> --}}
+                                            <br><button type="submit" class="btn-success">@lang('encuestas_publicas.crearCuenta')</button><br><br>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="text-extra-dark-gray"><br>@lang('articulos.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('articulos.verPlanes')</a></p>
-                                        </div>
+                                            <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
+                                        </div5
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        @endif
                        {{-- <div class="margin-45px-bottom xs-margin-25px-bottom archivo">
                             <div class="text-extra-dark-gray margin-20px-bottom text-uppercase">Archivo</div>
                             <ul class="list-style-6 margin-50px-bottom text-small">
