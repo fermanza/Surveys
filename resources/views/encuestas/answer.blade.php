@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template
+.clear-all,.get-data,.save-template,.fb-file
 {
 visibility:hidden;
 }
@@ -55,7 +55,7 @@ visibility:hidden;
                        <div class="settings" id="survey_content" name="survey_content">
                         <br>
                         <div class="row" align="center">
-                          <img src="{{ URL($template->url) }}" style="width: 100px; height:100px;"><br><br>
+                          <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
                           </div>
                          <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor">

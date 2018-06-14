@@ -5,10 +5,21 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
 {
 visibility:hidden;
 } 
+.render-wrap {
+  display: none;
+}
+.build-wrap
+{
+  position: relative;
+}
+.survey
+{
+  position: relative;
+}
 </style>
 
 
@@ -33,7 +44,7 @@ visibility:hidden;
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li><a href="crear-encuesta.php" class="text-dark-gray">@lang('mis_encuestas.creacionEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
@@ -70,9 +81,11 @@ visibility:hidden;
 
                 <div class="settings" id="survey_content" name="survey_content">
                     <br>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <div class="panel panel-default">
-                                <div class="panel-heading active">
+                        <div class="panel panel-default" align="right">
+                                <div class="panel-heading active" align="right">
                                     <div class="panel-title">
                                             <span class="btn btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
                                     </div>
@@ -80,13 +93,16 @@ visibility:hidden;
                         </div>
                     </div>
                     <br><br>
-                        <form id="fb-editor"></form>
+                    <div class="container">
+                      <div class="survey">
+                        <form id="fb-editor"><div class="build-wrap"></div></form>
+                      </div>
                          <div class="guardar">
-                                    <a href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a>
-                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <a href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                     <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button>
                         </div>
+                    </div>
                 </div>
 
             </div>
@@ -220,50 +236,64 @@ visibility:hidden;
   $(document).ready(function() {
       
 
-
 let fields = [{
   label: 'Star Rating',
   attrs: {
     type: 'starRating'
   },
-  icon: '🌟'
+  icon: '<i class="fa fa-star"></i>'
 },
 {
       label: 'Contact Information',
       attrs: {
       type: 'contactInformation'
     },
-    icon: 'ℹ️'
+    icon: '<i class="fa fa-info"></i>'
 },
 {
       label: 'Multiple Textbox',
       attrs: {
       type: 'multipleText'
     },
-    icon: '📖'
+    icon: '<i class="fa fa-book"></i>'
 },
 {
       label: 'Imagen',
       attrs: {
       type: 'file'
     },
-    icon: '🖼️'
+    icon: '<i class="fa fa-image"></i>'
 },
 {
       label: 'Ranking',
       attrs: {
       type: 'select'
     },
-    icon: '📈'
+    icon: '<i class="fa fa-star"></i>'
 },
 {
   label: 'Slider',
   attrs: {
     type: 'slider'
   },
-  icon: '↔️'
+  icon: '<i class="fa fa-sliders"></i>'
+},
+{
+  label: 'Texto',
+  type: 'header'
+},
+{
+  label: 'Multiple Choice',
+  type: 'radio-group'
+},
+{
+  label: 'Dropdown',
+  type: 'select'
+},
+{
+  label: 'Single TextBox',
+  type: 'text'
 }
-
 ];
 let templates = {
   starRating: function(fieldData) {
@@ -276,7 +306,7 @@ let templates = {
   },
  contactInformation: function(fieldData) {
    return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Fecha de Nacimiento" name="datebirth"><br>',
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Enter your first name" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Fecha de Nacimiento" name="datebirth"><br>',
      onRender: function() {
        $(document.getElementById(fieldData.name));
        $(document.getElementById(fieldData.name+1));
@@ -316,20 +346,24 @@ let templates = {
   var options = {
     fields, templates,
       i18n: {
-        locale: 'es-ES'
+        preloaded: {
+          'en-US': {
+            close: "Guardar",
+            label: "Input",
+            placeholder: "Ejemplo"
+          }
+        }
       },
-      controlPosition: 'left',
+      controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
        controlOrder: [
         'title',
         'text',
         'textarea'
        ],
-      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','required','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph'] 
+      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea']
     };
-
-
     var fbEditor = document.getElementById('fb-editor');
     var formBuilder = $(fbEditor).formBuilder(options);
 
@@ -369,7 +403,7 @@ let templates = {
         console.log("Hooray, it worked!");
         swal({
           position: 'center',
-          title: 'Encuesta creada.',
+          title: 'Encuesta creada correctamente.',
           type: 'success'
       }).then(function() {
           window.location = "{{url('mis_encuestas')}}";

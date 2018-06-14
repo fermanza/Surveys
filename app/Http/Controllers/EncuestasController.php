@@ -298,11 +298,11 @@ class EncuestasController extends Controller
         }
         //dd($ip);
 
-        // $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        // if($answer)
-        //{
-        //    return response()->json('ip',500);
-        // }
+        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+        if($answer)
+        {
+           return response()->json('ip',500);
+        }
 
 
 
@@ -324,6 +324,7 @@ class EncuestasController extends Controller
         $tmp=json_encode($preguntasJson->content);
         $preguntas=json_decode($tmp);
         $respuestas=Answer::where('id_template','=',$id)->get();
+        
         return view('mis_encuestas.respuestas',compact('template','preguntas','respuestas'));
     }
 

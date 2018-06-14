@@ -5,10 +5,21 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
 {
 visibility:hidden;
 } 
+.render-wrap {
+  display: none;
+}
+.build-wrap
+{
+  position: relative;
+}
+.survey
+{
+  position: relative;
+}
 </style>
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
@@ -51,6 +62,8 @@ visibility:hidden;
 
                        <div class="settings" id="survey_content" name="survey_content">
                          <br>
+                         <div class="col-md-4"></div>
+                         <div class="col-md-4"></div>
                           <div class="col-md-4">
                               <div class="panel panel-default">
                                       <div class="panel-heading active">
@@ -204,56 +217,68 @@ visibility:hidden;
   <script>
   $(document).ready(function() {
       
-    let fields = [{
+let fields = [{
   label: 'Star Rating',
   attrs: {
     type: 'starRating'
   },
-  icon: '🌟'
+  icon: '<i class="fa fa-star"></i>'
 },
 {
       label: 'Contact Information',
       attrs: {
       type: 'contactInformation'
     },
-    icon: 'ℹ️'
+    icon: '<i class="fa fa-info"></i>'
 },
 {
       label: 'Multiple Textbox',
       attrs: {
       type: 'multipleText'
     },
-    icon: '📖'
-},
-{
-  label: 'Slider',
-  attrs: {
-    type: 'slider'
-  },
-  icon: '↔️'
+    icon: '<i class="fa fa-book"></i>'
 },
 {
       label: 'Imagen',
       attrs: {
       type: 'file'
     },
-    icon: '🖼️'
+    icon: '<i class="fa fa-image"></i>'
 },
 {
       label: 'Ranking',
       attrs: {
       type: 'select'
     },
-    icon: '📈'
+    icon: '<i class="fa fa-star"></i>'
 },
 {
-  label: 'Matriz',
+  label: 'Slider',
   attrs: {
-    type: 'matriz'
+    type: 'slider'
   },
-  icon: ''
+  icon: '<i class="fa fa-sliders"></i>'
+},
+{
+  label: 'Texto',
+  type: 'header'
+},
+{
+  label: 'Multiple Choice',
+  type: 'radio-group'
+},
+{
+  label: 'Dropdown',
+  type: 'select'
+},
+{
+  label: 'Single TextBox',
+  type: 'text'
+},
+{
+  label: 'Comment Box',
+  type: 'textarea'
 }
-
 ];
 let templates = {
   starRating: function(fieldData) {
@@ -327,31 +352,21 @@ let templates = {
 
 };
 
-
-  var options = {
-    fields, templates,
-      i18n: {
-        locale: 'es-ES'
-      },
-      controlPosition: 'left',
-      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
-       controlOrder: [
-        'title',
-        'text',
-        'textarea'
-       ],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number'] 
-    };
-
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 var options = {
   fields, templates,
   i18n: {
-        locale: 'es-ES'
+        preloaded: {
+          'en-US': {
+            close: "Guardar",
+            label: "Input",
+            placeholder: "Ejemplo"
+          }
+        }
       },
       defaultFields: formData,
-       controlPosition: 'left',
+       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
        controlOrder: [
         'title',
@@ -359,12 +374,11 @@ var options = {
         'textarea'
        ],
       hiddenAttrs: ['className'],
-      disabledAttrs: ['placeholder', 'description','access','maxlength','subtype','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph', 'header'] 
+      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea','hidden']
     };
-
+    
     var formBuilder = $(fbRender).formBuilder(options);
-
 
   /*var formRenderOpts = {
       fbRender,
