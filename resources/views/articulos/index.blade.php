@@ -106,7 +106,7 @@
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
                             <div class="temas-title">@lang('articulos.temas')</div>
-                            <form>
+                           
                                 <div class="select-style big-select">
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('articulos.seleccionarCategoria')</option>
@@ -119,7 +119,7 @@
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Buscar">
                                     <button type="submit" class="bg-transparent position-absolute right-0 top-8" style="border: none;"><i class="fa fa-search no-margin-left"></i></button>
                                 </div>  
-                            </form>
+                            
                         
                         </div>         
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
