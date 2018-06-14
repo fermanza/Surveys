@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field
 {
 visibility:hidden;
 } 
@@ -76,7 +76,7 @@ visibility:hidden;
                           <br><br>
                          <form id="fb-editor">
                           <div class="row" align="center">
-                          <img src="{{ URL($template->url) }}" style="margin-left: 250px; width: 100px; height:100px;">
+                          <img src="{{ URL($template->url) }}" style="margin-left: -250px; width: 125px; height:100px;">
                           </div>
                           </form>
 
@@ -414,7 +414,7 @@ var options = {
       
         swal({
           position: 'center',
-          title: 'Encuesta editada.',
+          title: 'Encuesta editada correctamente.',
           type: 'success'
       }).then(function() {
           window.location = "{{url('mis_encuestas')}}";
