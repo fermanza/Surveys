@@ -40,30 +40,57 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                    <?php $cont=0 ?>
-                    @foreach($questions as $question)
-                             @if($ans->type=="file")
-                                <div class="col-md-12" align="center">
-                                 <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
-                                 <h5>{{ $template->name }}</h5>
-                                 </div>
-                            @endif
+                   
+                    @foreach($questions as $ques)
 
-                           @if($ans->label!="Imagen") 
-                            <h5>Pregunta: {{$pregunta->label}}</h5>
-                           @endif
-                           @foreach($answers as $ans)
-                            
-                            <?php $respuestajson=json_decode($ans->answer)?>
+                    {{--  @if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") --}}
 
-                            @php dd($respuestajson); @endphp
-                            
-                           
 
-                             <?php $cont=$cont+1 ?>
-                            
-                           @endforeach
-                    @endforeach
+                     {{-- @endif --}}
+
+                         @foreach($answers as $answer)
+                             @php  
+                             $ans = json_decode($answer->answer); 
+
+                             dd($ans, $questions);
+
+                            @endphp 
+
+                                @if($ques->type=="file")
+                                    <div class="col-md-12" align="center">
+                                     <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                                     <h5>{{ $template->name }}</h5>
+                                     </div>
+                                @endif
+
+
+
+                               @if($ques->label == "Texto") 
+                                    @continue
+                               @endif
+
+                                @if($ques->label == "Imagen")
+                                  @continue
+                                @endif   
+
+                                  <h5>Pregunta: {{$ques->label}}</h5>
+
+                                  @foreach($ans as $a)
+
+                                    @if($ques->label != "Texto")
+
+                                
+
+                                      @if($a->name == $ques->name )
+                                         {{ $a->value }}
+                                       @endif
+                                    @endif   
+
+                                  @endforeach
+
+
+                           @endforeach 
+                    @endforeach 
 
 
                     </div>

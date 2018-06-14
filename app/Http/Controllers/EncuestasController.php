@@ -331,20 +331,24 @@ class EncuestasController extends Controller
         $questions = json_decode($questions1->content);
 
 
-        // dd($answers,$questions);
-            foreach($questions as $ques) {
+  
+            //foreach($questions as $ques) {
                
-                if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
-                        foreach ($answers as $answer) {
-                             $ans = json_decode($answer->answer);
+          //      if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
+           //             foreach ($answers as $answer) {
+            //                 $ans = json_decode($answer->answer);
 
-                            foreach($ans as $a){
-                                if($a->name == $ques->name){
+                             
+
+              //              foreach($ans as $a){
+                                
+
+//                                if($a->name == $ques->name){
                                    // dd($a->value,$ques->name);
-                                }
-                            }
-                        }
-                    }
+//                                }
+  //                          }
+    //                    }
+      //              }
                  // foreach($ques->values as $v) {
                  //     $match = 0; 
                  //       foreach($answers as $answer) { 
@@ -360,7 +364,10 @@ class EncuestasController extends Controller
                  //       }
                  //   $v->match = $match;            
                  // } 
-            }
+
+            
+
+        //    }
         
         return view('mis_encuestas.respuestas',compact('template','answers','questions'));
     }
