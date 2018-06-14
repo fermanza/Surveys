@@ -48,10 +48,10 @@
         <section class="tabla">
             <div class="container">
                 <div class="col-md-12">
-                    <div class="select-style big-select">
-                        
-                    </div>
-                    <a class="btn" a href="{{ URL('encuestas') }}">@lang('mis_encuestas.crearEncuesta')</a><br><br>
+                    {{-- <div class="select-style big-select">
+
+                    </div> --}}
+                    <a class="btn" a href="{{ URL('encuestas') }}">@lang('mis_encuestas.crearEncuesta')</a><br><br><br>
                 </div>
                 <div class="col-md-12">
                     <div class="panel panel-default">

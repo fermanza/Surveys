@@ -52,14 +52,14 @@
                                         <option value="2">Reporte Avanzado</option>
                                     </select>
                                 </div>
-                                <div class="select-style big-select">
+                                {{-- <div class="select-style big-select">
                                     <select name="budget2" id="budget2" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('encuestas_publicas.seleccionarCategoria')</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="buscar position-relative">
                                  <form method="GET" action= "{{ route('encuestas_publicas.index') }}" >   
                                     <input type="text" name="title" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" placeholder="@lang('encuestas_publicas.buscar')">
@@ -68,6 +68,8 @@
                                 </div>  
                             
                         </div>
+
+                        @if(Auth::check() == false) 
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
                                 <h6>@lang('encuestas_publicas.quieresCrearEncuesta')</h6>
@@ -120,6 +122,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endif   
                         
                     </aside>
                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
@@ -131,7 +134,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">                        
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at->diffForHumans() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#" onClick="getLink({{$template->id}})">@lang('encuestas_publicas.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{{ URL('plantillas') }}">@lang('encuestas_publicas.tiposEncuestas')</a></span></div>
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span>{{ $template->user->name }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $template->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#" onClick="getLink({{$template->id}})">@lang('encuestas_publicas.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{{ URL('plantillas') }}">@lang('encuestas_publicas.tiposEncuestas')</a></span></div>
                                     <a href="{{ URL('encuestas/responder') }}/{{ $template->id }}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block">{{ $template->name }}</a>
                                     <p>{{ $template->description }}</p>
                                 </div>
