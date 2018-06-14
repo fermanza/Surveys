@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Articulo;
 use Illuminate\Http\Request;
 use App\FileControl\FileControl;
+use App\Articulo;
+use Auth;
+use DB;
 
 class ArticulosController extends Controller
 {
@@ -14,10 +15,12 @@ class ArticulosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articulos = Articulo::latest()->paginate(5);
+        //dd($request->all()); 
+        $articulos = Articulo::Search($request->articulo)->latest()->paginate(5);
         $user = Auth::user();
+        
         return view('articulos.index', compact('articulos', 'user'));
     }
 

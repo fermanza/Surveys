@@ -17,8 +17,6 @@ class EncuestasPublicasController extends Controller
      */
     public function index(Request $request)
     {
-
-
         $templates = Template::Search($request->title)->with('user')->where('type', '=', '0')->latest()->paginate(5);
         $user = User::all();
         //dd($templates->count());
