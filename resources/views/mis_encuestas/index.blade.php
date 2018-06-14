@@ -124,6 +124,23 @@
 
         @push('script')
         <script>
+
+    $(document).ready( function () {
+        @if(App::isLocale('es'))
+            $('#table-mis-encuestas').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                 }
+            });
+        @else 
+           $('#table-mis-encuestas').DataTable(); 
+
+        @endif   
+    }); 
+
+
+
+
         function getLink(id)
         {
 

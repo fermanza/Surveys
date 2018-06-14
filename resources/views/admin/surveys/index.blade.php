@@ -101,6 +101,8 @@
                 buttons: [
                     'csv', 'excel'
                 ]
+
+
             } );
         } );
     </script>

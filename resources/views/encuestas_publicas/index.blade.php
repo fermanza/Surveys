@@ -46,11 +46,11 @@
                             <div class="temas-title">@lang('encuestas_publicas.reportes')</div>
                             
                                 <div class="select-style big-select">
-                                    <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
+                                  {{--  <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
                                          <option value="">@lang('encuestas_publicas.seleccionarTipoReporte')</option>
                                         <option value="1">Reporte Simple</option>
                                         <option value="2">Reporte Avanzado</option>
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="select-style big-select">
                                     <select name="budget2" id="budget2" class="bg-transparent no-margin-bottom">
@@ -162,6 +162,16 @@
                         </div>
                         @endforeach
                         <!-- end post item -->
+
+
+                        {{-- buscar reportes  --}}
+                     {{--   @isset()
+
+
+                        @endisset --}}
+
+
+
                             
                         @if($templates->count() > 0)
                         <div class="pag" align="right">

@@ -28,9 +28,13 @@ $(document).ready(function(){
     })
   });
 
-  $(document).ready( function () {
-    $('#table-mis-encuestas').DataTable();
-} );
+/*  $(document).ready( function () {
+    $('#table-mis-encuestas').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+         }
+    });
+} ); */
 
 
 

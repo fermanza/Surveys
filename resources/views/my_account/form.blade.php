@@ -79,7 +79,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                <label for="address">@lang('registro.dirección')</label>
+                <label for="address">@lang('registro.direccion')</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}" required />
                 @if ($errors->has('address'))
                     <span class="help-block"><strong>{{ $errors->first('address') }}</strong></span>
