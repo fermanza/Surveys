@@ -163,13 +163,20 @@ let templates = {
     }
     }
   },
-  contactInformation: function(fieldData) {
+ contactInformation: function(fieldData) {
    return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Email" name="email"><br><textarea id="'+fieldData.name+'2" name="message" class="form-control" rows="4" cols="50">Mensaje</textarea>',
+     field: '<input type="text" id="'+fieldData.name+'" class="form-control" placeholder="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Fecha de Nacimiento" name="datebirth"><br>',
      onRender: function() {
        $(document.getElementById(fieldData.name));
        $(document.getElementById(fieldData.name+1));
        $(document.getElementById(fieldData.name+2));
+       $(document.getElementById(fieldData.name+3));
+       $(document.getElementById(fieldData.name+4));
+       $(document.getElementById(fieldData.name+5));
+       $(document.getElementById(fieldData.name+6));
+       $(document.getElementById(fieldData.name+7));
+       $(document.getElementById(fieldData.name+8));
+       $(document.getElementById(fieldData.name+9));
      }
    };
  },

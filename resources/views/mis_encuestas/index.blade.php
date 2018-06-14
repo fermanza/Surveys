@@ -134,7 +134,6 @@
             });
         @else 
            $('#table-mis-encuestas').DataTable(); 
-
         @endif   
     }); 
 
@@ -153,7 +152,7 @@
             swal({
   title: '',
   type: 'success',
-  html:'<p>Puedes usar el siguiente link para compartir tu encuesta</p>' +
+  html:'<p>Puedes usar el siguiente link para compartir tu encuesta: </p>' +
     '<input id="txtshare" value="'+response+'" type="text" class="form-control">',
   showCloseButton: true,
   showCancelButton: false,
@@ -167,7 +166,7 @@
 
   swal({
         type: 'success',
-        html: 'Enlace copiado'
+        html: '¡Enlace copiado!'
       })
 })
             
