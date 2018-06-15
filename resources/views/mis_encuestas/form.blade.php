@@ -350,6 +350,7 @@ var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
           }
         }
       },
+      defaultFields: formData,
       typeUserDisabledAttrs: {
         'starRating': [
           'placeholder'
