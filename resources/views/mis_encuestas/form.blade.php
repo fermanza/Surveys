@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field,.form-actions,.btn-group
 {
 visibility:hidden;
 } 
@@ -67,7 +67,7 @@ visibility:hidden;
 
         <div class="container">
           <div class="row">
-            <div class="col-md-8 col-xs-8">
+            <div class="col-md-9 col-xs-8">
               <div class="panel panel-default active" align="right">
                         <div class="panel-heading">
                             <div class="panel-title btn-extra-large btn-success" align="center">
@@ -76,7 +76,7 @@ visibility:hidden;
                       </div>
                 </div>
             </div>
-            <div class="col-md-4 col-xs-4">
+            <div class="col-md-3 col-xs-4">
                 <div class="panel panel-default active" align="right">
                         <div class="panel-heading">
                             <div class="panel-title btn-extra-large btn-success" align="center">
@@ -103,36 +103,6 @@ visibility:hidden;
                   </div>
             </div>
             </div>
-        
-   {{--      <!-- end form section -->
-        <section class="encuesta">
-            <div class="container">
-          
-                <div class="row">
-
-                       <div class="settings" id="survey_content" name="survey_content">
-                         <br>
-                         <div class="col-md-4"></div>
-                         <div class="col-md-4"></div>
-                          <div class="col-md-4">
-                              <div class="panel panel-default">
-                                      <div class="panel-heading active">
-                                          <div class="panel-title">
-                                                  <span class="btn btn-success">@lang('editar_encuesta.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
-                                          </div>
-                                      </div>
-                              </div>
-                          </div>
-                          <br><br>
-                         <form id="fb-editor">
-                          <div class="row" align="center">
-                          <img src="{{ URL($template->url) }}" style="margin-left: -250px; width: 125px; height:100px;">
-                          </div>
-                          </form>
-                        </div>
-                </div>
-            </div>
-        </section> --}}
 
 @stop
 
@@ -259,28 +229,10 @@ visibility:hidden;
 @push('script')
   <script>
   $(document).ready(function() {
+
+  var fbRender = document.getElementsByClassName("build-wrap");
       
-let fields = [{
-  label: 'Star Rating',
-  attrs: {
-    type: 'starRating'
-  },
-  icon: '<i class="fa fa-star"></i>'
-},
-{
-      label: 'Imagen',
-      attrs: {
-      type: 'file'
-    },
-    icon: '<i class="fa fa-image"></i>'
-},
-{
-  label: 'Slider',
-  attrs: {
-    type: 'slider'
-  },
-  icon: '<i class="fa fa-sliders"></i>'
-},
+let fields = [
 {
   label: 'Texto',
   type: 'header'
@@ -298,6 +250,7 @@ let fields = [{
   type: 'text'
 }
 ];
+
 let templates = {
   starRating: function(fieldData) {
     return {
@@ -334,11 +287,10 @@ let templates = {
 
 };
 
-var fbRender = document.getElementsByClassName('build-wrap');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
- var options = {
-    fields, templates,
+var options = {
+  fields, templates,
       i18n: {
         preloaded: {
           'en-US': {
@@ -365,22 +317,9 @@ var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
-       controlOrder: [
-        'title',
-        'text',
-        'textarea'
-       ],
-      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
-      defaultFields: [
-      {
-        label: 'Imagen',
-        type: 'file',
-        required: true,
-        className: 'form-control',
-        icon: '<i class="fa fa-image"></i>'
-      },
-      ],
+      hiddenAttrs: ['className'],
+      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea','hidden'],
       inputSets: [
       {
         label: 'Contact Information',
