@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.form-actions,.btn-group
 {
 visibility:hidden;
 } 
@@ -56,7 +56,6 @@ visibility:hidden;
         </section>
         <!-- end page title section -->
 
-        {{-- <div class="titulo">{{ $template->name }}</div>  --}}
 
         <!-- start form section -->
         <section class="wow fadeIn titulo" id="start-your-project">
@@ -92,12 +91,7 @@ visibility:hidden;
           </div>
         </div>
         
-        {{--  <div class="container">
-                
-        <div class="build-wrap"></div>
-
-    </div> --}}
-      {{-- <div class="build-wrap"></div> --}}
+      
 <div class="container">
         <div class="build-wrap"></div>
  </div> 
@@ -112,48 +106,6 @@ visibility:hidden;
                   </div>
             </div>
             </div>
-
-        <!-- end form section -->
-    {{--     <section class="encuesta">
-            <div class="container">
-                
-                <div class="row">
-
-                <div class="settings" id="survey_content" name="survey_content">
-                    <br>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="panel panel-default" align="right">
-                                <div class="panel-heading active" align="right">
-                                    <div class="panel-title">
-                                            <span class="btn btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="container">
-                      <div class="survey">
-                        <div id="fb-editor"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-              <div class="col-md-12" align="center">
-                <br>
-                                    <a class="btn btn-default" href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button>
-                  </div>
-            </div>
-            </div>
-        </section> --}}
-
 @stop
 
 <style>
@@ -279,7 +231,8 @@ visibility:hidden;
 @push('script')
   <script>
   $(document).ready(function() {
-      
+ 
+  var fbEditor = document.getElementsByClassName("build-wrap");      
 
 let fields = [
 {
@@ -345,7 +298,6 @@ slider: function(fieldData) {
           }
         }
       },
-      defaultFields: formData,
       typeUserDisabledAttrs: {
         'starRating': [
           'placeholder'
@@ -360,11 +312,6 @@ slider: function(fieldData) {
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
-       controlOrder: [
-        'title',
-        'text',
-        'textarea'
-       ],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
       defaultFields: [
@@ -649,7 +596,6 @@ slider: function(fieldData) {
 
     //$('.build-wrap').formBuilder();
 
-    var fbEditor = document.getElementsByClassName('build-wrap');
     var formBuilder = $(fbEditor).formBuilder(options);
 
     document.getElementById('save-data').addEventListener('click', function() {
