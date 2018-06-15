@@ -298,11 +298,11 @@ class EncuestasController extends Controller
         }
         //dd($ip);
 
-        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        if($answer)
-        {
-           return response()->json('ip',500);
-        }
+      //  $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+      //  if($answer)
+       // {
+       //    return response()->json('ip',500);
+      //  }
 
 
 
@@ -330,47 +330,104 @@ class EncuestasController extends Controller
         $survey = DB::table('template')->select('name')->where('id', $id)->first();
         $questions = json_decode($questions1->content);
 
+        $questions = collect($questions); // transform to collection 
 
-  
-            //foreach($questions as $ques) {
-               
-          //      if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
-           //             foreach ($answers as $answer) {
-            //                 $ans = json_decode($answer->answer);
+          
+         $questions  =  $questions->reject(function($value, $key) {
+                 return $value->type == "file" || $value->type == "header";   
+         }); 
 
-                             
 
-              //              foreach($ans as $a){
-                                
+         //dd($questions);
 
-//                                if($a->name == $ques->name){
-                                   // dd($a->value,$ques->name);
-//                                }
-  //                          }
-    //                    }
-      //              }
-                 // foreach($ques->values as $v) {
-                 //     $match = 0; 
-                 //       foreach($answers as $answer) { 
 
-                 //            $ans = json_decode($answer->answer);
+         $questions->each(function($questionItem, $key) use($answers, $questions) {
+           
+                $questionItem->respuestas = collect();
 
-                 //              foreach($ans as $a) {
-                 //                    $a->name = str_replace("[]", '', $a->name);
-                 //                     if($a->name == $ques->name && $a->value == $v->value ) {
-                 //                         $match++;
-                 //                     }
-                 //              }
-                 //       }
-                 //   $v->match = $match;            
-                 // } 
+             if(strstr($questionItem->name, 'star')) {
+                 $questionItem->name  = str_replace('starRating-', "", $questionItem->name );    
+              }
 
-            
 
-        //    }
+             if(strstr($questionItem->name, 'slider')) {
+                 $questionItem->name  = str_replace('slider-', "", $questionItem->name );         
+              }  
+
+
+              foreach($answers as $answer) {
+                    $ans = json_decode($answer->answer);
+                    $ans = collect($ans); // transform the array of json to a collection
+
+                 $ans->each(function($ansElement, $key) use($questionItem) {
+                          
+                    if(strstr($ansElement->name, 'slider')) {
+                         $ansElement->name = str_replace('sliderslider-', "", $ansElement->name);
+                     }
+
+                     if(strstr($ansElement->name, 'star')) {
+                         $ansElement->name = str_replace('starstarRating-', "", $ansElement->name);
+                     }          
+
+
+                      if($questionItem->type == "contactInformation") {
+                           if($ansElement->name == "name" || $ansElement->name == "message" || $ansElement->name == "email"){
+                                $questionItem->respuestas->push($ansElement->value);
+                           }
+                      }else if($ansElement->name == $questionItem->name) {
+                             $questionItem->respuestas->push($ansElement->value);                          
+                      } 
+
+                 });
+              }
+
+          
+
+         });
+
+
+       //    dd($questions);
+
+
+
+
         
         return view('mis_encuestas.respuestas',compact('template','answers','questions'));
     }
+
+
+
+    private function cleanQuestion($question) 
+    {
+           if(strstr($question->name, 'star')) {
+                 $question->name  = str_replace('starRating-', "", $question->name );    
+                 
+                 return $question->name;
+            }
+
+            if(strstr($question->name, 'slider')) {
+                $question->name  = str_replace('slider-', "", $question->name );    
+
+                 return $question->name;
+            }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function bitly($id)
     {

@@ -40,31 +40,38 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                   
-                    @foreach($questions as $ques)
-
-                    {{--  @if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") --}}
+                
 
 
-                     {{-- @endif --}}
+            <div class="col-md-12" align="center">
+             <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+             <h5>{{ $template->name }}</h5>
+             </div>
+
+   @foreach($questions as $ques)
+
+        
+              <h6>Pregunta: {{$ques->label}}</h6>
+              @foreach($ques->respuestas as $resp)
+                   {{ $resp }}
+                   <br>
+
+   @endforeach
+
+
+
+
+
+
+              {{--    @if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") 
+                      @endif 
 
                          @foreach($answers as $answer)
                              @php  
                              $ans = json_decode($answer->answer); 
-
-                             dd($ans, $questions);
-
                             @endphp 
 
-                                @if($ques->type=="file")
-                                    <div class="col-md-12" align="center">
-                                     <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
-                                     <h5>{{ $template->name }}</h5>
-                                     </div>
-                                @endif
-
-
-
+                            
                                @if($ques->label == "Texto") 
                                     @continue
                                @endif
@@ -77,20 +84,48 @@
 
                                   @foreach($ans as $a)
 
-                                    @if($ques->label != "Texto")
+                             @if($ques->label != "Texto")
 
-                                
+                                 @if(strstr($a->name, 'select') && strstr($ques->name, 'select'))
+                                      @foreach($ques->values as $v)
+
+                                        @if($a->value == $v->value)
+                                           {{ $a->value }}
+                                        @endif
+                                      @endforeach
+                                   @endif  
+
+
+                                    @if(strstr($a->name, 'sliders'))
+                                      @php
+                                        $resp = str_replace('sliderslider-', '', $a->name);
+                                      @endphp
+                                    @endif
+
+                                    @if(strstr($ques->name, 'slider'))
+                                      @php  
+                                         $pregunta = str_replace('slider-', '', $ques->name);
+                                      @endphp
+
+                                      @if($resp == $pregunta)
+                                         {{$a->value}}
+                                      @endif   
+
+                                    @endif
+                                     
 
                                       @if($a->name == $ques->name )
                                          {{ $a->value }}
                                        @endif
-                                    @endif   
+
+
+                                @endif   
 
                                   @endforeach
 
 
-                           @endforeach 
-                    @endforeach 
+                           @endforeach  --}}
+@endforeach  
 
 
                     </div>
