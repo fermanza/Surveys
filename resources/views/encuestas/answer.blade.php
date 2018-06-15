@@ -88,6 +88,60 @@ visibility:hidden;
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
+let fields = [
+{
+  label: 'Texto',
+  type: 'header'
+},
+{
+  label: 'Multiple Choice',
+  type: 'radio-group'
+},
+{
+  label: 'Dropdown',
+  type: 'select'
+},
+{
+  label: 'Single TextBox',
+  type: 'text'
+}
+];
+
+let templates = {
+    starRating: function(fieldData) {
+    return {
+      field: '<input type="hidden" name="star'+fieldData.name+'" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({
+ 
+ onSet: function (rating, rateYoInstance) {
+
+   $(document.getElementById('star'+fieldData.name)).val(rating);
+ }
+});
+      }
+    };
+  },
+  slider: function(fieldData) {
+    return {
+      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" min="0" max="100" step="50" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).slider({
+      range: "max",
+      min: 0,
+      max: 100,
+      step: 50,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#slider"+fieldData.name ).val( ui.value );
+      }
+    });
+    
+    }
+    }
+  }
+
+};
 
 var options = {
     fields, templates,
@@ -405,79 +459,6 @@ var options = {
     };
 
     //var formBuilder = $(fbRender).formBuilder(options);
-let fields = [{
-  label: 'Star Rating',
-  attrs: {
-    type: 'starRating'
-  },
-  icon: '<i class="fa fa-star"></i>'
-},
-{
-      label: 'Imagen',
-      attrs: {
-      type: 'file'
-    },
-    icon: '<i class="fa fa-image"></i>'
-},
-{
-  label: 'Slider',
-  attrs: {
-    type: 'slider'
-  },
-  icon: '<i class="fa fa-sliders"></i>'
-},
-{
-  label: 'Texto',
-  type: 'header'
-},
-{
-  label: 'Multiple Choice',
-  type: 'radio-group'
-},
-{
-  label: 'Dropdown',
-  type: 'select'
-},
-{
-  label: 'Single TextBox',
-  type: 'text'
-}
-];
-let templates = {
-    starRating: function(fieldData) {
-    return {
-      field: '<input type="hidden" name="star'+fieldData.name+'" id="star'+fieldData.name+'"><span id="'+fieldData.name+'">',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).rateYo({
- 
- onSet: function (rating, rateYoInstance) {
-
-   $(document.getElementById('star'+fieldData.name)).val(rating);
- }
-});
-      }
-    };
-  },
-  slider: function(fieldData) {
-    return {
-      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" min="0" max="100" step="50" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).slider({
-      range: "max",
-      min: 0,
-      max: 100,
-      step: 50,
-      value: 1,
-      slide: function( event, ui ) {
-        $( "#slider"+fieldData.name ).val( ui.value );
-      }
-    });
-    
-    }
-    }
-  }
-
-};
 
   var formRenderOpts = {
     fields, templates,
