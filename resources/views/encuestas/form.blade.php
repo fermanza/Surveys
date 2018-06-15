@@ -75,7 +75,7 @@ visibility:hidden;
               <div class="panel panel-default active" align="right">
                         <div class="panel-heading">
                             <div class="panel-title btn-extra-large btn-success" align="center">
-                                    <span class="btn-medium btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                                    <span class="btn-medium btn-success">@lang('crear_encuesta.encuesta')</span>
                             </div>
                       </div>
                 </div>
@@ -345,7 +345,6 @@ slider: function(fieldData) {
           }
         }
       },
-      defaultFields: formData,
       typeUserDisabledAttrs: {
         'starRating': [
           'placeholder'
