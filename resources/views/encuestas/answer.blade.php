@@ -93,42 +93,43 @@ var options = {
     };
 
     //var formBuilder = $(fbRender).formBuilder(options);
-    let fields = [{
+let fields = [{
   label: 'Star Rating',
   attrs: {
     type: 'starRating'
   },
-  icon: '🌟'
+  icon: '<i class="fa fa-star"></i>'
 },
 {
-      label: 'Contact Information',
+      label: 'Imagen',
       attrs: {
-      type: 'contactInformation'
+      type: 'file'
     },
-    icon: 'ℹ️'
-},
-{
-      label: 'Multiple Textbox',
-      attrs: {
-      type: 'multipleText'
-    },
-    icon: '📖'
+    icon: '<i class="fa fa-image"></i>'
 },
 {
   label: 'Slider',
   attrs: {
     type: 'slider'
   },
-  icon: ''
+  icon: '<i class="fa fa-sliders"></i>'
 },
 {
-  label: 'Matriz',
-  attrs: {
-    type: 'matriz'
-  },
-  icon: ''
+  label: 'Texto',
+  type: 'header'
+},
+{
+  label: 'Multiple Choice',
+  type: 'radio-group'
+},
+{
+  label: 'Dropdown',
+  type: 'select'
+},
+{
+  label: 'Single TextBox',
+  type: 'text'
 }
-
 ];
 let templates = {
     starRating: function(fieldData) {
@@ -162,41 +163,6 @@ let templates = {
     
     }
     }
-  },
- contactInformation: function(fieldData) {
-   return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" placeholder="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Fecha de Nacimiento" name="datebirth"><br>',
-     onRender: function() {
-       $(document.getElementById(fieldData.name));
-       $(document.getElementById(fieldData.name+1));
-       $(document.getElementById(fieldData.name+2));
-       $(document.getElementById(fieldData.name+3));
-       $(document.getElementById(fieldData.name+4));
-       $(document.getElementById(fieldData.name+5));
-       $(document.getElementById(fieldData.name+6));
-       $(document.getElementById(fieldData.name+7));
-       $(document.getElementById(fieldData.name+8));
-       $(document.getElementById(fieldData.name+9));
-     }
-   };
- },
- multipleText: function(fieldData) {
-   return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Primer box" name="first"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Segundo box" name="second"><br><input type="text" id="'+fieldData.name+'2" class="form-control" value="Tercer box" name="third">',
-     onRender: function() {
-       $(document.getElementById(fieldData.name));
-       $(document.getElementById(fieldData.name+1));
-       $(document.getElementById(fieldData.name+2));
-     }
-   };
- },
-  matriz: function(fieldData) {
-    return {
-      field: '<div id='+fieldData.name+'></div>',
-      onRender: function() {
-        
-      }
-    };
   }
 
 };

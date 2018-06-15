@@ -79,7 +79,7 @@ visibility:hidden;
                 
                 <div class="row">
 
-                <div class="settings" id="survey_content" name="survey_content">
+                <div class="settings main-content-wrap" id="survey_content" name="survey_content">
                     <br>
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
@@ -97,16 +97,21 @@ visibility:hidden;
                       <div class="survey">
                         <form id="fb-editor"><div class="build-wrap"></div></form>
                       </div>
-                         <div class="guardar">
-                                    <a href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button>
-                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12" align="center">
+                <br>
+                                    <a class="btn btn-default" href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                                    <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button>
+                  </div>
+            </div>
+            </div>
         </section>
 
 @stop
@@ -243,33 +248,12 @@ let fields = [{
   },
   icon: '<i class="fa fa-star"></i>'
 },
-// {
-//       label: 'Contact Information',
-//       attrs: {
-//       type: 'contactInformation'
-//     },
-//     icon: '<i class="fa fa-info"></i>'
-// },
-{
-      label: 'Multiple Textbox',
-      attrs: {
-      type: 'multipleText'
-    },
-    icon: '<i class="fa fa-book"></i>'
-},
 {
       label: 'Imagen',
       attrs: {
       type: 'file'
     },
     icon: '<i class="fa fa-image"></i>'
-},
-{
-      label: 'Ranking',
-      attrs: {
-      type: 'select'
-    },
-    icon: '<i class="fa fa-star"></i>'
 },
 {
   label: 'Slider',
@@ -304,41 +288,24 @@ let templates = {
       }
     };
   },
- // contactInformation: function(fieldData) {
- //   return {
- //     field: '<input type="text" id="'+fieldData.name+'" class="form-control" placeholder="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Fecha de Nacimiento" name="datebirth"><br>',
- //     onRender: function() {
- //       $(document.getElementById(fieldData.name));
- //       $(document.getElementById(fieldData.name+1));
- //       $(document.getElementById(fieldData.name+2));
- //       $(document.getElementById(fieldData.name+3));
- //       $(document.getElementById(fieldData.name+4));
- //       $(document.getElementById(fieldData.name+5));
- //       $(document.getElementById(fieldData.name+6));
- //       $(document.getElementById(fieldData.name+7));
- //       $(document.getElementById(fieldData.name+8));
- //       $(document.getElementById(fieldData.name+9));
- //     }
- //   };
- // },
-  multipleText: function(fieldData) {
-   return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Primer box" name="first"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Segundo box" name="second"><br><input type="text" id="'+fieldData.name+'2" class="form-control" value="Tercer box" name="third">',
-     onRender: function() {
-       $(document.getElementById(fieldData.name));
-       $(document.getElementById(fieldData.name+1));
-       $(document.getElementById(fieldData.name+2));
-     }
-   };
- },
-  slider: function(fieldData) {
+slider: function(fieldData) {
     return {
-      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><input id='+fieldData.name+' type="range" min="0" max="100" step="50" data-orientation="vertical">',
+      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
       onRender: function() {
-        $(document.getElementById(fieldData.name)).rangeslider();
+        $(document.getElementById(fieldData.name)).slider({
+      range: "max",
+      min: 0,
+      max: 100,
+      step: 50,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#slider"+fieldData.name ).val( ui.value );
       }
-    };
-  }
+    });
+    
+    }
+    }
+  },
 
 };
 
@@ -349,12 +316,19 @@ let templates = {
         preloaded: {
           'en-US': {
             close: "Guardar",
+            addOption: 'Agregar item +',
             required: "Requerido",
             label: "Input",
             placeholder: "Ejemplo"
           }
         }
       },
+       typeUserDisabledAttrs: {
+        'starRating': [
+          'placeholder'
+        ]
+      },
+      disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
        controlOrder: [
@@ -364,7 +338,6 @@ let templates = {
        ],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea'],
-
       inputSets: [
       {
         label: 'Contact Information',
@@ -420,30 +393,220 @@ let templates = {
             }
           ]
       },
-        {
-          label: 'User Agreement',
-          fields: [
-          {
-            type: 'header',
-            subtype: 'h2',
-            label: 'Terms &amp; Conditions',
-            className: 'header'
-          },
-          {
-            type: 'paragraph',
-            label: 'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.',
-          },
-          {
-            type: 'paragraph',
-            label: 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',
-          },
-          {
-            type: 'checkbox',
-            label: 'Do you agree to the terms and conditions?',
-          }
+      {
+        label: 'Multiple Textbooks',
+        name: 'multiple-textbook',
+        type: 'text',
+        icon: '<i class="fa fa-book"></i>',
+        showHeader: true, 
+        fields: [
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            }
         ]
-        }
+      },
+      {
+        label: 'Matrix',
+        name: 'matrix', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-th"></i>',
+        fields: [
+            {
+              label: 'Nombre de Renglón',
+              type: 'text',
+              placeholder: '¿Qué tan bueno es el servicio?',
+              className: 'form-control',
+              values: [
+                {
+                label: 'hola'
+                }
+              ]
+            },
+            {
+              label: 'Nombre de Columna',
+              type: 'text',
+              placeholder: 'Satisfecho',
+              className: 'form-control',
+              values: [
+                {
+                label: 'hola'
+                }
+              ]
+            },
+          ]
+      },
+      {
+        label: 'Ranking',
+        name: 'ranking', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-bars"></i>',
+        fields: [
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+          ]
+      },
+      {
+        label: 'Matrix Ranking Scale',
+        name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-th"></i>',
+        fields: [
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+          ]
+      },
+      {
+          label: 'Star Rating',
+          attrs: {
+            type: 'starRating'
+          },
+          icon: '<i class="fa fa-star"></i>'
+        },
       ]
+
 
 
 
