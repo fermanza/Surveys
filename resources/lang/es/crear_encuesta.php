@@ -13,6 +13,7 @@ return [
     'tipoDeEncuesta' => 'Tipo de encuesta',
     'publica' => 'Pública',
     'privada' => 'Privada',
-    'crearEncuesta' => 'Crear encuesta'
+    'crearEncuesta' => 'Crear encuesta',
+    'encuesta' => 'Encuesta'
 
 ];

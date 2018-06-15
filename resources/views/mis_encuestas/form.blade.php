@@ -53,8 +53,58 @@ visibility:hidden;
             </div>
         </section>
         <!-- end page title section -->
+
+        <!-- start form section -->
+        <section class="wow fadeIn titulo" id="start-your-project">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 center-col">
+                        <h5 class="font-weight-700 text-extra-dark-gray">{{ $template->name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-xs-8">
+              <div class="panel panel-default active" align="right">
+                        <div class="panel-heading">
+                            <div class="panel-title btn-extra-large btn-success" align="center">
+                                    <span class="btn-medium btn-success">@lang('crear_encuesta.encuesta')</span>
+                            </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default active" align="right">
+                        <div class="panel-heading">
+                            <div class="panel-title btn-extra-large btn-success" align="center">
+                                    <span class="btn-very-small btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                            </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+              <div class="build-wrap"></div>
+       </div> 
+
+       <div class="container">
+            <div class="row">
+              <div class="col-md-12" align="center">
+                <br>
+                                   <a class="btn btn-default" href="{{ url()->previous() }}">@lang('editar_encuesta.cancelar')</a><br><br>
+                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                                    <button class="btn" id="save-data">@lang('editar_encuesta.guardar')</button><br><br><br>
+                  </div>
+            </div>
+            </div>
         
-        <!-- end form section -->
+   {{--      <!-- end form section -->
         <section class="encuesta">
             <div class="container">
           
@@ -82,18 +132,7 @@ visibility:hidden;
                         </div>
                 </div>
             </div>
-            <div class="container">
-            <div class="row">
-              <div class="col-md-12" align="center">
-                <br>
-                                   <a class="btn btn-default" href="{{ url()->previous() }}">@lang('editar_encuesta.cancelar')</a>
-                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('editar_encuesta.guardar')</button>
-                  </div>
-            </div>
-            </div>
-        </section>
+        </section> --}}
 
 @stop
 
@@ -295,38 +334,52 @@ let templates = {
 
 };
 
-var fbRender = document.getElementById('fb-editor');
+var fbRender = document.getElementsByClassName('build-wrap');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
-var options = {
-  fields, templates,
+
+ var options = {
+    fields, templates,
       i18n: {
         preloaded: {
           'en-US': {
             close: "Guardar",
             addOption: 'Agregar item +',
             required: "Requerido",
-            label: "Input",
+            label: "Etiqueta",
             placeholder: "Ejemplo"
           }
         }
       },
-       typeUserDisabledAttrs: {
+      typeUserDisabledAttrs: {
         'starRating': [
+          'placeholder'
+        ],
+        'slider': [
+          'placeholder'
+        ],
+        'select': [
           'placeholder'
         ]
       },
       disabledActionButtons: ['data','save','clear'],
-      defaultFields: formData,
-       controlPosition: 'right',
+      controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
        controlOrder: [
         'title',
         'text',
         'textarea'
        ],
-      hiddenAttrs: ['className'],
-      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea','hidden'],
+      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
+      defaultFields: [
+      {
+        label: 'Imagen',
+        type: 'file',
+        required: true,
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>'
+      },
+      ],
       inputSets: [
       {
         label: 'Contact Information',
@@ -385,7 +438,7 @@ var options = {
       {
         label: 'Multiple Textbooks',
         name: 'multiple-textbook',
-        type: 'text',
+        type: 'form',
         icon: '<i class="fa fa-book"></i>',
         showHeader: true, 
         fields: [
@@ -419,23 +472,13 @@ var options = {
               label: 'Nombre de Renglón',
               type: 'text',
               placeholder: '¿Qué tan bueno es el servicio?',
-              className: 'form-control',
-              values: [
-                {
-                label: 'hola'
-                }
-              ]
+              className: 'form-control'
             },
             {
               label: 'Nombre de Columna',
               type: 'text',
               placeholder: 'Satisfecho',
-              className: 'form-control',
-              values: [
-                {
-                label: 'hola'
-                }
-              ]
+              className: 'form-control'
             },
           ]
       },
@@ -514,6 +557,24 @@ var options = {
           ]
       },
       {
+        label: 'Star Rating',
+        name: 'starRating',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'Star Rating',
+          type: 'starRating'
+        }]
+      },
+      {
+        label: 'Slider',
+        name: 'slider',
+        icon: '<i class="fa fa-sliders"></i>',
+        fields: [{
+          label: 'Slider',
+          type: 'slider'
+        }]
+      },
+      {
         label: 'Matrix Ranking Scale',
         name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
         showHeader: true, // optional - Use the label as the header for this set of inputs
@@ -588,7 +649,6 @@ var options = {
           ]
       },
       ]
-
     };
     
     var formBuilder = $(fbRender).formBuilder(options);

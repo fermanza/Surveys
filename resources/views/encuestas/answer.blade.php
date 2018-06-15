@@ -87,9 +87,321 @@ visibility:hidden;
 
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
-var options = {        
+
+
+var options = {
+    fields, templates,
+      i18n: {
+        preloaded: {
+          'en-US': {
+            close: "Guardar",
+            addOption: 'Agregar item +',
+            required: "Requerido",
+            label: "Etiqueta",
+            placeholder: "Ejemplo"
+          }
+        }
+      },
       defaultFields: formData,
-      controlPosition: 'left'
+      typeUserDisabledAttrs: {
+        'starRating': [
+          'placeholder'
+        ],
+        'slider': [
+          'placeholder'
+        ],
+        'select': [
+          'placeholder'
+        ]
+      },
+      disabledActionButtons: ['data','save','clear'],
+      controlPosition: 'right',
+      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
+       controlOrder: [
+        'title',
+        'text',
+        'textarea'
+       ],
+      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
+      defaultFields: [
+      {
+        label: 'Imagen',
+        type: 'file',
+        required: true,
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>'
+      },
+      ],
+      inputSets: [
+      {
+        label: 'Contact Information',
+        name: 'contact-information', // optional - one will be generated from the label if name not supplied
+        icon: '<i class="fa fa-info"></i>',
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        fields: [
+            {
+              type: 'text',
+              label: 'Nombre',
+              required: '',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Apellido',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Empresa',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Telefono',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Direccion',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Ciudad',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Pais',
+              className: 'form-control'
+            },
+            {
+              type: 'select',
+              label: 'Sexo',
+              className: 'form-control'
+            },
+            {
+              type: 'date',
+              label: 'Fecha de Nacimiento',
+              className: 'form-control'
+            }
+          ]
+      },
+      {
+        label: 'Multiple Textbooks',
+        name: 'multiple-textbook',
+        type: 'form',
+        icon: '<i class="fa fa-book"></i>',
+        showHeader: true, 
+        fields: [
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Aqui va tu pregunta',
+              placeholder: 'Aqui va tu respuesta',
+              className: 'form-control'
+            }
+        ]
+      },
+      {
+        label: 'Matrix',
+        name: 'matrix', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-th"></i>',
+        fields: [
+            {
+              label: 'Nombre de Renglón',
+              type: 'text',
+              placeholder: '¿Qué tan bueno es el servicio?',
+              className: 'form-control'
+            },
+            {
+              label: 'Nombre de Columna',
+              type: 'text',
+              placeholder: 'Satisfecho',
+              className: 'form-control'
+            },
+          ]
+      },
+      {
+        label: 'Ranking',
+        name: 'ranking', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-bars"></i>',
+        fields: [
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+          ]
+      },
+      {
+        label: 'Star Rating',
+        name: 'starRating',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'Star Rating',
+          type: 'starRating'
+        }]
+      },
+      {
+        label: 'Slider',
+        name: 'slider',
+        icon: '<i class="fa fa-sliders"></i>',
+        fields: [{
+          label: 'Slider',
+          type: 'slider'
+        }]
+      },
+      {
+        label: 'Matrix Ranking Scale',
+        name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        icon: '<i class="fa fa-th"></i>',
+        fields: [
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+            {
+              type: 'select',
+              label: 'Aqui va tu respuesta',
+              className: 'form-control',
+              values: [
+                {
+                  label: '1',
+                  value: '1',
+                  selected: false
+                },
+                {
+                  label: '2',
+                  value: '2',
+                  selected: false
+                },
+                {
+                  label: '3',
+                  value: '3',
+                  selected: false
+                }
+              ]
+            },
+          ]
+      },
+      ]
     };
 
     //var formBuilder = $(fbRender).formBuilder(options);
@@ -174,7 +486,7 @@ let templates = {
     dataType: 'json'
   };
 
-  console.log(formData);
+  console.log(formRenderOpts);
 
  $(fbRender).formRender(formRenderOpts);
 

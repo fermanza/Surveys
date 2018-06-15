@@ -3442,7 +3442,7 @@ header.sticky nav.navbar.brand-center ul.nav > li > a {padding: 20px; margin: 0 
 
 /* toggles */
 .toggles .panel  {background: transparent; box-shadow: none; border-radius: 0; border: 1px solid #ddd;}
-.toggles .panel-title  {font-size: 13px; padding-right: 30px; position: relative; }
+.toggles .panel-title  {font-size: 1px; padding-right: 30px; position: relative; }
 .toggles .panel-title > span.pull-right { position: absolute; right: 0; top: 0; }
 .toggles .panel-heading {padding: 18px; background-color: transparent;}
 .toggles .panel-heading i {font-size: 12px; color: #626262}
@@ -4208,11 +4208,8 @@ footer .widget.links {
 
 
 
-/*HOME-COMO FUNCIONA*/
 
-.equalize .eq-info p {
-    margin-bottom: 0;
-}
+/*HOME-COMO FUNCIONA*/
 
 .equalize .eq-info {
     background-image: url(../images/home/fp1.png);
@@ -4245,7 +4242,7 @@ footer .widget.links {
     background: transparent;
     border-color: #5ba01f;
 }
-.planes .cont {
+.index .planes .cont {
     display: flex;
     float: left;
 }

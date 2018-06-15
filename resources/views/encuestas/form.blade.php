@@ -64,22 +64,62 @@ visibility:hidden;
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{ $template->name }}</h5>
-                        <div class="btns">
-                            {{-- <a href="#"><i class="fa fa-eye"></i> Vista previa</a> --}}
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-xs-8">
+              <div class="panel panel-default active" align="right">
+                        <div class="panel-heading">
+                            <div class="panel-title btn-extra-large btn-success" align="center">
+                                    <span class="btn-medium btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                            </div>
+                      </div>
+                </div>
+            </div>
+           <div class="col-md-3 col-xs-4">
+                <div class="panel panel-default active" align="right">
+                        <div class="panel-heading">
+                            <div class="panel-title btn-extra-large btn-success" align="center">
+                                    <span class="btn-medium btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                            </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+        </div>
         
-        
+        {{--  <div class="container">
+                
+        <div class="build-wrap"></div>
+
+    </div> --}}
+      {{-- <div class="build-wrap"></div> --}}
+<div class="container">
+        <div class="build-wrap"></div>
+ </div> 
+
+ <div class="container">
+            <div class="row">
+              <div class="col-md-12" align="center">
+                <br>
+                                    <a class="btn btn-default" href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><br><br><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                                    <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button><br><br><br>
+                  </div>
+            </div>
+            </div>
+
         <!-- end form section -->
-        <section class="encuesta">
+    {{--     <section class="encuesta">
             <div class="container">
                 
                 <div class="row">
 
-                <div class="settings main-content-wrap" id="survey_content" name="survey_content">
+                <div class="settings" id="survey_content" name="survey_content">
                     <br>
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
@@ -95,7 +135,7 @@ visibility:hidden;
                     <br><br>
                     <div class="container">
                       <div class="survey">
-                        <form id="fb-editor"><div class="build-wrap"></div></form>
+                        <div id="fb-editor"></div>
                       </div>
                     </div>
                 </div>
@@ -112,7 +152,7 @@ visibility:hidden;
                   </div>
             </div>
             </div>
-        </section>
+        </section> --}}
 
 @stop
 
@@ -241,27 +281,7 @@ visibility:hidden;
   $(document).ready(function() {
       
 
-let fields = [{
-  label: 'Star Rating',
-  attrs: {
-    type: 'starRating'
-  },
-  icon: '<i class="fa fa-star"></i>'
-},
-{
-      label: 'Imagen',
-      attrs: {
-      type: 'file'
-    },
-    icon: '<i class="fa fa-image"></i>'
-},
-{
-  label: 'Slider',
-  attrs: {
-    type: 'slider'
-  },
-  icon: '<i class="fa fa-sliders"></i>'
-},
+let fields = [
 {
   label: 'Texto',
   type: 'header'
@@ -279,6 +299,8 @@ let fields = [{
   type: 'text'
 }
 ];
+
+
 let templates = {
   starRating: function(fieldData) {
     return {
@@ -318,13 +340,20 @@ slider: function(fieldData) {
             close: "Guardar",
             addOption: 'Agregar item +',
             required: "Requerido",
-            label: "Input",
+            label: "Etiqueta",
             placeholder: "Ejemplo"
           }
         }
       },
-       typeUserDisabledAttrs: {
+      defaultFields: formData,
+      typeUserDisabledAttrs: {
         'starRating': [
+          'placeholder'
+        ],
+        'slider': [
+          'placeholder'
+        ],
+        'select': [
           'placeholder'
         ]
       },
@@ -337,7 +366,16 @@ slider: function(fieldData) {
         'textarea'
        ],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
+      defaultFields: [
+      {
+        label: 'Imagen',
+        type: 'file',
+        required: true,
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>'
+      },
+      ],
       inputSets: [
       {
         label: 'Contact Information',
@@ -396,7 +434,7 @@ slider: function(fieldData) {
       {
         label: 'Multiple Textbooks',
         name: 'multiple-textbook',
-        type: 'text',
+        type: 'form',
         icon: '<i class="fa fa-book"></i>',
         showHeader: true, 
         fields: [
@@ -430,23 +468,13 @@ slider: function(fieldData) {
               label: 'Nombre de Renglón',
               type: 'text',
               placeholder: '¿Qué tan bueno es el servicio?',
-              className: 'form-control',
-              values: [
-                {
-                label: 'hola'
-                }
-              ]
+              className: 'form-control'
             },
             {
               label: 'Nombre de Columna',
               type: 'text',
               placeholder: 'Satisfecho',
-              className: 'form-control',
-              values: [
-                {
-                label: 'hola'
-                }
-              ]
+              className: 'form-control'
             },
           ]
       },
@@ -525,6 +553,24 @@ slider: function(fieldData) {
           ]
       },
       {
+        label: 'Star Rating',
+        name: 'starRating',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'Star Rating',
+          type: 'starRating'
+        }]
+      },
+      {
+        label: 'Slider',
+        name: 'slider',
+        icon: '<i class="fa fa-sliders"></i>',
+        fields: [{
+          label: 'Slider',
+          type: 'slider'
+        }]
+      },
+      {
         label: 'Matrix Ranking Scale',
         name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
         showHeader: true, // optional - Use the label as the header for this set of inputs
@@ -598,22 +644,12 @@ slider: function(fieldData) {
             },
           ]
       },
-      {
-          label: 'Star Rating',
-          attrs: {
-            type: 'starRating'
-          },
-          icon: '<i class="fa fa-star"></i>'
-        },
       ]
-
-
-
-
     };
 
+    //$('.build-wrap').formBuilder();
 
-    var fbEditor = document.getElementById('fb-editor');
+    var fbEditor = document.getElementsByClassName('build-wrap');
     var formBuilder = $(fbEditor).formBuilder(options);
 
     document.getElementById('save-data').addEventListener('click', function() {
