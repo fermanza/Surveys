@@ -243,13 +243,13 @@ let fields = [{
   },
   icon: '<i class="fa fa-star"></i>'
 },
-{
-      label: 'Contact Information',
-      attrs: {
-      type: 'contactInformation'
-    },
-    icon: '<i class="fa fa-info"></i>'
-},
+// {
+//       label: 'Contact Information',
+//       attrs: {
+//       type: 'contactInformation'
+//     },
+//     icon: '<i class="fa fa-info"></i>'
+// },
 {
       label: 'Multiple Textbox',
       attrs: {
@@ -304,23 +304,23 @@ let templates = {
       }
     };
   },
- contactInformation: function(fieldData) {
-   return {
-     field: '<input type="text" id="'+fieldData.name+'" class="form-control" placeholder="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Fecha de Nacimiento" name="datebirth"><br>',
-     onRender: function() {
-       $(document.getElementById(fieldData.name));
-       $(document.getElementById(fieldData.name+1));
-       $(document.getElementById(fieldData.name+2));
-       $(document.getElementById(fieldData.name+3));
-       $(document.getElementById(fieldData.name+4));
-       $(document.getElementById(fieldData.name+5));
-       $(document.getElementById(fieldData.name+6));
-       $(document.getElementById(fieldData.name+7));
-       $(document.getElementById(fieldData.name+8));
-       $(document.getElementById(fieldData.name+9));
-     }
-   };
- },
+ // contactInformation: function(fieldData) {
+ //   return {
+ //     field: '<input type="text" id="'+fieldData.name+'" class="form-control" placeholder="Nombre" name="name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Apellido" name="last_name"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Empresa" name="company"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Email" name="email"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Teléfono" name="phone"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Dirección" name="address"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Ciudad" name="city"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="País" name="country"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Sexo" name="sex"><br><input type="text" id="'+fieldData.name+'1" class="form-control" placeholder="Fecha de Nacimiento" name="datebirth"><br>',
+ //     onRender: function() {
+ //       $(document.getElementById(fieldData.name));
+ //       $(document.getElementById(fieldData.name+1));
+ //       $(document.getElementById(fieldData.name+2));
+ //       $(document.getElementById(fieldData.name+3));
+ //       $(document.getElementById(fieldData.name+4));
+ //       $(document.getElementById(fieldData.name+5));
+ //       $(document.getElementById(fieldData.name+6));
+ //       $(document.getElementById(fieldData.name+7));
+ //       $(document.getElementById(fieldData.name+8));
+ //       $(document.getElementById(fieldData.name+9));
+ //     }
+ //   };
+ // },
   multipleText: function(fieldData) {
    return {
      field: '<input type="text" id="'+fieldData.name+'" class="form-control" value="Primer box" name="first"><br><input type="text" id="'+fieldData.name+'1" class="form-control" value="Segundo box" name="second"><br><input type="text" id="'+fieldData.name+'2" class="form-control" value="Tercer box" name="third">',
@@ -349,6 +349,7 @@ let templates = {
         preloaded: {
           'en-US': {
             close: "Guardar",
+            required: "Requerido",
             label: "Input",
             placeholder: "Ejemplo"
           }
@@ -361,9 +362,94 @@ let templates = {
         'text',
         'textarea'
        ],
-      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea']
+      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea'],
+
+      inputSets: [
+      {
+        label: 'Contact Information',
+        name: 'contact-information', // optional - one will be generated from the label if name not supplied
+        icon: '<i class="fa fa-info"></i>',
+        showHeader: true, // optional - Use the label as the header for this set of inputs
+        fields: [
+            {
+              type: 'text',
+              label: 'Nombre',
+              required: '',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Apellido',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Empresa',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Telefono',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Direccion',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Ciudad',
+              className: 'form-control'
+            },
+            {
+              type: 'text',
+              label: 'Pais',
+              className: 'form-control'
+            },
+            {
+              type: 'select',
+              label: 'Sexo',
+              className: 'form-control'
+            },
+            {
+              type: 'date',
+              label: 'Fecha de Nacimiento',
+              className: 'form-control'
+            }
+          ]
+      },
+        {
+          label: 'User Agreement',
+          fields: [
+          {
+            type: 'header',
+            subtype: 'h2',
+            label: 'Terms &amp; Conditions',
+            className: 'header'
+          },
+          {
+            type: 'paragraph',
+            label: 'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.',
+          },
+          {
+            type: 'paragraph',
+            label: 'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',
+          },
+          {
+            type: 'checkbox',
+            label: 'Do you agree to the terms and conditions?',
+          }
+        ]
+        }
+      ]
+
+
+
     };
+
+
     var fbEditor = document.getElementById('fb-editor');
     var formBuilder = $(fbEditor).formBuilder(options);
 
