@@ -86,7 +86,7 @@
 
 
             @foreach($questions as $question) 
-                       @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" )        
+                       @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" && $question->type != 'header' )        
                                     <div class="pregunta">     
                                         <p>{{ $question->label }}</p>
                                         <div class="todo">                                          
@@ -218,7 +218,7 @@
 
 
        
-        if(question.type == "textarea" || question.type == "text" || question.type == "slider" || question.type == "starRating"){
+        if(question.type == "textarea" || question.type == "text" || question.type == "slider" || question.type == "starRating" || question.type == "header"){
             return true;
         } 
          
@@ -229,6 +229,14 @@
 
 
          nColors = question.data.length;
+
+
+         colors.push('rgb(36, 255, 101)');
+         colors.push('rgb(43, 49, 255)');
+         colors.push('rgb(255, 37, 30)');
+         colors.push('rgb(255, 223, 39)');
+         colors.push('rgb(204,43,255)');
+
 
          for(let i =0; i<= nColors; i++) {
              colors.push('rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');

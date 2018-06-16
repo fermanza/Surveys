@@ -99,11 +99,24 @@ class EncuestasPublicasController extends Controller
         $survey = DB::table('template')->select('name')->where('id', $idEncuesta)->first();
         $questions = json_decode($questions1->content);
 
+        $questions = collect($questions);
 
+
+
+
+         $questions  =  $questions->reject(function($value, $key) {
+                 return $value->type == "textarea" || $value->type == "text" || $value->type == "starRating" || $value->type == "slider" || $value->type == "header" || $value->type == "file" || $value->type == "date";   
+         }); 
+
+
+
+         
+      
 
           foreach($questions as $ques) {
-               
-                if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") {
+                
+
+                if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider" || $ques->type == "header") {
                         continue;
                     }
                  foreach($ques->values as $v) {
