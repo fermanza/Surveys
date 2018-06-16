@@ -62,7 +62,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     </head>
-    <body class="index">
+    <body class="index" style="cursor: auto;">
         @yield('content')
 
         <!-- start footer --> 

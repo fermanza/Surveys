@@ -5,10 +5,18 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.form-actions,.btn-group
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
 {
 visibility:hidden;
 } 
+.form-actions
+{
+  display: none;
+}
+.btn-group
+{
+  display: none;
+}
 .render-wrap {
   display: none;
 }
@@ -19,6 +27,9 @@ visibility:hidden;
 .survey
 {
   position: relative;
+}
+.div {
+    display: block;
 }
 </style>
 
@@ -37,6 +48,7 @@ visibility:hidden;
                 </div>
             </div>
         </section>
+
         <section class="bread-bottom wow fadeIn no-padding page-title-small">
             <div class="container">
                 <div class="row">
@@ -67,34 +79,32 @@ visibility:hidden;
                 </div>
             </div>
         </section>
-
-        <div class="container">
-          <div class="row">
+     
+        
+       <div class="content">
+        <div class="row">
             <div class="col-md-9 col-xs-8">
               <div class="panel panel-default active" align="right">
-                        <div class="panel-heading">
-                            <div class="panel-title btn-extra-large btn-success" align="center">
-                                    <span class="btn-medium btn-success">@lang('crear_encuesta.encuesta')</span>
-                            </div>
+                  <div class="panel-heading">
+                      <div class="panel-title btn-extra-large btn-success" align="center">
+                          <span class="btn-medium btn-success">@lang('crear_encuesta.encuesta')</span>
                       </div>
-                </div>
+                  </div>
+              </div>
             </div>
            <div class="col-md-3 col-xs-4">
-                <div class="panel panel-default active" align="right">
-                        <div class="panel-heading">
-                            <div class="panel-title btn-extra-large btn-success" align="center">
-                                    <span class="btn-medium btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
-                            </div>
-                      </div>
-                </div>
-            </div>
+               <div class="panel panel-default active" align="right">
+                   <div class="panel-heading">
+                          <div class="panel-title btn-extra-large btn-success" align="center">
+                              <span class="btn-medium btn-success">@lang('mis_encuestas.tipoPregunta')<span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
+                          </div>
+                   </div>
+               </div>
           </div>
         </div>
-        
-      
-<div class="container">
-        <div class="build-wrap"></div>
- </div> 
+                <span class="build-form">
+                </span>
+        </div>
 
  <div class="container">
             <div class="row">
@@ -106,6 +116,18 @@ visibility:hidden;
                   </div>
             </div>
             </div>
+
+
+
+<body>
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/demo.css')}}">
+  <script src="{{asset('assets/js/vendor.js')}}"></script>
+  <script src="{{asset('assets/js/form-builder.min.js')}}"></script>
+  <script src="{{asset('assets/js/form-render.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.1/jquery.rateyo.min.js"></script>
+  <script src="{{asset('assets/js/demo.js')}}"></script>
+</body>
+
 @stop
 
 <style>
@@ -126,7 +148,7 @@ visibility:hidden;
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  background-color: #0099ff;
+  background-color: #82d856;
   touch-action: pan-y;
   cursor: pointer;
   display: inline-block;
@@ -141,14 +163,14 @@ visibility:hidden;
   width: 90px;
   text-align: center;
   padding: 10px;
-  background-color: #0099ff;
+  background-color: #82d856;
   border-radius: 5px;
   color: white;
   left: -35px;
   top: -55px;
   position: absolute;
   white-space: nowrap;
-  border-top: 1px solid #007acc;
+  border-top: 1px solid #82d856;
   box-shadow: 0 -4px 1px rgba(0, 0, 0, 0.07), 0 -5px 20px rgba(0, 0, 0, 0.3);
 }
 .rangeslider__handle__value:before {
@@ -162,7 +184,7 @@ visibility:hidden;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid;
-  border-top-color: #0099ff;
+  border-top-color: #82d856;
 }
 .rangeslider__handle__value:after {
   content: " cm";
@@ -172,7 +194,7 @@ visibility:hidden;
   top: 0;
   z-index: 1;
   height: 100%;
-  background-color: #0099ff;
+  background-color: #82d856;
   border-radius: 5px;
 }
 .rangeslider__labels {
@@ -197,14 +219,14 @@ visibility:hidden;
   width: 1px;
   height: 9px;
   border-radius: 1px;
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: #82d856;
 }
 .rangeslider__labels__label:first-child:before, .rangeslider__labels__label:last-child:before {
   height: 12px;
   width: 2px;
 }
 .rangeslider__labels__label:first-child:before {
-  background-color: #0099ff;
+  background-color: #82d856;
 }
 .rangeslider__labels__label:last-child:before {
   background-color: gray;
@@ -217,10 +239,10 @@ visibility:hidden;
 }
 .rangeslider.rangeslider--active .rangeslider__handle,
 .rangeslider.rangeslider--active .rangeslider__handle * {
-  background-color: #33adff;
+  background-color: #82d856;
 }
 .rangeslider.rangeslider--active .rangeslider__handle *:before {
-  border-top-color: #33adff;
+  border-top-color: #82d856;
 }
 .rangeslider.rangeslider--active .rangeslider__handle__value {
   transform: translateY(-5px);
@@ -232,7 +254,7 @@ visibility:hidden;
   <script>
   $(document).ready(function() {
  
-  var fbEditor = document.getElementsByClassName("build-wrap");      
+var fbEditor = document.getElementsByClassName("build-form");      
 
 let fields = [
 {
@@ -280,13 +302,14 @@ slider: function(fieldData) {
     
     }
     }
-  },
+  }
 
 };
 
 
   var options = {
     fields, templates,
+    controlPosition: 'right',
       i18n: {
         preloaded: {
           'en-US': {
@@ -310,7 +333,6 @@ slider: function(fieldData) {
         ]
       },
       disabledActionButtons: ['data','save','clear'],
-      controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
