@@ -17,19 +17,9 @@ visibility:hidden;
 {
   display: none;
 }
-.render-wrap {
-  display: none;
-}
-.build-wrap
-{
-  position: relative;
-}
 .survey
 {
   position: relative;
-}
-.div {
-    display: block;
 }
 </style>
 
@@ -83,6 +73,7 @@ visibility:hidden;
         
        <div class="content">
         <div class="row">
+          <div class="tipos">
             <div class="col-md-9 col-xs-8">
               <div class="panel panel-default active" align="right">
                   <div class="panel-heading">
@@ -100,13 +91,14 @@ visibility:hidden;
                           </div>
                    </div>
                </div>
+            </div>
           </div>
         </div>
                 <span class="build-form">
                 </span>
         </div>
 
- <div class="container">
+
             <div class="row">
               <div class="col-md-12" align="center">
                 <br>
@@ -114,8 +106,7 @@ visibility:hidden;
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                     <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button><br><br><br>
                   </div>
-            </div>
-            </div>
+                </div>
 
 
 
@@ -316,7 +307,7 @@ slider: function(fieldData) {
             close: "Guardar",
             addOption: 'Agregar item +',
             required: "Requerido",
-            label: "Etiqueta",
+            label: "Pregunta",
             placeholder: "Ejemplo"
           }
         }
@@ -330,6 +321,9 @@ slider: function(fieldData) {
         ],
         'select': [
           'placeholder'
+        ],
+        'textarea': [
+          'rows'
         ]
       },
       disabledActionButtons: ['data','save','clear'],
@@ -347,6 +341,16 @@ slider: function(fieldData) {
       ],
       inputSets: [
       {
+        label: 'Comment Box',
+        name: 'commentBox',
+        className: 'form-control',
+        icon: '<i class="fa fa-comment"></i>',
+        fields: [{ 
+          type: 'textarea',
+          label: 'Comment Box'
+          }]
+      },
+      {
         label: 'Contact Information',
         name: 'contact-information', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
@@ -355,7 +359,6 @@ slider: function(fieldData) {
             {
               type: 'text',
               label: 'Nombre',
-              required: '',
               className: 'form-control'
             },
             {
@@ -435,16 +438,22 @@ slider: function(fieldData) {
         fields: [
             {
               label: 'Nombre de Renglón',
-              type: 'text',
-              placeholder: '¿Qué tan bueno es el servicio?',
-              className: 'form-control'
-            },
+              className: 'form-control',
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
             {
-              label: 'Nombre de Columna',
-              type: 'text',
-              placeholder: 'Satisfecho',
-              className: 'form-control'
-            },
+              label: 'Nombre de Renglón',
+              className: 'form-control',
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
           ]
       },
       {
@@ -619,6 +628,8 @@ slider: function(fieldData) {
     //$('.build-wrap').formBuilder();
 
     var formBuilder = $(fbEditor).formBuilder(options);
+
+    console.log(formBuilder);
 
     document.getElementById('save-data').addEventListener('click', function() {
     var jsondata=formBuilder.actions.getData('json');

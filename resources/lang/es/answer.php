@@ -4,6 +4,7 @@ return [
 
     'responderEncuesta' => 'Responder encuesta',
     'responder' => 'Responder',
-    'cancelar' => 'Cancelar'
+    'cancelar' => 'Cancelar',
+    'regresar' => 'Regresar'
 
 ];

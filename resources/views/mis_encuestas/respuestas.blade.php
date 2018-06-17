@@ -4,6 +4,19 @@
 @extends('includes.header')
 @section('content')
 
+<style>
+.tabla
+{
+    color: black;
+}
+.respuesta
+{
+    color: black;
+    font-size: 18px;
+}
+
+</style>
+
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -43,23 +56,22 @@
                 
 
 
-            <div class="col-md-12" align="center">
-             <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
-             <h5>{{ $template->name }}</h5>
+             <div class="col-md-12" align="center">
+                <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                <h5>{{ $template->name }}</h5>
              </div>
 
-   @foreach($questions as $ques)
-
-        
-              <h6>Pregunta: {{$ques->label}}</h6>
-              @foreach($ques->respuestas as $resp)
-                   {{ $resp }}
-                   <br>
-
-   @endforeach
-
+               @foreach($questions as $ques)
+                    <ul>
+                          <li><h6>Pregunta:<br><br><span class="respuesta">{{$ques->label}}</span></h6></li>
+                          <li><h6>Respuestas: </h6></li>
+                          @foreach($ques->respuestas as $resp)
+                          </ul>
+                          <ol><li><span class="respuesta">- {{ $resp }}</span></li></ol>
+                          @endforeach
 
 
+              @endforeach  
 
 
 
@@ -125,12 +137,12 @@
 
 
                            @endforeach  --}}
-@endforeach  
-
 
                     </div>
-
                 </div>
+                <div class="col-md-12" align="center">
+                     <a class="btn btn-default" href="{{ URL('mis_encuestas') }}">@lang('answer.regresar')</a>
+                  </div>
             </div>
         </section>
 @stop

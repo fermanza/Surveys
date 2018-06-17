@@ -46,8 +46,8 @@
                 </div>
                 <div class="row">
                 <form action="{{ route('my_account.update', [$user]) }}" method="POST">
-    {{ csrf_field() }}
-     {{ method_field('PATCH') }}
+                {{ csrf_field() }}
+                 {{ method_field('PATCH') }}
 
     <div class="row">
         <div class="col-md-6">
@@ -161,14 +161,17 @@
 
     <hr />
     
-    <div class="row">
-        <div class="guardar">
-        <div class="col-md-12 text-center">
-            <a href="{{ url()->previous() }}" class="btn">@lang('registro.cancelar')</a>
-            <button class="btn">@lang('registro.guardar')</button>
+
+    <div class="container">
+            <div class="row">
+              <div class="col-md-12" align="center">
+                <br>
+                                   <a href="{{ URL('my_account') }}" class="btn">@lang('registro.cancelar')</a><br><br>
+                                    <button class="btn">@lang('registro.guardar')</button><br><br><br>
+                  </div>
+            </div>
         </div>
-    </div>
-    </div>
+
 </form>
 
                 </div>

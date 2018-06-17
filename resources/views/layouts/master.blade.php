@@ -57,10 +57,12 @@
 
         <!-- Datatables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.dataTables.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
         <link rel="stylesheed" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" />
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.5.2/css/tabulator.min.css" rel="stylesheet">
     </head>
     <body class="index" style="cursor: auto;">
         @yield('content')
@@ -208,6 +210,8 @@
         <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.js"></script>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.5.2/js/tabulator.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
@@ -228,6 +232,7 @@
         
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.20.6/dist/sweetalert2.all.js"></script>
         
         

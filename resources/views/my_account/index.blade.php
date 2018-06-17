@@ -99,4 +99,28 @@
                     </section>
             </div>
         </section>
+
+        @push('script')
+        <script>
+
+    $(document).ready( function () {
+        @if(App::isLocale('es'))
+            $('#table-mi-cuenta').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                 },
+                 responsive: true
+            });
+        @else 
+           $('#table-mi-cuenta').DataTable({
+            responsive: true
+           }); 
+        @endif   
+    }); 
+
+
+    </script>
+
+        @endpush
+ 
 @stop

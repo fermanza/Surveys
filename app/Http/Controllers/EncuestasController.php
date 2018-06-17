@@ -211,7 +211,7 @@ class EncuestasController extends Controller
 
         $preguntas=json_decode($request->content);
 
-        if($template->plan==0 && count($preguntas)>10)
+        if($template->plan==0 && count($preguntas)>33)
         {
             return response()->json("exceso",500);
         }

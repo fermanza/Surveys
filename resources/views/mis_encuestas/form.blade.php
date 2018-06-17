@@ -9,13 +9,6 @@
 {
 visibility:hidden;
 } 
-.render-wrap {
-  display: none;
-}
-.build-wrap
-{
-  position: relative;
-}
 .survey
 {
   position: relative;
@@ -68,6 +61,7 @@ visibility:hidden;
 
         <div class="content">
           <div class="row">
+            <div class="tipos">
             <div class="col-md-9 col-xs-8">
               <div class="panel panel-default active" align="right">
                         <div class="panel-heading">
@@ -83,14 +77,14 @@ visibility:hidden;
                             <div class="panel-title btn-extra-large btn-success" align="center">
                                     <span class="btn-very-small btn-success">@lang('mis_encuestas.tipoPregunta') <span class="q" data-placement="center" title="Ayuda"><i class="fa fa-question-circle"></i></span></i></span>
                             </div>
-                      </div>
+                        </div>
                 </div>
+              </div>
             </div>
           </div>
-              <div class="build-form"></div>
+              <span class="build-form"></span>
        </div>
 
-       <div class="container">
             <div class="row">
               <div class="col-md-12" align="center">
                 <br>
@@ -99,7 +93,6 @@ visibility:hidden;
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
                                     <button class="btn" id="save-data">@lang('editar_encuesta.guardar')</button><br><br><br>
                   </div>
-            </div>
             </div>
 
 <body>
@@ -242,19 +235,23 @@ visibility:hidden;
 let fields = [
 {
   label: 'Texto',
-  type: 'header'
+  type: 'header',
+  className: 'form-control'
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group'
+  type: 'radio-group',
+  className: 'form-control'
 },
 {
   label: 'Dropdown',
-  type: 'select'
+  type: 'select',
+  className: 'form-control'
 },
 {
   label: 'Single TextBox',
-  type: 'text'
+  type: 'text',
+  className: 'form-control'
 }
 ];
 
@@ -304,7 +301,7 @@ var options = {
             close: "Guardar",
             addOption: 'Agregar item +',
             required: "Requerido",
-            label: "Etiqueta",
+            label: "Pregunta",
             placeholder: "Ejemplo"
           }
         }
@@ -319,15 +316,28 @@ var options = {
         ],
         'select': [
           'placeholder'
+        ],
+        'textarea': [
+          'rows'
         ]
       },
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       hiddenAttrs: ['className'],
-      disabledAttrs: ['description','access','maxlength','subtype','required','inline','toggle'],
+      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea','hidden'],
       inputSets: [
+      {
+        label: 'Comment Box',
+        name: 'commentBox',
+        className: 'form-control',
+        icon: '<i class="fa fa-comment"></i>',
+        fields: [{ 
+          type: 'textarea',
+          label: 'Comment Box'
+          }]
+      },
       {
         label: 'Contact Information',
         name: 'contact-information', // optional - one will be generated from the label if name not supplied
@@ -337,7 +347,6 @@ var options = {
             {
               type: 'text',
               label: 'Nombre',
-              required: '',
               className: 'form-control'
             },
             {
@@ -417,16 +426,20 @@ var options = {
         fields: [
             {
               label: 'Nombre de Renglón',
-              type: 'text',
-              placeholder: '¿Qué tan bueno es el servicio?',
-              className: 'form-control'
-            },
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
             {
-              label: 'Nombre de Columna',
-              type: 'text',
-              placeholder: 'Satisfecho',
-              className: 'form-control'
-            },
+              label: 'Nombre de Renglón',
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
           ]
       },
       {

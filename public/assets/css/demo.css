@@ -33,6 +33,16 @@ body > div {}
   display: none;
 }
 
+.form-wrap
+{
+  margin: 15px;
+}
+
+.tipos
+{
+  margin:15px;
+}
+
 .form-rendered .render-wrap {
   display: block;
 }
@@ -45,3 +55,6 @@ body > div {}
 .form-rendered #edit-form {
   display: block;
 }
+
+
+

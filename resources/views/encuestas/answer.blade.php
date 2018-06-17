@@ -9,6 +9,35 @@
 {
 visibility:hidden;
 }
+
+
+.sticky
+{
+    font-size: 20px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+table, th, td, tr {
+    border: 1px solid black;
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+td, tr {
+border: 1px solid black;
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    padding-left: 57px;
+}
+
 </style>
 
         <!-- start page title section -->
@@ -59,7 +88,10 @@ visibility:hidden;
                           </div>
                          <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor">
+
                          </form>
+                         
+                         
                          <div class="guardar">
                                     <a href="{{ url()->previous() }}">@lang('answer.cancelar')</a>
                                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
@@ -88,22 +120,45 @@ visibility:hidden;
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
+console.log('<?php echo json_encode($question->content) ?>');
+console.log(formData);
+
+//create Tabulator on DOM element with id "example-table"
+$("#tabulator-example").tabulator({
+    height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    layout:"fitColumns", //fit columns to width of table (optional)
+    columns:[ //Define Table Columns
+        {title:"", field:"label", width:150, align:"center"},
+        {title:"", field:"type", align:"center"},
+        {title:"", field:"type",align:"center"}
+    ],
+    rowClick:function(e, row){ //trigger an alert message when the row is clicked
+        alert("Row " + row.getData().id + " Clicked!!!!");
+    },
+});
+
+$("#tabulator-example").tabulator("setData", '<?php echo json_encode($question->content) ?>');
+
 let fields = [
 {
   label: 'Texto',
-  type: 'header'
+  type: 'header',
+  className: 'form-control'
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group'
+  type: 'radio-group',
+  className: 'form-control'
 },
 {
   label: 'Dropdown',
-  type: 'select'
+  type: 'select',
+  className: 'form-control'
 },
 {
   label: 'Single TextBox',
-  type: 'text'
+  type: 'text',
+  className: 'form-control'
 }
 ];
 
@@ -277,16 +332,22 @@ var options = {
         fields: [
             {
               label: 'Nombre de Renglón',
-              type: 'text',
-              placeholder: '¿Qué tan bueno es el servicio?',
-              className: 'form-control'
-            },
+              className: 'form-control',
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
             {
-              label: 'Nombre de Columna',
-              type: 'text',
-              placeholder: 'Satisfecho',
-              className: 'form-control'
-            },
+              label: 'Nombre de Renglón',
+              className: 'form-control',
+              type: 'radio-group',
+              values: [{
+              label: 'Nombre de la Columna',
+              value: 'test-value'
+            }]
+      },
           ]
       },
       {
@@ -469,7 +530,12 @@ var options = {
 
   console.log(formRenderOpts);
 
- $(fbRender).formRender(formRenderOpts);
+$(fbRender).formRender(formRenderOpts);
+
+console.log(fbRender);
+
+// $( "div.fb-radio-group" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+
 
 
     document.getElementById('save-data').addEventListener('click', function() {
@@ -541,7 +607,6 @@ var options = {
 
     });
     });
-
 });
   </script>
 

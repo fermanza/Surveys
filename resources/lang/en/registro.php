@@ -27,7 +27,7 @@ return [
     'contra' => 'Password',
     'miCuenta' => 'My account',
     'datosPersonales' => 'Personal information',
-    'editarContra' => 'Edir password',
+    'editarContra' => 'Edit password',
     'cancelar' => 'Cancel',
     'guardar' => 'Save'
 
