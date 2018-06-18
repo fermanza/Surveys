@@ -84,7 +84,9 @@ border: 1px solid black;
                        <div class="settings" id="survey_content" name="survey_content">
                         <br>
                         <div class="row" align="center">
-                          <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                          @if($template->url != null)
+                            <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                          @endif
                           </div>
                          <h5 class="text-center">{{ $template->name }}</h5>
                          <form id="fb-editor">

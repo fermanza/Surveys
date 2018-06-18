@@ -646,10 +646,19 @@ slider: function(fieldData) {
 
     var formData = new FormData();
 
+
+    if ($('input:file')[0]==undefined) {
     formData.append('content',jsondata);
     formData.append('template_id',templateid.value);
     formData.append('_token',token.value);
-    formData.append('saveImage',$('input:file')[0].files[0]);
+    }
+    else {
+      formData.append('content',jsondata);
+      formData.append('template_id',templateid.value);
+      formData.append('_token',token.value);
+      formData.append('saveImage',$('input:file')[0].files[0]);
+    }
+
 
     // console.log($('input:file')[0].files[0]);
     // console.log(data);
