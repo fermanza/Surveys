@@ -3,6 +3,8 @@
 @section('content')
 
     <h2 align="center">Bienvenido al Dashboard de Survenia</h2>
+
+    <h3 align="center"><a href="{{ URL('/')}}">Ir al Sitio Web de Survenia</a></h3>
    {{--  <div class="row gap-20 masonry pos-r">
         <div class="masonry-sizer col-md-6"></div>
         <div class="masonry-item  w-100">

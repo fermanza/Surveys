@@ -92,14 +92,17 @@ border: 1px solid black;
                          </form>
                          
                          
-                         <div class="guardar">
-                                    <a href="{{ url()->previous() }}">@lang('answer.cancelar')</a>
-                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('answer.responder')</button>
-                        </div>
                         </div>
 
+                </div>
+
+                 <div class="row">
+              <div class="col-md-12" align="center">
+                <br>
+                                    <a class="btn" href="{{ url()->previous() }}">@lang('answer.cancelar')</a><br><br><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                                    <button class="btn" id="save-data">@lang('answer.responder')</button><br><br><br>
+                  </div>
                 </div>
             </div>
         </section>
@@ -120,8 +123,8 @@ border: 1px solid black;
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
-console.log('<?php echo json_encode($question->content) ?>');
-console.log(formData);
+// console.log('<?php echo json_encode($question->content) ?>');
+// console.log(formData);
 
 //create Tabulator on DOM element with id "example-table"
 $("#tabulator-example").tabulator({
@@ -177,22 +180,23 @@ let templates = {
       }
     };
   },
-  slider: function(fieldData) {
+slider: function(fieldData) {
     return {
-      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" min="0" max="100" step="50" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).slider({
-      range: "max",
-      min: 0,
-      max: 100,
-      step: 50,
-      value: 1,
-      slide: function( event, ui ) {
-        $( "#slider"+fieldData.name ).val( ui.value );
-      }
-    });
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100" step="50"></div>',
+     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+    //   onRender: function() {
+    //   $(document.getElementById(fieldData.name)).slider({
+    //   range: "max",
+    //   min: 0,
+    //   max: 100,
+    //   step: 50,
+    //   value: 1,
+    //   slide: function( event, ui ) {
+    //     $( "#slider"+fieldData.name ).val( ui.value );
+    //   }
+    // });
     
-    }
+    // }
     }
   }
 
@@ -528,13 +532,23 @@ var options = {
     dataType: 'json'
   };
 
-  console.log(formRenderOpts);
+//console.log(formRenderOpts);
 
 $(fbRender).formRender(formRenderOpts);
 
-console.log(fbRender);
+//console.log(fbRender);
 
-// $( "div.fb-radio-group" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+// formRenderOpts.forEach(function(element){
+//   console.log(element);
+// });
+
+
+// console.log($( "div.fb-radio-group" ).find('label'));
+
+
+//$( "div.fb-radio-group" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+
+// $( "div.fb-radio-group" )
 
 
 
@@ -544,7 +558,7 @@ console.log(fbRender);
         var id_template=$("#template_id").val();
         var token=$("#csrf-token").val();
       
-      console.log(formdata);
+     // console.log(formdata);
 
     request = $.ajax({
         url: '{{url('saveAnswer')}}',
@@ -558,7 +572,7 @@ console.log(fbRender);
 
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
-        console.log(response);
+       // console.log(response);
         swal({
                 position: 'center',
                 title: 'Tus respuestas fueron guardadas correctamente.',
@@ -572,7 +586,7 @@ console.log(fbRender);
     request.fail(function (jqXHR, textStatus, errorThrown){
         // Log the error to the console
 
-        console.log(jqXHR);
+        //console.log(jqXHR);
 
         if(jqXHR.responseText=='"maximo"')
         {

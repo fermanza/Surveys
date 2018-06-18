@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field,.form-actions,.btn-group
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field
 {
 visibility:hidden;
 } 
@@ -61,7 +61,6 @@ visibility:hidden;
 
         <div class="content">
           <div class="row">
-            <div class="tipos">
             <div class="col-md-9 col-xs-8">
               <div class="panel panel-default active" align="right">
                         <div class="panel-heading">
@@ -80,11 +79,13 @@ visibility:hidden;
                         </div>
                 </div>
               </div>
-            </div>
           </div>
-              <span class="build-form"></span>
+              <div class="build-form">
+                
+              </div>
        </div>
 
+<div class="container">
             <div class="row">
               <div class="col-md-12" align="center">
                 <br>
@@ -94,6 +95,7 @@ visibility:hidden;
                                     <button class="btn" id="save-data">@lang('editar_encuesta.guardar')</button><br><br><br>
                   </div>
             </div>
+</div>
 
 <body>
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/demo.css')}}">
@@ -107,7 +109,7 @@ visibility:hidden;
 @stop
 
 <style>
-.rangeslider-wrap {
+/*.rangeslider-wrap {
   padding-top: 100px;
 }
 
@@ -223,7 +225,7 @@ visibility:hidden;
 .rangeslider.rangeslider--active .rangeslider__handle__value {
   transform: translateY(-5px);
   box-shadow: 0 -3px 2px rgba(0, 0, 0, 0.04), 0 -9px 25px rgba(0, 0, 0, 0.15);
-}
+}*/
 </style>
 
 @push('script')
@@ -270,22 +272,23 @@ let templates = {
       }
     };
   },
-  slider: function(fieldData) {
+slider: function(fieldData) {
     return {
-      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).slider({
-      range: "max",
-      min: 0,
-      max: 100,
-      step: 50,
-      value: 1,
-      slide: function( event, ui ) {
-        $( "#slider"+fieldData.name ).val( ui.value );
-      }
-    });
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100" step="50"></div>',
+     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+    //   onRender: function() {
+    //   $(document.getElementById(fieldData.name)).slider({
+    //   range: "max",
+    //   min: 0,
+    //   max: 100,
+    //   step: 50,
+    //   value: 1,
+    //   slide: function( event, ui ) {
+    //     $( "#slider"+fieldData.name ).val( ui.value );
+    //   }
+    // });
     
-    }
+    // }
     }
   }
 
@@ -320,6 +323,12 @@ var options = {
         'textarea': [
           'rows'
         ]
+      },
+      stickyControls: {
+        enable: true,
+        offset: {
+            top: 80
+          }
       },
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',

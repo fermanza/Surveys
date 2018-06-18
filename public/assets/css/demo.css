@@ -29,18 +29,13 @@ body > div {}
   display: none;
 }
 
+/*.form-wrap.form-builder .cb-wrap
+{
+  top: 60px !important;
+}*/
+
 .render-wrap {
   display: none;
-}
-
-.form-wrap
-{
-  margin: 15px;
-}
-
-.tipos
-{
-  margin:15px;
 }
 
 .form-rendered .render-wrap {

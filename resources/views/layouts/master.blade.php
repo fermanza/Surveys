@@ -64,7 +64,7 @@
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
          <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.5.2/css/tabulator.min.css" rel="stylesheet">
     </head>
-    <body class="index" style="cursor: auto;">
+    <body class="index">
         @yield('content')
 
         <!-- start footer --> 

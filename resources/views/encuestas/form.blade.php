@@ -122,7 +122,8 @@ visibility:hidden;
 @stop
 
 <style>
-.rangeslider-wrap {
+
+/*.rangeslider-wrap {
   padding-top: 100px;
 }
 
@@ -238,7 +239,7 @@ visibility:hidden;
 .rangeslider.rangeslider--active .rangeslider__handle__value {
   transform: translateY(-5px);
   box-shadow: 0 -3px 2px rgba(0, 0, 0, 0.04), 0 -9px 25px rgba(0, 0, 0, 0.15);
-}
+}*/
 </style>
 
 @push('script')
@@ -278,20 +279,21 @@ let templates = {
   },
 slider: function(fieldData) {
     return {
-      field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).slider({
-      range: "max",
-      min: 0,
-      max: 100,
-      step: 50,
-      value: 1,
-      slide: function( event, ui ) {
-        $( "#slider"+fieldData.name ).val( ui.value );
-      }
-    });
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100" step="50"></div>',
+     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+    //   onRender: function() {
+    //   $(document.getElementById(fieldData.name)).slider({
+    //   range: "max",
+    //   min: 0,
+    //   max: 100,
+    //   step: 50,
+    //   value: 1,
+    //   slide: function( event, ui ) {
+    //     $( "#slider"+fieldData.name ).val( ui.value );
+    //   }
+    // });
     
-    }
+    // }
     }
   }
 
