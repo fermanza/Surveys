@@ -40,13 +40,20 @@ class UserNotification extends Notification
      */
     public function toMail($notifiable)
     {
+
+        $inicio = url('/inicio_sesion');
+        // return (new MailMessage)
+        //             ->from('info@survenia.com', 'Survenia')
+        //             ->greeting('¡Hola! Acabas de crear una cuenta para el sitio web de Survenia.')
+        //             ->subject('Nuevo Usuario Creado')
+        //             ->line('Da click en el siguiente botón para iniciar sesión:')
+        //             ->action('Ingresar', url('/inicio_sesion'))
+        //             ->line('¡Gracias por registrarte en Survenia!');
+
         return (new MailMessage)
                     ->from('info@survenia.com', 'Survenia')
-                    ->greeting('¡Hola! Acabas de crear una cuenta para el sitio web de Survenia.')
                     ->subject('Nuevo Usuario Creado')
-                    ->line('Da click en el siguiente botón para iniciar sesión:')
-                    ->action('Ingresar', url('/inicio_sesion'))
-                    ->line('¡Gracias por registrarte en Survenia!');
+                    ->markdown('notificaciones.newuser', ['inicio' => $inicio]);
     }
 
     /**
