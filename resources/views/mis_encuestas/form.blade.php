@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.file-field
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
 {
 visibility:hidden;
 } 
@@ -237,23 +237,26 @@ visibility:hidden;
 let fields = [
 {
   label: 'Texto',
-  type: 'header',
-  className: 'form-control'
+  type: 'header'
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group',
-  className: 'form-control'
+  type: 'radio-group'
 },
 {
   label: 'Dropdown',
-  type: 'select',
-  className: 'form-control'
+  type: 'select'
 },
 {
   label: 'Single TextBox',
-  type: 'text',
-  className: 'form-control'
+  type: 'text'
+},
+{
+    label: 'Imagen',
+    type: 'file',
+    required: true,
+    className: 'form-control',
+    icon: '<i class="fa fa-image"></i>'
 }
 ];
 

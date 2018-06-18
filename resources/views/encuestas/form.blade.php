@@ -264,6 +264,13 @@ let fields = [
 {
   label: 'Single TextBox',
   type: 'text'
+},
+{
+    label: 'Imagen',
+    type: 'file',
+    required: true,
+    className: 'form-control',
+    icon: '<i class="fa fa-image"></i>'
 }
 ];
 
@@ -353,6 +360,13 @@ slider: function(fieldData) {
           }]
       },
       {
+        label: 'Imagen',
+        type: 'file',
+        required: true,
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>'
+      },
+      {
         label: 'Contact Information',
         name: 'contact-information', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
@@ -440,22 +454,24 @@ slider: function(fieldData) {
         fields: [
             {
               label: 'Nombre de Renglón',
-              className: 'form-control',
-              type: 'radio-group',
-              values: [{
-              label: 'Nombre de la Columna',
-              value: 'test-value'
-            }]
-      },
+              className: 'form-control renglon',
+              type: 'header'
+            },
             {
               label: 'Nombre de Renglón',
-              className: 'form-control',
-              type: 'radio-group',
-              values: [{
+              className: 'form-control renglon',
+              type: 'header'
+            },
+            {
               label: 'Nombre de la Columna',
-              value: 'test-value'
-            }]
-      },
+              className: 'form-control columna',
+              type: 'header'
+            },
+            {
+              label: 'Nombre de Columna',
+              className: 'form-control columna',
+              type: 'header'
+            },
           ]
       },
       {

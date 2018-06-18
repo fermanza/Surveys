@@ -545,14 +545,14 @@ $(fbRender).formRender(formRenderOpts);
 // });
 
 
-// console.log($( "div.fb-radio-group" ).find('label'));
+console.log($( "div.rendered-form" ).find('header'));
 
 
-//$( "div.fb-radio-group" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+$( "header.form-control.renglon" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+
+$( "header.form-control.columna" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
 
 // $( "div.fb-radio-group" )
-
-
 
     document.getElementById('save-data').addEventListener('click', function() {
         var $form = $("#fb-editor");
