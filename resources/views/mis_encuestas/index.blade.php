@@ -76,7 +76,7 @@
                                 @foreach($templates as $template)
                                 <tr>
                                     <td> <a href="{{ URL('encuestas/responder') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
-                                    <td>{{ $template->created_at->diffForHumans() }}</td>
+                                    <td>{{ $template->created_at }}</td>
                                     @if($template->type==0)
                                     <td>@lang('mis_encuestas.publica')</td>
                                     @else
@@ -131,7 +131,8 @@
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                  },
-                 responsive: true
+                 "responsive": true,
+                 "bSort": false
             });
         @else 
            $('#table-mis-encuestas').DataTable({
