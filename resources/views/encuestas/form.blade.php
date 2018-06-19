@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected,.option-value
 {
 visibility:hidden;
 } 
@@ -268,7 +268,6 @@ let fields = [
 {
     label: 'Imagen',
     type: 'file',
-    required: true,
     className: 'form-control',
     icon: '<i class="fa fa-image"></i>'
 }
@@ -286,7 +285,7 @@ let templates = {
   },
 slider: function(fieldData) {
     return {
-      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100" step="50"></div>',
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
      //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
     //   onRender: function() {
     //   $(document.getElementById(fieldData.name)).slider({
@@ -314,10 +313,11 @@ slider: function(fieldData) {
         preloaded: {
           'en-US': {
             close: "Guardar",
-            addOption: 'Agregar item +',
+            addOption: 'Agregar opción +',
             required: "Requerido",
-            label: "Pregunta",
-            placeholder: "Ejemplo"
+            label: "Etiqueta",
+            placeholder: "Ejemplo",
+            remove: " X "
           }
         }
       },
@@ -329,25 +329,20 @@ slider: function(fieldData) {
           'placeholder'
         ],
         'select': [
-          'placeholder'
+          'placeholder',
+          'option-value'
         ],
         'textarea': [
           'rows'
+        ],
+        'date': [
+          'placeholder'
         ]
       },
       disabledActionButtons: ['data','save','clear'],
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
-      defaultFields: [
-      {
-        label: 'Imagen',
-        type: 'file',
-        required: true,
-        className: 'form-control',
-        icon: '<i class="fa fa-image"></i>'
-      },
-      ],
       inputSets: [
       {
         label: 'Comment Box',
@@ -360,57 +355,76 @@ slider: function(fieldData) {
           }]
       },
       {
-        label: 'Imagen',
-        type: 'file',
-        required: true,
-        className: 'form-control',
-        icon: '<i class="fa fa-image"></i>'
-      },
-      {
         label: 'Contact Information',
-        name: 'contact-information', // optional - one will be generated from the label if name not supplied
+        name: 'contact-information',
+        type: 'select', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
         showHeader: true, // optional - Use the label as the header for this set of inputs
         fields: [
             {
               type: 'text',
               label: 'Nombre',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Nombre'
             },
             {
               type: 'text',
               label: 'Apellido',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Apellido'
+            },
+            {
+              type: 'text',
+              label: 'E-mail',
+              className: 'form-control',
+              placeholder: 'E-mail'
             },
             {
               type: 'text',
               label: 'Empresa',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Empresa'
             },
             {
               type: 'text',
               label: 'Telefono',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Teléfono'
             },
             {
               type: 'text',
               label: 'Direccion',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Dirección'
             },
             {
               type: 'text',
               label: 'Ciudad',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Ciudad'
             },
             {
               type: 'text',
               label: 'Pais',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Pais'
             },
             {
               type: 'select',
               label: 'Sexo',
-              className: 'form-control'
+              className: 'form-control',
+              values: [
+                {
+                  label: 'Masculino',
+                  value: 'Masculino',
+                  selected: false
+                },
+                {
+                  label: 'Femenino',
+                  value: 'Femenino',
+                  selected: false
+                }
+                ]
             },
             {
               type: 'date',
@@ -500,7 +514,7 @@ slider: function(fieldData) {
                   value: '3',
                   selected: false
                 }
-              ]
+                ]
             },
             {
               type: 'select',
@@ -646,6 +660,12 @@ slider: function(fieldData) {
     //$('.build-wrap').formBuilder();
 
     var formBuilder = $(fbEditor).formBuilder(options);
+
+
+    // $('.option-label').on('change',function(){
+    //    console.log($(this)); 
+
+    // });
 
     console.log(formBuilder);
 

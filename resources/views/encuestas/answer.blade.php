@@ -184,7 +184,7 @@ let templates = {
   },
 slider: function(fieldData) {
     return {
-      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100" step="50"></div>',
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
      //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
     //   onRender: function() {
     //   $(document.getElementById(fieldData.name)).slider({
@@ -546,6 +546,10 @@ $(fbRender).formRender(formRenderOpts);
     let elementRow = [];
 
 
+
+//console.log($( "div.rendered-form" ).find('header'));
+
+
   $.each(el, function(index, value){
         if($('#'+value.id).hasClass('columna')) {
             elementColumn.push($('#'+value.id).text());
@@ -609,6 +613,10 @@ function generateTable(columns, rows) {
 */
 
 // $( "div.fb-radio-group" )
+var $form = $("#fb-editor");
+var formdata = JSON.stringify($form.serializeArray());
+
+console.log($form.serializeArray());
 
     document.getElementById('save-data').addEventListener('click', function() {
         var $form = $("#fb-editor");

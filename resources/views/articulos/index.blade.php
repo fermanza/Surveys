@@ -100,9 +100,13 @@
          
                         <!-- end post item -->
                     </main>
+
+
+                  @if(Auth::check() == true)  
                     @if($user->id == 1) 
                                <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-success">@lang('articulos.crearArticulo')</a>
-                             @endif  
+                    @endif  
+                 @endif   
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
                             <div class="temas-title">@lang('articulos.temas')</div>
