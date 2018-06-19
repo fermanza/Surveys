@@ -361,7 +361,7 @@ class EncuestasController extends Controller
                     $ans = collect($ans); // transform the array of json to a collection
 
 
-                    dd($questions, $ans);
+                   // dd($questions, $ans);
 
 
                  $ans->each(function($ansElement, $key) use($questionItem) {
