@@ -82,7 +82,16 @@ Route::get('login','LoginController@getLogin');
 Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
 
+
+
+ Route::resource('/articulos', 'ArticulosController');
+
+
 Route::post('/copyTemplate', 'EncuestasController@copyTemplate');
+
+
+
+
 
 
 Route::group(['middleware' => ['Authuser']], function () {
@@ -109,7 +118,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
     Route::resource('/encuestas', 'EncuestasController');
-    Route::resource('/articulos', 'ArticulosController');
+   
 
     // display single post   
     //Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
