@@ -538,19 +538,75 @@ var options = {
 
 $(fbRender).formRender(formRenderOpts);
 
-//console.log(fbRender);
 
-// formRenderOpts.forEach(function(element){
-//   console.log(element);
-// });
+/*
+  let el =  $( "div.rendered-form" ).find('header');
+
+    let elementColumn = [];
+    let elementRow = [];
 
 
-console.log($( "div.rendered-form" ).find('header'));
+  $.each(el, function(index, value){
+        if($('#'+value.id).hasClass('columna')) {
+            elementColumn.push($('#'+value.id).text());
+        } else if($('#'+value.id).hasClass('renglon')) {
+            elementRow.push($('#'+value.id).text());
+        }
 
+  });
+
+
+    
+    console.log(elementColumn, elementRow);
 
 $( "header.form-control.renglon" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
 
 $( "header.form-control.columna" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
+*/
+/*
+
+ generateTable(elementColumn, elementRow);
+
+function generateTable(columns, rows) {
+      
+  var t = "<table  border='3' >";
+
+    t += "<thead>";
+    t += "<tr>";
+    for(let x =0; x < columns.length + 1; x++) {   //columns.length
+      if(x == 0) {
+         t += "<th></th>";
+      } else {
+          t += "<th>"
+         t +=  columns[x-1];
+         t += "</th>";    
+      }
+    }
+    t += "</tr>";
+    t += "</thead>";
+    t += "<tbody>";
+
+    for(let y =0; y < rows.length; y++) {  // rows.length
+        t += "<tr>";
+          t += "<td>";
+          t +=  rows[y];
+          t += "</td>";
+
+        
+        for(let d=0; d < rows.length; d++){
+            t += "<td>";
+            t += "<input name='radio-group-"+y+"'type='radio'>";
+            t += "</td>";
+        }  
+        t += "</tr>";
+    }
+
+    t += "</tbody>";
+  t += "</table>";
+ $( "div.rendered-form").html(t);
+}
+
+*/
 
 // $( "div.fb-radio-group" )
 

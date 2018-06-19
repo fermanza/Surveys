@@ -23,6 +23,10 @@ class MisEncuestasController extends Controller
         //$templates = Template::where('type','=', 0)->get();
         $id = Auth::id();
         $templates = Template::where('user_id', '=', $id)->get();
+
+
+
+
         //$templates = DB::table('template')->where('type','=', 1)->get();
         //dd($templates);
 
