@@ -311,6 +311,7 @@ class EncuestasController extends Controller
             $answer->position=0;
             $answer->answer=$request->answer;
             $answer->ip = $ip;
+            $answer->user_id = Auth::user()->id;
             $answer->save();
 
         return response()->json('ok',200);
@@ -358,6 +359,10 @@ class EncuestasController extends Controller
               foreach($answers as $answer) {
                     $ans = json_decode($answer->answer);
                     $ans = collect($ans); // transform the array of json to a collection
+
+
+                    dd($questions, $ans);
+
 
                  $ans->each(function($ansElement, $key) use($questionItem) {
                           
@@ -475,7 +480,7 @@ class EncuestasController extends Controller
         $questions->position = 0;
         $questions->save();
 
-        return redirect()->route('mis_encuestas.index');
+        return redirect("mis_encuestas/{$template->id}/edit");
 
     }
 
