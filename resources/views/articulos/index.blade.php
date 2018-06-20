@@ -2,6 +2,7 @@
 @section('title', 'Artículos')
 
 @extends('includes.header')
+<? include 'includes/head.php' ?>
 @section('content')
 
         <!-- start page title section -->
@@ -42,7 +43,7 @@
                 <div class="row">
                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
                         <!-- start post item --> 
-
+                    
                     @foreach($articulos as $articulo)    
 
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">

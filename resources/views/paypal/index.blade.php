@@ -2,6 +2,7 @@
 @section('title', 'Mi Cuenta')
 
 @extends('includes.header')
+<? include 'includes/head.php' ?>
 @section('content')
 <style>
 .btn{

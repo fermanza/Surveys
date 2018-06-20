@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
 <meta name="author" content="ThemeZaa">
 <!-- description -->
-<meta name="description" content="POFO is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and portfolio HTML5 template with 25 ready home page demos.">
+<meta name="description" content="Survenia - Crea tus propias encuestas online.">
 <!-- keywords -->
 <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, coming soon, faq">
 <!-- favicon -->

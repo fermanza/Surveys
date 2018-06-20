@@ -2,6 +2,7 @@
 @section('title', 'Mis encuestas')
 
 @extends('includes.header')
+<? include 'includes/head.php' ?>
 @section('content')
 
 <style>

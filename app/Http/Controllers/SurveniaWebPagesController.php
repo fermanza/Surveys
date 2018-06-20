@@ -12,6 +12,7 @@ use App\Incremental;
 use App\SatisfactionRatings;
 use App\Zendesk\AppZendesk;
 use App\User;
+use App\Articulo;
 
 class SurveniaWebPagesController extends Controller
 {
@@ -22,7 +23,9 @@ class SurveniaWebPagesController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home');
+        $articulos=Articulo::orderBy('id', 'desc')->take(5)->get();
+        
+        return view('home', compact('articulos'));
     }
 
     /**

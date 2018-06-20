@@ -667,7 +667,7 @@ slider: function(fieldData) {
 
     var formBuilder = $(fbEditor).formBuilder(options);
 
-
+    console.log(formBuilder);
     // $('.option-label').on('change',function(){
     //    console.log($(this)); 
 
