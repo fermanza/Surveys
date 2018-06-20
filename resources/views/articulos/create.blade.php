@@ -2,6 +2,7 @@
 @section('title', 'Artículos')
 
 @extends('includes.header')
+<? include 'includes/head.php' ?>
 @section('content')
 
         <!-- start page title section -->
