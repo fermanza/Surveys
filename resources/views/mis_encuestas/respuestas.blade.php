@@ -63,82 +63,29 @@
                 <h5>{{ $template->name }}</h5>
              </div>
 
-               @foreach($questions as $ques)
-                    <ul>
-                          <li><h6>Pregunta:<br><br><span class="respuesta">{{$ques->label}}</span></h6></li>
-                          <li><h6>Respuestas: </h6></li>
-                          @foreach($ques->respuestas as $resp)
-                          </ul>
-                          <ol><li><span class="respuesta">- {{ $resp }}</span></li></ol>
-                          @endforeach
 
+             @foreach($answersGrouped as $answer)
 
-              @endforeach  
+                @if($answer['user']->username == null)
+                    <hr>
+                     <b> usuario: </b> Anonimo 
+                     <hr>     
+                @else    
+                   <b> usuario: </b>  {{ $answer['user']->username }}    
+                   <hr>
+                @endif    
 
+                  
 
-
-              {{--    @if($ques->type == "textarea" || $ques->type == "text" || $ques->type == "starRating" || $ques->type == "slider") 
-                      @endif 
-
-                         @foreach($answers as $answer)
-                             @php  
-                             $ans = json_decode($answer->answer); 
-                            @endphp 
-
-                            
-                               @if($ques->label == "Texto") 
-                                    @continue
-                               @endif
-
-                                @if($ques->label == "Imagen")
-                                  @continue
-                                @endif   
-
-                                  <h5>Pregunta: {{$ques->label}}</h5>
-
-                                  @foreach($ans as $a)
-
-                             @if($ques->label != "Texto")
-
-                                 @if(strstr($a->name, 'select') && strstr($ques->name, 'select'))
-                                      @foreach($ques->values as $v)
-
-                                        @if($a->value == $v->value)
-                                           {{ $a->value }}
-                                        @endif
-                                      @endforeach
-                                   @endif  
-
-
-                                    @if(strstr($a->name, 'sliders'))
-                                      @php
-                                        $resp = str_replace('sliderslider-', '', $a->name);
-                                      @endphp
-                                    @endif
-
-                                    @if(strstr($ques->name, 'slider'))
-                                      @php  
-                                         $pregunta = str_replace('slider-', '', $ques->name);
-                                      @endphp
-
-                                      @if($resp == $pregunta)
-                                         {{$a->value}}
-                                      @endif   
-
-                                    @endif
-                                     
-
-                                      @if($a->name == $ques->name )
-                                         {{ $a->value }}
-                                       @endif
-
-
-                                @endif   
-
-                                  @endforeach
-
-
-                           @endforeach  --}}
+                  @foreach($answer['questions'] as $questions)
+                         <b> pregunta: </b>    {{ $questions['question']->label }} 
+                            <br>
+                          <b> respuesta: </b>    {{$questions['answer']['value'] }}
+                          <br>
+                          <br>
+                          
+                  @endforeach
+             @endforeach
 
                     </div>
                 </div>

@@ -311,7 +311,12 @@ class EncuestasController extends Controller
             $answer->position=0;
             $answer->answer=$request->answer;
             $answer->ip = $ip;
-            $answer->user_id = Auth::user()->id;
+           if(Auth::user()) {
+                $answer->user_id = Auth::user()->id; 
+           } else {
+               $answer->user_id = null; 
+           }
+            
             $answer->save();
 
         return response()->json('ok',200);
@@ -326,7 +331,15 @@ class EncuestasController extends Controller
         $respuestas=Answer::where('id_template','=',$id)->get();
 
 
-        $answers = DB::table('answer')->select('answer')->where('id_template', $id)->get();
+        $answers = DB::table('answer')
+                  ->select('answer.answer', DB::raw("CONCAT(users.name,' ',users.last_name) AS username"))
+                  ->leftJoin('users', 'answer.user_id', '=', 'users.id')
+                  ->where('id_template', $id)->get();
+
+              
+
+
+
         $questions1 = DB::table('questions')->select('content')->where('template_id', $id)->first();
         $survey = DB::table('template')->select('name')->where('id', $id)->first();
         $questions = json_decode($questions1->content);
@@ -339,65 +352,123 @@ class EncuestasController extends Controller
          }); 
 
 
-         //dd($questions);
+         $usernames = $answers->map(function($item, $key){
+             return $item->username;
+         });
+
+        
 
 
-         $questions->each(function($questionItem, $key) use($answers, $questions) {
-           
-                $questionItem->respuestas = collect();
+        
 
+        $answersGrouped = collect();
+
+        foreach ($answers as $user) {
+            $questionsB = collect();
+
+
+
+         
+
+            foreach (json_decode($user->answer, true) as $answer) {
+
+                $questionB = $questions->first(function ($questionB) use ($answer) {
+
+
+
+                       if(strstr($questionB->name, 'star')) {
+                         $questionB->name  = str_replace('starRating-', "", $questionB->name );    
+                      }
+
+                     if(strstr($questionB->name, 'slider')) {
+                         $questionB->name  = str_replace('slider-', "", $questionB->name );         
+                      }  
+
+
+                      if(strstr($answer['name'], 'slider')) {
+                            $answer['name'] = str_replace('sliderslider-', "",  $answer['name']);
+                         }
+
+                     if(strstr( $answer['name'], 'star')) {
+                         $answer['name'] = str_replace('starstarRating-', "",  $answer['name']);
+                     }      
+
+                        
+                    return $questionB->name === $answer['name'];
+                });
+
+                $questionsB->push([
+                    'question' => $questionB,
+                    'answer' => $answer,
+                ]);
+            }
+
+            $answersGrouped->push([
+                'user' => $user,
+                'questions' => $questionsB,
+            ]);
+        }
+
+        
+
+      /*  $usernames->each(function($user, $key) use($questions, $answersGrouped) {
+              $user = collect();
+        });*/
+
+/*
+         $questions->each(function($questionItem, $key) use($answersGrouped, $questions) {
+        
              if(strstr($questionItem->name, 'star')) {
                  $questionItem->name  = str_replace('starRating-', "", $questionItem->name );    
               }
 
-
              if(strstr($questionItem->name, 'slider')) {
                  $questionItem->name  = str_replace('slider-', "", $questionItem->name );         
               }  
+               
+
+           /*   foreach($answersGrouped as $answerArray) {
+                 foreach($answerArray as $answer) {   
 
 
-              foreach($answers as $answer) {
-                    $ans = json_decode($answer->answer);
-                    $ans = collect($ans); // transform the array of json to a collection
-
-
-                   // dd($questions, $ans);
-
-
-                 $ans->each(function($ansElement, $key) use($questionItem) {
-                          
-                    if(strstr($ansElement->name, 'slider')) {
-                         $ansElement->name = str_replace('sliderslider-', "", $ansElement->name);
-                     }
-
-                     if(strstr($ansElement->name, 'star')) {
-                         $ansElement->name = str_replace('starstarRating-', "", $ansElement->name);
-                     }          
-
-
-                      if($questionItem->type == "contactInformation") {
-                           if($ansElement->name == "name" || $ansElement->name == "message" || $ansElement->name == "email"){
-                                $questionItem->respuestas->push($ansElement->value);
-                           }
-                      }else if($ansElement->name == $questionItem->name) {
-                             $questionItem->respuestas->push($ansElement->value);                          
-                      } 
-
-                 });
-              }
-
-          
-
-         });
-
-
-       //    dd($questions);
+                            $ans = json_decode($answer->answer);
+                            $ans = collect($ans); // transform the array of json to a collection
 
 
 
+                         $ans->each(function($ansElement, $key) use($questionItem, $answer) {
+                                  
+                            if(strstr($ansElement->name, 'slider')) {
+                                 $ansElement->name = str_replace('sliderslider-', "", $ansElement->name);
+                             }
+
+                             if(strstr($ansElement->name, 'star')) {
+                                 $ansElement->name = str_replace('starstarRating-', "", $ansElement->name);
+                             }          
+
+
+                              if($questionItem->type == "contactInformation") {
+                                   if($ansElement->name == "name" || $ansElement->name == "message" || $ansElement->name == "email"){
+                                        $questionItem->respuestas->push($ansElement->value);
+                                       // $questionItem->username->push($answer->username);    
+                                   }
+                              }else if($ansElement->name == $questionItem->name) {
+                                     $questionItem->respuestas->push($ansElement->value);  
+                                     //$questionItem->username->push($answer->username);
+
+                              } 
+
+                         });
+                  }       
+              }*/
+
+     /*    });*/
+
+
+        // dd($questions);
 
         
-        return view('mis_encuestas.respuestas',compact('template','answers','questions'));
+        return view('mis_encuestas.respuestas',compact('template','answers','questions', 'answersGrouped'));
     }
 
 
