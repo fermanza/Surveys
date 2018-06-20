@@ -85,7 +85,7 @@ border: 1px solid black;
                         <br>
                         <div class="row" align="center">
                           @if($template->url != null)
-                            <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                            <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
                           @endif
                           </div>
                          <h5 class="text-center">{{ $template->name }}</h5>
@@ -125,24 +125,23 @@ border: 1px solid black;
 var fbRender = document.getElementById('fb-editor');
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
-// console.log('<?php echo json_encode($question->content) ?>');
 // console.log(formData);
 
 //create Tabulator on DOM element with id "example-table"
-$("#tabulator-example").tabulator({
-    height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    layout:"fitColumns", //fit columns to width of table (optional)
-    columns:[ //Define Table Columns
-        {title:"", field:"label", width:150, align:"center"},
-        {title:"", field:"type", align:"center"},
-        {title:"", field:"type",align:"center"}
-    ],
-    rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        alert("Row " + row.getData().id + " Clicked!!!!");
-    },
-});
+// $("#tabulator-example").tabulator({
+//     height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+//     layout:"fitColumns", //fit columns to width of table (optional)
+//     columns:[ //Define Table Columns
+//         {title:"", field:"label", width:150, align:"center"},
+//         {title:"", field:"type", align:"center"},
+//         {title:"", field:"type",align:"center"}
+//     ],
+//     rowClick:function(e, row){ //trigger an alert message when the row is clicked
+//         alert("Row " + row.getData().id + " Clicked!!!!");
+//     },
+// });
 
-$("#tabulator-example").tabulator("setData", '<?php echo json_encode($question->content) ?>');
+// $("#tabulator-example").tabulator("setData", '<?php echo json_encode($question->content) ?>');
 
 let fields = [
 {
@@ -239,15 +238,6 @@ var options = {
        ],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
-      defaultFields: [
-      {
-        label: 'Imagen',
-        type: 'file',
-        required: true,
-        className: 'form-control',
-        icon: '<i class="fa fa-image"></i>'
-      },
-      ],
       inputSets: [
       {
         label: 'Contact Information',
@@ -613,10 +603,10 @@ function generateTable(columns, rows) {
 */
 
 // $( "div.fb-radio-group" )
-var $form = $("#fb-editor");
-var formdata = JSON.stringify($form.serializeArray());
+// var $form = $("#fb-editor");
+// var formdata = JSON.stringify($form.serializeArray());
 
-console.log($form.serializeArray());
+// console.log($form.serializeArray());
 
     document.getElementById('save-data').addEventListener('click', function() {
         var $form = $("#fb-editor");

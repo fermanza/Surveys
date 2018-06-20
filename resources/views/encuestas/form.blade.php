@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected,.option-value
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected
 {
 visibility:hidden;
 } 
@@ -94,8 +94,9 @@ visibility:hidden;
             </div>
           </div>
         </div>
-                <span class="build-form">
-                </span>
+                <div class="build-form"></div>
+
+                
         </div>
 
 
@@ -255,7 +256,8 @@ let fields = [
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group'
+  type: 'radio-group',
+  value: 'label'
 },
 {
   label: 'Dropdown',
@@ -337,6 +339,10 @@ slider: function(fieldData) {
         ],
         'date': [
           'placeholder'
+        ],
+        'file':
+        [
+          'placeholder'
         ]
       },
       disabledActionButtons: ['data','save','clear'],
@@ -357,7 +363,7 @@ slider: function(fieldData) {
       {
         label: 'Contact Information',
         name: 'contact-information',
-        type: 'select', // optional - one will be generated from the label if name not supplied
+        type: '</form>', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
         showHeader: true, // optional - Use the label as the header for this set of inputs
         fields: [
@@ -667,13 +673,12 @@ slider: function(fieldData) {
 
     // });
 
-    console.log(formBuilder);
-
     document.getElementById('save-data').addEventListener('click', function() {
     var jsondata=formBuilder.actions.getData('json');
     var templateid=document.getElementById('template_id');
     var token=document.getElementById('csrf-token');
 
+    console.log(jsondata);
     // var data={
     //     content:jsondata,
     //     template_id:templateid.value,

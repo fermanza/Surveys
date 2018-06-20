@@ -103,7 +103,7 @@
         <!-- start section -->
         <section class="no-padding wow fadeIn animated">
             <div class="container-fluid">
-                <div class="row equalize sm-equalize-auto">
+                <div class="row equalize sm-equalize-auto" style=""z>
                     <!-- start features item -->
                     <div class="col-md-3 no-padding cover-background position-relative sm-height-500px xs-height-300px wow fadeIn" style="background: url('images/home/p1.jpg');background-size: cover;"></div>
                     <!-- end features item -->

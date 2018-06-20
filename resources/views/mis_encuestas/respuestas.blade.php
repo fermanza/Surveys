@@ -57,7 +57,9 @@
 
 
              <div class="col-md-12" align="center">
-                <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                @if($template->url != null)
+                  <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                @endif
                 <h5>{{ $template->name }}</h5>
              </div>
 
