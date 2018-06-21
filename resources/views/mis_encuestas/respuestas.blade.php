@@ -78,11 +78,8 @@
                   
 
                   @foreach($answer['questions'] as $questions)
-<<<<<<< HEAD
-                          <b>Pregunta: </b>    {{ $questions['question']->label }} 
-=======
+                         <b>Pregunta: </b>    {{ $questions['question']->label }} 
                          <b> Pregunta: </b>    {{ $questions['question']->label }} 
->>>>>>> 2915446781951d0e8a914a63cf8326f1bbb77bad
                             <br>
                           <b> Respuesta: </b>    {{$questions['answer']['value'] }}
                           <br>
