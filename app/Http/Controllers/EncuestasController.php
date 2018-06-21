@@ -490,21 +490,6 @@ class EncuestasController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function bitly($id)
     {
         $template=Template::find($id);

@@ -43,13 +43,13 @@
                 <div class="row">
                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
                         <!-- start post item --> 
-                    
+                       
                     @foreach($articulos as $articulo)    
 
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $articulo->created_at }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.tipoEncuestas')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.tipoEncuestas')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
                                     </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
 
                                       @if($user->id == 1)
@@ -63,7 +63,7 @@
                                     <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
                                       <p id="preview"> 
                                         @php
-                                           $articulo->body = str_limit($articulo->body, 300);
+                                           $articulo->body = str_limit($articulo->body, 40);
                                            $articulo->body = str_finish($articulo->body, '...');
                                         @endphp
                                         {!! $articulo->body !!} 
@@ -80,7 +80,7 @@
                                     <div class="name col-md-6 col-sm-6">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <span class="text-extra-small margin-lr-auto"><i class="fa fa-calendar margin-5px-right"></i>{{ $articulo->created_at }}</span>
+                                                <span class="text-extra-small margin-lr-auto"><i class="fa fa-calendar margin-5px-right"></i>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>
                                             </div>
                                         </div>
                                     </div>

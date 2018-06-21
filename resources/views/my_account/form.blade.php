@@ -2,7 +2,6 @@
 @section('title', 'Mi Cuenta')
 
 @extends('includes.header')
-
 @section('content')
 
         <!-- start page title section -->

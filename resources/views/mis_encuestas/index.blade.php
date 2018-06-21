@@ -77,7 +77,7 @@
                                 @foreach($templates as $template)
                                 <tr>
                                     <td> <a href="{{ URL('encuestas/responder') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
-                                    <td>{{ $template->created_at }}</td>
+                                    <td>{{ Carbon\Carbon::parse($template->created_at)->format('d-m-Y') }}</td>
                                     @if($template->type==0)
                                     <td>@lang('mis_encuestas.publica')</td>
                                     @else
