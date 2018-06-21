@@ -58,7 +58,7 @@
 
              <div class="col-md-12" align="center">
                 @if($template->url != null)
-                  <img src="{{ URL($template->url) }}" style="width: 125px; height:100px;"><br><br>
+                  <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
                 @endif
                 <h5>{{ $template->name }}</h5>
              </div>
@@ -68,19 +68,19 @@
 
                 @if($answer['user']->username == null)
                     <hr>
-                     <b> usuario: </b> Anonimo 
+                     <b> Usuario: </b> Anonimo 
                      <hr>     
                 @else    
-                   <b> usuario: </b>  {{ $answer['user']->username }}    
+                   <b> Usuario: </b>  {{ $answer['user']->username }}    
                    <hr>
                 @endif    
 
                   
 
                   @foreach($answer['questions'] as $questions)
-                         <b> pregunta: </b>    {{ $questions['question']->label }} 
+                          <b>Pregunta: </b>    {{ $questions['question']->label }} 
                             <br>
-                          <b> respuesta: </b>    {{$questions['answer']['value'] }}
+                          <b> Respuesta: </b>    {{$questions['answer']['value'] }}
                           <br>
                           <br>
                           
