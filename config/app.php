@@ -162,7 +162,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
-        Shivella\Bitly\BitlyServiceProvider::class
+        Shivella\Bitly\BitlyServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class
 
     ],
 

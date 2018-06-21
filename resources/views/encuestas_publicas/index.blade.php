@@ -36,7 +36,7 @@
             </div>
         </section>
         <!-- end page title section -->
-        
+        @include('flash::message')
         <!-- start post content section --> 
         <section>
             <div class="container">

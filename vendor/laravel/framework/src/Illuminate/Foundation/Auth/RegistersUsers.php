@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\UserNotification;
+use Illuminate\Support\Facades\Input;
+use DB;
+use App\User;
 
 
 trait RegistersUsers
@@ -33,14 +36,22 @@ trait RegistersUsers
     public function register(Request $request)
     {
         //$this->validator($request->all())->validate();
-        //dd($request);
-        event(new Registered($user = $this->create($request->all())));
-        //dd($user);
-        $user->notify(new UserNotification($user));
-        //$this->guard()->login($user);
 
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+        if (User::where('email', '=', Input::get('email'))->exists()){
+
+            flash('<br><h6>El correo que ingresaste ya ha sido utilizado. <br>Intenta utilizando otro.</h6>')->error()->important();
+
+            return view('registro');
+        }
+        else{
+            event(new Registered($user = $this->create($request->all())));
+            
+            $user->notify(new UserNotification($user));
+
+            flash('<br><h6>Usuario creado correctamente. <br>Te hemos enviado un correo electrónico para tu confirmación.</h6>')->success();
+
+            return view('registro');
+        }
     }
 
     /**

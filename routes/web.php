@@ -101,6 +101,7 @@ Route::group(['middleware' => ['Authuser']], function () {
 	
  
     Route::resource('/mis_encuestas', 'MisEncuestasController');
+    Route::resource('/encuestas', 'EncuestasController');
 
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
 
@@ -117,7 +118,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::post('saveQuestion','EncuestasController@saveQuestion');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-    Route::resource('/encuestas', 'EncuestasController');
+    
    
 
     // display single post   

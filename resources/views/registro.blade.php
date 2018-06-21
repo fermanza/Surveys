@@ -2,6 +2,7 @@
 @section('title', 'Registrarse')
 
 @extends('includes.header')
+<? include 'includes/head.php' ?>
 @section('content')
 
         <!-- start page title section -->
@@ -35,7 +36,7 @@
             </div>
         </section>
         <!-- end page title section -->
-        
+        @include('flash::message')
         <!-- start form section -->
         <section class="wow fadeIn registro-form login-form">
             <div class="container">
