@@ -334,7 +334,7 @@ var options = {
           }
       },
       disabledActionButtons: ['data','save','clear'],
-      controlPosition: 'left',
+      controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       hiddenAttrs: ['className'],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
