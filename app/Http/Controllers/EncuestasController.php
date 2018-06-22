@@ -198,7 +198,7 @@ class EncuestasController extends Controller
 
     public function saveQuestion(Request $request)
     {
-        //dd($request->all());
+        
         $template=Template::find($request->template_id);
         if($request->hasFile('saveImage')) {
             $fileName = FileControl::storeFile($request->saveImage, 'imagenesEncuestas');
@@ -332,7 +332,7 @@ class EncuestasController extends Controller
 
 
         $answers = DB::table('answer')
-                  ->select('answer.answer', DB::raw("CONCAT(users.name,' ',users.last_name) AS username"))
+                  ->select('answer.answer', DB::raw("users.name AS username"))
                   ->leftJoin('users', 'answer.user_id', '=', 'users.id')
                   ->where('id_template', $id)->get();
 
