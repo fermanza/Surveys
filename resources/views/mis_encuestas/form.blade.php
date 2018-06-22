@@ -254,7 +254,6 @@ let fields = [
 {
     label: 'Imagen',
     type: 'file',
-    required: true,
     className: 'form-control',
     icon: '<i class="fa fa-image"></i>'
 }
@@ -308,7 +307,8 @@ var options = {
             addOption: 'Agregar item +',
             required: "Requerido",
             label: "Pregunta",
-            placeholder: "Ejemplo"
+            placeholder: "Ejemplo",
+            remove: " X "
           }
         }
       },
