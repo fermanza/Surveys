@@ -230,6 +230,16 @@ var options = {
         ],
         'select': [
           'placeholder'
+        ],
+        'textarea': [
+          'rows'
+        ],
+        'date': [
+          'placeholder'
+        ],
+        'file':
+        [
+          'placeholder'
         ]
       },
       disabledActionButtons: ['data','save','clear'],

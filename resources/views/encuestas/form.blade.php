@@ -331,8 +331,7 @@ slider: function(fieldData) {
           'placeholder'
         ],
         'select': [
-          'placeholder',
-          'option-value'
+          'placeholder'
         ],
         'textarea': [
           'rows'

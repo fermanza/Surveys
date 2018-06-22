@@ -325,13 +325,14 @@ var options = {
         ],
         'textarea': [
           'rows'
+        ],
+        'date': [
+          'placeholder'
+        ],
+        'file':
+        [
+          'placeholder'
         ]
-      },
-      stickyControls: {
-        enable: true,
-        offset: {
-            top: 80
-          }
       },
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
