@@ -141,8 +141,6 @@ var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 //     },
 // });
 
-// $("#tabulator-example").tabulator("setData", '<?php echo json_encode($question->content) ?>');
-
 let fields = [
 {
   label: 'Texto',
@@ -538,8 +536,6 @@ var options = {
     dataType: 'json'
   };
 
-//console.log(formRenderOpts);
-
 $(fbRender).formRender(formRenderOpts);
 
 
@@ -618,7 +614,7 @@ $(fbRender).formRender(formRenderOpts);
         var id_template=$("#template_id").val();
         var token=$("#csrf-token").val();
       
-     // console.log(formdata);
+     //console.log(formdata);
 
     request = $.ajax({
         url: '{{url('saveAnswer')}}',
