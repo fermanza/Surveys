@@ -53,7 +53,7 @@
                                     </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
 
                                       @if($user->id == 1)
-                                             <form style="display: inline-block;" method="POST" action="/articulos/{{ $articulo->id }}">
+                                             <form style="display: inline-block;" method="POST" action= {{url("/articulos/$articulo->id ")}}>
                                                   {{ method_field('DELETE') }}
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                    &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
