@@ -310,7 +310,7 @@ slider: function(fieldData) {
 
   var options = {
     fields, templates,
-    controlPosition: 'right',
+    controlPosition: 'left',
       i18n: {
         preloaded: {
           'en-US': {

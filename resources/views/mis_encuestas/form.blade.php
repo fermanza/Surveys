@@ -334,7 +334,7 @@ var options = {
           }
       },
       disabledActionButtons: ['data','save','clear'],
-      controlPosition: 'right',
+      controlPosition: 'left',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       hiddenAttrs: ['className'],
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
@@ -438,20 +438,24 @@ var options = {
         fields: [
             {
               label: 'Nombre de Renglón',
-              type: 'radio-group',
-              values: [{
-              label: 'Nombre de la Columna',
-              value: 'test-value'
-            }]
-      },
+              className: 'form-control renglon',
+              type: 'header'
+            },
             {
               label: 'Nombre de Renglón',
-              type: 'radio-group',
-              values: [{
+              className: 'form-control renglon',
+              type: 'header'
+            },
+            {
               label: 'Nombre de la Columna',
-              value: 'test-value'
-            }]
-      },
+              className: 'form-control columna',
+              type: 'header'
+            },
+            {
+              label: 'Nombre de Columna',
+              className: 'form-control columna',
+              type: 'header'
+            },
           ]
       },
       {
