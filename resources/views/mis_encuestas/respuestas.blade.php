@@ -78,7 +78,6 @@
                   
 
                   @foreach($answer['questions'] as $questions)
-                         <b>Pregunta: </b>    {{ $questions['question']->label }} 
                          <b> Pregunta: </b>    {{ $questions['question']->label }} 
                             <br>
                           <b> Respuesta: </b>    {{$questions['answer']['value'] }}

@@ -146,25 +146,29 @@ var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 let fields = [
 {
   label: 'Texto',
-  type: 'header',
-  className: 'form-control'
+  type: 'header'
 },
 {
   label: 'Multiple Choice',
   type: 'radio-group',
-  className: 'form-control'
+  value: 'label'
 },
 {
   label: 'Dropdown',
-  type: 'select',
-  className: 'form-control'
+  type: 'select'
 },
 {
   label: 'Single TextBox',
-  type: 'text',
-  className: 'form-control'
+  type: 'text'
+},
+{
+    label: 'Imagen',
+    type: 'file',
+    className: 'form-control',
+    icon: '<i class="fa fa-image"></i>'
 }
 ];
+
 
 let templates = {
     starRating: function(fieldData) {
