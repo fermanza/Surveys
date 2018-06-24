@@ -27,7 +27,7 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li class="text-dark-gray">@lang('crear_encuesta.creacionEncuesta')</li>
                             </ul>
                             <!-- end breadcrumb -->

@@ -26,8 +26,8 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray"><a href="mi-cuenta.php">@lang('mi_cuenta.miCuenta')</a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li class="text-dark-gray">@lang('mi_cuenta.miCuenta')</li>
                                 <li class="text-dark-gray">@lang('mi_cuenta.datosPersonales')</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -110,7 +110,8 @@
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                  },
-                 responsive: true
+                 "responsive": true,
+                 "bSort": false
             });
         @else 
            $('#table-mi-cuenta').DataTable({

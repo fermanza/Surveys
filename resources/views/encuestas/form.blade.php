@@ -47,7 +47,7 @@ visibility:hidden;
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">@lang('mis_encuestas.creacionEncuesta')</a></li>
+                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">@lang('mis_encuestas.creacionEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -266,12 +266,6 @@ let fields = [
 {
   label: 'Single TextBox',
   type: 'text'
-},
-{
-    label: 'Imagen',
-    type: 'file',
-    className: 'form-control',
-    icon: '<i class="fa fa-image"></i>'
 }
 ];
 
@@ -349,6 +343,17 @@ slider: function(fieldData) {
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
       inputSets: [
+      {
+        label: 'Imagen',
+        name: 'image',
+        type: 'file',
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>',
+        fields: [{
+          type: 'file',
+          label: 'Imagen (tamaño máximo 1Mb)'
+        }]
+      },
       {
         label: 'Comment Box',
         name: 'commentBox',

@@ -38,7 +38,7 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li class="text-dark-gray">Respuestas</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div class="col-md-12" align="center">
-                     <a class="btn btn-default" href="{{ URL('mis_encuestas') }}">@lang('answer.regresar')</a>
+                     <a class="btn btn-default" href="{{ url()->previous() }}">@lang('answer.regresar')</a>
                   </div>
             </div>
         </section>

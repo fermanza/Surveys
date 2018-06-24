@@ -1,5 +1,5 @@
 @component('mail::message')
-# ¡Hola! Acabas de crear una cuenta para el sitio web de Survenia.
+# Hola! Acabas de crear una cuenta para el sitio web de Survenia.
 
 Da click en el siguiente botón para iniciar sesión:
 @component('mail::button', ['url' => $inicio ,'color' => 'green'])

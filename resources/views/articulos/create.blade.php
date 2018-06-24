@@ -25,9 +25,9 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="{{ URL('home')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li><a href="{{ URL('articulos')}}" class="text-dark-gray">@lang('articulos.articulos')</a></li>
-                                <li><a href="#" class="text-dark-gray">@lang('articulos.creacionArticulo')</a></li>
+                                <li class="text-dark-gray">@lang('articulos.creacionArticulo')</li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>

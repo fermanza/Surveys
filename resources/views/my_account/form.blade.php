@@ -25,9 +25,9 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li class="text-dark-gray"><a href="mi-cuenta.php">@lang('registro.miCuenta')</a></li>
-                                <li class="text-dark-gray">@lang('registro.datosPersonales')</li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li class="text-dark-gray">@lang('registro.miCuenta')</li>
+                                <li class="text-dark-gray"><a href="{{ URL('my_account') }}">@lang('registro.datosPersonales')</a></li>
                                 <li class="text-dark-gray">@lang('registro.editarCuenta')</li>
                             </ul>
                             <!-- end breadcrumb -->

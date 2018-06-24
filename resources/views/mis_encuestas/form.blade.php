@@ -35,8 +35,8 @@ visibility:hidden;
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">@lang('editar_encuesta.editarEncuesta')</a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/mis_encuestas')}}" class="text-dark-gray">@lang('editar_encuesta.editarEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
                             </ul>
                             <!-- end breadcrumb -->
@@ -250,12 +250,6 @@ let fields = [
 {
   label: 'Single TextBox',
   type: 'text'
-},
-{
-    label: 'Imagen',
-    type: 'file',
-    className: 'form-control',
-    icon: '<i class="fa fa-image"></i>'
 }
 ];
 
@@ -341,6 +335,17 @@ var options = {
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','file','radio-group','select','matriz','checkbox-group','text','textarea','hidden'],
       inputSets: [
+      {
+        label: 'Imagen',
+        name: 'image',
+        type: 'file',
+        className: 'form-control',
+        icon: '<i class="fa fa-image"></i>',
+        fields: [{
+          type: 'file',
+          label: 'Imagen (tamaño máximo 1Mb)'
+        }]
+      },
       {
         label: 'Comment Box',
         name: 'commentBox',
