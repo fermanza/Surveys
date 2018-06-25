@@ -156,7 +156,7 @@
                                     <div class="name col-md-4 col-sm-4">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <a href="#" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
+                                                <a href="{{ URL('mis_encuestas/excel')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
                                             </div>
                                         </div>
                                     </div>

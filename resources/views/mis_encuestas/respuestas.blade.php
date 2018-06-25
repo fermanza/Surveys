@@ -64,17 +64,14 @@
              </div>
 
 
-<div class="titulo">  
-                                              <button class="mybutton buton" value="dataTable" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
-                                          </div>
+<div class="col-md-12" align="center">
+    <a href="{{ URL('mis_encuestas/excel')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
+</div>
 
 
 
- <table id="table-mis-respuestas" class="display" style="width:100%">
+ <table id="table-mis-respuestas" class="display">
         <thead>
-          
-        </thead>
-        <tbody>
           @foreach($answersGrouped as $answer)
               <tr>
                 <th>
@@ -88,18 +85,20 @@
               @foreach($answer['questions'] as $questions)
           <tr>
             <td>
-              <b> Pregunta: </b>    {{ $questions['question']->label }}
+              <br><b> Pregunta: </b>    {{ $questions['question']->label }}
               <br>
               <b> Respuesta: </b>    {{$questions['answer']['value'] }}<br><br>
             </td>
           </tr>
               @endforeach
             @endforeach
+        </thead>
+        <tbody>
         </tbody>
 </table>
 
 
-             @foreach($answersGrouped as $answer)
+      {{--        @foreach($answersGrouped as $answer)
 
                 @if($answer['user']->username == null)
                     <hr>
@@ -120,7 +119,7 @@
                           <br>
                           
                   @endforeach
-             @endforeach
+             @endforeach --}}
 
                     </div>
                 </div>
@@ -140,9 +139,9 @@
          
           let index = $(this).val();
 
-          var data_type = 'data:aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8';
+          var data_type = 'data:application/vnd.ms-excel';
           var a = document.createElement('a');
-          var data_type = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8';
+          var data_type = 'data:application/vnd.ms-excel';
           var table_div = document.getElementById('table-mis-respuestas');   
           var table_html = table_div.outerHTML.replace(/ /g, '%20');
           a.href = data_type + ', ' + table_html;

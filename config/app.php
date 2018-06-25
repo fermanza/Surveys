@@ -163,7 +163,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Shivella\Bitly\BitlyServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class
+        Laracasts\Flash\FlashServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class
 
     ],
 
@@ -217,7 +218,8 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
-        'Bitly' => Shivella\Bitly\Facade\Bitly::class
+        'Bitly' => Shivella\Bitly\Facade\Bitly::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
 
     ],
 

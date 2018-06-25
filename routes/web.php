@@ -18,6 +18,7 @@
 Route::get('setLanguage/{lang}','HomeController@setLanguage');
 Route::get('/', 'SurveniaWebPagesController@index');
 
+Route::get('mis_encuestas/excel/{id}', 'EncuestasController@getBladeExcel');
 
 //Route::post('/registrar', 'SurveniaWebPagesController@registrar');
 

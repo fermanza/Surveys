@@ -540,4 +540,18 @@ class EncuestasController extends Controller
 
     }
 
+    public function getBladeExcel($id){
+        
+     //       dd($id);
+        $data = Template::find($id);
+        //dd($data);
+
+        \Excel::create('Ok', function($excel) use($data) {
+            $excel->sheet('Ok', function($sheet) {
+                $sheet->loadView('mis_encuestas.respuestas');
+            });
+        })->download('xls');
+        //return view('thecodingstuff.bladexcel');
+    }
+
 }
