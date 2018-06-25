@@ -7,6 +7,7 @@ use App\FileControl\FileControl;
 use App\Articulo;
 use Auth;
 use DB;
+use Bitly;
 
 class ArticulosController extends Controller
 {
@@ -20,6 +21,7 @@ class ArticulosController extends Controller
         //dd($request->all()); 
         $articulos = Articulo::Search($request->articulo)->latest()->paginate(5);
         $user = Auth::user();
+
         
         return view('articulos.index', compact('articulos', 'user'));
     }
@@ -124,4 +126,17 @@ class ArticulosController extends Controller
 
         return redirect('/articulos');
     }
+
+
+
+    public function bitly($id)
+    {
+        $articulo = Articulo::find($id);
+        $url=url('/articulos').'/'.$articulo->id;
+        $urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
+        return response()->json($urlbit,200);
+
+    }
+
+
 }

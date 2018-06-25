@@ -82,9 +82,13 @@ Route::get('login','LoginController@getLogin');
 Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
 
-
+Route::get('/articulosCompartir/{id}', 'ArticulosController@bitly');
 
  Route::resource('/articulos', 'ArticulosController');
+
+
+ 
+
 
 
 Route::post('/copyTemplate', 'EncuestasController@copyTemplate');

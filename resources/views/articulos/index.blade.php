@@ -49,8 +49,11 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">@lang('articulos.tipoEncuestas')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
-                                    </span> @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"  onClick="getLink({{$articulo->id}})">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">
+
+                                    </span> 
+                                 @isset($user)   
+                                    @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
 
                                       @if($user->id == 1)
                                              <form style="display: inline-block;" method="POST" action= {{url("/articulos/$articulo->id ")}}>
@@ -59,6 +62,8 @@
                                                    &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
                                              </form>            
                                       @endif  
+                                 @endisset     
+
                                    </div>
                                     <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
                                       <p id="preview"> 
@@ -211,6 +216,63 @@
 <script type="text/javascript">
         
 $('#preview').trumbowyg('html');
+
+
+
+
+
+
+
+  function getLink(id) {
+
+            request = $.ajax({
+                url: '{{url('articulosCompartir')}}/'+id,
+                type: "get"
+            });
+
+        request.done(function (response, textStatus, jqXHR){
+        swal({
+              title: '',
+              type: 'success',
+              html:'<p>Puedes usar el siguiente link para compartir tu encuesta: </p>' +
+                '<input id="txtshare" value="'+response+'" type="text" class="form-control">',
+              showCloseButton: true,
+              showCancelButton: false,
+              focusConfirm: false,
+              confirmButtonText:
+                '<i class="fa fa-copy"></i> Copiar',
+            }).then((result) => {
+                var copyText = document.getElementById("txtshare");
+              copyText.select();
+              document.execCommand("copy");
+
+              swal({
+                    type: 'success',
+                    html: '¡Enlace copiado!'
+                  })
+            })
+            
+  });
+
+          // Callback handler that will be called on failure
+          request.fail(function (jqXHR, textStatus, errorThrown){
+              
+          });
+
+
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 
