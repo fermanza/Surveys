@@ -148,8 +148,7 @@ let fields = [
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group',
-  value: 'label'
+  type: 'radio-group'
 },
 {
   label: 'Dropdown',
@@ -158,12 +157,6 @@ let fields = [
 {
   label: 'Single TextBox',
   type: 'text'
-},
-{
-    label: 'Imagen',
-    type: 'file',
-    className: 'form-control',
-    icon: '<i class="fa fa-image"></i>'
 }
 ];
 

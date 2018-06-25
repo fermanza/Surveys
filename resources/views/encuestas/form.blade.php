@@ -256,8 +256,7 @@ let fields = [
 },
 {
   label: 'Multiple Choice',
-  type: 'radio-group',
-  value: 'label'
+  type: 'radio-group'
 },
 {
   label: 'Dropdown',
