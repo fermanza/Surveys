@@ -52,7 +52,7 @@ a:hover, a:active{color: #ff214f; text-decoration: none;}
 a:focus, a:active, button:focus, button:active,.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {outline: none;}
 img {max-width:100%; height:auto; }
 video { background-size: cover; display: table-cell; vertical-align: middle; width: 100%; }
-input, textarea, select{ border: 1px solid #d1d1d1; font-size: 14px;  padding: 8px 15px; width: 100%; margin: 0 0 20px 0; max-width: 100%; resize: none;}
+input, select{ border: 1px solid #d1d1d1; font-size: 14px;  padding: 8px 15px; width: 100%; margin: 0 0 20px 0; max-width: 100%; resize: none;}
 input[type="submit"] { width: auto}
 input[type="button"], input[type="text"], input[type="email"], input[type="search"], input[type="password"], textarea, input[type="submit"] { -webkit-appearance: none; outline: none;}
 input:focus, textarea:focus{ border-color: #585858; outline: none; }
@@ -322,8 +322,7 @@ section.half-section {padding:80px 0;}
 
 .btn .caret{border-top:4px solid}
 input.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px solid rgba(0,0,0,.1);padding: 10px 20px; margin-bottom: 15px;}
-input.input-bg:focus, textarea.input-bg:focus{ border: 0; border: 1px solid rgba(0,0,0,.3); }
-textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px solid rgba(0,0,0,.1);padding: 10px 20px; margin-bottom: 15px; min-height: 130px;}
+input.input-bg:focus 
 .input-bg::-webkit-input-placeholder {font-weight: 400; font-size: 14px;}
 .input-bg::-moz-placeholder {font-weight:400; font-size: 14px;} 
 .input-bg:-ms-input-placeholder { font-weight: 400; font-size: 14px;}
@@ -6452,7 +6451,6 @@ aside .buscar button[type="submit"] {
 }
 .encuesta .settings form select,
 .encuesta .settings form input[type="text"] {
-    padding: 15px 20px;
     font-size: 16px;
     color: #232323;
     line-height: 16px;

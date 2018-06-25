@@ -249,20 +249,8 @@ visibility:hidden;
  
 var fbEditor = document.getElementsByClassName("build-form");      
 
-let fields = [
-{
-  label: 'Texto',
-  type: 'header'
-},
-{
-  label: 'Multiple Choice',
-  type: 'radio-group'
-},
-{
-  label: 'Single TextBox',
-  type: 'text'
-}
-];
+// let fields = [
+// ];
 
 
 let templates = {
@@ -298,7 +286,7 @@ slider: function(fieldData) {
 
 
   var options = {
-    fields, templates,
+    templates,
     controlPosition: 'right',
       i18n: {
         preloaded: {
@@ -339,11 +327,44 @@ slider: function(fieldData) {
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
       inputSets: [
       {
+        label: 'Texto',
+        name: 'texto',
+        type: 'header',
+        className: 'form-control',
+        icon: '<i class="fa fa-font"></i>',
+        fields: [{
+          type: 'header',
+          label: 'Texto'
+        }]
+      },
+      {
+        label: 'Multiple Choice',
+        name: 'multiple-choice',
+        type: 'radio-group',
+        className: 'form-control',
+        icon: '<i class="fa fa-list-ul"></i>',
+        fields: [{
+          type:'radio-group',
+          label: 'Multiple Choice'
+        }] 
+      },
+      {
+        label: 'Single TextBox',
+        name: 'single-textbox',
+        type: 'text',
+        className: 'form-control',
+        icon: '<i class="fa fa-i-cursor"></i>',
+        fields: [{
+          type: 'text',
+          label: 'Single TextBox'
+        }]
+      },
+      {
         label: 'Dropdown',
         name: 'dropdown',
         type: 'select',
         className: 'form-control',
-        icon: '<i class="fa fa-select"></i>',
+        icon: '<i class="fa fa-caret-down"></i>',
         fields: [{
           type: 'select',
           label: 'Dropdown'
