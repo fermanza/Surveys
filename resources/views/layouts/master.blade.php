@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Survenia - @yield('title')</title>
+        <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">

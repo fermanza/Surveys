@@ -64,6 +64,41 @@
              </div>
 
 
+<div class="titulo">  
+                                              <button class="mybutton buton" value="dataTable" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
+                                          </div>
+
+
+
+ <table id="table-mis-respuestas" class="display" style="width:100%">
+        <thead>
+          
+        </thead>
+        <tbody>
+          @foreach($answersGrouped as $answer)
+              <tr>
+                <th>
+                @if($answer['user']->username == null)
+                     <b> Usuario: </b> Anonimo    
+                @else   
+                   <b> Usuario: </b>  {{ $answer['user']->username }}    
+                @endif 
+                </th>
+              </tr>
+              @foreach($answer['questions'] as $questions)
+          <tr>
+            <td>
+              <b> Pregunta: </b>    {{ $questions['question']->label }}
+              <br>
+              <b> Respuesta: </b>    {{$questions['answer']['value'] }}<br><br>
+            </td>
+          </tr>
+              @endforeach
+            @endforeach
+        </tbody>
+</table>
+
+
              @foreach($answersGrouped as $answer)
 
                 @if($answer['user']->username == null)
@@ -94,4 +129,33 @@
                   </div>
             </div>
         </section>
+
+    @push('script')
+
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+
+
+         $('.buton').click(function(){
+         
+          let index = $(this).val();
+
+          var data_type = 'data:aapplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8';
+          var a = document.createElement('a');
+          var data_type = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8';
+          var table_div = document.getElementById('table-mis-respuestas');   
+          var table_html = table_div.outerHTML.replace(/ /g, '%20');
+          a.href = data_type + ', ' + table_html;
+          //setting the file name
+          a.download = 'exported_table.xls';
+          //triggering the function
+          a.click();
+
+    });
+        } );
+
+
+    </script>
+
+   @endpush 
 @stop

@@ -278,7 +278,7 @@
          
          let index = $(this).val();
 
-         var data_type = 'data:application/vnd.ms-excel';
+          var data_type = 'data:application/vnd.ms-excel';
           var a = document.createElement('a');
           var data_type = 'data:application/vnd.ms-excel';
           var table_div = document.getElementById('tabla-'+index);   
