@@ -604,6 +604,10 @@ $(fbRender).formRender(formRenderOpts);
     document.getElementById('save-data').addEventListener('click', function() {
         var $form = $("#fb-editor");
         var formdata = JSON.stringify($form.serializeArray());
+        formdata =  formdata.replace("select", "selec");
+
+
+
         var id_template=$("#template_id").val();
         var token=$("#csrf-token").val();
       
