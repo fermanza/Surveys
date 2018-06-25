@@ -259,10 +259,6 @@ let fields = [
   type: 'radio-group'
 },
 {
-  label: 'Dropdown',
-  type: 'select'
-},
-{
   label: 'Single TextBox',
   type: 'text'
 }
@@ -342,6 +338,17 @@ slider: function(fieldData) {
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
       inputSets: [
+      {
+        label: 'Dropdown',
+        name: 'dropdown',
+        type: 'select',
+        className: 'form-control',
+        icon: '<i class="fa fa-select"></i>',
+        fields: [{
+          type: 'select',
+          label: 'Dropdown'
+        }]
+      },
       {
         label: 'Imagen',
         name: 'image',
