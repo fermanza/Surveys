@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected,.toggle-form
 {
 visibility:hidden;
 } 
@@ -362,8 +362,13 @@ slider: function(fieldData) {
         'file':
         [
           'placeholder'
+        ],
+        'header':
+        [
+          'options'
         ]
       },
+      editOnAdd: true,
       disabledActionButtons: ['data','save','clear'],
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],

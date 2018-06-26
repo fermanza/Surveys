@@ -613,7 +613,8 @@ var formdata = JSON.stringify($form.serializeArray());
         var formdata = JSON.stringify($form.serializeArray());
         formdata =  formdata.replace("select", "selec");
 
-
+        // console.log(formdata);
+        // debugger;
 
         var id_template=$("#template_id").val();
         var token=$("#csrf-token").val();
