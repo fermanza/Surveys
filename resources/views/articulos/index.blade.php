@@ -5,6 +5,17 @@
 <? include 'includes/head.php' ?>
 @section('content')
 
+<style>
+.name {
+    height: 61px;
+    padding-bottom: 30px;
+    border-bottom: 4px solid #84c34e;
+    display: table !important;
+}
+.display-table {
+    display: table !important;
+}
+</style>
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
