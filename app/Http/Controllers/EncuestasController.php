@@ -353,14 +353,21 @@ class EncuestasController extends Controller
                  return $value->type == "file" || $value->type == "header";   
          }); 
 
+        
+         foreach($questions as $q) {
+              if(isset($q->required)){
+                   unset($q->required);
+              } 
+         }
 
+        
          $usernames = $answers->map(function($item, $key){
              return $item->username;
          });
 
         
 
-
+  
         
 
         $answersGrouped = collect();
@@ -369,7 +376,7 @@ class EncuestasController extends Controller
             $questionsB = collect();
 
 
-
+         
          
 
             foreach (json_decode($user->answer, true) as $answer) {
@@ -412,6 +419,7 @@ class EncuestasController extends Controller
         }
 
         
+
 
       /*  $usernames->each(function($user, $key) use($questions, $answersGrouped) {
               $user = collect();
