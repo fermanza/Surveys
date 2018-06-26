@@ -20,6 +20,8 @@ use App\Discounts;
 use DB;
 use Bitly;
 
+
+
 class EncuestasController extends Controller
 {
     /**
@@ -542,16 +544,85 @@ class EncuestasController extends Controller
 
     public function getBladeExcel($id){
         
-     //       dd($id);
-        $data = Template::find($id);
-        //dd($data);
+          $answersGrouped = $this->process($id);
+          $template = Template::find($id);
+          
 
-        \Excel::create('Ok', function($excel) use($data) {
-            $excel->sheet('Ok', function($sheet) {
-                $sheet->loadView('mis_encuestas.respuestas');
+        \Excel::create('survey', function($excel) use($answersGrouped, $template) {
+            $excel->sheet('survey', function($sheet) use($answersGrouped, $template)  {
+                $sheet->loadView('mis_encuestas.export', compact('answersGrouped', 'template'));
             });
+
         })->download('xls');
-        //return view('thecodingstuff.bladexcel');
+   
     }
+
+
+
+    private function process($id) //id_template
+    {
+           $answers = DB::table('answer')
+                  ->select('answer.answer', DB::raw("users.name AS username"))
+                  ->leftJoin('users', 'answer.user_id', '=', 'users.id')
+                  ->where('id_template', $id)->get();
+
+        $questions1 = DB::table('questions')->select('content')->where('template_id', $id)->first();
+        $survey = DB::table('template')->select('name')->where('id', $id)->first();
+        $questions = json_decode($questions1->content);
+
+        $questions = collect($questions); // transform to collection 
+
+         $questions  =  $questions->reject(function($value, $key) {
+                 return $value->type == "file" || $value->type == "header";   
+         }); 
+
+         $usernames = $answers->map(function($item, $key){
+             return $item->username;
+         });
+
+        $answersGrouped = collect();
+
+        foreach ($answers as $user) {
+            $questionsB = collect();
+
+
+            foreach (json_decode($user->answer, true) as $answer) {
+
+                $questionB = $questions->first(function ($questionB) use ($answer) {
+
+                       if(strstr($questionB->name, 'star')) {
+                         $questionB->name  = str_replace('starRating-', "", $questionB->name );    
+                      }
+                     if(strstr($questionB->name, 'slider')) {
+                         $questionB->name  = str_replace('slider-', "", $questionB->name );         
+                      }  
+                      if(strstr($answer['name'], 'slider')) {
+                            $answer['name'] = str_replace('sliderslider-', "",  $answer['name']);
+                         }
+
+                     if(strstr( $answer['name'], 'star')) {
+                         $answer['name'] = str_replace('starstarRating-', "",  $answer['name']);
+                     }       
+                    return $questionB->name === $answer['name'];
+                });
+
+                $questionsB->push([
+                    'question' => $questionB,
+                    'answer' => $answer,
+                ]);
+            }
+            $answersGrouped->push([
+                'user' => $user,
+                'questions' => $questionsB,
+            ]);
+        }
+
+
+        return  $answersGrouped;
+
+    }
+
+
+      
 
 }
