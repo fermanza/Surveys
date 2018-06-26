@@ -5,7 +5,7 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected,.toggle-form
+.clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected
 {
 visibility:hidden;
 } 
