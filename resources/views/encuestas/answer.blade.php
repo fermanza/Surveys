@@ -553,9 +553,16 @@ $(fbRender).formRender(formRenderOpts);
 
 // $( "header.form-control.columna" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
 
+
+  
+  
+  
+
 //  generateTable(elementColumn, elementRow);
 
 // function generateTable(columns, rows) {
+
+
       
 //   var t = "<table  border='3' >";
 
@@ -595,9 +602,9 @@ $(fbRender).formRender(formRenderOpts);
 // }
 
 
-// $( "div.fb-radio-group" )
-// var $form = $("#fb-editor");
-// var formdata = JSON.stringify($form.serializeArray());
+$( "div.fb-radio-group" )
+var $form = $("#fb-editor");
+var formdata = JSON.stringify($form.serializeArray());
 
 // console.log($form.serializeArray());
 
