@@ -69,10 +69,10 @@
     <a href="{{ URL('mis_encuestas/excel')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
 </div> --}}
 
-<div class="col-md-12" align="center">
+{{-- <div class="col-md-12" align="center">
 <button type="button" onclick="tableToExcel('table-mis-respuestas', 'W3C Example Table')" value="Export to Excel">@lang('encuestas_publicas.exportarReporte') </button>
 </div>
-
+ --}}
 
 
 

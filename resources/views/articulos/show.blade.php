@@ -3,6 +3,21 @@
 @extends('includes.header')
 @section('content')
 
+<style>
+.labels
+{
+    color: black;
+    text-transform: uppercase;
+}
+.contenido
+{
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 30px;
+}
+    
+</style>
+
      <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -40,16 +55,16 @@
 
 	<section class="padding-25px-tb margin-bread">
 		
-		<h5 align="center">Tema: {{ $articulo->title }}</h5>
-        <h6 align="right">Fecha: {{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y') }}</h6>
-        <h6 align="right">Autor: {{ $articulo->user->name }}</h6>
+		<h6 class="labels" align="center">{{ $articulo->title }}</h6>
+        <p class="labels" align="left">Fecha: {{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y') }}</p>
+        <p class="labels" align="left">Autor: {{ $articulo->user->name }}</p>
         <div align="center">
         <hr />
-		<img src="{{URL($articulo->img)}}" style="width: auto !important; height: auto !important; max-width: 70%;">
+		<img src="{{URL($articulo->img)}}" style="width: auto !important; height: auto !important; max-width: 60%;">
 		<br><br><br>
-		<h6 style="color: black; text-align: justify;"> {!! $articulo->body !!} </h6>
+		<h6 class="contenido"> {!! $articulo->body !!} </h6>
         </div>
-	<div align="center">
+	   <div align="center">
         <hr />
         <a class="btn" href="{{ URL('articulos') }}">Volver a Artículos</a>
         </div>
