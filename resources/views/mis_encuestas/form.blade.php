@@ -356,6 +356,7 @@ var options = {
           'placeholder'
         ]
       },
+      editOnAdd: true,
       disabledActionButtons: ['data','save','clear'],
       controlPosition: 'right',
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
