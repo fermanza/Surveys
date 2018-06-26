@@ -39,6 +39,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/encuestas_publicas')}}" class="text-dark-gray">@lang('encuestas_publicas.encuestasPublicas')</a></li>
                                 <li class="text-dark-gray">Respuestas</li>
                             </ul>
                             <!-- end breadcrumb -->
