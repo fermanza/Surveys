@@ -3,13 +3,6 @@
 
 @extends('includes.header')
 <? include 'includes/head.php' ?>
-
-<style>
-.name
-{
-    height: 62px;
-}
-</style>
 @section('content')
 
         <!-- start page title section -->
@@ -48,15 +41,16 @@
         <section>
             <div class="container">
                 <div class="row">
-                  @if(Auth::check() == true)  
-                    @if($user->id == 1) 
-                               <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-success">@lang('articulos.crearArticulo')</a>
-                    @endif  
-                 @endif   
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            <div class="temas-title">@lang('articulos.temas')</div>
-
+                            @if(Auth::check() == true)  
+                                @if($user->id == 1) 
+                                <div align="center">
+                                           <br><a class="temas-title" href="{{route('articulos.create')}}">@lang('articulos.crearArticulo')</a><br><br>
+                                </div>
+                                @endif  
+                            @endif  
+                            <div class="temas-title">@lang('articulos.temas')</div> 
                                 {{-- <div class="select-style big-select">
 
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
@@ -126,7 +120,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
-                                        </div5
+                                        </div>
                                     </div>
                                 </form>
                             </div>

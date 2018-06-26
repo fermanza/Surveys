@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <p class="text-extra-dark-gray">@lang('encuestas_publicas.obtenerPotencia')<br><a href="{{ URL('planes')}}">@lang('encuestas_publicas.verPlanes')</a></p>
-                                        </div5
+                                        </div>
                                     </div>
                                 </form>
                             </div>
