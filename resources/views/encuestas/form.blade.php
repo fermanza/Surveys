@@ -249,84 +249,8 @@ visibility:hidden;
  
 var fbEditor = document.getElementsByClassName("build-form");      
 
-// let fields = [
-// ];
-
-
-let templates = {
-  starRating: function(fieldData) {
-    return {
-      field: '<span id="'+fieldData.name+'">',
-      onRender: function() {
-        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
-      }
-    };
-  },
-slider: function(fieldData) {
-    return {
-      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
-     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-    //   onRender: function() {
-    //   $(document.getElementById(fieldData.name)).slider({
-    //   range: "max",
-    //   min: 0,
-    //   max: 100,
-    //   step: 50,
-    //   value: 1,
-    //   slide: function( event, ui ) {
-    //     $( "#slider"+fieldData.name ).val( ui.value );
-    //   }
-    // });
-    
-    // }
-    }
-  }
-
-};
-
-
-  var options = {
-    templates,
-    controlPosition: 'right',
-      i18n: {
-        preloaded: {
-          'en-US': {
-            close: "Guardar",
-            addOption: 'Agregar opción +',
-            required: "Requerido",
-            label: "Etiqueta",
-            placeholder: "Ejemplo",
-            remove: " X "
-          }
-        }
-      },
-      typeUserDisabledAttrs: {
-        'starRating': [
-          'placeholder'
-        ],
-        'slider': [
-          'placeholder'
-        ],
-        'select': [
-          'placeholder'
-        ],
-        'textarea': [
-          'rows'
-        ],
-        'date': [
-          'placeholder'
-        ],
-        'file':
-        [
-          'placeholder'
-        ]
-      },
-      disabledActionButtons: ['data','save','clear'],
-      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
-      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
-      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
-      inputSets: [
-      {
+let fields = [
+{
         label: 'Texto',
         name: 'texto',
         type: 'header',
@@ -369,7 +293,82 @@ slider: function(fieldData) {
           type: 'select',
           label: 'Dropdown'
         }]
+      }
+];
+
+let templates = {
+  starRating: function(fieldData) {
+    return {
+      field: '<span id="'+fieldData.name+'">',
+      onRender: function() {
+        $(document.getElementById(fieldData.name)).rateYo({rating: 3.6});
+      }
+    };
+  },
+slider: function(fieldData) {
+    return {
+      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
+     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
+    //   onRender: function() {
+    //   $(document.getElementById(fieldData.name)).slider({
+    //   range: "max",
+    //   min: 0,
+    //   max: 100,
+    //   step: 50,
+    //   value: 1,
+    //   slide: function( event, ui ) {
+    //     $( "#slider"+fieldData.name ).val( ui.value );
+    //   }
+    // });
+    
+    // }
+    }
+  }
+
+};
+
+
+  var options = {
+    fields, templates,
+    controlPosition: 'right',
+      i18n: {
+        preloaded: {
+          'en-US': {
+            close: "Guardar",
+            addOption: 'Agregar opción +',
+            required: "Requerido",
+            label: "Etiqueta",
+            placeholder: "Ejemplo",
+            remove: " X "
+          }
+        }
       },
+      typeUserDisabledAttrs: {
+        'starRating': [
+          'placeholder'
+        ],
+        'slider': [
+          'placeholder'
+        ],
+        'select': [
+          'placeholder'
+        ],
+        'textarea': [
+          'rows'
+        ],
+        'date': [
+          'placeholder'
+        ],
+        'file':
+        [
+          'placeholder'
+        ]
+      },
+      disabledActionButtons: ['data','save','clear'],
+      prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
+      disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
+      disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
+      inputSets: [
       {
         label: 'Imagen',
         name: 'image',
@@ -392,9 +391,27 @@ slider: function(fieldData) {
           }]
       },
       {
+        label: 'Star Rating',
+        name: 'starRating',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'Star Rating',
+          type: 'starRating'
+        }]
+      },
+      {
+        label: 'Slider',
+        name: 'slider',
+        icon: '<i class="fa fa-sliders"></i>',
+        fields: [{
+          label: 'Slider',
+          type: 'slider'
+        }]
+      },
+      {
         label: 'Contact Information',
         name: 'contact-information',
-        type: '</form>', // optional - one will be generated from the label if name not supplied
+        type: 'header', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
         showHeader: true, // optional - Use the label as the header for this set of inputs
         fields: [
@@ -598,24 +615,6 @@ slider: function(fieldData) {
               ]
             },
           ]
-      },
-      {
-        label: 'Star Rating',
-        name: 'starRating',
-        icon: '<i class="fa fa-star"></i>',
-        fields: [{
-          label: 'Star Rating',
-          type: 'starRating'
-        }]
-      },
-      {
-        label: 'Slider',
-        name: 'slider',
-        icon: '<i class="fa fa-sliders"></i>',
-        fields: [{
-          label: 'Slider',
-          type: 'slider'
-        }]
       },
       {
         label: 'Matrix Ranking Scale',

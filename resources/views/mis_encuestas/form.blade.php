@@ -236,21 +236,49 @@ visibility:hidden;
       
 let fields = [
 {
-  label: 'Texto',
-  type: 'header'
-},
-{
-  label: 'Multiple Choice',
-  type: 'radio-group'
-},
-{
-  label: 'Dropdown',
-  type: 'select'
-},
-{
-  label: 'Single TextBox',
-  type: 'text'
-}
+        label: 'Texto',
+        name: 'texto',
+        type: 'header',
+        className: 'form-control',
+        icon: '<i class="fa fa-font"></i>',
+        fields: [{
+          type: 'header',
+          label: 'Texto'
+        }]
+      },
+      {
+        label: 'Multiple Choice',
+        name: 'multiple-choice',
+        type: 'radio-group',
+        className: 'form-control',
+        icon: '<i class="fa fa-list-ul"></i>',
+        fields: [{
+          type:'radio-group',
+          label: 'Multiple Choice'
+        }] 
+      },
+      {
+        label: 'Single TextBox',
+        name: 'single-textbox',
+        type: 'text',
+        className: 'form-control',
+        icon: '<i class="fa fa-i-cursor"></i>',
+        fields: [{
+          type: 'text',
+          label: 'Single TextBox'
+        }]
+      },
+      {
+        label: 'Dropdown',
+        name: 'dropdown',
+        type: 'select',
+        className: 'form-control',
+        icon: '<i class="fa fa-caret-down"></i>',
+        fields: [{
+          type: 'select',
+          label: 'Dropdown'
+        }]
+      }
 ];
 
 let templates = {
@@ -357,50 +385,94 @@ var options = {
           }]
       },
       {
+        label: 'Star Rating',
+        name: 'starRating',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'Star Rating',
+          type: 'starRating'
+        }]
+      },
+      {
+        label: 'Slider',
+        name: 'slider',
+        icon: '<i class="fa fa-sliders"></i>',
+        fields: [{
+          label: 'Slider',
+          type: 'slider'
+        }]
+      },
+      {
         label: 'Contact Information',
-        name: 'contact-information', // optional - one will be generated from the label if name not supplied
+        name: 'contact-information',
+        type: 'header', // optional - one will be generated from the label if name not supplied
         icon: '<i class="fa fa-info"></i>',
         showHeader: true, // optional - Use the label as the header for this set of inputs
         fields: [
             {
               type: 'text',
               label: 'Nombre',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Nombre'
             },
             {
               type: 'text',
               label: 'Apellido',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Apellido'
+            },
+            {
+              type: 'text',
+              label: 'E-mail',
+              className: 'form-control',
+              placeholder: 'E-mail'
             },
             {
               type: 'text',
               label: 'Empresa',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Empresa'
             },
             {
               type: 'text',
               label: 'Telefono',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Teléfono'
             },
             {
               type: 'text',
               label: 'Direccion',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Dirección'
             },
             {
               type: 'text',
               label: 'Ciudad',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Ciudad'
             },
             {
               type: 'text',
               label: 'Pais',
-              className: 'form-control'
+              className: 'form-control',
+              placeholder: 'Pais'
             },
             {
               type: 'select',
               label: 'Sexo',
-              className: 'form-control'
+              className: 'form-control',
+              values: [
+                {
+                  label: 'Masculino',
+                  value: 'Masculino',
+                  selected: false
+                },
+                {
+                  label: 'Femenino',
+                  value: 'Femenino',
+                  selected: false
+                }
+                ]
             },
             {
               type: 'date',
@@ -537,24 +609,6 @@ var options = {
               ]
             },
           ]
-      },
-      {
-        label: 'Star Rating',
-        name: 'starRating',
-        icon: '<i class="fa fa-star"></i>',
-        fields: [{
-          label: 'Star Rating',
-          type: 'starRating'
-        }]
-      },
-      {
-        label: 'Slider',
-        name: 'slider',
-        icon: '<i class="fa fa-sliders"></i>',
-        fields: [{
-          label: 'Slider',
-          type: 'slider'
-        }]
       },
       {
         label: 'Matrix Ranking Scale',
