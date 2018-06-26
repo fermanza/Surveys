@@ -3,6 +3,13 @@
 
 @extends('includes.header')
 <? include 'includes/head.php' ?>
+
+<style>
+.name
+{
+    height: 62px;
+}
+</style>
 @section('content')
 
         <!-- start page title section -->
@@ -41,73 +48,6 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
-                        <!-- start post item --> 
-                       
-                    @foreach($articulos as $articulo)    
-
-                        <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
-                            <div class="blog-text display-inline-block width-100">
-                                <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"  onClick="getLink({{$articulo->id}})">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="">
-
-                                    </span> 
-                                 @isset($user)   
-                                    @if($user->id == 1 ) <span>  <a  href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> @endif
-
-                                      @if($user->id == 1)
-                                             <form style="display: inline-block;" method="POST" action= {{url("/articulos/$articulo->id ")}}>
-                                                  {{ method_field('DELETE') }}
-                                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                   &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
-                                             </form>            
-                                      @endif  
-                                 @endisset     
-
-                                   </div>
-                                    <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
-                                      <p id="preview"> 
-                                        @php
-                                           $articulo->body = str_limit($articulo->body, 40);
-                                           $articulo->body = str_finish($articulo->body, '...');
-                                        @endphp
-                                        {!! $articulo->body !!} 
-                                    </p>
-                                </div>
-                                <div class="equalize xs-equalize-auto author display-table width-100">
-                                    <div class="name col-md-6 col-sm-6">
-                                        <div class="display-table text-center width-100 height-100">
-                                            <div class="display-table-cell vertical-align-middle">
-                                                <img src="images/mi-cuenta/user.png" alt="" class="border-radius-100 width-30px"><a href="#">{{ $articulo->user->name }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="name col-md-6 col-sm-6">
-                                        <div class="display-table text-center width-100 height-100">
-                                            <div class="display-table-cell vertical-align-middle">
-                                                <span class="text-extra-small margin-lr-auto"><i class="fa fa-calendar margin-5px-right"></i>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach   
-                    
-                    @if($articulos->count() > 0)
-                    <div class="pag" align="right">
-                            <p>Total de los artículos: {{ $articulos->count() }}</p>
-                            Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
-                            {{ $articulos->links() }}
-                    </div>
-                    @endif 
-                
-         
-                        <!-- end post item -->
-                    </main>
-
-
                   @if(Auth::check() == true)  
                     @if($user->id == 1) 
                                <a href="{{route('articulos.create')}}" class="margin-30px-bottom xs-margin-25px-bottom btn btn-success">@lang('articulos.crearArticulo')</a>
@@ -135,9 +75,7 @@
                                 </div>  
                             
 
-                            
-                                
-
+                
                         
                         </div>         
                         @if(Auth::check() == false) 
@@ -205,6 +143,72 @@
                         </div> --}}
                         
                     </aside>
+
+                     <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
+                        <!-- start post item --> 
+                       
+                    @foreach($articulos as $articulo)    
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
+                            <div class="blog-text display-inline-block width-100">
+                                <div class="content">
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"  onClick="getLink({{$articulo->id}})">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span> 
+                                 @isset($user)   
+                                    @if($user->id == 1 ) <span>  <a href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> 
+                                    @endif
+                                      @if($user->id == 1)
+                                             <form style="display: inline-block;" method="POST" action= {{url("/articulos/$articulo->id ")}}>
+                                                  {{ method_field('DELETE') }}
+                                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                   &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
+                                             </form>            
+                                      @endif  
+                                 @endisset     
+
+                                   </div>
+                                    <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
+                                      <p id="preview"> 
+                                        @php
+                                           $articulo->body = str_limit($articulo->body, 40);
+                                           $articulo->body = str_finish($articulo->body, '...');
+                                        @endphp
+                                        {!! $articulo->body !!} 
+                                    </p>
+                                </div>
+                                <div class="equalize xs-equalize-auto author display-table width-100">
+                                    <div class="name col-md-6 col-sm-6">
+                                        <div class="display-table text-center width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <img src="images/mi-cuenta/user.png" alt="" class="border-radius-100 width-30px"><a href="#">{{ $articulo->user->name }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="name col-md-6 col-sm-6">
+                                        <div class="display-table text-center width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <span class="text-extra-small margin-lr-auto"><i class="fa fa-calendar margin-5px-right"></i>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach   
+                    
+                    @if($articulos->count() > 0)
+                    <div class="pag" align="right">
+                            <p>Total de los artículos: {{ $articulos->count() }}</p>
+                            Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
+                            {{ $articulos->links() }}
+                    </div>
+                    @endif 
+                
+         
+                        <!-- end post item -->
+                    </main>
+
+
                 </div>
             </div>
         </section>
@@ -219,10 +223,6 @@ $('#preview').trumbowyg('html');
 
 
 
-
-
-
-
   function getLink(id) {
 
             request = $.ajax({
@@ -234,7 +234,7 @@ $('#preview').trumbowyg('html');
         swal({
               title: '',
               type: 'success',
-              html:'<p>Puedes usar el siguiente link para compartir tu encuesta: </p>' +
+              html:'<p>Puedes usar el siguiente link para compartir el articulo: </p>' +
                 '<input id="txtshare" value="'+response+'" type="text" class="form-control">',
               showCloseButton: true,
               showCancelButton: false,
@@ -262,16 +262,6 @@ $('#preview').trumbowyg('html');
 
             
         }
-
-
-
-
-
-
-
-
-
-
 
 
 </script>

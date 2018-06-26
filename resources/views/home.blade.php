@@ -369,9 +369,10 @@
                             <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">@lang('footer.ultimosArticulos')</div>
                
                             @foreach($articulos as $articulo)
-                            <div class="col-md-12 footer-post">
+                            <div class="footer-post">
                                 <a href="{{url('articulos')}}/{{$articulo->id}}">
-                                    <p class="text-light-gray" style="font-size:1em;margin-left:5px;"><img src="{{URL($articulo->img)}}" width="20%" alt="">{{$articulo->title}} </p>
+                                    <img src="{{URL($articulo->img)}}" width="35px" height="35px" alt="">
+                                    <p class="text-light-gray">{{$articulo->title}}</p>
                                 </a>
                             </div>
                             @endforeach

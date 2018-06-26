@@ -23,7 +23,7 @@ class SurveniaWebPagesController extends Controller
      */
     public function index(Request $request)
     {
-        $articulos=Articulo::orderBy('id', 'desc')->take(5)->get();
+        $articulos=Articulo::orderBy('id', 'desc')->take(3)->get();
         
         return view('home', compact('articulos'));
     }

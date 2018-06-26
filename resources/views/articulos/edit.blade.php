@@ -18,18 +18,19 @@
      	 @csrf
 		<label>@lang('articulos.titulo')</label>
 		<input type="text" name="title" value="{{ $articulo->title }}">
-		<div id="blog">	
-		</div>
-
-
-		<div>
-		 <img src="{{$articulo->img}}" style="width: 950px; height: 450px;">
+		<div align="center">
+		 <img src="{{$articulo->img}}" style="width: auto !important; height: auto !important; max-width: 70%;">
 		</div> 
-
+		<br>
 		<label>@lang('articulos.subirImagen')</label>
 		<input type="file" name="img">
+		<div id="blog">	
+		</div>
 		 <br> 	
+		<div align="center">
+		<a class="btn" href="{{ url()->previous() }}">@lang('articulos.cancelar')</a>
 		<button class="btn btn-primary" type="submit">@lang('articulos.guardar')</button>
+		</div>
 	</form>	
 	</div>
 

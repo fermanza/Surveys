@@ -41,13 +41,13 @@
 	<section class="padding-25px-tb margin-bread">
 		
 		<h5 align="center">Tema: {{ $articulo->title }}</h5>
-        <h6 align="right">Fecha: {{ $articulo->created_at }}</h6>
+        <h6 align="right">Fecha: {{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y') }}</h6>
         <h6 align="right">Autor: {{ $articulo->user->name }}</h6>
         <div align="center">
         <hr />
-		<img src="{{URL($articulo->img)}}" style="width: 700px; height: 450px;">
+		<img src="{{URL($articulo->img)}}" style="width: auto !important; height: auto !important; max-width: 70%;">
 		<br><br><br>
-		<h5 style="color: black"> {!! $articulo->body !!} </h5>
+		<h6 style="color: black; text-align: justify;"> {!! $articulo->body !!} </h6>
         </div>
 	<div align="center">
         <hr />

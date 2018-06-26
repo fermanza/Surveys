@@ -8,7 +8,7 @@ class MasterComposer {
 
     public function compose(View $view)
     {
-        $articulos=Articulo::orderBy('id', 'desc')->take(2)->get();
+        $articulos=Articulo::orderBy('id', 'desc')->take(3)->get();
         $view->with('articulos', $articulos);
     }
 
