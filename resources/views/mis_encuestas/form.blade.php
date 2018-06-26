@@ -239,8 +239,6 @@ let fields = [
         label: 'Texto',
         name: 'texto',
         type: 'header',
-        className: 'form-control',
-        icon: '<i class="fa fa-font"></i>',
         fields: [{
           type: 'header',
           label: 'Texto'
@@ -251,7 +249,6 @@ let fields = [
         name: 'multiple-choice',
         type: 'radio-group',
         className: 'form-control',
-        icon: '<i class="fa fa-list-ul"></i>',
         fields: [{
           type:'radio-group',
           label: 'Multiple Choice'
@@ -262,7 +259,6 @@ let fields = [
         name: 'single-textbox',
         type: 'text',
         className: 'form-control',
-        icon: '<i class="fa fa-i-cursor"></i>',
         fields: [{
           type: 'text',
           label: 'Single TextBox'
@@ -273,7 +269,6 @@ let fields = [
         name: 'dropdown',
         type: 'select',
         className: 'form-control',
-        icon: '<i class="fa fa-caret-down"></i>',
         fields: [{
           type: 'select',
           label: 'Dropdown'
