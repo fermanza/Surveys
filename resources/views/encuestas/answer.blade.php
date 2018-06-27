@@ -253,7 +253,6 @@ var options = {
             {
               type: 'text',
               label: 'Nombre',
-              required: '',
               className: 'form-control'
             },
             {

@@ -302,21 +302,12 @@ let templates = {
   },
 slider: function(fieldData) {
     return {
-      field: '<div class="""slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
-     //field: '<div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="hidden" name="slider'+fieldData.name+'" id="slider'+fieldData.name+'"><div id="'+fieldData.name+'"></div>',
-    //   onRender: function() {
-    //   $(document.getElementById(fieldData.name)).slider({
-    //   range: "max",
-    //   min: 0,
-    //   max: 100,
-    //   step: 50,
-    //   value: 1,
-    //   slide: function( event, ui ) {
-    //     $( "#slider"+fieldData.name ).val( ui.value );
-    //   }
-    // });
-    
-    // }
+      field: '<div class="slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
+    }
+  },
+  contactInfo: function(fieldData) {
+    return {
+      field: '<input type="text" /><br><input type="text" /><input type="text" /><input type="text" />',
     }
   }
 
@@ -363,6 +354,12 @@ slider: function(fieldData) {
           'options'
         ]
       },
+      typeUserAttrs: {
+        contactInfo: {
+          options: {
+          }
+        }
+      },
       editOnAdd: true,
       disabledActionButtons: ['data','save','clear'],
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
@@ -406,6 +403,15 @@ slider: function(fieldData) {
         fields: [{
           label: 'Slider',
           type: 'slider'
+        }]
+      },
+      {
+        label: 'Contact Info',
+        name: 'contactInfo',
+        icon: '<i class="fa fa-info"></i>',
+        fields: [{
+          label: 'Contact Info',
+          type: 'contactInfo'
         }]
       },
       {
