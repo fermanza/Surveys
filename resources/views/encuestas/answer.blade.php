@@ -587,7 +587,7 @@ $(fbRender).formRender(formRenderOpts);
 //           t += "</td>";
 
         
-//         for(let d=0; d < rows.length; d++){
+//         for(let d=0; d < columns.length; d++){
 //             t += "<td>";
 //             t += "<input name='radio-group-"+y+"'type='radio'>";
 //             t += "</td>";
