@@ -62,7 +62,7 @@
         <hr />
 		<img src="{{URL($articulo->img)}}" style="width: auto !important; height: auto !important; max-width: 60%;">
 		<br><br><br>
-		<h6 class="contenido"> {!! $articulo->body !!} </h6>
+        {!! $articulo->body !!}
         </div>
 	   <div align="center">
         <hr />

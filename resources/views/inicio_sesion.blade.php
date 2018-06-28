@@ -36,7 +36,7 @@
             </div>
         </section>
         <!-- end page title section -->
-        
+        @include('flash::message')
         <!-- start form section -->
         <section class="wow fadeIn login-form" id="start-your-project">
             <div class="container">

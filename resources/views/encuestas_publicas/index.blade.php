@@ -43,7 +43,7 @@
                 <div class="row">
                 	<aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            <div class="temas-title">@lang('encuestas_publicas.reportes')</div>
+                            <div class="temas-title">@lang('encuestas_publicas.encuestasPublicas')</div>
                             
                                 <div class="select-style big-select">
                                   {{--  <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
