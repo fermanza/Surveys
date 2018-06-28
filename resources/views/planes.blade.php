@@ -1,11 +1,18 @@
-@extends('layouts.master')
-@section('title', 'Planes y Precios')
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <!-- title -->
+        <title>Survenia - Planes y Precios</title>
+        <? include 'includes/head.php' ?>
+    </head>
+
 
 @extends('includes.header')
-<? include 'includes/head.php' ?>
-@section('content')
+    <body class="planes-precios">
+        
+        <? include 'includes/header.php' ?>
 
-        <!-- start page title section -->
+       <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
                 <div class="row equalize xs-equalize-auto">
@@ -216,4 +223,87 @@
             </div>
             
         </section>
-@stop
+
+        <!-- start footer --> 
+        <footer class="footer-clean-dark xs-padding-30px-tb"> 
+            <div class="footer-widget-area padding-50px-bottom">
+                <div class="container">
+                    <div class="row">
+                        <!-- start logo -->
+                        <div class="col-md-5 col-xs-12 widget border-right sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                            <!-- start logo -->
+                            <a href="/" class="margin-20px-bottom display-inline-block"><img class="footer-logo" src="{{ asset('images/logo-survenia.png') }}" alt="Survenia"></a>
+                            <!-- end logo -->
+                            <p class="text-light-gray"><b>@lang('footer.porqueElegirnos')</b><br> @lang('footer.seguridadYrespaldo')</p>
+                            <!-- start social media -->
+                            <div class="social-icon-style-8 display-inline-block vertical-align-middle">
+                                <ul class="small-icon no-margin-bottom">
+                                    <li><a class="text-white" href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a class="text-white" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="text-white" href="https://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- end social media -->
+                        </div>
+                        <!-- end logo -->
+                        <!-- start social media -->
+                        <div class="links widget border-right xs-margin-30px-bottom">
+                            <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">Links</div>
+                            <ul class="list-unstyled">
+                                <li class="width-50 pull-left"><a href="/" class="text-light-gray">@lang('footer.inicio')</a></li>
+                                <li class="width-50 pull-left"><a href="como_funciona" class="text-light-gray">@lang('footer.comoFunciona')</a></li>
+                                <li class="width-50 pull-left"><a href="plantillas" class="text-light-gray">@lang('footer.plantillas')</a></li>
+                                <li class="width-50 pull-left"><a href="planes" class="text-light-gray">@lang('footer.planesPrecios')</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas" class="text-light-gray">@lang('footer.creacionEncuesta')</a></li>
+                                <li class="width-50 pull-left"><a href="encuestas_publicas" class="text-light-gray">@lang('footer.encuestasPublicas')</a></li>
+                                <li class="width-50 pull-left"><a href="articulos" class="text-light-gray">@lang('footer.articulos')</a></li>
+                                <li class="width-50 pull-left"><a href="contacto" class="text-light-gray">@lang('footer.contacto')</a></li>
+                            </ul>
+                        </div>
+                        <!-- end social media -->
+                        <!-- start contact information -->
+                        <div class="contactor widget border-right xs-margin-30px-bottom">
+                            <div class="widget-title alt-font text-extra-small text-uppercase text-light-gray font-weight-600">@lang('footer.contacto')</div>
+                            <div class="line-height-24 text-light-gray">Email: <a href="mailto:info@survenia.com" class="text-light-gray">info@survenia.com</a></div>
+                            <div class="line-height-24 text-light-gray"><a href="http://www.survenia.com" class="text-light-gray">www.survenia.com</a></div>
+                        </div>
+                        <!-- end contact information -->
+                        <!-- start newsletter -->
+                        <div class="col-md-5 col-xs-12 widget">
+                            <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">@lang('footer.ultimosArticulos')</div>
+               
+                            @foreach($articulos as $articulo)
+                            <div class="footer-post">
+                                <a href="{{url('articulos')}}/{{$articulo->id}}">
+                                    <img src="{{URL($articulo->img)}}" width="35px" height="35px" alt="">
+                                    <p class="text-light-gray">{{$articulo->title}}</p>
+                                </a>
+                            </div>
+                            @endforeach
+                            
+                        </div>
+                        <!-- end newsletter -->
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row"> 
+                        <!-- start copyright -->
+                        <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
+                        <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
+                      @if(Auth::check() && Auth::user()->id == 1)
+                        <a href="{{ URL('login') }}">Admin</a>
+                      @endif    
+                        <!-- end copyright -->
+                      
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+        <!-- javascript libraries -->
+        <? include 'includes/scripts.php' ?>
+
+    </body>
+</html>

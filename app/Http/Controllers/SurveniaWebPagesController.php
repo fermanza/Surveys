@@ -166,7 +166,9 @@ class SurveniaWebPagesController extends Controller
      */
     public function planes(Request $request)
     {
-        return view('planes');
+        $articulos=Articulo::orderBy('id', 'desc')->take(3)->get();
+
+        return view('planes',compact('articulos'));
     }
 
     /**
