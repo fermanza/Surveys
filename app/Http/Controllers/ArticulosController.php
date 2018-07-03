@@ -73,7 +73,8 @@ class ArticulosController extends Controller
     {
 
         $articulo = Articulo::find($id);
-        return view('articulos.show', compact('articulo'));
+        $user = Auth::user();
+        return view('articulos.show', compact('articulo','user'));
     }
 
     /**
