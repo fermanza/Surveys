@@ -41,10 +41,15 @@ class ApprovalNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        
 
-        $urlVer = url('/mis_encuestas/'.$this->template_id.'/edit');
-        $urlAprobar = url('/encuestas_publicas');
-        $urlRechazar = url('/encuestas_publicas');
+
+
+        $urlVer = url('/mis_encuestas/'.$this->template_id->id.'/edit');
+        $urlAprobar = url('/mis_encuestas/approval/'.$this->template_id->id.'/1');
+        $urlRechazar = url('/mis_encuestas/approval/'.$this->template_id->id.'/0');
+
+       
 
         // return (new MailMessage)        
         //             ->from('info@survenia.com', 'Survenia')

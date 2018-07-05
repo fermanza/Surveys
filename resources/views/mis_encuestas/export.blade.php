@@ -1,6 +1,6 @@
 
 <h2>{{ $template->name }}</h2>
-
+{{--
  <table id="table-mis-respuestas" class="display">
         <thead>
           @foreach($answersGrouped as $answer)
@@ -26,7 +26,32 @@
         </thead>
         <tbody>
         </tbody>
+</table>--}}
+
+ <table id="table-mis-respuestas" class="display">
+          @foreach($answersGrouped as $answer)
+              <tr>
+                @if($answer['user']->username == null)
+                     <th> Usuario:  Anonimo  </th>
+                @else   
+                     <th> Usuario:   {{ $answer['user']->username }} </th>
+                @endif 
+              </tr>
+              <tr></tr> 
+
+              @foreach($answer['questions'] as $questions)
+                <tr>
+                   <th>  {{ $questions['question']->label }} </th>
+                    <td> {{$questions['answer']['value'] }}</td>
+                </tr>
+              {{--  <tr>
+                    
+                </tr> --}}
+              @endforeach
+                 <tr></tr> 
+            @endforeach
 </table>
+
 
 
 

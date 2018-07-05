@@ -84,6 +84,9 @@
                                 <div class="display-table-cell vertical-align-middle">
                                     <h6>{{ $survey->name }}</h6>
 
+             <p><b>Respuestas</b></p>
+              <p> <b>Respondidas:</b> {{$responded }} <b>Saltadas:</b> {{$skipped }} </p>
+              
 
 
             @foreach($questions as $question) 
@@ -172,7 +175,40 @@
                                         </div>
                                     </div>
               @endif    {{-- principal if for validation--}}           
-          @endforeach       
+          @endforeach  
+
+
+
+           <table id="table-mis-respuestas" class="display">
+        <thead>
+          @foreach($answersGrouped as $answer)
+              <tr>
+                <th>
+                @if($answer['user']->username == null)
+                     <b> Usuario: </b> Anonimo    
+                @else   
+                   <b> Usuario: </b>  {{ $answer['user']->username }}    
+                @endif 
+                </th>
+              </tr>
+              @foreach($answer['questions'] as $questions)
+          <tr>
+            <td>
+              <br><b> Pregunta: </b>    {{ $questions['question']->label }}
+              <br>
+              <b> Respuesta: </b>    {{$questions['answer']['value'] }}<br><br>
+            </td>
+          </tr>
+              @endforeach
+            @endforeach
+        </thead>
+        <tbody>
+        </tbody>
+</table>
+
+
+
+
 
                                 </div>
                             </div>

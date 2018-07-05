@@ -110,6 +110,9 @@ Route::group(['middleware' => ['Authuser']], function () {
 
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
 
+    Route::get('/mis_encuestas/approval/{id_template}/{status}', 'EncuestasController@approval');
+
+
     Route::resource('/my_account','MyAccountController');
 
     //paypal
