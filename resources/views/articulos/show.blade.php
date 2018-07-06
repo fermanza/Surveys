@@ -155,7 +155,7 @@
  <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
 		
 		<h6 class="labels" align="center">{{ $articulo->title }}</h6>
-        <p class="labels" align="left">Autor: {{ $articulo->user->name }} Fecha: {{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y') }}</p>
+        <p class="labels" align="left">{{ $articulo->user->name }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y') }}</p>
         <p class="labels" align="left"></p>
         <div align="center">
         <hr />
