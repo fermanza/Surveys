@@ -349,7 +349,6 @@ slider: function(fieldData) {
           'options'
         ]
       },
-      editOnAdd: true,
       disabledActionButtons: ['data','save','clear'],
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],

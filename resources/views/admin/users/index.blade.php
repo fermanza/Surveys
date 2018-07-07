@@ -111,7 +111,8 @@
                 dom: 'Bfrtip',
                 buttons: [
                     'csv', 'excel'
-                ]
+                ],
+                responsive: true
             } );
         } );
     </script>

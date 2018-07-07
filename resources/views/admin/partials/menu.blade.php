@@ -12,7 +12,7 @@
           <span class="icon-holder">
             <i class="c-brown-500 ti-user"></i>
           </span>
-          <span class="title">Información de Usuarios</span>
+          <span class="title">Usuarios</span>
         </a>
       </li>
       <li class="nav-item">
