@@ -793,7 +793,7 @@ slider: function(fieldData) {
         console.log("Hooray, it worked!");
         swal({
           position: 'center',
-          title: 'Encuesta creada correctamente.',
+          title: 'Encuesta creada correctamente.<br>Se ha enviado para aprobación<br>de la misma.',
           type: 'success'
       }).then(function() {
           window.location = "{{url('mis_encuestas')}}";

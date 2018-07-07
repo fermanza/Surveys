@@ -45,7 +45,7 @@
             </div>
         </section>
         <!-- end page title section -->
-
+        @include('flash::message')
         <section class="tabla">
             <div class="container">
                 <div class="col-md-12">
