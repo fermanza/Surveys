@@ -90,14 +90,14 @@ class EncuestasController extends Controller
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
 
-       /* if($request->tipo == 0)
+        if($request->tipo == 0)
         {   // info@survenia.com   admin 
             $user->name = 'Admin';
-            $user->email = 'angel.serrano@vanillasys.com';
+            $user->email = 'isanchez94@hotmail.com';
             $user->notify(new ApprovalNotification($user, $template));
 
            // return redirect()->route('encuestas_publicas.index');
-        } */
+        } 
         
         if($request->plan == 1)
         {
@@ -234,19 +234,16 @@ class EncuestasController extends Controller
         $question->save();
 
 
-     /*     if($template->type == 0)
+        if($template->type == 0)
         {   // info@survenia.com   admin 
             $user->name = 'Admin';
-            $user->email = 'angel.serrano@vanillasys.com';
+            $user->email = 'isanchez94@hotmail.com';
             $user->notify(new ApprovalNotification($user, $template));
 
-           // return redirect()->route('encuestas_publicas.index');
-        } */
+            // flash('<br><h6>Tu encuesta ha sido enviada para aprobación del administrador del sistema.</h6>')->success();
 
-
-
-
-
+            // return redirect()->route('mis_encuestas.index');
+        } 
 
     }
 
