@@ -94,7 +94,29 @@ visibility:hidden;
             </div>
           </div>
         </div>
-                <div class="build-form"></div>
+
+        <div class="build-form"></div>
+        <div id="frmb-1530894508889-form-wrap" class="form-wrap form-builder">
+          <div id="frmb-1530893257192-cb-wrap" class="cb-wrap pull-right" style="display: table">
+            <ul id="frmb-1530893184939-control-box" class="frmb-control ui-sortable">
+              <li class="input-set-control input-set-10 ui-sortable-handle" data-type="matrix" id="printMatrix" >
+                <span class="control-icon">
+                  <i class="fa fa-th"></i>
+                </span>Matrix
+              </li>
+              <li class="input-set-control input-set-11 ui-sortable-handle" data-type="matrix-ranking"
+                onclick="printMatrixPrinting()">
+                <span class="control-icon">
+                  <i class="fa fa-th"></i>
+                </span>Matrix Ranking Scale
+              </li>
+            </ul>
+            </div>
+          </div>
+
+
+               
+              
 
                 
         </div>
@@ -245,8 +267,20 @@ visibility:hidden;
 
 @push('script')
   <script>
-  $(document).ready(function() {
+$(document).ready(function() {
+
+    $('#printMatrix').click(function(){
+          $('.frmb').append("<div class='matrix-container'> <p>Hola</p> <button id='close'>close</button>  </div>");
+    });
+
+    $('#close').click(function(){
+         $(this).remove(); 
+    })
+
+
  
+ 
+
 var fbEditor = document.getElementsByClassName("build-form");      
 
 let fields = [
@@ -300,6 +334,19 @@ let templates = {
       }
     };
   },
+
+
+  temp: function(fieldData) {
+    return {
+      field:  "<input type='text' id="+ fieldData.name+" >"+
+              "<input type='text' id="+fieldData.name+">"
+      ,
+      onRender: function() {
+        
+      }
+    };
+  },
+
 slider: function(fieldData) {
     return {
       field: '<div class="slidecontainer"><div style="display:flex; justify-content:space-between; color:black; font-size:25px;"><span align="left">0%</span><span align="center">50%</span><span align="right">100%</span></div><br><input type="range" class="slider" name="slider'+fieldData.name+'" min="0" max="100"></div>',
@@ -383,6 +430,16 @@ slider: function(fieldData) {
         fields: [{
           label: 'Star Rating',
           type: 'starRating'
+        }]
+      },
+
+      {
+        label: 'temp',
+        name: 'temp',
+        icon: '<i class="fa fa-star"></i>',
+        fields: [{
+          label: 'temp',
+          type: 'text'
         }]
       },
       {
@@ -500,35 +557,35 @@ slider: function(fieldData) {
             }
         ]
       },
-      {
-        label: 'Matrix',
-        name: 'matrix', // optional - one will be generated from the label if name not supplied
-        showHeader: true, // optional - Use the label as the header for this set of inputs
-        className: 'form-control',
-        icon: '<i class="fa fa-th"></i>',
-        fields: [
-            {
-              label: 'Nombre de Renglón',
-              className: 'form-control renglon',
-              type: 'header'
-            },
-            {
-              label: 'Nombre de Renglón',
-              className: 'form-control renglon',
-              type: 'header'
-            },
-            {
-              label: 'Nombre de la Columna',
-              className: 'form-control columna',
-              type: 'header'
-            },
-            {
-              label: 'Nombre de la Columna',
-              className: 'form-control columna',
-              type: 'header'
-            },
-          ]
-      },
+      // {
+      //   label: 'Matrix',
+      //   name: 'matrix', // optional - one will be generated from the label if name not supplied
+      //   showHeader: true, // optional - Use the label as the header for this set of inputs
+      //   className: 'form-control',
+      //   icon: '<i class="fa fa-th"></i>',
+      //   fields: [
+      //       {
+      //         label: 'Nombre de Renglón',
+      //         className: 'form-control renglon',
+      //         type: 'header'
+      //       },
+      //       {
+      //         label: 'Nombre de Renglón',
+      //         className: 'form-control renglon',
+      //         type: 'header'
+      //       },
+      //       {
+      //         label: 'Nombre de la Columna',
+      //         className: 'form-control columna',
+      //         type: 'header'
+      //       },
+      //       {
+      //         label: 'Nombre de la Columna',
+      //         className: 'form-control columna',
+      //         type: 'header'
+      //       },
+      //     ]
+      // },
       {
         label: 'Ranking',
         name: 'ranking', // optional - one will be generated from the label if name not supplied
@@ -603,80 +660,80 @@ slider: function(fieldData) {
             },
           ]
       },
-      {
-        label: 'Matrix Ranking Scale',
-        name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
-        showHeader: true, // optional - Use the label as the header for this set of inputs
-        icon: '<i class="fa fa-th"></i>',
-        fields: [
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-              ]
-            },
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-              ]
-            },
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-              ]
-            },
-          ]
-      },
+      // {
+      //   label: 'Matrix Ranking Scale',
+      //   name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
+      //   showHeader: true, // optional - Use the label as the header for this set of inputs
+      //   icon: '<i class="fa fa-th"></i>',
+      //   fields: [
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //         ]
+      //       },
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //         ]
+      //       },
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //         ]
+      //       },
+      //     ]
+      // },
       ]
     };
 
@@ -758,6 +815,8 @@ slider: function(fieldData) {
     });
 
   });
+
+
 
 
 
