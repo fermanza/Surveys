@@ -45,7 +45,7 @@ class ApprovalNotification extends Notification
 
 
 
-        $urlVer = url('/mis_encuestas/'.$this->template_id->id.'/edit');
+        $urlVer = url('/encuestas/responder/'.$this->template_id->id);
         $urlAprobar = url('/mis_encuestas/approval/'.$this->template_id->id.'/1');
         $urlRechazar = url('/mis_encuestas/approval/'.$this->template_id->id.'/0');
 
