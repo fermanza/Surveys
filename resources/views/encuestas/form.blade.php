@@ -336,16 +336,16 @@ let templates = {
   },
 
 
-  temp: function(fieldData) {
-    return {
-      field:  "<input type='text' id="+ fieldData.name+" >"+
-              "<input type='text' id="+fieldData.name+">"
-      ,
-      onRender: function() {
+  // temp: function(fieldData) {
+  //   return {
+  //     field:  "<input type='text' id="+ fieldData.name+" >"+
+  //             "<input type='text' id="+fieldData.name+">"
+  //     ,
+  //     onRender: function() {
         
-      }
-    };
-  },
+  //     }
+  //   };
+  // },
 
 slider: function(fieldData) {
     return {
@@ -429,16 +429,6 @@ slider: function(fieldData) {
         fields: [{
           label: 'Star Rating',
           type: 'starRating'
-        }]
-      },
-
-      {
-        label: 'temp',
-        name: 'temp',
-        icon: '<i class="fa fa-star"></i>',
-        fields: [{
-          label: 'temp',
-          type: 'text'
         }]
       },
       {
@@ -770,11 +760,11 @@ slider: function(fieldData) {
       formData.append('content',jsondata);
       formData.append('template_id',templateid.value);
       formData.append('_token',token.value);
-      formData.append('saveImage',$('input:file')[0].files[0]);
+      formData.append('saveImage',$('input:file')[0].files);
     }
 
 
-    // console.log($('input:file')[0].files[0]);
+     console.log($('input:file'));
     // console.log(data);
 
     // Fire off the request to /form.php
