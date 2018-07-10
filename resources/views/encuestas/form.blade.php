@@ -21,6 +21,21 @@ visibility:hidden;
 {
   position: relative;
 }
+
+  td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  background: lightblue;
+  border-color: white;
+}
+
+
+
+
 </style>
 
 
@@ -127,7 +142,7 @@ visibility:hidden;
                 <br>
                                     <a class="btn btn-default" href="{{ url()->previous() }}">@lang('mis_encuestas.cancelar')</a><br><br><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                                     <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('mis_encuestas.guardar')</button><br><br><br>
+                                    <button class="btn" id="save-data" onclick="sendData()" >@lang('mis_encuestas.guardar')</button><br><br><br>
                   </div>
                 </div>
 
@@ -266,16 +281,19 @@ visibility:hidden;
 </style>
 
 @push('script')
+
+  <script  src="{{asset('js/matrixscript.js')}}"></script>
+
   <script>
 $(document).ready(function() {
 
-    $('#printMatrix').click(function(){
+  /*  $('#printMatrix').click(function(){
           $('.frmb').append("<div class='matrix-container'> <p>Hola</p> <button id='close'>close</button>  </div>");
     });
 
     $('#close').click(function(){
          $(this).remove(); 
-    })
+    })*/
 
 
  
@@ -730,7 +748,7 @@ slider: function(fieldData) {
 
     var formBuilder = $(fbEditor).formBuilder(options);
 
-    console.log(formBuilder);
+    //console.log(formBuilder);
     // $('.option-label').on('change',function(){
     //    console.log($(this)); 
 
@@ -741,37 +759,59 @@ slider: function(fieldData) {
     var templateid=document.getElementById('template_id');
     var token=document.getElementById('csrf-token');
 
-    console.log(jsondata);
+    //console.log(jsondata);
+    let formInfo = JSON.parse(jsondata);
+     var  matrixInfo = sendData();
+
+
+        formInfo.forEach(function(element, key) {
+           if(isEmpty(element)){
+             delete formInfo[key];
+           }
+        });
+
+   
+     formInfo.push({matrix:matrixInfo});
+
+     formInfo = JSON.stringify(formInfo);
+
     // var data={
     //     content:jsondata,
     //     template_id:templateid.value,
     //     _token:token.value
     // };
-
     var formData = new FormData();
+   
 
+    //formData.append('matrix', matrixInfo);
 
     if ($('input:file')[0]==undefined) {
-    formData.append('content',jsondata);
+    formData.append('content',formInfo);
     formData.append('template_id',templateid.value);
     formData.append('_token',token.value);
     }
     else {
-      formData.append('content',jsondata);
+      formData.append('content',formInfo);
       formData.append('template_id',templateid.value);
       formData.append('_token',token.value);
       formData.append('saveImage',$('input:file')[0].files);
     }
 
 
+<<<<<<< HEAD
      console.log($('input:file'));
     // console.log(data);
+=======
+>>>>>>> 24decc341d6ed768a99d3e8ac1411a12773c121e
 
-    // Fire off the request to /form.php
+    /*console.log($('input:file')[0].files[0]);
+    console.log(data);*/
+
+   // Fire off the request to /form.php
     request = $.ajax({
         url: '{{url('saveQuestion')}}',
         type: "post",
-        data: formData,
+        data:formData,
         contentType: false,
         processData: false
     });
