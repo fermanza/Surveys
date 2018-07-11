@@ -5,12 +5,13 @@ $(document).ready(function() {
 			identifier++;
 			$('.frmb').append(
 				"<div class='matrix-container-"+identifier+"'>"+
-						"<div class='container-buttons'>"+
-						    "<button id='button-addRow-"+identifier+"' onclick='addRow("+identifier+")'>Agregar fila</button>"+
-						    "<button id='button-addColumn-"+identifier+"'  onclick='addColumn("+identifier+")'>Agregar columna</button>"+
-						    "<button id='button-generateMatrix-"+identifier+"' onclick='generateMatrix("+identifier+")'>Generar Matrix </button>"+
-						    "<button id='button-reverse-"+identifier+"' onclick='reverse("+identifier+")'>Revertir</button>"+
-						    "<button onclick='closeComponent("+identifier+")'><i class='fa fa-window-close'></i></button>"+
+						"<div class='container-buttons' align='right'>"+
+                "<h6>Matrix</h6>"+
+						    "<button class='btn' style='color:white;' id='button-addRow-"+identifier+"' onclick='addRow("+identifier+")'>Agregar fila</button>"+
+						    "<button class='btn' style='color:white;' id='button-addColumn-"+identifier+"'  onclick='addColumn("+identifier+")'>Agregar columna</button>"+
+						    "<button class='btn' style='color:white;' id='button-generateMatrix-"+identifier+"' onclick='generateMatrix("+identifier+")'>Generar Matrix </button>"+
+						    "<button class='btn' style='color:white;' id='button-reverse-"+identifier+"' onclick='reverse("+identifier+")'>Editar</button>"+
+						    "<button class='btn btn-danger' style='color:white;' onclick='closeComponent("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
 						"</div>"+
 						"<div class='matrix-content-"+identifier+"'></div>"
 				+"</div>"
@@ -24,9 +25,9 @@ $(document).ready(function() {
  	 		    $(".matrix-content-"+identifier+"").append(
  	 		     "<div class='input-component-"+inputIdentifier+"'>"+	
 	 	 		      "<br>"+	
-	 	 		      "<label>Nonbre de renglon</label>"+  
+	 	 		      "<label>Nombre de renglón</label>"+  
 					   "<br>"+
-					   "<input class='row' type='text'>"+
+					   "<input class='row form-control' type='text'>"+
 					   "<button onclick='addRow("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
 					   "<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
 				 "<div>"	   
@@ -39,7 +40,7 @@ $(document).ready(function() {
    				 	   "<br>"+
    				 		"<label>Nombre de columna</label>"+		
 				        "<br>"+
-				  		"<input class='column' type='text'>"+
+				  		"<input class='column form-control' type='text'>"+
 				  		"<button onclick='addColumn("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
 				  		"<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
 				   "<div>"		
@@ -57,7 +58,7 @@ $(document).ready(function() {
    		$("#button-reverse-"+identifier+"").show(400);
 
    		 $(".matrix-content-"+identifier+" > div > input").each(function(index, element) {
-   		 		 if($(this).attr('class') == 'row') {
+   		 		 if($(this).attr('class') == 'row form-control') {
    		 		 	 rows.push($(this).val());
    		 		 } else {	
    		 		 	 columns.push($(this).val());
@@ -148,7 +149,7 @@ $(document).ready(function() {
 		   				 	   "<br>"+
 		   				 		"<label>Nombre de columna</label>"+		
 						        "<br>"+
-						  		"<input class='column' type='text' value='"+element+"''>"+
+						  		"<input class='column form-control' type='text' value='"+element+"''>"+
 						  		"<button onclick='addColumn("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
 						  		"<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
 						   "<div>"	
@@ -163,9 +164,9 @@ $(document).ready(function() {
 						   "<input class='row' type='text' value='"+element+"''>"*/
 						    "<div class='input-component-"+inputIdentifier+"'>"+	
 				 	 		      "<br>"+	
-				 	 		      "<label>Nonbre de renglon</label>"+  
+				 	 		      "<label>Nombre de renglón</label>"+  
 								   "<br>"+
-								   "<input class='row' type='text' value='"+element+"''>"+
+								   "<input class='row form-control' type='text' value='"+element+"''>"+
 								   "<button onclick='addRow("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
 								   "<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
 							 "<div>"	   
