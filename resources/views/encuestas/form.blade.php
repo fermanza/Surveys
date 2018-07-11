@@ -34,8 +34,6 @@ th {
 }
 
 
-
-
 </style>
 
 
@@ -114,6 +112,21 @@ th {
         <div id="frmb-1530894508889-form-wrap" class="form-wrap form-builder">
           <div id="frmb-1530893257192-cb-wrap" class="cb-wrap pull-right" style="display: table">
             <ul id="frmb-1530893184939-control-box" class="frmb-control ui-sortable">
+              <li class="input-set-control input-set-10 ui-sortable-handle" data-type="contact-info" id="printContactInfo" >
+                <span class="control-icon">
+                  <i class="fa fa-info"></i>
+                </span>Contact Information
+              </li>
+              <li class="input-set-control input-set-10 ui-sortable-handle" data-type="contact-info" id="printContactInfo" >
+                <span class="control-icon">
+                  <i class="fa fa-book"></i>
+                </span>Multiple Textbooks
+              </li>
+              <li class="input-set-control input-set-2 ui-sortable-handle" data-type="contact-info" id="printContactInfo" >
+                <span class="control-icon">
+                  <i class="fa fa-bars"></i>
+                </span>Ranking
+              </li>
               <li class="input-set-control input-set-10 ui-sortable-handle" data-type="matrix" id="printMatrix" >
                 <span class="control-icon">
                   <i class="fa fa-th"></i>
@@ -283,6 +296,7 @@ th {
 @push('script')
 
   <script  src="{{asset('js/matrixscript.js')}}"></script>
+  <script  src="{{asset('js/contact-info-script.js')}}"></script>
 
   <script>
 $(document).ready(function() {
@@ -318,7 +332,8 @@ let fields = [
         className: 'form-control',
         fields: [{
           type:'radio-group',
-          label: 'Multiple Choice'
+          label: 'Multiple Choice',
+          
         }] 
       },
       {
@@ -414,6 +429,13 @@ slider: function(fieldData) {
           'options'
         ]
       },
+      // typeUserAttrs: {
+      //   radio-group: {
+      //     multiple: {
+      //       label: 'Multiples Selecciones'
+      //     }
+      //   }
+      // },
       disabledActionButtons: ['data','save','clear'],
       prepend: '<h5 class="text-center">{{ $template->name }}</h5>',
       disabledAttrs: ['description','access','maxlength','subtype','inline','toggle'],
@@ -458,112 +480,112 @@ slider: function(fieldData) {
           type: 'slider'
         }]
       },
-      {
-        label: 'Contact Information',
-        name: 'contact-information',
-        type: 'header', // optional - one will be generated from the label if name not supplied
-        icon: '<i class="fa fa-info"></i>',
-        showHeader: true, // optional - Use the label as the header for this set of inputs
-        fields: [
-            {
-              type: 'text',
-              label: 'Nombre',
-              className: 'form-control',
-              placeholder: 'Nombre'
-            },
-            {
-              type: 'text',
-              label: 'Apellido',
-              className: 'form-control',
-              placeholder: 'Apellido'
-            },
-            {
-              type: 'text',
-              label: 'E-mail',
-              className: 'form-control',
-              placeholder: 'E-mail'
-            },
-            {
-              type: 'text',
-              label: 'Empresa',
-              className: 'form-control',
-              placeholder: 'Empresa'
-            },
-            {
-              type: 'text',
-              label: 'Telefono',
-              className: 'form-control',
-              placeholder: 'Teléfono'
-            },
-            {
-              type: 'text',
-              label: 'Direccion',
-              className: 'form-control',
-              placeholder: 'Dirección'
-            },
-            {
-              type: 'text',
-              label: 'Ciudad',
-              className: 'form-control',
-              placeholder: 'Ciudad'
-            },
-            {
-              type: 'text',
-              label: 'Pais',
-              className: 'form-control',
-              placeholder: 'Pais'
-            },
-            {
-              type: 'select',
-              label: 'Sexo',
-              className: 'form-control',
-              values: [
-                {
-                  label: 'Masculino',
-                  value: 'Masculino',
-                  selected: false
-                },
-                {
-                  label: 'Femenino',
-                  value: 'Femenino',
-                  selected: false
-                }
-                ]
-            },
-            {
-              type: 'date',
-              label: 'Fecha de Nacimiento',
-              className: 'form-control'
-            }
-          ]
-      },
-      {
-        label: 'Multiple Textbooks',
-        name: 'multiple-textbook',
-        type: 'form',
-        icon: '<i class="fa fa-book"></i>',
-        showHeader: true, 
-        fields: [
-            {
-              type: 'text',
-              label: 'Aqui va tu pregunta',
-              placeholder: 'Aqui va tu respuesta',
-              className: 'form-control'
-            },
-            {
-              type: 'text',
-              label: 'Aqui va tu pregunta',
-              placeholder: 'Aqui va tu respuesta',
-              className: 'form-control'
-            },
-            {
-              type: 'text',
-              label: 'Aqui va tu pregunta',
-              placeholder: 'Aqui va tu respuesta',
-              className: 'form-control'
-            }
-        ]
-      },
+      // {
+      //   label: 'Contact Information',
+      //   name: 'contact-information',
+      //   type: 'header', // optional - one will be generated from the label if name not supplied
+      //   icon: '<i class="fa fa-info"></i>',
+      //   showHeader: true, // optional - Use the label as the header for this set of inputs
+      //   fields: [
+      //       {
+      //         type: 'text',
+      //         label: 'Nombre',
+      //         className: 'form-control',
+      //         placeholder: 'Nombre'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Apellido',
+      //         className: 'form-control',
+      //         placeholder: 'Apellido'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'E-mail',
+      //         className: 'form-control',
+      //         placeholder: 'E-mail'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Empresa',
+      //         className: 'form-control',
+      //         placeholder: 'Empresa'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Telefono',
+      //         className: 'form-control',
+      //         placeholder: 'Teléfono'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Direccion',
+      //         className: 'form-control',
+      //         placeholder: 'Dirección'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Ciudad',
+      //         className: 'form-control',
+      //         placeholder: 'Ciudad'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Pais',
+      //         className: 'form-control',
+      //         placeholder: 'Pais'
+      //       },
+      //       {
+      //         type: 'select',
+      //         label: 'Sexo',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: 'Masculino',
+      //             value: 'Masculino',
+      //             selected: false
+      //           },
+      //           {
+      //             label: 'Femenino',
+      //             value: 'Femenino',
+      //             selected: false
+      //           }
+      //           ]
+      //       },
+      //       {
+      //         type: 'date',
+      //         label: 'Fecha de Nacimiento',
+      //         className: 'form-control'
+      //       }
+      //     ]
+      // },
+      // {
+      //   label: 'Multiple Textbooks',
+      //   name: 'multiple-textbook',
+      //   type: 'form',
+      //   icon: '<i class="fa fa-book"></i>',
+      //   showHeader: true, 
+      //   fields: [
+      //       {
+      //         type: 'text',
+      //         label: 'Aqui va tu pregunta',
+      //         placeholder: 'Aqui va tu respuesta',
+      //         className: 'form-control'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Aqui va tu pregunta',
+      //         placeholder: 'Aqui va tu respuesta',
+      //         className: 'form-control'
+      //       },
+      //       {
+      //         type: 'text',
+      //         label: 'Aqui va tu pregunta',
+      //         placeholder: 'Aqui va tu respuesta',
+      //         className: 'form-control'
+      //       }
+      //   ]
+      // },
       // {
       //   label: 'Matrix',
       //   name: 'matrix', // optional - one will be generated from the label if name not supplied
@@ -593,80 +615,80 @@ slider: function(fieldData) {
       //       },
       //     ]
       // },
-      {
-        label: 'Ranking',
-        name: 'ranking', // optional - one will be generated from the label if name not supplied
-        showHeader: true, // optional - Use the label as the header for this set of inputs
-        icon: '<i class="fa fa-bars"></i>',
-        fields: [
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-                ]
-            },
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-              ]
-            },
-            {
-              type: 'select',
-              label: 'Aqui va tu respuesta',
-              className: 'form-control',
-              values: [
-                {
-                  label: '1',
-                  value: '1',
-                  selected: false
-                },
-                {
-                  label: '2',
-                  value: '2',
-                  selected: false
-                },
-                {
-                  label: '3',
-                  value: '3',
-                  selected: false
-                }
-              ]
-            },
-          ]
-      },
+      // {
+      //   label: 'Ranking',
+      //   name: 'ranking', // optional - one will be generated from the label if name not supplied
+      //   showHeader: true, // optional - Use the label as the header for this set of inputs
+      //   icon: '<i class="fa fa-bars"></i>',
+      //   fields: [
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //           ]
+      //       },
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //         ]
+      //       },
+      //       {
+      //         type: 'select',
+      //         label: 'Aqui va tu respuesta',
+      //         className: 'form-control',
+      //         values: [
+      //           {
+      //             label: '1',
+      //             value: '1',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '2',
+      //             value: '2',
+      //             selected: false
+      //           },
+      //           {
+      //             label: '3',
+      //             value: '3',
+      //             selected: false
+      //           }
+      //         ]
+      //       },
+      //     ]
+      // },
       // {
       //   label: 'Matrix Ranking Scale',
       //   name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
@@ -797,12 +819,6 @@ slider: function(fieldData) {
       formData.append('saveImage',$('input:file')[0].files);
     }
 
-
-<<<<<<< HEAD
-     console.log($('input:file'));
-    // console.log(data);
-=======
->>>>>>> 24decc341d6ed768a99d3e8ac1411a12773c121e
 
     /*console.log($('input:file')[0].files[0]);
     console.log(data);*/
