@@ -798,11 +798,9 @@ slider: function(fieldData) {
     }
 
 
-<<<<<<< HEAD
      console.log($('input:file'));
     // console.log(data);
-=======
->>>>>>> 24decc341d6ed768a99d3e8ac1411a12773c121e
+
 
     /*console.log($('input:file')[0].files[0]);
     console.log(data);*/
