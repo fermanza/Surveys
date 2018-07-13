@@ -4,22 +4,10 @@ $(document).ready(function() {
 		$('#printContactInfo').click(function() {
 			identifier++;
 			$('.frmb').append(
-				// "<div class='matrix-container-"+identifier+"'>"+
-				// 		"<div class='container-buttons' align='right'>"+
-    //             "<h6>Matrix</h6>"+
-				// 		    "<button class='btn' style='color:white;' id='button-addRow-"+identifier+"' onclick='addRow("+identifier+")'>Agregar fila</button>"+
-				// 		    "<button class='btn' style='color:white;' id='button-addColumn-"+identifier+"'  onclick='addColumn("+identifier+")'>Agregar columna</button>"+
-				// 		    "<button class='btn' style='color:white;' id='button-generateMatrix-"+identifier+"' onclick='generateMatrix("+identifier+")'>Generar Matrix </button>"+
-				// 		    "<button class='btn' style='color:white;' id='button-reverse-"+identifier+"' onclick='reverse("+identifier+")'>Editar</button>"+
-				// 		    "<button class='btn btn-danger' style='color:white;' onclick='closeComponent("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
-				// 		"</div>"+
-				// 		"<div class='matrix-content-"+identifier+"'></div>"
-				// +"</div>"
-
         "<div class='contactInfo-container-"+identifier+"'>"+
             "<div class='container-buttons' align='right'>"+
                 "<h6>Contact Information</h6>"+
-                "<button class='btn btn-danger' style='color:white;' onclick='closeComponent("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
+                "<button class='btn btn-danger' style='color:white;' onclick='closeComponentContactInfo("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
                 "<input type='text' class='form-control' placeholder='Nombre' />"+
                 "<input type='text' class='form-control' placeholder='Apellido' />"+
                 "<input type='text' class='form-control' placeholder='E-mail' />"+
@@ -66,62 +54,6 @@ $(document).ready(function() {
    }
 
 
-   function generateMatrix(identifier) {
-   	  	let columns = [];
-   		let rows = [];
-
-   		$("#button-addRow-"+identifier+"").hide(400);
-   		$("#button-addColumn-"+identifier+"").hide(400);
-   		$("#button-generateMatrix-"+identifier+"").hide(400);
-   		$("#button-reverse-"+identifier+"").show(400);
-
-   		 $(".matrix-content-"+identifier+" > div > input").each(function(index, element) {
-   		 		 if($(this).attr('class') == 'row form-control') {
-   		 		 	 rows.push($(this).val());
-   		 		 } else {	
-   		 		 	 columns.push($(this).val());
-   		 		 }	
-   		 });
-   		 createMatrixTable(columns, rows, identifier);
-   }
-
-   function createMatrixTable(columns, rows, identifier) {
-	  var t = "<table class='table matrix-table' id='matrix-table'  >";
-	    t += "<thead>";
-	    t += "<tr>";
-	    for(let x =0; x < columns.length + 1; x++) {   //columns.length
-	      if(x == 0) {
-	         t += "<th></th>";
-	      } else {
-	          t += "<th class='attrColumn'>"
-	         t +=  columns[x-1];
-	         t += "</th>";    
-	      }
-	    }
-	    t += "</tr>";
-	    t += "</thead>";
-	    t += "<tbody>";
-	    for(let y =0; y < rows.length; y++) {  // rows.length'
-	        let radioGroup = Math.floor(Math.random() * 10000000 + 1);
-	        t += "<tr>";
-	          t += "<td class='attrRow'>";
-	          t +=  rows[y];
-	          t += "</td>";
-	        for(let d=0; d < columns.length; d++) {
-	            t += "<td>";
-	            //t += "<input name='radio-group-"+y+"'type='radio'>";
-	            t += "<input name='radio-group-"+radioGroup+"'type='radio'>";
-	            t += "</td>";
-	        }  
-	        t += "</tr>";
-	    }
-
-	    t += "</tbody>";
-	  t += "</table>";
-
-	  $(".matrix-content-"+identifier+"").html(t);
-
-   }
 
    function compactInformation(identifier) {
 	 	let tableContent = [];
@@ -147,52 +79,8 @@ $(document).ready(function() {
 
 
 
-   function reverse(identifier) {
-   			$("#button-addRow-"+identifier+"").show(400);
-   		    $("#button-addColumn-"+identifier+"").show(400);
-   		    $("#button-generateMatrix-"+identifier+"").show(400);
-   		    $("#button-reverse-"+identifier+"").hide(400);
 
-   			contentInputs = compactInformation(identifier);
-   	      	table = $(".matrix-content-"+identifier+"").find('table'); 
-   	      	$(table).remove();
-   	      	contentInputs[0].Columns.forEach(function(element) {
-   	      		 let inputIdentifier = Math.floor(Math.random() * 10000000 + 1);
-	   	      		$(".matrix-content-"+identifier+"").append(
-	   	      			  /*"<br>"+
-		   	      	       "<label>Nombre de la columna</label>"+  
-						   "<br>"+
-						   "<input class='column' type='text' value='"+element+"''>" */
-						   	"<div class='input-component-"+inputIdentifier+"'>"+	
-		   				 	   "<br>"+
-		   				 		"<label>Nombre de columna</label>"+		
-						        "<br>"+
-						  		"<input class='column form-control' type='text' value='"+element+"''>"+
-						  		"<button onclick='addColumn("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
-						  		"<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
-						   "<div>"	
-					);
-   	      	});
-   	      	contentInputs[0].Rows.forEach(function(element) {
-   	      		let inputIdentifier = Math.floor(Math.random() * 10000000 + 1); 
-	   	      		$(".matrix-content-"+identifier+"").append(
-	   	      			 /* "<br>"+
-		   	      	       "<label>Nombre de la fila</label>"+  
-						   "<br>"+
-						   "<input class='row' type='text' value='"+element+"''>"*/
-						    "<div class='input-component-"+inputIdentifier+"'>"+	
-				 	 		      "<br>"+	
-				 	 		      "<label>Nombre de renglón</label>"+  
-								   "<br>"+
-								   "<input class='row form-control' type='text' value='"+element+"''>"+
-								   "<button onclick='addRow("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
-								   "<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
-							 "<div>"	   
-					);
-   	      	});		
-   }
-
-   function sendData() {  // seguir tomorrow recorrer las tablas con clase y meterlas a compactinfo para guardarlas en db 
+   function sendDataContactInfo() {  
       matrixArray = [];
    		$('.frmb').each(function() {
    			let tableContent = [];
@@ -219,7 +107,7 @@ $(document).ready(function() {
          return matrixArray;
    }
 
-   function closeComponent(indentifierClose) {
+   function closeComponentContactInfo(indentifierClose) {
    		  $(".frmb").find(".contactInfo-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
    }
 
