@@ -370,6 +370,11 @@ let templates = {
     };
   },
 
+contactInfo: function(fieldData) {
+    return {
+      field: '<div align="right"><button class="btn" style="color:white;" id="button-addQues+'+fieldData.name+'" onclick="addQues('+fieldData.name+')">Agregar pregunta</button><button class="btn btn-danger" style="color:white;" " onclick="closeComponentContactInfo('+fieldData.name+')" align="center"><i class="fa fa-window-close"></i></button></div><input type="text" placeholder="Nombre" class="form-control" name="name'+fieldData.name+'"><br><input type="text" placeholder="Apellido" class="form-control" name="lastName'+fieldData.name+'">',
+    }
+  },
 
   // temp: function(fieldData) {
   //   return {
@@ -471,6 +476,15 @@ slider: function(fieldData) {
         fields: [{
           label: 'Star Rating',
           type: 'starRating'
+        }]
+      },
+      {
+        label: 'Contact Information',
+        name: 'contactInfo',
+        icon: '<i class="fa fa-info"></i>',
+        fields: [{
+          label: 'Contact Information',
+          type: 'contactInfo'
         }]
       },
       {

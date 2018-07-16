@@ -107,8 +107,6 @@ $(document).ready(function() {
          return matrixArray;
    }
 
-
-
    function closeComponentContactInfo(indentifierClose) {
    		  $(".frmb").find(".contactInfo-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
    }
