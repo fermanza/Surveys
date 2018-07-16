@@ -220,7 +220,7 @@ $(document).ready(function() {
    }
 
    function closeComponent(indentifierClose) {
-   		  $(".frmb").find(".contactInfo-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
+   		  $(".frmb").find(".matrix-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
    }
 
    function removeInput(identifierInput) {
