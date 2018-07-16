@@ -793,7 +793,7 @@ slider: function(fieldData) {
         });
 
    
-     formInfo.push({matrix:matrixInfo});
+     formInfo.push({className:'form-control', matrix:matrixInfo});
 
      formInfo = JSON.stringify(formInfo);
 
