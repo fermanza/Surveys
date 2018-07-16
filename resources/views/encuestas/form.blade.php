@@ -820,6 +820,7 @@ slider: function(fieldData) {
     }
 
 
+
     /*console.log($('input:file')[0].files[0]);
     console.log(data);*/
 
