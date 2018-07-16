@@ -8,16 +8,16 @@ $(document).ready(function() {
             "<div class='container-buttons' align='right'>"+
                 "<h6>Contact Information</h6>"+
                 "<button class='btn btn-danger' style='color:white;' onclick='closeComponentContactInfo("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
-                "<input type='text' class='form-control' placeholder='Nombre' />"+
-                "<input type='text' class='form-control' placeholder='Apellido' />"+
-                "<input type='text' class='form-control' placeholder='E-mail' />"+
-                "<input type='text' class='form-control' placeholder='Empresa' />"+
-                "<input type='text' class='form-control' placeholder='Teléfono' />"+
-                "<input type='text' class='form-control' placeholder='Dirección' />"+
-                "<input type='text' class='form-control' placeholder='Ciudad' />"+
-                "<input type='text' class='form-control' placeholder='País' />"+
-                "<input type='text' class='form-control' placeholder='Sexo' />"+
-                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' />"+                
+                "<input type='text' class='form-control' placeholder='Nombre' /><br>"+
+                "<input type='text' class='form-control' placeholder='Apellido' /><br>"+
+                "<input type='text' class='form-control' placeholder='E-mail' /><br>"+
+                "<input type='text' class='form-control' placeholder='Empresa' /><br>"+
+                "<input type='text' class='form-control' placeholder='Teléfono' /><br>"+
+                "<input type='text' class='form-control' placeholder='Dirección' /><br>"+
+                "<input type='text' class='form-control' placeholder='Ciudad' /><br>"+
+                "<input type='text' class='form-control' placeholder='País' /><br>"+
+                "<input type='text' class='form-control' placeholder='Sexo' /><br>"+
+                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+                
             "</div>"+
             "<div class='contactInfo-content-"+identifier+"'></div>"
         +"</div>"
@@ -107,13 +107,11 @@ $(document).ready(function() {
          return matrixArray;
    }
 
-<<<<<<< HEAD
    function closeComponent(indentifierClose) {
    		  $(".frmb").find(".matrix-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
-=======
+
    function closeComponentContactInfo(indentifierClose) {
    		  $(".frmb").find(".contactInfo-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
->>>>>>> 962d1ceb31764a1818d376061d6e4ebb76f4acff
    }
 
    function removeInput(identifierInput) {
