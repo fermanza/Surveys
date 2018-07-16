@@ -117,12 +117,12 @@ th {
                   <i class="fa fa-info"></i>
                 </span>Contact Information
               </li>
-              <li class="input-set-control input-set-10 ui-sortable-handle" data-type="contact-info" id="printContactInfo" >
+              <li class="input-set-control input-set-10 ui-sortable-handle" data-type="multiple-textbook" id="printMultipleTextBooks" >
                 <span class="control-icon">
                   <i class="fa fa-book"></i>
                 </span>Multiple Textbooks
               </li>
-              <li class="input-set-control input-set-2 ui-sortable-handle" data-type="contact-info" id="printContactInfo" >
+              <li class="input-set-control input-set-2 ui-sortable-handle" data-type="ranking" id="printRanking" >
                 <span class="control-icon">
                   <i class="fa fa-bars"></i>
                 </span>Ranking
@@ -297,6 +297,8 @@ th {
 
   <script  src="{{asset('js/matrixscript.js')}}"></script>
   <script  src="{{asset('js/contact-info-script.js')}}"></script>
+  <script  src="{{asset('js/multiple-text-script.js')}}"></script>
+  <script  src="{{asset('js/rankingscript.js')}}"></script>
 
   <script>
 $(document).ready(function() {
