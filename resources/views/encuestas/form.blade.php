@@ -372,7 +372,31 @@ let templates = {
 
 contactInfo: function(fieldData) {
     return {
-      field: '<div align="right"><button class="btn" style="color:white;" id="button-addQues+'+fieldData.name+'" onclick="addQues('+fieldData.name+')">Agregar pregunta</button><button class="btn btn-danger" style="color:white;" " onclick="closeComponentContactInfo('+fieldData.name+')" align="center"><i class="fa fa-window-close"></i></button></div><input type="text" placeholder="Nombre" class="form-control" name="name'+fieldData.name+'"><br><input type="text" placeholder="Apellido" class="form-control" name="lastName'+fieldData.name+'">',
+      field:  "<div class='contactInfo-container-"+fieldData.name+"'>"+
+            "<div class='container-buttons' align='right'>"+
+                "<h6>Contact Information</h6>"+
+                "<button class='btn btn-danger' style='color:white;' onclick='closeComponentContactInfo(\""+fieldData.name+"\")' align='center'><i class='fa fa-window-close'></i></button>"+
+                "<input type='text' class='form-control' placeholder='Nombre' /><br>"+
+                "<input type='text' class='form-control' placeholder='Apellido' /><br>"+
+                "<input type='text' class='form-control' placeholder='E-mail' /><br>"+
+                "<input type='text' class='form-control' placeholder='Empresa' /><br>"+
+                "<input type='text' class='form-control' placeholder='Teléfono' /><br>"+
+                "<input type='text' class='form-control' placeholder='Dirección' /><br>"+
+                "<input type='text' class='form-control' placeholder='Ciudad' /><br>"+
+                "<input type='text' class='form-control' placeholder='País' /><br>"+
+                "<input type='text' class='form-control' placeholder='Sexo' /><br>"+
+                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+                
+            "</div>"+
+            "<div class='contactInfo-content-"+fieldData.name+"'></div>"
+        +"</div>",
+        onRender: function() {
+             console.log("render contact information", fieldData);
+        }
+
+
+
+
+      //'<div align="right"><button class="btn" style="color:white;" id="button-addQues+'+fieldData.name+'" onclick="addQues('+fieldData.name+')">Agregar pregunta</button><button class="btn btn-danger" style="color:white;" " onclick="closeComponentContactInfo('+fieldData.name+')" align="center"><i class="fa fa-window-close"></i></button></div><input type="text" placeholder="Nombre" class="form-control" name="name'+fieldData.name+'"><br><input type="text" placeholder="Apellido" class="form-control" name="lastName'+fieldData.name+'">',
     }
   },
 
@@ -783,6 +807,9 @@ slider: function(fieldData) {
     };
 
     //$('.build-wrap').formBuilder();
+    function closeComponentContactInfo(indentifierClose) {
+        alert("puras pinches gatadas a la vrg ");
+   }
 
     var formBuilder = $(fbEditor).formBuilder(options);
 
