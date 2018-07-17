@@ -38,6 +38,19 @@ border: 1px solid black;
     padding-left: 57px;
 }
 
+
+  td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  background: lightblue;
+  border-color: white;
+}
+
+
 </style>
 
         <!-- start page title section -->
@@ -113,8 +126,10 @@ border: 1px solid black;
 
 @push('script')
   <script>
+
   $(document).ready(function() {
-      
+
+
         var options = {
       i18n: {
         locale: 'es-ES'
@@ -123,7 +138,10 @@ border: 1px solid black;
     };
 
 var fbRender = document.getElementById('fb-editor');
+
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
+
+ printMatrix(formData);
 
 // console.log(formData);
 
@@ -682,6 +700,107 @@ var formdata = JSON.stringify($form.serializeArray());
     });
     });
 });
+
+  function printMatrix(result) {
+
+    result.forEach(function(element) {
+        if(element.matrix) {
+          matrix = element.matrix   
+        } 
+    }); 
+
+  
+
+    function isEmpty(obj) {
+        // null and undefined are "empty"
+        if (obj == null) return true;
+        // Assume if it has a length property with a non-zero value
+        // that that property is correct.
+        if (obj.length > 0)    return false;
+        if (obj.length === 0)  return true;
+        // If it isn't an object at this point
+        // it is empty, but it can't be anything *but* empty
+        // Is it empty?  Depends on your application.
+        if (typeof obj !== "object") return true;
+        // Otherwise, does it have any properties of its own?
+        // Note that this doesn't handle
+        // toString and valueOf enumeration bugs in IE < 9
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key)) return false;
+        }
+        return true;
+      }
+
+
+  
+
+
+
+
+// console.log(result.matrix);
+  let columns = [];
+    let rows = [];
+       matrix.forEach(function(element, index) {
+          createMatrixTable(element.Columns, element.Rows);
+       });
+       
+   function createMatrixTable(columns, rows, identifier) {
+    var t = "<table class='matrix-table' id='matrix-table'  >";
+      t += "<thead>";
+      t += "<tr>";
+      for(let x =0; x < columns.length + 1; x++) {   //columns.length
+        if(x == 0) {
+           t += "<th></th>";
+        } else {
+            t += "<th class='attrColumn'>"
+           t +=  columns[x-1];
+           t += "</th>";    
+        }
+      }
+      t += "</tr>";
+      t += "</thead>";
+      t += "<tbody>";
+      for(let y =0; y < rows.length; y++) {  // rows.length'
+          let radioGroup = Math.floor(Math.random() * 10000000 + 1);
+          t += "<tr>";
+            t += "<td class='attrRow'>";
+            t +=  rows[y];
+            t += "</td>";
+          for(let d=0; d < columns.length; d++) {
+              t += "<td>";
+              //t += "<input name='radio-group-"+y+"'type='radio'>";
+              t += "<input name='radio-group-"+radioGroup+"'type='radio'>";
+              t += "</td>";
+          }  
+          t += "</tr>";
+      }
+
+      t += "</tbody>";
+    t += "</table>";
+
+    $("#fb-editor").append(t);
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
   </script>
 
 
