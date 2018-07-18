@@ -108,6 +108,8 @@ $(document).ready(function() {
    }
 
    function closeComponentContactInfo(indentifierClose) {
+        console.log(indentifierClose);
+
    		  $(".frmb").find(".contactInfo-container-"+indentifierClose+"").fadeOut(300, function(){ $(this).remove();});
    }
 
