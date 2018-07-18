@@ -8,16 +8,16 @@ $(document).ready(function() {
             "<div class='container-buttons' align='right'>"+
                 "<h6>Contact Information</h6>"+
                 "<button class='btn btn-danger' style='color:white;' onclick='closeComponentContactInfo("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
-                "<input type='text' class='form-control' placeholder='Nombre' /><br>"+
-                "<input type='text' class='form-control' placeholder='Apellido' /><br>"+
-                "<input type='text' class='form-control' placeholder='E-mail' /><br>"+
-                "<input type='text' class='form-control' placeholder='Empresa' /><br>"+
-                "<input type='text' class='form-control' placeholder='Teléfono' /><br>"+
-                "<input type='text' class='form-control' placeholder='Dirección' /><br>"+
-                "<input type='text' class='form-control' placeholder='Ciudad' /><br>"+
-                "<input type='text' class='form-control' placeholder='País' /><br>"+
-                "<input type='text' class='form-control' placeholder='Sexo' /><br>"+
-                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+                
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Nombre' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Apellido' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='E-mail' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Empresa' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Teléfono' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Dirección' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Ciudad' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='País' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Sexo' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+                
             "</div>"+
             "<div class='contactInfo-content-"+identifier+"'></div>"
         +"</div>"
