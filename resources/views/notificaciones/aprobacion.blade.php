@@ -1,12 +1,12 @@
 @component('mail::message')
-# Aprobar Encuesta Pública en Survenia
+# Aprobar Encuesta P&uacute;blica en Survenia
 
 La encuesta creada:
 @component('mail::button', ['url' => $urlVer ,'color' => 'blue'])
 Ver Encuesta
 @endcomponent
 
-Da click en el siguiente botón para aprovar la encuesta:
+Da click en el siguiente botón para aprobar la encuesta:
 @component('mail::button', ['url' => $urlAprobar ,'color' => 'green'])
 Aprobar
 @endcomponent
