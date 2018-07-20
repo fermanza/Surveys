@@ -141,7 +141,24 @@ var fbRender = document.getElementById('fb-editor');
 
 var formData = JSON.parse('<?php echo json_encode($question->content) ?>');
 
- printMatrix(formData);
+var matrixContent = [];
+
+
+  formData.forEach(function(element, key) {
+    for(let el in element){
+			  if(typeof element[el] == "object") {
+				   matrixContent.push(element[el]);
+					delete element[el];
+			  }
+		 } 
+     if(isEmpty(element)) {
+       delete formData[key];
+     }
+  });
+
+  
+
+
 
 // console.log(formData);
 
@@ -547,76 +564,7 @@ var options = {
   };
 
 $(fbRender).formRender(formRenderOpts);
-
-
-//Tabla renderizada de Matrix 
-//   let el =  $( "div.rendered-form" ).find('header');
-//   let elementColumn = [];
-//   let elementRow = [];
-
-//   $.each(el, function(index, value){
-//         if($('#'+value.id).hasClass('columna')) {
-//             elementColumn.push($('#'+value.id).text());
-//         } else if($('#'+value.id).hasClass('renglon')) {
-//             elementRow.push($('#'+value.id).text());
-//         }
-
-//   });
-
-
-// console.log(elementColumn, elementRow);
-
-// $( "header.form-control.renglon" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
-
-// $( "header.form-control.columna" ).replaceWith( "<table><tr><th></th><th>"+ '<label for="radio-group-1529180898194-0">Nombre de la Columna</label>' +"</th></tr><tr><td>" + '<label for="radio-group-1529180898186" class="fb-radio-group-label">Nombre de Renglón</label>' + "</td><td>"+'<input name="radio-group-1529180898186" value="test-value" type="radio">'+"</td></tr></table>" );
-
-
-  
-  
-  
-
-//  generateTable(elementColumn, elementRow);
-
-// function generateTable(columns, rows) {
-
-
-      
-//   var t = "<table  border='3' >";
-
-//     t += "<thead>";
-//     t += "<tr>";
-//     for(let x =0; x < columns.length + 1; x++) {   //columns.length
-//       if(x == 0) {
-//          t += "<th></th>";
-//       } else {
-//           t += "<th>"
-//          t +=  columns[x-1];
-//          t += "</th>";    
-//       }
-//     }
-//     t += "</tr>";
-//     t += "</thead>";
-//     t += "<tbody>";
-
-//     for(let y =0; y < rows.length; y++) {  // rows.length
-//         t += "<tr>";
-//           t += "<td>";
-//           t +=  rows[y];
-//           t += "</td>";
-
-        
-//         for(let d=0; d < columns.length; d++){
-//             t += "<td>";
-//             t += "<input name='radio-group-"+y+"'type='radio'>";
-//             t += "</td>";
-//         }  
-//         t += "</tr>";
-//     }
-
-//     t += "</tbody>";
-//   t += "</table>";
-//  $( "div.rendered-form").html(t);
-// }
+printMatrix(matrixContent);
 
 
 $( "div.fb-radio-group" )
@@ -701,17 +649,7 @@ var formdata = JSON.stringify($form.serializeArray());
     });
 });
 
-  function printMatrix(result) {
-
-    result.forEach(function(element) {
-        if(element.matrix) {
-          matrix = element.matrix   
-        } 
-    }); 
-
-  
-
-    function isEmpty(obj) {
+  function isEmpty(obj) {
         // null and undefined are "empty"
         if (obj == null) return true;
         // Assume if it has a length property with a non-zero value
@@ -729,19 +667,20 @@ var formdata = JSON.stringify($form.serializeArray());
             if (hasOwnProperty.call(obj, key)) return false;
         }
         return true;
-      }
-
-
-  
+ }
 
 
 
 
-// console.log(result.matrix);
-  let columns = [];
+
+
+  function printMatrix(matrix) {
+    let columns = [];
     let rows = [];
        matrix.forEach(function(element, index) {
-          createMatrixTable(element.Columns, element.Rows);
+           element.forEach(function(e, i){
+                 createMatrixTable(e.Columns, e.Rows);
+           });           
        });
        
    function createMatrixTable(columns, rows, identifier) {
