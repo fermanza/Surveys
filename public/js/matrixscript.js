@@ -192,7 +192,7 @@ $(document).ready(function() {
    	       		 if(rowText[element].innerText != undefined)
    	       		     rows.push(rowText[element].innerText);
    	       	}
-                tableContent.push({ Columns: columns, Rows: rows });
+                tableContent.push({Columns: columns, Rows: rows });
                 //matrixArray.push(tableContent);
                 matrixArray = tableContent;
         });
