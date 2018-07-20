@@ -807,13 +807,6 @@ slider: function(fieldData) {
     };
 
     //$('.build-wrap').formBuilder();
-    function closeComponentContactInfo(indentifierClose) {
-<<<<<<< HEAD
-      console.log('Test');
-=======
-        
->>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
-   }
 
     var formBuilder = $(fbEditor).formBuilder(options);
 
@@ -839,16 +832,7 @@ slider: function(fieldData) {
          delete formInfo[key];
        }
     });
-
-<<<<<<< HEAD
-    console.log(matrixInfo);
-=======
-     
-    if(!isEmpty(matrixInfo)) {
-        formInfo.push({matrix:matrixInfo});
-    }
       
->>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
 
     if(matrixInfo.length>0){
       formInfo.push({matrix:matrixInfo});
@@ -877,6 +861,7 @@ slider: function(fieldData) {
       formData.append('content',formInfo);
       formData.append('template_id',templateid.value);
       formData.append('_token',token.value);
+      // formData.append('saveImage',$('input:file')[0].files);
       var i = 0;
       while( $('input:file')[i] != undefined ){
         formData.append('saveImage',$('input:file')[i].files);
@@ -901,6 +886,7 @@ slider: function(fieldData) {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
+        console.log(response);
         console.log("Hooray, it worked!");
         swal({
           position: 'center',

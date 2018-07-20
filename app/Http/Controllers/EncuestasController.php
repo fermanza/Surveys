@@ -198,16 +198,17 @@ class EncuestasController extends Controller
         //
     }
 
-    public function saveQuestion(Request $request)
-    {
+    public function saveQuestion(Request $request){
            
         $user = Auth::user();
         $template=Template::find($request->template_id);
         if($request->hasFile('saveImage')) {
             $fileName = FileControl::storeFile($request->saveImage, 'imagenesEncuestas');
-            $request->saveImage = "/imagenesEncuestas/{$fileName}"; 
-            $template->url = $request->saveImage;
-            $template->save();
+            foreach($fileName as $file){
+                $request->saveImage = "/imagenesEncuestas/{$file}"; 
+                $template->url = $request->saveImage[$i];
+                $template->save();
+            }
         }
 
         //dd($fileName);
