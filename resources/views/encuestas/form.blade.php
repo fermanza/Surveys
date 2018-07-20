@@ -808,7 +808,11 @@ slider: function(fieldData) {
 
     //$('.build-wrap').formBuilder();
     function closeComponentContactInfo(indentifierClose) {
+<<<<<<< HEAD
       console.log('Test');
+=======
+        
+>>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
    }
 
     var formBuilder = $(fbEditor).formBuilder(options);
@@ -836,7 +840,15 @@ slider: function(fieldData) {
        }
     });
 
+<<<<<<< HEAD
     console.log(matrixInfo);
+=======
+     
+    if(!isEmpty(matrixInfo)) {
+        formInfo.push({matrix:matrixInfo});
+    }
+      
+>>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
 
     if(matrixInfo.length>0){
       formInfo.push({matrix:matrixInfo});
