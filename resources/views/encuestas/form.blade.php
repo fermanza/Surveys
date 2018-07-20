@@ -808,7 +808,7 @@ slider: function(fieldData) {
 
     //$('.build-wrap').formBuilder();
     function closeComponentContactInfo(indentifierClose) {
-        alert("puras pinches gatadas a la vrg ");
+      console.log('Test');
    }
 
     var formBuilder = $(fbEditor).formBuilder(options);
@@ -826,20 +826,23 @@ slider: function(fieldData) {
 
     //console.log(jsondata);
     let formInfo = JSON.parse(jsondata);
-     var  matrixInfo = sendData();
-     var contactInfo = sendDataContactInfo();
+    var matrixInfo = sendData();
+    var contactInfo = sendDataContactInfo();
 
 
-        formInfo.forEach(function(element, key) {
-           if(isEmpty(element)){
-             delete formInfo[key];
-           }
-        });
+    formInfo.forEach(function(element, key) {
+       if(isEmpty(element)){
+         delete formInfo[key];
+       }
+    });
 
-   
-     formInfo.push({matrix:matrixInfo});
+    console.log(matrixInfo);
 
-     formInfo = JSON.stringify(formInfo);
+    if(matrixInfo.length>0){
+      formInfo.push({matrix:matrixInfo});
+    }
+
+   formInfo = JSON.stringify(formInfo);
 
     // var data={
     //     content:jsondata,
@@ -909,13 +912,7 @@ slider: function(fieldData) {
             })
         }
     });
-
   });
-
-
-
-
-
 });
   </script>
 
