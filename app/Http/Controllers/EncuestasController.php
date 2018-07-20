@@ -235,7 +235,7 @@ class EncuestasController extends Controller
         if($template->type == 0)
         {   // info@survenia.com   admin 
             $user->name = 'Admin';
-            $user->email = 'laura@rednodo.com';
+            $user->email = 'isanchez94@hotmail.com';
             $user->notify(new ApprovalNotification($user, $template));
 
             // flash('<br><h6>Tu encuesta ha sido enviada para aprobación del administrador del sistema.</h6>')->success();

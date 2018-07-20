@@ -8,7 +8,7 @@ $(document).ready(function() {
             "<div class='container-buttons' align='right'>"+
                 "<h6>Contact Information</h6>"+
                 "<button class='btn btn-danger' style='color:white;' onclick='closeComponentContactInfo("+identifier+")' align='center'><i class='fa fa-window-close'></i></button>"+
-                "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Nombre' /><br>"+
+                "<br><label for='requerido' align='left'>Requerido <input id='requerido' name='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Nombre' /><br>"+
                 "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Apellido' /><br>"+
                 "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='E-mail' /><br>"+
                 "<br><label for='requerido' align='left'>Requerido <input id='requerido' type='checkbox' align='right'></label><br><br><input type='text' class='form-control' placeholder='Empresa' /><br>"+
@@ -26,32 +26,32 @@ $(document).ready(function() {
 		});
 });
 
-  function addRow(identifier) {
-  	let inputIdentifier = Math.floor(Math.random() * 10000000 + 1);
- 	 		    $(".matrix-content-"+identifier+"").append(
- 	 		     "<div class='input-component-"+inputIdentifier+"'>"+	
-	 	 		      "<br>"+	
-	 	 		      "<label>Nombre de renglón</label>"+  
-					   "<br>"+
-					   "<input class='row form-control' type='text'>"+
-					   "<button onclick='addRow("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
-					   "<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
-				 "<div>"	   
- 	 		    );
-   }
-   function addColumn(identifier) {
-   	  let inputIdentifier = Math.floor(Math.random() * 10000000 + 1);
-   				 $(".matrix-content-"+identifier+"").append(
-   				   "<div class='input-component-"+inputIdentifier+"'>"+	
-   				 	   "<br>"+
-   				 		"<label>Nombre de columna</label>"+		
-				        "<br>"+
-				  		"<input class='column form-control' type='text'>"+
-				  		"<button onclick='addColumn("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
-				  		"<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
-				   "<div>"		
-   				 );
-   }
+  // function addRow(identifier) {
+  // 	let inputIdentifier = Math.floor(Math.random() * 10000000 + 1);
+ 	//  		    $(".matrix-content-"+identifier+"").append(
+ 	//  		     "<div class='input-component-"+inputIdentifier+"'>"+	
+	 // 	 		      "<br>"+	
+	 // 	 		      "<label>Nombre de renglón</label>"+  
+		// 			   "<br>"+
+		// 			   "<input class='row form-control' type='text'>"+
+		// 			   "<button onclick='addRow("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
+		// 			   "<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
+		// 		 "<div>"	   
+ 	//  		    );
+  //  }
+  //  function addColumn(identifier) {
+  //  	  let inputIdentifier = Math.floor(Math.random() * 10000000 + 1);
+  //  				 $(".matrix-content-"+identifier+"").append(
+  //  				   "<div class='input-component-"+inputIdentifier+"'>"+	
+  //  				 	   "<br>"+
+  //  				 		"<label>Nombre de columna</label>"+		
+		// 		        "<br>"+
+		// 		  		"<input class='column form-control' type='text'>"+
+		// 		  		"<button onclick='addColumn("+identifier+")'><i class='fa fa-plus-square'></i></button>"+
+		// 		  		"<button onclick='removeInput("+inputIdentifier+")'><i class='fa fa-window-close'></i></button>"+
+		// 		   "<div>"		
+  //  				 );
+  //  }
 
 
 
@@ -84,8 +84,8 @@ $(document).ready(function() {
       matrixArray = [];
    		$('.frmb').each(function() {
    			let tableContent = [];
-   			let table  =  $(this).find(".matrix-table");
-   		$(table).each(function (a, b) {
+   			let table  =  $(this).find(".contact-info");
+   		$(table).each(function (a) {
    			let columns = [];
      	      let rows = [];
    	       	let columnText = b.getElementsByClassName('attrColumn');

@@ -827,6 +827,7 @@ slider: function(fieldData) {
     //console.log(jsondata);
     let formInfo = JSON.parse(jsondata);
      var  matrixInfo = sendData();
+     var contactInfo = sendDataContactInfo();
 
 
         formInfo.forEach(function(element, key) {
@@ -850,6 +851,8 @@ slider: function(fieldData) {
 
     //formData.append('matrix', matrixInfo);
 
+    console.log(formInfo);
+
     if ($('input:file')[0]==undefined) {
     formData.append('content',formInfo);
     formData.append('template_id',templateid.value);
@@ -859,7 +862,11 @@ slider: function(fieldData) {
       formData.append('content',formInfo);
       formData.append('template_id',templateid.value);
       formData.append('_token',token.value);
-      formData.append('saveImage',$('input:file')[0].files);
+      var i = 0;
+      while( $('input:file')[i] != undefined ){
+        formData.append('saveImage',$('input:file')[i].files);
+         i++;
+      }
     }
 
 
