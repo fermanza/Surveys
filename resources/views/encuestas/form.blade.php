@@ -808,7 +808,7 @@ slider: function(fieldData) {
 
     //$('.build-wrap').formBuilder();
     function closeComponentContactInfo(indentifierClose) {
-        alert("puras pinches gatadas a la vrg ");
+        
    }
 
     var formBuilder = $(fbEditor).formBuilder(options);
@@ -836,8 +836,11 @@ slider: function(fieldData) {
            }
         });
 
-   
-     formInfo.push({matrix:matrixInfo});
+     
+    if(!isEmpty(matrixInfo)) {
+        formInfo.push({matrix:matrixInfo});
+    }
+      
 
      formInfo = JSON.stringify(formInfo);
 
