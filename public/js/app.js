@@ -54620,6 +54620,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54778,6 +54786,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             surveyElements: []
         };
     },
+
+
+    computed: {
+        questionsJson: function questionsJson() {
+            return JSON.stringify(this.surveyElements);
+        }
+    },
+
     mounted: function mounted() {
         __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$on('remove-question', this.removeQuestion);
     },
@@ -64660,64 +64676,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "survey-builder" }, [
-    _c(
-      "div",
-      { staticClass: "root-controls" },
-      [
-        _c(
-          "app-draggable",
-          {
-            attrs: {
-              clone: _vm.clone,
-              list: _vm.rootElements,
-              options: { group: { name: "elements", pull: "clone" } }
-            }
-          },
-          _vm._l(_vm.rootElements, function(rootElement) {
-            return _c(
-              "div",
-              [
-                _c("app-root-element", {
-                  attrs: { "root-element": rootElement }
-                })
-              ],
-              1
-            )
-          })
-        )
-      ],
-      1
-    ),
+  return _c("div", [
+    _c("div", { staticClass: "survey-builder" }, [
+      _c(
+        "div",
+        { staticClass: "root-controls" },
+        [
+          _c(
+            "app-draggable",
+            {
+              attrs: {
+                clone: _vm.clone,
+                list: _vm.rootElements,
+                options: { group: { name: "elements", pull: "clone" } }
+              }
+            },
+            _vm._l(_vm.rootElements, function(rootElement) {
+              return _c(
+                "div",
+                [
+                  _c("app-root-element", {
+                    attrs: { "root-element": rootElement }
+                  })
+                ],
+                1
+              )
+            })
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "survey-questions" },
+        [
+          _c(
+            "app-draggable",
+            {
+              staticClass: "survey-questions-container",
+              attrs: {
+                list: _vm.surveyElements,
+                options: { group: { name: "elements", pull: false } }
+              }
+            },
+            _vm._l(_vm.surveyElements, function(surveyElement) {
+              return _c(
+                "div",
+                [
+                  _c("app-survey-question", {
+                    attrs: { "survey-element": surveyElement }
+                  })
+                ],
+                1
+              )
+            })
+          )
+        ],
+        1
+      )
+    ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "survey-questions" },
-      [
-        _c(
-          "app-draggable",
-          {
-            staticClass: "survey-questions-container",
-            attrs: {
-              list: _vm.surveyElements,
-              options: { group: { name: "elements", pull: false } }
-            }
-          },
-          _vm._l(_vm.surveyElements, function(surveyElement) {
-            return _c(
-              "div",
-              [
-                _c("app-survey-question", {
-                  attrs: { "survey-element": surveyElement }
-                })
-              ],
-              1
-            )
-          })
-        )
-      ],
-      1
-    )
+    _c("div", [
+      _c("form", { attrs: { action: "/encuestas/save2", method: "POST" } }, [
+        _c("input", {
+          attrs: { type: "hidden" },
+          domProps: { value: _vm.questionsJson }
+        }),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn" }, [_vm._v("Crear")])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

@@ -20,20 +20,28 @@
 </style>
 
 <template>
-    <div class="survey-builder">
-        <div class="root-controls">
-            <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
-                <div v-for="rootElement in rootElements">
-                    <app-root-element :root-element="rootElement"></app-root-element>
-                </div>
-            </app-draggable>
+    <div>
+        <div class="survey-builder">
+            <div class="root-controls">
+                <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
+                    <div v-for="rootElement in rootElements">
+                        <app-root-element :root-element="rootElement"></app-root-element>
+                    </div>
+                </app-draggable>
+            </div>
+            <div class="survey-questions">
+                <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
+                    <div v-for="surveyElement in surveyElements">
+                        <app-survey-question :survey-element="surveyElement"></app-survey-question>
+                    </div>
+                </app-draggable>
+            </div>
         </div>
-        <div class="survey-questions">
-            <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
-                <div v-for="surveyElement in surveyElements">
-                    <app-survey-question :survey-element="surveyElement"></app-survey-question>
-                </div>
-            </app-draggable>
+        <div>
+            <form action="/encuestas/save2" method="POST">
+                <input type="hidden" :value="questionsJson" />
+                <button class="btn">Crear</button>
+            </form>
         </div>
     </div>
 </template>
@@ -233,6 +241,12 @@
                     // }
                 ],
                 surveyElements: [],
+            }
+        },
+
+        computed: {
+            questionsJson() {
+                return JSON.stringify(this.surveyElements);
             }
         },
 
