@@ -163,8 +163,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Shivella\Bitly\BitlyServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class
+        // Laracasts\Flash\FlashServiceProvider::class,
+        // Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
