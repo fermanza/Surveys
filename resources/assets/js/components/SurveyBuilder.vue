@@ -133,6 +133,78 @@
                             full: 'Bueno'
                         },
                         answer: 0
+                    },
+                      {
+                        uid: '',
+                        type: 'image',
+                        title: 'Imagen',
+                        className: 'fa-image',
+                        config: {
+                            title: 'Imagen'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'contact-information',
+                        title: 'Contact Information',
+                        className: 'fa-info',
+                        config: {
+                            title: 'Contact Information',
+                            list: [
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Nombre',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Apellido',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'E-mail',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Empresa',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Teléfono',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Dirección',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Ciudad',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'País',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Sexo',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Fecha de Nacimiento',
+                                    answer: 'mm/dd/yyyy'
+                                }
+                            ]
+                        },
+                        answer: []
                     }
                 ],
                 surveyElements: [],

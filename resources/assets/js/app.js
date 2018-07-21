@@ -16,14 +16,17 @@ Vue.component('app-survey-element-select', require('./components/SurveyElementSe
 Vue.component('app-survey-element-multiple-text', require('./components/SurveyElementMultipleText.vue'));
 Vue.component('app-survey-element-multiple-check', require('./components/SurveyElementMultipleCheck.vue'));
 Vue.component('app-survey-element-slider', require('./components/SurveyElementSlider.vue'));
+Vue.component('app-survey-element-image', require('./components/SurveyElementImage.vue'));
+Vue.component('app-survey-element-contact-information', require('./components/SurveyElementContactInformation.vue'));
+
+
 // matrix
 // matrix scaled
-
 // slider
 // star rating
-// imagen
+// imagen X
 
-// contact information
+// contact information X 
 
 const app = new Vue({
     el: '#app'

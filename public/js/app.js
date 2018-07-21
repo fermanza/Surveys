@@ -24533,14 +24533,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-select
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-text', __webpack_require__(208));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-check', __webpack_require__(213));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-slider', __webpack_require__(218));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-image', __webpack_require__(228));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-contact-information', __webpack_require__(223));
+
 // matrix
 // matrix scaled
-
 // slider
 // star rating
-// imagen
+// imagen X
 
-// contact information
+// contact information X 
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app'
@@ -54445,6 +54447,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     full: 'Bueno'
                 },
                 answer: 0
+            }, {
+                uid: '',
+                type: 'image',
+                title: 'Imagen',
+                className: 'fa-image',
+                config: {
+                    title: 'Imagen'
+                },
+                answer: ''
+            }, {
+                uid: '',
+                type: 'contact-information',
+                title: 'Contact Information',
+                className: 'fa-info',
+                config: {
+                    title: 'Contact Information',
+                    list: [{
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Nombre',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Apellido',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'E-mail',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Empresa',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Teléfono',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Dirección',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Ciudad',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'País',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Sexo',
+                        answer: ''
+                    }, {
+                        uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                        title: 'Fecha de Nacimiento',
+                        answer: 'mm/dd/yyyy'
+                    }]
+                },
+                answer: []
             }],
             surveyElements: []
         };
@@ -66069,6 +66130,477 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2abc14c8", module.exports)
+  }
+}
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(224)
+}
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(226)
+/* template */
+var __vue_template__ = __webpack_require__(227)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-110fc7a7"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\SurveyElementContactInformation.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-110fc7a7", Component.options)
+  } else {
+    hotAPI.reload("data-v-110fc7a7", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(225);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("12c15e76", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-110fc7a7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-110fc7a7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.field-container[data-v-110fc7a7] {\n    display: flex;\n}\n.field-input[data-v-110fc7a7] {\n    flex: 1;\n}\n.field-action[data-v-110fc7a7] {\n    flex-basis: 25px;\n}\n.field-action[data-v-110fc7a7] {\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 226 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['display', 'surveyElement'],
+    data: function data() {
+        return {
+            element: this.surveyElement
+        };
+    },
+
+    methods: {
+        addField: function addField() {
+            this.element.config.list.push({
+                uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                title: 'Texto',
+                answer: ''
+            });
+        },
+        removeField: function removeField(index) {
+            this.element.config.list.splice(index, 1);
+        }
+    },
+    watch: {
+        'element.config.list': {
+            handler: function handler(list, oldList) {
+                var answer = {};
+                list.forEach(function (field) {
+                    answer[field.uid] = field.answer;
+                });
+                this.element.answer = answer;
+            },
+            deep: true
+        }
+    }
+});
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.display
+      ? _c(
+          "div",
+          [
+            _vm._l(_vm.surveyElement.config.list, function(field, index) {
+              return _c("div", { staticClass: "field-container" }, [
+                _c("div", { staticClass: "field-input" }, [
+                  _c("label", [_vm._v("Etiqueta")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.surveyElement.config.list[index].title,
+                        expression: "surveyElement.config.list[index].title"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: {
+                      value: _vm.surveyElement.config.list[index].title
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.surveyElement.config.list[index],
+                          "title",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "field-action" }, [
+                  _c("i", {
+                    staticClass: "fa fa-times text-danger",
+                    on: {
+                      click: function($event) {
+                        _vm.removeField(index)
+                      }
+                    }
+                  })
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                { staticClass: "btn btn-success", on: { click: _vm.addField } },
+                [_vm._v("Agregar")]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.display
+      ? _c(
+          "div",
+          _vm._l(_vm.surveyElement.config.list, function(field, index) {
+            return _c("div", [
+              _c("label", [_vm._v(_vm._s(field.title))]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.surveyElement.config.list[index].answer,
+                    expression: "surveyElement.config.list[index].answer"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: field.uid },
+                domProps: {
+                  value: _vm.surveyElement.config.list[index].answer
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.surveyElement.config.list[index],
+                      "answer",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          })
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-110fc7a7", module.exports)
+  }
+}
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(229)
+}
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(231)
+/* template */
+var __vue_template__ = __webpack_require__(232)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-8f7a9920"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\SurveyElementImage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8f7a9920", Component.options)
+  } else {
+    hotAPI.reload("data-v-8f7a9920", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(230);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("2977f170", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8f7a9920\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8f7a9920\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 231 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['display', 'surveyElement']
+});
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.display
+      ? _c("div", [
+          _c("label", [_vm._v("Etiqueta")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.surveyElement.config.title,
+                expression: "surveyElement.config.title"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.surveyElement.config.title },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              }
+            }
+          })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.display
+      ? _c("div", [
+          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "file", name: _vm.surveyElement.uid }
+          })
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8f7a9920", module.exports)
   }
 }
 
