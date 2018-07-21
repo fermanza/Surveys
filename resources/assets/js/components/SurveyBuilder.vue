@@ -215,7 +215,22 @@
                             ]
                         },
                         answer: []
-                    }
+                    },
+                    // {
+                    //     uid: '',
+                    //     type: 'matrix',
+                    //     title: 'Matrix',
+                    //     className: 'fa-image', // cambiar
+                    //     config: {
+                    //         title: 'Matrix',
+                    //         rows: [],
+                    //         columns: []
+                    //     },
+                    //     answer: [
+                    //         'idsradiobutton',
+                    //         'otro'
+                    //     ]
+                    // }
                 ],
                 surveyElements: [],
             }
