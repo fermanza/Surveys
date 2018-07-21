@@ -26,8 +26,4 @@ mix.webpackConfig(webpack => {
 
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .copyDirectory('resources/assets/static/images','public/images')
-    .browserSync('laradminator.local')
-    .version()
-    .sourceMaps();
+    // .browserSync('laradminator.local');

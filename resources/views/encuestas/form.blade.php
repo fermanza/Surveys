@@ -808,7 +808,11 @@ slider: function(fieldData) {
 
     //$('.build-wrap').formBuilder();
     function closeComponentContactInfo(indentifierClose) {
+<<<<<<< HEAD
+      console.log('Test');
+=======
         
+>>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
    }
 
     var formBuilder = $(fbEditor).formBuilder(options);
@@ -826,23 +830,31 @@ slider: function(fieldData) {
 
     //console.log(jsondata);
     let formInfo = JSON.parse(jsondata);
-     var  matrixInfo = sendData();
-     var contactInfo = sendDataContactInfo();
+    var matrixInfo = sendData();
+    var contactInfo = sendDataContactInfo();
 
 
-        formInfo.forEach(function(element, key) {
-           if(isEmpty(element)){
-             delete formInfo[key];
-           }
-        });
+    formInfo.forEach(function(element, key) {
+       if(isEmpty(element)){
+         delete formInfo[key];
+       }
+    });
 
+<<<<<<< HEAD
+    console.log(matrixInfo);
+=======
      
     if(!isEmpty(matrixInfo)) {
         formInfo.push({matrix:matrixInfo});
     }
       
+>>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
 
-     formInfo = JSON.stringify(formInfo);
+    if(matrixInfo.length>0){
+      formInfo.push({matrix:matrixInfo});
+    }
+
+   formInfo = JSON.stringify(formInfo);
 
     // var data={
     //     content:jsondata,
@@ -912,13 +924,7 @@ slider: function(fieldData) {
             })
         }
     });
-
   });
-
-
-
-
-
 });
   </script>
 

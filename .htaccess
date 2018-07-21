@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^public
+RewriteCond %{REQUEST_URI} !^/.well-known
+RewriteRule ^(.*)$ public/$1 [L]
