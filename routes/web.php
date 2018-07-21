@@ -106,6 +106,7 @@ Route::group(['middleware' => ['Authuser']], function () {
 	
  
     Route::resource('/mis_encuestas', 'MisEncuestasController');
+    Route::get('/encuestas/create2', 'EncuestasController@create2');
     Route::resource('/encuestas', 'EncuestasController');
 
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');

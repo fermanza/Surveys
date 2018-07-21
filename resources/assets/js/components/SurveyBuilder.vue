@@ -1,0 +1,270 @@
+<style scoped>
+    .survey-builder {
+        display: flex;
+        border: 1px solid black; /* Mejorar estilos */
+    }
+
+    .root-controls {
+        flex-basis: 400px;
+        border: 1px solid lightblue; /* Mejorar estilos */
+    }
+
+    .survey-questions {
+        flex: 1;
+        border: 1px solid pink; /* Mejorar estilos */
+    }
+
+    .survey-questions-container {
+        min-height: 100px;
+    }
+</style>
+
+<template>
+    <div>
+        <div class="survey-builder">
+            <div class="root-controls">
+                <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
+                    <div v-for="rootElement in rootElements">
+                        <app-root-element :root-element="rootElement"></app-root-element>
+                    </div>
+                </app-draggable>
+            </div>
+            <div class="survey-questions">
+                <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
+                    <div v-for="surveyElement in surveyElements">
+                        <app-survey-question :survey-element="surveyElement"></app-survey-question>
+                    </div>
+                </app-draggable>
+            </div>
+        </div>
+        <div>
+            <form action="/encuestas/save2" method="POST">
+                <input type="hidden" name="questions" :value="questionsJson" />
+                <button class="btn">Crear</button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+    import uniqueString from 'unique-string';
+    import Bus from './../Bus';
+
+    export default {
+        data() {
+            return {
+                rootElements: [
+                    {
+                        uid: '',
+                        type: 'text',
+                        title: 'Texto',
+                        className: 'fa-font',
+                        config: {
+                            title: 'Texto'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'header',
+                        title: 'Parrafo',
+                        className: 'fa-heading',
+                        config: {
+                            title: 'Parrafo'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'textarea',
+                        title: 'Comentarios',
+                        className: 'fa-comments',
+                        config: {
+                            title: 'Comentarios'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'select',
+                        title: 'Dropdown',
+                        className: 'fa-caret-square-down',
+                        config: {
+                            title: 'Dropdown',
+                            list: ['Opción 1', 'Opción 2']
+                        },
+                        answer: null
+                    },
+                    {
+                        uid: '',
+                        type: 'multiple-text',
+                        title: 'Texto Múltiple',
+                        className: 'fa-align-left',
+                        config: {
+                            title: 'Texto Múltiple',
+                            list: [
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Texto 1',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Texto 2',
+                                    answer: ''
+                                }
+                            ]
+                        },
+                        answer: {}
+                    },
+                    {
+                        uid: '',
+                        type: 'multiple-check',
+                        title: 'Múltiple Check',
+                        className: 'fa-check-square',
+                        config: {
+                            title: 'Múltiple Check',
+                            list: ['Opción 1', 'Opción 2'],
+                            multiple: false
+                        },
+                        answer: []
+                    },
+                    {
+                        uid: '',
+                        type: 'slider',
+                        title: 'Slider',
+                        className: 'fa-sliders-h',
+                        config: {
+                            title: 'Slider',
+                            zero: 'Malo',
+                            half: 'Regular',
+                            full: 'Bueno'
+                        },
+                        answer: 0
+                    },
+                      {
+                        uid: '',
+                        type: 'image',
+                        title: 'Imagen',
+                        className: 'fa-image',
+                        config: {
+                            title: 'Imagen'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'contact-information',
+                        title: 'Contact Information',
+                        className: 'fa-info',
+                        config: {
+                            title: 'Contact Information',
+                            list: [
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Nombre',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Apellido',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'E-mail',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Empresa',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Teléfono',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Dirección',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Ciudad',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'País',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Sexo',
+                                    type: 'text',
+                                    answer: ''
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    title: 'Fecha de Nacimiento',
+                                    type: 'date',
+                                    answer: 'mm/dd/yyyy'
+                                }
+                            ]
+                        },
+                        answer: []
+                    },
+                    // {
+                    //     uid: '',
+                    //     type: 'matrix',
+                    //     title: 'Matrix',
+                    //     className: 'fa-image', // cambiar
+                    //     config: {
+                    //         title: 'Matrix',
+                    //         rows: [],
+                    //         columns: []
+                    //     },
+                    //     answer: [
+                    //         'idsradiobutton',
+                    //         'otro'
+                    //     ]
+                    // }
+                ],
+                surveyElements: [],
+            }
+        },
+
+        computed: {
+            questionsJson() {
+                return JSON.stringify(this.surveyElements);
+            }
+        },
+
+        mounted() {
+            Bus.$on('remove-question', this.removeQuestion);
+        },
+
+        methods: {
+            removeQuestion(uid) {
+                const index = _.findIndex(this.surveyElements, { uid });
+                this.surveyElements.splice(index, 1);
+            },
+
+            clone(element) {
+                element.uid = uniqueString();
+
+                return _.cloneDeep(element);
+            }
+        }
+    }
+</script>

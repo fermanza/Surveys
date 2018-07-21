@@ -14,7 +14,7 @@ class users extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        User::truncate();
+        // User::truncate();
         
         $data = [];
         

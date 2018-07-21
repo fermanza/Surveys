@@ -31,7 +31,7 @@
         <!-- et line icon --> 
         <link rel="stylesheet" href="{{ asset('css/et-line-icons.css') }}" />
         <!-- font-awesome icon -->
-        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
         <!-- themify icon -->
         <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}"/>
         <!-- swiper carousel -->
@@ -147,6 +147,7 @@
         </footer>
         <!-- end footer -->
         <!-- javascript libraries -->
+        <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/jquery.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/modernizr.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>

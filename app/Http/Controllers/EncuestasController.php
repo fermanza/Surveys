@@ -58,6 +58,22 @@ class EncuestasController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create2(Request $request)
+    {
+        //dd($request->id);
+        $template = Template::find($request->id);
+        $action = 'create';
+        $view = 'encuestas.create2';
+        $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
+
+        return $this->form($template, $action, $view, $questions);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
