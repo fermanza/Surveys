@@ -5,17 +5,10 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Notifications\Notifiable;
-use App\Notifications\UserNotification;
-use Illuminate\Support\Facades\Input;
-use DB;
-use App\User;
-
 
 trait RegistersUsers
 {
     use RedirectsUsers;
-    use Notifiable;
 
     /**
      * Show the application registration form.
@@ -35,23 +28,14 @@ trait RegistersUsers
      */
     public function register(Request $request)
     {
-        //$this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();
 
-        if (User::where('email', '=', Input::get('email'))->exists()){
+        event(new Registered($user = $this->create($request->all())));
 
-            flash('<br><h6>El correo que ingresaste ya ha sido utilizado. <br>Intenta utilizando otro.</h6>')->error()->important();
+        $this->guard()->login($user);
 
-            return view('registro');
-        }
-        else{
-            event(new Registered($user = $this->create($request->all())));
-            
-            $user->notify(new UserNotification($user));
-
-            flash('<br><h6>Usuario creado correctamente. <br>Te hemos enviado un correo electrónico para tu confirmación.</h6>')->success();
-
-            return view('registro');
-        }
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 
     /**
