@@ -39,7 +39,7 @@
         </div>
         <div>
             <form action="/encuestas/save2" method="POST">
-                <input type="hidden" :value="questionsJson" />
+                <input type="hidden" name="questions" :value="questionsJson" />
                 <button class="btn">Crear</button>
             </form>
         </div>

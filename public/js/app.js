@@ -64740,7 +64740,7 @@ var render = function() {
     _c("div", [
       _c("form", { attrs: { action: "/encuestas/save2", method: "POST" } }, [
         _c("input", {
-          attrs: { type: "hidden" },
+          attrs: { type: "hidden", name: "questions" },
           domProps: { value: _vm.questionsJson }
         }),
         _vm._v(" "),
