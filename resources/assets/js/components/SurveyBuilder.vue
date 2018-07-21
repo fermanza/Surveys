@@ -155,51 +155,61 @@
                                 {
                                     uid: uniqueString(),
                                     title: 'Nombre',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Apellido',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'E-mail',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Empresa',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Teléfono',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Dirección',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Ciudad',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'País',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Sexo',
+                                    type: 'text',
                                     answer: ''
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Fecha de Nacimiento',
+                                    type: 'date',
                                     answer: 'mm/dd/yyyy'
                                 }
                             ]

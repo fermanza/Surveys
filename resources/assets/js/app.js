@@ -22,11 +22,8 @@ Vue.component('app-survey-element-contact-information', require('./components/Su
 
 // matrix
 // matrix scaled
-// slider
 // star rating
-// imagen X
 
-// contact information X 
 
 const app = new Vue({
     el: '#app'

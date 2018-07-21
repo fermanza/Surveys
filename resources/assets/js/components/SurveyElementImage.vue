@@ -9,7 +9,7 @@
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
-            <input type="file" :name="surveyElement.uid" class="form-control" />
+            <input type="file" :name="surveyElement.uid" />
         </div>
     </div>
 </template>

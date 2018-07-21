@@ -31,7 +31,7 @@
         <div v-if="display">
             <div v-for="(field, index) in surveyElement.config.list">
                 <label>{{ field.title }}</label>
-                <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" />
+                <input :type="field.type" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" />
             </div>
         </div>
     </div>
