@@ -9,11 +9,15 @@
         top: 0;
         right: 0;
     }
-
     .question-action {
         cursor: pointer;
+        
     }
 
+    .close-component {
+         border: 2px solid #70878C;
+    } 
+    
     .background-grey {
         background: #eee;
     }
@@ -29,7 +33,7 @@
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display"></component>
         </div>
         <div v-if="!display" class="text-center">
-            <small @click="display = true" class="question-action">Save</small>
+            <button @click="display = true" class="question-action close-component ">Save</button>
         </div>
     </div>
 </template>
