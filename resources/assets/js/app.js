@@ -27,7 +27,6 @@ Vue.component('app-survey-element-star-rating', require('./components/SurveyElem
 
 // matrix
 // matrix scaled
-// star rating
 
 
 const app = new Vue({
