@@ -20,9 +20,10 @@ class FileControl
 	 {
 	 	  //dd($file);
 	 	  $date = new DateTime();
-	 	  $fileName = "{$date->getTimestamp()}_{$file->getClientOriginalName()}";
-	 	  Storage::disk($location)->put($fileName, File::get($file));
-
+	 	  for($i = 0; $i < count($file); $i++){
+		 	  $fileName[] = "{$date->getTimestamp()}_{$file[$i]->getClientOriginalName()}";
+		 	  Storage::disk($location)->put($fileName, File::get($file[$i]));
+	 	  }
 	 	   return $fileName;
 	 }
 

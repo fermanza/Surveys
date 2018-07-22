@@ -5,14 +5,14 @@
 @section('content')
 
 <style>
-.clear-all,.get-data,.save-template,.fb-file
+.clear-all,.get-data,.save-template
 {
 visibility:hidden;
 }
 
 
 .sticky
-{
+{fb-file-label
     font-size: 20px;
     color: black;
     margin-bottom: 15px;
@@ -114,9 +114,9 @@ th {
                  <div class="row">
               <div class="col-md-12" align="center">
                 <br>
-                                    <a class="btn" href="{{ url()->previous() }}">@lang('answer.cancelar')</a><br><br><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                                    <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
-                                    <button class="btn" id="save-data">@lang('answer.responder')</button><br><br><br>
+                  <a class="btn" href="{{ url()->previous() }}">@lang('answer.cancelar')</a><br><br><input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                  <input type="hidden" id="template_id" name="template_id" class="form-control" value="{{ $template->id }}">
+                  <button class="btn" id="save-data">@lang('answer.responder')</button><br><br><br>
                   </div>
                 </div>
             </div>
@@ -177,22 +177,26 @@ var matrixContent = [];
 // });
 
 let fields = [
-{
-  label: 'Texto',
-  type: 'header'
-},
-{
-  label: 'Multiple Choice',
-  type: 'radio-group'
-},
-{
-  label: 'Dropdown',
-  type: 'select'
-},
-{
-  label: 'Single TextBox',
-  type: 'text'
-}
+  {
+    label: 'Texto',
+    type: 'header'
+  },
+  {
+    label: 'Multiple Choice',
+    type: 'radio-group'
+  },
+  {
+    label: 'Dropdown',
+    type: 'select'
+  },
+  {
+    label: 'Single TextBox',
+    type: 'text'
+  },
+  {
+    label: 'Image',
+    type: 'file'
+  }
 ];
 
 
