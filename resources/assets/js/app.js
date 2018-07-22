@@ -1,10 +1,14 @@
 import Vue from 'vue';
 import _ from 'lodash';
 import draggable from 'vuedraggable';
+import StarRating from 'vue-star-rating';
+
 
 window.Vue = Vue;
 window._ = _;
 
+
+Vue.component('star-rating', StarRating);
 Vue.component('app-draggable', draggable);
 Vue.component('app-survey-builder', require('./components/SurveyBuilder.vue'));
 Vue.component('app-root-element', require('./components/RootElement.vue'));
@@ -18,6 +22,7 @@ Vue.component('app-survey-element-multiple-check', require('./components/SurveyE
 Vue.component('app-survey-element-slider', require('./components/SurveyElementSlider.vue'));
 Vue.component('app-survey-element-image', require('./components/SurveyElementImage.vue'));
 Vue.component('app-survey-element-contact-information', require('./components/SurveyElementContactInformation.vue'));
+Vue.component('app-survey-element-star-rating', require('./components/SurveyElementStarRating.vue'));
 
 
 // matrix

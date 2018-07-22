@@ -239,6 +239,16 @@
                     //         'otro'
                     //     ]
                     // }
+                    {
+                        uid: '',
+                        type: 'star-rating',
+                        title: 'starRating',
+                        className: 'fa-star',
+                        config: {
+                            title: 'Star rating'
+                        },
+                        answer: ''
+                    }
                 ],
                 surveyElements: [],
             }
