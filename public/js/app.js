@@ -54284,7 +54284,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-builder[data-v-098e407a] {\n    display: flex;\n    border: 1px solid black; /* Mejorar estilos */\n}\n.root-controls[data-v-098e407a] {\n    flex-basis: 400px;\n    border: 1px solid lightblue; /* Mejorar estilos */\n}\n.survey-questions[data-v-098e407a] {\n    flex: 1;\n    border: 1px solid pink; /* Mejorar estilos */\n}\n.survey-questions-container[data-v-098e407a] {\n    min-height: 100px;\n}\n", ""]);
+exports.push([module.i, "\n.survey-builder[data-v-098e407a] {\n    display: flex;\n    border: 1px solid black; /* Mejorar estilos */\n}\n.root-controls[data-v-098e407a] {\n    flex-basis: 400px;\n    border: 1px solid lightblue; /* Mejorar estilos */\n}\n.survey-questions[data-v-098e407a] {\n    flex: 1;\n    border: 1px solid pink; /* Mejorar estilos */\n}\n.survey-questions-container[data-v-098e407a] {\n    min-height: 100px;\n}\n\n", ""]);
 
 // exports
 
@@ -54331,6 +54331,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(79);
+//
 //
 //
 //
@@ -64260,7 +64261,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: relative;\n    padding-top: 20px;\n}\n.controls[data-v-284e2097] {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n.question-action[data-v-284e2097] {\n    cursor: pointer;\n}\n.background-grey[data-v-284e2097] {\n    background: #eee;\n}\n", ""]);
+exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: relative;\n    padding-top: 20px;\n}\n.controls[data-v-284e2097] {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n.question-action[data-v-284e2097] {\n    cursor: pointer;\n}\n.close-component[data-v-284e2097] {\n     border: 2px solid #70878C;\n}\n.background-grey[data-v-284e2097] {\n    background: #eee;\n}\n", ""]);
 
 // exports
 
@@ -64272,6 +64273,10 @@ exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: re
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(79);
+//
+//
+//
+//
 //
 //
 //
@@ -64378,9 +64383,9 @@ var render = function() {
       !_vm.display
         ? _c("div", { staticClass: "text-center" }, [
             _c(
-              "small",
+              "button",
               {
-                staticClass: "question-action",
+                staticClass: "question-action close-component ",
                 on: {
                   click: function($event) {
                     _vm.display = true

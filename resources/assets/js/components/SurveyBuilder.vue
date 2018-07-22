@@ -17,6 +17,7 @@
     .survey-questions-container {
         min-height: 100px;
     }
+
 </style>
 
 <template>
