@@ -17,6 +17,7 @@
     .survey-questions-container {
         min-height: 100px;
     }
+
 </style>
 
 <template>
@@ -163,82 +164,176 @@
                                 {
                                     uid: uniqueString(),
                                     title: 'Nombre',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Apellido',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'E-mail',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Empresa',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Teléfono',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Dirección',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Ciudad',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'País',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Sexo',
-                                    type: 'text',
-                                    answer: ''
+                                    answer: '',
+                                    required: false,
+                                    include: true
                                 },
                                 {
                                     uid: uniqueString(),
                                     title: 'Fecha de Nacimiento',
-                                    type: 'date',
-                                    answer: 'mm/dd/yyyy'
+                                    answer: 'mm/dd/yyyy',
+                                    required: false,
+                                    include: true
                                 }
                             ]
                         },
                         answer: []
                     },
-                    // {
-                    //     uid: '',
-                    //     type: 'matrix',
-                    //     title: 'Matrix',
-                    //     className: 'fa-image', // cambiar
-                    //     config: {
-                    //         title: 'Matrix',
-                    //         rows: [],
-                    //         columns: []
-                    //     },
-                    //     answer: [
-                    //         'idsradiobutton',
-                    //         'otro'
-                    //     ]
-                    // }
+                    {
+                        uid: '',
+                        type: 'matrix',
+                        title: 'Matrix',
+                        className: 'fa-th',
+                        config: {
+                            title: 'Matrix',
+                            multiple: false,
+                            rows: [
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 1',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 2',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 3',
+                                },
+                            ],
+                            cols: [
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 1',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 2',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 3',
+                                },
+                            ],
+                        },
+                        answer: {}
+                    },
+                    {
+                        uid: '',
+                        type: 'matrix-scale',
+                        title: 'Matrix Ranking Scale',
+                        className: 'fa-th',
+                        config: {
+                            title: 'Matrix Ranking Scale',
+                            rows: [
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 1',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 2',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Fila 3',
+                                },
+                            ],
+                            cols: [
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 1',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 2',
+                                },
+                                {
+                                    uid: uniqueString(),
+                                    text: 'Columna 3',
+                                },
+                            ],
+                            options: ['1', '2', '3', '4', '5']
+                        },
+                        answer: {}
+                    },
+                    {
+                        uid: '',
+                        type: 'star-rating',
+                        title: 'Star Rating',
+                        className: 'fa-star',
+                        config: {
+                            title: 'Star rating'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'ranking',
+                        title: 'Ranking',
+                        className: 'fa-sort-numeric-down',
+                        config: {
+                            title: 'Ranking',
+                            options: ['1', '2', '3', '4', '5']
+                        },
+                        answer: null
+                    }
                 ],
                 surveyElements: [],
             }

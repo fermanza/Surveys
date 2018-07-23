@@ -357,6 +357,16 @@ let fields = [
           type: 'select',
           label: 'Dropdown'
         }]
+      },
+      {
+        label: 'Image',
+        name: 'image',
+        type: 'file',
+        className: 'form-control',
+        fields: [{
+          type: 'file',
+          label: 'Image'
+        }]
       }
 ];
 
@@ -473,7 +483,7 @@ slider: function(fieldData) {
       disableFields: ['file', 'date', 'autocomplete','button','hidden','number','paragraph','header','radio-group','select','matriz','checkbox-group','text','textarea'],
       inputSets: [
       {
-        label: 'Imagen',
+        label: 'Image',
         name: 'image',
         type: 'file',
         className: 'form-control',
@@ -520,300 +530,10 @@ slider: function(fieldData) {
           type: 'slider'
         }]
       },
-      // {
-      //   label: 'Contact Information',
-      //   name: 'contact-information',
-      //   type: 'header', // optional - one will be generated from the label if name not supplied
-      //   icon: '<i class="fa fa-info"></i>',
-      //   showHeader: true, // optional - Use the label as the header for this set of inputs
-      //   fields: [
-      //       {
-      //         type: 'text',
-      //         label: 'Nombre',
-      //         className: 'form-control',
-      //         placeholder: 'Nombre'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Apellido',
-      //         className: 'form-control',
-      //         placeholder: 'Apellido'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'E-mail',
-      //         className: 'form-control',
-      //         placeholder: 'E-mail'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Empresa',
-      //         className: 'form-control',
-      //         placeholder: 'Empresa'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Telefono',
-      //         className: 'form-control',
-      //         placeholder: 'Teléfono'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Direccion',
-      //         className: 'form-control',
-      //         placeholder: 'Dirección'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Ciudad',
-      //         className: 'form-control',
-      //         placeholder: 'Ciudad'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Pais',
-      //         className: 'form-control',
-      //         placeholder: 'Pais'
-      //       },
-      //       {
-      //         type: 'select',
-      //         label: 'Sexo',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: 'Masculino',
-      //             value: 'Masculino',
-      //             selected: false
-      //           },
-      //           {
-      //             label: 'Femenino',
-      //             value: 'Femenino',
-      //             selected: false
-      //           }
-      //           ]
-      //       },
-      //       {
-      //         type: 'date',
-      //         label: 'Fecha de Nacimiento',
-      //         className: 'form-control'
-      //       }
-      //     ]
-      // },
-      // {
-      //   label: 'Multiple Textbooks',
-      //   name: 'multiple-textbook',
-      //   type: 'form',
-      //   icon: '<i class="fa fa-book"></i>',
-      //   showHeader: true, 
-      //   fields: [
-      //       {
-      //         type: 'text',
-      //         label: 'Aqui va tu pregunta',
-      //         placeholder: 'Aqui va tu respuesta',
-      //         className: 'form-control'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Aqui va tu pregunta',
-      //         placeholder: 'Aqui va tu respuesta',
-      //         className: 'form-control'
-      //       },
-      //       {
-      //         type: 'text',
-      //         label: 'Aqui va tu pregunta',
-      //         placeholder: 'Aqui va tu respuesta',
-      //         className: 'form-control'
-      //       }
-      //   ]
-      // },
-      // {
-      //   label: 'Matrix',
-      //   name: 'matrix', // optional - one will be generated from the label if name not supplied
-      //   showHeader: true, // optional - Use the label as the header for this set of inputs
-      //   className: 'form-control',
-      //   icon: '<i class="fa fa-th"></i>',
-      //   fields: [
-      //       {
-      //         label: 'Nombre de Renglón',
-      //         className: 'form-control renglon',
-      //         type: 'header'
-      //       },
-      //       {
-      //         label: 'Nombre de Renglón',
-      //         className: 'form-control renglon',
-      //         type: 'header'
-      //       },
-      //       {
-      //         label: 'Nombre de la Columna',
-      //         className: 'form-control columna',
-      //         type: 'header'
-      //       },
-      //       {
-      //         label: 'Nombre de la Columna',
-      //         className: 'form-control columna',
-      //         type: 'header'
-      //       },
-      //     ]
-      // },
-      // {
-      //   label: 'Ranking',
-      //   name: 'ranking', // optional - one will be generated from the label if name not supplied
-      //   showHeader: true, // optional - Use the label as the header for this set of inputs
-      //   icon: '<i class="fa fa-bars"></i>',
-      //   fields: [
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //           ]
-      //       },
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //         ]
-      //       },
-      //     ]
-      // },
-      // {
-      //   label: 'Matrix Ranking Scale',
-      //   name: 'matrix-ranking', // optional - one will be generated from the label if name not supplied
-      //   showHeader: true, // optional - Use the label as the header for this set of inputs
-      //   icon: '<i class="fa fa-th"></i>',
-      //   fields: [
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         type: 'select',
-      //         label: 'Aqui va tu respuesta',
-      //         className: 'form-control',
-      //         values: [
-      //           {
-      //             label: '1',
-      //             value: '1',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '2',
-      //             value: '2',
-      //             selected: false
-      //           },
-      //           {
-      //             label: '3',
-      //             value: '3',
-      //             selected: false
-      //           }
-      //         ]
-      //       },
-      //     ]
-      // },
       ]
     };
 
     //$('.build-wrap').formBuilder();
-    function closeComponentContactInfo(indentifierClose) {
-<<<<<<< HEAD
-      console.log('Test');
-=======
-        
->>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
-   }
 
     var formBuilder = $(fbEditor).formBuilder(options);
 
@@ -839,16 +559,7 @@ slider: function(fieldData) {
          delete formInfo[key];
        }
     });
-
-<<<<<<< HEAD
-    console.log(matrixInfo);
-=======
-     
-    if(!isEmpty(matrixInfo)) {
-        formInfo.push({matrix:matrixInfo});
-    }
       
->>>>>>> 46d4efcd6909ed17bb39c79e2b88dde68a2fbd4d
 
     if(matrixInfo.length>0){
       formInfo.push({matrix:matrixInfo});
@@ -877,6 +588,7 @@ slider: function(fieldData) {
       formData.append('content',formInfo);
       formData.append('template_id',templateid.value);
       formData.append('_token',token.value);
+      // formData.append('saveImage',$('input:file')[0].files);
       var i = 0;
       while( $('input:file')[i] != undefined ){
         formData.append('saveImage',$('input:file')[i].files);
@@ -901,6 +613,7 @@ slider: function(fieldData) {
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
+        console.log(response);
         console.log("Hooray, it worked!");
         swal({
           position: 'center',
