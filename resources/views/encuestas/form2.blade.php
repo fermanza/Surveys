@@ -25,8 +25,8 @@
                         <div class="display-table-cell vertical-align-middle breadcrumb text-small">
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
-                                <li><a href="index.php" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="crear-encuesta.php" class="text-dark-gray">Creación de encuesta</a></li>
+                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Creación de encuesta</a></li>
                                 <li class="text-dark-gray">{{$template->name}}</li>
                             </ul>
                             <!-- end breadcrumb -->

@@ -64346,7 +64346,11 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-3" }),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6", attrs: { align: "center" } }, [
-        _c("a", { staticClass: "btn" }, [_vm._v("Cancelar")]),
+        _c(
+          "a",
+          { staticClass: "btn btn-default", attrs: { href: "/encuestas" } },
+          [_vm._v("Cancelar")]
+        ),
         _vm._v(" "),
         _c("button", { staticClass: "btn" }, [_vm._v(" Guardar ")])
       ])
