@@ -54,6 +54,7 @@
         <div>
             <form action="/encuestas/save2" method="POST">
                 <input type="hidden" name="questions" :value="questionsJson" />
+                <input type="hidden" name="template" :value="template_id" />
                 <button class="btn">Crear</button>
             </form>
         </div>
@@ -68,11 +69,15 @@
         props: {
             initialElements: {
                 default: () => []
+            },
+            template: {
+                default: () => ""
             }
         },
 
         data() {
             return {
+                template_id: this.template,
                 surveyElements: this.initialElements,
                 rootElements: [
                     {

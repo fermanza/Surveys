@@ -125,7 +125,9 @@ class EncuestasController extends Controller
         $discount->save();
         }
 
-        return redirect()->route('encuestas.create', ['id' => $template->id]);
+        return redirect('encuestas/create2/'.$template->id);
+
+         //return redirect()->route('encuestas/create2', ['id' => $template->id]);
     }
 
     /**
@@ -261,6 +263,29 @@ class EncuestasController extends Controller
         } 
 
     }
+
+    public function saveQuestion2(Request $request)
+    {   
+            $user = Auth::user();
+            $template = Template::find($request->template);
+            $question = Questions::where('template_id','=',$request->template)->first();
+            if(!$question) {
+                $question = new Questions;
+            }    
+            $question->position = 0;
+            $question->content = json_decode($request->questions);
+            $question->template_id = $request->template;
+            $question->save();
+
+            return redirect()->route('mis_encuestas.index');
+    }
+
+
+
+
+
+
+
 
      /**
      * Show the form for editing the specified resource.

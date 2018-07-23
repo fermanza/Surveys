@@ -106,7 +106,12 @@ Route::group(['middleware' => ['Authuser']], function () {
 	
  
     Route::resource('/mis_encuestas', 'MisEncuestasController');
-    Route::get('/encuestas/create2', 'EncuestasController@create2');
+    Route::get('/encuestas/create2/{id}', 'EncuestasController@create2');
+
+    Route::post('/encuestas/save2', 'EncuestasController@saveQuestion2');
+
+
+
     Route::resource('/encuestas', 'EncuestasController');
 
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
@@ -125,6 +130,9 @@ Route::group(['middleware' => ['Authuser']], function () {
 
     //encuesta guardar
     Route::post('saveQuestion','EncuestasController@saveQuestion');
+
+    Route::post('saveQuestion2', 'EncuestasController@saveQuestion2');
+
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
     

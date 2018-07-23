@@ -22,7 +22,7 @@ class MisEncuestasController extends Controller
 
         //$templates = Template::where('type','=', 0)->get();
         $id = Auth::id();
-        $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->latest()->get();
+        $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
 
         //$templates = DB::table('template')->where('type','=', 1)->get();
         //dd($templates);
