@@ -402,22 +402,22 @@ class EncuestasController extends Controller
             foreach (json_decode($user->answer, true) as $answer) {
 
                 $questionB = $questions->first(function ($questionB) use ($answer) {
-
-                      if(strstr($questionB->name, 'star')) {
-                         $questionB->name  = str_replace('starRating-', "", $questionB->name );    
+                    // dd($questionB);
+                      if(strstr($questionB->title, 'star')) {
+                         $questionB->title  = str_replace('starRating-', "", $questionB->title );    
                       }
-                     if(strstr($questionB->name, 'slider')) {
-                         $questionB->name  = str_replace('slider-', "", $questionB->name );         
+                     if(strstr($questionB->title, 'slider')) {
+                         $questionB->title  = str_replace('slider-', "", $questionB->title );         
                       }  
-                      if(strstr($answer['name'], 'slider')) {
-                            $answer['name'] = str_replace('sliderslider-', "",  $answer['name']);
+                      if(strstr($answer['title'], 'slider')) {
+                            $answer['title'] = str_replace('sliderslider-', "",  $answer['title']);
                        }
 
-                      if(strstr( $answer['name'], 'star')) {
-                         $answer['name'] = str_replace('starstarRating-', "",  $answer['name']);
-                      }      
+                      if(strstr( $answer['title'], 'star')) {
+                         $answer['title'] = str_replace('starstarRating-', "",  $answer['title']);
+                      }
   
-                    return $questionB->name === $answer['name'];
+                    return $questionB->title === $answer['title'];
                 });
 
                 $questionsB->push([
@@ -431,6 +431,7 @@ class EncuestasController extends Controller
                 'questions' => $questionsB,
             ]);
         }
+        // dd($questions);
         return view('mis_encuestas.respuestas',compact('template','answers','questions', 'answersGrouped'));
     }
 
