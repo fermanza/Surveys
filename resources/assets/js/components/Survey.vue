@@ -8,22 +8,26 @@
             <component :is="parseComponent(element)" :survey-element="element" :display="true"></component>
         </div>
         <div>
-            <form action="/encuestas/contestar" method="POST">
-                <input type="hidden" name="questions" :value="questionsJson" />
+            <form :action="$Config.base_url+'/saveAnswer'" method="POST">
+                <input type="hidden" name="answer" :value="questionsJson" />
+                <input type="hidden" name="template" :value="template_id" />
+                <br /><br />
                 <button class="btn">Contestar</button>
             </form>
+            <br />
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['elements'],
+        props: ['elements', 'template'],
 
         data() {
             return {
                 surveyElements: this.elements,
-                questionsJson: '[]'
+                questionsJson: '[]',
+                template_id: this.template,
             }
         },
 

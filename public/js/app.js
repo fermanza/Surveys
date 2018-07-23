@@ -54347,14 +54347,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['elements'],
+    props: ['elements', 'template'],
 
     data: function data() {
         return {
             surveyElements: this.elements,
-            questionsJson: '[]'
+            questionsJson: '[]',
+            template_id: this.template
         };
     },
 
@@ -54403,16 +54407,31 @@ var render = function() {
       _c("div", [
         _c(
           "form",
-          { attrs: { action: "/encuestas/contestar", method: "POST" } },
+          {
+            attrs: {
+              action: _vm.$Config.base_url + "/saveAnswer",
+              method: "POST"
+            }
+          },
           [
             _c("input", {
-              attrs: { type: "hidden", name: "questions" },
+              attrs: { type: "hidden", name: "answer" },
               domProps: { value: _vm.questionsJson }
             }),
             _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "template" },
+              domProps: { value: _vm.template_id }
+            }),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
             _c("button", { staticClass: "btn" }, [_vm._v("Contestar")])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _c("br")
       ])
     ],
     2

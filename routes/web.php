@@ -10,8 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 // Web Pages Survenia http://66.198.240.13/~survenia/
 
 
@@ -46,12 +44,10 @@ Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
 Route::get('/responder/{token}','EncuestasController@responderEncuesta');
 
 Route::resource('/mis_encuestas', 'MisEncuestasController');
+Route::get('/mis_encuestas', 'MisEncuestasController@index');
 
 //Route::get('/mi_cuenta','SurveniaWebPagesController@miCuenta');
-
-
 Route::resource('/my_account','MyAccountController');
-
 Route::post('/saveAnswer', 'EncuestasController@saveAnswer');
 
 
@@ -84,41 +80,16 @@ Route::resource('/encuestas_publicas' , 'EncuestasPublicasController');
 
 
 Route::get('/articulosCompartir/{id}', 'ArticulosController@bitly');
-
- Route::resource('/articulos', 'ArticulosController');
-
-
- 
-
-
-
+Route::resource('/articulos', 'ArticulosController');
 Route::post('/copyTemplate', 'EncuestasController@copyTemplate');
 
 
-
-
-
-
 Route::group(['middleware' => ['Authuser']], function () {
-    
-
-
-	
- 
-    Route::resource('/mis_encuestas', 'MisEncuestasController');
     Route::get('/encuestas/create2/{id}', 'EncuestasController@create2');
-
     Route::post('/encuestas/save2', 'EncuestasController@saveQuestion2');
-
-
-
     Route::resource('/encuestas', 'EncuestasController');
-
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
-
     Route::get('/mis_encuestas/approval/{id_template}/{status}', 'EncuestasController@approval');
-
-
     Route::resource('/my_account','MyAccountController');
 
     //paypal
@@ -130,33 +101,17 @@ Route::group(['middleware' => ['Authuser']], function () {
 
     //encuesta guardar
     Route::post('saveQuestion','EncuestasController@saveQuestion');
-
     Route::post('saveQuestion2', 'EncuestasController@saveQuestion2');
-
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-    
-   
-
     // display single post   
     //Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
-
-  
-
-
-Route::get('/encuestas/{id}', 'EncuestasController@create');
-Route::get('/encuestas/show', 'EncuestasController@show');
-Route::get('/get-options/{type}', 'EncuestasController@getOptions');
-Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
-Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
-
-
-Route::get('/reporte_avanzado/{idEncuesta}', 'EncuestasPublicasController@showAdvancedReport');
-
-Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestions');
-
-
-
+    Route::get('/encuestas/{id}', 'EncuestasController@create');
+    Route::get('/encuestas/show', 'EncuestasController@show');
+    Route::get('/get-options/{type}', 'EncuestasController@getOptions');
+    Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
+    Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
+    Route::get('/reporte_avanzado/{idEncuesta}', 'EncuestasPublicasController@showAdvancedReport');
+    Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestions');
 });
 
 

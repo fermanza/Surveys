@@ -11,9 +11,6 @@
     z-index:9999;
 }
 </style>
-
-
-
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
             <div class="container">
@@ -46,6 +43,12 @@
         </section>
         <!-- end page title section -->
         @include('flash::message')
+        @php
+            echo Session::get('message');
+            if( Session::has('message') ){
+                echo "<p class='alert {{ ".Session::get('alert-class', 'alert-info')."'>".Session::get('message')."</p>";
+            }
+        @endphp
         <section class="tabla">
             <div class="container">
                 <div class="col-md-12">
