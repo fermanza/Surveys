@@ -4,11 +4,15 @@
 @include('includes.header')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="app">
-                <app-survey-builder></app-survey-builder>
-            </div>
-        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="app">
+        <app-survey-builder></app-survey-builder>
     </div>
 @endsection
