@@ -68,15 +68,14 @@
         },
 
         watch: {
-            'element.config.list':{
+            'element.config.list': {
                 handler: function (list, oldList) {
                     let answer = {};
                     list.forEach(field => {
                         answer[field.uid] = field.answer;
                     });
                     this.element.answer = answer;
-                },
-                deep: true
+                }
             } 
         }
     }

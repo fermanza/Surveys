@@ -35,6 +35,7 @@
         "skycons": "^1.0.0",
         "unique-string": "^1.0.0",
         "vue": "^2.5.16",
+        "vue-star-rating": "^1.6.0",
         "vue-template-compiler": "^2.5.16",
         "vuedraggable": "^2.16.0"
     },
