@@ -1,29 +1,42 @@
 <style scoped>
     .survey-builder {
         display: flex;
-        border: 1px solid black; /* Mejorar estilos */
+        background: #fafafa;
+        padding: 20px;
     }
 
     .root-controls {
-        flex-basis: 400px;
-        border: 1px solid lightblue; /* Mejorar estilos */
+        flex-basis: 250px;
     }
 
     .survey-questions {
         flex: 1;
-        border: 1px solid pink; /* Mejorar estilos */
     }
 
     .survey-questions-container {
-        min-height: 100px;
+        min-height: 600px;
+        background: #fff;
+        padding: 20px;
     }
 
+    @media screen and (max-width: 768px) {
+        .root-controls {
+            flex-basis: 50px;
+        }
+
+        .survey-question-type-title {
+            display: none;
+        }
+    }
 </style>
 
 <template>
     <div>
         <div class="survey-builder">
             <div class="root-controls">
+                <div class="survey-question-type-title">
+                    Tipo de Pregunta
+                </div>
                 <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
                     <div v-for="rootElement in rootElements">
                         <app-root-element :root-element="rootElement"></app-root-element>
@@ -52,8 +65,15 @@
     import Bus from './../Bus';
 
     export default {
+        props: {
+            initialElements: {
+                default: () => []
+            }
+        },
+
         data() {
             return {
+                surveyElements: this.initialElements,
                 rootElements: [
                     {
                         uid: '',
@@ -334,8 +354,7 @@
                         },
                         answer: null
                     }
-                ],
-                surveyElements: [],
+                ]
             }
         },
 
