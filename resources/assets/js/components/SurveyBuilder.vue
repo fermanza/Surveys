@@ -34,8 +34,8 @@
     <div>
         <div class="survey-builder">
             <div class="root-controls">
-                <div class="survey-question-type-title">
-                    Tipo de Pregunta
+                <div class="survey-question-type-title btn">
+                    Tipo de Pregunta<i class="fa fa-question-circle"></i>
                 </div>
                 <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
                     <div v-for="rootElement in rootElements">
@@ -55,7 +55,13 @@
             <form action="/encuestas/save2" method="POST">
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
-                <button class="btn">Crear</button>
+                <div class="row">
+                    <div class="col-md-3" ></div>
+                    <div class="col-md-6" align="center">
+                    <a class="btn">Cancelar</a>
+                    <button class="btn">&nbsp;Guardar&nbsp;</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
