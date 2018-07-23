@@ -24517,10 +24517,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuedraggable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_star_rating__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_star_rating___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_star_rating__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__(259);
 
 
 
 
+//import VueResource from 'vue-resource';
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.root = __WEBPACK_IMPORTED_MODULE_4__config__["a" /* apiHost */];
 
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window._ = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a;
@@ -69093,6 +69097,20 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-9f7488f6", module.exports)
   }
 }
+
+/***/ }),
+/* 259 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return apiHost; });
+var baseUrl = '';
+if (false) {
+   baseUrl = 'http://66.198.240.13/~survenia/app/public/';
+} else {
+   baseUrl = 'http://localhost:8000/';
+}
+var apiHost = baseUrl;
 
 /***/ })
 /******/ ]);
