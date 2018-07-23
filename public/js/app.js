@@ -54620,28 +54620,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             rootElements: [{
                 uid: '',
                 type: 'text',
-                title: 'Texto',
+                title: 'Single Text Box',
                 className: 'fa-font',
+                config: {
+                    title: 'Single Text Box'
+                },
+                answer: ''
+            }, {
+                uid: '',
+                type: 'header',
+                title: 'Texto',
+                className: 'fa-heading',
                 config: {
                     title: 'Texto'
                 },
                 answer: ''
             }, {
                 uid: '',
-                type: 'header',
-                title: 'Parrafo',
-                className: 'fa-heading',
-                config: {
-                    title: 'Parrafo'
-                },
-                answer: ''
-            }, {
-                uid: '',
                 type: 'textarea',
-                title: 'Comentarios',
+                title: 'Comment Box',
                 className: 'fa-comments',
                 config: {
-                    title: 'Comentarios'
+                    title: 'Comment Box'
                 },
                 answer: ''
             }, {
@@ -54651,16 +54651,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 className: 'fa-caret-square-down',
                 config: {
                     title: 'Dropdown',
-                    list: ['Opción 1', 'Opción 2']
+                    list: ['Option 1', 'Option 2']
                 },
                 answer: null
             }, {
                 uid: '',
                 type: 'multiple-text',
-                title: 'Texto Múltiple',
+                title: 'Multiple Textbooks',
                 className: 'fa-align-left',
                 config: {
-                    title: 'Texto Múltiple',
+                    title: 'Multiple Textbooks',
                     list: [{
                         uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
                         title: 'Texto 1',
@@ -54675,11 +54675,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 uid: '',
                 type: 'multiple-check',
-                title: 'Múltiple Check',
+                title: 'Multiple Choice',
                 className: 'fa-check-square',
                 config: {
-                    title: 'Múltiple Check',
-                    list: ['Opción 1', 'Opción 2'],
+                    title: 'Multiple Choice',
+                    list: ['Option 1', 'Option 2'],
                     multiple: false
                 },
                 answer: []
@@ -54698,10 +54698,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 uid: '',
                 type: 'image',
-                title: 'Imagen',
+                title: 'Image',
                 className: 'fa-image',
                 config: {
-                    title: 'Imagen'
+                    title: 'Image'
                 },
                 answer: ''
             }, {
@@ -66095,6 +66095,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -66181,6 +66183,32 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
             _vm._l(_vm.element.config.list, function(field, index) {
               return _c("div", { staticClass: "field-container" }, [
                 _c("div", { staticClass: "field-input" }, [
@@ -66241,64 +66269,18 @@ var render = function() {
     _vm.display
       ? _c(
           "div",
-          _vm._l(_vm.element.config.list, function(field, index) {
-            return _c("div", [
-              _c(
-                "div",
-                { class: _vm.element.config.multiple ? "checkbox" : "radio" },
-                [
-                  _c("label", [
-                    (_vm.element.config.multiple ? "checkbox" : "radio") ===
-                    "checkbox"
-                      ? _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.element.answer,
-                              expression: "element.answer"
-                            }
-                          ],
-                          attrs: { name: _vm.element.uid, type: "checkbox" },
-                          domProps: {
-                            value: field,
-                            checked: Array.isArray(_vm.element.answer)
-                              ? _vm._i(_vm.element.answer, field) > -1
-                              : _vm.element.answer
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.element.answer,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = field,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.element,
-                                      "answer",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.element,
-                                      "answer",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(_vm.element, "answer", $$c)
-                              }
-                            }
-                          }
-                        })
-                      : (_vm.element.config.multiple ? "checkbox" : "radio") ===
-                        "radio"
+          [
+            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+            _vm._v(" "),
+            _vm._l(_vm.element.config.list, function(field, index) {
+              return _c("div", [
+                _c(
+                  "div",
+                  { class: _vm.element.config.multiple ? "checkbox" : "radio" },
+                  [
+                    _c("label", [
+                      (_vm.element.config.multiple ? "checkbox" : "radio") ===
+                      "checkbox"
                         ? _c("input", {
                             directives: [
                               {
@@ -66308,59 +66290,111 @@ var render = function() {
                                 expression: "element.answer"
                               }
                             ],
-                            attrs: { name: _vm.element.uid, type: "radio" },
+                            attrs: { name: _vm.element.uid, type: "checkbox" },
                             domProps: {
                               value: field,
-                              checked: _vm._q(_vm.element.answer, field)
+                              checked: Array.isArray(_vm.element.answer)
+                                ? _vm._i(_vm.element.answer, field) > -1
+                                : _vm.element.answer
                             },
                             on: {
                               change: function($event) {
-                                _vm.$set(_vm.element, "answer", field)
+                                var $$a = _vm.element.answer,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = field,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.element,
+                                        "answer",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.element,
+                                        "answer",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.element, "answer", $$c)
+                                }
                               }
                             }
                           })
-                        : _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.element.answer,
-                                expression: "element.answer"
-                              }
-                            ],
-                            attrs: {
-                              name: _vm.element.uid,
-                              type: _vm.element.config.multiple
-                                ? "checkbox"
-                                : "radio"
-                            },
-                            domProps: {
-                              value: field,
-                              value: _vm.element.answer
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                        : (_vm.element.config.multiple
+                            ? "checkbox"
+                            : "radio") === "radio"
+                          ? _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.element.answer,
+                                  expression: "element.answer"
                                 }
-                                _vm.$set(
-                                  _vm.element,
-                                  "answer",
-                                  $event.target.value
-                                )
+                              ],
+                              attrs: { name: _vm.element.uid, type: "radio" },
+                              domProps: {
+                                value: field,
+                                checked: _vm._q(_vm.element.answer, field)
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.$set(_vm.element, "answer", field)
+                                }
                               }
-                            }
-                          }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(field) +
-                        "\n                "
-                    )
-                  ])
-                ]
-              )
-            ])
-          })
+                            })
+                          : _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.element.answer,
+                                  expression: "element.answer"
+                                }
+                              ],
+                              attrs: {
+                                name: _vm.element.uid,
+                                type: _vm.element.config.multiple
+                                  ? "checkbox"
+                                  : "radio"
+                              },
+                              domProps: {
+                                value: field,
+                                value: _vm.element.answer
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.element,
+                                    "answer",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(field) +
+                          "\n                "
+                      )
+                    ])
+                  ]
+                )
+              ])
+            })
+          ],
+          2
         )
       : _vm._e()
   ])
@@ -66929,7 +66963,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n", ""]);
+exports.push([module.i, "\n.field-container[data-v-56790fad] {\n    display: flex;\n}\n.field-input[data-v-56790fad] {\n    flex: 1;\n}\n.field-action[data-v-56790fad] {\n    flex-basis: 25px;\n}\n.field-action[data-v-56790fad] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -66942,6 +66976,20 @@ exports.push([module.i, "\n\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -67036,6 +67084,7 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c("label", { staticClass: "checkbox-inline" }, [
+                _vm._v("\n                Incluir "),
                 _c("input", {
                   directives: [
                     {
@@ -67082,11 +67131,11 @@ var render = function() {
                       }
                     }
                   }
-                }),
-                _vm._v(" Incluir\n            ")
+                })
               ]),
               _vm._v(" "),
               _c("label", { staticClass: "checkbox-inline" }, [
+                _vm._v("\n                Requerido "),
                 _c("input", {
                   directives: [
                     {
@@ -67137,8 +67186,7 @@ var render = function() {
                       }
                     }
                   }
-                }),
-                _vm._v(" Requerido\n            ")
+                })
               ]),
               _vm._v(" "),
               _c("input", {

@@ -1,5 +1,19 @@
 <style scoped>
-    
+    .field-container {
+        display: flex;
+    }
+
+    .field-input {
+        flex: 1;
+    }
+
+    .field-action {
+        flex-basis: 25px;
+    }
+
+    .field-action {
+        cursor: pointer;
+    }
 </style>
 
 <template>
@@ -9,10 +23,10 @@
                 <label>Etiqueta</label>
                 <br />
                 <label class="checkbox-inline">
-                    <input type="checkbox" v-model="element.config.list[index].include" /> Incluir
+                    Incluir&nbsp;<input type="checkbox" v-model="element.config.list[index].include" />
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" v-model="element.config.list[index].required" /> Requerido
+                    Requerido&nbsp;<input type="checkbox" v-model="element.config.list[index].required" />
                 </label>
                 <input type="text" v-model="element.config.list[index].title" class="form-control" />
             </div>

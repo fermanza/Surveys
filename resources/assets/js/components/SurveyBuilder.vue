@@ -89,8 +89,18 @@
                     {
                         uid: '',
                         type: 'text',
-                        title: 'Texto',
+                        title: 'Single Text Box',
                         className: 'fa-font',
+                        config: {
+                            title: 'Single Text Box'
+                        },
+                        answer: ''
+                    },
+                    {
+                        uid: '',
+                        type: 'header',
+                        title: 'Texto',
+                        className: 'fa-heading',
                         config: {
                             title: 'Texto'
                         },
@@ -98,21 +108,11 @@
                     },
                     {
                         uid: '',
-                        type: 'header',
-                        title: 'Parrafo',
-                        className: 'fa-heading',
-                        config: {
-                            title: 'Parrafo'
-                        },
-                        answer: ''
-                    },
-                    {
-                        uid: '',
                         type: 'textarea',
-                        title: 'Comentarios',
+                        title: 'Comment Box',
                         className: 'fa-comments',
                         config: {
-                            title: 'Comentarios'
+                            title: 'Comment Box'
                         },
                         answer: ''
                     },
@@ -123,17 +123,17 @@
                         className: 'fa-caret-square-down',
                         config: {
                             title: 'Dropdown',
-                            list: ['Opción 1', 'Opción 2']
+                            list: ['Option 1', 'Option 2']
                         },
                         answer: null
                     },
                     {
                         uid: '',
                         type: 'multiple-text',
-                        title: 'Texto Múltiple',
+                        title: 'Multiple Textbooks',
                         className: 'fa-align-left',
                         config: {
-                            title: 'Texto Múltiple',
+                            title: 'Multiple Textbooks',
                             list: [
                                 {
                                     uid: uniqueString(),
@@ -152,11 +152,11 @@
                     {
                         uid: '',
                         type: 'multiple-check',
-                        title: 'Múltiple Check',
+                        title: 'Multiple Choice',
                         className: 'fa-check-square',
                         config: {
-                            title: 'Múltiple Check',
-                            list: ['Opción 1', 'Opción 2'],
+                            title: 'Multiple Choice',
+                            list: ['Option 1', 'Option 2'],
                             multiple: false
                         },
                         answer: []
@@ -177,10 +177,10 @@
                       {
                         uid: '',
                         type: 'image',
-                        title: 'Imagen',
+                        title: 'Image',
                         className: 'fa-image',
                         config: {
-                            title: 'Imagen'
+                            title: 'Image'
                         },
                         answer: ''
                     },

@@ -25,6 +25,7 @@
                     Permitir múltiple
                 </label>
             </div>
+            <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div class="field-container" v-for="(field, index) in element.config.list">
                 <div class="field-input">
                     <label>Etiqueta</label>
@@ -39,6 +40,7 @@
             </div>
         </div>
         <div v-if="display">
+            <label>{{ surveyElement.config.title }}</label>
             <div v-for="(field, index) in element.config.list">
                 <div :class="element.config.multiple ? 'checkbox' : 'radio'">
                     <label>
