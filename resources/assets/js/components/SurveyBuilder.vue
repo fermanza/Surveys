@@ -52,7 +52,8 @@
             </div>
         </div>
         <div>
-            <form action= Vue.http.get("encuestas/save2", {}) method="POST">
+            <!-- <form action=axios.get('/encuestas/save2') method="POST"> -->
+                <form :action="$Config.base_url+'/encuestas/save2'" method="POST">
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
                 <div class="row">

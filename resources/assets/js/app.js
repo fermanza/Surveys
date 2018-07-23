@@ -2,9 +2,7 @@ import Vue from 'vue';
 import _ from 'lodash';
 import draggable from 'vuedraggable';
 import StarRating from 'vue-star-rating';
-//import VueResource from 'vue-resource';
-import  {apiHost}  from './config';
-Vue.http.options.root = apiHost
+Vue.prototype.$Config = window.Config;
 
 window.Vue = Vue;
 window._ = _;

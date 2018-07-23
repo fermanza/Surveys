@@ -147,6 +147,7 @@
         </footer>
         <!-- end footer -->
         <!-- javascript libraries -->
+        <script>window.Config = { base_url : "{{ URL('') }}" };</script>
         <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/jquery.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/modernizr.js') }}"></script>
