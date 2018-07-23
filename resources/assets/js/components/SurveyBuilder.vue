@@ -52,7 +52,7 @@
             </div>
         </div>
         <div>
-            <form action="app/public/encuestas/save2" method="POST">
+            <form action= Vue.http.get("encuestas/save2", {}) method="POST">
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
                 <div class="row">

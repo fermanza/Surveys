@@ -64316,23 +64316,18 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", [
-      _c(
-        "form",
-        { attrs: { action: "app/public/encuestas/save2", method: "POST" } },
-        [
-          _c("input", {
-            attrs: { type: "hidden", name: "questions" },
-            domProps: { value: _vm.questionsJson }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "hidden", name: "template" },
-            domProps: { value: _vm.template_id }
-          }),
-          _vm._v(" "),
-          _vm._m(1)
-        ]
-      )
+      _vm._v('"encuestas/save2", {}) method="POST">\n            '),
+      _c("input", {
+        attrs: { type: "hidden", name: "questions" },
+        domProps: { value: _vm.questionsJson }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "template" },
+        domProps: { value: _vm.template_id }
+      }),
+      _vm._v(" "),
+      _vm._m(1)
     ])
   ])
 }
