@@ -19,10 +19,16 @@
 <template>
     <div>
         <div v-if="!display">
-            <div class="field-container" v-for="(field, index) in surveyElement.config.list">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" v-model="element.config.multiple" />
+                    Permitir múltiple
+                </label>
+            </div>
+            <div class="field-container" v-for="(field, index) in element.config.list">
                 <div class="field-input">
                     <label>Etiqueta</label>
-                    <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
+                    <input type="text" v-model="element.config.list[index]" class="form-control" />
                 </div>
                 <div class="field-action">
                     <i @click="removeField(index)" class="fa fa-times text-danger"></i>
@@ -33,10 +39,10 @@
             </div>
         </div>
         <div v-if="display">
-            <div v-for="(field, index) in surveyElement.config.list">
-                <div class="checkbox">
+            <div v-for="(field, index) in element.config.list">
+                <div :class="element.config.multiple ? 'checkbox' : 'radio'">
                     <label>
-                        <input type="checkbox" :name="surveyElement.uid" :value="field" v-model="surveyElement.answer" />
+                        <input :type="element.config.multiple ? 'checkbox' : 'radio'" :name="element.uid" :value="field" v-model="element.answer" />
                         {{ field }}
                     </label>
                 </div>

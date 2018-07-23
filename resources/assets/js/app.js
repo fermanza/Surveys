@@ -23,11 +23,9 @@ Vue.component('app-survey-element-slider', require('./components/SurveyElementSl
 Vue.component('app-survey-element-image', require('./components/SurveyElementImage.vue'));
 Vue.component('app-survey-element-contact-information', require('./components/SurveyElementContactInformation.vue'));
 Vue.component('app-survey-element-star-rating', require('./components/SurveyElementStarRating.vue'));
-
-
-// matrix
-// matrix scaled
-
+Vue.component('app-survey-element-ranking', require('./components/SurveyElementRanking.vue'));
+Vue.component('app-survey-element-matrix', require('./components/SurveyElementMatrix.vue'));
+Vue.component('app-survey-element-matrix-scale', require('./components/SurveyElementMatrixScale.vue'));
 
 const app = new Vue({
     el: '#app'
