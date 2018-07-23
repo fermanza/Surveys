@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">
-                    <a href="/encuestas" class="btn btn-default">Cancelar</a>
+                    <a href="/mis_encuestas" class="btn btn-default">Cancelar</a>
                     <button class="btn">&nbsp;Guardar&nbsp;</button>
                     </div>
                 </div>

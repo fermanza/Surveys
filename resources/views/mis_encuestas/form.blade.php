@@ -59,10 +59,12 @@
         </div>
     </div>
     <div id="app">
-
-    {{--<input style="display:none;" type="text" name="template" value={{$template->id}}>--}}
-
-    <app-survey-builder :template={{$template->id}} :initial-elements='{{ json_encode($question->content) }}' >
-    </app-survey-builder>
+      @if($question == null)
+        <app-survey-builder :template={{$template->id}} >
+        </app-survey-builder>
+      @else
+        <app-survey-builder :template={{$template->id}} :initial-elements='{{ json_encode($question->content) }}' >
+        </app-survey-builder>
+      @endif
     </div>
 @endsection
