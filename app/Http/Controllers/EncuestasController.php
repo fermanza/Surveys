@@ -382,6 +382,7 @@ class EncuestasController extends Controller
             foreach(json_decode($answers[$k]->answer) as $ans){
                 $question = new \stdClass();
                 $question->type = $ans->type;
+
                 if( in_array($ans->type, $multiple) ){
                     foreach($ans->config->list as $answerList){
                         $question->uid[] = $answerList->uid;
@@ -393,11 +394,16 @@ class EncuestasController extends Controller
                     $question->title[] = $ans->config->title;
                     $question->multiple = $ans->config->multiple;
                     // If Multiple is False is Radio otherwise is Checkbox
+                    $ii = 0;
                     foreach($ans->answer as $ansList){
                         $text = "";
+                        $local_count = 0;
                         if($question->multiple){
                             foreach($ans->config->rows as $answerList){
-                                $text = $answerList->text;
+                                if($ii == $local_count){
+                                    $text = $answerList->text;
+                                }
+                                $local_count++;
                             }
                             foreach($ans->config->cols as $answerList){
                                 $text .= " ".$answerList->text;
@@ -405,7 +411,10 @@ class EncuestasController extends Controller
                         }
                         else{
                             foreach($ans->config->rows as $answerList){
-                                $text = $answerList->text;
+                                if($ii == $local_count){
+                                    $text = $answerList->text;
+                                }
+                                $local_count++;
                             }
                             foreach($ans->config->cols as $answerList){
                                 if($ansList == $answerList->uid){
@@ -415,28 +424,29 @@ class EncuestasController extends Controller
                             }
                         }
                         $question->answer[] = $text;
+                        $ii++;
                     }
                 }
                 else if(in_array($ans->type, $matrix_scale)){
                     $question->title[] = $ans->config->title;
-                    // If Multiple is False is Radio otherwise is Checkbox
-                    // dd(json_decode($ans->answer));
-                    foreach($ans->answer as $ansList){
-                        foreach($ansList as $ansListFinal){
-                            $text = "";
-                            // dd($ansListFinal);
+                    $text = "";
+                    unset($answerList);
+                    foreach($ans->answer as $keyRow => $ansList){
+                        foreach($ansList as $keyCol => $ansListFinal){
                             foreach($ans->config->rows as $answerList){
-                                $text = $answerList->text;
+                                if($keyRow == $answerList->uid) {
+                                    $text = $answerList->text;
+                                }
                             }
                             foreach($ans->config->cols as $answerList){
-                                // dd(key($ansList));
-                                // dd($answerList);
-                                if(key($ansList) == $answerList->uid){
+                                if($keyCol == $answerList->uid) {
                                     $text .= " ".$answerList->text;
                                 }
                             }
                             $text .= " Option: ".$ansListFinal;
                             $question->answer[] = $text;
+                            $local_count++;
+                            $ii++;
                         }
                     }
                 }
