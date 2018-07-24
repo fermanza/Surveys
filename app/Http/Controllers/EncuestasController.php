@@ -371,6 +371,8 @@ class EncuestasController extends Controller
         $template = Template::find($id);
         $questions = DB::table('questions')->where('template_id','=',$id)->first();
         $printQuestions = [];
+        $multiple = array('contact-information', 'multiple-text');
+        // single-text-box
 
         $answers = DB::table('answer')->where('id_template','=',$id)->get();
         for($k = 0; $k < count($answers); $k++){
@@ -380,35 +382,50 @@ class EncuestasController extends Controller
                 // $question->title = $content->title;
                 // $question->uid = $content->uid;
                 // echo $question->uid;die;
-                $i = 0;
                 // dd($content->config->list);
                 // $content->config->list // Options for this Multi Text
 
-                // multiple-text
-                foreach($content->config->list as $list){
-                    $content->list[$i] = $content->config->list;
-                    $question->uid[] = $list->uid;
+                if( in_array($content->type, $multiple) ){
+                    $i = 0;
+                    foreach($content->config->list as $list){
+                        $content->list[$i] = $content->config->list;
+                        $question->uid[] = $list->uid;
 
-                    // $answer = DB::table('answer')->where('id_template','=',$id)->get();
-                    foreach(json_decode($answers[$k]->answer) as $ans){
-                        foreach($ans->config->list as $answerList){
-                            // echo $question->uid." ".$answerList->uid."<br />";
-                            if($question->uid[$i] == $answerList->uid){
-                                $question->title[] = $list->title;
-                                $question->answer[] = $answerList->answer;
-                                if($answers[$k]->user_id == null){
-                                    $question->user_name = 'Anónimo';
-                                    $question->answer_id = $answers[$k]->id;
-                                }
-                                else{
-                                    $user = User::find($answers[$k]->user_id);
-                                    $question->user_name = $user->name;
+                        // $answer = DB::table('answer')->where('id_template','=',$id)->get();
+                        foreach(json_decode($answers[$k]->answer) as $ans){
+                            foreach($ans->config->list as $answerList){
+                                if($question->uid[$i] == $answerList->uid){
+                                    $question->title[] = $list->title;
+                                    $question->answer[] = $answerList->answer;
+                                    if($answers[$k]->user_id == null){
+                                        $question->user_name = 'Anónimo';
+                                    }
+                                    else{
+                                        $user = User::find($answers[$k]->user_id);
+                                        $question->user_name = $user->name;
+                                    }
                                     $question->answer_id = $answers[$k]->id;
                                 }
                             }
                         }
+                        $i++;
                     }
-                    $i++;
+                }
+                else{
+                    foreach(json_decode($answers[$k]->answer) as $ans){
+                        if($content->uid == $ans->uid){
+                            $question->title[] = $content->title;
+                            $question->answer[] = $ans->answer;
+                            if($answers[$k]->user_id == null){
+                                $question->user_name = 'Anónimo';
+                            }
+                            else{
+                                $user = User::find($answers[$k]->user_id);
+                                $question->user_name = $user->name;
+                            }
+                            $question->answer_id = $answers[$k]->id;
+                        }
+                    }
                 }
                 array_push($printQuestions, $question);
             }
