@@ -92,11 +92,18 @@
                 </th>
               </tr>
               @foreach($answer['questions'] as $questions)
+
+            
           <tr>
             <td>
               <br><b> Pregunta: </b>    {{ $questions['question']->title }}
               <br>
-              <b> Respuesta: </b>    {{ $questions['answer']['value'] }}<br><br>
+                    @if($questions['question']->title == "Multiple Textbooks") 
+                          @foreach($questions['answer']['answer'] as $texbookQuestion) 
+                          @endforeach
+                    @endif   
+
+              <b> Respuesta: </b>    {{ $questions['answer']['answer'] }}<br><br>
             </td>
           </tr>
               @endforeach

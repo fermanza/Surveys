@@ -379,55 +379,39 @@ class EncuestasController extends Controller
                   ->leftJoin('users', 'answer.user_id', '=', 'users.id')
                   ->where('id_template', $id)->get();
 
+        
         $questions1 = DB::table('questions')->select('content')->where('template_id', $id)->first();
         $survey = DB::table('template')->select('name')->where('id', $id)->first();
         $questions = json_decode($questions1->content);
 
         $questions = collect($questions); // transform to collection
 
+        
          $questions  =  $questions->reject(function($value, $key) {
                  return $value->type == "file" || $value->type == "header";
          });
-         foreach($questions as $q) {
-              if(isset($q->required)){
-                   unset($q->required);
-              }
-         }
+
 
          $usernames = $answers->map(function($item, $key){
              return $item->username;
          });
 
+         
         $answersGrouped = collect();
 
         foreach ($answers as $user) {
             $questionsB = collect();
 
             foreach (json_decode($user->answer, true) as $answer) {
-
                 $questionB = $questions->first(function ($questionB) use ($answer) {
-                    // dd($questionB);
-                      if(strstr($questionB->title, 'star')) {
-                         $questionB->title  = str_replace('starRating-', "", $questionB->title );
-                      }
-                     if(strstr($questionB->title, 'slider')) {
-                         $questionB->title  = str_replace('slider-', "", $questionB->title );
-                      }
-                      if(strstr($answer['title'], 'slider')) {
-                            $answer['title'] = str_replace('sliderslider-', "",  $answer['title']);
-                       }
-
-                      if(strstr( $answer['title'], 'star')) {
-                         $answer['title'] = str_replace('starstarRating-', "",  $answer['title']);
-                      }
-
+                       //dd($questionB, $answer); 
                     return $questionB->title === $answer['title'];
                 });
-
                 $questionsB->push([
                     'question' => $questionB,
                     'answer' => $answer,
                 ]);
+            
             }
 
             $answersGrouped->push([
