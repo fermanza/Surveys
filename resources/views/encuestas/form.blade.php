@@ -8,7 +8,7 @@
 .clear-all,.get-data,.save-template,.fld-className,.fld-name,.fld-other,.name-wrap,.className-wrap,.fld-value,.value-wrap,.fld-multiple,.multiple-wrap,.option-selected
 {
 visibility:hidden;
-} 
+}
 .form-actions
 {
   display: none;
@@ -82,8 +82,8 @@ th {
                 </div>
             </div>
         </section>
-     
-        
+
+
        <div class="content">
         <div class="row">
           <div class="tipos">
@@ -143,10 +143,10 @@ th {
           </div>
 
 
-               
-              
 
-                
+
+
+
         </div>
 
 
@@ -308,14 +308,10 @@ $(document).ready(function() {
     });
 
     $('#close').click(function(){
-         $(this).remove(); 
+         $(this).remove();
     })*/
 
-
- 
- 
-
-var fbEditor = document.getElementsByClassName("build-form");      
+var fbEditor = document.getElementsByClassName("build-form");
 
 let fields = [
 {
@@ -335,8 +331,8 @@ let fields = [
         fields: [{
           type:'radio-group',
           label: 'Multiple Choice',
-          
-        }] 
+
+        }]
       },
       {
         label: 'Single TextBox',
@@ -395,7 +391,7 @@ contactInfo: function(fieldData) {
                 "<input type='text' class='form-control' placeholder='Ciudad' /><br>"+
                 "<input type='text' class='form-control' placeholder='País' /><br>"+
                 "<input type='text' class='form-control' placeholder='Sexo' /><br>"+
-                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+                
+                "<input type='date' class='form-control' placeholder='Fecha de Nacimiento' /><br>"+
             "</div>"+
             "<div class='contactInfo-content-"+fieldData.name+"'></div>"
         +"</div>",
@@ -416,7 +412,7 @@ contactInfo: function(fieldData) {
   //             "<input type='text' id="+fieldData.name+">"
   //     ,
   //     onRender: function() {
-        
+
   //     }
   //   };
   // },
@@ -498,7 +494,7 @@ slider: function(fieldData) {
         name: 'commentBox',
         className: 'form-control',
         icon: '<i class="fa fa-comment"></i>',
-        fields: [{ 
+        fields: [{
           type: 'textarea',
           label: 'Comment Box'
           }]
@@ -539,11 +535,21 @@ slider: function(fieldData) {
 
     //console.log(formBuilder);
     // $('.option-label').on('change',function(){
-    //    console.log($(this)); 
+    //    console.log($(this));
 
     // });
 
-    document.getElementById('save-data').addEventListener('click', function() {
+    document.getElementById('guardar').addEventListener('click', function() {
+
+      swal({
+          position: 'center',
+          title: 'Encuesta creada correctamente.<br>Se ha enviado para aprobación<br>de la misma.',
+          type: 'success'
+      }).then(function() {
+          window.location = "{{url('mis_encuestas')}}";
+      });
+    });
+
     var jsondata=formBuilder.actions.getData('json');
     var templateid=document.getElementById('template_id');
     var token=document.getElementById('csrf-token');
@@ -559,7 +565,7 @@ slider: function(fieldData) {
          delete formInfo[key];
        }
     });
-      
+
 
     if(matrixInfo.length>0){
       formInfo.push({matrix:matrixInfo});
@@ -573,7 +579,7 @@ slider: function(fieldData) {
     //     _token:token.value
     // };
     var formData = new FormData();
-   
+
 
     //formData.append('matrix', matrixInfo);
 

@@ -70,3 +70,25 @@
       @endif
     </div>
 @endsection
+
+{{-- @push('script')
+
+<script>
+    $(document).ready(function(){
+
+    document.getElementById('guardar').addEventListener('click', function() {
+      swal({
+          position: 'center',
+          title: 'Encuesta creada correctamente.<br>Se ha enviado para aprobación<br>de la misma.',
+          type: 'success'
+      }).then(function() {
+          window.location = "{{url('mis_encuestas')}}";
+      });
+    });
+
+    });
+
+</script>
+
+@endpush --}}
+
