@@ -64382,7 +64382,9 @@ var staticRenderFns = [
           [_vm._v("Cancelar")]
         ),
         _vm._v(" "),
-        _c("button", { staticClass: "btn" }, [_vm._v(" Guardar ")])
+        _c("button", { staticClass: "btn", attrs: { id: "guardar" } }, [
+          _vm._v(" Guardar ")
+        ])
       ])
     ])
   }

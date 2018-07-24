@@ -21,8 +21,6 @@ use DB;
 use Bitly;
 use Session;
 
-
-
 class EncuestasController extends Controller
 {
     /**
@@ -31,7 +29,7 @@ class EncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $template = Template::find(1);
         $users = DB::table('users')->where('role', '=', '10')->get();
         $action = 'create';
@@ -108,14 +106,14 @@ class EncuestasController extends Controller
         $template->save();
 
         // if($request->tipo == 0)
-        // {   // info@survenia.com   admin 
+        // {   // info@survenia.com   admin
         //     $user->name = 'Admin';
         //     $user->email = 'isanchez94@hotmail.com';
         //     $user->notify(new ApprovalNotification($user, $template));
 
         //    // return redirect()->route('encuestas_publicas.index');
-        // } 
-        
+        // }
+
         if($request->plan == 1)
         {
         $discount = new Discounts;
@@ -141,7 +139,7 @@ class EncuestasController extends Controller
     {
         //dd($request);
 
-        
+
 
         $input = Input::all();
         $json_data = json_encode($input);
@@ -157,7 +155,7 @@ class EncuestasController extends Controller
         $questions->position = 1;
         $questions->content = $json_data;
         $questions->save();
-        
+
         // $input['input-name'];
         // $input['multi'];
         // $input['comment'];
@@ -177,7 +175,7 @@ class EncuestasController extends Controller
         $options = Options::all();
         $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
         $action = 'create';
-        
+
         return view('encuestas.form', compact('template', 'options', 'questions', 'action'));
     }
 
@@ -218,13 +216,13 @@ class EncuestasController extends Controller
     }
 
     public function saveQuestion(Request $request){
-           
+
         $user = Auth::user();
         $template=Template::find($request->template_id);
         if($request->hasFile('saveImage')) {
             $fileName = FileControl::storeFile($request->saveImage, 'imagenesEncuestas');
             foreach($fileName as $file){
-                $request->saveImage = "/imagenesEncuestas/{$file}"; 
+                $request->saveImage = "/imagenesEncuestas/{$file}";
                 $template->url = $request->saveImage[$i];
                 $template->save();
             }
@@ -244,7 +242,7 @@ class EncuestasController extends Controller
         {
             $question=new Questions;
         }
-        
+
         $question->position=0;
         $question->content=json_decode($request->content);
         $question->template_id=$request->template_id;
@@ -253,7 +251,7 @@ class EncuestasController extends Controller
 
 
         if($template->type == 0)
-        {   // info@survenia.com   admin 
+        {   // info@survenia.com   admin
             $user->name = 'Admin';
             $user->email = 'isanchez94@hotmail.com';
             $user->notify(new ApprovalNotification($user, $template));
@@ -261,24 +259,28 @@ class EncuestasController extends Controller
             // flash('<br><h6>Tu encuesta ha sido enviada para aprobación del administrador del sistema.</h6>')->success();
 
             // return redirect()->route('mis_encuestas.index');
-        } 
+        }
 
     }
 
     public function saveQuestion2(Request $request)
-    {   
+    {
             $user = Auth::user();
             $template = Template::find($request->template);
             $question = Questions::where('template_id','=',$request->template)->first();
             if(!$question) {
                 $question = new Questions;
-            }    
+            }
             $question->position = 0;
             $question->content = json_decode($request->questions);
             $question->template_id = $request->template;
             $question->save();
 
-            return redirect()->route('mis_encuestas.index');
+            flash('<br><h6>Encuesta guardada correctamente. Se ha enviado para su aprobación.</h6>')->success();
+
+            $id = Auth::id();
+            $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+            return view('mis_encuestas.index',compact('templates'));
     }
 
      /**
@@ -304,7 +306,7 @@ class EncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected function form($template, $action, $view, $question)
-    { 
+    {
         $options = Options::get();
         $params = compact('template', 'action', 'options','question');
         return view($view, $params);
@@ -316,12 +318,12 @@ class EncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getOptions($type)
-    {   
+    {
         //$value = $type == 'multi' ? 'Multiple Choice' : 'Star Rating';
 
-        return Options::where('type', $type)->get()->first(); 
+        return Options::where('type', $type)->get()->first();
     }
-    
+
     public function saveAnswer(Request $request)
     {
         $ip = \Request::ip();
@@ -339,11 +341,11 @@ class EncuestasController extends Controller
         // }
         //dd($ip);
 
-      //  $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-      //  if($answer)
-       // {
-       //    return response()->json('ip',500);
-      //  }
+        //  $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+        //  if($answer)
+        // {
+        //    return response()->json('ip',500);
+        //  }
         $answer=new Answer;
         $answer->id_template=$id_template;
         $answer->position=0;
@@ -353,13 +355,15 @@ class EncuestasController extends Controller
             $answer->user_id = Auth::user()->id;
         }
         else {
-            $answer->user_id = null; 
+            $answer->user_id = null;
         }
         $answer->save();
 
-        Session::flash('message', 'Encuesta respondida correctamente.');
-        Session::flash('alert-class', 'alert-danger');
-        return redirect('/mis_encuestas');
+        flash('<br><h6>Encuesta respondida correctamente.</h6>')->success();
+
+        $templates = Template::Search($request->title)->with('user')->where([['type', '=', '0'],['approval', '=', '1']])->latest()->paginate(5);
+        $user = User::all();
+        return view('encuestas_publicas.index',compact('templates','user'));
     }
 
     public function getRespuestas($id)
@@ -369,7 +373,7 @@ class EncuestasController extends Controller
         $tmp=json_encode($preguntasJson->content);
         $preguntas=json_decode($tmp);
         $respuestas=Answer::where('id_template','=',$id)->get();
-        
+
         $answers = DB::table('answer')
                   ->select('answer.answer', DB::raw("users.name AS username"))
                   ->leftJoin('users', 'answer.user_id', '=', 'users.id')
@@ -379,15 +383,15 @@ class EncuestasController extends Controller
         $survey = DB::table('template')->select('name')->where('id', $id)->first();
         $questions = json_decode($questions1->content);
 
-        $questions = collect($questions); // transform to collection 
+        $questions = collect($questions); // transform to collection
 
          $questions  =  $questions->reject(function($value, $key) {
-                 return $value->type == "file" || $value->type == "header";   
-         }); 
+                 return $value->type == "file" || $value->type == "header";
+         });
          foreach($questions as $q) {
               if(isset($q->required)){
                    unset($q->required);
-              } 
+              }
          }
 
          $usernames = $answers->map(function($item, $key){
@@ -404,11 +408,11 @@ class EncuestasController extends Controller
                 $questionB = $questions->first(function ($questionB) use ($answer) {
                     // dd($questionB);
                       if(strstr($questionB->title, 'star')) {
-                         $questionB->title  = str_replace('starRating-', "", $questionB->title );    
+                         $questionB->title  = str_replace('starRating-', "", $questionB->title );
                       }
                      if(strstr($questionB->title, 'slider')) {
-                         $questionB->title  = str_replace('slider-', "", $questionB->title );         
-                      }  
+                         $questionB->title  = str_replace('slider-', "", $questionB->title );
+                      }
                       if(strstr($answer['title'], 'slider')) {
                             $answer['title'] = str_replace('sliderslider-', "",  $answer['title']);
                        }
@@ -416,7 +420,7 @@ class EncuestasController extends Controller
                       if(strstr( $answer['title'], 'star')) {
                          $answer['title'] = str_replace('starstarRating-', "",  $answer['title']);
                       }
-  
+
                     return $questionB->title === $answer['title'];
                 });
 
@@ -435,14 +439,14 @@ class EncuestasController extends Controller
         return view('mis_encuestas.respuestas',compact('template','answers','questions', 'answersGrouped'));
     }
 
-    private function cleanQuestion($question) 
+    private function cleanQuestion($question)
     {
         if(strstr($question->name, 'star')) {
             $question->name  = str_replace('starRating-', "", $question->name );
             return $question->name;
         }
         if(strstr($question->name, 'slider')) {
-            $question->name  = str_replace('slider-', "", $question->name );    
+            $question->name  = str_replace('slider-', "", $question->name );
             return $question->name;
         }
     }
@@ -478,7 +482,7 @@ class EncuestasController extends Controller
         $template->plan = 0;
         $template->url = $template_img->url;
         $template->hash =  base64_encode(Hash::make(Carbon::now()));
-        
+
         $template->save();
 
 
@@ -493,10 +497,10 @@ class EncuestasController extends Controller
     }
 
     public function getBladeExcel($id){
-        
+
           $answersGrouped = $this->process($id);
           $template = Template::find($id);
-          
+
 
         \Excel::create('survey', function($excel) use($answersGrouped, $template) {
             $excel->sheet('survey', function($sheet) use($answersGrouped, $template)  {
@@ -504,7 +508,7 @@ class EncuestasController extends Controller
             });
 
         })->download('xls');
-   
+
     }
 
 
@@ -530,11 +534,11 @@ class EncuestasController extends Controller
         $survey = DB::table('template')->select('name')->where('id', $id)->first();
         $questions = json_decode($questions1->content);
 
-        $questions = collect($questions); // transform to collection 
+        $questions = collect($questions); // transform to collection
 
          $questions  =  $questions->reject(function($value, $key) {
-                 return $value->type == "file" || $value->type == "header";   
-         }); 
+                 return $value->type == "file" || $value->type == "header";
+         });
 
          $usernames = $answers->map(function($item, $key){
              return $item->username;
@@ -551,18 +555,18 @@ class EncuestasController extends Controller
                 $questionB = $questions->first(function ($questionB) use ($answer) {
 
                        if(strstr($questionB->name, 'star')) {
-                         $questionB->name  = str_replace('starRating-', "", $questionB->name );    
+                         $questionB->name  = str_replace('starRating-', "", $questionB->name );
                       }
                      if(strstr($questionB->name, 'slider')) {
-                         $questionB->name  = str_replace('slider-', "", $questionB->name );         
-                      }  
+                         $questionB->name  = str_replace('slider-', "", $questionB->name );
+                      }
                       if(strstr($answer['name'], 'slider')) {
                             $answer['name'] = str_replace('sliderslider-', "",  $answer['name']);
                          }
 
                      if(strstr( $answer['name'], 'star')) {
                          $answer['name'] = str_replace('starstarRating-', "",  $answer['name']);
-                     }       
+                     }
                     return $questionB->name === $answer['name'];
                 });
 
@@ -581,8 +585,5 @@ class EncuestasController extends Controller
         return  $answersGrouped;
 
     }
-
-
-      
 
 }
