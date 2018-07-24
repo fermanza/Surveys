@@ -94,9 +94,9 @@
               @foreach($answer['questions'] as $questions)
           <tr>
             <td>
-              <br><b> Pregunta: </b>    {{ $questions['question']->label }}
+              <br><b> Pregunta: </b>    {{ $questions['question']->title }}
               <br>
-              <b> Respuesta: </b>    {{$questions['answer']['value'] }}<br><br>
+              <b> Respuesta: </b>    {{ $questions['answer']['value'] }}<br><br>
             </td>
           </tr>
               @endforeach

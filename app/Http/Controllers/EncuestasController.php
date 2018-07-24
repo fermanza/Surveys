@@ -19,6 +19,7 @@ use App\UserCredit;
 use App\Discounts;
 use DB;
 use Bitly;
+use Session;
 
 
 
@@ -37,7 +38,6 @@ class EncuestasController extends Controller
         //dd($user);
 
         $templates = Template::where('type', 0)->get();
-
         return view('encuestas.index', compact('template','users','action', 'templates'));
     }
 
@@ -66,11 +66,12 @@ class EncuestasController extends Controller
     {
         //dd($request->id);
         $template = Template::find($request->id);
+        $question = Questions::where('template_id','=',$template->id)->first();
         $action = 'create';
         $view = 'encuestas.create2';
-        $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
-
-        return $this->form($template, $action, $view, $questions);
+        // $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
+        // dd($question);
+        return $this->form($template, $action, $view, $question);
     }
 
     /**
@@ -280,13 +281,6 @@ class EncuestasController extends Controller
             return redirect()->route('mis_encuestas.index');
     }
 
-
-
-
-
-
-
-
      /**
      * Show the form for editing the specified resource.
      *
@@ -295,14 +289,11 @@ class EncuestasController extends Controller
      */
     public function answerTemplate($id)
     {
-
         $template = Template::find($id);
-        $question=Questions::where('template_id','=',$id)->first();
-
+        $question = Questions::where('template_id','=',$id)->first();
 
         return view('encuestas.answer', compact('template','question'));
     }
-
 
       /**
      * Show the form for the specified resource.
@@ -312,15 +303,10 @@ class EncuestasController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($template, $action, $view, $questions)
+    protected function form($template, $action, $view, $question)
     { 
         $options = Options::get();
-        //$template = Template::orderBy('id')->get();
-        $params = compact('template', 'action', 'options','questions');
-        //dd($params);
-
-
-
+        $params = compact('template', 'action', 'options','question');
         return view($view, $params);
     }
 
@@ -335,24 +321,22 @@ class EncuestasController extends Controller
 
         return Options::where('type', $type)->get()->first(); 
     }
-
+    
     public function saveAnswer(Request $request)
     {
-        
         $ip = \Request::ip();
-        $id_template=$request->id_template;
+        $id_template=$request->template;
 
         $template=Template::find($id_template);
         $totalAnswer=Answer::where('id_template','=',$id_template)->get();
 
-        
-        if($template->plan==0)
-        {
-            if(count($totalAnswer)>=100)
-            {
-                return response()->json('maximo',500);
-            }
-        }
+        // if($template->plan==0)
+        // {
+        //     if(count($totalAnswer)>=100)
+        //     {
+        //         return response()->json('maximo',500);
+        //     }
+        // }
         //dd($ip);
 
       //  $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
@@ -360,23 +344,22 @@ class EncuestasController extends Controller
        // {
        //    return response()->json('ip',500);
       //  }
+        $answer=new Answer;
+        $answer->id_template=$id_template;
+        $answer->position=0;
+        $answer->answer=$request->answer;
+        $answer->ip = $ip;
+        if( Auth::user() ) {
+            $answer->user_id = Auth::user()->id;
+        }
+        else {
+            $answer->user_id = null; 
+        }
+        $answer->save();
 
-
-
-            $answer=new Answer;
-            $answer->id_template=$id_template;
-            $answer->position=0;
-            $answer->answer=$request->answer;
-            $answer->ip = $ip;
-           if(Auth::user()) {
-                $answer->user_id = Auth::user()->id; 
-           } else {
-               $answer->user_id = null; 
-           }
-            
-            $answer->save();
-
-        return response()->json('ok',200);
+        Session::flash('message', 'Encuesta respondida correctamente.');
+        Session::flash('alert-class', 'alert-danger');
+        return redirect('/mis_encuestas');
     }
 
     public function getRespuestas($id)
@@ -419,22 +402,22 @@ class EncuestasController extends Controller
             foreach (json_decode($user->answer, true) as $answer) {
 
                 $questionB = $questions->first(function ($questionB) use ($answer) {
-
-                      if(strstr($questionB->name, 'star')) {
-                         $questionB->name  = str_replace('starRating-', "", $questionB->name );    
+                    // dd($questionB);
+                      if(strstr($questionB->title, 'star')) {
+                         $questionB->title  = str_replace('starRating-', "", $questionB->title );    
                       }
-                     if(strstr($questionB->name, 'slider')) {
-                         $questionB->name  = str_replace('slider-', "", $questionB->name );         
+                     if(strstr($questionB->title, 'slider')) {
+                         $questionB->title  = str_replace('slider-', "", $questionB->title );         
                       }  
-                      if(strstr($answer['name'], 'slider')) {
-                            $answer['name'] = str_replace('sliderslider-', "",  $answer['name']);
+                      if(strstr($answer['title'], 'slider')) {
+                            $answer['title'] = str_replace('sliderslider-', "",  $answer['title']);
                        }
 
-                      if(strstr( $answer['name'], 'star')) {
-                         $answer['name'] = str_replace('starstarRating-', "",  $answer['name']);
-                      }      
+                      if(strstr( $answer['title'], 'star')) {
+                         $answer['title'] = str_replace('starstarRating-', "",  $answer['title']);
+                      }
   
-                    return $questionB->name === $answer['name'];
+                    return $questionB->title === $answer['title'];
                 });
 
                 $questionsB->push([
@@ -448,88 +431,21 @@ class EncuestasController extends Controller
                 'questions' => $questionsB,
             ]);
         }
-
-        
-
-
-      /*  $usernames->each(function($user, $key) use($questions, $answersGrouped) {
-              $user = collect();
-        });*/
-
-/*
-         $questions->each(function($questionItem, $key) use($answersGrouped, $questions) {
-        
-             if(strstr($questionItem->name, 'star')) {
-                 $questionItem->name  = str_replace('starRating-', "", $questionItem->name );    
-              }
-
-             if(strstr($questionItem->name, 'slider')) {
-                 $questionItem->name  = str_replace('slider-', "", $questionItem->name );         
-              }  
-               
-
-           /*   foreach($answersGrouped as $answerArray) {
-                 foreach($answerArray as $answer) {   
-
-
-                            $ans = json_decode($answer->answer);
-                            $ans = collect($ans); // transform the array of json to a collection
-
-
-
-                         $ans->each(function($ansElement, $key) use($questionItem, $answer) {
-                                  
-                            if(strstr($ansElement->name, 'slider')) {
-                                 $ansElement->name = str_replace('sliderslider-', "", $ansElement->name);
-                             }
-
-                             if(strstr($ansElement->name, 'star')) {
-                                 $ansElement->name = str_replace('starstarRating-', "", $ansElement->name);
-                             }          
-
-
-                              if($questionItem->type == "contactInformation") {
-                                   if($ansElement->name == "name" || $ansElement->name == "message" || $ansElement->name == "email"){
-                                        $questionItem->respuestas->push($ansElement->value);
-                                       // $questionItem->username->push($answer->username);    
-                                   }
-                              }else if($ansElement->name == $questionItem->name) {
-                                     $questionItem->respuestas->push($ansElement->value);  
-                                     //$questionItem->username->push($answer->username);
-
-                              } 
-
-                         });
-                  }       
-              }*/
-
-     /*    });*/
-
-
         // dd($questions);
-
-        
         return view('mis_encuestas.respuestas',compact('template','answers','questions', 'answersGrouped'));
     }
 
-
-
     private function cleanQuestion($question) 
     {
-           if(strstr($question->name, 'star')) {
-                 $question->name  = str_replace('starRating-', "", $question->name );    
-                 
-                 return $question->name;
-            }
-
-            if(strstr($question->name, 'slider')) {
-                $question->name  = str_replace('slider-', "", $question->name );    
-
-                 return $question->name;
-            }
+        if(strstr($question->name, 'star')) {
+            $question->name  = str_replace('starRating-', "", $question->name );
+            return $question->name;
+        }
+        if(strstr($question->name, 'slider')) {
+            $question->name  = str_replace('slider-', "", $question->name );    
+            return $question->name;
+        }
     }
-
-
 
     public function bitly($id)
     {
@@ -537,19 +453,14 @@ class EncuestasController extends Controller
         $url=url('/responder').'/'.$template->hash;
         $urlbit = Bitly::getUrl($url); // http://bit.ly/nHcn3
         return response()->json($urlbit,200);
-
     }
 
     public function responderEncuesta($token)
     {
         $template=Template::where('hash','=',$token)->first();
         $question=Questions::where('template_id','=',$template->id)->first();
-
-
         return view('encuestas.answer', compact('template','question'));
-
     }
-
 
     public function copyTemplate(Request $request)
     {

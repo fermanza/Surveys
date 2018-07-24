@@ -9,6 +9,7 @@ use App\Questions;
 use App\Answer;
 use DB;
 use Auth;
+use Session;
 
 class MisEncuestasController extends Controller
 {
@@ -17,7 +18,7 @@ class MisEncuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
 
         //$templates = Template::where('type','=', 0)->get();
@@ -26,7 +27,6 @@ class MisEncuestasController extends Controller
 
         //$templates = DB::table('template')->where('type','=', 1)->get();
         //dd($templates);
-
         return view('mis_encuestas.index',compact('templates'));
     }
 
@@ -73,14 +73,8 @@ class MisEncuestasController extends Controller
         // $ip = \Request::getClientIp();
         // dd($ip);
 
-        // $template = Template::find($id);
-        // $question=Questions::where('template_id','=',$id)->first();
-        // $action = 'edit';
-        // $view = 'mis_encuestas.edit';
-
-        // return $this->form($template, $action, $view,$question);
         $template = Template::find($id);
-        $question=Questions::where('template_id','=',$id)->first();
+        $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
         $view = 'mis_encuestas.edit';
         return $this->form($template, $action, $view, $question);

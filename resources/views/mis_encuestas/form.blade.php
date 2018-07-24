@@ -59,7 +59,7 @@
         </div>
     </div>
     <div id="app">
-      @if($question == null)
+      @if($question === null)
         <app-survey-builder :template={{$template->id}} >
         </app-survey-builder>
       @else
