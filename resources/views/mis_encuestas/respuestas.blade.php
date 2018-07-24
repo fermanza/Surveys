@@ -77,6 +77,7 @@
   <thead>
     @php
       $flag = true;
+      $matrix = array('matrix', 'matrix-scale');
       for($i = 0; $i < count($printQuestions); $i++){
     @endphp
         <tr>
@@ -88,24 +89,44 @@
                 echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
                 $flag = false;
               }
+              // dd($printQuestions);
             @endphp
           </td>
         </tr>
         @php
-        for($j = 0; $j < count($printQuestions[$i]->title); $j++){
-        @endphp
-          <tr>
-            <td>
-              <br />
-              <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
-            </td>
-          </tr>
-    @php
+        if (in_array($printQuestions[$i]->type, $matrix)){
+          for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[0] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+        @php
+          }
+        }
+        else{
+          for($j = 0; $j < count($printQuestions[$i]->title); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+    @php 
+          }
         }
       }
     @endphp
