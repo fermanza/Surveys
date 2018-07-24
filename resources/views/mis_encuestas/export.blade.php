@@ -1,56 +1,65 @@
 
 <h2>{{ $template->name }}</h2>
-{{--
- <table id="table-mis-respuestas" class="display">
-        <thead>
-          @foreach($answersGrouped as $answer)
-              <tr>
-                <th style="background-color: #979aff;">
-                @if($answer['user']->username == null)
-                     <b> Usuario: </b> Anonimo    
-                @else   
-                   <b> Usuario: </b>  {{ $answer['user']->username }}    
-                @endif 
-                </th>
-              </tr>
-              @foreach($answer['questions'] as $questions)          
-		            <tr>	
-		                  <td> <b> Pregunta: </b> {{ $questions['question']->label }} </td>
-		            </tr>  
-		              
-		             <tr> 
-		                 <td><b> Respuesta: </b>  {{$questions['answer']['value'] }}  </td>
-		             </tr>  
-              @endforeach
-            @endforeach
-        </thead>
-        <tbody>
-        </tbody>
-</table>--}}
 
- <table id="table-mis-respuestas" class="display">
-          @foreach($answersGrouped as $answer)
-              <tr>
-                @if($answer['user']->username == null)
-                     <th> Usuario:  Anonimo  </th>
-                @else   
-                     <th> Usuario:   {{ $answer['user']->username }} </th>
-                @endif 
-              </tr>
-              <tr></tr> 
+<table id="table-mis-respuestas" class="display">
+  <tbody>
+    @php
+      $flag = true;
+      $matrix = array('matrix', 'matrix-scale');
+      for($i = 0; $i < count($printQuestions); $i++){
+    @endphp
+        <tr>
+          <td>
+            @php
+              if( $flag || 
+                  ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ){
 
-              @foreach($answer['questions'] as $questions)
-                <tr>
-                   <th>  {{ $questions['question']->label }} </th>
-                    <td> {{$questions['answer']['value'] }}</td>
-                </tr>
-              {{--  <tr>
-                    
-                </tr> --}}
-              @endforeach
-                 <tr></tr> 
-            @endforeach
-</table>
+                echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
+                $flag = false;
+              }
+              // dd($printQuestions);
+            @endphp
+          </td>
+        </tr>
+        @php
+        if (in_array($printQuestions[$i]->type, $matrix)){
+          for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[0] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+        @php
+          }
+        }
+        else{
+          for($j = 0; $j < count($printQuestions[$i]->title); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+    @php 
+          }
+        }
+      }
+    @endphp
+  </tbody>
+  </table>
 
 
 

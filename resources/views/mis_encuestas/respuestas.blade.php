@@ -74,7 +74,7 @@
  --}}
 
   <table id="table-mis-respuestas" class="display">
-  <thead>
+  <tbody>
     @php
       $flag = true;
       $matrix = array('matrix', 'matrix-scale');
@@ -130,8 +130,6 @@
         }
       }
     @endphp
-  </thead>
-  <tbody>
   </tbody>
   </table>
 

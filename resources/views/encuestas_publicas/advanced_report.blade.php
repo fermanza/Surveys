@@ -1,13 +1,9 @@
 @extends('layouts.master')
 @section('title', 'Encuestas Públicas')
-
 @extends('includes.header')
-
 @section('content')
 
-
- <style type="text/css">
-     
+ <style type="text/css">     
     .mybutton {
             font-size: 16px;
             line-height: 16px;
@@ -20,7 +16,6 @@
             display: inline-block;
             float: right;
     }
-
 
  </style>
 
@@ -240,48 +235,27 @@
 
  $(document).ready(function() {
 
-
-
-
  	var labels = [];
  	var values = [];
-    
-
-
     $('.chart-render').each(function(index, item){
       var colors = [];
-
         let question =  $(item).data('question');
-
-
-       
         if(question.type == "textarea" || question.type == "text" || question.type == "slider" || question.type == "starRating" || question.type == "header"){
             return true;
         } 
-         
          question.data = question.values.flatMap(x => x.match);
          question.labels = question.values.flatMap(y => y.label);
-
         // console.log(question.labels);
-
-
          nColors = question.data.length;
-
-
          colors.push('rgb(36, 255, 101)');
          colors.push('rgb(43, 49, 255)');
          colors.push('rgb(255, 37, 30)');
          colors.push('rgb(255, 223, 39)');
          colors.push('rgb(204,43,255)');
-
-
+         
          for(let i =0; i<= nColors; i++) {
              colors.push('rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')');
          }
-
-       
-
-
     var ctx = document.getElementById("myChart"+ index).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
