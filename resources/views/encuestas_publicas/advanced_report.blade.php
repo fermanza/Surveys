@@ -66,44 +66,39 @@
     <section>   
      <div class="container">
         <div class="row">
-
-
             <div class="container tab-style2">
-
-                                       
                 <div class="tab-content">
                     <!-- start tab content -->
                     <div class="tab-pane med-text fade in active" id="tab_sec1">
                         <div class="row equalize">
                             <div class="col-md-12 col-sm-12 col-xs-12 display-table">
                                 <div class="display-table-cell vertical-align-middle">
-                                    <h6>{{ $survey->name }}</h6>
+                                    <h6>{{ $template->name }}</h6>
+                                    <p><b>Respuestas</b></p>
+                                    <p> <b>Respondidas:</b> {{ $answerCount }} </p>
 
-             <p><b>Respuestas</b></p>
-              <p> <b>Respondidas:</b> {{$responded }} <b>Saltadas:</b> {{$skipped }} </p>
-              
+                                    @php
+                                      $loop = 0;
+                                      foreach($options as $key => $option){
+                                    @endphp
 
-
-            @foreach($questions as $question) 
-                       @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" && $question->type != 'header' )        
                                     <div class="pregunta">     
-                                        <p>{{ $question->label }}</p>
+                                        <p>{{ $key }}</p>
                                         <div class="todo">                                          
                                           <div class="titulo">  
-                                              <button class="mybutton buton" value="{{$loop->index}}" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
+                                              <button class="mybutton buton" value="{{ $loop }}" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
                                           </div>
 
-                                       <section>
-                                            <div class="container">
-                                                <div class="chart-render"  data-question="{{json_encode($question)}}">  
-                                         
-                                            <canvas id="myChart{{$loop->index}}" style="width: 712px; height: 156px"></canvas>
-                                                </div>
-                                            </div>
-                                     </section>  
+                                    <section>
+                                      <div class="container">
+                                        <div class="chart-render" data-question="{{ json_encode($options) }}">
+                                          <canvas id="myChart{{ $loop }}" style="width: 712px; height: 156px"></canvas>
+                                        </div>
+                                      </div>
+                                    </section>  
 
                                           <div class="tabla-inf">
-                                              <table class="table" id="tabla-{{$loop->index}}">
+                                              <table class="table" id="tabla-{{ $loop }}">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">@lang("reporte.opcionesRespuesta")</th>
@@ -111,95 +106,98 @@
                                                     <th scope="col">@lang('reporte.totales') </th>
                                                   </tr>
                                                 </thead>
-                                              <tbody>  
-                                            {{--   @if($question->type != 'textarea' && $question->type != 'text' && $question->type != "starRating" && $question->type != "slider" ) --}}
-
-                                                  {{--<tr>
-                                                    <td>{{$question->label}}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                  </tr> --}}
-
+                                              <tbody>
+                                                @php   
+                                                  $total = 0;
+                                                @endphp
+                                                  @foreach($option as $key_option => $opt ) 
+                                                      <tr>
+                                                        <td>{{ $key_option }}</td>
+                                                        <td></td>
+                                                        <td>{{ $opt }}</td>
+                                                      </tr>
                                                       @php   
-                                                        $total =0;
-                                                     @endphp
-                                                  @foreach($question->values as $q) 
-                                                          <tr>
-                                                            <td>{{$q->label}}</td>
-                                                            <td></td>
-                                                            <td>{{ $q->match }}</td>
-                                                          </tr>
-                                                              @php   
-                                                                $total = $total + $q->match;
-                                                             @endphp 
-                                                     @if($loop->last)
+                                                        $total = $total + $opt;
+                                                      @endphp 
+                                                     @if( $loop->last )
                                                           <tr>
                                                             <td>Total</td>
                                                             <td></td>
-                                                            <td> {{$total}}</td>
+                                                            <td>{{ $total }}</td>
                                                           </tr>
-                                                     @endif        
-
-                                                  @endforeach 
-                                              {{-- @else --}}
-                                             {{--        @php   
-                                                        $total =0;
-                                                     @endphp
-                                                   @foreach($question->values as $q) 
-                                                          <tr>
-                                                            <td>{{$q->label}}</td>
-                                                            <td></td>
-                                                            <td>{{ $q->match }}</td>
-                                                          </tr>
-                                                              @php   
-                                                                $total = $total + $q->match;
-                                                             @endphp 
-                                                     @if($loop->last)
-                                                          <tr>
-                                                            <td>Total</td>
-                                                            <td></td>
-                                                            <td> {{$total}}</td>
-                                                          </tr>
-                                                     @endif        
-
-                                                    @endforeach --}} 
-                                             {{-- @endif  --}}
+                                                     @endif
+                                                  @endforeach
                                              </tbody>  
-                                              </table>
+                                            </table>
                                           </div>
                                         </div>
                                     </div>
-              @endif    {{-- principal if for validation--}}           
-          @endforeach  
+          @php
+            $loop++;
+          }
+          @endphp
 
 
 
-           <table id="table-mis-respuestas" class="display">
-        <thead>
-          @foreach($answersGrouped as $answer)
-              <tr>
-                <th>
-                @if($answer['user']->username == null)
-                     <b> Usuario: </b> Anonimo    
-                @else   
-                   <b> Usuario: </b>  {{ $answer['user']->username }}    
-                @endif 
-                </th>
-              </tr>
-              @foreach($answer['questions'] as $questions)
-          <tr>
-            <td>
-              <br><b> Pregunta: </b>    {{ $questions['question']->label }}
-              <br>
-              <b> Respuesta: </b>    {{$questions['answer']['value'] }}<br><br>
-            </td>
-          </tr>
-              @endforeach
-            @endforeach
-        </thead>
-        <tbody>
-        </tbody>
-</table>
+  <table id="table-mis-respuestas" class="display">
+  <tbody>
+    @php
+      $flag = true;
+      $matrix = array('matrix', 'matrix-scale');
+      for($i = 0; $i < count($printQuestions); $i++){
+    @endphp
+        <tr>
+          <td>
+            @php
+              if( $flag || 
+                  ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ){
+
+                echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
+                $flag = false;
+              }
+              // dd($printQuestions);
+            @endphp
+          </td>
+        </tr>
+        @php
+        if (in_array($printQuestions[$i]->type, $matrix)){
+          for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[0] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+        @php
+          }
+        }
+        else{
+          for($j = 0; $j < count($printQuestions[$i]->title); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+    @php 
+          }
+        }
+      }
+    @endphp
+  </tbody>
+  </table>
 
 
 
@@ -240,11 +238,12 @@
     $('.chart-render').each(function(index, item){
       var colors = [];
         let question =  $(item).data('question');
-        if(question.type == "textarea" || question.type == "text" || question.type == "slider" || question.type == "starRating" || question.type == "header"){
-            return true;
-        } 
-         question.data = question.values.flatMap(x => x.match);
-         question.labels = question.values.flatMap(y => y.label);
+        console.log(question);
+          for(let element in question){
+            console.log(question[element]);
+          }
+         question.data = question.key.flatMap(x => x.match);
+         question.labels = question.key.flatMap(y => y.label);
         // console.log(question.labels);
          nColors = question.data.length;
          colors.push('rgb(36, 255, 101)');
@@ -301,8 +300,6 @@
           a.click();
 
     });
-
- 
  });
 
 

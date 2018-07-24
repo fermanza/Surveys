@@ -7,6 +7,7 @@ use App\Template;
 use App\User;
 use Auth;
 use DB;
+use App\QuestionsObject\AppQuestionsObject;
 
 class EncuestasPublicasController extends Controller
 {
@@ -94,151 +95,52 @@ class EncuestasPublicasController extends Controller
 
 
 
-    public function showAdvancedReport($idEncuesta)
+    public function showAdvancedReport($id, AppQuestionsObject $questionsObject)
     {
+        $template = Template::find($id);
+        $printQuestions = $questionsObject->getQuestionsObject($id);
 
-       /* $template = Template::find($idEncuesta);
-        $printQuestions = [];
-        $multiple = array('contact-information', 'multiple-text');
-        $matrix = array('matrix');
-        $matrix_scale = array('matrix-scale');
-        $answers = DB::table('answer')->where('id_template','=',$idEncuesta)->get();*/
-        $answers = DB::table('answer')->select('answer')->where('id_template', $idEncuesta)->get();
-        $questions1 = DB::table('questions')->select('content')->where('template_id', $idEncuesta)->first();
-        $survey = DB::table('template')->select('name')->where('id', $idEncuesta)->first();
-        $questions = json_decode($questions1->content);
-        $questions = collect($questions);
-        $answersGrouped = $this->listQuestions($idEncuesta); 
+        $exclude = array("text", "header", "textarea", "multiple-text", 
+                "contact-information", "star-rating", "image", "slider");
+        $matrix = array('matrix', 'matrix-scale');
+        $answerCount = DB::table('answer')->where("id_template", "=", $id)->get();
+        $answerCount = count($answerCount);
+        $options = [];
 
-        /*for($k = 0; $k < count($answers); $k++) {
-            $count=0;
-            foreach(json_decode($answers[$k]->answer) as $ans) {
-                $question = new \stdClass();
-                $question->type = $ans->type;
-
-                if( in_array($ans->type, $multiple) ) {
-                    foreach($ans->config->list as $answerList) {
-                        $question->uid[] = $answerList->uid;
-                        $question->title[] = $answerList->title;
-                        $question->answer[] = $answerList->answer;
-                    }
-                }
-                else if(in_array($ans->type, $matrix)) {
-                    $question->title[] = $ans->config->title;
-                    $question->multiple = $ans->config->multiple;
-                    // If Multiple is False is Radio otherwise is Checkbox
-                    $ii = 0;
-                    foreach($ans->answer as $ansList) {
-                        $text = "";
-                        $local_count = 0;
-                        if($question->multiple) {
-                            foreach($ans->config->rows as $answerList) {
-                                if($ii == $local_count) {
-                                    $text = $answerList->text;
-                                }
-                                $local_count++;
-                            }
-                            foreach($ans->config->cols as $answerList) {
-                                $text .= " ".$answerList->text;
-                            }
-                        }
-                        else{
-                            foreach($ans->config->rows as $answerList) {
-                                if($ii == $local_count) {
-                                    $text = $answerList->text;
-                                }
-                                $local_count++;
-                            }
-                            foreach($ans->config->cols as $answerList) {
-                                if($ansList == $answerList->uid) {
-                                    $question->uid[] = $ansList;
-                                    $text .= " ".$answerList->text;
-                                }
-                            }
-                        }
-                        $question->answer[] = $text;
-                        $ii++;
-                    }
-                }
-                else if(in_array($ans->type, $matrix_scale)){
-                    $question->title[] = $ans->config->title;
-                    $text = "";
-                    unset($answerList);
-                    foreach($ans->answer as $keyRow => $ansList){
-                        foreach($ansList as $keyCol => $ansListFinal){
-                            foreach($ans->config->rows as $answerList){
-                                if($keyRow == $answerList->uid) {
-                                    $text = $answerList->text;
-                                }
-                            }
-                            foreach($ans->config->cols as $answerList){
-                                if($keyCol == $answerList->uid) {
-                                    $text .= " ".$answerList->text;
-                                }
-                            }
-                            $text .= " Option: ".$ansListFinal;
-                            $question->answer[] = $text;
-                            $local_count++;
-                            $ii++;
-                        }
-                    }
-                }
-                else{
-                    $question->uid[] = $ans->uid;
-                    $question->title[] = $ans->config->title;
-                    $question->answer[] = $ans->answer;
-                }
-                $question->answer_id = $answers[$k]->id;
-                if($answers[$k]->user_id == null){
-                    $question->user_name = 'Anónimo';
-                }
-                else{
-                    $user = User::find($answers[$k]->user_id);
-                    $question->user_name = $user->name;
-                }
-                // print_r($question);
-                array_push($printQuestions, $question);
+        for($i = 0; $i < count($printQuestions); $i++){
+            if( in_array($printQuestions[$i]->type, $exclude) ){
+                continue;
             }
-        }*/
 
+            if ( in_array($printQuestions[$i]->type, $matrix) ){
+                for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+                    $question_name = $printQuestions[$i]->title[0];
+                    $option_name = $printQuestions[$i]->answer[$j];
 
-        //dd($printQuestions);
-
-
-
-          foreach($questions as $ques) {
-                
-                 foreach($ques->values as $v) {
-                     $match = 0; 
-                       foreach($answers as $answer) { 
-                            $ans = json_decode($answer->answer);
-                              foreach($ans as $a) {
-                                    $a->name = str_replace("[]", '', $a->name);
-                                     if($a->name == $ques->name && $a->value == $v->value ) {
-                                         $match++;
-                                     }
-                              }
-                       }
-                   $v->match = $match;            
-                 } 
+                    if (!isset($options[$question_name][$option_name]) ){
+                        $options[$question_name][$option_name] = 1;
+                    }
+                    else{
+                        $options[$question_name][$option_name] ++;
+                    }
               }
-          $responded = 0;
-          $skipped = 0;
-            foreach($answers as $answer) {
-                   $ans = json_decode($answer->answer);
-                   foreach($ans as $values) {
-                       if($values->value == "") {
-                            $skipped++;
-                       } else {
-                           $responded++;
-                       }
-                   }
             }
+            else{
+                for($j = 0; $j < count($printQuestions[$i]->title); $j++){
+                    $question_name = $printQuestions[$i]->title[$j];
+                    $option_name = $printQuestions[$i]->answer[$j];
 
-            dd($answersGrouped);
-
-
-        return view('encuestas_publicas.advanced_report', compact('questions', 'answers', 'survey', 'questions1', 'skipped', 'responded', 'answersGrouped'));
+                    if (!isset($options[$question_name][$option_name]) ){
+                        $options[$question_name][$option_name] = 1;
+                    }
+                    else{
+                        $options[$question_name][$option_name] ++;
+                    }
+                }
+            }
+        }
+        // dd($options);
+        return view('encuestas_publicas.advanced_report', compact('options', 'template', 'answerCount', 'printQuestions'));
     }
 
 
