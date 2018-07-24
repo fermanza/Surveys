@@ -452,7 +452,7 @@ class EncuestasController extends Controller
                 }
                 else{
                     $question->uid[] = $ans->uid;
-                    $question->title[] = $ans->title;
+                    $question->title[] = $ans->config->title;
                     $question->answer[] = $ans->answer;
                 }
                 $question->answer_id = $answers[$k]->id;
