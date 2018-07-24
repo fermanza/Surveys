@@ -17,53 +17,51 @@
 
 </style>
 
-        <!-- start page title section -->
-        <section class="bread wow fadeIn padding-25px-tb margin-bread">
-            <div class="container">
-                <div class="row equalize xs-equalize-auto">
-                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
-                        <div class="display-table-cell vertical-align-middle text-left xs-text-center">
-                            <!-- start page title -->
-                            <h1 class="no-margin-bottom">Respuestas</h1>
-                            <!-- end page title -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="bread-bottom wow fadeIn no-padding page-title-small">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 display-table xs-text-left xs-margin-10px-top">
-                        <div class="display-table-cell vertical-align-middle breadcrumb text-small">
-                            <!-- start breadcrumb -->
-                            <ul class="xs-text-center">
-                                <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="{{ URL('/encuestas_publicas')}}" class="text-dark-gray">@lang('encuestas_publicas.encuestasPublicas')</a></li>
-                                <li class="text-dark-gray">Respuestas</li>
-                            </ul>
-                            <!-- end breadcrumb -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end page title section -->
-
-        <section class="tabla">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                
+  <section class="bread wow fadeIn padding-25px-tb margin-bread">
+  <div class="container">
+      <div class="row equalize xs-equalize-auto">
+          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+              <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                  <!-- start page title -->
+                  <h1 class="no-margin-bottom">Respuestas</h1>
+                  <!-- end page title -->
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+  <section class="bread-bottom wow fadeIn no-padding page-title-small">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 display-table xs-text-left xs-margin-10px-top">
+              <div class="display-table-cell vertical-align-middle breadcrumb text-small">
+                  <!-- start breadcrumb -->
+                  <ul class="xs-text-center">
+                      <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
+                      <li><a href="{{ URL('/encuestas_publicas')}}" class="text-dark-gray">@lang('encuestas_publicas.encuestasPublicas')</a></li>
+                      <li class="text-dark-gray">Respuestas</li>
+                  </ul>
+                  <!-- end breadcrumb -->
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+  <!-- end page title section -->
 
 
-             <div class="col-md-12" align="center">
-                @if($template->url != null)
-                  <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
-                @endif
-                <h5>{{ $template->name }}</h5>
-             </div>
+  <section class="tabla">
+  <div class="container">
+      <div class="col-md-12">
+          <div class="panel panel-default">
+      
 
+   <div class="col-md-12" align="center">
+      @if($template->url != null)
+        <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
+      @endif
+      <h5>{{ $template->name }}</h5>
+   </div>
 
 {{--
 <div class="col-md-12" align="center">
@@ -75,84 +73,58 @@
 </div>
  --}}
 
+  <table id="table-mis-respuestas" class="display">
+  <thead>
+    @php
+      $flag = true;
+      for($i = 0; $i < count($printQuestions); $i++){
+    @endphp
+        <tr>
+          <td>
+            @php
+              if( $flag || 
+                  ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ){
 
-
-
-
- <table id="table-mis-respuestas" class="display">
-        <thead>
-          @foreach($answersGrouped as $answer)
-              <tr>
-                <th>
-                @if($answer['user']->username == null)
-                     <b> Usuario: </b> Anonimo    
-                @else   
-                   <b> Usuario: </b>  {{ $answer['user']->username }}    
-                @endif 
-                </th>
-              </tr>
-              @foreach($answer['questions'] as $questions)
-
-            
+                echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
+                $flag = false;
+              }
+            @endphp
+          </td>
+        </tr>
+        @php
+        for($j = 0; $j < count($printQuestions[$i]->title); $j++){
+        @endphp
           <tr>
             <td>
-              <br><b> Pregunta: </b>    {{ $questions['question']->title }}
-              <br>
-                    @if($questions['question']->title == "Multiple Textbooks") 
-                          @foreach($questions['answer']['answer'] as $texbookQuestion) 
-                          @endforeach
-                    @endif   
-
-              <b> Respuesta: </b>    {{ $questions['answer']['answer'] }}<br><br>
+              <br />
+              <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
             </td>
           </tr>
-              @endforeach
-            @endforeach
-        </thead>
-        <tbody>
-        </tbody>
-</table>
+          <tr>
+            <td>
+              <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+            </td>
+          </tr>
+    @php
+        }
+      }
+    @endphp
+  </thead>
+  <tbody>
+  </tbody>
+  </table>
 
+  <div class="col-md-12" align="center">
+    <a class="btn btn-default" href="{{ url('/mis_encuestas') }}">@lang('answer.regresar')</a>
+  </div>
 
-      {{--        @foreach($answersGrouped as $answer)
-
-                @if($answer['user']->username == null)
-                    <hr>
-                     <b> Usuario: </b> Anonimo 
-                     <hr>     
-                @else    
-                   <b> Usuario: </b>  {{ $answer['user']->username }}    
-                   <hr>
-                @endif    
-
-                  
-
-                  @foreach($answer['questions'] as $questions)
-                         <b> Pregunta: </b>    {{ $questions['question']->label }} 
-                            <br>
-                          <b> Respuesta: </b>    {{$questions['answer']['value'] }}
-                          <br>
-                          <br>
-                          
-                  @endforeach
-             @endforeach --}}
-
-                    </div>
-                </div>
-                <div class="col-md-12" align="center">
-                     <a class="btn btn-default" href="{{ url()->previous() }}">@lang('answer.regresar')</a>
-                  </div>
-            </div>
-        </section>
+  </div>
+</section>
 
     @push('script')
 
     <script type="text/javascript"> 
-
-
-
-
-      var tableToExcel = (function() {
+  var tableToExcel = (function() {
   var uri = 'data:application/vnd.ms-excel;base64,'
     ,  template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
     , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
@@ -164,18 +136,8 @@
   }
 })()
 
-
-
-
-
-
-
-
         $(document).ready(function() {
-
-
          $('.buton').click(function(){
-         
           let index = $(this).val();
 
          var data_type = 'data:application/vnd.ms-excel;charset=utf-8,';
@@ -190,14 +152,7 @@
           a.click();
 
         });
-
-
-
-
-
-
-
-        } );
+} );
 
 
     </script>

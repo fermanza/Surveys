@@ -368,59 +368,53 @@ class EncuestasController extends Controller
 
     public function getRespuestas($id)
     {
-        $template=Template::find($id);
-        $preguntasJson=Questions::where('template_id','=',$id)->first();
-        $tmp=json_encode($preguntasJson->content);
-        $preguntas=json_decode($tmp);
-        $respuestas=Answer::where('id_template','=',$id)->get();
+        $template = Template::find($id);
+        $questions = DB::table('questions')->where('template_id','=',$id)->first();
+        $printQuestions = [];
 
-        $answers = DB::table('answer')
-                  ->select('answer.answer', DB::raw("users.name AS username"))
-                  ->leftJoin('users', 'answer.user_id', '=', 'users.id')
-                  ->where('id_template', $id)->get();
+        $answers = DB::table('answer')->where('id_template','=',$id)->get();
+        for($k = 0; $k < count($answers); $k++){
+            foreach(json_decode($questions->content) as $content){
+                $question = new \stdClass();
+                $question->type = $content->type;
+                // $question->title = $content->title;
+                // $question->uid = $content->uid;
+                // echo $question->uid;die;
+                $i = 0;
+                // dd($content->config->list);
+                // $content->config->list // Options for this Multi Text
 
-        
-        $questions1 = DB::table('questions')->select('content')->where('template_id', $id)->first();
-        $survey = DB::table('template')->select('name')->where('id', $id)->first();
-        $questions = json_decode($questions1->content);
+                // multiple-text
+                foreach($content->config->list as $list){
+                    $content->list[$i] = $content->config->list;
+                    $question->uid[] = $list->uid;
 
-        $questions = collect($questions); // transform to collection
-
-        
-         $questions  =  $questions->reject(function($value, $key) {
-                 return $value->type == "file" || $value->type == "header";
-         });
-
-
-         $usernames = $answers->map(function($item, $key){
-             return $item->username;
-         });
-
-         
-        $answersGrouped = collect();
-
-        foreach ($answers as $user) {
-            $questionsB = collect();
-
-            foreach (json_decode($user->answer, true) as $answer) {
-                $questionB = $questions->first(function ($questionB) use ($answer) {
-                       //dd($questionB, $answer); 
-                    return $questionB->title === $answer['title'];
-                });
-                $questionsB->push([
-                    'question' => $questionB,
-                    'answer' => $answer,
-                ]);
-            
+                    // $answer = DB::table('answer')->where('id_template','=',$id)->get();
+                    foreach(json_decode($answers[$k]->answer) as $ans){
+                        foreach($ans->config->list as $answerList){
+                            // echo $question->uid." ".$answerList->uid."<br />";
+                            if($question->uid[$i] == $answerList->uid){
+                                $question->title[] = $list->title;
+                                $question->answer[] = $answerList->answer;
+                                if($answers[$k]->user_id == null){
+                                    $question->user_name = 'Anónimo';
+                                    $question->answer_id = $answers[$k]->id;
+                                }
+                                else{
+                                    $user = User::find($answers[$k]->user_id);
+                                    $question->user_name = $user->name;
+                                    $question->answer_id = $answers[$k]->id;
+                                }
+                            }
+                        }
+                    }
+                    $i++;
+                }
+                array_push($printQuestions, $question);
             }
-
-            $answersGrouped->push([
-                'user' => $user,
-                'questions' => $questionsB,
-            ]);
         }
-        // dd($questions);
-        return view('mis_encuestas.respuestas',compact('template','answers','questions', 'answersGrouped'));
+        // dd($printQuestions);
+        return view('mis_encuestas.respuestas',compact('template', 'printQuestions'));
     }
 
     private function cleanQuestion($question)
