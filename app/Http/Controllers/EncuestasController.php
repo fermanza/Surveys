@@ -84,7 +84,7 @@ class EncuestasController extends Controller
         $input = Input::all();
         $user = User::findOrNew($input['user_id']);
         //dd($user);
-        dd($request->all());
+        //dd($request->all());
 
         if($request->plan == 1)
         {
