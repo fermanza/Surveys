@@ -4,7 +4,7 @@ import draggable from 'vuedraggable';
 import StarRating from 'vue-star-rating';
 Vue.prototype.$Config = window.Config;
 
-    alert(window.Config);
+    
 
 window.Vue = Vue;
 window._ = _;

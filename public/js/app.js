@@ -24523,8 +24523,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$Config = window.Config;
 
-alert(window.Config);
-
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window._ = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a;
 
