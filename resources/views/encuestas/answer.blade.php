@@ -36,7 +36,12 @@
             </div>
         </section>
         <!-- end page title section -->
-<br />
+<br /> 
+  <div class="row" align="center">
+    @if($template->url != null)
+      <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
+    @endif 
+  </div>
   <div id="app" >
     <div class="row">
         <div class="col-md-3"></div>

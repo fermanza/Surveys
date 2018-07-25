@@ -274,7 +274,11 @@ class EncuestasController extends Controller
             if(!$question) {
                 $question = new Questions;
             }
-
+            if($request->hasFile('surveyLogo')) {
+                $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
+                    $template->url = "/imagenesEncuestas/{$fileName}";
+                    $template->save();
+            }
             // $preguntas=json_decode($request->content);
             // dd($preguntas);
             // if($template->plan==0 && count($preguntas)>10)

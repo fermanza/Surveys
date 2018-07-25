@@ -51,13 +51,13 @@
             </div>
         </section>
         <!-- end form section -->
-    <div class="row">
+    {{--<div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4" align="center">
         <label>Logo</label>
         <input type="file" name="surveyLogo" id="surveyLogo">
         </div>
-    </div>
+    </div> --}}
     <div id="app">
 
     <div id="app">

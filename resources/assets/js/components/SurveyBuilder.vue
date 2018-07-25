@@ -32,6 +32,15 @@
 
 <template>
     <div>
+      <form :action="$Config.base_url+'/encuestas/save2'" method="POST" enctype="multipart/form-data"> 
+         <div class="row">
+        
+                <div class="col-md-4"></div>
+                <div class="col-md-4" align="center">
+                <label>Logo</label>
+                <input type="file" name="surveyLogo" id="surveyLogo">
+                </div>
+        </div>
         <div class="survey-builder">
             <div class="root-controls">
                 <div class="survey-question-type-title btn">
@@ -53,7 +62,7 @@
         </div>
         <div>
             <!-- <form action=axios.get('/encuestas/save2') method="POST"> -->
-                <form :action="$Config.base_url+'/encuestas/save2'" method="POST">
+              
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
                 <div class="row">
@@ -63,8 +72,9 @@
                     <button class="btn" id="guardar">&nbsp;Guardar&nbsp;</button>
                     </div>
                 </div>
-            </form>
+           
         </div>
+      </form>   
     </div>
 </template>
 
@@ -86,6 +96,7 @@
             return {
                 template_id: this.template,
                 surveyElements: this.initialElements,
+                file: '',
                 rootElements: [
                     {
                         uid: '',
@@ -373,6 +384,9 @@
         computed: {
             questionsJson() {
                 return JSON.stringify(this.surveyElements);
+            },
+            setFile() {
+                return this.file;
             }
         },
 
