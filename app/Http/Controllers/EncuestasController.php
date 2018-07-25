@@ -233,7 +233,7 @@ class EncuestasController extends Controller
 
         $preguntas=json_decode($request->content);
 
-        if($template->plan==0 && count($preguntas)>33)
+        if($template->plan==0 && count($preguntas)>10)
         {
             return response()->json("exceso",500);
         }
@@ -272,6 +272,12 @@ class EncuestasController extends Controller
             if(!$question) {
                 $question = new Questions;
             }
+
+            if($template->plan==0 && count($preguntas)>10)
+            {
+                return response()->json("exceso",500);
+            }
+
             $question->position = 0;
             $question->content = json_decode($request->questions);
             $question->template_id = $request->template;
@@ -333,18 +339,17 @@ class EncuestasController extends Controller
         $template=Template::find($id_template);
         $totalAnswer=Answer::where('id_template','=',$id_template)->get();
 
-        // if($template->plan==0)
-        // {
-        //     if(count($totalAnswer)>=100)
-        //     {
-        //         return response()->json('maximo',500);
-        //     }
-        // }
-        //dd($ip);
+        if($template->plan==0) //Encuesta pública
+        {
+            if(count($totalAnswer)>=100)
+            {
+                return response()->json('maximo',500);
+            }
+        }
 
         $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
           if($answer)
-         {
+          {
             return response()->json('ip',500);
           }
         $answer=new Answer;

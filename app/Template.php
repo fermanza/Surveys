@@ -42,6 +42,7 @@ class Template extends Model
     public function getAnswersnumberAttribute()
     {
         $respuestas=Answer::where('id_template','=',$this->id)->where('position','=',0)->get();
+
         return count($respuestas);
     }
 
@@ -50,10 +51,10 @@ class Template extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeSearch($query, $title) 
+    public function scopeSearch($query, $title)
     {
         return $query->where('name', 'LIKE' , "%$title%");
     }
 
-    
+
 }
