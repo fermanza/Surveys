@@ -78,7 +78,7 @@
                                     <p> <b>Respondidas:</b> {{ $answerCount }} </p>
 
                                     @php
-                                      $loop = 0;
+                                      $loopCont = 0;
                                       foreach($options as $key => $option){
                                     @endphp
 
@@ -86,34 +86,33 @@
                                         <p>{{ $key }}</p>
                                         <div class="todo">                                          
                                           <div class="titulo">  
-                                              <button class="mybutton buton" value="{{ $loop }}" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
+                                              <button class="mybutton buton" value="{{ $loopCont }}" >@lang('reporte.exportar') <i class="fa fa-chevron-right"></i></button>
                                           </div>
 
                                     <section>
                                       <div class="container">
-                                        <div class="chart-render" data-question="{{ json_encode($options) }}">
-                                          <canvas id="myChart{{ $loop }}" style="width: 712px; height: 156px"></canvas>
+                                        <div class="chart-render" data-question="{{ json_encode($option) }}">
+                                          <canvas id="myChart{{ $loopCont }}" style="width: 712px; height: 156px"></canvas>
                                         </div>
                                       </div>
                                     </section>  
 
                                           <div class="tabla-inf">
-                                              <table class="table" id="tabla-{{ $loop }}">
+                                              <table class="table" id="tabla-{{ $loopCont }}">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">@lang("reporte.opcionesRespuesta")</th>
-                                                    <th scope="col"> @lang('reporte.respuestas') </th>
                                                     <th scope="col">@lang('reporte.totales') </th>
                                                   </tr>
                                                 </thead>
                                               <tbody>
-                                                @php   
+                                                @php  
+                                                 $loopCont++; 
                                                   $total = 0;
                                                 @endphp
                                                   @foreach($option as $key_option => $opt ) 
                                                       <tr>
                                                         <td>{{ $key_option }}</td>
-                                                        <td></td>
                                                         <td>{{ $opt }}</td>
                                                       </tr>
                                                       @php   
@@ -122,7 +121,6 @@
                                                      @if( $loop->last )
                                                           <tr>
                                                             <td>Total</td>
-                                                            <td></td>
                                                             <td>{{ $total }}</td>
                                                           </tr>
                                                      @endif
@@ -133,7 +131,7 @@
                                         </div>
                                     </div>
           @php
-            $loop++;
+            
           }
           @endphp
 
@@ -232,20 +230,24 @@
 
 
  $(document).ready(function() {
-
- 	var labels = [];
- 	var values = [];
-    $('.chart-render').each(function(index, item){
+ 	
+    $('.chart-render').each(function(index, item) {
       var colors = [];
-        let question =  $(item).data('question');
-        console.log(question);
-          for(let element in question){
-            console.log(question[element]);
+      var labelsQuestion = [];
+ 	  var valuesQuestion = [];
+      let question =  $(item).data('question');
+
+          for(let element in question) {   
+                labelsQuestion.push(element);  
+                valuesQuestion.push(question[element]);
           }
-         question.data = question.key.flatMap(x => x.match);
-         question.labels = question.key.flatMap(y => y.label);
+ 
+          
+       //  question.data = question.key.flatMap(x => x.match);
+        // question.labels = question.key.flatMap(y => y.label);
         // console.log(question.labels);
-         nColors = question.data.length;
+         //nColors = question.data.length;
+         nColors = labelsQuestion.length;
          colors.push('rgb(36, 255, 101)');
          colors.push('rgb(43, 49, 255)');
          colors.push('rgb(255, 37, 30)');
@@ -259,10 +261,10 @@
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: question.labels,
+            labels: labelsQuestion,
             datasets: [{
                 label: '# of Votes',
-                data: question.data,
+                data:valuesQuestion,
                 backgroundColor: colors,
                 borderColor: colors, 
                 borderWidth: 1

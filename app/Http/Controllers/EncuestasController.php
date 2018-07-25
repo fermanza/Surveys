@@ -342,11 +342,11 @@ class EncuestasController extends Controller
         // }
         //dd($ip);
 
-        //  $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        //  if($answer)
-        // {
-        //    return response()->json('ip',500);
-        //  }
+        $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
+          if($answer)
+         {
+            return response()->json('ip',500);
+          }
         $answer=new Answer;
         $answer->id_template=$id_template;
         $answer->position=0;
