@@ -84,7 +84,7 @@ class EncuestasController extends Controller
         $input = Input::all();
         $user = User::findOrNew($input['user_id']);
         //dd($user);
-        //dd($request->all());
+        dd($request->all());
 
         if($request->plan == 1)
         {
@@ -106,14 +106,14 @@ class EncuestasController extends Controller
         $template->hash = base64_encode(Hash::make(Carbon::now()));
         $template->save();
 
-        // if($request->tipo == 0)
-        // {   // info@survenia.com   admin
-        //     $user->name = 'Admin';
-        //     $user->email = 'isanchez94@hotmail.com';
-        //     $user->notify(new ApprovalNotification($user, $template));
+        if($request->tipo == 0)
+        {   // info@survenia.com   admin
+            $user->name = 'Admin';
+            $user->email = 'isanchez94@hotmail.com';
+            $user->notify(new ApprovalNotification($user, $template));
 
-        //    // return redirect()->route('encuestas_publicas.index');
-        // }
+           // return redirect()->route('encuestas_publicas.index');
+        }
 
         if($request->plan == 1)
         {
