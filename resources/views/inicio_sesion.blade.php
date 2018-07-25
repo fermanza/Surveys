@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col margin-50px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <h5 class="font-weight-700 text-extra-dark-gray">Login</h5>
-                    </div>  
+                    </div>
                     <div class="col1 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin" style="border-right:1px solid rgba(0,0,0,0.1);">
                         <form class="form-horizontal" method="POST" action="{{ URL('iniciarsesion') }}">
                         {{ csrf_field() }}
@@ -77,7 +77,7 @@
                     <div class="col2 col-lg-6 col-md-6 sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook"></i> @lang('login.ingresarFace')</a>
+                                <a href="{{ route('social.auth', 'facebook') }}"><i class="fa fa-facebook" aria-hidden="true"></i></i> @lang('login.ingresarFace')</a>
                             </div>
                             <div class="col-md-12">
                                 <a href="{{ route('redirectSocialLite', ['provider' => 'google']) }}" class="google"><i class="fa fa-google"></i> @lang('login.ingresarGoogle')</a>
@@ -91,5 +91,5 @@
             </div>
         </section>
         <!-- end form section -->
-        
+
 @stop

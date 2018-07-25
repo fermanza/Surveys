@@ -1,12 +1,12 @@
 <style scoped>
-    
+
 </style>
 
 <template>
     <div>
         <div v-if="!display">
             <label>Etiqueta</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <input type="text" v-model="surveyElement.config.title" @click="cleanText" @blur="addText" class="form-control" />
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -17,6 +17,24 @@
 
 <script>
     export default {
-        props: ['display', 'surveyElement']
+        props: ['display', 'surveyElement'],
+
+        data() {
+            return {
+                element: this.surveyElement,
+                oldTitle: this.surveyElement.config.title,
+            }
+        },
+        methods: {
+            cleanText() {
+                this.oldTitle = this.surveyElement.config.title;
+                this.surveyElement.config.title = "";
+            },
+            addText() {
+                if(this.surveyElement.config.title == ''){
+                    this.surveyElement.config.title = this.oldTitle;
+                }
+            }
+        }
     }
 </script>

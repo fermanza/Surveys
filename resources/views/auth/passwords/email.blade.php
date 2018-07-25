@@ -5,7 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <img src="{{ asset('images/logo-survenia-color.png') }}" class="logo-dark" alt="Survenia" style="width: auto !important; height: auto !important; max-width: 100%;">
+                <br />
+                <br />
+                <div class="panel-heading"><h4>Restaurar Contraseña</h4></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -18,11 +21,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-12 control-label">Por favor, proporciona tu dirección de correo electrónico: </label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -34,7 +36,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                    Enviar Link de Restauración
                                 </button>
                             </div>
                         </div>

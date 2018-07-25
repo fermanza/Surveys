@@ -22,16 +22,16 @@
         <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
         <meta name="theme-color" content="#ffffff">
  --}}
-        <!-- Fav Icon --> 
+        <!-- Fav Icon -->
         <link rel="icon" href="icons/favicon.ico" sizes="64x64" >
         <!-- animation -->
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-        <!-- et line icon --> 
+        <!-- et line icon -->
         <link rel="stylesheet" href="{{ asset('css/et-line-icons.css') }}" />
         <!-- font-awesome icon -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- themify icon -->
         <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}"/>
         <!-- swiper carousel -->
@@ -52,7 +52,7 @@
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}" />
 
         {{-- trumbowyg --}}
-        
+
 
         <link rel="stylesheet" href="{{ asset('dist/ui/trumbowyg.css') }}">
 
@@ -66,10 +66,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.5.2/css/tabulator.min.css" rel="stylesheet">
     </head>
     <body class="index">
-        @yield('content')        
+        @yield('content')
 
-        <!-- start footer --> 
-        <footer class="footer-clean-dark xs-padding-30px-tb"> 
+        <!-- start footer -->
+        <footer class="footer-clean-dark xs-padding-30px-tb">
             <div class="footer-widget-area padding-50px-bottom">
                 <div class="container">
                     <div class="row">
@@ -115,7 +115,7 @@
                         <!-- start newsletter -->
                         <div class="col-md-5 col-xs-12 widget">
                             <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">@lang('footer.ultimosArticulos')</div>
-               
+
                             @foreach($articulos as $articulo)
                             <div class="footer-post">
                                 <a href="{{url('articulos')}}/{{$articulo->id}}">
@@ -124,7 +124,7 @@
                                 </a>
                             </div>
                             @endforeach
-                            
+
                         </div>
                         <!-- end newsletter -->
                     </div>
@@ -132,15 +132,15 @@
             </div>
             <div class="sub-footer">
                 <div class="container">
-                    <div class="row"> 
+                    <div class="row">
                         <!-- start copyright -->
                         <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
                         <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
                       @if(Auth::check() && Auth::user()->id == 1)
                         <a href="{{ URL('login') }}">Admin</a>
-                      @endif    
+                      @endif
                         <!-- end copyright -->
-                      
+
                     </div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
         <!-- equalize -->
         <script type="text/javascript" src="{{ asset('js/equalize.min.js') }}"></script>
         <!-- skill bars  -->
-        <script type="text/javascript" src="{{ asset('js/skill.bars.jquery.js') }}"></script> 
+        <script type="text/javascript" src="{{ asset('js/skill.bars.jquery.js') }}"></script>
         <!-- justified gallery  -->
         <script type="text/javascript" src="{{ asset('js/justified-gallery.min.js') }}"></script>
         <!--pie chart-->
@@ -214,7 +214,7 @@
         <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.js"></script>
-        
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.5.2/js/tabulator.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
@@ -231,14 +231,14 @@
         <script src="{{ asset('dist/trumbowyg.js') }}"></script>
         <script src="{{ asset('dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js') }}"></script>
         <script src="{{ asset('dist/plugins/pasteimage/trumbowyg.pasteimage.min.js') }}"></script>
-      
-        
-        
+
+
+
         <!-- Datatables -->
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.20.6/dist/sweetalert2.all.js"></script>
-        
+
         @stack('script')
     </body>
 </html>

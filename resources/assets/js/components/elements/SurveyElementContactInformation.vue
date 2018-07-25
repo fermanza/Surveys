@@ -81,7 +81,7 @@
                     });
                     this.element.answer = answer;
                 }
-            } 
+            }
         }
     }
 </script>

@@ -11,13 +11,13 @@
     }
     .question-action {
         cursor: pointer;
-        
+
     }
 
     .close-component {
          border: 2px solid #70878C;
-    } 
-    
+    }
+
     .background-grey {
         background: #eee;
     }
@@ -26,7 +26,7 @@
 <template>
     <div :class="display ? '' : 'background-grey'" class="survey-question">
         <div class="controls">
-            <i v-if="display" @click="display = false" class="question-action text-primary fa fa-pencil-alt"></i>
+            <i v-if="display" @click="display = false" class="question-action text-primary fa fa-pencil"></i>
             <i @click="removeQuestion" class="question-action text-danger fa fa-times"></i>
         </div>
         <div>
@@ -54,7 +54,7 @@
             parseComponent(surveyElement) {
                 return `app-survey-element-${surveyElement.type}`;
             },
-            
+
             removeQuestion() {
                 Bus.$emit('remove-question', this.surveyElement.uid);
             }

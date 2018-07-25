@@ -31,7 +31,7 @@
     text-transform: uppercase;
     font-weight: 600;
     font-size: 16px;
-    
+
     margin-top: 10px;
 }
 .micuenta .cuenta .p1 > div > div {
@@ -82,19 +82,19 @@
             <strong>{{$statusmsg}}</strong>
         </div>
         @endif
-        
+
         <section class="titulo">
 
             <div class="container">
                 <div class="row">
                     <h5 class="title text-extra-dark-gray text-center">@lang('creditos.gestionCreditos')</h5>
-                    <p class="text-extra-dark-gray text-center">@lang('creditos.cadaCredito')</p> 
+                    <p class="text-extra-dark-gray text-center">@lang('creditos.cadaCredito')</p>
                 </div>
             </div>
         </section>
 
                 <section class="wow fadeIn planes">
-            <div class="container">                
+            <div class="container">
                 <div class="row">
                     <div class="pricing-box-style1">
                         <!-- start pricing item -->
@@ -118,7 +118,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=1')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=1')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -147,7 +147,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=2')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=2')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -176,7 +176,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=3')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=3')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -205,7 +205,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=4')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=4')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -234,7 +234,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=5')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=5')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -263,7 +263,7 @@
                                 <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
                                     <!-- start pricing action -->
                                     <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=6')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>                                        
+                                        <a href="{{url('checkout?plan=6')}}" class="btn"><i class="fa fa-shopping-cart"></i> @lang('creditos.comprar')</a>
                                     </div>
                                     <!-- end pricing action -->
                                 </div>
@@ -280,8 +280,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="images/mi-cuenta/user.png" alt="">
-                        <p>{{ $user->name }}</p>
+                        <p style="font-size: 20px;">{{ $user->name }}</p>
                         <p>@lang('creditos.creditosDisponibles') {{$tot}}</p>
                     </div>
                 </div>
