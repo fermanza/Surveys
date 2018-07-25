@@ -58,7 +58,8 @@
         <input type="file" name="surveyLogo" id="surveyLogo">
         </div>
     </div> --}}
-    <div id="app">
+    
+   {{-- <div id="app">--}}  
 
     <div id="app">
       @if($question === null)
