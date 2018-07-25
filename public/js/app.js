@@ -54616,6 +54616,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54638,6 +54648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             template_id: this.template,
             surveyElements: this.initialElements,
+            file: '',
             rootElements: [{
                 uid: '',
                 type: 'text',
@@ -54882,6 +54893,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         questionsJson: function questionsJson() {
             return JSON.stringify(this.surveyElements);
+        },
+        setFile: function setFile() {
+            return this.file;
         }
     },
 
@@ -64270,78 +64284,81 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "survey-builder" }, [
-      _c(
-        "div",
-        { staticClass: "root-controls" },
-        [
-          _vm._m(0),
+    _c(
+      "form",
+      {
+        attrs: {
+          action: _vm.$Config.base_url + "/encuestas/save2",
+          method: "POST",
+          enctype: "multipart/form-data"
+        }
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "survey-builder" }, [
+          _c(
+            "div",
+            { staticClass: "root-controls" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "app-draggable",
+                {
+                  attrs: {
+                    clone: _vm.clone,
+                    list: _vm.rootElements,
+                    options: { group: { name: "elements", pull: "clone" } }
+                  }
+                },
+                _vm._l(_vm.rootElements, function(rootElement) {
+                  return _c(
+                    "div",
+                    [
+                      _c("app-root-element", {
+                        attrs: { "root-element": rootElement }
+                      })
+                    ],
+                    1
+                  )
+                })
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
-            "app-draggable",
-            {
-              attrs: {
-                clone: _vm.clone,
-                list: _vm.rootElements,
-                options: { group: { name: "elements", pull: "clone" } }
-              }
-            },
-            _vm._l(_vm.rootElements, function(rootElement) {
-              return _c(
-                "div",
-                [
-                  _c("app-root-element", {
-                    attrs: { "root-element": rootElement }
-                  })
-                ],
-                1
+            "div",
+            { staticClass: "survey-questions" },
+            [
+              _c(
+                "app-draggable",
+                {
+                  staticClass: "survey-questions-container",
+                  attrs: {
+                    list: _vm.surveyElements,
+                    options: { group: { name: "elements", pull: false } }
+                  }
+                },
+                _vm._l(_vm.surveyElements, function(surveyElement) {
+                  return _c(
+                    "div",
+                    [
+                      _c("app-survey-question", {
+                        attrs: { "survey-element": surveyElement }
+                      })
+                    ],
+                    1
+                  )
+                })
               )
-            })
+            ],
+            1
           )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "survey-questions" },
-        [
-          _c(
-            "app-draggable",
-            {
-              staticClass: "survey-questions-container",
-              attrs: {
-                list: _vm.surveyElements,
-                options: { group: { name: "elements", pull: false } }
-              }
-            },
-            _vm._l(_vm.surveyElements, function(surveyElement) {
-              return _c(
-                "div",
-                [
-                  _c("app-survey-question", {
-                    attrs: { "survey-element": surveyElement }
-                  })
-                ],
-                1
-              )
-            })
-          )
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", [
-      _c(
-        "form",
-        {
-          attrs: {
-            action: _vm.$Config.base_url + "/encuestas/save2",
-            method: "POST"
-          }
-        },
-        [
+        ]),
+        _vm._v(" "),
+        _c("div", [
           _c("input", {
             attrs: { type: "hidden", name: "questions" },
             domProps: { value: _vm.questionsJson }
@@ -64352,13 +64369,29 @@ var render = function() {
             domProps: { value: _vm.template_id }
           }),
           _vm._v(" "),
-          _vm._m(1)
-        ]
-      )
-    ])
+          _vm._m(2)
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4", attrs: { align: "center" } }, [
+        _c("label", [_vm._v("Logo")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "file", name: "surveyLogo", id: "surveyLogo" }
+        })
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

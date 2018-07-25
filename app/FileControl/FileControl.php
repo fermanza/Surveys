@@ -14,16 +14,21 @@ class FileControl
 {
 
 	private $date;
-
-
 	 public static function storeFile($file, $location)
 	 {
-	 	  //dd($file);
 	 	  $date = new DateTime();
 	 	  for($i = 0; $i < count($file); $i++){
 		 	  $fileName[] = "{$date->getTimestamp()}_{$file[$i]->getClientOriginalName()}";
 		 	  Storage::disk($location)->put($fileName, File::get($file[$i]));
 	 	  }
+	 	   return $fileName;
+	 }
+
+	 public static function storeSingleFile($file, $location)
+	 {
+	 	  $date = new DateTime();
+		 	  $fileName = "{$date->getTimestamp()}_{$file->getClientOriginalName()}";
+		 	  Storage::disk($location)->put($fileName, File::get($file));
 	 	   return $fileName;
 	 }
 

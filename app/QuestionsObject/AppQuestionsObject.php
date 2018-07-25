@@ -107,7 +107,6 @@ class AppQuestionsObject
                             }
                             $text .= " Option: ".$ansListFinal;
                             $question->answer[] = $text;
-                            $local_count++;
                             $ii++;
                         }
                     }
