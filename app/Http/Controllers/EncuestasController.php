@@ -273,12 +273,12 @@ class EncuestasController extends Controller
                 $question = new Questions;
             }
 
-            $preguntas=json_decode($request->content);
-
-            if($template->plan==0 && count($preguntas)>10)
-            {
-                return response()->json("exceso",500);
-            }
+            // $preguntas=json_decode($request->content);
+            // dd($preguntas);
+            // if($template->plan==0 && count($preguntas)>10)
+            // {
+            //     return response()->json("exceso",500);
+            // }
 
             $question->position = 0;
             $question->content = json_decode($request->questions);
