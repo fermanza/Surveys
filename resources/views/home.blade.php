@@ -8,8 +8,8 @@
 
 @extends('includes.header')
       <body class="index">
-        
-        <!-- start slider section --> 
+
+        <!-- start slider section -->
         <section class="wow fadeIn example no-padding no-transition">
             <article class="content">
                 <div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classic4export" data-source="gallery" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
@@ -20,18 +20,18 @@
                                 <div class="opacity-extra-medium position-relative z-index-1"></div>
                                 <!-- main image -->
                                 <img src="images/home/banner.jpg"  alt="Ocean"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" class="rev-slidebg">
-                                
+
                                 <!-- layer nr. 4 -->
-                                <div class="tp-caption NotGeneric-SubTitle tp-resizeme " 
-                                     data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']" 
-                                     data-y="['top','top','middle','middle']" data-voffset="['110','80','250','200']" 
+                                <div class="tp-caption NotGeneric-SubTitle tp-resizeme "
+                                     data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']"
+                                     data-y="['top','top','middle','middle']" data-voffset="['110','80','250','200']"
                                      data-fontsize="['76','76','55','45']"
                                      data-lineheight="['78','78','68','45']"
                                      data-width="none"
                                      data-height="none"
                                      data-whitespace="nowrap"
-                                     data-type="text" 
-                                     data-responsive_offset="on" 
+                                     data-type="text"
+                                     data-responsive_offset="on"
                                      data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":300,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(0, 0, 0, 1.00);bw:2px 2px 2px 2px;"}]'
                                      data-textAlign="['left','left','left','left']"
                                      data-paddingtop="[10,10,10,10]"
@@ -39,18 +39,18 @@
                                      data-paddingbottom="[10,10,10,10]"
                                      data-paddingleft="[0,0,0,0]"
                                      style="z-index: 8; white-space: nowrap; font-family:'Roboto', sans-serif !important; font-weight: 600; letter-spacing: -1px; color: #000;">@lang('home.creaTuEncuesta')<br>online<br><br></div>
-                                
+
                                 <!-- layer nr. 3 -->
-                                <div class="tp-caption NotGeneric-Title tp-resizeme" 
-                                     data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']" 
+                                <div class="tp-caption NotGeneric-Title tp-resizeme"
+                                     data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']"
                                      data-y="['top','top','middle','middle']" data-voffset="['280','250','340','280']"
                                      data-fontsize="['16','16','16','16']"
                                      data-lineheight="['26','26','26','26']"
                                      data-width="none"
                                      data-height="none"
                                      data-whitespace="nowrap"
-                                     data-type="text" 
-                                     data-responsive_offset="on" 
+                                     data-type="text"
+                                     data-responsive_offset="on"
                                      data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":600,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(0, 0, 0, 1.00);bw:2px 2px 2px 2px;"}]'
                                      data-textAlign="['left','left','left','left']"
                                      data-paddingtop="[10,10,10,10]"
@@ -61,37 +61,37 @@
                                      @lang('home.creaDistribuye')
                                      <br>@lang('home.rapidamente')</div>
                                 <!-- layer nr. 5 -->
-                                
-                                <a href="{{ URL('encuestas') }}" class="tp-caption btn btn-medium z-index-5 btn1" 
-                                   data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']" 
-                                   data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']" 
+
+                                <a href="{{ URL('encuestas') }}" class="tp-caption btn btn-medium z-index-5 btn1"
+                                   data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']"
+                                   data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']"
                                    data-fontsize="['15','15','15','15']"
                                    data-whitespace="nowrap"
                                    data-visibility="['on', 'on', 'on', 'on']"
                                    data-type="text"
                                    data-color="['#FFFFFF']"
-                                   data-responsive_offset="on" 
+                                   data-responsive_offset="on"
                                    data-responsive="on"
                                    data-frames='[{"from":"y:150px;opacity:0;","speed":1500,"to":"o:1;","delay":900,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                   data-textAlign="['center', 'center', 'center', 'center']" 
+                                   data-textAlign="['center', 'center', 'center', 'center']"
                                    data-paddingtop="[2,2,2,2]"
                                    data-paddingright="[26,26,26,26]"
                                    data-paddingbottom="[2,2,2,2]"
                                    data-paddingleft="[26,26,26,26]" style="border-radius: 50px; background-color: #5ba01f;font-family:'Roboto', sans-serif !important;"> @lang('home.creaEncuesta') </a>
-                               
+
                                    <!-- layer nr. 5 -->
-                                <a href="{{ URL('encuestas_publicas') }}" class="tp-caption btn btn-transparent-black btn-medium z-index-5 btn2" 
-                                   data-x="['left','left','left','left']" data-hoffset="['210%','210%','210%','210%']" 
-                                   data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']" 
+                                <a href="{{ URL('encuestas_publicas') }}" class="tp-caption btn btn-transparent-black btn-medium z-index-5 btn2"
+                                   data-x="['left','left','left','left']" data-hoffset="['210%','210%','210%','210%']"
+                                   data-y="['middle','middle','middle','middle']" data-voffset="['90','60','390','330']"
                                    data-fontsize="['15','15','15','15']"
                                    data-whitespace="nowrap"
                                    data-visibility="['on', 'on', 'on', 'on']"
                                    data-type="text"
                                    data-color="['#000']"
-                                   data-responsive_offset="on" 
+                                   data-responsive_offset="on"
                                    data-responsive="on"
                                    data-frames='[{"from":"y:150px;opacity:0;","speed":1500,"to":"o:1;","delay":1200,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(0, 0, 0, 1.00);bw:2px 2px 2px 2px;"}]'
-                                   data-textAlign="['center', 'center', 'center', 'center']" 
+                                   data-textAlign="['center', 'center', 'center', 'center']"
                                    data-paddingtop="[3,3,3,3]"
                                    data-paddingright="[26,26,26,26]"
                                    data-paddingbottom="[2,2,2,2]"
@@ -118,7 +118,7 @@
                             <div class="display-table-cell vertical-align-middle padding-fifteen-all md-padding-ten-all xs-padding-30px-all">
                                 <div class="text-light-gray margin-10px-bottom"> @lang('home.comoFunciona')  </div>
                                 <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">
-                                 @lang('home.creaEnvia')   
+                                 @lang('home.creaEnvia')
                                 </div>
                                 <p>
                                  @lang('home.empleaMultiplesTiposDePreguntas')
@@ -138,8 +138,8 @@
                                 <div class="text-light-gray margin-10px-bottom">@lang('home.plantillas')   </div>
                                 <div class="eq-title margin-20px-bottom text-white md-width-100 xs-margin-15px-bottom">
                                 @lang('home.modelosDeCuestionarios') </div>
-                                <p>  
-                                @lang('home.conNuestrasPlantillas')    
+                                <p>
+                                @lang('home.conNuestrasPlantillas')
                                 </p><br>
                                 <a href="{{ URL('plantillas') }}" class="btn btn-transparent-white btn-small border-radius-4"> @lang('home.verPlantillas')</a>
                             </div>
@@ -158,7 +158,7 @@
                     <div class="col-lg-8 col-md-8 center-col text-center last-paragraph-no-margin">
                         <p class="width-80 center-col display-inline-block xs-width-100"> @lang('home.encuestasOnline')</p>
                         <h5 class="text-extra-dark-gray font-weight-600"> @lang('home.caracteristicasDelServicio') </h5><br><br><br>
-                        
+
                     </div>
                 </div>
                 <div class="row equalize">
@@ -233,15 +233,15 @@
         </section>
         <!-- end services section -->
 
-        <!-- start about section --> 
+        <!-- start about section -->
         <section class="planes no-padding wow fadeIn cover-background sm-no-background-img bg-medium-light-gray" style="background-image: url('images/home/p3.jpg');">
             <div class="container">
-                <div class="row"> 
+                <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right wow fadeIn">
                         <div class="col-lg-12 col-md-12 sm-text-center xs-no-padding-lr last-paragraph-no-margin sm-margin-30px-bottom">
                             <h5 class="text-white font-weight-600">@lang('home.planes') </h5>
-                        </div> 
-                        <div class="cont">                         
+                        </div>
+                        <div class="cont">
                         <!-- star feature box item -->
                         <div class="col-md-6 col-sm-6 xs-margin-30px-bottom last-paragraph-no-margin xs-no-padding-lr sm-text-center flex-plan">
                             <div class="feature-content">
@@ -252,7 +252,7 @@
                                     <li><i class="fa fa-check"></i> <div>@lang('home.funcionalidades') </div></li><br>
                                 </ul>
                                 <a href="registro" class="btn">@lang('home.registrarse')</a>
-                            </div> 
+                            </div>
                         </div>
                         <!-- end feature box item -->
                         <!-- star feature box item -->
@@ -266,11 +266,11 @@
                                     <li><i class="fa fa-check"></i> <div>@lang('home.paqueteEncuestas') </div></li>
                                 </ul>
                                 <a href="{{ URL('registro')}}" class="btn btn2">@lang('home.contratar')</a>
-                            </div> 
+                            </div>
                         </div>
                         <!-- end feature box item -->
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -282,9 +282,9 @@
                     <div class="col-lg-12 col-md-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">@lang('home.envianosTusConsultas')  </h5>
                         <p>@lang('home.nuestroEquipoDeSoporte')  <br>@lang('home.puedeEncontrar')  <a href="mailto:info@survenia.com">info@survenia.com</a></p>
-                    </div>  
+                    </div>
                 </div>
-                <form id="project-contact-form" action="javascript:void(0)" method="post">
+                <form id="project-contact-form" action="{{ URL('sendContactForm') }} " method="POST">
                     <div class="row">
                          <div class="col-md-12">
                             <div id="success-project-contact-form" class="no-margin-lr"></div>
@@ -307,7 +307,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center">
                             <textarea name="comment" id="comment" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
                         </div>
                         <div class="col-md-12 text-center">
@@ -320,8 +320,8 @@
 
         <!-- end form section -->
 
-        <!-- start footer --> 
-        <footer class="footer-clean-dark xs-padding-30px-tb"> 
+        <!-- start footer -->
+        <footer class="footer-clean-dark xs-padding-30px-tb">
             <div class="footer-widget-area padding-50px-bottom">
                 <div class="container">
                     <div class="row">
@@ -367,7 +367,7 @@
                         <!-- start newsletter -->
                         <div class="col-md-5 col-xs-12 widget">
                             <div class="widget-title alt-font text-extra-small text-light-gray text-uppercase font-weight-600">@lang('footer.ultimosArticulos')</div>
-               
+
                             @foreach($articulos as $articulo)
                             <div class="footer-post">
                                 <a href="{{url('articulos')}}/{{$articulo->id}}">
@@ -376,7 +376,7 @@
                                 </a>
                             </div>
                             @endforeach
-                            
+
                         </div>
                         <!-- end newsletter -->
                     </div>
@@ -384,15 +384,15 @@
             </div>
             <div class="sub-footer">
                 <div class="container">
-                    <div class="row"> 
+                    <div class="row">
                         <!-- start copyright -->
                         <div class="col-md-6 col-xs-12 text-left">&COPY; 2018 - All rights Reserved Survenia</div>
                         <div class="col-md-6 col-xs-12 text-right"><a href="http://rednodo.com"></a></div>
                       @if(Auth::check() && Auth::user()->id == 1)
                         <a href="{{ URL('login') }}">Admin</a>
-                      @endif    
+                      @endif
                         <!-- end copyright -->
-                      
+
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ Route::get('mis_encuestas/excel/{id}', 'EncuestasController@getBladeExcel');
 
 Route::get('/registro','SurveniaWebPagesController@registro');
 
-
+Route::post('/sendContactForm', 'EncuestasController@sendContactForm');
 
 Route::get('/terminos', 'SurveniaWebPagesController@terminos');
 Route::get('/contacto', 'SurveniaWebPagesController@contacto');
@@ -32,7 +32,7 @@ Route::get('/articulos', 'SurveniaWebPagesController@articulos');
 Route::get('/encuestas_publicas_detalle', 'SurveniaWebPagesController@encuestasPublicasDetalle');
 Route::get('/como_funciona', 'SurveniaWebPagesController@comoFunciona');
 Route::get('/calculadora', 'SurveniaWebPagesController@calculadora');
-Route::get('/planes', 'SurveniaWebPagesController@planes');	
+Route::get('/planes', 'SurveniaWebPagesController@planes');
 Route::resource('/inicio_sesion','InicioSesionController');
 
 Route::get('/bitly/{id}','EncuestasController@bitly');
@@ -61,7 +61,7 @@ Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
 Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
 */
 
-//Login with Facebook/ 
+//Login with Facebook/
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
@@ -103,7 +103,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::post('saveQuestion','EncuestasController@saveQuestion');
     Route::post('saveQuestion2', 'EncuestasController@saveQuestion2');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-    // display single post   
+    // display single post
     //Route::get('/{slug}',['as' => 'article', 'uses' => 'ArticulosController@show'])->where('slug', '[A-Za-z0-9-_]+');
     Route::get('/encuestas/{id}', 'EncuestasController@create');
     Route::get('/encuestas/show', 'EncuestasController@show');

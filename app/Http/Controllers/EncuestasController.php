@@ -13,6 +13,7 @@ use Auth;
 use Hash;
 use Illuminate\Support\Facades\Input;
 use App\Notifications\ApprovalNotification;
+use App\Notifications\ContactForm;
 use App\FileControl\FileControl;
 use App\Answer;
 use App\UserCredit;
@@ -21,6 +22,7 @@ use DB;
 use Bitly;
 use Session;
 use App\QuestionsObject\AppQuestionsObject;
+use App\Articulo;
 
 class EncuestasController extends Controller
 {
@@ -521,9 +523,22 @@ class EncuestasController extends Controller
             ]);
         }
 
-
         return  $answersGrouped;
 
+    }
+
+    public function sendContactForm(Request $request)
+    {
+      //dd($request->all());
+      $user = Auth::user();
+
+      $user->name = 'Admin';
+      $user->email = 'isanchez94@hotmail.com';
+      $user->notify(new ContactForm($user, $request));
+
+      $articulos=Articulo::orderBy('id', 'desc')->take(3)->get();
+
+      return view('home', compact('articulos'));
     }
 
 }
