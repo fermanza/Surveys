@@ -1,6 +1,7 @@
 <style scoped>
     .option-container {
         display: flex;
+        margin-bottom: 5px;
     }
 
     .option-select {
@@ -26,9 +27,7 @@
                 <div v-for="(options, value) in hideConfig.options" :key="value" class="option-container">
                     <div class="option-label text-center">{{ value }}</div>
                     <div class="option-select">
-                        <select multiple v-model="hideConfig.options[value]">
-                            <option v-for="availableElement in availableElements" :key="availableElement.uid" :value="availableElement.uid" :disabled="availableElement.uid == surveyElementUid">{{ availableElement.text }}</option>
-                        </select>
+                        <vue-select v-model="hideConfig.options[value]" :options="parsedOptions" :settings="{ multiple: true, width: '95%' }"></vue-select>
                     </div>
                 </div>
             </div>
@@ -48,6 +47,17 @@
             }
         },
 
+        computed: {
+            parsedOptions() {
+                return this.availableElements.map(element => {
+                    return {
+                        id: element.uid,
+                        text: element.text
+                    }
+                });
+            }
+        },
+
         created() {
             Bus.$on('available-elements', this.setAvailableElements);
             Bus.$on('remove-question', this.emitShowElements);
@@ -58,7 +68,7 @@
 
         methods: {
             setAvailableElements(availableElements) {
-                this.availableElements = availableElements;
+                this.availableElements = availableElements.filter(element => element.uid !== this.surveyElementUid);
             },
 
             emitShowElements(uid) {

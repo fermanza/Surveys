@@ -2,12 +2,14 @@ import Vue from 'vue';
 import _ from 'lodash';
 import draggable from 'vuedraggable';
 import StarRating from 'vue-star-rating';
+import vueSelect from 'v-select2-component';
 Vue.prototype.$Config = window.Config;
 
 window.Vue = Vue;
 window._ = _;
 
 Vue.component('star-rating', StarRating);
+Vue.component('vue-select', vueSelect);
 Vue.component('app-draggable', draggable);
 Vue.component('app-survey', require('./components/Survey.vue'));
 Vue.component('app-survey-builder', require('./components/SurveyBuilder.vue'));
