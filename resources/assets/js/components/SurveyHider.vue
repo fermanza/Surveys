@@ -27,7 +27,7 @@
                     <div class="option-label text-center">{{ value }}</div>
                     <div class="option-select">
                         <select multiple v-model="hideConfig.options[value]">
-                            <option v-for="availableElement in availableElements" :key="availableElement.uid" :value="availableElement.uid" :disabled="availableElement.uid == exceptUid">{{ availableElement.text }}</option>
+                            <option v-for="availableElement in availableElements" :key="availableElement.uid" :value="availableElement.uid" :disabled="availableElement.uid == surveyElementUid">{{ availableElement.text }}</option>
                         </select>
                     </div>
                 </div>
@@ -37,21 +37,20 @@
 </template>
 
 <script>
-    import uniqueString from 'unique-string';
     import Bus from './../Bus';
 
     export default {
-        props: ['hideConfig', 'exceptUid'],
+        props: ['hideConfig', 'surveyElementUid', 'answer'],
 
         data() {
             return {
-                uid: uniqueString(),
                 availableElements: [],
             }
         },
 
         created() {
             Bus.$on('available-elements', this.setAvailableElements);
+            Bus.$on('remove-question', this.emitShowElements);
             this.$nextTick(() => {
                 Bus.$emit('get-available-elements');
             });
@@ -60,6 +59,12 @@
         methods: {
             setAvailableElements(availableElements) {
                 this.availableElements = availableElements;
+            },
+
+            emitShowElements(uid) {
+                if (uid == this.surveyElementUid) {
+                    Bus.$emit('toggle-hide-elements', this.hideConfig.options[this.answer] || [], []);
+                }
             }
         }
     }

@@ -18,7 +18,7 @@
 
 <template>
     <div>
-        <div v-if="!display">
+        <div v-show="!display">
             <label>Etiqueta</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
@@ -35,7 +35,7 @@
                     <button type="button" @click="addOption" class="btn btn-success">Agregar</button>
                 </div>
             </div>
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :except-uid="surveyElement.uid"></app-survey-hider>
+            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>

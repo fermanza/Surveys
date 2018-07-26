@@ -18,7 +18,7 @@
 
 <template>
     <div>
-        <div v-if="!display">
+        <div v-show="!display">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" v-model="surveyElement.config.multiple" />
@@ -38,7 +38,7 @@
             <div>
                 <button type="button" @click="addField" class="btn btn-success">Agregar</button>
             </div>
-            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig" :except-uid="surveyElement.uid"></app-survey-hider>
+            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
