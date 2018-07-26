@@ -1891,6 +1891,197 @@ function isnan (val) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -5324,197 +5515,6 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)(module)))
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6442,6 +6442,17 @@ module.exports = CipherBase
 
 /***/ }),
 /* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6578,7 +6589,7 @@ Duplex.prototype._destroy = function (err, cb) {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-disable node/no-deprecated-api */
@@ -6646,7 +6657,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6692,10 +6703,10 @@ function randomBytes (size, cb) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(11)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(15).Buffer
+var Buffer = __webpack_require__(16).Buffer
 
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -6777,17 +6788,6 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-
-/***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
 
 /***/ }),
 /* 19 */
@@ -17433,7 +17433,7 @@ BlockHash.prototype._pad = function pad() {
 
 var asn1 = exports;
 
-asn1.bignum = __webpack_require__(2);
+asn1.bignum = __webpack_require__(4);
 
 asn1.define = __webpack_require__(183).define;
 asn1.base = __webpack_require__(25);
@@ -18521,7 +18521,7 @@ exports = module.exports = __webpack_require__(49);
 exports.Stream = exports;
 exports.Readable = exports;
 exports.Writable = __webpack_require__(36);
-exports.Duplex = __webpack_require__(14);
+exports.Duplex = __webpack_require__(15);
 exports.Transform = __webpack_require__(52);
 exports.PassThrough = __webpack_require__(122);
 
@@ -18699,7 +18699,7 @@ util.inherits(Writable, Stream);
 function nop() {}
 
 function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   options = options || {};
 
@@ -18849,7 +18849,7 @@ if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.protot
 }
 
 function Writable(options) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   // Writable ctor is applied to Duplexes, too.
   // `realHasInstance` is necessary because using plain `instanceof`
@@ -19842,8 +19842,8 @@ module.exports = modes
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(2);
-var randomBytes = __webpack_require__(16);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(4);
+var randomBytes = __webpack_require__(17);
 module.exports = crt;
 function blind(priv) {
   var r = getr(priv);
@@ -31178,7 +31178,7 @@ function prependListener(emitter, event, fn) {
 }
 
 function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   options = options || {};
 
@@ -31255,7 +31255,7 @@ function ReadableState(options, stream) {
 }
 
 function Readable(options) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   if (!(this instanceof Readable)) return new Readable(options);
 
@@ -32257,7 +32257,7 @@ module.exports = {
 
 module.exports = Transform;
 
-var Duplex = __webpack_require__(14);
+var Duplex = __webpack_require__(15);
 
 /*<replacement>*/
 var util = __webpack_require__(21);
@@ -32418,8 +32418,8 @@ function done(stream, er, data) {
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var K = [
   0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5,
@@ -32551,8 +32551,8 @@ module.exports = Sha256
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var K = [
   0x428a2f98, 0xd728ae22, 0x71374491, 0x23ef65cd,
@@ -33424,11 +33424,11 @@ module.exports = StreamCipher
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var randomBytes = __webpack_require__(16);
+var randomBytes = __webpack_require__(17);
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
 findPrime.fermatTest = fermatTest;
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var TWENTYFOUR = new BN(24);
 var MillerRabin = __webpack_require__(70);
 var millerRabin = new MillerRabin();
@@ -33535,7 +33535,7 @@ function findPrime(bits, gen) {
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bn = __webpack_require__(2);
+var bn = __webpack_require__(4);
 var brorand = __webpack_require__(71);
 
 function MillerRabin(rand) {
@@ -35116,7 +35116,7 @@ module.exports = function xor(a, b) {
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(4);
 function withPublic(paddedMsg, key) {
   return new Buffer(paddedMsg
     .toRed(bn.mont(key.modulus))
@@ -35184,7 +35184,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-rankin
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix', __webpack_require__(275));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix-scale', __webpack_require__(280));
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transition-group-translate-y', __webpack_require__(300));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transition-group-translate-y', __webpack_require__(285));
 
 if (document.querySelectorAll('#app').length) {
     new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -54474,7 +54474,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(92)
 /* template */
@@ -60515,7 +60515,7 @@ if(false) {
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -61013,7 +61013,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(100)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(103)
 /* template */
@@ -61085,7 +61085,7 @@ if(false) {
 /* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -61134,7 +61134,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -61299,7 +61299,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(106)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(108)
 /* template */
@@ -61371,7 +61371,7 @@ if(false) {
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -61389,7 +61389,7 @@ exports.push([module.i, "\n.survey-builder[data-v-1990b48c] {\n    display: flex
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__root_elements__ = __webpack_require__(203);
 //
 //
@@ -61602,7 +61602,7 @@ module.exports = len => {
 "use strict";
 
 
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(16)
+exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(17)
 exports.createHash = exports.Hash = __webpack_require__(20)
 exports.createHmac = exports.Hmac = __webpack_require__(55)
 
@@ -62408,7 +62408,7 @@ module.exports = __webpack_require__(36);
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(15);
 
 
 /***/ }),
@@ -62438,8 +62438,8 @@ module.exports = __webpack_require__(34).PassThrough
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var K = [
   0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
@@ -62539,8 +62539,8 @@ module.exports = Sha
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var K = [
   0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
@@ -62644,8 +62644,8 @@ module.exports = Sha1
 
 var inherits = __webpack_require__(0)
 var Sha256 = __webpack_require__(53)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var W = new Array(64)
 
@@ -62695,8 +62695,8 @@ module.exports = Sha224
 
 var inherits = __webpack_require__(0)
 var SHA512 = __webpack_require__(54)
-var Hash = __webpack_require__(17)
-var Buffer = __webpack_require__(15).Buffer
+var Hash = __webpack_require__(18)
+var Buffer = __webpack_require__(16).Buffer
 
 var W = new Array(160)
 
@@ -64570,7 +64570,7 @@ module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(4);
 var MillerRabin = __webpack_require__(70);
 var millerRabin = new MillerRabin();
 var TWENTYFOUR = new BN(24);
@@ -64579,7 +64579,7 @@ var TEN = new BN(10);
 var THREE = new BN(3);
 var SEVEN = new BN(7);
 var primes = __webpack_require__(69);
-var randomBytes = __webpack_require__(16);
+var randomBytes = __webpack_require__(17);
 module.exports = DH;
 
 function setPublicKey(pub, enc) {
@@ -64843,7 +64843,7 @@ module.exports = {
 var createHmac = __webpack_require__(55)
 var crt = __webpack_require__(43)
 var EC = __webpack_require__(6).ec
-var BN = __webpack_require__(2)
+var BN = __webpack_require__(4)
 var parseKeys = __webpack_require__(30)
 var curves = __webpack_require__(80)
 
@@ -65001,7 +65001,7 @@ module.exports = {"name":"elliptic","version":"6.4.0","description":"EC cryptogr
 
 
 var utils = exports;
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var minAssert = __webpack_require__(7);
 var minUtils = __webpack_require__(72);
 
@@ -65127,7 +65127,7 @@ utils.intFromLE = intFromLE;
 "use strict";
 
 
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var getNAF = utils.getNAF;
@@ -65511,7 +65511,7 @@ BasePoint.prototype.dblp = function dblp(k) {
 
 var curve = __webpack_require__(29);
 var elliptic = __webpack_require__(6);
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -66455,7 +66455,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
 
 
 var curve = __webpack_require__(29);
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -66643,7 +66643,7 @@ Point.prototype.getX = function getX() {
 
 var curve = __webpack_require__(29);
 var elliptic = __webpack_require__(6);
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -68460,7 +68460,7 @@ module.exports = {
 "use strict";
 
 
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var HmacDRBG = __webpack_require__(176);
 var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
@@ -68827,7 +68827,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
 "use strict";
 
 
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
@@ -68953,7 +68953,7 @@ KeyPair.prototype.inspect = function inspect() {
 "use strict";
 
 
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 
 var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
@@ -69323,7 +69323,7 @@ module.exports = KeyPair;
 "use strict";
 
 
-var BN = __webpack_require__(2);
+var BN = __webpack_require__(4);
 var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
@@ -70804,7 +70804,7 @@ module.exports = function (okey, password) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var BN = __webpack_require__(2)
+var BN = __webpack_require__(4)
 var EC = __webpack_require__(6).ec
 var parseKeys = __webpack_require__(30)
 var curves = __webpack_require__(80)
@@ -70894,7 +70894,7 @@ module.exports = verify
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var elliptic = __webpack_require__(6)
-var BN = __webpack_require__(2)
+var BN = __webpack_require__(4)
 
 module.exports = function createECDH (curve) {
   return new ECDH(curve)
@@ -71040,11 +71040,11 @@ exports.publicDecrypt = function publicDecrypt(key, buf) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(30);
-var randomBytes = __webpack_require__(16);
+var randomBytes = __webpack_require__(17);
 var createHash = __webpack_require__(20);
 var mgf = __webpack_require__(81);
 var xor = __webpack_require__(82);
-var bn = __webpack_require__(2);
+var bn = __webpack_require__(4);
 var withPublic = __webpack_require__(83);
 var crt = __webpack_require__(43);
 
@@ -71143,7 +71143,7 @@ function nonZero(len, crypto) {
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(30);
 var mgf = __webpack_require__(81);
 var xor = __webpack_require__(82);
-var bn = __webpack_require__(2);
+var bn = __webpack_require__(4);
 var crt = __webpack_require__(43);
 var createHash = __webpack_require__(20);
 var withPublic = __webpack_require__(83);
@@ -71261,7 +71261,7 @@ function oldBrowser () {
   throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11')
 }
 var safeBuffer = __webpack_require__(202)
-var randombytes = __webpack_require__(16)
+var randombytes = __webpack_require__(17)
 var Buffer = safeBuffer.Buffer
 var kBufferMaxLength = safeBuffer.kMaxLength
 var crypto = global.crypto || global.msCrypto
@@ -71551,7 +71551,7 @@ var rootElements = [{
     uid: '',
     type: 'header',
     title: 'Texto',
-    className: 'fa-heading',
+    className: 'fas fa-align-justify',
     hide: false,
     config: {
         title: 'Texto'
@@ -71571,7 +71571,7 @@ var rootElements = [{
     uid: '',
     type: 'select',
     title: 'Dropdown',
-    className: 'fa-caret-square-down',
+    className: 'fa fa-caret-down',
     hide: false,
     config: {
         title: 'Dropdown',
@@ -71618,7 +71618,7 @@ var rootElements = [{
     uid: '',
     type: 'slider',
     title: 'Slider',
-    className: 'fa-sliders-h',
+    className: 'fa-sliders',
     hide: false,
     config: {
         title: 'Slider',
@@ -71693,7 +71693,7 @@ var rootElements = [{
     uid: '',
     type: 'star-rating',
     title: 'Star Rating',
-    className: 'fa-star',
+    className: 'fa fa-star',
     hide: false,
     config: {
         title: 'Star rating',
@@ -71713,7 +71713,7 @@ var rootElements = [{
     uid: '',
     type: 'ranking',
     title: 'Ranking',
-    className: 'fa-sort-numeric-down',
+    className: 'fas fa-sort',
     hide: false,
     config: {
         title: 'Ranking',
@@ -71910,7 +71910,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(206)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(208)
 /* template */
@@ -71982,7 +71982,7 @@ if(false) {
 /* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -72061,7 +72061,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(211)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(213)
 /* template */
@@ -72133,7 +72133,7 @@ if(false) {
 /* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -72149,7 +72149,7 @@ exports.push([module.i, "\n.survey-question[data-v-73d16357] {\n    position: re
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -72296,7 +72296,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(216)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(218)
 /* template */
@@ -72368,7 +72368,7 @@ if(false) {
 /* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -72384,7 +72384,7 @@ exports.push([module.i, "\n.option-container[data-v-7221b662] {\n    display: fl
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -72591,7 +72591,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(221)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(223)
 /* template */
@@ -72663,7 +72663,7 @@ if(false) {
 /* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -72786,7 +72786,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(226)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(228)
 /* template */
@@ -72858,7 +72858,7 @@ if(false) {
 /* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -72956,7 +72956,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(231)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(233)
 /* template */
@@ -73028,7 +73028,7 @@ if(false) {
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -73153,7 +73153,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(236)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(238)
 /* template */
@@ -73225,7 +73225,7 @@ if(false) {
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -73241,7 +73241,7 @@ exports.push([module.i, "\n.option-container[data-v-6d3fcd3d] {\n    display: fl
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -73521,7 +73521,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(241)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(243)
 /* template */
@@ -73593,7 +73593,7 @@ if(false) {
 /* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -73825,7 +73825,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(246)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(248)
 /* template */
@@ -73897,7 +73897,7 @@ if(false) {
 /* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -73915,7 +73915,7 @@ exports.push([module.i, "\n.field-container[data-v-c126c8b2] {\n    display: fle
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -74350,7 +74350,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(251)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(253)
 /* template */
@@ -74422,7 +74422,7 @@ if(false) {
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -74645,7 +74645,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(256)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(258)
 /* template */
@@ -74717,7 +74717,7 @@ if(false) {
 /* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -74818,7 +74818,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(261)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(263)
 /* template */
@@ -74890,7 +74890,7 @@ if(false) {
 /* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75306,7 +75306,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(266)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(268)
 /* template */
@@ -75378,7 +75378,7 @@ if(false) {
 /* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75394,7 +75394,7 @@ exports.push([module.i, "\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -75525,7 +75525,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(271)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(273)
 /* template */
@@ -75597,7 +75597,7 @@ if(false) {
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75859,7 +75859,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(276)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(278)
 /* template */
@@ -75931,7 +75931,7 @@ if(false) {
 /* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -76494,7 +76494,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(281)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(283)
 /* template */
@@ -76566,7 +76566,7 @@ if(false) {
 /* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -77104,34 +77104,19 @@ if (false) {
 }
 
 /***/ }),
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(301)
+  __webpack_require__(286)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(303)
+var __vue_script__ = __webpack_require__(288)
 /* template */
-var __vue_template__ = __webpack_require__(304)
+var __vue_template__ = __webpack_require__(289)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77170,13 +77155,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 301 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(302);
+var content = __webpack_require__(287);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -77196,10 +77181,10 @@ if(false) {
 }
 
 /***/ }),
-/* 302 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -77210,7 +77195,7 @@ exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n    transit
 
 
 /***/ }),
-/* 303 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77235,7 +77220,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 304 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

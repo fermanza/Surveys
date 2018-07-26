@@ -132,7 +132,7 @@ let rootElements = [
         uid: '',
         type: 'header',
         title: 'Texto',
-        className: 'fa-heading',
+        className: 'fas fa-align-justify',
         hide: false,
         config: {
             title: 'Texto'
@@ -154,7 +154,7 @@ let rootElements = [
         uid: '',
         type: 'select',
         title: 'Dropdown',
-        className: 'fa-caret-square-down',
+        className: 'fa fa-caret-down',
         hide: false,
         config: {
             title: 'Dropdown',
@@ -204,7 +204,7 @@ let rootElements = [
         uid: '',
         type: 'slider',
         title: 'Slider',
-        className: 'fa-sliders-h',
+        className: 'fa-sliders',
         hide: false,
         config: {
             title: 'Slider',
@@ -284,7 +284,7 @@ let rootElements = [
         uid: '',
         type: 'star-rating',
         title: 'Star Rating',
-        className: 'fa-star',
+        className: 'fa fa-star',
         hide: false,
         config: {
             title: 'Star rating',
@@ -305,7 +305,7 @@ let rootElements = [
         uid: '',
         type: 'ranking',
         title: 'Ranking',
-        className: 'fa-sort-numeric-down',
+        className: 'fas fa-sort',
         hide: false,
         config: {
             title: 'Ranking',
