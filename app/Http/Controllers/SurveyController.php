@@ -8,7 +8,7 @@ use App\Template;
 use App\Options;
 use App\Questions;
 use App\Answer;
-use DB; 
+use DB;
 use Auth;
 
 class SurveyController extends Controller
@@ -25,9 +25,7 @@ class SurveyController extends Controller
         $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
         $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
         $total = $creditos-$discounts;
-        $templates = Template::all();
-
-        //dd($templates);
+        $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
 
         return view('admin.surveys.index', compact('items','total','templates'));
     }

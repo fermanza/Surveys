@@ -60,10 +60,10 @@
                             <td>{{ $item->city }}</td>
                             <td>{{ $item->country }}</td>
                             @if($total>0)
-                                    <td>Premium</td>
-                                    @else
-                                    <td>Gratuito</td>
-                                    @endif</td>
+                                <td>Premium</td>
+                            @else
+                                <td>Gratuito</td>
+                            @endif</td>
                                  <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
@@ -107,13 +107,28 @@
 
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'csv', 'excel'
-                ],
-                responsive: true
-            } );
+            @if(App::isLocale('es'))
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    },
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @else
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @endif
         } );
     </script>
 

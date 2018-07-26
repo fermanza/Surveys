@@ -21,7 +21,6 @@ class MyAccountController extends Controller
         $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
         $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
         $total = $creditos-$discounts;
-        //dd($users);
 
         return view('my_account.index',compact('user','total'));
     }

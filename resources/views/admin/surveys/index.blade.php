@@ -6,12 +6,6 @@
 @endsection
 
 @section('content')
-{{--
-<div class="mB-20">
-    <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
-        {{ trans('Agregar Usuario') }}
-    </a>
-</div> --}}
 
 <div class="container">
     <div class="col-md-12">
@@ -28,7 +22,7 @@
                         <th>@lang('mis_encuestas.reportes')</th>
                         <th>@lang('mis_encuestas.cerrarEncuesta')</th>
                         <th>@lang('mis_encuestas.editarEncuesta')</th>
-                        <th>Opciones</th>
+                        <th>@lang('mis_encuestas.opciones')</th>
                     </tr>
                 </thead>
 
@@ -61,25 +55,24 @@
                                     <td>
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
-                                                {!! Form::open([
-                                            'class'=>'delete',
-                                            'url'  => route('mis_encuestas.destroy', $template),
-                                            'method' => 'DELETE',
-                                            ])
-                                        !!}
-                                            <br>
-                                            <button title="Eliminar" class="btn btn-danger btn-sm" id="deleteTemp"><i class="fa fa-trash"></i></button>
-
-                                        {!! Form::close() !!}
+                                            {!! Form::open([
+                                                    'class'=>'delete',
+                                                    'url'  => route('mis_encuestas.destroy', $template),
+                                                    'method' => 'DELETE',
+                                                    ])
+                                                !!}
+                                                <br>
+                                                &nbsp;&nbsp;<button title="Eliminar" class="btn btn-danger btn-sm" id="deleteTemp"><i class="fa fa-trash"></i></button>
+                                            {!! Form::close() !!}
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="{{ URL('/encuestas/responder/') }}/{{ $template->id }}" title="{{ trans('Ver encuesta') }}" class="btn btn-primary btn-sm"><span class="fa fa-eye"></span></a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <br />
                                                 <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/1" title="{{ trans('Aprobar encuesta') }}" class="btn btn-success btn-sm"><span class="fa fa-check"></span></a>
                                             </li>
                                             <li class="list-inline-item">
+                                                <br />
                                                 <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/0" title="{{ trans('Rechazar encuesta') }}" class="btn btn-danger btn-sm"><span class="fa fa-window-close"></span></a>
                                             </li>
                                         </ul>
@@ -106,13 +99,28 @@
 
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable( {
-                dom: 'Bfrtip',
-                responsive: true,
-                buttons: [
-                    'csv', 'excel'
-                ]
-            } );
+            @if(App::isLocale('es'))
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    },
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @else
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @endif
         } );
     </script>
 

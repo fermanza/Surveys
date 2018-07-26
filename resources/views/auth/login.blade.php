@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <h3 class="fw-300 c-grey-900 mB-40" align="center">Panel Web Survenia</h3>
+    <div align="center">
+    <img src="{{ asset('images/logo-survenia-color.png') }}" class="logo-dark" alt="Survenia" style="width: auto !important; height: auto !important; max-width: 70%;">
+    </div>
+    <br />
+    <h3 class="fw-300 c-grey-900 mB-40" align="center">Panel Web</h3>
     <h4 class="fw-300 c-grey-900 mB-40" align="center">Inicia Sesión</h4>
     <form class="form-horizontal" method="POST" action="{{ url('iniciarsesion') }}">
         {{ csrf_field() }}
