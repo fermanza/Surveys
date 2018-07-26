@@ -12,8 +12,9 @@
 
   <!-- Styles -->
   <link href="{{ URL('css/app.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">  
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.dataTables.min.css">
 
 </head>
 <body class="app">
@@ -35,7 +36,7 @@
             <div class="container-fluid">
 
               <h4 class="c-grey-900 mT-10 mB-30">@yield('page-header')</h4>
-        
+
               @include('admin.partials.messages')
               @yield('content')
 
@@ -51,7 +52,7 @@
         </footer>
       </div>
     </div>
-    
+
     @stack('script')
 
 </body>
