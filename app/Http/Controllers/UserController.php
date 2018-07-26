@@ -25,7 +25,7 @@ class UserController extends Controller
             $totalCreditsUser = $creditosUser - $discountsUser;
             $user->totalCredits = $totalCreditsUser;
         }
-       
+
         return view('admin.users.index', compact('users','total'));
     }
 

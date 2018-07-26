@@ -60,10 +60,10 @@
                             <td>{{ $user->city }}</td>
                             <td>{{ $user->country }}</td>
                             @if($user->totalCredits > 0)
-                                    <td>Premium</td>
-                                    @else
-                                    <td>Gratuito</td>
-                                    @endif</td>
+                                <td>Premium</td>
+                            @else
+                                <td>Gratuito</td>
+                            @endif</td>
                                  <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
