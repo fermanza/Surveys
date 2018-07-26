@@ -6,18 +6,18 @@
 @endsection
 
 @section('content')
-{{-- 
+{{--
 <div class="mB-20">
     <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
         {{ trans('Agregar Usuario') }}
     </a>
 </div> --}}
 
-<div class="row">
+<div class="container">
     <div class="col-md-12">
       <div class="bgc-white bd bdrs-3 p-20 mB-20">
-        <table id="dataTable" class="display nowrap" style="width:100%">
-            
+        <table id="dataTable">
+
                 <thead>
                     <tr>
                         <th>@lang('mis_encuestas.titulo')</th>
@@ -28,14 +28,14 @@
                         <th>@lang('mis_encuestas.reportes')</th>
                         <th>@lang('mis_encuestas.cerrarEncuesta')</th>
                         <th>@lang('mis_encuestas.editarEncuesta')</th>
-                        <th>@lang('mis_encuestas.eliminar')</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
-             
+
                 <tfoot>
-                    
+
                 </tfoot>
-             
+
                 <tbody align="center">
                                 @foreach($templates as $template)
                                 <tr>
@@ -52,31 +52,41 @@
                                     @else
                                     <td>Premium</td>
                                     @endif
-
-
-
                                     <td> {{ $template->answersnumber }} </td>
                                     <td><a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}"><i class="fa fa-file"></i></a></td>
                                     <td><a href=""><i class="fa fa-times"></i></a></td>
                                     <td><a href="{{ route('mis_encuestas.edit', [$template]) }}">
                                     <i class="fa fa-edit"></i>
                                     </a></td>
-                                    <td> {!! Form::open([
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route('mis_encuestas.destroy', $template), 
+                                            'url'  => route('mis_encuestas.destroy', $template),
                                             'method' => 'DELETE',
-                                            ]) 
+                                            ])
                                         !!}
                                             <br>
-                                            <button title="Eliminar"  id="deleteTemp"><i class="fa fa-trash"></i></button>
-                                            
+                                            <button title="Eliminar" class="btn btn-danger btn-sm" id="deleteTemp"><i class="fa fa-trash"></i></button>
+
                                         {!! Form::close() !!}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="{{ URL('/encuestas/responder/') }}/{{ $template->id }}" title="{{ trans('Ver encuesta') }}" class="btn btn-primary btn-sm"><span class="fa fa-eye"></span></a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <br />
+                                                <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/1" title="{{ trans('Aprobar encuesta') }}" class="btn btn-success btn-sm"><span class="fa fa-check"></span></a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/0" title="{{ trans('Rechazar encuesta') }}" class="btn btn-danger btn-sm"><span class="fa fa-window-close"></span></a>
+                                            </li>
+                                        </ul>
                                     </td>
-                                    
                                 </tr>
                                 @endforeach
                 </tbody>
-            
         </table>
       </div>
     </div>
@@ -98,11 +108,10 @@
         $(document).ready(function() {
             $('#dataTable').DataTable( {
                 dom: 'Bfrtip',
+                responsive: true,
                 buttons: [
                     'csv', 'excel'
                 ]
-
-
             } );
         } );
     </script>
