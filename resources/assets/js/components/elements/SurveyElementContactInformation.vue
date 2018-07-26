@@ -23,10 +23,12 @@
                 <label>Etiqueta</label>
                 <br />
                 <label class="checkbox-inline">
-                    Incluir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" v-model="surveyElement.config.list[index].include" />
+                    <input type="checkbox" v-model="surveyElement.config.list[index].include" />
+                    Incluir
                 </label>
                 <label class="checkbox-inline">
-                    Requerido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" v-model="surveyElement.config.list[index].required" />
+                    <input type="checkbox" v-model="surveyElement.config.list[index].required" />
+                    Requerido
                 </label>
                 <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
             </div>
