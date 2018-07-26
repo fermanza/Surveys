@@ -123,7 +123,7 @@
 
             addElement(rootElement) {
                 this.surveyElements.push(
-                    _.cloneDeep(rootElement)
+                    this.clone(rootElement)
                 );
             },
 
