@@ -19,14 +19,6 @@ class UserController extends Controller
     {
         $users = User::latest('updated_at')->get();
         $id = Auth::id();
-<<<<<<< HEAD
-        $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
-        $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
-        $total = $creditos-$discounts;
-
-
-        return view('admin.users.index', compact('items','total'));
-=======
         foreach($users as $user) {
             $creditosUser = DB::table("user_credit")->where('user_id' ,'=', $user->id)->sum('credits');
             $discountsUser = DB::table("discounts")->where('user_id' ,'=', $user->id)->sum('credits');
@@ -35,7 +27,6 @@ class UserController extends Controller
         }
        
         return view('admin.users.index', compact('users','total'));
->>>>>>> 5d66fa7b3194db78864a87a8acea682070bcfe56
     }
 
     /**
