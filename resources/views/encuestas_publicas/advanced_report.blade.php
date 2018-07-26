@@ -135,71 +135,59 @@
           }
           @endphp
 
+  <section class="tabla">
+  <div class="container">
+      <div class="col-md-12">
+          <div class="panel panel-default">
 
-
-  <table id="table-mis-respuestas" class="display">
+  <table id="table-mis-respuestas" class="display col-md-12" align="center">
   <tbody>
     @php
       $flag = true;
-      $matrix = array('matrix', 'matrix-scale');
-      for($i = 0; $i < count($printQuestions); $i++){
+      for($i = 0; $i < count($textQuestions); $i++){
     @endphp
         <tr>
           <td>
             @php
               if( $flag || 
-                  ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ){
+                  ($textQuestions[$i]->answer_id != $textQuestions[$i-1]->answer_id) ){
 
-                echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
+                echo '<hr /><b>Usuario: '.$textQuestions[$i]->user_name."</b>";
                 $flag = false;
               }
-              // dd($printQuestions);
             @endphp
           </td>
         </tr>
         @php
-        if (in_array($printQuestions[$i]->type, $matrix)){
-          for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+          for($j = 0; $j < count($textQuestions[$i]->title); $j++){
           @endphp
             <tr>
               <td>
                 <br />
-                <b> Pregunta: </b>{{ $printQuestions[$i]->title[0] }}
+                <b> Pregunta: </b>{{ $textQuestions[$i]->title[$j] }}
               </td>
             </tr>
             <tr>
               <td>
-                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
-              </td>
-            </tr>
-        @php
-          }
-        }
-        else{
-          for($j = 0; $j < count($printQuestions[$i]->title); $j++){
-          @endphp
-            <tr>
-              <td>
-                <br />
-                <b> Pregunta: </b>{{ $printQuestions[$i]->title[$j] }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+                <b> Respuesta: </b>{{ $textQuestions[$i]->answer[$j] }}
               </td>
             </tr>
     @php 
-          }
         }
       }
     @endphp
   </tbody>
   </table>
 
-
-
-
+  <div class="col-md-12" align="right">
+    <br />
+    <a class="btn btn-default" href="{{ url('/encuestas_publicas') }}">@lang('answer.regresar')</a>
+  </div>
+  
+  </div>
+</div>
+</div>
+</section>
 
                                 </div>
                             </div>
