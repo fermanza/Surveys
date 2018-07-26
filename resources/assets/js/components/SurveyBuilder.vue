@@ -32,7 +32,7 @@
 
 <template>
     <div>
-      <form :action="$Config.base_url+'/encuestas/save2'" method="POST" enctype="multipart/form-data"> 
+      <form :action="$Config.base_url+'/encuestas/save2'" ref="builderform"   @submit.prevent="countQuestions" method="POST" enctype="multipart/form-data"> 
          <div class="row">
         
                 <div class="col-md-4"></div>
@@ -69,7 +69,7 @@
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">
                     <a href="/mis_encuestas" class="btn btn-default">Cancelar</a>
-                    <button class="btn" id="guardar">&nbsp;Guardar&nbsp;</button>
+                    <button type="submit" class="btn">&nbsp;Guardar&nbsp;</button>
                     </div>
                 </div>
            
@@ -88,13 +88,16 @@
                 default: () => []
             },
             template: {
-                default: () => ""
+                default: () => {}
+            },
+            maximunElements: {
+                 default: 10
             }
         },
 
         data() {
             return {
-                template_id: this.template,
+                template_id: this.template.id,
                 surveyElements: this.initialElements,
                 file: '',
                 rootElements: [
@@ -404,6 +407,13 @@
                 element.uid = uniqueString();
 
                 return _.cloneDeep(element);
+            },
+            countQuestions() {
+               if(this.template.type == 0 && this.surveyElements.length > 10) {
+                   alert("No puedes ingresar mas de 10");    
+                   return false; 
+               } 
+               this.$refs.builderform.submit();  
             }
         }
     }
