@@ -23,6 +23,7 @@ use Bitly;
 use Session;
 use App\QuestionsObject\AppQuestionsObject;
 use App\Articulo;
+use Redirect;
 
 class EncuestasController extends Controller
 {
@@ -274,17 +275,18 @@ class EncuestasController extends Controller
             if(!$question) {
                 $question = new Questions;
             }
+            $qContent = json_decode($request->questions);
+             if($template->plan == 0 && count($qContent) > 10) {
+                 return Redirect::back()->withErrors(['msg', 'The Message']);
+
+             }
+           
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
                     $template->save();
             }
-            // $preguntas=json_decode($request->content);
-            // dd($preguntas);
-            // if($template->plan==0 && count($preguntas)>10)
-            // {
-            //     return response()->json("exceso",500);
-            // }
+            
 
             $question->position = 0;
             $question->content = json_decode($request->questions);

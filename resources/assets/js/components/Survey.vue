@@ -4,7 +4,7 @@
 
 <template>
     <div>
-        <div v-for="element in surveyElements">
+        <div v-for="element in surveyElements" :key="element.uid">
             <component :is="parseComponent(element)" :survey-element="element" :display="true"></component>
         </div>
         <div>

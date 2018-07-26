@@ -35179,9 +35179,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-rankin
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix', __webpack_require__(266));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix-scale', __webpack_require__(271));
 
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-    el: '#app'
-});
+if (document.querySelectorAll('#app').length) {
+    new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+        el: '#app'
+    });
+}
 
 /***/ }),
 /* 86 */
@@ -54655,6 +54657,7 @@ var render = function() {
       _vm._l(_vm.surveyElements, function(element) {
         return _c(
           "div",
+          { key: element.uid },
           [
             _c(_vm.parseComponent(element), {
               tag: "component",
@@ -54898,15 +54901,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         template: {
-            default: function _default() {
-                return "";
-            }
+            default: function _default() {}
+        },
+        maximunElements: {
+            default: 10
         }
     },
 
     data: function data() {
         return {
-            template_id: this.template,
+            template_id: this.template.id,
             surveyElements: this.initialElements,
             rootElements: [{
                 uid: '',
@@ -54949,7 +54953,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     list: ['Option 1', 'Option 2'],
                     hideConfig: {
                         allow: false,
-                        scope: [],
                         options: {}
                     }
                 },
@@ -54985,7 +54988,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     multiple: false,
                     hideConfig: {
                         allow: false,
-                        scope: [],
                         options: {}
                     }
                 },
@@ -55156,7 +55158,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: 'Star rating',
                     hideConfig: {
                         allow: false,
-                        scope: [],
                         options: {
                             1: [],
                             2: [],
@@ -55193,7 +55194,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$on('remove-question', this.removeQuestion);
-        __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$on('hide-elements', this.hideElements);
+        __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$on('toggle-hide-elements', this.toggleHideElements);
         __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$on('get-available-elements', function () {
             _this.emitAvailableElements(_this.surveyElements);
         });
@@ -55228,15 +55229,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$emit('available-elements', availableElements);
         },
-        hideElements: function hideElements(options, scope) {
+        toggleHideElements: function toggleHideElements(toShow, toHide) {
             var _this2 = this;
 
-            scope.forEach(function (scopeElement) {
+            toShow.forEach(function (uid) {
                 var element = _this2.surveyElements.find(function (e) {
-                    return e.uid == scopeElement.uid;
+                    return e.uid == uid;
                 });
-                element.hide = options.includes(element.uid) ? true : false;
+                element.hide = false;
             });
+            toHide.forEach(function (uid) {
+                var element = _this2.surveyElements.find(function (e) {
+                    return e.uid == uid;
+                });
+                element.hide = true;
+            });
+        },
+        countQuestions: function countQuestions() {
+            if (this.template.type == 0 && this.surveyElements.length > 10) {
+                alert('No puedes ingresar mas de 10 preguntas.');
+                return false;
+            }
+            this.$refs.builderform.submit();
         }
     },
 
@@ -65119,10 +65133,17 @@ var render = function() {
     _c(
       "form",
       {
+        ref: "builderform",
         attrs: {
           action: _vm.$Config.base_url + "/encuestas/save2",
           method: "POST",
           enctype: "multipart/form-data"
+        },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.countQuestions($event)
+          }
         }
       },
       [
@@ -65183,6 +65204,7 @@ var render = function() {
                 _vm._l(_vm.surveyElements, function(surveyElement) {
                   return _c(
                     "div",
+                    { key: surveyElement.uid },
                     [
                       _c("app-survey-question", {
                         directives: [
@@ -65216,7 +65238,24 @@ var render = function() {
             domProps: { value: _vm.template_id }
           }),
           _vm._v(" "),
-          _vm._m(2)
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6", attrs: { align: "center" } }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { href: _vm.$Config.base_url + "/mis_encuestas" }
+                },
+                [_vm._v("Cancelar")]
+              ),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+                _vm._v(" Guardar ")
+              ])
+            ])
+          ])
         ])
       ]
     )
@@ -65244,28 +65283,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "survey-question-type-title btn" }, [
       _vm._v("\n                    Tipo de Pregunta"),
       _c("i", { staticClass: "fa fa-question-circle" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6", attrs: { align: "center" } }, [
-        _c(
-          "a",
-          { staticClass: "btn btn-default", attrs: { href: "/mis_encuestas" } },
-          [_vm._v("Cancelar")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn", attrs: { type: "submit", id: "guardar" } },
-          [_vm._v(" Guardar ")]
-        )
-      ])
     ])
   }
 ]
@@ -65671,19 +65688,19 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(207)
+  __webpack_require__(276)
 }
 var normalizeComponent = __webpack_require__(5)
 /* script */
 var __vue_script__ = __webpack_require__(209)
 /* template */
-var __vue_template__ = __webpack_require__(210)
+var __vue_template__ = __webpack_require__(278)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-7221b662"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -65716,46 +65733,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(208);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("63979881", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 208 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.option-container {\n    display: flex;\n}\n.option-select {\n    flex: 1;\n}\n.option-label {\n    flex-basis: 100px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 207 */,
+/* 208 */,
 /* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65802,21 +65781,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['hideConfig'],
+    props: ['hideConfig', 'exceptUid'],
 
     data: function data() {
         return {
@@ -65840,200 +65810,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "checkbox" }, [
-      _c("label", [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.hideConfig.allow,
-              expression: "hideConfig.allow"
-            }
-          ],
-          attrs: { type: "checkbox" },
-          domProps: {
-            checked: Array.isArray(_vm.hideConfig.allow)
-              ? _vm._i(_vm.hideConfig.allow, null) > -1
-              : _vm.hideConfig.allow
-          },
-          on: {
-            change: function($event) {
-              var $$a = _vm.hideConfig.allow,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 &&
-                    _vm.$set(_vm.hideConfig, "allow", $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    _vm.$set(
-                      _vm.hideConfig,
-                      "allow",
-                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                    )
-                }
-              } else {
-                _vm.$set(_vm.hideConfig, "allow", $$c)
-              }
-            }
-          }
-        }),
-        _vm._v("\n            Ocultar Preguntas\n        ")
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.hideConfig.allow
-      ? _c("div", [
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v("Alcance")]),
-              _vm._v(" "),
-              _vm._l(_vm.availableElements, function(availableElement) {
-                return _c("div", { staticClass: "checkbox" }, [
-                  _c("label", [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.hideConfig.scope,
-                          expression: "hideConfig.scope"
-                        }
-                      ],
-                      attrs: { type: "checkbox", name: _vm.uid },
-                      domProps: {
-                        value: availableElement,
-                        checked: Array.isArray(_vm.hideConfig.scope)
-                          ? _vm._i(_vm.hideConfig.scope, availableElement) > -1
-                          : _vm.hideConfig.scope
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.hideConfig.scope,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = availableElement,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.hideConfig,
-                                  "scope",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.hideConfig,
-                                  "scope",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.hideConfig, "scope", $$c)
-                          }
-                        }
-                      }
-                    }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(availableElement.text) +
-                        "\n                "
-                    )
-                  ])
-                ])
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v("Seleccione Preguntas a Ocultar")]),
-              _vm._v(" "),
-              _vm._l(_vm.hideConfig.options, function(options, value) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-label text-center" }, [
-                    _vm._v(_vm._s(value))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-select" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.hideConfig.options[value],
-                            expression: "hideConfig.options[value]"
-                          }
-                        ],
-                        attrs: { multiple: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.hideConfig.options,
-                              value,
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.hideConfig.scope, function(scopeOption) {
-                        return _c(
-                          "option",
-                          { domProps: { value: scopeOption.uid } },
-                          [_vm._v(_vm._s(scopeOption.text))]
-                        )
-                      })
-                    )
-                  ])
-                ])
-              })
-            ],
-            2
-          )
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7221b662", module.exports)
-  }
-}
-
-/***/ }),
+/* 210 */,
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66760,19 +66537,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         'surveyElement.config.list': {
             handler: function handler(list, oldList) {
+                var _this = this;
+
                 var options = {};
                 list.forEach(function (option) {
-                    options[option] = [];
+                    options[option] = _this.surveyElement.config.hideConfig.options[option] || [];
                 });
                 this.surveyElement.config.hideConfig.options = options;
-            }
+            },
+            immediate: true
         },
 
         'surveyElement.answer': function surveyElementAnswer(answer, oldAnswer) {
             if (answer && this.surveyElement.config.hideConfig.allow) {
-                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
             } else if (!answer) {
-                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('hide-elements', [], this.surveyElement.config.hideConfig.scope);
+                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], []);
             }
         }
     }
@@ -66885,7 +66665,10 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("app-survey-hider", {
-              attrs: { "hide-config": _vm.surveyElement.config.hideConfig }
+              attrs: {
+                "hide-config": _vm.surveyElement.config.hideConfig,
+                "except-uid": _vm.surveyElement.uid
+              }
             })
           ],
           1
@@ -67142,50 +66925,54 @@ var render = function() {
           "div",
           [
             _vm._l(_vm.surveyElement.config.list, function(field, index) {
-              return _c("div", { staticClass: "field-container" }, [
-                _c("div", { staticClass: "field-input" }, [
-                  _c("label", [_vm._v("Etiqueta")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index].title,
-                        expression: "surveyElement.config.list[index].title"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text" },
-                    domProps: {
-                      value: _vm.surveyElement.config.list[index].title
-                    },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+              return _c(
+                "div",
+                { key: field.uid, staticClass: "field-container" },
+                [
+                  _c("div", { staticClass: "field-input" }, [
+                    _c("label", [_vm._v("Etiqueta")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.surveyElement.config.list[index].title,
+                          expression: "surveyElement.config.list[index].title"
                         }
-                        _vm.$set(
-                          _vm.surveyElement.config.list[index],
-                          "title",
-                          $event.target.value
-                        )
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: {
+                        value: _vm.surveyElement.config.list[index].title
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.surveyElement.config.list[index],
+                            "title",
+                            $event.target.value
+                          )
+                        }
                       }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field-action" }, [
-                  _c("i", {
-                    staticClass: "fa fa-times text-danger",
-                    on: {
-                      click: function($event) {
-                        _vm.removeField(index)
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field-action" }, [
+                    _c("i", {
+                      staticClass: "fa fa-times text-danger",
+                      on: {
+                        click: function($event) {
+                          _vm.removeField(index)
+                        }
                       }
-                    }
-                  })
-                ])
-              ])
+                    })
+                  ])
+                ]
+              )
             }),
             _vm._v(" "),
             _c("div", [
@@ -67208,7 +66995,7 @@ var render = function() {
       ? _c(
           "div",
           _vm._l(_vm.surveyElement.config.list, function(field, index) {
-            return _c("div", [
+            return _c("div", { key: field.uid }, [
               _c("label", [_vm._v(_vm._s(field.title))]),
               _vm._v(" "),
               _c("input", {
@@ -67436,17 +67223,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         'surveyElement.config.list': {
             handler: function handler(list, oldList) {
+                var _this = this;
+
                 var options = {};
                 list.forEach(function (option) {
-                    options[option] = [];
+                    options[option] = _this.surveyElement.config.hideConfig.options[option] || [];
                 });
                 this.surveyElement.config.hideConfig.options = options;
-            }
+            },
+            immediate: true
         },
 
         'surveyElement.answer': function surveyElementAnswer(answer, oldAnswer) {
             if (answer && !this.surveyElement.config.multiple && this.surveyElement.config.hideConfig.allow) {
-                __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                __WEBPACK_IMPORTED_MODULE_1__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
             }
         }
     }
@@ -67607,7 +67397,10 @@ var render = function() {
                   expression: "!surveyElement.config.multiple"
                 }
               ],
-              attrs: { "hide-config": _vm.surveyElement.config.hideConfig }
+              attrs: {
+                "hide-config": _vm.surveyElement.config.hideConfig,
+                "except-uid": _vm.surveyElement.uid
+              }
             })
           ],
           2
@@ -68430,7 +68223,7 @@ var render = function() {
       ? _c(
           "div",
           _vm._l(_vm.surveyElement.config.list, function(field, index) {
-            return _c("div", [
+            return _c("div", { key: field.uid }, [
               _c("label", [_vm._v("Etiqueta")]),
               _vm._v(" "),
               _c("br"),
@@ -68583,7 +68376,7 @@ var render = function() {
       ? _c(
           "div",
           _vm._l(_vm.fieldsToInclude, function(field, index) {
-            return _c("div", [
+            return _c("div", { key: field.uid }, [
               _c("label", [_vm._v(_vm._s(field.title))]),
               _vm._v(" "),
               field.type === "checkbox"
@@ -68849,7 +68642,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         'surveyElement.answer': function surveyElementAnswer(answer, oldAnswer) {
             if (this.surveyElement.config.hideConfig.allow) {
-                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
             }
         }
     }
@@ -68902,7 +68695,10 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("app-survey-hider", {
-          attrs: { "hide-config": _vm.surveyElement.config.hideConfig }
+          attrs: {
+            "hide-config": _vm.surveyElement.config.hideConfig,
+            "except-uid": _vm.surveyElement.uid
+          }
         })
       ],
       1
@@ -69462,7 +69258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'Fila'
             });
         },
-        addColumn: function addColumn() {
+        addCol: function addCol() {
             this.surveyElement.config.cols.push({
                 uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
                 text: 'Columna'
@@ -69594,48 +69390,52 @@ var render = function() {
               _c("label", [_vm._v("Filas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.rows, function(row, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.rows[index].text,
-                          expression: "surveyElement.config.rows[index].text"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.rows[index].text
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                return _c(
+                  "div",
+                  { key: row.uid, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.rows[index].text,
+                            expression: "surveyElement.config.rows[index].text"
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.rows[index],
-                            "text",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.rows[index].text
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.rows[index],
+                              "text",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-times text-danger",
-                      on: {
-                        click: function($event) {
-                          _vm.removeRow(index)
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-times text-danger",
+                        on: {
+                          click: function($event) {
+                            _vm.removeRow(index)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ])
+                      })
+                    ])
+                  ]
+                )
               }),
               _vm._v(" "),
               _c("div", [
@@ -69661,48 +69461,52 @@ var render = function() {
               _c("label", [_vm._v("Columnas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.cols, function(col, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.cols[index].text,
-                          expression: "surveyElement.config.cols[index].text"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.cols[index].text
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                return _c(
+                  "div",
+                  { key: col.uid, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.cols[index].text,
+                            expression: "surveyElement.config.cols[index].text"
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.cols[index],
-                            "text",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.cols[index].text
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.cols[index],
+                              "text",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-times text-danger",
-                      on: {
-                        click: function($event) {
-                          _vm.removeCol(index)
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-times text-danger",
+                        on: {
+                          click: function($event) {
+                            _vm.removeCol(index)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ])
+                      })
+                    ])
+                  ]
+                )
               }),
               _vm._v(" "),
               _c("div", [
@@ -69711,7 +69515,7 @@ var render = function() {
                   {
                     staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addColumn }
+                    on: { click: _vm.addCol }
                   },
                   [_vm._v("Agregar")]
                 )
@@ -69735,8 +69539,10 @@ var render = function() {
                 [
                   _c("td", [_vm._v(" ")]),
                   _vm._v(" "),
-                  _vm._l(_vm.surveyElement.config.cols, function(column) {
-                    return _c("th", [_vm._v(_vm._s(column.text))])
+                  _vm._l(_vm.surveyElement.config.cols, function(col) {
+                    return _c("th", { key: col.uid }, [
+                      _vm._v(_vm._s(col.text))
+                    ])
                   })
                 ],
                 2
@@ -69745,14 +69551,15 @@ var render = function() {
               _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
                 return _c(
                   "tr",
+                  { key: row.uid },
                   [
                     _c("th", [_vm._v(_vm._s(row.text))]),
                     _vm._v(" "),
                     _vm._l(_vm.surveyElement.config.cols, function(
-                      column,
+                      col,
                       colIndex
                     ) {
-                      return _c("td", [
+                      return _c("td", { key: col.uid }, [
                         (_vm.surveyElement.config.multiple
                           ? "checkbox"
                           : "radio") === "checkbox"
@@ -69767,13 +69574,13 @@ var render = function() {
                               ],
                               attrs: { name: row.uid, type: "checkbox" },
                               domProps: {
-                                value: column.uid,
+                                value: col.uid,
                                 checked: Array.isArray(
                                   _vm.surveyElement.answer[row.uid]
                                 )
                                   ? _vm._i(
                                       _vm.surveyElement.answer[row.uid],
-                                      column.uid
+                                      col.uid
                                     ) > -1
                                   : _vm.surveyElement.answer[row.uid]
                               },
@@ -69783,7 +69590,7 @@ var render = function() {
                                     $$el = $event.target,
                                     $$c = $$el.checked ? true : false
                                   if (Array.isArray($$a)) {
-                                    var $$v = column.uid,
+                                    var $$v = col.uid,
                                       $$i = _vm._i($$a, $$v)
                                     if ($$el.checked) {
                                       $$i < 0 &&
@@ -69826,10 +69633,10 @@ var render = function() {
                                 ],
                                 attrs: { name: row.uid, type: "radio" },
                                 domProps: {
-                                  value: column.uid,
+                                  value: col.uid,
                                   checked: _vm._q(
                                     _vm.surveyElement.answer[row.uid],
-                                    column.uid
+                                    col.uid
                                   )
                                 },
                                 on: {
@@ -69837,7 +69644,7 @@ var render = function() {
                                     _vm.$set(
                                       _vm.surveyElement.answer,
                                       row.uid,
-                                      column.uid
+                                      col.uid
                                     )
                                   }
                                 }
@@ -69858,7 +69665,7 @@ var render = function() {
                                     : "radio"
                                 },
                                 domProps: {
-                                  value: column.uid,
+                                  value: col.uid,
                                   value: _vm.surveyElement.answer[row.uid]
                                 },
                                 on: {
@@ -70105,7 +69912,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'Fila'
             });
         },
-        addColumn: function addColumn() {
+        addCol: function addCol() {
             this.surveyElement.config.cols.push({
                 uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
                 text: 'Columna'
@@ -70204,48 +70011,52 @@ var render = function() {
               _c("label", [_vm._v("Filas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.rows, function(row, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.rows[index].text,
-                          expression: "surveyElement.config.rows[index].text"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.rows[index].text
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                return _c(
+                  "div",
+                  { key: row.uid, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.rows[index].text,
+                            expression: "surveyElement.config.rows[index].text"
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.rows[index],
-                            "text",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.rows[index].text
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.rows[index],
+                              "text",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-times text-danger",
-                      on: {
-                        click: function($event) {
-                          _vm.removeRow(index)
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-times text-danger",
+                        on: {
+                          click: function($event) {
+                            _vm.removeRow(index)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ])
+                      })
+                    ])
+                  ]
+                )
               }),
               _vm._v(" "),
               _c("div", [
@@ -70271,48 +70082,52 @@ var render = function() {
               _c("label", [_vm._v("Columnas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.cols, function(col, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.cols[index].text,
-                          expression: "surveyElement.config.cols[index].text"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.cols[index].text
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                return _c(
+                  "div",
+                  { key: col.uid, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.cols[index].text,
+                            expression: "surveyElement.config.cols[index].text"
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.cols[index],
-                            "text",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.cols[index].text
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.cols[index],
+                              "text",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-times text-danger",
-                      on: {
-                        click: function($event) {
-                          _vm.removeCol(index)
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-times text-danger",
+                        on: {
+                          click: function($event) {
+                            _vm.removeCol(index)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ])
+                      })
+                    ])
+                  ]
+                )
               }),
               _vm._v(" "),
               _c("div", [
@@ -70321,7 +70136,7 @@ var render = function() {
                   {
                     staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addColumn }
+                    on: { click: _vm.addCol }
                   },
                   [_vm._v("Agregar")]
                 )
@@ -70412,8 +70227,10 @@ var render = function() {
                 [
                   _c("td", [_vm._v(" ")]),
                   _vm._v(" "),
-                  _vm._l(_vm.surveyElement.config.cols, function(column) {
-                    return _c("th", [_vm._v(_vm._s(column.text))])
+                  _vm._l(_vm.surveyElement.config.cols, function(col) {
+                    return _c("th", { key: col.uid }, [
+                      _vm._v(_vm._s(col.text))
+                    ])
                   })
                 ],
                 2
@@ -70422,14 +70239,15 @@ var render = function() {
               _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
                 return _c(
                   "tr",
+                  { key: row.uid },
                   [
                     _c("th", [_vm._v(_vm._s(row.text))]),
                     _vm._v(" "),
                     _vm._l(_vm.surveyElement.config.cols, function(
-                      column,
+                      col,
                       colIndex
                     ) {
-                      return _c("td", [
+                      return _c("td", { key: col.uid }, [
                         _c(
                           "select",
                           {
@@ -70438,9 +70256,9 @@ var render = function() {
                                 name: "model",
                                 rawName: "v-model",
                                 value:
-                                  _vm.surveyElement.answer[row.uid][column.uid],
+                                  _vm.surveyElement.answer[row.uid][col.uid],
                                 expression:
-                                  "surveyElement.answer[row.uid][column.uid]"
+                                  "surveyElement.answer[row.uid][col.uid]"
                               }
                             ],
                             staticClass: "form-control",
@@ -70456,7 +70274,7 @@ var render = function() {
                                   })
                                 _vm.$set(
                                   _vm.surveyElement.answer[row.uid],
-                                  column.uid,
+                                  col.uid,
                                   $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
@@ -70501,6 +70319,187 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-677cd618", module.exports)
+  }
+}
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(277);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("78b62d6c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 277 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.option-container[data-v-7221b662] {\n    display: flex;\n}\n.option-select[data-v-7221b662] {\n    flex: 1;\n}\n.option-label[data-v-7221b662] {\n    flex-basis: 100px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 278 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "checkbox" }, [
+      _c("label", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.hideConfig.allow,
+              expression: "hideConfig.allow"
+            }
+          ],
+          attrs: { type: "checkbox" },
+          domProps: {
+            checked: Array.isArray(_vm.hideConfig.allow)
+              ? _vm._i(_vm.hideConfig.allow, null) > -1
+              : _vm.hideConfig.allow
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.hideConfig.allow,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 &&
+                    _vm.$set(_vm.hideConfig, "allow", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.hideConfig,
+                      "allow",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.hideConfig, "allow", $$c)
+              }
+            }
+          }
+        }),
+        _vm._v("\n            Ocultar Preguntas\n        ")
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.hideConfig.allow
+      ? _c("div", [
+          _c(
+            "div",
+            [
+              _c("label", [_vm._v("Seleccione Preguntas a Ocultar")]),
+              _vm._v(" "),
+              _vm._l(_vm.hideConfig.options, function(options, value) {
+                return _c(
+                  "div",
+                  { key: value, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-label text-center" }, [
+                      _vm._v(_vm._s(value))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-select" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.hideConfig.options[value],
+                              expression: "hideConfig.options[value]"
+                            }
+                          ],
+                          attrs: { multiple: "" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.hideConfig.options,
+                                value,
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        _vm._l(_vm.availableElements, function(
+                          availableElement
+                        ) {
+                          return _c(
+                            "option",
+                            {
+                              key: availableElement.uid,
+                              attrs: {
+                                disabled: availableElement.uid == _vm.exceptUid
+                              },
+                              domProps: { value: availableElement.uid }
+                            },
+                            [_vm._v(_vm._s(availableElement.text))]
+                          )
+                        })
+                      )
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7221b662", module.exports)
   }
 }
 

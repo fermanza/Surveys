@@ -32,7 +32,7 @@
 
 <template>
     <div>
-        <form :action="$Config.base_url+'/encuestas/save2'" method="POST" enctype="multipart/form-data"> 
+      <form :action="$Config.base_url+'/encuestas/save2'" ref="builderform" @submit.prevent="countQuestions" method="POST" enctype="multipart/form-data"> 
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" align="center">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="survey-questions">
                     <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
-                        <div v-for="surveyElement in surveyElements">
+                        <div v-for="surveyElement in surveyElements" :key="surveyElement.uid">
                             <app-survey-question v-show="!surveyElement.hide" :survey-element="surveyElement"></app-survey-question>
                         </div>
                     </app-draggable>
@@ -65,8 +65,8 @@
                 <div class="row">
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">
-                    <a href="/mis_encuestas" class="btn btn-default">Cancelar</a>
-                    <button type="submit" class="btn" id="guardar">&nbsp;Guardar&nbsp;</button>
+                        <a :href="$Config.base_url+'/mis_encuestas'" class="btn btn-default">Cancelar</a>
+                        <button type="submit" class="btn">&nbsp;Guardar&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -84,13 +84,16 @@
                 default: () => []
             },
             template: {
-                default: () => ""
+                default: () => {}
+            },
+            maximunElements: {
+                 default: 10
             }
         },
 
         data() {
             return {
-                template_id: this.template,
+                template_id: this.template.id,
                 surveyElements: this.initialElements,
                 rootElements: [
                     {
@@ -137,7 +140,6 @@
                             list: ['Option 1', 'Option 2'],
                             hideConfig: {
                                 allow: false,
-                                scope: [],
                                 options: {}
                             }
                         },
@@ -178,7 +180,6 @@
                             multiple: false,
                             hideConfig: {
                                 allow: false,
-                                scope: [],
                                 options: {}
                             }
                         },
@@ -382,7 +383,6 @@
                             title: 'Star rating',
                             hideConfig: {
                                 allow: false,
-                                scope: [],
                                 options: {
                                     1: [],
                                     2: [],
@@ -418,7 +418,7 @@
 
         mounted() {
             Bus.$on('remove-question', this.removeQuestion);
-            Bus.$on('hide-elements', this.hideElements);
+            Bus.$on('toggle-hide-elements', this.toggleHideElements);
             Bus.$on('get-available-elements', () => {
                 this.emitAvailableElements(this.surveyElements);
             });
@@ -459,11 +459,23 @@
                 Bus.$emit('available-elements', availableElements);
             },
 
-            hideElements(options, scope) {
-                scope.forEach(scopeElement => {
-                    const element = this.surveyElements.find(e => e.uid == scopeElement.uid);
-                    element.hide = options.includes(element.uid) ? true : false;
-                })
+            toggleHideElements(toShow, toHide) {
+                toShow.forEach(uid => {
+                    const element = this.surveyElements.find(e => e.uid == uid);
+                    element.hide = false;
+                });
+                toHide.forEach(uid => {
+                    const element = this.surveyElements.find(e => e.uid == uid);
+                    element.hide = true;
+                });
+            },
+
+            countQuestions() {
+               if(this.template.type == 0 && this.surveyElements.length > 10) {
+                    alert('No puedes ingresar mas de 10 preguntas.');    
+                    return false; 
+                } 
+                this.$refs.builderform.submit();  
             }
         },
 

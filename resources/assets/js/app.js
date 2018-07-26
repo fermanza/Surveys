@@ -4,11 +4,8 @@ import draggable from 'vuedraggable';
 import StarRating from 'vue-star-rating';
 Vue.prototype.$Config = window.Config;
 
-    
-
 window.Vue = Vue;
 window._ = _;
-
 
 Vue.component('star-rating', StarRating);
 Vue.component('app-draggable', draggable);
@@ -31,6 +28,8 @@ Vue.component('app-survey-element-ranking', require('./components/elements/Surve
 Vue.component('app-survey-element-matrix', require('./components/elements/SurveyElementMatrix.vue'));
 Vue.component('app-survey-element-matrix-scale', require('./components/elements/SurveyElementMatrixScale.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+if (document.querySelectorAll('#app').length) {
+    new Vue({
+        el: '#app'
+    });
+}

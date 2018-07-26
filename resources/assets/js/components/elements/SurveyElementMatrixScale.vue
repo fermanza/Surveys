@@ -23,7 +23,7 @@
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
                 <label>Filas</label>
-                <div class="option-container" v-for="(row, index) in surveyElement.config.rows">
+                <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
                     </div>
@@ -38,7 +38,7 @@
             <br />
             <div>
                 <label>Columnas</label>
-                <div class="option-container" v-for="(col, index) in surveyElement.config.cols">
+                <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
                     </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="button" @click="addColumn" class="btn btn-success">Agregar</button>
+                    <button type="button" @click="addCol" class="btn btn-success">Agregar</button>
                 </div>
             </div>
             <br />
@@ -71,12 +71,12 @@
             <table class="table table-stripped">
                 <tr>
                     <td>&nbsp;</td>
-                    <th v-for="column in surveyElement.config.cols">{{ column.text }}</th>
+                    <th v-for="col in surveyElement.config.cols" :key="col.uid">{{ col.text }}</th>
                 </tr>
-                <tr v-for="(row, rowIndex) in surveyElement.config.rows">
+                <tr v-for="(row, rowIndex) in surveyElement.config.rows" :key="row.uid">
                     <th>{{ row.text }}</th>
-                    <td v-for="(column, colIndex) in surveyElement.config.cols">
-                        <select v-model="surveyElement.answer[row.uid][column.uid]" class="form-control">
+                    <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid">
+                        <select v-model="surveyElement.answer[row.uid][col.uid]" class="form-control">
                             <option :value="null">Seleccione Opción</option>
                             <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
                         </select>
@@ -107,7 +107,7 @@
                 });
             },
 
-            addColumn() {
+            addCol() {
                 this.surveyElement.config.cols.push({
                     uid: uniqueString(),
                     text: 'Columna'

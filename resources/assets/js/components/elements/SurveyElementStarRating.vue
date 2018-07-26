@@ -7,7 +7,7 @@
         <div v-show="!display">
             <label>Etiqueta</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig"></app-survey-hider>
+            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :except-uid="surveyElement.uid"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -25,7 +25,7 @@
         watch: {
             'surveyElement.answer': function (answer, oldAnswer) {
                 if (this.surveyElement.config.hideConfig.allow) {
-                    Bus.$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                    Bus.$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
                 }
             }
         }

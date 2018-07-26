@@ -29,7 +29,7 @@
             </div>
             <div>
                 <label>Filas</label>
-                <div class="option-container" v-for="(row, index) in surveyElement.config.rows">
+                <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
                     </div>
@@ -44,7 +44,7 @@
             <br />
             <div>
                 <label>Columnas</label>
-                <div class="option-container" v-for="(col, index) in surveyElement.config.cols">
+                <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
                     </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="button" @click="addColumn" class="btn btn-success">Agregar</button>
+                    <button type="button" @click="addCol" class="btn btn-success">Agregar</button>
                 </div>
             </div>
         </div>
@@ -62,12 +62,12 @@
             <table class="table table-stripped">
                 <tr>
                     <td>&nbsp;</td>
-                    <th v-for="column in surveyElement.config.cols">{{ column.text }}</th>
+                    <th v-for="col in surveyElement.config.cols" :key="col.uid">{{ col.text }}</th>
                 </tr>
-                <tr v-for="(row, rowIndex) in surveyElement.config.rows">
+                <tr v-for="(row, rowIndex) in surveyElement.config.rows" :key="row.uid">
                     <th>{{ row.text }}</th>
-                    <td v-for="(column, colIndex) in surveyElement.config.cols">
-                        <input :type="surveyElement.config.multiple ? 'checkbox' : 'radio'" :name="row.uid" :value="column.uid" v-model="surveyElement.answer[row.uid]" />
+                    <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid">
+                        <input :type="surveyElement.config.multiple ? 'checkbox' : 'radio'" :name="row.uid" :value="col.uid" v-model="surveyElement.answer[row.uid]" />
                     </td>
                 </tr>
             </table>
@@ -89,7 +89,7 @@
                 });
             },
 
-            addColumn() {
+            addCol() {
                 this.surveyElement.config.cols.push({
                     uid: uniqueString(),
                     text: 'Columna'

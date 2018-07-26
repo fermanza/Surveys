@@ -19,7 +19,7 @@
 <template>
     <div>
         <div v-if="!display">
-            <div class="field-container" v-for="(field, index) in surveyElement.config.list">
+            <div class="field-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <div class="field-input">
                     <label>Etiqueta</label>
                     <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div v-if="display">
-            <div v-for="(field, index) in surveyElement.config.list">
+            <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <label>{{ field.title }}</label>
                 <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" />
             </div>

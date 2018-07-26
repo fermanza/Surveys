@@ -42,10 +42,6 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{$template->name}}</h5>
-                        {{-- <div class="btns">
-                            <a href="#"><i class="fa fa-eye"></i> Vista previa</a>
-                            <a href="#">Guardar</a>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -63,10 +59,10 @@
 
     <div id="app">
       @if($question === null)
-        <app-survey-builder :template={{$template->id}} >
+        <app-survey-builder :template="{{ $template }}" >
         </app-survey-builder>
       @else
-        <app-survey-builder :template={{$template->id}} :initial-elements='{{ json_encode($question->content) }}' >
+        <app-survey-builder :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
         </app-survey-builder>
       @endif
     </div>

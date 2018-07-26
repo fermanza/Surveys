@@ -38,7 +38,7 @@
             <div>
                 <button type="button" @click="addField" class="btn btn-success">Agregar</button>
             </div>
-            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig"></app-survey-hider>
+            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig" :except-uid="surveyElement.uid"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -83,15 +83,16 @@
                 handler: function (list, oldList) {
                     let options = {};
                     list.forEach(option => {
-                        options[option] = [];
+                        options[option] = this.surveyElement.config.hideConfig.options[option] || [];
                     });
                     this.surveyElement.config.hideConfig.options = options;
-                }
+                },
+                immediate: true
             },
 
             'surveyElement.answer': function (answer, oldAnswer) {
                 if (answer && !this.surveyElement.config.multiple && this.surveyElement.config.hideConfig.allow) {
-                    Bus.$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                    Bus.$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
                 }
             }
         }

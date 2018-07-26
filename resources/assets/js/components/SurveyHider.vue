@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .option-container {
         display: flex;
     }
@@ -22,21 +22,12 @@
         </div>
         <div v-if="hideConfig.allow">
             <div>
-                <label>Alcance</label>
-                <div class="checkbox" v-for="availableElement in availableElements">
-                    <label>
-                        <input type="checkbox" :name="uid" v-model="hideConfig.scope" :value="availableElement" />
-                        {{ availableElement.text }}
-                    </label>
-                </div>
-            </div>
-            <div>
                 <label>Seleccione Preguntas a Ocultar</label>
-                <div v-for="(options, value) in hideConfig.options" class="option-container">
+                <div v-for="(options, value) in hideConfig.options" :key="value" class="option-container">
                     <div class="option-label text-center">{{ value }}</div>
                     <div class="option-select">
                         <select multiple v-model="hideConfig.options[value]">
-                            <option v-for="scopeOption in hideConfig.scope" :value="scopeOption.uid">{{ scopeOption.text }}</option>
+                            <option v-for="availableElement in availableElements" :key="availableElement.uid" :value="availableElement.uid" :disabled="availableElement.uid == exceptUid">{{ availableElement.text }}</option>
                         </select>
                     </div>
                 </div>
@@ -50,7 +41,7 @@
     import Bus from './../Bus';
 
     export default {
-        props: ['hideConfig'],
+        props: ['hideConfig', 'exceptUid'],
 
         data() {
             return {
