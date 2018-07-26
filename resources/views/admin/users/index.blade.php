@@ -51,21 +51,6 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-<<<<<<< HEAD
-                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
-                            <td>{{ $item->last_name }}</td>
-                            <td>{{ $item->company }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ $item->address }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->city }}</td>
-                            <td>{{ $item->country }}</td>
-                            @if($total>0)
-                                <td>Premium</td>
-                            @else
-                                <td>Gratuito</td>
-                            @endif</td>
-=======
                             <td><a href="{{ route(ADMIN . '.users.edit', $user->id) }}">{{ $user->name }}</a></td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->company }}</td>
@@ -75,11 +60,10 @@
                             <td>{{ $user->city }}</td>
                             <td>{{ $user->country }}</td>
                             @if($user->totalCredits > 0)
-                                    <td>Premium</td>
-                                    @else
-                                    <td>Gratuito</td>
-                                    @endif</td>
->>>>>>> 5d66fa7b3194db78864a87a8acea682070bcfe56
+                                <td>Premium</td>
+                            @else
+                                <td>Gratuito</td>
+                            @endif</td>
                                  <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
