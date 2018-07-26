@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-{{-- 
+{{--
 <div class="mB-20">
     <a href="{{ route(ADMIN . '.users.create') }}" class="btn btn-info">
         {{ trans('Agregar Usuario') }}
@@ -16,8 +16,8 @@
 <div class="row">
     <div class="col-md-12">
       <div class="bgc-white bd bdrs-3 p-20 mB-20">
-        <table id="dataTable" class="display nowrap" style="width:100%">
-            
+        <table id="dataTable">
+
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -32,7 +32,7 @@
                         <th></th>
                     </tr>
                 </thead>
-             
+
                 <tfoot>
                     <tr>
                         <th>Nombre</th>
@@ -47,7 +47,7 @@
                         <th></th>
                     </tr>
                 </tfoot>
-             
+
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
@@ -64,20 +64,20 @@
                                     @else
                                     <td>Gratuito</td>
                                     @endif</td>
-                                 <td>   
+                                 <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <a href="{{ route(ADMIN . '.users.edit', $item->id) }}" title="{{ trans('Editar usuario') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
                                     <li class="list-inline-item">
                                         {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route(ADMIN . '.users.destroy', $item->id), 
+                                            'url'  => route(ADMIN . '.users.destroy', $item->id),
                                             'method' => 'DELETE',
-                                            ]) 
+                                            ])
                                         !!}
 
                                             <button class="btn btn-danger btn-sm" title="{{ trans('Eliminar usuario') }}"><i class="ti-trash"></i></button>
-                                            
+
                                         {!! Form::close() !!}
                                     </li>
                                     <li class="list-inline-item">
@@ -87,7 +87,7 @@
                         </tr>
                     @endforeach
                 </tbody>
-            
+
         </table>
       </div>
     </div>

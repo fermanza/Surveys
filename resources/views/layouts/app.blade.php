@@ -12,6 +12,7 @@
 
   <!-- Styles -->
   <link href="{{ URL('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.dataTables.min.css">
 </head>
 <body class="app">
 
@@ -25,6 +26,6 @@
         @yield('content')
       </div>
     </div>
-  
+
 </body>
 </html>
