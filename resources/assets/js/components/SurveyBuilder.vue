@@ -32,49 +32,45 @@
 
 <template>
     <div>
-      <form :action="$Config.base_url+'/encuestas/save2'" method="POST" enctype="multipart/form-data"> 
-         <div class="row">
-        
+        <form :action="$Config.base_url+'/encuestas/save2'" method="POST" enctype="multipart/form-data"> 
+            <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" align="center">
-                <label>Logo</label>
-                <input type="file" name="surveyLogo" id="surveyLogo">
+                    <label>Logo</label>
+                    <input type="file" name="surveyLogo" />
                 </div>
-        </div>
-        <div class="survey-builder">
-            <div class="root-controls">
-                <div class="survey-question-type-title btn">
-                    Tipo de Pregunta<i class="fa fa-question-circle"></i>
+            </div>
+            <div class="survey-builder">
+                <div class="root-controls">
+                    <div class="survey-question-type-title btn">
+                        Tipo de Pregunta<i class="fa fa-question-circle"></i>
+                    </div>
+                    <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
+                        <div v-for="rootElement in rootElements" @click="addElement(rootElement)">
+                            <app-root-element :root-element="rootElement"></app-root-element>
+                        </div>
+                    </app-draggable>
                 </div>
-                <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' } }">
-                    <div v-for="rootElement in rootElements">
-                        <app-root-element :root-element="rootElement"></app-root-element>
-                    </div>
-                </app-draggable>
+                <div class="survey-questions">
+                    <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
+                        <div v-for="surveyElement in surveyElements">
+                            <app-survey-question v-show="!surveyElement.hide" :survey-element="surveyElement"></app-survey-question>
+                        </div>
+                    </app-draggable>
+                </div>
             </div>
-            <div class="survey-questions">
-                <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
-                    <div v-for="surveyElement in surveyElements">
-                        <app-survey-question :survey-element="surveyElement"></app-survey-question>
-                    </div>
-                </app-draggable>
-            </div>
-        </div>
-        <div>
-            <!-- <form action=axios.get('/encuestas/save2') method="POST"> -->
-              
+            <div>
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
                 <div class="row">
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">
                     <a href="/mis_encuestas" class="btn btn-default">Cancelar</a>
-                    <button class="btn" id="guardar">&nbsp;Guardar&nbsp;</button>
+                    <button type="submit" class="btn" id="guardar">&nbsp;Guardar&nbsp;</button>
                     </div>
                 </div>
-           
-        </div>
-      </form>   
+            </div>
+        </form>   
     </div>
 </template>
 
@@ -96,13 +92,13 @@
             return {
                 template_id: this.template,
                 surveyElements: this.initialElements,
-                file: '',
                 rootElements: [
                     {
                         uid: '',
                         type: 'text',
                         title: 'Single Text Box',
                         className: 'fa-font',
+                        hide: false,
                         config: {
                             title: 'Single Text Box'
                         },
@@ -113,6 +109,7 @@
                         type: 'header',
                         title: 'Texto',
                         className: 'fa-heading',
+                        hide: false,
                         config: {
                             title: 'Texto'
                         },
@@ -123,6 +120,7 @@
                         type: 'textarea',
                         title: 'Comment Box',
                         className: 'fa-comments',
+                        hide: false,
                         config: {
                             title: 'Comment Box'
                         },
@@ -133,9 +131,15 @@
                         type: 'select',
                         title: 'Dropdown',
                         className: 'fa-caret-square-down',
+                        hide: false,
                         config: {
                             title: 'Dropdown',
-                            list: ['Option 1', 'Option 2']
+                            list: ['Option 1', 'Option 2'],
+                            hideConfig: {
+                                allow: false,
+                                scope: [],
+                                options: {}
+                            }
                         },
                         answer: null
                     },
@@ -144,6 +148,7 @@
                         type: 'multiple-text',
                         title: 'Multiple Textbooks',
                         className: 'fa-align-left',
+                        hide: false,
                         config: {
                             title: 'Multiple Textbooks',
                             list: [
@@ -166,10 +171,16 @@
                         type: 'multiple-check',
                         title: 'Multiple Choice',
                         className: 'fa-check-square',
+                        hide: false,
                         config: {
                             title: 'Multiple Choice',
                             list: ['Option 1', 'Option 2'],
-                            multiple: false
+                            multiple: false,
+                            hideConfig: {
+                                allow: false,
+                                scope: [],
+                                options: {}
+                            }
                         },
                         answer: []
                     },
@@ -178,6 +189,7 @@
                         type: 'slider',
                         title: 'Slider',
                         className: 'fa-sliders-h',
+                        hide: false,
                         config: {
                             title: 'Slider',
                             zero: 'Malo',
@@ -191,6 +203,7 @@
                         type: 'image',
                         title: 'Image',
                         className: 'fa-image',
+                        hide: false,
                         config: {
                             title: 'Image'
                         },
@@ -201,6 +214,7 @@
                         type: 'contact-information',
                         title: 'Contact Information',
                         className: 'fa-info',
+                        hide: false,
                         config: {
                             title: 'Contact Information',
                             list: [
@@ -283,6 +297,7 @@
                         type: 'matrix',
                         title: 'Matrix',
                         className: 'fa-th',
+                        hide: false,
                         config: {
                             title: 'Matrix',
                             multiple: false,
@@ -322,6 +337,7 @@
                         type: 'matrix-scale',
                         title: 'Matrix Ranking Scale',
                         className: 'fa-th',
+                        hide: false,
                         config: {
                             title: 'Matrix Ranking Scale',
                             rows: [
@@ -361,16 +377,29 @@
                         type: 'star-rating',
                         title: 'Star Rating',
                         className: 'fa-star',
+                        hide: false,
                         config: {
-                            title: 'Star rating'
+                            title: 'Star rating',
+                            hideConfig: {
+                                allow: false,
+                                scope: [],
+                                options: {
+                                    1: [],
+                                    2: [],
+                                    3: [],
+                                    4: [],
+                                    5: [],
+                                }
+                            }
                         },
-                        answer: ''
+                        answer: 0
                     },
                     {
                         uid: '',
                         type: 'ranking',
                         title: 'Ranking',
                         className: 'fa-sort-numeric-down',
+                        hide: false,
                         config: {
                             title: 'Ranking',
                             options: ['1', '2', '3', '4', '5']
@@ -384,14 +413,16 @@
         computed: {
             questionsJson() {
                 return JSON.stringify(this.surveyElements);
-            },
-            setFile() {
-                return this.file;
             }
         },
 
         mounted() {
             Bus.$on('remove-question', this.removeQuestion);
+            Bus.$on('hide-elements', this.hideElements);
+            Bus.$on('get-available-elements', () => {
+                this.emitAvailableElements(this.surveyElements);
+            });
+            this.selectAllTextOnInputClick();
         },
 
         methods: {
@@ -400,11 +431,49 @@
                 this.surveyElements.splice(index, 1);
             },
 
+            addElement(rootElement) {
+                this.surveyElements.push(
+                    _.cloneDeep(rootElement)
+                );
+            },
+
             clone(element) {
                 element.uid = uniqueString();
 
                 return _.cloneDeep(element);
+            },
+
+            selectAllTextOnInputClick() {
+                $(this.$el).on('click', 'input', function (e) {
+                    e.target.select();
+                });
+            },
+
+            emitAvailableElements(surveyElements) {
+                const availableElements = surveyElements.map(surveyElement => {
+                    return {
+                        uid: surveyElement.uid,
+                        text: surveyElement.config.title,
+                    }
+                });
+                Bus.$emit('available-elements', availableElements);
+            },
+
+            hideElements(options, scope) {
+                scope.forEach(scopeElement => {
+                    const element = this.surveyElements.find(e => e.uid == scopeElement.uid);
+                    element.hide = options.includes(element.uid) ? true : false;
+                })
             }
+        },
+
+        watch: {
+            'surveyElements': {
+                handler: function (surveyElements, oldSurveyElements) {
+                    this.emitAvailableElements(surveyElements);
+                },
+                immediate: true
+            },
         }
     }
 </script>

@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div>
-                <button @click="addField" class="btn btn-success">Agregar</button>
+                <button type="button" @click="addField" class="btn btn-success">Agregar</button>
             </div>
         </div>
         <div v-if="display">
@@ -47,15 +47,9 @@
     export default {
         props: ['display', 'surveyElement'],
 
-        data() {
-            return {
-                element: this.surveyElement,
-            }
-        },
-
         methods: {
             addField() {
-                this.element.config.list.push({
+                this.surveyElement.config.list.push({
                     uid: uniqueString(),
                     title: 'Texto',
                     answer: ''
@@ -63,18 +57,18 @@
             },
 
             removeField(index) {
-                this.element.config.list.splice(index, 1);
+                this.surveyElement.config.list.splice(index, 1);
             }
         },
 
         watch: {
-            'element.config.list': {
+            'surveyElement.config.list': {
                 handler: function (list, oldList) {
                     let answer = {};
                     list.forEach(field => {
                         answer[field.uid] = field.answer;
                     });
-                    this.element.answer = answer;
+                    this.surveyElement.answer = answer;
                 }
             } 
         }

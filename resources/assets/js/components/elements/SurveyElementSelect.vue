@@ -32,9 +32,10 @@
                     </div>
                 </div>
                 <div>
-                    <button @click="addOption" class="btn btn-success">Agregar</button>
+                    <button type="button" @click="addOption" class="btn btn-success">Agregar</button>
                 </div>
             </div>
+            <app-survey-hider :hide-config="surveyElement.config.hideConfig"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -47,22 +48,38 @@
 </template>
 
 <script>
+    import Bus from './../../Bus';
+
     export default {
         props: ['display', 'surveyElement'],
 
-        data() {
-            return {
-                element: this.surveyElement
-            }
-        },
-
         methods: {
             addOption() {
-                this.element.config.list.push('Opción');
+                this.surveyElement.config.list.push('Opción');
             },
 
             removeOption(index) {
-                this.element.config.list.splice(index, 1);
+                this.surveyElement.config.list.splice(index, 1);
+            }
+        },
+
+        watch: {
+            'surveyElement.config.list': {
+                handler: function (list, oldList) {
+                    let options = {};
+                    list.forEach(option => {
+                        options[option] = [];
+                    });
+                    this.surveyElement.config.hideConfig.options = options;
+                }
+            },
+
+            'surveyElement.answer': function (answer, oldAnswer) {
+                if (answer && this.surveyElement.config.hideConfig.allow) {
+                    Bus.$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                } else if (!answer) {
+                    Bus.$emit('hide-elements', [], this.surveyElement.config.hideConfig.scope);
+                }
             }
         }
     }

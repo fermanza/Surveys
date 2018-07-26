@@ -33,7 +33,7 @@
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display"></component>
         </div>
         <div v-if="!display" class="text-center">
-            <button @click="display = true" class="question-action close-component ">Save</button>
+            <button type="button" @click="display = true" class="question-action close-component ">Save</button>
         </div>
     </div>
 </template>

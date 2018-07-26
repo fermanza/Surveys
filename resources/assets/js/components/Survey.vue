@@ -12,7 +12,7 @@
                 <input type="hidden" name="answer" :value="questionsJson" />
                 <input type="hidden" name="template" :value="template_id" />
                 <br /><br />
-                <button class="btn">Contestar</button>
+                <button type="submit" class="btn">Contestar</button>
             </form>
             <br />
         </div>

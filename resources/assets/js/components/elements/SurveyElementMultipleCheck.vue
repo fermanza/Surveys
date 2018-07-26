@@ -21,30 +21,31 @@
         <div v-if="!display">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" v-model="element.config.multiple" />
+                    <input type="checkbox" v-model="surveyElement.config.multiple" />
                     Permitir múltiple
                 </label>
             </div>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <div class="field-container" v-for="(field, index) in element.config.list">
+            <div class="field-container" v-for="(field, index) in surveyElement.config.list">
                 <div class="field-input">
                     <label>Etiqueta</label>
-                    <input type="text" v-model="element.config.list[index]" class="form-control" />
+                    <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
                 </div>
                 <div class="field-action">
                     <i @click="removeField(index)" class="fa fa-times text-danger"></i>
                 </div>
             </div>
             <div>
-                <button @click="addField" class="btn btn-success">Agregar</button>
+                <button type="button" @click="addField" class="btn btn-success">Agregar</button>
             </div>
+            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
-            <div v-for="(field, index) in element.config.list">
-                <div :class="element.config.multiple ? 'checkbox' : 'radio'">
+            <div v-for="(field, index) in surveyElement.config.list">
+                <div :class="surveyElement.config.multiple ? 'checkbox' : 'radio'">
                     <label>
-                        <input :type="element.config.multiple ? 'checkbox' : 'radio'" :name="element.uid" :value="field" v-model="element.answer" />
+                        <input :type="surveyElement.config.multiple ? 'checkbox' : 'radio'" :name="surveyElement.uid" :value="field" v-model="surveyElement.answer" />
                         {{ field }}
                     </label>
                 </div>
@@ -55,23 +56,43 @@
 
 <script>
     import uniqueString from 'unique-string';
+    import Bus from './../../Bus';
 
     export default {
         props: ['display', 'surveyElement'],
 
-        data() {
-            return {
-                element: this.surveyElement,
-            }
-        },
-
         methods: {
             addField() {
-                this.element.config.list.push('Opción');
+                this.surveyElement.config.list.push('Opción');
             },
 
             removeField(index) {
-                this.element.config.list.splice(index, 1);
+                this.surveyElement.config.list.splice(index, 1);
+            }
+        },
+
+        watch: {
+            'surveyElement.config.multiple': {
+                handler: function (rows, oldRows) {
+                    this.surveyElement.answer = this.surveyElement.config.multiple ? [] : '';
+                },
+                immediate: true
+            },
+
+            'surveyElement.config.list': {
+                handler: function (list, oldList) {
+                    let options = {};
+                    list.forEach(option => {
+                        options[option] = [];
+                    });
+                    this.surveyElement.config.hideConfig.options = options;
+                }
+            },
+
+            'surveyElement.answer': function (answer, oldAnswer) {
+                if (answer && !this.surveyElement.config.multiple && this.surveyElement.config.hideConfig.allow) {
+                    Bus.$emit('hide-elements', this.surveyElement.config.hideConfig.options[answer], this.surveyElement.config.hideConfig.scope);
+                }
             }
         }
     }

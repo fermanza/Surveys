@@ -16,6 +16,7 @@ Vue.component('app-survey', require('./components/Survey.vue'));
 Vue.component('app-survey-builder', require('./components/SurveyBuilder.vue'));
 Vue.component('app-root-element', require('./components/RootElement.vue'));
 Vue.component('app-survey-question', require('./components/SurveyQuestion.vue'));
+Vue.component('app-survey-hider', require('./components/SurveyHider.vue'));
 Vue.component('app-survey-element-text', require('./components/elements/SurveyElementText.vue'));
 Vue.component('app-survey-element-header', require('./components/elements/SurveyElementHeader.vue'));
 Vue.component('app-survey-element-textarea', require('./components/elements/SurveyElementTextarea.vue'));

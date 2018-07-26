@@ -20,27 +20,27 @@
     <div>
         <div v-if="!display">
             <label>Etiqueta</label>
-            <input type="text" v-model="element.config.title" class="form-control" />
+            <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
                 <label>Opciones</label>
-                <div class="option-container" v-for="(option, index) in element.config.options">
+                <div class="option-container" v-for="(option, index) in surveyElement.config.options">
                     <div class="option-input">
-                        <input type="text" v-model="element.config.options[index]" class="form-control" />
+                        <input type="text" v-model="surveyElement.config.options[index]" class="form-control" />
                     </div>
                     <div class="option-action">
                         <i @click="removeOption(index)" class="fa fa-times text-danger"></i>
                     </div>
                 </div>
                 <div>
-                    <button @click="addOption" class="btn btn-success">Agregar</button>
+                    <button type="button" @click="addOption" class="btn btn-success">Agregar</button>
                 </div>
             </div>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
-            <select v-model="element.answer" class="form-control">
+            <select v-model="surveyElement.answer" class="form-control">
                 <option :value="null">Seleccione Opción</option>
-                <option v-for="option in element.config.options" :value="option">{{ option }}</option>
+                <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
             </select>
         </div>
     </div>
@@ -54,7 +54,6 @@
 
         data() {
             return {
-                element: this.surveyElement,
                 counter: 5
             }
         },
@@ -62,11 +61,11 @@
         methods: {
             addOption() {
                 this.counter++;
-                this.element.config.options.push(`${this.counter}`);
+                this.surveyElement.config.options.push(`${this.counter}`);
             },
 
             removeOption(index) {
-                this.element.config.options.splice(index, 1);
+                this.surveyElement.config.options.splice(index, 1);
             }
         }
     }
