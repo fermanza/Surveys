@@ -49,8 +49,9 @@
                 </tfoot>
 
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($users as $user)
                         <tr>
+<<<<<<< HEAD
                             <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
                             <td>{{ $item->last_name }}</td>
                             <td>{{ $item->company }}</td>
@@ -64,14 +65,29 @@
                             @else
                                 <td>Gratuito</td>
                             @endif</td>
+=======
+                            <td><a href="{{ route(ADMIN . '.users.edit', $user->id) }}">{{ $user->name }}</a></td>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->company }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->address }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td>{{ $user->city }}</td>
+                            <td>{{ $user->country }}</td>
+                            @if($user->totalCredits > 0)
+                                    <td>Premium</td>
+                                    @else
+                                    <td>Gratuito</td>
+                                    @endif</td>
+>>>>>>> 5d66fa7b3194db78864a87a8acea682070bcfe56
                                  <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <a href="{{ route(ADMIN . '.users.edit', $item->id) }}" title="{{ trans('Editar usuario') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
+                                        <a href="{{ route(ADMIN . '.users.edit', $user->id) }}" title="{{ trans('Editar usuario') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
                                     <li class="list-inline-item">
                                         {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route(ADMIN . '.users.destroy', $item->id),
+                                            'url'  => route(ADMIN . '.users.destroy', $user->id),
                                             'method' => 'DELETE',
                                             ])
                                         !!}
@@ -81,7 +97,7 @@
                                         {!! Form::close() !!}
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="{{ URL('admin/users/creditos', $item->id )}}" title="{{ trans('Agregar créditos') }}" class="btn btn-success btn-sm"><span class="ti-gift"></span></a></li>
+                                        <a href="{{ URL('admin/users/creditos', $user->id )}}" title="{{ trans('Agregar créditos') }}" class="btn btn-success btn-sm"><span class="ti-gift"></span></a></li>
                                 </ul>
                             </td>
                         </tr>
