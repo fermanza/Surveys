@@ -14,7 +14,6 @@
     color: black;
     font-size: 18px;
 }
-
 </style>
 
   <section class="bread wow fadeIn padding-25px-tb margin-bread">
@@ -54,26 +53,14 @@
   <div class="container">
       <div class="col-md-12">
           <div class="panel panel-default">
-      
+     <div class="col-md-12" align="center">
+        @if($template->url != null)
+          <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
+        @endif
+        <h5><strong>{{ $template->name }}</strong></h5>
+     </div>
 
-   <div class="col-md-12" align="center">
-      @if($template->url != null)
-        <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
-      @endif
-      <h5>{{ $template->name }}</h5>
-   </div>
-
-{{--
-<div class="col-md-12" align="center">
-    <a href="{{ URL('mis_encuestas/excel')}}/{{$template->id}}" class="text-extra-small margin-lr-auto display-table"><i class="fa fa-file-o margin-5px-right"></i>@lang('encuestas_publicas.exportarReporte')</a>
-</div> --}}
-
-{{-- <div class="col-md-12" align="center">
-<button type="button" onclick="tableToExcel('table-mis-respuestas', 'W3C Example Table')" value="Export to Excel">@lang('encuestas_publicas.exportarReporte') </button>
-</div>
- --}}
-
-  <table id="table-mis-respuestas" class="display">
+  <table id="table-mis-respuestas" class="display col-md-12" align="center">
   <tbody>
     @php
       $flag = true;
@@ -83,13 +70,12 @@
         <tr>
           <td>
             @php
-              if( $flag || 
+              if( $flag ||
                   ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ){
 
                 echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
                 $flag = false;
               }
-              // dd($printQuestions);
             @endphp
           </td>
         </tr>
@@ -125,7 +111,7 @@
                 <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
               </td>
             </tr>
-    @php 
+    @php
           }
         }
       }
@@ -133,16 +119,19 @@
   </tbody>
   </table>
 
-  <div class="col-md-12" align="center">
+  <div class="col-md-12" align="right">
+    <br />
     <a class="btn btn-default" href="{{ url('/mis_encuestas') }}">@lang('answer.regresar')</a>
   </div>
 
   </div>
+</div>
+</div>
 </section>
 
     @push('script')
 
-    <script type="text/javascript"> 
+    <script type="text/javascript">
   var tableToExcel = (function() {
   var uri = 'data:application/vnd.ms-excel;base64,'
     ,  template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
@@ -161,8 +150,8 @@
 
          var data_type = 'data:application/vnd.ms-excel;charset=utf-8,';
           var a = document.createElement('a');
-           
-          var table_div = document.getElementById('table-mis-respuestas');   
+
+          var table_div = document.getElementById('table-mis-respuestas');
           var table_html = table_div.outerHTML.replace(/ /g, '%20');
           a.href = data_type + ', ' + table_html;
           //setting the file name
@@ -176,5 +165,5 @@
 
     </script>
 
-   @endpush 
+   @endpush
 @stop
