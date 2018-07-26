@@ -3,6 +3,10 @@
 
 @include('includes.header')
 
+<style>
+
+</style>
+
 @section('content')
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
@@ -54,8 +58,8 @@
         <input type="file" name="surveyLogo" id="surveyLogo">
         </div>
     </div> --}}
-    
-   {{-- <div id="app">--}}  
+
+   {{-- <div id="app">--}}
 
     <div id="app">
       @if($question === null)

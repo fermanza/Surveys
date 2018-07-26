@@ -71434,7 +71434,7 @@ var render = function() {
       _c("div", { staticClass: "controls" }, [
         _vm.display
           ? _c("i", {
-              staticClass: "question-action text-primary fa fa-pencil",
+              staticClass: "question-action text-success fa fa-pencil",
               on: {
                 click: function($event) {
                   _vm.display = false
@@ -71444,7 +71444,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("i", {
-          staticClass: "question-action text-danger fa fa-times",
+          staticClass: "question-action text-success fa fa-times",
           on: { click: _vm.removeQuestion }
         })
       ]),
@@ -72616,7 +72616,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "option-action" }, [
                   _c("i", {
-                    staticClass: "fa fa-times text-danger",
+                    staticClass: "fa fa-minus text-success",
                     on: {
                       click: function($event) {
                         _vm.removeOption(index)
@@ -72629,13 +72629,20 @@ var render = function() {
             _vm._v(" "),
             _c("div", [
               _c(
-                "button",
+                "a",
                 {
-                  staticClass: "btn btn-success",
                   attrs: { type: "button" },
-                  on: { click: _vm.addOption }
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.addOption($event)
+                    }
+                  }
                 },
-                [_vm._v("Agregar")]
+                [
+                  _vm._v("   "),
+                  _c("i", { staticClass: "fa fa-plus text-success" })
+                ]
               )
             ])
           ],
@@ -72941,7 +72948,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "field-action" }, [
                     _c("i", {
-                      staticClass: "fa fa-times text-danger",
+                      staticClass: "fa fa-minus text-success",
                       on: {
                         click: function($event) {
                           _vm.removeField(index)
@@ -72955,13 +72962,20 @@ var render = function() {
             _vm._v(" "),
             _c("div", [
               _c(
-                "button",
+                "a",
                 {
-                  staticClass: "btn btn-success",
                   attrs: { type: "button" },
-                  on: { click: _vm.addField }
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.addField($event)
+                    }
+                  }
                 },
-                [_vm._v("Agregar")]
+                [
+                  _vm._v("   "),
+                  _c("i", { staticClass: "fa fa-plus text-success" })
+                ]
               )
             ])
           ],
@@ -73348,7 +73362,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "field-action" }, [
               _c("i", {
-                staticClass: "fa fa-times text-danger",
+                staticClass: "fa fa-minus text-success",
                 on: {
                   click: function($event) {
                     _vm.removeField(index)
@@ -73361,13 +73375,17 @@ var render = function() {
         _vm._v(" "),
         _c("div", [
           _c(
-            "button",
+            "a",
             {
-              staticClass: "btn btn-success",
               attrs: { type: "button" },
-              on: { click: _vm.addField }
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.addField($event)
+                }
+              }
             },
-            [_vm._v("Agregar")]
+            [_vm._v("   "), _c("i", { staticClass: "fa fa-plus text-success" })]
           )
         ]),
         _vm._v(" "),
@@ -74212,7 +74230,7 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c("label", { staticClass: "checkbox-inline" }, [
-                _vm._v("\n                Incluir "),
+                _vm._v("\n                Incluir      "),
                 _c("input", {
                   directives: [
                     {
@@ -74269,7 +74287,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("label", { staticClass: "checkbox-inline" }, [
-                _vm._v("\n                Requerido "),
+                _vm._v("\n                Requerido      "),
                 _c("input", {
                   directives: [
                     {
@@ -74964,7 +74982,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "option-action" }, [
                     _c("i", {
-                      staticClass: "fa fa-times text-danger",
+                      staticClass: "fa fa-minus text-success",
                       on: {
                         click: function($event) {
                           _vm.removeOption(index)
@@ -74977,13 +74995,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addOption }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addOption($event)
+                      }
+                    }
                   },
-                  [_vm._v("Agregar")]
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],
@@ -75410,7 +75435,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "option-action" }, [
                       _c("i", {
-                        staticClass: "fa fa-times text-danger",
+                        staticClass: "fa fa-minus text-success",
                         on: {
                           click: function($event) {
                             _vm.removeRow(index)
@@ -75424,13 +75449,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addRow }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addRow($event)
+                      }
+                    }
                   },
-                  [_vm._v("Agregar")]
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],
@@ -75481,7 +75513,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "option-action" }, [
                       _c("i", {
-                        staticClass: "fa fa-times text-danger",
+                        staticClass: "fa fa-minus text-success",
                         on: {
                           click: function($event) {
                             _vm.removeCol(index)
@@ -75495,13 +75527,12 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "button" },
-                    on: { click: _vm.addCol }
-                  },
-                  [_vm._v("Agregar")]
+                  "a",
+                  { attrs: { type: "button" }, on: { click: _vm.addCol } },
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],
@@ -76031,7 +76062,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "option-action" }, [
                       _c("i", {
-                        staticClass: "fa fa-times text-danger",
+                        staticClass: "fa fa-minus text-success",
                         on: {
                           click: function($event) {
                             _vm.removeRow(index)
@@ -76045,13 +76076,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addRow }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addRow($event)
+                      }
+                    }
                   },
-                  [_vm._v("Agregar")]
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],
@@ -76102,7 +76140,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "option-action" }, [
                       _c("i", {
-                        staticClass: "fa fa-times text-danger",
+                        staticClass: "fa fa-minus text-success",
                         on: {
                           click: function($event) {
                             _vm.removeCol(index)
@@ -76116,13 +76154,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addCol }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addCol($event)
+                      }
+                    }
                   },
-                  [_vm._v("Agregar")]
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],
@@ -76170,7 +76215,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "option-action" }, [
                     _c("i", {
-                      staticClass: "fa fa-times text-danger",
+                      staticClass: "fa fa-minus text-success",
                       on: {
                         click: function($event) {
                           _vm.removeOption(index)
@@ -76183,13 +76228,20 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c(
-                  "button",
+                  "a",
                   {
-                    staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.addOption }
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addOption($event)
+                      }
+                    }
                   },
-                  [_vm._v("Agregar")]
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
                 )
               ])
             ],

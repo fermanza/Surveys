@@ -34,11 +34,11 @@
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
                     </div>
                     <div class="option-action">
-                        <i @click="removeRow(index)" class="fa fa-times text-danger"></i>
+                        <i @click="removeRow(index)" class="fa fa-minus text-success"></i>
                     </div>
                 </div>
                 <div>
-                    <button type="button" @click="addRow" class="btn btn-success">Agregar</button>
+                    <a type="button" @click.prevent="addRow">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
             </div>
             <br />
@@ -49,11 +49,11 @@
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
                     </div>
                     <div class="option-action">
-                        <i @click="removeCol(index)" class="fa fa-times text-danger"></i>
+                        <i @click="removeCol(index)" class="fa fa-minus text-success"></i>
                     </div>
                 </div>
                 <div>
-                    <button type="button" @click="addCol" class="btn btn-success">Agregar</button>
+                    <a type="button" @click="addCol">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
             </div>
         </div>

@@ -25,11 +25,11 @@
                     <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
                 </div>
                 <div class="field-action">
-                    <i @click="removeField(index)" class="fa fa-times text-danger"></i>
+                    <i @click="removeField(index)" class="fa fa-minus text-success"></i>
                 </div>
             </div>
             <div>
-                <button type="button" @click="addField" class="btn btn-success">Agregar</button>
+                <a type="button" @click.prevent="addField">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
             </div>
         </div>
         <div v-if="display">
@@ -70,7 +70,7 @@
                     });
                     this.surveyElement.answer = answer;
                 }
-            } 
+            }
         }
     }
 </script>

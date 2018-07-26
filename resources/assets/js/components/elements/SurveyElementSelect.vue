@@ -28,11 +28,11 @@
                         <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
                     </div>
                     <div class="option-action">
-                        <i @click="removeOption(index)" class="fa fa-times text-danger"></i>
+                        <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
                     </div>
                 </div>
                 <div>
-                    <button type="button" @click="addOption" class="btn btn-success">Agregar</button>
+                    <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
             </div>
             <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer"></app-survey-hider>
