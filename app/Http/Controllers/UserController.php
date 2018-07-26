@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Auth;
+use App\UserCredit;
 
 class UserController extends Controller
 {
@@ -118,7 +119,41 @@ class UserController extends Controller
      */
     public function creditos($id)
     {
-        return view('admin.users.creditos');
+        return view('admin.users.creditos', compact('id'));
     }
+
+    public function insertCredit($idPlan, $idUser)
+    {   
+        $userCredit = new UserCredit;
+        $userCredit->user_id = $idUser;   
+        $userCredit->paypalToken = 0;
+        $userCredit->payerId = 0;
+        
+        switch($idPlan) {
+            case 1:        
+                $userCredit->credits = 1;
+            break;
+            case 2:
+                $userCredit->credits = 10;
+            break;
+            case 3:
+                $userCredit->credits = 50;
+            break;
+            case 4:
+                $userCredit->credits = 100;
+            break;
+            case 5:
+                $userCredit->credits = 500;
+            break;    
+        } 
+        
+        $userCredit->save();
+
+         return redirect()->route(ADMIN . '.users.index');
+    }
+
+
+
+
 }
 

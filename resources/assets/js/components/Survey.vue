@@ -7,6 +7,7 @@
         <transition-group-translate-y>
             <div v-for="element in surveyElements" :key="element.uid">
                 <component :is="parseComponent(element)" v-show="!element.hide" :survey-element="element" :display="true"></component>
+                <hr />
             </div>
         </transition-group-translate-y>
         <div>

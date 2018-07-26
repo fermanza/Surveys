@@ -40,187 +40,62 @@
 }
 </style>
 <section class="wow fadeIn planes">
-            <div class="container">                
-                <div class="row">
-                    <div class="pricing-box-style1">
-                        <!-- start pricing item -->
-                        <div class="col-md-6 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it1.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">1</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 0%<br>
-                                            <b>USD 3,00</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=1')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
+
+    <div class="container">
+            <div class="card" style="width: 18rem;">
+                    <h5 class="card-header">Plan 1</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">1 Credito</h5>
+                            <p class="card-text">Ahorra un 0%</p>
+                            <p class="card-text"><b>USD 3,00</b></p>
+                            <a href="{{url("admin/users/creditos/insertCredit/1/{$id}")}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a> 
                         </div>
-                        <!-- end pricing item -->
-                        <!-- start pricing item -->
-                        <div class="col-md-6 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it2.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">10</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 15%<br>
-                                            <b>USD 25,50</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=2')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
-                        </div>
-                        <!-- end pricing item -->
-                        <!-- start pricing item -->
-                        <div class="col-md-2 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box active border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it3.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">50</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 25%<br>
-                                            <b>USD 112,50</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=3')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
-                        </div>
-                        <!-- end pricing item -->
-                        <!-- start pricing item -->
-                        <div class="col-md-2 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it4.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">100</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 35%<br>
-                                            <b>USD 195,00</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=4')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
-                        </div>
-                        <!-- end pricing item -->
-                        <!-- start pricing item -->
-                        <div class="col-md-2 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it5.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">250</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 45%<br>
-                                            <b>USD 412,50</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=5')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
-                        </div>
-                        <!-- end pricing item -->
-                        <!-- start pricing item -->
-                        <div class="col-md-2 col-sm-4 col-xs-6 text-center wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                                <div class="sm-padding-30px-all xs-padding-40px-all">
-                                    <!-- start pricing title -->
-                                    <div class="pricing-title text-center">
-                                        <img src="images/mi-cuenta/it6.png" alt="">
-                                    </div>
-                                    <!-- end pricing title -->
-                                    <!-- start pricing price -->
-                                    <div class="pricing-price">
-                                        <h4 class="text-extra-dark-gray no-margin-bottom">500</h4>
-                                        <div class="text-extra-small text-black margin-20px-top">Ahorra un 60%<br>
-                                            <b>USD 600,00</b></div>
-                                    </div>
-                                    <!-- end pricing price -->
-                                </div>
-                                <!-- start pricing features -->
-                                <div class="pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                    <!-- start pricing action -->
-                                    <div class="pricing-action sm-no-margin-top">
-                                        <a href="{{url('checkout?plan=6')}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a>                                        
-                                    </div>
-                                    <!-- end pricing action -->
-                                </div>
-                                <!-- end pricing features -->
-                            </div>
-                        </div>
-                        <!-- end pricing item -->
-                    </div>
-                </div>
             </div>
-        </section>
+            <br/>
+            <div class="card" style="width: 18rem;">
+                    <h5 class="card-header">Plan 2</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">10 Creditos</h5>
+                        <p class="card-text">Ahorra un 15%</p>
+                        <p class="card-text"><b>USD 25,50</b></p>
+                        <a href="{{url("admin/users/creditos/insertCredit/2/{$id}")}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a> 
+                    </div>
+            </div>
+            <br/>
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-header">Plan 3</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">50 Creditos</h5>
+                        <p class="card-text">Ahorra un 25%</p>
+                        <p class="card-text"><b>USD 112,50</b></p>
+                        <a href="{{url("admin/users/creditos/insertCredit/3/{$id}")}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a> 
+                    </div>
+            </div>
+            <br/>
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-header">Plan 4</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">100 Creditos</h5>
+                        <p class="card-text">Ahorra un 35%</p>
+                        <p class="card-text"><b>USD 412,50</b></p>
+                        <a href="{{url("admin/users/creditos/insertCredit/4/{$id}")}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a> 
+                    </div>
+            </div>
+            <br/>
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-header">Plan 5</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">500 Creditos</h5>
+                        <p class="card-text">Ahorra un 60%</p>
+                        <p class="card-text"><b>USD 600,00</b></p>
+                        <a href="{{url("admin/users/creditos/insertCredit/5/{$id}")}}" class="btn"><i class="fa fa-shopping-cart"></i> Comprar</a> 
+                    </div>
+           </div>
+
+    </div>
+
+            
+</section>
 
 
 @stop
