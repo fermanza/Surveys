@@ -73,7 +73,7 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <br />
-                                                <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/0" title="{{ trans('Rechazar encuesta') }}" class="btn btn-danger btn-sm"><span class="fa fa-window-close"></span></a>
+                                                <a href="{{ URL('/mis_encuestas/approval') }}/{{ $template->id }}/0" title="{{ trans('Rechazar encuesta') }}" class="btn btn-danger btn-sm"><span class="fa fa-times"></span></a>
                                             </li>
                                         </ul>
                                     </td>
