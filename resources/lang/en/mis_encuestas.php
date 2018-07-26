@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 return [
 
 	'misEncuestas' => 'My surveys',
-	'todasLasEncuestas' => 'all the surveys',
+	'todasLasEncuestas' => 'All the surveys',
 	'crearEncuesta' => 'Create Survey',
-	'titulo' => 'title',
+	'titulo' => 'Title',
 	'fechaCreacion' => 'Date of creation',
 	'tipoDeEncuesta' => 'Type of survey',
 	'tipoDePlan' => 'Type of plan',
@@ -18,6 +18,7 @@ return [
 	'publica' => 'Public',
 	'privada' => 'Private',
 	'gratis' => 'Free',
+	'opciones' => 'Options',
 
 
 	// ceacion encuesta

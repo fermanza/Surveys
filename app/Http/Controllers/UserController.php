@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use DB; 
+use DB;
 use Auth;
 
 class UserController extends Controller
@@ -17,13 +17,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $items = User::latest('updated_at')->get();
+        $users = User::latest('updated_at')->get();
         $id = Auth::id();
-        $creditos=DB::table("user_credit")->where('user_id','=',$id)->sum('credits');
-        $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
-        $total = $creditos-$discounts;
+        foreach($users as $user) {
+            $creditosUser = DB::table("user_credit")->where('user_id' ,'=', $user->id)->sum('credits');
+            $discountsUser = DB::table("discounts")->where('user_id' ,'=', $user->id)->sum('credits');
+            $totalCreditsUser = $creditosUser - $discountsUser;
+            $user->totalCredits = $totalCreditsUser;
+        }
 
-        return view('admin.users.index', compact('items','total'));
+        return view('admin.users.index', compact('users','total'));
     }
 
     /**
@@ -45,7 +48,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, User::rules());
-        
+
         User::create($request->all());
 
         return back()->withSuccess(trans('app.success_store'));
@@ -104,7 +107,7 @@ class UserController extends Controller
     {
         User::destroy($id);
 
-        return back()->withSuccess(trans('app.success_destroy')); 
+        return back()->withSuccess(trans('app.success_destroy'));
     }
 
       /**

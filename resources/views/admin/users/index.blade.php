@@ -49,29 +49,29 @@
                 </tfoot>
 
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($users as $user)
                         <tr>
-                            <td><a href="{{ route(ADMIN . '.users.edit', $item->id) }}">{{ $item->name }}</a></td>
-                            <td>{{ $item->last_name }}</td>
-                            <td>{{ $item->company }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ $item->address }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->city }}</td>
-                            <td>{{ $item->country }}</td>
-                            @if($total>0)
-                                    <td>Premium</td>
-                                    @else
-                                    <td>Gratuito</td>
-                                    @endif</td>
+                            <td><a href="{{ route(ADMIN . '.users.edit', $user->id) }}">{{ $user->name }}</a></td>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->company }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->address }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td>{{ $user->city }}</td>
+                            <td>{{ $user->country }}</td>
+                            @if($user->totalCredits > 0)
+                                <td>Premium</td>
+                            @else
+                                <td>Gratuito</td>
+                            @endif</td>
                                  <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <a href="{{ route(ADMIN . '.users.edit', $item->id) }}" title="{{ trans('Editar usuario') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
+                                        <a href="{{ route(ADMIN . '.users.edit', $user->id) }}" title="{{ trans('Editar usuario') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
                                     <li class="list-inline-item">
                                         {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route(ADMIN . '.users.destroy', $item->id),
+                                            'url'  => route(ADMIN . '.users.destroy', $user->id),
                                             'method' => 'DELETE',
                                             ])
                                         !!}
@@ -81,7 +81,7 @@
                                         {!! Form::close() !!}
                                     </li>
                                     <li class="list-inline-item">
-                                        <a href="{{ URL('admin/users/creditos', $item->id )}}" title="{{ trans('Agregar créditos') }}" class="btn btn-success btn-sm"><span class="ti-gift"></span></a></li>
+                                        <a href="{{ URL('admin/users/creditos', $user->id )}}" title="{{ trans('Agregar créditos') }}" class="btn btn-success btn-sm"><span class="ti-gift"></span></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -107,13 +107,28 @@
 
     <script>
         $(document).ready(function() {
-            $('#dataTable').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'csv', 'excel'
-                ],
-                responsive: true
-            } );
+            @if(App::isLocale('es'))
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    },
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @else
+                $('#dataTable').DataTable({
+                    dom: 'Bfrtip',
+                    responsive: true,
+                    bSort: false,
+                    buttons: [
+                        'csv', 'excel'
+                    ]
+                } );
+            @endif
         } );
     </script>
 

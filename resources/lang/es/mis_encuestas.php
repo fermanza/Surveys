@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -18,6 +18,7 @@ return [
 	'publica' => 'Pública',
 	'privada' => 'Privada',
 	'gratis' => 'Gratuita',
+	'opciones' => 'Opciones',
 
 	//creacion de encuesta
 
