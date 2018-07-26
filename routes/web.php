@@ -112,6 +112,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
     Route::get('/reporte_avanzado/{idEncuesta}', 'EncuestasPublicasController@showAdvancedReport');
     Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestions');
+
 });
 
 
@@ -127,4 +128,6 @@ $router->group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', '
     Route::get('users/creditos/{id}','UserController@creditos')->name('admin.users.creditos');
     Route::resource('users', 'UserController');
     Route::resource('surveys','SurveyController');
+
+    Route::get('users/creditos/insertCredit/{idPlan}/{idUser}', 'UserController@insertCredit');
 });
