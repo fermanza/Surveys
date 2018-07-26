@@ -11,6 +11,7 @@ window._ = _;
 Vue.component('star-rating', StarRating);
 Vue.component('vue-select', vueSelect);
 Vue.component('app-draggable', draggable);
+
 Vue.component('app-survey', require('./components/Survey.vue'));
 Vue.component('app-survey-builder', require('./components/SurveyBuilder.vue'));
 Vue.component('app-root-element', require('./components/RootElement.vue'));
@@ -29,6 +30,8 @@ Vue.component('app-survey-element-star-rating', require('./components/elements/S
 Vue.component('app-survey-element-ranking', require('./components/elements/SurveyElementRanking.vue'));
 Vue.component('app-survey-element-matrix', require('./components/elements/SurveyElementMatrix.vue'));
 Vue.component('app-survey-element-matrix-scale', require('./components/elements/SurveyElementMatrixScale.vue'));
+
+Vue.component('transition-group-translate-y', require('./components/transitions/GroupTranslateY.vue'));
 
 if (document.querySelectorAll('#app').length) {
     new Vue({
