@@ -30,8 +30,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Creación de encuesta</a></li>
-                                <li class="text-dark-gray">{{$template->name}}</li>
+                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Edición de encuesta</a></li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -46,6 +45,11 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{$template->name}}</h5>
+                           <div class="col-md-12" align="center">
+                              @if($template->url != null)
+                                <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 15%;">
+                              @endif
+                           </div>
                     </div>
                 </div>
             </div>

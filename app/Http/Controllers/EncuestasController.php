@@ -38,7 +38,7 @@ class EncuestasController extends Controller
         $users = DB::table('users')->where('role', '=', '10')->get();
         $action = 'create';
         //dd($user);
-
+        
         $templates = Template::where('type', 0)->get();
         return view('encuestas.index', compact('template','users','action', 'templates'));
     }
