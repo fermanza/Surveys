@@ -360,6 +360,8 @@ class EncuestasController extends Controller
           {
             return response()->json('ip',500);
           }*/
+
+          
         $answer=new Answer;
         $answer->id_template=$id_template;
         $answer->position=0;
