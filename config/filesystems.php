@@ -66,6 +66,11 @@ return [
             'root' => public_path('imagenesEncuestas')
         ],
 
+        'imagenesSurvey' => [
+            'driver' => 'local',
+            'root' => public_path('imagenesSurvey')
+        ],
+
 
         's3' => [
             'driver' => 's3',

@@ -258,27 +258,36 @@ class EncuestasController extends Controller
 
     public function saveQuestion2(Request $request)
     {
+  
             $user = Auth::user();
             $template = Template::find($request->template);
             $question = Questions::where('template_id','=',$request->template)->first();
             if(!$question) {
                 $question = new Questions;
             }
-            $qContent = json_decode($request->questions);
-             if($template->plan == 0 && count($qContent) > 10) {
-                 return Redirect::back()->withErrors(['msg', 'The Message']);
-
-             }
-           
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
                     $template->save();
             }
-            
+
+            $surveyContent = json_decode($request->questions);
+            if($request->images) {
+                foreach($request->images  as $uid => $image) {
+                    $fileName = FileControl::storeSingleFile($image, 'imagenesSurvey');
+                    $url = "/imagenesSurvey/{$fileName}";
+                    foreach($surveyContent as $q) {
+                        if($q->uid == $uid) {
+                            $q->answer = $url;
+                        }
+                    }
+                }
+            }
+
+            //dd($request->questions);
 
             $question->position = 0;
-            $question->content = json_decode($request->questions);
+            $question->content = $surveyContent;
             $question->template_id = $request->template;
             $question->save();
 
