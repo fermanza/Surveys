@@ -55,7 +55,7 @@
           <div class="panel panel-default">
      <div class="col-md-12" align="center">
         @if($template->url != null)
-          <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
+          <img src="{{ URL($template->url) }}" style="width: 250px !important; height: auto !important; max-width: 20%;"><br><br>
         @endif
         <h5><strong>{{ $template->name }}</strong></h5>
      </div>
@@ -81,6 +81,23 @@
         </tr>
         @php
         if (in_array($printQuestions[$i]->type, $matrix)){
+          for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
+          @endphp
+            <tr>
+              <td>
+                <br />
+                <b> Pregunta: </b>{{ $printQuestions[$i]->title[0] }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+              </td>
+            </tr>
+        @php
+          }
+        }
+        if ($printQuestions[$i]->type == "image"){
           for($j = 0; $j < count($printQuestions[$i]->answer); $j++){
           @endphp
             <tr>
