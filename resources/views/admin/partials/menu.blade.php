@@ -23,3 +23,11 @@
           <span class="title">Encuestas</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class='sidebar-link' href="{{ URL('admin/users/reports') }}">
+          <span class="icon-holder">
+            <i class="c-green-500 fa fa-users"></i>
+          </span>
+          <span class="title">Reportes de Uso</span>
+        </a>
+      </li>

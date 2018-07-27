@@ -123,14 +123,14 @@ class UserController extends Controller
     }
 
     public function insertCredit($idPlan, $idUser)
-    {   
+    {
         $userCredit = new UserCredit;
-        $userCredit->user_id = $idUser;   
+        $userCredit->user_id = $idUser;
         $userCredit->paypalToken = 0;
         $userCredit->payerId = 0;
-        
+
         switch($idPlan) {
-            case 1:        
+            case 1:
                 $userCredit->credits = 1;
             break;
             case 2:
@@ -144,14 +144,30 @@ class UserController extends Controller
             break;
             case 5:
                 $userCredit->credits = 500;
-            break;    
-        } 
-        
+            break;
+        }
+
         $userCredit->save();
 
          return redirect()->route(ADMIN . '.users.index');
     }
 
+    public function useReport()
+    {
+        $users = User::latest('updated_at')->get();
+        $id = Auth::id();
+        foreach($users as $user) {
+            $creditosUser = DB::table("user_credit")->where('user_id' ,'=', $user->id)->sum('credits');
+            $discountsUser = DB::table("discounts")->where('user_id' ,'=', $user->id)->sum('credits');
+            $totalCreditsUser = $creditosUser - $discountsUser;
+            $user->totalCredits = $totalCreditsUser;
+            $user->discount = $discountsUser;
+            $user->updatedAt = DB::table("user_credit")->select('created_at')->where('user_id' ,'=', $user->id)->first();
+        }
+
+        //dd($users);
+        return view('admin.users.usereport', compact('users','total'));
+    }
 
 
 

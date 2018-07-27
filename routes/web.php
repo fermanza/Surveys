@@ -126,8 +126,9 @@ Route::group(['middleware' => ['Authuser']], function () {
 $router->group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Role:0']], function($router) {
     Route::get('/', 'DashboardController@index')->name('dash');
     Route::get('users/creditos/{id}','UserController@creditos')->name('admin.users.creditos');
+    // Route::get('users/reports','UserController@useReport')->name('admin.users.reports');
+    Route::get('users/reports', 'UserController@useReport');
     Route::resource('users', 'UserController');
     Route::resource('surveys','SurveyController');
-
     Route::get('users/creditos/insertCredit/{idPlan}/{idUser}', 'UserController@insertCredit');
 });
