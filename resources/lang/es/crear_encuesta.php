@@ -15,5 +15,4 @@ return [
     'privada' => 'Privada',
     'crearEncuesta' => 'Crear encuesta',
     'encuesta' => 'Encuesta'
-
 ];

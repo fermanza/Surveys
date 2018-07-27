@@ -10,6 +10,7 @@ use App\Answer;
 use DB;
 use Auth;
 use Session;
+use Lang;
 
 class MisEncuestasController extends Controller
 {
@@ -72,6 +73,15 @@ class MisEncuestasController extends Controller
     {
         // $ip = \Request::getClientIp();
         // dd($ip);
+        $answerModel = DB::table("answer")->where("id_template", "=", $id)->get();
+        if(count($answerModel) > 0){
+            $noEditTemplatesWithAnswers = \Lang::get("editar_encuesta.noeditarencuestasconrespuestas");
+            flash('<br /><h6>'.$noEditTemplatesWithAnswers.'</h6>')->error();
+            $id = Auth::id();
+            $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+            return view('mis_encuestas.index',compact('templates'));
+        }
+
         $template = Template::find($id);
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
@@ -108,6 +118,9 @@ class MisEncuestasController extends Controller
 
         $templateModel = Template::find($id);
         $templateModel->delete();
+
+        $answerModel = Answer::find($id);
+        $answerModel->delete();
 
         return back();
     }
