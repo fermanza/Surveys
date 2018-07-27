@@ -72,11 +72,11 @@ class MisEncuestasController extends Controller
     {
         // $ip = \Request::getClientIp();
         // dd($ip);
-
         $template = Template::find($id);
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
         $view = 'mis_encuestas.edit';
+        
         return $this->form($template, $action, $view, $question);
     }
 

@@ -98,6 +98,9 @@
           }
         }
         else{
+          if(isset($printQuestions[$i]->mainTitle)){
+              echo "<tr><td><br /><b> Pregunta: </b>".$printQuestions[$i]->mainTitle."</td></tr>";
+          }
           for($j = 0; $j < count($printQuestions[$i]->title); $j++){
           @endphp
             <tr>

@@ -46,6 +46,7 @@ class AppQuestionsObject
                 $question->type = $ans->type;
 
                 if( in_array($ans->type, $multiple) ){
+                    $question->mainTitle = $ans->config->title;
                     foreach($ans->config->list as $answerList){
                         $question->uid[] = $answerList->uid;
                         $question->title[] = $answerList->title;

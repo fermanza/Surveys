@@ -1959,6 +1959,197 @@ function isnan (val) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -5392,197 +5583,6 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45)(module)))
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6442,6 +6442,17 @@ module.exports = CipherBase
 
 /***/ }),
 /* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6578,7 +6589,7 @@ Duplex.prototype._destroy = function (err, cb) {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6624,7 +6635,7 @@ function randomBytes (size, cb) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(1).Buffer
@@ -6709,17 +6720,6 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a());
 
 /***/ }),
 /* 18 */
@@ -17365,7 +17365,7 @@ BlockHash.prototype._pad = function pad() {
 
 var asn1 = exports;
 
-asn1.bignum = __webpack_require__(3);
+asn1.bignum = __webpack_require__(5);
 
 asn1.define = __webpack_require__(172).define;
 asn1.base = __webpack_require__(24);
@@ -18453,7 +18453,7 @@ exports = module.exports = __webpack_require__(48);
 exports.Stream = exports;
 exports.Readable = exports;
 exports.Writable = __webpack_require__(34);
-exports.Duplex = __webpack_require__(14);
+exports.Duplex = __webpack_require__(15);
 exports.Transform = __webpack_require__(51);
 exports.PassThrough = __webpack_require__(114);
 
@@ -18563,7 +18563,7 @@ util.inherits(Writable, Stream);
 function nop() {}
 
 function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   options = options || {};
 
@@ -18713,7 +18713,7 @@ if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.protot
 }
 
 function Writable(options) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   // Writable ctor is applied to Duplexes, too.
   // `realHasInstance` is necessary because using plain `instanceof`
@@ -19706,8 +19706,8 @@ module.exports = modes
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(3);
-var randomBytes = __webpack_require__(15);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(5);
+var randomBytes = __webpack_require__(16);
 module.exports = crt;
 function blind(priv) {
   var r = getr(priv);
@@ -31053,7 +31053,7 @@ function prependListener(emitter, event, fn) {
 }
 
 function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   options = options || {};
 
@@ -31130,7 +31130,7 @@ function ReadableState(options, stream) {
 }
 
 function Readable(options) {
-  Duplex = Duplex || __webpack_require__(14);
+  Duplex = Duplex || __webpack_require__(15);
 
   if (!(this instanceof Readable)) return new Readable(options);
 
@@ -32132,7 +32132,7 @@ module.exports = {
 
 module.exports = Transform;
 
-var Duplex = __webpack_require__(14);
+var Duplex = __webpack_require__(15);
 
 /*<replacement>*/
 var util = __webpack_require__(20);
@@ -32293,7 +32293,7 @@ function done(stream, er, data) {
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var K = [
@@ -32426,7 +32426,7 @@ module.exports = Sha256
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var K = [
@@ -33163,11 +33163,11 @@ module.exports = StreamCipher
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var randomBytes = __webpack_require__(15);
+var randomBytes = __webpack_require__(16);
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
 findPrime.fermatTest = fermatTest;
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var TWENTYFOUR = new BN(24);
 var MillerRabin = __webpack_require__(67);
 var millerRabin = new MillerRabin();
@@ -33274,7 +33274,7 @@ function findPrime(bits, gen) {
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bn = __webpack_require__(3);
+var bn = __webpack_require__(5);
 var brorand = __webpack_require__(68);
 
 function MillerRabin(rand) {
@@ -34855,7 +34855,7 @@ module.exports = function xor(a, b) {
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(5);
 function withPublic(paddedMsg, key) {
   return new Buffer(paddedMsg
     .toRed(bn.mont(key.modulus))
@@ -54213,7 +54213,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(89)
 /* template */
@@ -60254,7 +60254,7 @@ if(false) {
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -60752,7 +60752,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(97)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(100)
 /* template */
@@ -60824,7 +60824,7 @@ if(false) {
 /* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -60873,7 +60873,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -61041,7 +61041,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(103)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(105)
 /* template */
@@ -61113,7 +61113,7 @@ if(false) {
 /* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -61131,7 +61131,7 @@ exports.push([module.i, "\n.survey-builder[data-v-1990b48c] {\n    display: flex
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__root_elements__ = __webpack_require__(191);
 //
 //
@@ -61344,7 +61344,7 @@ module.exports = len => {
 "use strict";
 
 
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(15)
+exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(16)
 exports.createHash = exports.Hash = __webpack_require__(19)
 exports.createHmac = exports.Hmac = __webpack_require__(54)
 
@@ -61924,7 +61924,7 @@ module.exports = __webpack_require__(34);
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(15);
 
 
 /***/ }),
@@ -61954,7 +61954,7 @@ module.exports = __webpack_require__(33).PassThrough
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var K = [
@@ -62055,7 +62055,7 @@ module.exports = Sha
  */
 
 var inherits = __webpack_require__(0)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var K = [
@@ -62160,7 +62160,7 @@ module.exports = Sha1
 
 var inherits = __webpack_require__(0)
 var Sha256 = __webpack_require__(52)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var W = new Array(64)
@@ -62211,7 +62211,7 @@ module.exports = Sha224
 
 var inherits = __webpack_require__(0)
 var SHA512 = __webpack_require__(53)
-var Hash = __webpack_require__(16)
+var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
 var W = new Array(160)
@@ -63882,7 +63882,7 @@ module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(5);
 var MillerRabin = __webpack_require__(67);
 var millerRabin = new MillerRabin();
 var TWENTYFOUR = new BN(24);
@@ -63891,7 +63891,7 @@ var TEN = new BN(10);
 var THREE = new BN(3);
 var SEVEN = new BN(7);
 var primes = __webpack_require__(66);
-var randomBytes = __webpack_require__(15);
+var randomBytes = __webpack_require__(16);
 module.exports = DH;
 
 function setPublicKey(pub, enc) {
@@ -64155,7 +64155,7 @@ module.exports = {
 var createHmac = __webpack_require__(54)
 var crt = __webpack_require__(41)
 var EC = __webpack_require__(7).ec
-var BN = __webpack_require__(3)
+var BN = __webpack_require__(5)
 var parseKeys = __webpack_require__(29)
 var curves = __webpack_require__(77)
 
@@ -64313,7 +64313,7 @@ module.exports = {"name":"elliptic","version":"6.4.0","description":"EC cryptogr
 
 
 var utils = exports;
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var minAssert = __webpack_require__(8);
 var minUtils = __webpack_require__(69);
 
@@ -64439,7 +64439,7 @@ utils.intFromLE = intFromLE;
 "use strict";
 
 
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
 var getNAF = utils.getNAF;
@@ -64823,7 +64823,7 @@ BasePoint.prototype.dblp = function dblp(k) {
 
 var curve = __webpack_require__(28);
 var elliptic = __webpack_require__(7);
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -65767,7 +65767,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
 
 
 var curve = __webpack_require__(28);
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -65955,7 +65955,7 @@ Point.prototype.getX = function getX() {
 
 var curve = __webpack_require__(28);
 var elliptic = __webpack_require__(7);
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var inherits = __webpack_require__(0);
 var Base = curve.base;
 
@@ -67772,7 +67772,7 @@ module.exports = {
 "use strict";
 
 
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var HmacDRBG = __webpack_require__(165);
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
@@ -68139,7 +68139,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
 "use strict";
 
 
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
 var assert = utils.assert;
@@ -68265,7 +68265,7 @@ KeyPair.prototype.inspect = function inspect() {
 "use strict";
 
 
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
@@ -68635,7 +68635,7 @@ module.exports = KeyPair;
 "use strict";
 
 
-var BN = __webpack_require__(3);
+var BN = __webpack_require__(5);
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
 var assert = utils.assert;
@@ -70116,7 +70116,7 @@ module.exports = function (okey, password) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var BN = __webpack_require__(3)
+var BN = __webpack_require__(5)
 var EC = __webpack_require__(7).ec
 var parseKeys = __webpack_require__(29)
 var curves = __webpack_require__(77)
@@ -70206,7 +70206,7 @@ module.exports = verify
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var elliptic = __webpack_require__(7)
-var BN = __webpack_require__(3)
+var BN = __webpack_require__(5)
 
 module.exports = function createECDH (curve) {
   return new ECDH(curve)
@@ -70352,11 +70352,11 @@ exports.publicDecrypt = function publicDecrypt(key, buf) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(29);
-var randomBytes = __webpack_require__(15);
+var randomBytes = __webpack_require__(16);
 var createHash = __webpack_require__(19);
 var mgf = __webpack_require__(78);
 var xor = __webpack_require__(79);
-var bn = __webpack_require__(3);
+var bn = __webpack_require__(5);
 var withPublic = __webpack_require__(80);
 var crt = __webpack_require__(41);
 
@@ -70455,7 +70455,7 @@ function nonZero(len, crypto) {
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(29);
 var mgf = __webpack_require__(78);
 var xor = __webpack_require__(79);
-var bn = __webpack_require__(3);
+var bn = __webpack_require__(5);
 var crt = __webpack_require__(41);
 var createHash = __webpack_require__(19);
 var withPublic = __webpack_require__(80);
@@ -70573,7 +70573,7 @@ function oldBrowser () {
   throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11')
 }
 var safeBuffer = __webpack_require__(1)
-var randombytes = __webpack_require__(15)
+var randombytes = __webpack_require__(16)
 var Buffer = safeBuffer.Buffer
 var kBufferMaxLength = safeBuffer.kMaxLength
 var crypto = global.crypto || global.msCrypto
@@ -71154,7 +71154,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(194)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(196)
 /* template */
@@ -71226,7 +71226,7 @@ if(false) {
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -71305,7 +71305,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(199)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(201)
 /* template */
@@ -71377,7 +71377,7 @@ if(false) {
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -71393,7 +71393,7 @@ exports.push([module.i, "\n.survey-question[data-v-73d16357] {\n    position: re
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -71540,7 +71540,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(204)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(206)
 /* template */
@@ -71612,7 +71612,7 @@ if(false) {
 /* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -71628,7 +71628,7 @@ exports.push([module.i, "\n.option-container[data-v-7221b662] {\n    display: fl
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -71835,7 +71835,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(209)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(211)
 /* template */
@@ -71907,7 +71907,7 @@ if(false) {
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -72030,7 +72030,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(214)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(216)
 /* template */
@@ -72102,7 +72102,7 @@ if(false) {
 /* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -72200,7 +72200,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(219)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(221)
 /* template */
@@ -72272,7 +72272,7 @@ if(false) {
 /* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -72397,7 +72397,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(224)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(226)
 /* template */
@@ -72469,7 +72469,7 @@ if(false) {
 /* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -72485,7 +72485,7 @@ exports.push([module.i, "\n.option-container[data-v-6d3fcd3d] {\n    display: fl
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -72772,7 +72772,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(229)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(231)
 /* template */
@@ -72844,7 +72844,7 @@ if(false) {
 /* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -72862,6 +72862,9 @@ exports.push([module.i, "\n.field-container[data-v-2354345e] {\n    display: fle
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
 //
 //
 //
@@ -72950,6 +72953,34 @@ var render = function() {
       ? _c(
           "div",
           [
+            _c("label", [_vm._v("Etiqueta")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
             _vm._l(_vm.surveyElement.config.list, function(field, index) {
               return _c(
                 "div",
@@ -73027,39 +73058,44 @@ var render = function() {
     _vm.display
       ? _c(
           "div",
-          _vm._l(_vm.surveyElement.config.list, function(field, index) {
-            return _c("div", { key: field.uid }, [
-              _c("label", [_vm._v(_vm._s(field.title))]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.surveyElement.config.list[index].answer,
-                    expression: "surveyElement.config.list[index].answer"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: field.uid },
-                domProps: {
-                  value: _vm.surveyElement.config.list[index].answer
-                },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+          [
+            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+            _vm._v(" "),
+            _vm._l(_vm.surveyElement.config.list, function(field, index) {
+              return _c("div", { key: field.uid }, [
+                _c("label", [_vm._v(_vm._s(field.title))]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.surveyElement.config.list[index].answer,
+                      expression: "surveyElement.config.list[index].answer"
                     }
-                    _vm.$set(
-                      _vm.surveyElement.config.list[index],
-                      "answer",
-                      $event.target.value
-                    )
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: field.uid },
+                  domProps: {
+                    value: _vm.surveyElement.config.list[index].answer
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.surveyElement.config.list[index],
+                        "answer",
+                        $event.target.value
+                      )
+                    }
                   }
-                }
-              })
-            ])
-          })
+                })
+              ])
+            })
+          ],
+          2
         )
       : _vm._e()
   ])
@@ -73083,7 +73119,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(234)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(236)
 /* template */
@@ -73155,7 +73191,7 @@ if(false) {
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -73173,7 +73209,7 @@ exports.push([module.i, "\n.field-container[data-v-c126c8b2] {\n    display: fle
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -73612,7 +73648,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(239)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(241)
 /* template */
@@ -73684,7 +73720,7 @@ if(false) {
 /* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -73907,7 +73943,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(244)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(246)
 /* template */
@@ -73979,7 +74015,7 @@ if(false) {
 /* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -74080,7 +74116,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(249)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(251)
 /* template */
@@ -74152,7 +74188,7 @@ if(false) {
 /* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -74170,6 +74206,9 @@ exports.push([module.i, "\n.field-container[data-v-56790fad] {\n    display: fle
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
 //
 //
 //
@@ -74266,192 +74305,65 @@ var render = function() {
     !_vm.display
       ? _c(
           "div",
-          _vm._l(_vm.surveyElement.config.list, function(field, index) {
-            return _c("div", { key: field.uid }, [
-              _c("label", [_vm._v("Etiqueta")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("label", { staticClass: "checkbox-inline" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.surveyElement.config.list[index].include,
-                      expression: "surveyElement.config.list[index].include"
-                    }
-                  ],
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    checked: Array.isArray(
-                      _vm.surveyElement.config.list[index].include
-                    )
-                      ? _vm._i(
-                          _vm.surveyElement.config.list[index].include,
-                          null
-                        ) > -1
-                      : _vm.surveyElement.config.list[index].include
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.surveyElement.config.list[index].include,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(
-                              _vm.surveyElement.config.list[index],
-                              "include",
-                              $$a.concat([$$v])
-                            )
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.surveyElement.config.list[index],
-                              "include",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(
-                          _vm.surveyElement.config.list[index],
-                          "include",
-                          $$c
-                        )
-                      }
-                    }
-                  }
-                }),
-                _vm._v("\n                Incluir\n            ")
-              ]),
-              _vm._v(" "),
-              _c("label", { staticClass: "checkbox-inline" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.surveyElement.config.list[index].required,
-                      expression: "surveyElement.config.list[index].required"
-                    }
-                  ],
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    checked: Array.isArray(
-                      _vm.surveyElement.config.list[index].required
-                    )
-                      ? _vm._i(
-                          _vm.surveyElement.config.list[index].required,
-                          null
-                        ) > -1
-                      : _vm.surveyElement.config.list[index].required
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.surveyElement.config.list[index].required,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(
-                              _vm.surveyElement.config.list[index],
-                              "required",
-                              $$a.concat([$$v])
-                            )
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.surveyElement.config.list[index],
-                              "required",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(
-                          _vm.surveyElement.config.list[index],
-                          "required",
-                          $$c
-                        )
-                      }
-                    }
-                  }
-                }),
-                _vm._v("\n                Requerido\n            ")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.surveyElement.config.list[index].title,
-                    expression: "surveyElement.config.list[index].title"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.surveyElement.config.list[index].title },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.surveyElement.config.list[index],
-                      "title",
-                      $event.target.value
-                    )
-                  }
+          [
+            _c("label", [_vm._v("Etiqueta")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-              })
-            ])
-          })
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.display
-      ? _c(
-          "div",
-          _vm._l(_vm.fieldsToInclude, function(field, index) {
-            return _c("div", { key: field.uid }, [
-              _c("label", [_vm._v(_vm._s(field.title))]),
-              _vm._v(" "),
-              field.type === "checkbox"
-                ? _c("input", {
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.surveyElement.config.list, function(field, index) {
+              return _c("div", { key: field.uid }, [
+                _c("label", [_vm._v("Etiqueta")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("label", { staticClass: "checkbox-inline" }, [
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index].answer,
-                        expression: "surveyElement.config.list[index].answer"
+                        value: _vm.surveyElement.config.list[index].include,
+                        expression: "surveyElement.config.list[index].include"
                       }
                     ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: field.uid,
-                      required: _vm.surveyElement.config.list[index].required,
-                      type: "checkbox"
-                    },
+                    attrs: { type: "checkbox" },
                     domProps: {
                       checked: Array.isArray(
-                        _vm.surveyElement.config.list[index].answer
+                        _vm.surveyElement.config.list[index].include
                       )
                         ? _vm._i(
-                            _vm.surveyElement.config.list[index].answer,
+                            _vm.surveyElement.config.list[index].include,
                             null
                           ) > -1
-                        : _vm.surveyElement.config.list[index].answer
+                        : _vm.surveyElement.config.list[index].include
                     },
                     on: {
                       change: function($event) {
-                        var $$a = _vm.surveyElement.config.list[index].answer,
+                        var $$a = _vm.surveyElement.config.list[index].include,
                           $$el = $event.target,
                           $$c = $$el.checked ? true : false
                         if (Array.isArray($$a)) {
@@ -74461,28 +74373,132 @@ var render = function() {
                             $$i < 0 &&
                               _vm.$set(
                                 _vm.surveyElement.config.list[index],
-                                "answer",
+                                "include",
                                 $$a.concat([$$v])
                               )
                           } else {
                             $$i > -1 &&
                               _vm.$set(
                                 _vm.surveyElement.config.list[index],
-                                "answer",
+                                "include",
                                 $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                               )
                           }
                         } else {
                           _vm.$set(
                             _vm.surveyElement.config.list[index],
-                            "answer",
+                            "include",
                             $$c
                           )
                         }
                       }
                     }
-                  })
-                : field.type === "radio"
+                  }),
+                  _vm._v("\n                Incluir\n            ")
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "checkbox-inline" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.surveyElement.config.list[index].required,
+                        expression: "surveyElement.config.list[index].required"
+                      }
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(
+                        _vm.surveyElement.config.list[index].required
+                      )
+                        ? _vm._i(
+                            _vm.surveyElement.config.list[index].required,
+                            null
+                          ) > -1
+                        : _vm.surveyElement.config.list[index].required
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.surveyElement.config.list[index].required,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.surveyElement.config.list[index],
+                                "required",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.surveyElement.config.list[index],
+                                "required",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(
+                            _vm.surveyElement.config.list[index],
+                            "required",
+                            $$c
+                          )
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v("\n                Requerido\n            ")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.surveyElement.config.list[index].title,
+                      expression: "surveyElement.config.list[index].title"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", disabled: true },
+                  domProps: {
+                    value: _vm.surveyElement.config.list[index].title
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.surveyElement.config.list[index],
+                        "title",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            })
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.display
+      ? _c(
+          "div",
+          [
+            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+            _vm._v(" "),
+            _vm._l(_vm.fieldsToInclude, function(field, index) {
+              return _c("div", { key: field.uid }, [
+                _c("label", [_vm._v(_vm._s(field.title))]),
+                _vm._v(" "),
+                field.type === "checkbox"
                   ? _c("input", {
                       directives: [
                         {
@@ -74496,57 +74512,122 @@ var render = function() {
                       attrs: {
                         name: field.uid,
                         required: _vm.surveyElement.config.list[index].required,
-                        type: "radio"
+                        type: "checkbox"
                       },
                       domProps: {
-                        checked: _vm._q(
-                          _vm.surveyElement.config.list[index].answer,
-                          null
+                        checked: Array.isArray(
+                          _vm.surveyElement.config.list[index].answer
                         )
+                          ? _vm._i(
+                              _vm.surveyElement.config.list[index].answer,
+                              null
+                            ) > -1
+                          : _vm.surveyElement.config.list[index].answer
                       },
                       on: {
                         change: function($event) {
-                          _vm.$set(
-                            _vm.surveyElement.config.list[index],
-                            "answer",
+                          var $$a = _vm.surveyElement.config.list[index].answer,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "answer",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "answer",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "answer",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    })
+                  : field.type === "radio"
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.list[index].answer,
+                            expression:
+                              "surveyElement.config.list[index].answer"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: field.uid,
+                          required:
+                            _vm.surveyElement.config.list[index].required,
+                          type: "radio"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.surveyElement.config.list[index].answer,
                             null
                           )
-                        }
-                      }
-                    })
-                  : _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.list[index].answer,
-                          expression: "surveyElement.config.list[index].answer"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: field.uid,
-                        required: _vm.surveyElement.config.list[index].required,
-                        type: field.type
-                      },
-                      domProps: {
-                        value: _vm.surveyElement.config.list[index].answer
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "answer",
+                              null
+                            )
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.list[index],
-                            "answer",
-                            $event.target.value
-                          )
                         }
-                      }
-                    })
-            ])
-          })
+                      })
+                    : _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.list[index].answer,
+                            expression:
+                              "surveyElement.config.list[index].answer"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: field.uid,
+                          required:
+                            _vm.surveyElement.config.list[index].required,
+                          type: field.type
+                        },
+                        domProps: {
+                          value: _vm.surveyElement.config.list[index].answer
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "answer",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+              ])
+            })
+          ],
+          2
         )
       : _vm._e()
   ])
@@ -74570,7 +74651,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(254)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(256)
 /* template */
@@ -74642,7 +74723,7 @@ if(false) {
 /* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -74658,7 +74739,7 @@ exports.push([module.i, "\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
 //
 //
 //
@@ -74789,7 +74870,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(259)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(261)
 /* template */
@@ -74861,7 +74942,7 @@ if(false) {
 /* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -75130,7 +75211,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(264)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(266)
 /* template */
@@ -75202,7 +75283,7 @@ if(false) {
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -75771,7 +75852,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(269)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(271)
 /* template */
@@ -75843,7 +75924,7 @@ if(false) {
 /* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -76410,7 +76491,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(274)
 }
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(276)
 /* template */
@@ -76482,7 +76563,7 @@ if(false) {
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
