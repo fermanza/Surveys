@@ -38,7 +38,7 @@ class EncuestasController extends Controller
         $users = DB::table('users')->where('role', '=', '10')->get();
         $action = 'create';
         //dd($user);
-        
+
         $templates = Template::where('type', 0)->get();
         return view('encuestas.index', compact('template','users','action', 'templates'));
     }
@@ -258,13 +258,20 @@ class EncuestasController extends Controller
 
     public function saveQuestion2(Request $request)
     {
-  
+
             $user = Auth::user();
             $template = Template::find($request->template);
             $question = Questions::where('template_id','=',$request->template)->first();
             if(!$question) {
                 $question = new Questions;
             }
+
+            $qContent = json_decode($request->questions);
+             if($template->plan == 0 && count($qContent) > 10) {
+                 return Redirect::back()->withErrors(['msg', 'The Message']);
+
+             }
+
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
@@ -283,8 +290,6 @@ class EncuestasController extends Controller
                     }
                 }
             }
-
-            //dd($request->questions);
 
             $question->position = 0;
             $question->content = $surveyContent;
