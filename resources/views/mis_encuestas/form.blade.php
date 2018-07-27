@@ -3,6 +3,10 @@
 
 @include('includes.header')
 
+<style>
+
+</style>
+
 @section('content')
         <!-- start page title section -->
         <section class="bread wow fadeIn padding-25px-tb margin-bread">
@@ -26,8 +30,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Creación de encuesta</a></li>
-                                <li class="text-dark-gray">{{$template->name}}</li>
+                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Edición de encuesta</a></li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>
@@ -42,29 +45,55 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{$template->name}}</h5>
-                        {{-- <div class="btns">
-                            <a href="#"><i class="fa fa-eye"></i> Vista previa</a>
-                            <a href="#">Guardar</a>
-                        </div> --}}
+                           <div class="col-md-12" align="center">
+                              @if($template->url != null)
+                                <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 15%;">
+                              @endif
+                           </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- end form section -->
-   <!-- <div class="row">
+    {{--<div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4" align="center">
         <label>Logo</label>
         <input type="file" name="surveyLogo" id="surveyLogo">
         </div>
-    </div> -->
+    </div> --}}
+
+   {{-- <div id="app">--}}
+
     <div id="app">
       @if($question === null)
-        <app-survey-builder :template={{$template->id}} >
+        <app-survey-builder :template="{{ $template }}" >
         </app-survey-builder>
       @else
-        <app-survey-builder :template={{$template->id}} :initial-elements='{{ json_encode($question->content) }}' >
+        <app-survey-builder :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
         </app-survey-builder>
       @endif
     </div>
 @endsection
+
+{{-- @push('script')
+
+<script>
+    $(document).ready(function(){
+
+    document.getElementById('guardar').addEventListener('click', function() {
+      swal({
+          position: 'center',
+          title: 'Encuesta creada correctamente.<br>Se ha enviado para aprobación<br>de la misma.',
+          type: 'success'
+      }).then(function() {
+          window.location = "{{url('mis_encuestas')}}";
+      });
+    });
+
+    });
+
+</script>
+
+@endpush --}}
+

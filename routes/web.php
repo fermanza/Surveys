@@ -12,13 +12,10 @@
 */
 // Web Pages Survenia http://66.198.240.13/~survenia/
 
-
 Route::get('setLanguage/{lang}','HomeController@setLanguage');
 Route::get('/', 'SurveniaWebPagesController@index');
 
 Route::get('mis_encuestas/excel/{id}', 'EncuestasController@getBladeExcel');
-
-//Route::post('/registrar', 'SurveniaWebPagesController@registrar');
 
 Route::get('/registro','SurveniaWebPagesController@registro');
 
@@ -37,8 +34,6 @@ Route::resource('/inicio_sesion','InicioSesionController');
 
 Route::get('/bitly/{id}','EncuestasController@bitly');
 
-
-
 Route::get('/encuestas/responder/{id}', 'EncuestasController@answerTemplate');
 
 Route::get('/responder/{token}','EncuestasController@responderEncuesta');
@@ -49,17 +44,6 @@ Route::get('/mis_encuestas', 'MisEncuestasController@index');
 //Route::get('/mi_cuenta','SurveniaWebPagesController@miCuenta');
 Route::resource('/my_account','MyAccountController');
 Route::post('/saveAnswer', 'EncuestasController@saveAnswer');
-
-
-
-
-/*Route::resource('/encuestas', 'EncuestasController');
-Route::get('/encuestas/{id}', 'EncuestasController@create');
-Route::get('/encuestas/show', 'EncuestasController@show');
-Route::get('/get-options/{type}', 'EncuestasController@getOptions');
-Route::post('/encuestas/storeTemplate', 'EncuestasController@storeTemplate');
-Route::post('/encuestas/storeSurveyContent', 'EncuestasController@storeSurveyContent');
-*/
 
 //Login with Facebook/
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
@@ -114,8 +98,6 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::get('/getQuestions/{idEncuesta}', 'EncuestasPublicasController@getQuestions');
 
 });
-
-
 
 /*
 |------------------------------------------------------------------------------------

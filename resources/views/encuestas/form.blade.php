@@ -62,6 +62,11 @@ th {
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
                                 <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">@lang('mis_encuestas.creacionEncuesta')</a></li>
                                 <li class="text-dark-gray">{{ $template->name }}</li>
+                               <div class="col-md-12" align="center">
+                                  @if($template->url != null)
+                                    <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 20%;"><br><br>
+                                  @endif
+                               </div>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>

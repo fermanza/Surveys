@@ -38,7 +38,7 @@ class EncuestasController extends Controller
         $users = DB::table('users')->where('role', '=', '10')->get();
         $action = 'create';
         //dd($user);
-
+        
         $templates = Template::where('type', 0)->get();
         return view('encuestas.index', compact('template','users','action', 'templates'));
     }
@@ -184,17 +184,6 @@ class EncuestasController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        dd($id);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -269,27 +258,48 @@ class EncuestasController extends Controller
 
     public function saveQuestion2(Request $request)
     {
+  
             $user = Auth::user();
             $template = Template::find($request->template);
             $question = Questions::where('template_id','=',$request->template)->first();
             if(!$question) {
                 $question = new Questions;
             }
+<<<<<<< HEAD
             $qContent = json_decode($request->questions);
              if($template->plan == 0 && count($qContent) > 10) {
                  return Redirect::back()->withErrors(['msg', 'The Message']);
 
              }
 
+=======
+>>>>>>> a26876f5ab7efaf54a72c777152eab6b5a7bf2be
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
                     $template->save();
             }
 
+<<<<<<< HEAD
+=======
+            $surveyContent = json_decode($request->questions);
+            if($request->images) {
+                foreach($request->images  as $uid => $image) {
+                    $fileName = FileControl::storeSingleFile($image, 'imagenesSurvey');
+                    $url = "/imagenesSurvey/{$fileName}";
+                    foreach($surveyContent as $q) {
+                        if($q->uid == $uid) {
+                            $q->answer = $url;
+                        }
+                    }
+                }
+            }
+
+            //dd($request->questions);
+>>>>>>> a26876f5ab7efaf54a72c777152eab6b5a7bf2be
 
             $question->position = 0;
-            $question->content = json_decode($request->questions);
+            $question->content = $surveyContent;
             $question->template_id = $request->template;
             $question->save();
 

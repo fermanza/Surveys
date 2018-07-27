@@ -19,6 +19,8 @@
 <template>
     <div>
         <div v-if="!display">
+            <label>Etiqueta</label>
+            <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <label>Etiqueta</label>
                 <br />
@@ -30,10 +32,11 @@
                     <input type="checkbox" v-model="surveyElement.config.list[index].required" />
                     Requerido
                 </label>
-                <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
+                <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" v-bind:disabled="true" />
             </div>
         </div>
         <div v-if="display">
+            <label>{{ surveyElement.config.title }}</label>
             <div v-for="(field, index) in fieldsToInclude" :key="field.uid">
                 <label>{{ field.title }}</label>
                 <input :type="field.type" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" :required="surveyElement.config.list[index].required" />

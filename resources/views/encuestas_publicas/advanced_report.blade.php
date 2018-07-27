@@ -159,6 +159,9 @@
           </td>
         </tr>
         @php
+          if(isset($printQuestions[$i]->mainTitle)){
+              echo "<tr><td><br /><b> Pregunta: </b>".$printQuestions[$i]->mainTitle."</td></tr>";
+          }
           for($j = 0; $j < count($textQuestions[$i]->title); $j++){
           @endphp
             <tr>
