@@ -280,13 +280,13 @@ class EncuestasController extends Controller
                  return Redirect::back()->withErrors(['msg', 'The Message']);
 
              }
-           
+
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
                     $template->save();
             }
-            
+
 
             $question->position = 0;
             $question->content = json_decode($request->questions);
