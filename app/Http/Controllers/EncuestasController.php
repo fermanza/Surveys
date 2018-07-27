@@ -536,10 +536,9 @@ class EncuestasController extends Controller
 
     }
 
-    public function sendContactForm(Request $request)
+    public function sendContactForm(User $user, Request $request)
     {
       //dd($request->all());
-      $user = Auth::user();
 
       $user->name = 'Admin';
       $user->email = 'isanchez94@hotmail.com';
