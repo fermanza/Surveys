@@ -108,7 +108,7 @@
             </tr>
             <tr>
               <td>
-                <b> Respuesta: </b>{{ $printQuestions[$i]->answer[$j] }}
+                <img src="{{ URL($printQuestions[$i]->answer[$j]) }}" style="width: 200px !important; height: auto !important; max-width: 20%;"><br><br>
               </td>
             </tr>
         @php

@@ -449,10 +449,11 @@ class EncuestasController extends Controller
     {
         $template = Template::find($id);
         $printQuestions = $questionsObject->getQuestionsObject($id);
+        $questions = DB::table("questions")->where("template_id", "=", $id)->get();
 
-        \Excel::create('survey', function($excel) use($printQuestions, $template) {
-            $excel->sheet('survey', function($sheet) use($printQuestions, $template)  {
-                $sheet->loadView('mis_encuestas.export', compact('printQuestions', 'template'));
+        \Excel::create('survey', function($excel) use($printQuestions, $template, $questions) {
+            $excel->sheet('survey', function($sheet) use($printQuestions, $template, $questions)  {
+                $sheet->loadView('mis_encuestas.export', compact('printQuestions', 'template', 'questions'));
             });
         })->download('xls');
     }

@@ -4,25 +4,32 @@
     <tr>
       <td><h2>{{ $template->name }}</h2></td>
     @php
+      $uqid = [];
+      // dd(($questions));
+      $lenQuestions = count(json_decode($questions[0]->content));
+      // echo $lenQuestions;die;
       for($i = 0; $i < count($printQuestions); $i++) {
       @endphp
       @php
         for($j = 0; $j < count($printQuestions[$i]->title); $j++) {
       @endphp
-          <td>
-            <strong>{{ $printQuestions[$i]->title[$j] }}</strong>
-          </td>
+          <td><strong>{{ $printQuestions[$i]->title[$j] }}</strong></td>
       @php
-        }
+          }
       @endphp
       @php
+        if(($i+1) == $lenQuestions){
+      @endphp
+          <td><strong>Usuario</strong></td>
+      @php
+          break;
+        }
       }
       @endphp
     </tr>
     <tr>
       <td></td>
     @php
-      $len = count($printQuestions);
       $matrix = array('matrix', 'matrix-scale');
       for($i = 0; $i < count($printQuestions); $i++) {
         $len_current_answer = count($printQuestions[$i]->answer);
@@ -34,42 +41,23 @@
           }
           else{
       @endphp
-            <td>
-              {{ $printQuestions[$i]->answer[$j] }}
-            </td>
+            <td>{{ $printQuestions[$i]->answer[$j] }}</td>
       @php
           }
         }
-        if(($i+1) == $len){
+        if( $i != 0 && (($i + 1) % $lenQuestions) == 0 ) {
       @endphp
           <td>
-            <strong>Usuario: {{ $printQuestions[$i]->user_name }}</strong>
+            {{ $printQuestions[$i]->user_name }}
           </td>
+        </tr>
+        <tr>
+          <td></td>
       @php
         }
       }
       @endphp
-    </tr>
 
   </tbody>
   </table>
 
-{{-- 
-        <tr>
-          <td>
-            @php
-              if( $flag || 
-                  ($printQuestions[$i]->answer_id != $printQuestions[$i-1]->answer_id) ) {
-                   //  echo '<hr /><b>Usuario: '.$printQuestions[$i]->user_name."</b>";
-                     $flag = false;
-              }
-            @endphp
-          </td>
-        </tr>
-
-
-
-
-
-
- --}}

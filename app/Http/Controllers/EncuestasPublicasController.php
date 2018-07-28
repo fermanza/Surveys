@@ -98,8 +98,9 @@ class EncuestasPublicasController extends Controller
     public function showAdvancedReport($id, AppQuestionsObject $questionsObject)
     {
         $template = Template::find($id);
-        $printQuestions = $questionsObject->getQuestionsObject($id);
+        $questions = DB::table("questions")->where("template_id", "=", $id)->get();
 
+        $printQuestions = $questionsObject->getQuestionsObject($id);
         $exclude = array("text", "header", "textarea", "multiple-text", 
                 "contact-information", "star-rating", "image", "slider");
         $matrix = array('matrix', 'matrix-scale');
@@ -145,6 +146,7 @@ class EncuestasPublicasController extends Controller
             }
         }
         // dd($options);
-        return view('encuestas_publicas.advanced_report', compact('options', 'template', 'answerCount', 'printQuestions', 'textQuestions'));
+        // dd($printQuestions);
+        return view('encuestas_publicas.advanced_report', compact('options', 'template', 'answerCount', 'printQuestions', 'textQuestions', 'questions'));
     }
 }
