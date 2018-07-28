@@ -37,7 +37,12 @@
                             <td><a href="{{ route(ADMIN . '.users.edit', $user->id) }}">{{ $user->name }}</a></td>
                             <td>{{ $user->totalCredits }}</td>
                             <td>{{ $user->discount }}</td>
-                            <td>{{ $user->updatedAt->created_at }}</td>
+                            @if($user->updatedAt != null)
+                                <td>{{ $user->updatedAt->created_at }}</td>
+                            @else
+                                <td>Sin créditos.</td>
+                            @endif
+
                         </tr>
                     @endforeach
                 </tbody>
