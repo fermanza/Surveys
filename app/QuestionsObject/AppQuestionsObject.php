@@ -44,6 +44,7 @@ class AppQuestionsObject
             foreach(json_decode($answers[$k]->answer) as $ans){
                 $question = new \stdClass();
                 $question->type = $ans->type;
+                $question->uqid = $ans->uid;
 
                 if( in_array($ans->type, $multiple) ){
                     $question->mainTitle = $ans->config->title;
@@ -118,14 +119,13 @@ class AppQuestionsObject
                     $question->answer[] = $ans->answer;
                 }
                 $question->answer_id = $answers[$k]->id;
-                if($answers[$k]->user_id == null){
+                if($answers[$k]->user_id == null || $answers[$k]->user_id == "" ){
                     $question->user_name = 'Anónimo';
                 }
                 else{
                     $user = User::find($answers[$k]->user_id);
                     $question->user_name = $user->name;
                 }
-                // print_r($question);
                 array_push($printQuestions, $question);
             }
         }

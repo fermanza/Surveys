@@ -74,6 +74,11 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 display-table">
                                 <div class="display-table-cell vertical-align-middle">
                                     <h6>{{ $template->name }}</h6>
+                                    <div class="row" align="center">
+                                      @if($template->url != null)
+                                        <img src="{{ URL($template->url) }}" style="width: 250px !important; height: auto" />
+                                      @endif
+                                    </div>
                                     <p><b>Respuestas</b></p>
                                     <p> <b>Respondidas:</b> {{ $answerCount }} </p>
 
@@ -131,7 +136,6 @@
                                         </div>
                                     </div>
           @php
-            
           }
           @endphp
 
@@ -143,44 +147,65 @@
   <table id="table-mis-respuestas" class="display col-md-12" align="center">
   <tbody>
     @php
-      $flag = true;
-      for($i = 0; $i < count($textQuestions); $i++){
-    @endphp
-        <tr>
-          <td>
+      $imageShowed = false;
+      $lenQuestions = count($textQuestions);
+      for($i = 0; $i < ($lenQuestions/$answerCount); $i++) {
+        for($j = 0; $j < count($textQuestions[$i]->title); $j++) {
+      @endphp
+          <tr>
+            <td><strong>{{ $textQuestions[$i]->title[$j] }}</strong></td>
+          </tr>
+      @php
+      @endphp
+      @php
+          for($q = 0; $q < $answerCount; $q++){
+            for($p = 0; $p < count($textQuestions[$i]->answer); $p++) {
+              if (strtolower($textQuestions[$i]->type) == "image"){
+                if($imageShowed){ continue; }
+                $imageShowed = true;
+        @endphp
+                <tr>
+                  <td>
+                    <img src="{{ URL($textQuestions[$i+(($lenQuestions/$answerCount)*$q)]->answer[0]) }}" style="width: 200px !important; height: auto !important; max-width: 20%;" />
+                  </td>
+                </tr>
             @php
-              if( $flag || 
-                  ($textQuestions[$i]->answer_id != $textQuestions[$i-1]->answer_id) ){
-
-                echo '<hr /><b>Usuario: '.$textQuestions[$i]->user_name."</b>";
-                $flag = false;
               }
+              else{
             @endphp
-          </td>
-        </tr>
-        @php
-          if(isset($printQuestions[$i]->mainTitle)){
-              echo "<tr><td><br /><b> Pregunta: </b>".$printQuestions[$i]->mainTitle."</td></tr>";
+                <tr>
+                  <td>{{ $textQuestions[$i+(($lenQuestions/$answerCount)*$q)]->answer[$p] }}</td>
+                </tr>
+            @php
+            }
           }
-          for($j = 0; $j < count($textQuestions[$i]->title); $j++){
-          @endphp
-            <tr>
-              <td>
-                <br />
-                <b> Pregunta: </b>{{ $textQuestions[$i]->title[$j] }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b> Respuesta: </b>{{ $textQuestions[$i]->answer[$j] }}
-              </td>
-            </tr>
-    @php 
+        }
+        if( ($i + 1) == ($lenQuestions/$answerCount) ) {
+        @endphp
+          <tr>
+            <td>
+              <strong>Usuario</strong>
+            </td>
+          </tr>
+        @php
+          for($q = 0; $q < $answerCount; $q++){
+            @endphp
+              <tr>
+                <td>
+                  {{ $textQuestions[$i+(($lenQuestions/$answerCount)*$q)]->user_name }}
+                </td>
+              </tr>
+            @php
+          }
         }
       }
-    @endphp
+    }
+      @endphp
+    </tr>
+
   </tbody>
   </table>
+
 
   <div class="col-md-12" align="right">
     <br />
