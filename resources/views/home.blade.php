@@ -308,7 +308,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 text-center">
-                            <textarea name="comment" id="comment" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
+                            <textarea name="comment" id="comment" style="width: 100%;" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
                         </div>
                         <div class="col-md-12 text-center">
                             <button id="project-contact-us-button" type="submit" class="btn btn-transparent-dark-gray btn-large margin-20px-top">@lang('home.enviar') </button>
