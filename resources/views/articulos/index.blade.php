@@ -47,21 +47,21 @@
             </div>
         </section>
         <!-- end page title section -->
-        
-        <!-- start post content section --> 
+
+        <!-- start post content section -->
         <section>
             <div class="container">
                 <div class="row">
                     <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
                         <div class="display-inline-block width-100 margin-30px-bottom xs-margin-25px-bottom temas">
-                            @if(Auth::check() == true)  
-                                @if($user->id == 1) 
+                            @if(Auth::check() == true)
+                                @if($user->id == 1)
                                 <div align="center">
                                            <br><a class="temas-title" href="{{route('articulos.create')}}">@lang('articulos.crearArticulo')</a><br><br>
                                 </div>
-                                @endif  
-                            @endif  
-                            <div class="temas-title">@lang('articulos.temas')</div> 
+                                @endif
+                            @endif
+                            <div class="temas-title">@lang('articulos.temas')</div>
                                 {{-- <div class="select-style big-select">
 
                                     <select name="budget" id="budget" class="bg-transparent no-margin-bottom">
@@ -72,18 +72,18 @@
                                     </select>
                                 </div> --}}
                                 <div class="buscar position-relative">
-                             <form method="GET" action="{{ route('articulos.index') }}">   
+                             <form method="GET" action="{{ route('articulos.index') }}">
                                     <input type="text" class="bg-transparent no-margin border-color-extra-light-gray medium-input pull-left" name="articulo" placeholder="Buscar">
                                     <button type="submit" class="bg-transparent position-absolute right-0 top-8" style="border: none;"><i class="fa fa-search no-margin-left"></i></button>
 
-                              </form>  
-                                </div>  
-                            
+                              </form>
+                                </div>
 
-                
-                        
-                        </div>         
-                        @if(Auth::check() == false) 
+
+
+
+                        </div>
+                        @if(Auth::check() == false)
                         <div class="margin-30px-bottom xs-margin-25px-bottom reg">
                             <div class="display-inline-block width-100">
                                 <h6>@lang('encuestas_publicas.quieresCrearEncuesta')</h6>
@@ -144,47 +144,47 @@
                                 <li><a href="#"><i class="fa fa-calendar"></i> Septiembre 2017</a></li>
                                 <li><a href="#"><i class="fa fa-calendar"></i> Agosto 2017</a></li>
                                 <li><a href="#"><i class="fa fa-calendar"></i> Julio 2017</a></li>
-                            </ul>   
+                            </ul>
                         </div> --}}
-                        
+
                     </aside>
 
                      <main class="col-md-9 col-sm-12 col-xs-12 sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
-                        <!-- start post item --> 
-                       
-                    @foreach($articulos as $articulo)    
+                        <!-- start post item -->
+
+                    @foreach($articulos as $articulo)
 
                         <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content xs-text-center">
                             <div class="blog-text display-inline-block width-100">
                                 <div class="content">
-                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"  onClick="getLink({{$articulo->id}})">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span> 
-                                 @isset($user)   
-                                    @if($user->id == 1 ) <span>  <a href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span> 
+                                    <div class="text-medium-gray text-extra-small margin-5px-bottom text-uppercase"><span><a href="#">{{ $articulo->user->name }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ Carbon\Carbon::parse($articulo->created_at)->format('d-m-Y')}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#"  onClick="getLink({{$articulo->id}})">@lang('articulos.compartir')</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span></span>
+                                 @isset($user)
+                                    @if($user->id == 1 ) <span>  <a href="{{route('articulos.edit', $articulo->id)}}">@lang('articulos.editar')</a>   </span>
                                     @endif
                                       @if($user->id == 1)
                                              <form style="display: inline-block;" method="POST" action= {{url("/articulos/$articulo->id ")}}>
                                                   {{ method_field('DELETE') }}
                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                    &nbsp;&nbsp;&nbsp;<button>@lang('articulos.eliminar')</button>
-                                             </form>            
-                                      @endif  
-                                 @endisset     
+                                             </form>
+                                      @endif
+                                 @endisset
 
                                    </div>
                                     <a href="{{route('articulos.show', $articulo->id)}}" class="text-extra-dark-gray text-uppercase text-large font-weight-600 margin-15px-bottom display-block"> {{$articulo->title}} </a>
-                                      <p id="preview"> 
+                                      <p id="preview">
                                         @php
                                            $articulo->body = str_limit($articulo->body, 40);
                                            $articulo->body = str_finish($articulo->body, '...');
                                         @endphp
-                                        {!! $articulo->body !!} 
+                                        {!! $articulo->body !!}
                                     </p>
                                 </div>
                                 <div class="equalize xs-equalize-auto author display-table width-100">
                                     <div class="name col-md-6 col-sm-6">
                                         <div class="display-table text-center width-100 height-100">
                                             <div class="display-table-cell vertical-align-middle">
-                                                <img src="images/mi-cuenta/user.png" alt="" class="border-radius-100 width-30px"><a href="#">{{ $articulo->user->name }}</a>
+                                                {{-- <img src="images/mi-cuenta/user.png" alt="" class="border-radius-100 width-30px"> --}}<a href="#">{{ $articulo->user->name }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -199,17 +199,17 @@
                             </div>
                         </div>
 
-                    @endforeach   
-                    
+                    @endforeach
+
                     @if($articulos->count() > 0)
                     <div class="pag" align="right">
                             <p>Total de los artículos: {{ $articulos->count() }}</p>
                             Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
                             {{ $articulos->links() }}
                     </div>
-                    @endif 
-                
-         
+                    @endif
+
+
                         <!-- end post item -->
                     </main>
 
@@ -223,7 +223,7 @@
 @push('script')
 
 <script type="text/javascript">
-        
+
 $('#preview').trumbowyg('html');
 
 
@@ -256,16 +256,16 @@ $('#preview').trumbowyg('html');
                     html: '¡Enlace copiado!'
                   })
             })
-            
+
   });
 
           // Callback handler that will be called on failure
           request.fail(function (jqXHR, textStatus, errorThrown){
-              
+
           });
 
 
-            
+
         }
 
 
