@@ -11,7 +11,7 @@ return [
 	'comoFunciona' => 'How it works',
 	'creaEnvia' => 'Create, send and analyze surveys in an easy and intuitive way',
 	'empleaMultiplesTiposDePreguntas' => 'Use multiple types of questions, insert images and videos, add your logo and the colors of your brand to create customized surveys. Use filters to create custom reports',
-	'verInstructivo' => 'See instructive',
+	'verInstructivo' => 'See instructions',
 	'plantillas' => 'Templates',
 	'modelosDeCuestionarios' => 'Questionnaire models to make everything easier',
 	'conNuestrasPlantillas' => 'With our specially designed survey templates, you can create many types of surveys and get answers quickly to make better decisions.',

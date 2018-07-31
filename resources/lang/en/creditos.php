@@ -8,9 +8,10 @@ return [
      'ahorra' => 'Save',
      'comprar'=> 'Buy',
      'creditosDisponibles' => 'Available credits:',
-     'losCreditosDuran' => 'The credits last one year from the purchase <br>
-                         They are not renewed automatically; Simply buy more when you need it. <br>
-                     Each survey created costs 1 credit',
+     'losCreditosDuran' => '  Credits expire in a year from the purchase. <br/>
+                              They are not automatically renewed. <br/>
+                              Simply buy more credits when you need. <br/>
+                              Each survey created costs one credit.',
      'tipoPlan' => 'Type of plan',
      'gratis' => 'Free',
      'ampliar' => 'Zoom'

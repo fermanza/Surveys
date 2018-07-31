@@ -7,7 +7,7 @@ return [
 	'inicio' => 'Home',
 	'comoFunciona' => 'How it works?',
 	'plantillas' => 'Templates',
-	'planesPrecios' => 'Plans ans prices',
+	'planesPrecios' => 'Plans and prices',
 	'creacionEncuesta' => 'Survey creation',
 	'encuestasPublicas' => 'Public surveys',
 	'articulos' => 'Articles',

@@ -32,7 +32,7 @@ return [
 	'gratuito' => 'Gratuito',
 	'preguntas' => 'Preguntas',
 	'respuestas' => 'Respuestas',
-	'fucionalidades' => 'Funcionalidades',
+	'funcionalidades' => 'Funcionalidades especiales',
 	'registrarse' => 'Registrarse',
 	'ilimitadas' => 'ilimitadas',
 	'paqueteEncuestas' => 'Paquete de encuestas',
