@@ -36,7 +36,7 @@
             </div>
         </section>
         <!-- end page title section -->
-        
+
         <!-- start form section -->
         <section class="wow fadeIn contacto" id="start-your-project">
             <div class="container">
@@ -44,7 +44,7 @@
                     <div class="col-lg-12 col-md-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
                         <h5 class="font-weight-700 text-extra-dark-gray text-uppercase">@lang('home.envianosTusConsultas')</h5>
                         <p> @lang('home.nuestroEquipoDeSoporte')  <br> @lang('home.puedeEncontrar') <a href="mailto:info@survenia.com">info@survenia.com</a></p>
-                    </div>  
+                    </div>
                 </div>
                 <form id="project-contact-form" action="javascript:void(0)" method="post">
                     <div class="row">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <textarea name="comment" id="comment" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
+                            <textarea name="comment" id="comment" style="width: 100%;" placeholder="@lang('home.comentarios')" rows="6" class="big-textarea"></textarea>
                         </div>
                         <div class="col-md-12 text-center">
                             <button id="project-contact-us-button" type="submit" class="btn btn-transparent-dark-gray btn-large margin-20px-top">@lang('home.enviar')</button>
