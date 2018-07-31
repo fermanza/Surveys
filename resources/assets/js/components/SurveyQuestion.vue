@@ -2,6 +2,8 @@
     .survey-question {
         position: relative;
         padding-top: 20px;
+        margin: 5px 0;
+        border-bottom: 1px solid #DBE8D1;
     }
 
     .controls {
@@ -9,9 +11,9 @@
         top: 0;
         right: 0;
     }
+
     .question-action {
         cursor: pointer;
-
     }
 
     .close-component {
@@ -29,8 +31,8 @@
             <i v-if="display" @click="display = false" class="question-action text-success fa fa-pencil"></i>
             <i @click="removeQuestion" class="question-action text-success fa fa-times"></i>
         </div>
-        <div>
-            <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display"></component>
+        <div class="component-container">
+            <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>
         </div>
         <div v-if="!display" class="text-center">
             <button type="button" @click="display = true" class="question-action close-component ">Save</button>
@@ -42,7 +44,17 @@
     import Bus from './../Bus';
 
     export default {
-        props: ['surveyElement'],
+        props: {
+            surveyElement: {
+                required: true
+            },
+            live: {
+                default: false
+            },
+            index: {
+                required: true
+            }
+        },
 
         data() {
             return {

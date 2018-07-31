@@ -39,7 +39,7 @@
             <label>{{ surveyElement.config.title }}</label>
             <div v-for="(field, index) in fieldsToInclude" :key="field.uid">
                 <label>{{ field.title }}</label>
-                <input :type="field.type" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" :required="surveyElement.config.list[index].required" />
+                <input :type="field.type" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" :required="live && surveyElement.config.list[index].required" />
             </div>
         </div>
     </div>
@@ -49,7 +49,17 @@
     import uniqueString from 'unique-string';
 
     export default {
-        props: ['display', 'surveyElement'],
+        props: {
+            display: {
+                default: true
+            },
+            surveyElement: {
+                required: true
+            },
+            live: {
+                default: true
+            }
+        },
 
         computed: {
             fieldsToInclude() {

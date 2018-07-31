@@ -45,11 +45,6 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 center-col">
                         <h5 class="font-weight-700 text-extra-dark-gray">{{$template->name}}</h5>
-                           <div class="col-md-12" align="center">
-                              @if($template->url != null)
-                                <img src="{{ URL($template->url) }}" style="width: auto !important; height: auto !important; max-width: 15%;">
-                              @endif
-                           </div>
                     </div>
                 </div>
             </div>
@@ -67,10 +62,10 @@
 
     <div id="app">
       @if($question === null)
-        <app-survey-builder :template="{{ $template }}" >
+        <app-survey-builder :live="false" :template="{{ $template }}" >
         </app-survey-builder>
       @else
-        <app-survey-builder :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
+        <app-survey-builder :live="false" :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
         </app-survey-builder>
       @endif
     </div>

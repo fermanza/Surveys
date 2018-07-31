@@ -7,7 +7,7 @@
         <div v-show="!display">
             <label>Etiqueta</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer"></app-survey-hider>
+            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -20,7 +20,7 @@
     import Bus from './../../Bus';
 
     export default {
-        props: ['display', 'surveyElement'],
+        props: ['display', 'surveyElement', 'index'],
 
         watch: {
             'surveyElement.answer': function (answer, oldAnswer) {

@@ -1,24 +1,26 @@
 <style scoped>
-    
+    .survey-question {
+        margin: 5px 0;
+        border-bottom: 1px solid #DBE8D1;
+    }
 </style>
 
 <template>
     <div>
-        <transition-group-translate-y>
-            <div v-for="element in surveyElements" :key="element.uid">
-                <component :is="parseComponent(element)" v-show="!element.hide" :survey-element="element" :display="true"></component>
-                <hr />
+        <form :action="$Config.base_url+'/saveAnswer'" method="POST">
+            <transition-group-translate-y>
+                <div v-for="element in surveyElements" :key="element.uid" class="survey-question">
+                    <component :is="parseComponent(element)" v-show="!element.hide" :survey-element="element" :display="true"></component>
+                </div>
+            </transition-group-translate-y>
+            <div>
+                    <input type="hidden" name="answer" :value="questionsJson" />
+                    <input type="hidden" name="template" :value="template_id" />
+                    <br /><br />
+                    <button type="submit" class="btn">Contestar</button>
+                <br />
             </div>
-        </transition-group-translate-y>
-        <div>
-            <form :action="$Config.base_url+'/saveAnswer'" method="POST">
-                <input type="hidden" name="answer" :value="questionsJson" />
-                <input type="hidden" name="template" :value="template_id" />
-                <br /><br />
-                <button type="submit" class="btn">Contestar</button>
-            </form>
-            <br />
-        </div>
+        </form>
     </div>
 </template>
 

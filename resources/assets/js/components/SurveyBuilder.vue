@@ -19,6 +19,10 @@
         padding: 20px;
     }
 
+    .question-action {
+        cursor: pointer;
+    }
+
     @media screen and (max-width: 768px) {
         .root-controls {
             flex-basis: 50px;
@@ -34,10 +38,15 @@
     <div>
       <form :action="$Config.base_url+'/encuestas/save2'" ref="builderform" @submit.prevent="countQuestions" method="POST" enctype="multipart/form-data"> 
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4" align="center">
-                    <label>Logo</label>
-                    <input type="file" name="surveyLogo" />
+                <div class="col-md-6 col-md-offset-3">
+                    <div v-if="!editLogo" class="text-center">
+                        <img :src="$Config.base_url+template.url" style="max-witdh: 350px; max-height: 500px;" />
+                        <i @click="editLogo = true" class="question-action text-success fa fa-pencil"></i>
+                    </div>
+                     <div v-show="editLogo" class="text-center">
+                        <label>Logo</label>
+                        <input type="file" name="surveyLogo" />
+                    </div>
                 </div>
             </div>
             <div class="survey-builder">
@@ -53,8 +62,8 @@
                 </div>
                 <div class="survey-questions">
                     <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">
-                        <div v-for="surveyElement in surveyElements" :key="surveyElement.uid">
-                            <app-survey-question v-show="!surveyElement.hide" :survey-element="surveyElement"></app-survey-question>
+                        <div v-for="(surveyElement, index) in surveyElements" :key="surveyElement.uid">
+                            <app-survey-question v-show="!surveyElement.hide" :survey-element="surveyElement" :live="live" :index="index"></app-survey-question>
                         </div>
                     </app-draggable>
                 </div>
@@ -88,7 +97,10 @@
                 default: () => {}
             },
             maximunElements: {
-                 default: 10
+                default: 10
+            },
+            live: {
+                default: true
             }
         },
 
@@ -96,7 +108,8 @@
             return {
                 template_id: this.template.id,
                 surveyElements: this.initialElements,
-                rootElements: rootElements
+                rootElements: rootElements,
+                editLogo: this.template.url ? false : true
             }
         },
 

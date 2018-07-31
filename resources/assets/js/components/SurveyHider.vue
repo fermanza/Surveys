@@ -39,7 +39,7 @@
     import Bus from './../Bus';
 
     export default {
-        props: ['hideConfig', 'surveyElementUid', 'answer'],
+        props: ['hideConfig', 'surveyElementUid', 'answer', 'index'],
 
         data() {
             return {
@@ -68,7 +68,9 @@
 
         methods: {
             setAvailableElements(availableElements) {
-                this.availableElements = availableElements.filter(element => element.uid !== this.surveyElementUid);
+                this.$nextTick(() => {
+                    this.availableElements = availableElements.filter((element, index) => index > this.index);
+                });
             },
 
             emitShowElements(uid) {

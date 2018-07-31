@@ -63,10 +63,10 @@
 
     <div id="app">
       @if($question === null)
-        <app-survey-builder :template="{{ $template }}" >
+        <app-survey-builder :live="false" :template="{{ $template }}" >
         </app-survey-builder>
       @else
-        <app-survey-builder :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
+        <app-survey-builder :live="false" :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
         </app-survey-builder>
       @endif
     </div>

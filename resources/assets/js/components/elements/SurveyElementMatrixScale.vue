@@ -14,6 +14,10 @@
     .option-action {
         cursor: pointer;
     }
+
+    .matrix-intersection {
+        padding: 0 2px;
+    }
 </style>
 
 <template>
@@ -75,7 +79,7 @@
                 </tr>
                 <tr v-for="(row, rowIndex) in surveyElement.config.rows" :key="row.uid">
                     <th>{{ row.text }}</th>
-                    <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid">
+                    <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid" class="matrix-intersection">
                         <select v-model="surveyElement.answer[row.uid][col.uid]" class="form-control">
                             <option :value="null">Seleccione Opción</option>
                             <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>

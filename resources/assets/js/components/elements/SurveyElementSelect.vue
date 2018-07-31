@@ -35,7 +35,7 @@
                     <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
             </div>
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer"></app-survey-hider>
+            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
@@ -51,7 +51,7 @@
     import Bus from './../../Bus';
 
     export default {
-        props: ['display', 'surveyElement'],
+        props: ['display', 'surveyElement', 'index'],
 
         methods: {
             addOption() {
