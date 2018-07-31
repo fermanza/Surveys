@@ -35,12 +35,12 @@ class EncuestasController extends Controller
     public function index()
     {
         $template = Template::find(1);
-        $users = DB::table('users')->where('role', '=', '10')->get();
-        $action = 'create';
+        $id = Auth::id();
+        $user = DB::table('users')->where('id', '=', $id)->get();
         //dd($user);
 
         $templates = Template::where('type', 0)->get();
-        return view('encuestas.index', compact('template','users','action', 'templates'));
+        return view('encuestas.index', compact('template','user','action', 'templates'));
     }
 
     /**
@@ -91,13 +91,30 @@ class EncuestasController extends Controller
 
         if($request->plan == 1)
         {
-            $creditos=DB::table("user_credit")->sum('credits');
-            $discounts=DB::table("discounts")->sum('credits');
-            $tot = $creditos-$discounts;
+            //dd('Entré al if');
+            // $creditos=DB::table("user_credit")->sum('credits');
+            // $discounts=DB::table("discounts")->sum('credits');
+            // //dd($discounts);
+            $creditosUser = DB::table("user_credit")->where('user_id' ,'=', $user->id)->sum('credits');
+            //dd($creditosUser);
+            $discountsUser = DB::table("discounts")->where('user_id' ,'=', $user->id)->sum('credits');
+            //dd($discountsUser);
+            $totalCreditsUser = $creditosUser - $discountsUser;
+            //dd($totalCreditsUser);
+            $user->totalCredits = $totalCreditsUser;
+            //dd($user->totalCredits);
+            if($totalCreditsUser <= 0){
+              flash('<br><h6>No puedes crear encuestas Premium sin créditos.</h6>')->error();
 
-            //dd($tot);
-            if($tot <= 0)
-                return redirect('encuestas?error=1');
+              $template = Template::find(1);
+              $id = Auth::id();
+              $user = DB::table('users')->where('id', '=', $id)->get();
+              $templates = Template::where('type', 0)->get();
+              return view('encuestas.index', compact('template','user','action', 'templates'));
+            }
+            else{
+              $tot = $creditosUser-$discountsUser;
+            }
         }
         $template = new Template;
         $id = Auth::id();
@@ -296,11 +313,20 @@ class EncuestasController extends Controller
             $question->template_id = $request->template;
             $question->save();
 
-            flash('<br><h6>Encuesta guardada correctamente. Se ha enviado para su aprobación.</h6>')->success();
+            if($template->type == 0){
+                flash('<br><h6>Encuesta guardada correctamente. Se ha enviado para su aprobación.</h6>')->success();
 
-            $id = Auth::id();
-            $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
-            return view('mis_encuestas.index',compact('templates'));
+                $id = Auth::id();
+                $templates = Template::where('user_id','=', $id)->get();
+                return view('mis_encuestas.index',compact('templates'));
+            }
+            else{
+                flash('<br><h6>Encuesta guardada correctamente.</h6>')->success();
+
+                $id = Auth::id();
+                $templates = Template::where('user_id','=', $id)->get();
+                return view('mis_encuestas.index',compact('templates'));
+            }
     }
 
      /**
@@ -366,7 +392,7 @@ class EncuestasController extends Controller
             return response()->json('ip',500);
           }*/
 
-          
+
         $answer=new Answer;
         $answer->id_template=$id_template;
         $answer->position=0;

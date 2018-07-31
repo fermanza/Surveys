@@ -23,7 +23,7 @@ class MisEncuestasController extends Controller
     {
         $id = Auth::id();
         $templates = Template::where('user_id','=', $id)->get();
-        
+
         return view('mis_encuestas.index',compact('templates'));
     }
 
@@ -115,10 +115,15 @@ class MisEncuestasController extends Controller
         $templateModel = Template::find($id);
         $templateModel->delete();
 
-        $answerModel = Answer::find($id);
+        $answerModel = Answer::where("id_template", $id);
         $answerModel->delete();
 
-        return back();
+        flash('<br><h6>Encuesta eliminada correctamente.</h6>')->error();
+
+        $id = Auth::id();
+        $templates = Template::where('user_id','=', $id)->get();
+
+        return view('mis_encuestas.index',compact('templates'));
     }
 
     /**
