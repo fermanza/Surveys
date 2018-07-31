@@ -26,7 +26,7 @@ class MisEncuestasController extends Controller
         $id = Auth::id();
         // $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
 
-        $templates = DB::table('template')->where('user_id','=', $id)->get();
+        $templates = Template::where('user_id','=', $id)->get();
         //dd($templates);
         return view('mis_encuestas.index',compact('templates'));
     }
