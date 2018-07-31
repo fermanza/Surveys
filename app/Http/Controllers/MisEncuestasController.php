@@ -20,13 +20,13 @@ class MisEncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
 
         //$templates = Template::where('type','=', 0)->get();
         $id = Auth::id();
-        $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+        // $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
 
-        //$templates = DB::table('template')->where('type','=', 1)->get();
+        $templates = DB::table('template')->where('user_id','=', $id)->get();
         //dd($templates);
         return view('mis_encuestas.index',compact('templates'));
     }
@@ -86,7 +86,7 @@ class MisEncuestasController extends Controller
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
         $view = 'mis_encuestas.edit';
-        
+
         return $this->form($template, $action, $view, $question);
     }
 
@@ -112,7 +112,7 @@ class MisEncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $questionsModel = Questions::where("template_id", $id);
         $questionsModel->delete();
 
@@ -134,7 +134,7 @@ class MisEncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected function form($template, $action, $view,$question)
-    { 
+    {
         $template->load('questions');
         //dd($template->questions[0]->content);
         /*$questions = $template->questions->map(function($item){
@@ -159,8 +159,8 @@ class MisEncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getOptions($type)
-    {   
-        return Options::where('type', $type)->get()->first(); 
+    {
+        return Options::where('type', $type)->get()->first();
     }
 
 
