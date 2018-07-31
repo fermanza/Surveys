@@ -25,7 +25,7 @@ return [
 	'encuestasMoviles' => 'Mobile surveys',
 	'conLaInterfaceOptimizada' => 'With the optimized cellular interface, respondents can respond from anywhere.',
 	'economico' => 'affordable',
-	'surveniaNoTeObliga' => 'Survenia has no obligation of money for additional time, you can buy the surveys you need and save money..',
+	'surveniaNoTeObliga' => 'Survenia has no obligation of money for additional time, you can buy the surveys you need and save money.',
 	'utilizaLasPlantillas' => 'Use the default templates of Survenia to create yours quickly.',
 	'publicaTusEncuestas' => 'Publish your surveys in our Blog and disseminate your work to thousands of users',
 	'planes' => 'Plans and prices',
