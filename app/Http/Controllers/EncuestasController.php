@@ -314,7 +314,7 @@ class EncuestasController extends Controller
             $question->save();
 
             if($template->type == 0){
-                flash('<br><h6>Encuesta guardada correctamente. Se ha enviado para su aprobación.</h6>')->success();
+                flash('<br><h6>Encuesta guardada correctamente. Queda sujeto a aprobaci&oacute;n del moderador su publicación en el Blog de Survenia.</h6>')->success();
 
                 $id = Auth::id();
                 $templates = Template::where('user_id','=', $id)->get();
