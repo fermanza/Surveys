@@ -387,11 +387,16 @@ class EncuestasController extends Controller
         }
 
         $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        /*  if($answer)
-          {
-            return response()->json('ip',500);
-          }*/
 
+        // if($answer)
+        // {
+        //     flash('<br><h6>No puedes responder dos veces la misma encuesta.</h6>')->error();
+
+        //     $templates = Template::Search($request->title)->with('user')->where([['type', '=', '0'],['approval', '=', '1']])->latest()->paginate(5);
+        //     $user = User::all();
+
+        //     return view('encuestas_publicas.index',compact('templates','user'));
+        // }
 
         $answer=new Answer;
         $answer->id_template=$id_template;
