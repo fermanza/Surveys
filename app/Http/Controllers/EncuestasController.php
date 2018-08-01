@@ -87,7 +87,7 @@ class EncuestasController extends Controller
         $input = Input::all();
         $user = User::findOrNew($input['user_id']);
         //dd($user);
-        //dd($request->all());
+        //dd($request->userName);
 
         if($request->plan == 1)
         {
@@ -133,6 +133,11 @@ class EncuestasController extends Controller
             $user->notify(new ApprovalNotification($user, $template));
 
            // return redirect()->route('encuestas_publicas.index');
+        }elseif($request->tipo == 1)
+        {
+            $user->name = $request->userName;
+            $user->email = $request->email;
+            $user->notify(new ApprovalNotification($user, $template));
         }
 
         if($request->plan == 1)
