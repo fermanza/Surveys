@@ -58,7 +58,7 @@ return [
 	'encuesta' => 'Survey',
 	'paraEncuestasSencillas' => 'For small and simple surveys, or simply to test our system.',
 	'paraEncuestasProfesionales' => 'For professional surveys of short, medium and long term.',
-	'numeroDePreguntas' => 'Number of answers',
+	'numeroDeRespuestas' => 'Number of answers',
 	'soporteEnLinea' => 'Free online support',
 	'sinContrato' => 'without contract or automatic renewal',
 	'tiposDePreguntas' => 'Question types varied',
