@@ -161,4 +161,30 @@
         </div>
     </div>
 </section>
+
+
+@push('script')
+    <script>
+        $(document).ready( function () {
+            $('#tipo').change(function (){
+                if($('#tipo').val() == 0)
+                {
+                    swal({
+                      title: '<strong>Atención!</strong>',
+                      type: 'info',
+                      html:
+                    '<h6 style="font-size: 14px; text-align:justify;">Al seleccionar la encuesta como P&uacute;blica usted est&aacute; solicitando que la misma se publique en el Blog de Survenia y est&eacute; expuesta abiertamente a todos los usuarios que ingresen a este sitio web. En caso que Ud. s&oacute;lo quiera publicarla para un grupo de personas de su elecci&oacute;n, cambie el tipo de encuesta a Privada.</h6>',
+                      showCloseButton: true,
+                      focusConfirm: false,
+                      confirmButtonText:
+                        'Entendido',
+                      confirmButtonAriaLabel: 'Thumbs up, great!',
+                    })
+                }
+            });
+
+        });
+    </script>
+@endpush
+
 @stop
