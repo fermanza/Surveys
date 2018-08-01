@@ -22,7 +22,7 @@ class MisEncuestasController extends Controller
     public function index(Request $request)
     {
         $id = Auth::id();
-        $templates = Template::where('user_id','=', $id)->get();
+        $templates = Template::where('user_id','=', $id)->latest()->get();
 
         return view('mis_encuestas.index',compact('templates'));
     }
