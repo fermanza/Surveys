@@ -70,7 +70,7 @@
                                     <th>@lang('mis_encuestas.tipoDePlan')</th>
                                     <th>@lang('mis_encuestas.respuestas')</th>
                                     <th>@lang('mis_encuestas.reportes')</th>
-                                    <th>@lang('mis_encuestas.cerrarEncuesta')</th>
+                                    <th>@lang('mis_encuestas.finalizarEncuesta')</th>
                                     <th>@lang('mis_encuestas.editarEncuesta')</th>
                                     <th>@lang('mis_encuestas.compartir')</th>
                                     <th>@lang('mis_encuestas.eliminar')</th>
@@ -106,16 +106,16 @@
                                     </td>
                                     <td> {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route('mis_encuestas.destroy', $template), 
+                                            'url'  => route('mis_encuestas.destroy', $template),
                                             'method' => 'DELETE',
-                                            ]) 
+                                            ])
                                         !!}
                                             <br>
                                             <button title="Eliminar"  id="deleteTemp"><i class="fa fa-trash"></i></button>
-                                            
+
                                         {!! Form::close() !!}
                                     </td>
-                                    
+
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -138,13 +138,13 @@
                  "responsive": true,
                  "bSort": false
             });
-        @else 
+        @else
            $('#table-mis-encuestas').DataTable({
             responsive: true
-           }); 
-        @endif   
-    }); 
- 
+           });
+        @endif
+    });
+
 
         function getLink(id)
         {
@@ -175,19 +175,19 @@
         html: '¡Enlace copiado!'
       })
 })
-            
+
   });
 
   // Callback handler that will be called on failure
   request.fail(function (jqXHR, textStatus, errorThrown){
-      
+
   });
 
 
-            
+
         }
 
-        
+
         </script>
 
         @endpush

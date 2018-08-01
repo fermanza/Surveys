@@ -11,7 +11,7 @@ return [
 	'tipoDePlan' => 'Tipo de plan',
 	'respuestas' => 'Respuestas',
 	'reportes' => 'Reportes',
-	'cerrarEncuesta' => 'Cerrar Encuesta',
+	'finalizarEncuesta' => 'Finalizar Encuesta',
 	'editarEncuesta' => 'Editar Encuesta',
 	'compartir' => 'Compartir',
 	'eliminar' => 'Eliminar',
