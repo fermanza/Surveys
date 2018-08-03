@@ -322,14 +322,14 @@ class EncuestasController extends Controller
                 flash('<br><h6>Encuesta guardada correctamente. Queda sujeto a aprobaci&oacute;n del moderador su publicación en el Blog de Survenia.</h6>')->success();
 
                 $id = Auth::id();
-                $templates = Template::where('user_id','=', $id)->get();
+                $templates = Template::where('user_id','=', $id)->latest()->get();
                 return view('mis_encuestas.index',compact('templates'));
             }
             else{
                 flash('<br><h6>Encuesta guardada correctamente.</h6>')->success();
 
                 $id = Auth::id();
-                $templates = Template::where('user_id','=', $id)->get();
+                $templates = Template::where('user_id','=', $id)->latest()->get();
                 return view('mis_encuestas.index',compact('templates'));
             }
     }
@@ -506,6 +506,16 @@ class EncuestasController extends Controller
     {
         $template = Template::find($id_template);
         $template->approval = $status;
+        $template->save();
+
+        return redirect('mis_encuestas');
+    }
+
+    public function changeSurveyType($id_template, $type)
+    {
+        // dd($id_template);
+        $template = Template::find($id_template);
+        $template->type = $type;
         $template->save();
 
         return redirect('mis_encuestas');

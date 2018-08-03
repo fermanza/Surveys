@@ -74,6 +74,7 @@ Route::group(['middleware' => ['Authuser']], function () {
     Route::resource('/encuestas', 'EncuestasController');
     Route::get('/mis_encuestas/respuestas/{id}', 'EncuestasController@getRespuestas');
     Route::get('/mis_encuestas/approval/{id_template}/{status}', 'EncuestasController@approval');
+    Route::get('/mis_encuestas/changeSurveyType/{id_template}/{type}','EncuestasController@changeSurveyType');
     Route::resource('/my_account','MyAccountController');
 
     //paypal

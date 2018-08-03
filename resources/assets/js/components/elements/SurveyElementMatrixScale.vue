@@ -26,7 +26,7 @@
             <label>Etiqueta</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
-                <label>Filas</label>
+                <label>Nombre de las Filas</label>
                 <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
@@ -41,7 +41,7 @@
             </div>
             <br />
             <div>
-                <label>Columnas</label>
+                <label>Nombre de las Columnas</label>
                 <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />

@@ -71831,7 +71831,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n            Ocultar Preguntas\n        ")
+        _vm._v("\n            Lógica de exclusión de preguntas\n        ")
       ])
     ]),
     _vm._v(" "),
@@ -76235,7 +76235,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Filas")]),
+              _c("label", [_vm._v("Nombre de las Filas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.rows, function(row, index) {
                 return _c(
@@ -76313,7 +76313,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Columnas")]),
+              _c("label", [_vm._v("Nombre de las Columnas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.cols, function(col, index) {
                 return _c(
