@@ -4,11 +4,11 @@
 <template>
     <div>
         <div v-show="!display">
-            <label>Imagen</label>
+            <label>{{ $Lang.trans('Image') }}</label>
             <input type="file" :name="'images['+ surveyElement.uid +']'"  />
         </div>
         <div v-if="display">
-            <label v-if="!surveyElement.answer">Imagen</label>
+            <label v-if="!surveyElement.answer">{{ $Lang.trans('Image') }}</label>
             <img v-if="surveyElement.answer" :src="$Config.base_url+surveyElement.answer" width="250" >
         </div>
     </div>

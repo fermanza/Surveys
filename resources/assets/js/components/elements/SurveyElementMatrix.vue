@@ -19,16 +19,16 @@
 <template>
     <div>
         <div v-if="!display">
-            <label>Etiqueta</label>
+            <label>{{ $Lang.trans('Label') }}</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div class="checkbox">
                 <label>
                     <input type="checkbox" v-model="surveyElement.config.multiple" />
-                    Permitir múltiple
+                      {{ $Lang.trans('Allow multiple') }}
                 </label>
             </div>
             <div>
-                <label>Filas</label>
+                <label>{{ $Lang.trans('Rows') }}</label>
                 <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
@@ -43,7 +43,7 @@
             </div>
             <br />
             <div>
-                <label>Columnas</label>
+                <label>{{ $Lang.trans('Columns') }}</label>
                 <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
@@ -85,14 +85,14 @@
             addRow() {
                 this.surveyElement.config.rows.push({
                     uid: uniqueString(),
-                    text: 'Fila'
+                    text:  Lang.trans('Row')
                 });
             },
 
             addCol() {
                 this.surveyElement.config.cols.push({
                     uid: uniqueString(),
-                    text: 'Columna'
+                    text: Lang.trans('Column')
                 });
             },
 

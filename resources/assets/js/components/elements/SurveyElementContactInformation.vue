@@ -19,18 +19,18 @@
 <template>
     <div>
         <div v-if="!display">
-            <label>Etiqueta</label>
+            <label>{{ $Lang.trans('Label') }}</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
-                <label>Etiqueta</label>
+                <label>{{ $Lang.trans('Label') }}</label>
                 <br />
                 <label class="checkbox-inline">
                     <input type="checkbox" v-model="surveyElement.config.list[index].include" />
-                    Incluir
+                  {{ $Lang.trans('Include') }} 
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" v-model="surveyElement.config.list[index].required" />
-                    Requerido
+                  {{ $Lang.trans('Required') }} 
                 </label>
                 <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" v-bind:disabled="true" />
             </div>
@@ -71,7 +71,7 @@
             addField() {
                 this.surveyElement.config.list.push({
                     uid: uniqueString(),
-                    title: 'Texto',
+                    title: Lang.trans('Text'),
                     answer: ''
                 });
             },

@@ -3,12 +3,12 @@ import uniqueString from 'unique-string';
 let multipleTextboxList = [
     {
         uid: '',
-        title: 'Texto 1',
+        title: Lang.trans('Text 1'),
         answer: ''
     },
     {
         uid: '',
-        title: 'Texto 2',
+        title: Lang.trans('Text 2'),
         answer: ''
     }
 ];
@@ -16,14 +16,14 @@ let multipleTextboxList = [
 let contactInformationList = [
     {
         uid: '',
-        title: 'Nombre',
+        title: Lang.trans('Name'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Apellido',
+        title: Lang.trans('Last name'),
         answer: '',
         required: false,
         include: true
@@ -37,49 +37,49 @@ let contactInformationList = [
     },
     {
         uid: '',
-        title: 'Empresa',
+        title: Lang.trans('Company'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Teléfono',
+        title: Lang.trans('Phone'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Dirección',
+        title: Lang.trans('Address'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Ciudad',
+        title: Lang.trans('City'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'País',
+        title: Lang.trans('Country'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Sexo',
+        title: Lang.trans('Gender'),
         answer: '',
         required: false,
         include: true
     },
     {
         uid: '',
-        title: 'Fecha de Nacimiento',
+        title: Lang.trans('Date of birth'),
         answer: 'mm/dd/yyyy',
         required: false,
         include: true
@@ -89,30 +89,30 @@ let contactInformationList = [
 let matrixRows = [
     {
         uid: '',
-        text: 'Fila 1',
+        text: Lang.trans('Row 1'),
     },
     {
         uid: '',
-        text: 'Fila 2',
+        text: Lang.trans('Row 2'),
     },
     {
         uid: '',
-        text: 'Fila 3',
+        text: Lang.trans('Row 3'),
     },
 ];
 
 let matrixCols = [
     {
         uid: '',
-        text: 'Columna 1',
+        text: Lang.trans('Column 1'),
     },
     {
         uid: '',
-        text: 'Columna 2',
+        text: Lang.trans('Column 2'),
     },
     {
         uid: '',
-        text: 'Columna 3',
+        text: Lang.trans('Column 3'),
     },
 ];
 
@@ -120,11 +120,11 @@ let rootElements = [
     {
         uid: '',
         type: 'text',
-        title: 'Single Text Box',
+        title: Lang.trans('Single text box'),
         className: 'fa-font',
         hide: false,
         config: {
-            title: 'Single Text Box'
+            title: Lang.trans('Single text box')
         },
         answer: ''
     },
@@ -142,23 +142,23 @@ let rootElements = [
     {
         uid: '',
         type: 'textarea',
-        title: 'Comment Box',
+        title: Lang.trans('Comment box'),
         className: 'fa-comments',
         hide: false,
         config: {
-            title: 'Comment Box'
+            title: Lang.trans('Comment box')
         },
         answer: ''
     },
     {
         uid: '',
         type: 'dropdown',
-        title: 'Dropdown',
+        title: Lang.trans('dropdown'),
         className: 'fa fa-caret-down',
         hide: false,
         config: {
             title: 'Dropdown',
-            list: ['Option 1', 'Option 2'],
+            list: [  Lang.trans('Option 1'), Lang.trans('Option 2')],
             hideConfig: {
                 allow: false,
                 options: {}
@@ -169,11 +169,11 @@ let rootElements = [
     {
         uid: '',
         type: 'multiple-text',
-        title: 'Multiple Textbooks',
+        title: Lang.trans('Multiple textbooks'),
         className: 'fa-align-left',
         hide: false,
         config: {
-            title: 'Multiple Textbooks',
+            title: Lang.trans('Multiple textbooks'),
             list: multipleTextboxList
         },
         answer: {},
@@ -186,12 +186,12 @@ let rootElements = [
     {
         uid: '',
         type: 'multiple-check',
-        title: 'Multiple Choice',
+        title: Lang.trans('Multiple choice'),
         className: 'fa-check-square',
         hide: false,
         config: {
-            title: 'Multiple Choice',
-            list: ['Option 1', 'Option 2'],
+            title: Lang.trans('Multiple choice'),
+            list: [ Lang.trans('Option 1'), Lang.trans('Option 2')],
             multiple: false,
             hideConfig: {
                 allow: false,
@@ -203,36 +203,36 @@ let rootElements = [
     {
         uid: '',
         type: 'slider',
-        title: 'Slider',
+        title: Lang.trans('Slider'),
         className: 'fa-sliders',
         hide: false,
         config: {
-            title: 'Slider',
-            zero: 'Malo',
+            title: Lang.trans('Slider'),
+            zero: Lang.trans('Bad'),
             half: 'Regular',
-            full: 'Bueno'
+            full: Lang.trans('Good')
         },
         answer: 0
     },
       {
         uid: '',
         type: 'image',
-        title: 'Image',
+        title: Lang.trans('Image'),
         className: 'fa-image',
         hide: false,
         config: {
-            title: 'Image'
+            title: Lang.trans('Image')
         },
         answer: ''
     },
     {
         uid: '',
         type: 'contact-information',
-        title: 'Contact Information',
+        title: Lang.trans('Contact Information'),
         className: 'fa-info',
         hide: false,
         config: {
-            title: 'Contact Information',
+            title: Lang.trans('Contact Information'),
             list: contactInformationList
         },
         answer: [],
@@ -245,11 +245,11 @@ let rootElements = [
     {
         uid: '',
         type: 'matrix',
-        title: 'Matrix',
+        title: Lang.trans('Matrix'),
         className: 'fa-th',
         hide: false,
         config: {
-            title: 'Matrix',
+            title: Lang.trans('Matrix'),
             multiple: false,
             rows: matrixRows,
             cols: matrixCols,
@@ -264,11 +264,11 @@ let rootElements = [
     {
         uid: '',
         type: 'matrix-scale',
-        title: 'Matrix Ranking Scale',
+        title: Lang.trans('Matrix Ranking Scale'),
         className: 'fa-th',
         hide: false,
         config: {
-            title: 'Matrix Ranking Scale',
+            title: Lang.trans('Matrix Ranking Scale'),
             rows: matrixRows,
             cols: matrixCols,
             options: ['1', '2', '3', '4', '5']
@@ -283,11 +283,11 @@ let rootElements = [
     {
         uid: '',
         type: 'star-rating',
-        title: 'Star Rating',
+        title: Lang.trans('Star Rating'),
         className: 'fa fa-star',
         hide: false,
         config: {
-            title: 'Star rating',
+            title: Lang.trans('Star Rating'),
             hideConfig: {
                 allow: false,
                 options: {
