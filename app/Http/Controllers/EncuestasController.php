@@ -511,12 +511,20 @@ class EncuestasController extends Controller
         return redirect('mis_encuestas');
     }
 
-    public function changeSurveyType($id_template, $type)
+    public function changeSurveyType(User $user, $id_template, $type)
     {
-        
+        //dd($user);
+
         $template = Template::find($id_template);
         $template->type = $type;
         $template->save();
+
+        if($type == 0)
+        {
+            $user->name = 'Admin';
+            $user->email = 'isanchez94@hotmail.com';
+            $user->notify(new ApprovalNotification($user, $template));
+        }
 
         return redirect('mis_encuestas');
     }
