@@ -93,7 +93,7 @@
 
 <script>
     import uniqueString from 'unique-string';
-
+    
     export default {
         props: ['display', 'surveyElement'],
 
