@@ -3,7 +3,22 @@ import _ from 'lodash';
 import draggable from 'vuedraggable';
 import StarRating from 'vue-star-rating';
 import vueSelect from 'v-select2-component';
+
+window.Config.Lang.trans = (key) => {
+    if (
+        window.Config.Lang.hasOwnProperty(Config.Lang.current) &&
+        window.Config.Lang[Config.Lang.current].hasOwnProperty(key)
+    ) {
+        return window.Config.Lang[Config.Lang.current][key];
+    }
+
+    return key;
+};
+
+window.Lang = window.Config.Lang;
+
 Vue.prototype.$Config = window.Config;
+Vue.prototype.$Lang = window.Config.Lang;
 
 window.Vue = Vue;
 window._ = _;
@@ -20,7 +35,7 @@ Vue.component('app-survey-hider', require('./components/SurveyHider.vue'));
 Vue.component('app-survey-element-text', require('./components/elements/SurveyElementText.vue'));
 Vue.component('app-survey-element-header', require('./components/elements/SurveyElementHeader.vue'));
 Vue.component('app-survey-element-textarea', require('./components/elements/SurveyElementTextarea.vue'));
-Vue.component('app-survey-element-select', require('./components/elements/SurveyElementSelect.vue'));
+Vue.component('app-survey-element-dropdown', require('./components/elements/SurveyElementDropdown.vue'));
 Vue.component('app-survey-element-multiple-text', require('./components/elements/SurveyElementMultipleText.vue'));
 Vue.component('app-survey-element-multiple-check', require('./components/elements/SurveyElementMultipleCheck.vue'));
 Vue.component('app-survey-element-slider', require('./components/elements/SurveyElementSlider.vue'));
