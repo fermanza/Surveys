@@ -131,11 +131,11 @@ let rootElements = [
     {
         uid: '',
         type: 'header',
-        title: 'Texto',
+        title: Lang.trans('Text'),
         className: 'fas fa-align-justify',
         hide: false,
         config: {
-            title: 'Texto'
+            title: Lang.trans('Text')
         },
         answer: ''
     },
@@ -152,7 +152,7 @@ let rootElements = [
     },
     {
         uid: '',
-        type: 'select',
+        type: 'dropdown',
         title: 'Dropdown',
         className: 'fa fa-caret-down',
         hide: false,

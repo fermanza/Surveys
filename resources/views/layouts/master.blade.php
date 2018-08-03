@@ -147,7 +147,15 @@
         </footer>
         <!-- end footer -->
         <!-- javascript libraries -->
-        <script>window.Config = { base_url : "{{ URL('') }}" };</script>
+        <script>
+            window.Config = {
+                base_url : "{{ URL('') }}",
+                Lang: {
+                    current: "{{ config('app.locale') }}",
+                    es: {!! file_get_contents(resource_path('lang/es.json')) !!}
+                }
+            };
+        </script>
         <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/jquery.js')}}"></script>
         <script type="text/javascript" src="{{ asset('js/modernizr.js') }}"></script>
