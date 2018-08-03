@@ -513,7 +513,7 @@ class EncuestasController extends Controller
 
     public function changeSurveyType($id_template, $type)
     {
-        // dd($id_template);
+        
         $template = Template::find($id_template);
         $template->type = $type;
         $template->save();

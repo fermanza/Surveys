@@ -88,13 +88,13 @@
                                     @endif --}}
 
                                     <td>
-                                        <select class="form-control tipo" name="tipo" id="tipo">
+                                        <select class="tipo form-control" data-id="{{$template->id}}" name="tipo" >
                                             @if($template->type==0)
-                                                <option value="0" selected>Pública</option>
-                                                <option value="1">Privada</option>
+                                                <option value="0"  selected>Pública</option>
+                                                <option value="1" >Privada</option>
                                             @else
-                                                <option value="1" selected>Privada</option>
-                                                <option value="0">Pública</option>
+                                                <option value="1"  selected>Privada</option>
+                                                <option value="0" >Pública</option>
                                             @endif
                                         </select>
                                     </td>
@@ -157,9 +157,9 @@
         @endif
 
 
-        $('.tipo').change(function (){
-                if($('.tipo').val() == 0)
-                {
+        $('.tipo').change(function () {
+            let template_id = $(this).data('id');
+                if($(this).val() == 0) {
                     swal({
                           title: 'Cambiar de Privada a Pública<br>Encuesta: {{ $template->name }}',
                           html: "<h6 style='font-size: 14px; text-align:justify;'>Al seleccionar la encuesta como P&uacute;blica usted est&aacute; solicitando que la misma se publique en el Blog de Survenia y est&eacute; expuesta abiertamente a todos los usuarios que ingresen a este sitio web. En caso que Ud. s&oacute;lo quiera publicarla para un grupo de personas de su elecci&oacute;n, cambie el tipo de encuesta a Privada.</h6>",
@@ -176,13 +176,36 @@
                               type:'success'
                             })
                             $.ajax({
-                                url: '{{ URL('/mis_encuestas/changeSurveyType') }}/{{ $template->id }}/0',
+                                url: "{{ URL('/mis_encuestas/changeSurveyType') }}/"+template_id+"/0",
                                 type: "GET",
                                 contentType: false,
                                 processData: false
                             });
                         }
-                     })
+                     });
+                } else {
+                    swal({
+                          title: 'Cambiar de Publica a privada<br>Encuesta: {{ $template->name }}',
+                          type: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Si, hacer privada'
+                        }).then((result) => {
+                          if (result.value) {
+                            swal({
+                              title: 'Gracias!',
+                              html: '<h6 style="font-size: 14px; text-align:justify;">Tu encuesta se ha convertido en privada</h6>',
+                              type:'success'
+                            })
+                            $.ajax({
+                                url: "{{ URL('/mis_encuestas/changeSurveyType') }}/"+template_id+"/1",
+                                type: "GET",
+                                contentType: false,
+                                processData: false
+                            });
+                        }
+                     });  
                 }
             });
 
