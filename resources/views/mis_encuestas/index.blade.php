@@ -185,17 +185,17 @@
                      });
                 } else {
                     swal({
-                          title: 'Cambiar de Publica a privada<br>Encuesta: {{ $template->name }}',
+                          title: 'Cambiar de Pública a Privada<br>Encuesta: {{ $template->name }}',
                           type: 'warning',
                           showCancelButton: true,
                           confirmButtonColor: '#3085d6',
                           cancelButtonColor: '#d33',
-                          confirmButtonText: 'Si, hacer privada'
+                          confirmButtonText: 'Sí, hacer privada'
                         }).then((result) => {
                           if (result.value) {
                             swal({
                               title: 'Gracias!',
-                              html: '<h6 style="font-size: 14px; text-align:justify;">Tu encuesta se ha convertido en privada</h6>',
+                              html: '<h6 style="font-size: 14px; text-align:justify;">Has cambiado tu encuesta de <strong>Pública</strong> a <strong>Privada</strong></h6>',
                               type:'success'
                             })
                             $.ajax({
@@ -205,7 +205,7 @@
                                 processData: false
                             });
                         }
-                     });  
+                     });
                 }
             });
 
