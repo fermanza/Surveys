@@ -18,7 +18,7 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" v-model="hideConfig.allow" />
-                Ocultar Preguntas
+                Lógica de exclusión de preguntas
             </label>
         </div>
         <div v-if="hideConfig.allow">

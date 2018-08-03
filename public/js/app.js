@@ -35185,7 +35185,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-hider', __webp
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-text', __webpack_require__(220));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-header', __webpack_require__(225));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-textarea', __webpack_require__(230));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-dropdown', __webpack_require__(290));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-dropdown', __webpack_require__(235));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-text', __webpack_require__(240));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-check', __webpack_require__(245));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-slider', __webpack_require__(250));
@@ -61582,7 +61582,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         countQuestions: function countQuestions() {
             if (this.template.type == 0 && this.surveyElements.length > 10) {
-                alert('No puedes ingresar mas de 10 preguntas.');
+                //alert('No puedes ingresar mas de 10 preguntas.');
+                swal({
+                    type: 'error',
+                    title: '¡Lo sentimos!',
+                    text: 'No puedes ingresar más de 10 preguntas en encuestas gratuitas.'
+                });
                 return false;
             }
             this.$refs.builderform.submit();
@@ -72597,7 +72602,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n            Ocultar Preguntas\n        ")
+        _vm._v("\n            Lógica de exclusión de preguntas\n        ")
       ])
     ]),
     _vm._v(" "),
@@ -73220,11 +73225,382 @@ if (false) {
 }
 
 /***/ }),
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(236)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(238)
+/* template */
+var __vue_template__ = __webpack_require__(239)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4fe60392"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementDropdown.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4fe60392", Component.options)
+  } else {
+    hotAPI.reload("data-v-4fe60392", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(237);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("45706aae", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.option-container[data-v-4fe60392] {\n    display: flex;\n}\n.option-input[data-v-4fe60392] {\n    flex: 1;\n}\n.option-action[data-v-4fe60392] {\n    flex-basis: 25px;\n}\n.option-action[data-v-4fe60392] {\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 238 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['display', 'surveyElement', 'index'],
+
+    methods: {
+        addOption: function addOption() {
+            this.surveyElement.config.list.push('Opción');
+        },
+        removeOption: function removeOption(index) {
+            this.surveyElement.config.list.splice(index, 1);
+        }
+    },
+
+    watch: {
+        'surveyElement.config.list': {
+            handler: function handler(list, oldList) {
+                var _this = this;
+
+                var options = {};
+                list.forEach(function (option) {
+                    options[option] = _this.surveyElement.config.hideConfig.options[option] || [];
+                });
+                this.surveyElement.config.hideConfig.options = options;
+            },
+            immediate: true
+        },
+
+        'surveyElement.answer': function surveyElementAnswer(answer, oldAnswer) {
+            if (answer && this.surveyElement.config.hideConfig.allow) {
+                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
+            } else if (!answer) {
+                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], []);
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.display,
+            expression: "!display"
+          }
+        ]
+      },
+      [
+        _c("label", [_vm._v("Etiqueta")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.surveyElement.config.title,
+              expression: "surveyElement.config.title"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text" },
+          domProps: { value: _vm.surveyElement.config.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c("label", [_vm._v("Opciones")]),
+            _vm._v(" "),
+            _vm._l(_vm.surveyElement.config.list, function(option, index) {
+              return _c("div", { staticClass: "option-container" }, [
+                _c("div", { staticClass: "option-input" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.surveyElement.config.list[index],
+                        expression: "surveyElement.config.list[index]"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.surveyElement.config.list[index] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.surveyElement.config.list,
+                          index,
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "option-action" }, [
+                  _c("i", {
+                    staticClass: "fa fa-minus text-success",
+                    on: {
+                      click: function($event) {
+                        _vm.removeOption(index)
+                      }
+                    }
+                  })
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "a",
+                {
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.addOption($event)
+                    }
+                  }
+                },
+                [
+                  _vm._v("   "),
+                  _c("i", { staticClass: "fa fa-plus text-success" })
+                ]
+              )
+            ])
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("app-survey-hider", {
+          attrs: {
+            "hide-config": _vm.surveyElement.config.hideConfig,
+            "survey-element-uid": _vm.surveyElement.uid,
+            answer: _vm.surveyElement.answer,
+            index: _vm.index
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.display
+      ? _c("div", [
+          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.answer,
+                  expression: "surveyElement.answer"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: _vm.surveyElement.uid },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.surveyElement,
+                    "answer",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { domProps: { value: null } }, [
+                _vm._v("Seleccione Opción")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.surveyElement.config.list, function(option) {
+                return _c("option", { domProps: { value: option } }, [
+                  _vm._v(_vm._s(option))
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4fe60392", module.exports)
+  }
+}
+
+/***/ }),
 /* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -76630,7 +77006,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Filas")]),
+              _c("label", [_vm._v("Nombre de las Filas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.rows, function(row, index) {
                 return _c(
@@ -76708,7 +77084,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Columnas")]),
+              _c("label", [_vm._v("Nombre de las Columnas")]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.cols, function(col, index) {
                 return _c(
@@ -77108,382 +77484,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-32b74372", module.exports)
-  }
-}
-
-/***/ }),
-/* 290 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(291)
-}
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(293)
-/* template */
-var __vue_template__ = __webpack_require__(294)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-4fe60392"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/elements/SurveyElementDropdown.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4fe60392", Component.options)
-  } else {
-    hotAPI.reload("data-v-4fe60392", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 291 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(292);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(5)("45706aae", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 292 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.option-container[data-v-4fe60392] {\n    display: flex;\n}\n.option-input[data-v-4fe60392] {\n    flex: 1;\n}\n.option-action[data-v-4fe60392] {\n    flex-basis: 25px;\n}\n.option-action[data-v-4fe60392] {\n    cursor: pointer;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 293 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['display', 'surveyElement', 'index'],
-
-    methods: {
-        addOption: function addOption() {
-            this.surveyElement.config.list.push('Opción');
-        },
-        removeOption: function removeOption(index) {
-            this.surveyElement.config.list.splice(index, 1);
-        }
-    },
-
-    watch: {
-        'surveyElement.config.list': {
-            handler: function handler(list, oldList) {
-                var _this = this;
-
-                var options = {};
-                list.forEach(function (option) {
-                    options[option] = _this.surveyElement.config.hideConfig.options[option] || [];
-                });
-                this.surveyElement.config.hideConfig.options = options;
-            },
-            immediate: true
-        },
-
-        'surveyElement.answer': function surveyElementAnswer(answer, oldAnswer) {
-            if (answer && this.surveyElement.config.hideConfig.allow) {
-                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], this.surveyElement.config.hideConfig.options[answer]);
-            } else if (!answer) {
-                __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('toggle-hide-elements', this.surveyElement.config.hideConfig.options[oldAnswer] || [], []);
-            }
-        }
-    }
-});
-
-/***/ }),
-/* 294 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.display,
-            expression: "!display"
-          }
-        ]
-      },
-      [
-        _c("label", [_vm._v("Etiqueta")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.surveyElement.config.title,
-              expression: "surveyElement.config.title"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text" },
-          domProps: { value: _vm.surveyElement.config.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c("label", [_vm._v("Opciones")]),
-            _vm._v(" "),
-            _vm._l(_vm.surveyElement.config.list, function(option, index) {
-              return _c("div", { staticClass: "option-container" }, [
-                _c("div", { staticClass: "option-input" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index],
-                        expression: "surveyElement.config.list[index]"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.surveyElement.config.list[index] },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.surveyElement.config.list,
-                          index,
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "option-action" }, [
-                  _c("i", {
-                    staticClass: "fa fa-minus text-success",
-                    on: {
-                      click: function($event) {
-                        _vm.removeOption(index)
-                      }
-                    }
-                  })
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "a",
-                {
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.addOption($event)
-                    }
-                  }
-                },
-                [
-                  _vm._v("   "),
-                  _c("i", { staticClass: "fa fa-plus text-success" })
-                ]
-              )
-            ])
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c("app-survey-hider", {
-          attrs: {
-            "hide-config": _vm.surveyElement.config.hideConfig,
-            "survey-element-uid": _vm.surveyElement.uid,
-            answer: _vm.surveyElement.answer,
-            index: _vm.index
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm.display
-      ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.surveyElement.answer,
-                  expression: "surveyElement.answer"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { name: _vm.surveyElement.uid },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.surveyElement,
-                    "answer",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("Seleccione Opción")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.list, function(option) {
-                return _c("option", { domProps: { value: option } }, [
-                  _vm._v(_vm._s(option))
-                ])
-              })
-            ],
-            2
-          )
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4fe60392", module.exports)
   }
 }
 

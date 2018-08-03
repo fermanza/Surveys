@@ -35,12 +35,12 @@ class EncuestasController extends Controller
     public function index()
     {
         $template = Template::find(1);
-        $users = DB::table('users')->where('role', '=', '10')->get();
-        $action = 'create';
+        $id = Auth::id();
+        $user = DB::table('users')->where('id', '=', $id)->get();
         //dd($user);
 
         $templates = Template::where('type', 0)->get();
-        return view('encuestas.index', compact('template','users','action', 'templates'));
+        return view('encuestas.index', compact('template','user','action', 'templates'));
     }
 
     /**
@@ -87,17 +87,34 @@ class EncuestasController extends Controller
         $input = Input::all();
         $user = User::findOrNew($input['user_id']);
         //dd($user);
-        //dd($request->all());
+        //dd($request->userName);
 
         if($request->plan == 1)
         {
-            $creditos=DB::table("user_credit")->sum('credits');
-            $discounts=DB::table("discounts")->sum('credits');
-            $tot = $creditos-$discounts;
+            //dd('Entré al if');
+            // $creditos=DB::table("user_credit")->sum('credits');
+            // $discounts=DB::table("discounts")->sum('credits');
+            // //dd($discounts);
+            $creditosUser = DB::table("user_credit")->where('user_id' ,'=', $user->id)->sum('credits');
+            //dd($creditosUser);
+            $discountsUser = DB::table("discounts")->where('user_id' ,'=', $user->id)->sum('credits');
+            //dd($discountsUser);
+            $totalCreditsUser = $creditosUser - $discountsUser;
+            //dd($totalCreditsUser);
+            $user->totalCredits = $totalCreditsUser;
+            //dd($user->totalCredits);
+            if($totalCreditsUser <= 0){
+              flash('<br><h6>No puedes crear encuestas Premium sin créditos.</h6>')->error();
 
-            //dd($tot);
-            if($tot <= 0)
-                return redirect('encuestas?error=1');
+              $template = Template::find(1);
+              $id = Auth::id();
+              $user = DB::table('users')->where('id', '=', $id)->get();
+              $templates = Template::where('type', 0)->get();
+              return view('encuestas.index', compact('template','user','action', 'templates'));
+            }
+            else{
+              $tot = $creditosUser-$discountsUser;
+            }
         }
         $template = new Template;
         $id = Auth::id();
@@ -116,6 +133,11 @@ class EncuestasController extends Controller
             $user->notify(new ApprovalNotification($user, $template));
 
            // return redirect()->route('encuestas_publicas.index');
+        }elseif($request->tipo == 1)
+        {
+            $user->name = $request->userName;
+            $user->email = $request->email;
+            $user->notify(new ApprovalNotification($user, $template));
         }
 
         if($request->plan == 1)
@@ -296,11 +318,20 @@ class EncuestasController extends Controller
             $question->template_id = $request->template;
             $question->save();
 
-            flash('<br><h6>Encuesta guardada correctamente. Se ha enviado para su aprobación.</h6>')->success();
+            if($template->type == 0){
+                flash('<br><h6>Encuesta guardada correctamente. Queda sujeto a aprobaci&oacute;n del moderador su publicación en el Blog de Survenia.</h6>')->success();
 
-            $id = Auth::id();
-            $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
-            return view('mis_encuestas.index',compact('templates'));
+                $id = Auth::id();
+                $templates = Template::where('user_id','=', $id)->latest()->get();
+                return view('mis_encuestas.index',compact('templates'));
+            }
+            else{
+                flash('<br><h6>Encuesta guardada correctamente.</h6>')->success();
+
+                $id = Auth::id();
+                $templates = Template::where('user_id','=', $id)->latest()->get();
+                return view('mis_encuestas.index',compact('templates'));
+            }
     }
 
      /**
@@ -361,12 +392,17 @@ class EncuestasController extends Controller
         }
 
         $answer = Answer::where('ip', '=', $ip)->where('id_template', '=', $id_template)->first();
-        /*  if($answer)
-          {
-            return response()->json('ip',500);
-          }*/
 
-          
+        // if($answer)
+        // {
+        //     flash('<br><h6>No puedes responder dos veces la misma encuesta.</h6>')->error();
+
+        //     $templates = Template::Search($request->title)->with('user')->where([['type', '=', '0'],['approval', '=', '1']])->latest()->paginate(5);
+        //     $user = User::all();
+
+        //     return view('encuestas_publicas.index',compact('templates','user'));
+        // }
+
         $answer=new Answer;
         $answer->id_template=$id_template;
         $answer->position=0;
@@ -470,6 +506,16 @@ class EncuestasController extends Controller
     {
         $template = Template::find($id_template);
         $template->approval = $status;
+        $template->save();
+
+        return redirect('mis_encuestas');
+    }
+
+    public function changeSurveyType($id_template, $type)
+    {
+        
+        $template = Template::find($id_template);
+        $template->type = $type;
         $template->save();
 
         return redirect('mis_encuestas');

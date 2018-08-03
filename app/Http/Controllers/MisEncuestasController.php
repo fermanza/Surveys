@@ -21,13 +21,9 @@ class MisEncuestasController extends Controller
      */
     public function index(Request $request)
     {
-
-        //$templates = Template::where('type','=', 0)->get();
         $id = Auth::id();
-        // $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+        $templates = Template::where('user_id','=', $id)->latest()->get();
 
-        $templates = Template::where('user_id','=', $id)->get();
-        //dd($templates);
         return view('mis_encuestas.index',compact('templates'));
     }
 
@@ -119,10 +115,15 @@ class MisEncuestasController extends Controller
         $templateModel = Template::find($id);
         $templateModel->delete();
 
-        $answerModel = Answer::find($id);
+        $answerModel = Answer::where("id_template", $id);
         $answerModel->delete();
 
-        return back();
+        flash('<br><h6>Encuesta eliminada correctamente.</h6>')->error();
+
+        $id = Auth::id();
+        $templates = Template::where('user_id','=', $id)->get();
+
+        return view('mis_encuestas.index',compact('templates'));
     }
 
     /**

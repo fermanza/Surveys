@@ -70,7 +70,7 @@
                                     <th>@lang('mis_encuestas.tipoDePlan')</th>
                                     <th>@lang('mis_encuestas.respuestas')</th>
                                     <th>@lang('mis_encuestas.reportes')</th>
-                                    <th>@lang('mis_encuestas.cerrarEncuesta')</th>
+                                    <th>@lang('mis_encuestas.finalizarEncuesta')</th>
                                     <th>@lang('mis_encuestas.editarEncuesta')</th>
                                     <th>@lang('mis_encuestas.compartir')</th>
                                     <th>@lang('mis_encuestas.eliminar')</th>
@@ -81,11 +81,23 @@
                                 <tr>
                                     <td> <a href="{{ URL('encuestas/responder') }}/{{ $template->id }} ">{{ $template->name }} </a></td>
                                     <td>{{ Carbon\Carbon::parse($template->created_at)->format('d-m-Y') }}</td>
-                                    @if($template->type==0)
+                                    {{-- @if($template->type==0)
                                     <td>@lang('mis_encuestas.publica')</td>
                                     @else
                                     <td>@lang('mis_encuestas.privada')</td>
-                                    @endif
+                                    @endif --}}
+
+                                    <td>
+                                        <select class="tipo form-control" data-id="{{$template->id}}" name="tipo" >
+                                            @if($template->type==0)
+                                                <option value="0"  selected>Pública</option>
+                                                <option value="1" >Privada</option>
+                                            @else
+                                                <option value="1"  selected>Privada</option>
+                                                <option value="0" >Pública</option>
+                                            @endif
+                                        </select>
+                                    </td>
 
                                     @if($template->plan==0)
                                     <td>@lang('mis_encuestas.gratis')</td>
@@ -106,16 +118,16 @@
                                     </td>
                                     <td> {!! Form::open([
                                             'class'=>'delete',
-                                            'url'  => route('mis_encuestas.destroy', $template), 
+                                            'url'  => route('mis_encuestas.destroy', $template),
                                             'method' => 'DELETE',
-                                            ]) 
+                                            ])
                                         !!}
                                             <br>
                                             <button title="Eliminar"  id="deleteTemp"><i class="fa fa-trash"></i></button>
-                                            
+
                                         {!! Form::close() !!}
                                     </td>
-                                    
+
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -138,13 +150,69 @@
                  "responsive": true,
                  "bSort": false
             });
-        @else 
+        @else
            $('#table-mis-encuestas').DataTable({
             responsive: true
-           }); 
-        @endif   
-    }); 
- 
+           });
+        @endif
+
+
+        $('.tipo').change(function () {
+            let template_id = $(this).data('id');
+                if($(this).val() == 0) {
+                    swal({
+                          title: 'Cambiar de Privada a Pública<br>Encuesta: {{ $template->name }}',
+                          html: "<h6 style='font-size: 14px; text-align:justify;'>Al seleccionar la encuesta como P&uacute;blica usted est&aacute; solicitando que la misma se publique en el Blog de Survenia y est&eacute; expuesta abiertamente a todos los usuarios que ingresen a este sitio web. En caso que Ud. s&oacute;lo quiera publicarla para un grupo de personas de su elecci&oacute;n, cambie el tipo de encuesta a Privada.</h6>",
+                          type: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Si, hacer pública'
+                        }).then((result) => {
+                          if (result.value) {
+                            swal({
+                              title: 'Gracias!',
+                              html: '<h6 style="font-size: 14px; text-align:justify;">Tu encuesta se ha enviado con el administrador de la página para ser publicada en la sección de Encuestas Públicas.</h6>',
+                              type:'success'
+                            })
+                            $.ajax({
+                                url: "{{ URL('/mis_encuestas/changeSurveyType') }}/"+template_id+"/0",
+                                type: "GET",
+                                contentType: false,
+                                processData: false
+                            });
+                        }
+                     });
+                } else {
+                    swal({
+                          title: 'Cambiar de Publica a privada<br>Encuesta: {{ $template->name }}',
+                          type: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Si, hacer privada'
+                        }).then((result) => {
+                          if (result.value) {
+                            swal({
+                              title: 'Gracias!',
+                              html: '<h6 style="font-size: 14px; text-align:justify;">Tu encuesta se ha convertido en privada</h6>',
+                              type:'success'
+                            })
+                            $.ajax({
+                                url: "{{ URL('/mis_encuestas/changeSurveyType') }}/"+template_id+"/1",
+                                type: "GET",
+                                contentType: false,
+                                processData: false
+                            });
+                        }
+                     });  
+                }
+            });
+
+
+    });
+
+
 
         function getLink(id)
         {
@@ -175,19 +243,19 @@
         html: '¡Enlace copiado!'
       })
 })
-            
+
   });
 
   // Callback handler that will be called on failure
   request.fail(function (jqXHR, textStatus, errorThrown){
-      
+
   });
 
 
-            
+
         }
 
-        
+
         </script>
 
         @endpush

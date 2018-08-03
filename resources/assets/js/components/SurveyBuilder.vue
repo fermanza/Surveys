@@ -36,7 +36,7 @@
 
 <template>
     <div>
-      <form :action="$Config.base_url+'/encuestas/save2'" ref="builderform" @submit.prevent="countQuestions" method="POST" enctype="multipart/form-data"> 
+      <form :action="$Config.base_url+'/encuestas/save2'" ref="builderform" @submit.prevent="countQuestions" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div v-if="!editLogo" class="text-center">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-        </form>   
+        </form>
     </div>
 </template>
 
@@ -176,10 +176,15 @@
 
             countQuestions() {
                if(this.template.type == 0 && this.surveyElements.length > 10) {
-                    alert('No puedes ingresar mas de 10 preguntas.');    
-                    return false; 
-                } 
-                this.$refs.builderform.submit();  
+                    //alert('No puedes ingresar mas de 10 preguntas.');
+                    swal({
+                      type: 'error',
+                      title: '¡Lo sentimos!',
+                      text: 'No puedes ingresar más de 10 preguntas en encuestas gratuitas.'
+                    })
+                    return false;
+                }
+                this.$refs.builderform.submit();
             }
         },
 

@@ -45,7 +45,7 @@
       @php
           }
         }
-        if( $i != 0 && (($i + 1) % $lenQuestions) == 0 ) {
+        if( ($i != 0 && (($i + 1) % $lenQuestions) == 0) || $lenQuestions == 1 ) {
       @endphp
           <td>
             {{ $printQuestions[$i]->user_name }}

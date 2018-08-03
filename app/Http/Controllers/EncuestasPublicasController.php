@@ -18,7 +18,7 @@ class EncuestasPublicasController extends Controller
      */
     public function index(Request $request)
     {
-        $templates = Template::Search($request->title)->with('user')->where([['type', '=', '0'],['approval', '=', '1']])->latest()->paginate(5);
+        $templates = Template::Search($request->title)->with('user')->where('approval', '=', '1')->latest()->paginate(5);
 
         //$templates = Template::Search($request->title)->with('user')->where('type', '=', '0')->latest()->paginate(5);
         $user = User::all();
@@ -101,7 +101,7 @@ class EncuestasPublicasController extends Controller
         $questions = DB::table("questions")->where("template_id", "=", $id)->get();
 
         $printQuestions = $questionsObject->getQuestionsObject($id);
-        $exclude = array("text", "header", "textarea", "multiple-text", 
+        $exclude = array("text", "header", "textarea", "multiple-text",
                 "contact-information", "star-rating", "image", "slider");
         $matrix = array('matrix', 'matrix-scale');
         $answerCount = DB::table('answer')->where("id_template", "=", $id)->get();

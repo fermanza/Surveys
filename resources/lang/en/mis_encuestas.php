@@ -11,7 +11,7 @@ return [
 	'tipoDePlan' => 'Type of plan',
 	'respuestas' => 'Answers',
 	'reportes' => 'Reports',
-	'cerrarEncuesta' => 'Close survey',
+	'finalizarEncuesta' => 'Finish Survey',
 	'editarEncuesta' => 'Edit Survey',
 	'compartir' => 'Share',
 	'eliminar' => 'Delete',

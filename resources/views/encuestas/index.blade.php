@@ -37,7 +37,7 @@
             </div>
         </section>
         <!-- end page title section -->
-        
+        @include('flash::message')
         <!-- start form section -->
         <section class="wow fadeIn registro-form login-form" id="start-your-project">
             <div class="container">
@@ -78,14 +78,18 @@
 
                                     <form action="{{ URL('encuestas/storeTemplate') }}" method="POST" id="usrform">
                                         {{ csrf_field() }}
-                                        {{ $action == 'edit' ? method_field('PATCH') : '' }}
+                                        {{-- {{ $action == 'edit' ? method_field('PATCH') : '' }} --}}
 
-                                        @foreach($users as $user)
-                                        <input type="hidden" name="userName" class="form-control" value="{{ $user->name }}">
-                                        <input type="hidden" name="email" class="form-control" value="{{ $user->email }}">
-                                        <input type="hidden" name="user_id" class="form-control" value="{{ $user->id }}">
+                                        @foreach($user as $usr)
+                                        <input type="hidden" name="userName" class="form-control" value="{{ $usr->name }}">
+                                        <input type="hidden" name="email" class="form-control" value="{{ $usr->email }}">
+                                        <input type="hidden" name="user_id" class="form-control" value="{{ $usr->id }}">
                                         @endforeach
-            
+
+                                        {{-- <input type="hidden" name="userName" class="form-control" value="{{ $user->name }}">
+                                        <input type="hidden" name="email" class="form-control" value="{{ $user->email }}">
+                                        <input type="hidden" name="user_id" class="form-control" value="{{ $user->id }}"> --}}
+
                                         <div class="row" align="center">
                                             <div class="col-md-4">
                                                 <input type="text" name="name" id="name" placeholder="@lang('crear_encuesta.nombrarEncuesta')" class="big-input" required>
@@ -111,7 +115,7 @@
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-large margin-20px-top">@lang('crear_encuesta.crearEncuesta')</button>
                                             </div>
-                                            
+
                                         </div>
                                     </form>
 
@@ -135,9 +139,9 @@
                                                 <div class="select-style big-select">
                                                     <select name="encuesta" id="plan" class="bg-transparent no-margin-bottom" required>
                                                        <option value="">@lang('crear_encuesta.copiarEncuesta')</option>
-                                                       @foreach($templates as $template)   
+                                                       @foreach($templates as $template)
                                                          <option value="{{ $template->id }}">{{ $template->name }}</option>
-                                                       @endforeach  
+                                                       @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -152,9 +156,35 @@
                         </div>
                     </div>
                     <!-- end tab content -->
-                </div>       
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+
+@push('script')
+    <script>
+        $(document).ready( function () {
+            $('#tipo').change(function (){
+                if($('#tipo').val() == 0)
+                {
+                    swal({
+                      title: '<strong>Atención!</strong>',
+                      type: 'info',
+                      html:
+                    '<h6 style="font-size: 14px; text-align:justify;">Al seleccionar la encuesta como P&uacute;blica usted est&aacute; solicitando que la misma se publique en el Blog de Survenia y est&eacute; expuesta abiertamente a todos los usuarios que ingresen a este sitio web. En caso que Ud. s&oacute;lo quiera publicarla para un grupo de personas de su elecci&oacute;n, cambie el tipo de encuesta a Privada.</h6>',
+                      showCloseButton: true,
+                      focusConfirm: false,
+                      confirmButtonText:
+                        'Entendido',
+                      confirmButtonAriaLabel: 'Thumbs up, great!',
+                    })
+                }
+            });
+
+        });
+    </script>
+@endpush
+
 @stop

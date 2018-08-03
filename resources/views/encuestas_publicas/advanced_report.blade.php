@@ -79,9 +79,9 @@
                                         <img src="{{ URL($template->url) }}" style="width: 250px !important; height: auto" />
                                       @endif
                                     </div>
-                                    <p><b>Respuestas</b></p>
-                                    <p> <b>Respondidas:</b> {{ $answerCount }} </p>
-
+                                    <p style="font-size: 16px;"><b>Respuestas</b></p>
+                                    <p style="font-size: 16px;"><b>Respondidas:</b> {{ $answerCount }} </p>
+                                    <br />
                                     @php
                                       $loopCont = 0;
                                       foreach($options as $key => $option){
@@ -138,13 +138,8 @@
           @php
           }
           @endphp
-
-  <section class="tabla">
-  <div class="container">
-      <div class="col-md-12">
-          <div class="panel panel-default">
-
-  <table id="table-mis-respuestas" class="display col-md-12" align="center">
+  
+  <table id="table-mis-respuestas" class="table display col-md-12" align="left">
   <tbody>
     @php
       $imageShowed = false;
@@ -152,7 +147,7 @@
       for($i = 0; $i < ($lenQuestions/$answerCount); $i++) {
         for($j = 0; $j < count($textQuestions[$i]->title); $j++) {
       @endphp
-          <tr>
+          <tr class="active">
             <td><strong>{{ $textQuestions[$i]->title[$j] }}</strong></td>
           </tr>
       @php
@@ -182,7 +177,7 @@
         }
         if( ($i + 1) == ($lenQuestions/$answerCount) ) {
         @endphp
-          <tr>
+          <tr class="active">
             <td>
               <strong>Usuario</strong>
             </td>
@@ -215,7 +210,6 @@
   </div>
 </div>
 </div>
-</section>
 
                                 </div>
                             </div>
