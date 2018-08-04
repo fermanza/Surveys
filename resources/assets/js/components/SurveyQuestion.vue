@@ -35,7 +35,7 @@
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>
         </div>
         <div v-if="!display" class="text-center">
-            <button type="button" @click="display = true" class="question-action close-component ">Save</button>
+            <button type="button" @click="display = true" class="question-action close-component ">{{ $Lang.trans('Save') }}</button>
         </div>
     </div>
 </template>

@@ -22,13 +22,13 @@
             <div class="checkbox">
                 <label>
                     <input type="checkbox" v-model="surveyElement.config.multiple" />
-                    Permitir múltiple
+                    {{ $Lang.trans('Allow multiple') }}
                 </label>
             </div>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div class="field-container" v-for="(field, index) in surveyElement.config.list">
                 <div class="field-input">
-                    <label>Etiqueta</label>
+                    <label>{{ $Lang.trans('Label') }}</label>
                     <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
                 </div>
                 <div class="field-action">
@@ -63,7 +63,7 @@
 
         methods: {
             addField() {
-                this.surveyElement.config.list.push('Opción');
+                this.surveyElement.config.list.push(Lang.trans('Option'));
             },
 
             removeField(index) {

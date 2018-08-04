@@ -19,11 +19,11 @@
 <template>
     <div>
         <div v-if="!display">
-            <label>Etiqueta</label>
+            <label>{{ $Lang.trans('Label') }}</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div class="field-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <div class="field-input">
-                    <label>Etiqueta</label>
+                    <label>{{ $Lang.trans('Label') }}</label>
                     <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
                 </div>
                 <div class="field-action">
@@ -54,7 +54,7 @@
             addField() {
                 this.surveyElement.config.list.push({
                     uid: uniqueString(),
-                    title: 'Texto',
+                    title: Lang.trans('Text'),
                     answer: ''
                 });
             },

@@ -19,10 +19,10 @@
 <template>
     <div>
         <div v-if="!display">
-            <label>Etiqueta</label>
+            <label>{{ $Lang.trans('Label') }}</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
-                <label>Opciones</label>
+                <label>{{ $Lang.trans('Options') }}</label>
                 <div class="option-container" v-for="(option, index) in surveyElement.config.options">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.options[index]" class="form-control" />
@@ -39,7 +39,7 @@
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
             <select v-model="surveyElement.answer" class="form-control">
-                <option :value="null">Seleccione Opción</option>
+                <option :value="null">{{ $Lang.trans('Choose an option') }}</option>
                 <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
             </select>
         </div>

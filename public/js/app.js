@@ -61018,7 +61018,7 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-            _vm._v("Contestar")
+            _vm._v(_vm._s(_vm.$Lang.trans("Answer")) + " ")
           ]),
           _vm._v(" "),
           _c("br")
@@ -71589,7 +71589,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Save")]
+              [_vm._v(_vm._s(_vm.$Lang.trans("Save")))]
             )
           ])
         : _vm._e()
@@ -71843,7 +71843,11 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n            Lógica de exclusión de preguntas\n        ")
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm.$Lang.trans("Logic of questions exclusion")) +
+            "\n        "
+        )
       ])
     ]),
     _vm._v(" "),
@@ -71852,7 +71856,9 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Seleccione Preguntas a Ocultar")]),
+              _c("label", [
+                _vm._v(_vm._s(_vm.$Lang.trans("Choose questions to hide")))
+              ]),
               _vm._v(" "),
               _vm._l(_vm.hideConfig.options, function(options, value) {
                 return _c(
@@ -72400,7 +72406,7 @@ var render = function() {
   return _c("div", [
     !_vm.display
       ? _c("div", [
-          _c("label", [_vm._v("Etiqueta")]),
+          _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -72620,7 +72626,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addOption: function addOption() {
-            this.surveyElement.config.list.push('Opción');
+            this.surveyElement.config.list.push(Lang.trans('Option'));
         },
         removeOption: function removeOption(index) {
             this.surveyElement.config.list.splice(index, 1);
@@ -72996,7 +73002,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addField: function addField() {
             this.surveyElement.config.list.push({
                 uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
-                title: 'Texto',
+                title: Lang.trans('Text'),
                 answer: ''
             });
         },
@@ -73031,7 +73037,7 @@ var render = function() {
       ? _c(
           "div",
           [
-            _c("label", [_vm._v("Etiqueta")]),
+            _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -73065,7 +73071,7 @@ var render = function() {
                 { key: field.uid, staticClass: "field-container" },
                 [
                   _c("div", { staticClass: "field-input" }, [
-                    _c("label", [_vm._v("Etiqueta")]),
+                    _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -73353,7 +73359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addField: function addField() {
-            this.surveyElement.config.list.push('Opción');
+            this.surveyElement.config.list.push(Lang.trans('Option'));
         },
         removeField: function removeField(index) {
             this.surveyElement.config.list.splice(index, 1);
@@ -73457,7 +73463,11 @@ var render = function() {
                 }
               }
             }),
-            _vm._v("\n                Permitir múltiple\n            ")
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$Lang.trans("Allow multiple")) +
+                "\n            "
+            )
           ])
         ]),
         _vm._v(" "),
@@ -73486,7 +73496,7 @@ var render = function() {
         _vm._l(_vm.surveyElement.config.list, function(field, index) {
           return _c("div", { staticClass: "field-container" }, [
             _c("div", { staticClass: "field-input" }, [
-              _c("label", [_vm._v("Etiqueta")]),
+              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -73859,7 +73869,7 @@ var render = function() {
   return _c("div", [
     !_vm.display
       ? _c("div", [
-          _c("label", [_vm._v("Etiqueta")]),
+          _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -74898,7 +74908,7 @@ var render = function() {
         ]
       },
       [
-        _c("label", [_vm._v("Etiqueta")]),
+        _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -75147,7 +75157,7 @@ var render = function() {
   return _c("div", [
     !_vm.display
       ? _c("div", [
-          _c("label", [_vm._v("Etiqueta")]),
+          _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -75174,7 +75184,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Opciones")]),
+              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.options, function(option, index) {
                 return _c("div", { staticClass: "option-container" }, [
@@ -75281,7 +75291,7 @@ var render = function() {
             },
             [
               _c("option", { domProps: { value: null } }, [
-                _vm._v("Seleccione Opción")
+                _vm._v(_vm._s(_vm.$Lang.trans("Choose an option")))
               ]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.options, function(option) {
@@ -76160,13 +76170,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addRow: function addRow() {
             this.surveyElement.config.rows.push({
                 uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
-                text: 'Fila'
+                text: Lang.trans('Row')
             });
         },
         addCol: function addCol() {
             this.surveyElement.config.cols.push({
                 uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
-                text: 'Columna'
+                text: Lang.trans('Column')
             });
         },
         addOption: function addOption() {
@@ -76232,7 +76242,7 @@ var render = function() {
   return _c("div", [
     !_vm.display
       ? _c("div", [
-          _c("label", [_vm._v("Etiqueta")]),
+          _c("label", [_vm._v(" " + _vm._s(_vm.$Lang.trans("Label")) + " ")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -76259,7 +76269,9 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Nombre de las Filas")]),
+              _c("label", [
+                _vm._v(_vm._s(_vm.$Lang.trans("Name of the rows")))
+              ]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.rows, function(row, index) {
                 return _c(
@@ -76337,7 +76349,11 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Nombre de las Columnas")]),
+              _c("label", [
+                _vm._v(
+                  " " + _vm._s(_vm.$Lang.trans("Name of the columns")) + " "
+                )
+              ]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.cols, function(col, index) {
                 return _c(
@@ -76415,7 +76431,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("label", [_vm._v("Opciones")]),
+              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
               _vm._v(" "),
               _vm._l(_vm.surveyElement.config.options, function(option, index) {
                 return _c("div", { staticClass: "option-container" }, [
@@ -76560,7 +76576,9 @@ var render = function() {
                             },
                             [
                               _c("option", { domProps: { value: null } }, [
-                                _vm._v("Seleccione Opción")
+                                _vm._v(
+                                  _vm._s(_vm.$Lang.trans("Choose an option"))
+                                )
                               ]),
                               _vm._v(" "),
                               _vm._l(_vm.surveyElement.config.options, function(

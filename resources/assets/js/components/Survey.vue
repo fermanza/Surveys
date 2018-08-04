@@ -17,7 +17,7 @@
                     <input type="hidden" name="answer" :value="questionsJson" />
                     <input type="hidden" name="template" :value="template_id" />
                     <br /><br />
-                    <button type="submit" class="btn">Contestar</button>
+                    <button type="submit" class="btn">{{ $Lang.trans('Answer') }} </button>
                 <br />
             </div>
         </form>

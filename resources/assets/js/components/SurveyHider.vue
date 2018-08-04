@@ -18,12 +18,12 @@
         <div class="checkbox">
             <label>
                 <input type="checkbox" v-model="hideConfig.allow" />
-                Lógica de exclusión de preguntas
+                {{ $Lang.trans('Logic of questions exclusion') }}
             </label>
         </div>
         <div v-if="hideConfig.allow">
             <div>
-                <label>Seleccione Preguntas a Ocultar</label>
+                <label>{{ $Lang.trans('Choose questions to hide') }}</label>
                 <div v-for="(options, value) in hideConfig.options" :key="value" class="option-container">
                     <div class="option-label text-center">{{ value }}</div>
                     <div class="option-select">

@@ -5,7 +5,7 @@
 <template>
     <div>
         <div v-show="!display">
-            <label>Etiqueta</label>
+            <label>{{ $Lang.trans('Label') }}</label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
         </div>

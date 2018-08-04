@@ -40,5 +40,10 @@
     "Text 2": "Texto 2",
     "Include": "Incluir",
     "Required": "Requerido",
-    "Allow multiple": "Permitir múltiple"
+    "Allow multiple": "Permitir múltiple",
+    "Name of the rows": "Nombre de las filas",
+    "Logic of questions exclusion": "Lógica de exclusión de preguntas ",
+    "Choose questions to hide": "Seleccione Preguntas a Ocultar",
+    "Save": "Guardar",
+    "Answer": "Responder"
 }

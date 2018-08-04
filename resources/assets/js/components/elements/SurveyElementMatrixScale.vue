@@ -23,10 +23,10 @@
 <template>
     <div>
         <div v-if="!display">
-            <label>Etiqueta</label>
+            <label> {{ $Lang.trans('Label') }} </label>
             <input type="text" v-model="surveyElement.config.title" class="form-control" />
             <div>
-                <label>Nombre de las Filas</label>
+                <label>{{ $Lang.trans('Name of the rows') }}</label>
                 <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
@@ -41,7 +41,7 @@
             </div>
             <br />
             <div>
-                <label>Nombre de las Columnas</label>
+                <label> {{ $Lang.trans('Name of the columns') }} </label>
                 <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
@@ -56,7 +56,7 @@
             </div>
             <br />
             <div>
-                <label>Opciones</label>
+                <label>{{ $Lang.trans('Options') }}</label>
                 <div class="option-container" v-for="(option, index) in surveyElement.config.options">
                     <div class="option-input">
                         <input type="text" v-model="surveyElement.config.options[index]" class="form-control" />
@@ -81,7 +81,7 @@
                     <th>{{ row.text }}</th>
                     <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid" class="matrix-intersection">
                         <select v-model="surveyElement.answer[row.uid][col.uid]" class="form-control">
-                            <option :value="null">Seleccione Opción</option>
+                            <option :value="null">{{ $Lang.trans('Choose an option') }}</option>
                             <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
                         </select>
                     </td>
@@ -107,14 +107,14 @@
             addRow() {
                 this.surveyElement.config.rows.push({
                     uid: uniqueString(),
-                    text: 'Fila'
+                    text: Lang.trans('Row')
                 });
             },
 
             addCol() {
                 this.surveyElement.config.cols.push({
                     uid: uniqueString(),
-                    text: 'Columna'
+                    text: Lang.trans('Column')
                 });
             },
 

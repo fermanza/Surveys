@@ -55,7 +55,7 @@
 
         methods: {
             addOption() {
-                this.surveyElement.config.list.push('Opción');
+                this.surveyElement.config.list.push(Lang.trans('Option'));
             },
 
             removeOption(index) {
