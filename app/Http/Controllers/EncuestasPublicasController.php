@@ -99,7 +99,6 @@ class EncuestasPublicasController extends Controller
     {
         $template = Template::find($id);
         $questions = DB::table("questions")->where("template_id", "=", $id)->get();
-
         $printQuestions = $questionsObject->getQuestionsObject($id);
         $exclude = array("text", "header", "textarea", "multiple-text",
                 "contact-information", "star-rating", "image", "slider");

@@ -13,6 +13,24 @@ let multipleTextboxList = [
     }
 ];
 
+let rankingList = [
+    {
+        uid: '',
+        title: Lang.trans('Option 1'),
+        answer: '' 
+    },
+    {
+        uid: '',
+        title: Lang.trans('Option 2'),
+        answer: '' 
+    },
+    {
+        uid: '',
+        title: Lang.trans('Option 2'),
+        answer: '' 
+    }
+];
+
 let contactInformationList = [
     {
         uid: '',
@@ -309,9 +327,15 @@ let rootElements = [
         hide: false,
         config: {
             title: 'Ranking',
-            options: ['1', '2', '3', '4', '5']
+            //options: ['1', '2', '3', '4', '5']
+            list: rankingList
         },
-        answer: null
+        answer: [],
+        onClone: () => {
+            rankingList.forEach(option => {
+                option.uid = uniqueString();
+            });
+        }
     }
 ];
 

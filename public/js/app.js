@@ -70721,6 +70721,20 @@ var multipleTextboxList = [{
     answer: ''
 }];
 
+var rankingList = [{
+    uid: '',
+    title: Lang.trans('Option 1'),
+    answer: ''
+}, {
+    uid: '',
+    title: Lang.trans('Option 2'),
+    answer: ''
+}, {
+    uid: '',
+    title: Lang.trans('Option 2'),
+    answer: ''
+}];
+
 var contactInformationList = [{
     uid: '',
     title: Lang.trans('Name'),
@@ -70985,9 +70999,15 @@ var rootElements = [{
     hide: false,
     config: {
         title: 'Ranking',
-        options: ['1', '2', '3', '4', '5']
+        //options: ['1', '2', '3', '4', '5']
+        list: rankingList
     },
-    answer: null
+    answer: [],
+    onClone: function onClone() {
+        rankingList.forEach(function (option) {
+            option.uid = __WEBPACK_IMPORTED_MODULE_0_unique_string___default()();
+        });
+    }
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (rootElements);
@@ -75122,8 +75142,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
+
+Array.prototype.unique = function (a) {
+    return function () {
+        return this.filter(a);
+    };
+}(function (a, b, c) {
+    return c.indexOf(a, b + 1) < 0;
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['display', 'surveyElement'],
@@ -75136,14 +75171,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
-        addOption: function addOption() {
+        /*addOption() {
             this.counter++;
-            this.surveyElement.config.options.push('' + this.counter);
+            this.surveyElement.config.options.push(`${this.counter}`);
+        },*/
+
+        addOption: function addOption() {
+            this.surveyElement.config.list.push({
+                uid: __WEBPACK_IMPORTED_MODULE_0_unique_string___default()(),
+                title: Lang.trans('Text'),
+                answer: ''
+            });
         },
         removeOption: function removeOption(index) {
-            this.surveyElement.config.options.splice(index, 1);
+            this.surveyElement.config.list.splice(index, 1);
+        },
+        check: function check() {
+            var elementsArray = [];
+            var numElements = this.surveyElement.config.list.length;
+            this.surveyElement.config.list.forEach(function (list, index) {
+                if (list.answer > numElements || list.answer <= 0) {
+                    list.answer = "";
+                }
+            });
+        }
+    },
+
+    watch: {
+        'surveyElement.config.list': {
+            handler: function handler(list, oldList) {
+                var answer = {};
+                list.forEach(function (field) {
+                    answer[field.uid] = field.answer;
+                });
+                this.surveyElement.answer = answer;
+            }
         }
     }
+
 });
 
 /***/ }),
@@ -75186,49 +75251,53 @@ var render = function() {
             [
               _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
               _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.options, function(option, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.options[index],
-                          expression: "surveyElement.config.options[index]"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.options[index]
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+              _vm._l(_vm.surveyElement.config.list, function(field, index) {
+                return _c(
+                  "div",
+                  { key: field.uid, staticClass: "option-container" },
+                  [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.list[index].title,
+                            expression: "surveyElement.config.list[index].title"
                           }
-                          _vm.$set(
-                            _vm.surveyElement.config.options,
-                            index,
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.list[index].title
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "title",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-minus text-success",
-                      on: {
-                        click: function($event) {
-                          _vm.removeOption(index)
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-minus text-success",
+                        on: {
+                          click: function($event) {
+                            _vm.removeOption(index)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ])
+                      })
+                    ])
+                  ]
+                )
               }),
               _vm._v(" "),
               _c("div", [
@@ -75256,53 +75325,54 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _vm.display
-      ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.surveyElement.answer,
-                  expression: "surveyElement.answer"
-                }
-              ],
-              staticClass: "form-control",
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.surveyElement,
-                    "answer",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
-              }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v(_vm._s(_vm.$Lang.trans("Choose an option")))
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.options, function(option) {
-                return _c("option", { domProps: { value: option } }, [
-                  _vm._v(_vm._s(option))
-                ])
-              })
-            ],
-            2
-          )
-        ])
+      ? _c(
+          "div",
+          [
+            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+            _vm._v(" "),
+            _vm._l(_vm.surveyElement.config.list, function(field, index) {
+              return _c("div", { key: field.uid }, [
+                _c("label", [_vm._v(_vm._s(field.title))]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.surveyElement.config.list[index].answer,
+                      expression: "surveyElement.config.list[index].answer"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    disabled: _vm.live == false,
+                    name: field.uid,
+                    type: "number"
+                  },
+                  domProps: {
+                    value: _vm.surveyElement.config.list[index].answer
+                  },
+                  on: {
+                    keyup: function($event) {
+                      _vm.check()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.surveyElement.config.list[index],
+                        "answer",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            })
+          ],
+          2
+        )
       : _vm._e()
   ])
 }
