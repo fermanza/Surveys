@@ -2,7 +2,7 @@
 
 return [
 
-
+    'creacionEncuesta' => 'Survey creation',
 	'creaTuEncuesta' => 'Create your survey',
 	'creaDistribuye' => 'Create, distribute and analyze surveys and questionnaires',
 	'rapidamente' => 'faster',

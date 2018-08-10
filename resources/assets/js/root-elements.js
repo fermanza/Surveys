@@ -171,7 +171,7 @@ let rootElements = [
     {
         uid: '',
         type: 'dropdown',
-        title: Lang.trans('dropdown'),
+        title: Lang.trans('Dropdown'),
         className: 'fa fa-caret-down',
         hide: false,
         config: {
