@@ -17,9 +17,10 @@ class CreateTemplatesStyleTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('background')->nullable();
+            $table->string('small_image')->nullable()->unique();
             $table->string('font_type')->nullable();
-            $table->string('font_color')->unique();
-            $table->string('bar_color')->unique();
+            $table->string('font_color')->nullable()->unique();
+            $table->string('bar_color')->nullable()->unique();
             $table->timestamps();
         });
 
@@ -58,7 +59,7 @@ class CreateTemplatesStyleTable extends Migration
             )
         );
     }
-    
+
     /**
      * Reverse the migrations.
      *

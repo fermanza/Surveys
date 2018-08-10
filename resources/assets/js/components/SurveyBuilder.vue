@@ -59,6 +59,9 @@
                             <app-root-element :root-element="rootElement"></app-root-element>
                         </div>
                     </app-draggable>
+                    <div class="survey-question-type-title btn">
+                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbspTemplates<i class="fa fa-question-circle"></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                 </div>
                 <div class="survey-questions">
                     <app-draggable class="survey-questions-container" :list="surveyElements" :options="{ group: { name: 'elements', pull: false } }">

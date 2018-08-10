@@ -77,6 +77,7 @@ class MisEncuestasController extends Controller
             $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
             return view('mis_encuestas.index',compact('templates'));
         }
+        $template_style = TemplatesStyles::get();
 
         $template = Template::find($id);
         $question = Questions::where('template_id','=',$id)->first();
@@ -121,7 +122,7 @@ class MisEncuestasController extends Controller
         flash('<br><h6>Encuesta eliminada correctamente.</h6>')->error();
 
         $id = Auth::id();
-        $templates = Template::where('user_id','=', $id)->get();
+        $templates = Template::where('user_id','=', $id)->latest()->get();
 
         return view('mis_encuestas.index',compact('templates'));
     }
