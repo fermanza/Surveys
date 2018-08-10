@@ -50,12 +50,12 @@ class CreateTemplatesStyleTable extends Migration
                 'bar_color' => '#66a7de',
             ),
             array(
-                'name' => 'New',
-                'background' => '/public/images/templates/new.jpg',
-                'small_image' => '/public/images/templates/new_small.jpg',
-                'font_type' => 'none',
-                'font_color' => 'new',
-                'bar_color' => 'new',
+                'name' => 'Gray',
+                'background' => '/public/images/templates/gray_background.jpg',
+                'small_image' => '/public/images/templates/gray_small.jpg',
+                'font_type' => '',
+                'font_color' => '#6a6a6a',
+                'bar_color' => '#78797b',
             )
         );
     }
