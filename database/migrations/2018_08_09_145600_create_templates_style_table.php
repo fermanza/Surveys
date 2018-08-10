@@ -26,36 +26,38 @@ class CreateTemplatesStyleTable extends Migration
 
         \DB::table('templates_style')->insert(
             array(
-                'name' => 'Default',
-                'background' => '',
-                'small_image' => '/public/images/templates/default_small.png',
-                'font_type' => '',
-                'font_color' => '',
-                'bar_color' => '',
-            ),
-            array(
-                'name' => 'Abstract',
-                'background' => '/public/images/templates/abstract_background.png',
-                'small_image' => '/public/images/templates/abstract_small.jpg',
-                'font_type' => '',
-                'font_color' => '#3d7641',
-                'bar_color' => '#5c9f30',
-            ),
-            array(
-                'name' => 'Blue',
-                'background' => '/public/images/templates/blue_background.jpg',
-                'small_image' => '/public/images/templates/blue_small.jpg',
-                'font_type' => 'Theserif',
-                'font_color' => '#0d2a3d',
-                'bar_color' => '#66a7de',
-            ),
-            array(
-                'name' => 'Gray',
-                'background' => '/public/images/templates/gray_background.jpg',
-                'small_image' => '/public/images/templates/gray_small.jpg',
-                'font_type' => '',
-                'font_color' => '#6a6a6a',
-                'bar_color' => '#78797b',
+                array(
+                    'name' => 'Default',
+                    'background' => '',
+                    'small_image' => '/images/templates/default_small.png',
+                    'font_type' => '',
+                    'font_color' => '',
+                    'bar_color' => '',
+                ),
+                array(
+                    'name' => 'Abstract',
+                    'background' => '/images/templates/abstract_background.png',
+                    'small_image' => '/images/templates/abstract_small.png',
+                    'font_type' => '',
+                    'font_color' => '#3d7641',
+                    'bar_color' => '#5c9f30',
+                ),
+                array(
+                    'name' => 'Blue',
+                    'background' => '/images/templates/blue_background.png',
+                    'small_image' => '/images/templates/blue_small.png',
+                    'font_type' => 'Theserif',
+                    'font_color' => '#0d2a3d',
+                    'bar_color' => '#66a7de',
+                ),
+                array(
+                    'name' => 'Gray',
+                    'background' => '/images/templates/gray_background.png',
+                    'small_image' => '/images/templates/gray_small.png',
+                    'font_type' => '',
+                    'font_color' => '#6a6a6a',
+                    'bar_color' => '#78797b',
+                )
             )
         );
     }

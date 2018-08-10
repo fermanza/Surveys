@@ -65,6 +65,12 @@
       @if($question === null)
         <app-survey-builder :live="false" :template="{{ $template }}" >
         </app-survey-builder>
+         @foreach($templates_style as $template_style)
+      <div class="template-style">
+            <a href="#" class="template_style_id" id="template_style_id"><img src="{{ URL($template_style->small_image) }}" style="width: 250px !important; height: auto !important; max-width: 10%;"></a>
+            <h6>{{ $template_style->name}}</h6>
+      </div>
+      @endforeach
       @else
         <app-survey-builder :live="false" :template="{{$template }}" :initial-elements='{{ json_encode($question->content) }}' >
         </app-survey-builder>
@@ -72,12 +78,12 @@
     </div>
 @endsection
 
-{{-- @push('script')
+@push('script')
 
 <script>
     $(document).ready(function(){
 
-    document.getElementById('guardar').addEventListener('click', function() {
+    document.getElementById('template_style_id').addEventListener('click', function() {
       swal({
           position: 'center',
           title: 'Encuesta creada correctamente.<br>Se ha enviado para aprobación<br>de la misma.',
@@ -87,9 +93,40 @@
       });
     });
 
+
+     $('.template_style_id').click(function () {
+        let template_id = $(this).data('id');
+                swal({
+                      title: 'Cambiar Template',
+                      type: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Si, seleccionar'
+                    }).then((result) => {
+                      if (result.value) {
+                        swal({
+                          title: 'Gracias!',
+                          html: '<h6 style="font-size: 14px; text-align:justify;">Excelente</h6>',
+                          type:'success'
+                        })
+                        $.ajax({
+                            url: "",
+                            type: "GET",
+                            contentType: false,
+                            processData: false
+                        });
+                    }
+                 });
+        });
+
+
+
+
+
     });
 
 </script>
 
-@endpush --}}
+@endpush
 

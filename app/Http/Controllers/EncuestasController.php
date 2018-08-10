@@ -23,6 +23,7 @@ use Bitly;
 use Session;
 use App\QuestionsObject\AppQuestionsObject;
 use App\Articulo;
+use App\TemplatesStyle;
 use Redirect;
 
 class EncuestasController extends Controller
@@ -73,7 +74,12 @@ class EncuestasController extends Controller
         $view = 'encuestas.create2';
         // $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
         // dd($question);
-        return $this->form($template, $action, $view, $question);
+
+        $templates_style = TemplatesStyle::get();
+
+        // dd($templates_style);
+
+        return $this->form($template, $action, $view, $question, $templates_style);
     }
 
     /**
@@ -356,10 +362,10 @@ class EncuestasController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($template, $action, $view, $question)
+    protected function form($template, $action, $view, $question,$templates_style)
     {
         $options = Options::get();
-        $params = compact('template', 'action', 'options','question');
+        $params = compact('template', 'action', 'options','question','templates_style');
         return view($view, $params);
     }
 

@@ -11,6 +11,7 @@ use DB;
 use Auth;
 use Session;
 use Lang;
+use App\TemplatesStyle;
 
 class MisEncuestasController extends Controller
 {
@@ -77,7 +78,7 @@ class MisEncuestasController extends Controller
             $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
             return view('mis_encuestas.index',compact('templates'));
         }
-        $template_style = TemplatesStyles::get();
+        // $template_style = TemplatesStyles::get();
 
         $template = Template::find($id);
         $question = Questions::where('template_id','=',$id)->first();
