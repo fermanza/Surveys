@@ -53,11 +53,12 @@ class EncuestasController extends Controller
     {
         //dd($request->id);
         $template = Template::find($request->id);
+        $templates_style= TemplatesStyle::get();
         $action = 'create';
         $view = 'encuestas.create';
         $questions = \DB::table("questions")->where("template_id", 1)->orderBy("position")->get();
 
-        return $this->form($template, $action, $view, $questions);
+        return $this->form($template, $action, $view, $questions, $templates_style);
     }
 
     /**
@@ -69,6 +70,7 @@ class EncuestasController extends Controller
     {
         //dd($request->id);
         $template = Template::find($request->id);
+        $templates_style= TemplatesStyle::get();
         $question = Questions::where('template_id','=',$template->id)->first();
         $action = 'create';
         $view = 'encuestas.create2';
@@ -130,6 +132,7 @@ class EncuestasController extends Controller
         $template->plan = $request->plan;
         $template->description = '';
         $template->hash = base64_encode(Hash::make(Carbon::now()));
+        $template->templates_style_id = 1;
         $template->save();
 
         if($request->tipo == 0)
@@ -289,6 +292,7 @@ class EncuestasController extends Controller
 
             $user = Auth::user();
             $template = Template::find($request->template);
+            $template->templates_style_id = $request->templates_style_id;
             $question = Questions::where('template_id','=',$request->template)->first();
             if(!$question) {
                 $question = new Questions;
@@ -303,7 +307,6 @@ class EncuestasController extends Controller
             if($request->hasFile('surveyLogo')) {
                 $fileName = FileControl::storeSingleFile($request->surveyLogo, 'imagenesEncuestas');
                     $template->url = "/imagenesEncuestas/{$fileName}";
-                    $template->save();
             }
 
             $surveyContent = json_decode($request->questions);
@@ -318,11 +321,11 @@ class EncuestasController extends Controller
                     }
                 }
             }
-
             $question->position = 0;
             $question->content = $surveyContent;
             $question->template_id = $request->template;
             $question->save();
+            $template->save();
 
             if($template->type == 0){
                 flash('<br><h6>Encuesta guardada correctamente. Queda sujeto a aprobaci&oacute;n del moderador su publicación en el Blog de Survenia.</h6>')->success();
@@ -350,8 +353,9 @@ class EncuestasController extends Controller
     {
         $template = Template::find($id);
         $question = Questions::where('template_id','=',$id)->first();
+        $template_style = TemplatesStyle::find($template->templates_style_id);
 
-        return view('encuestas.answer', compact('template','question'));
+        return view('encuestas.answer', compact('template','question','template_style'));
     }
 
       /**
@@ -362,7 +366,7 @@ class EncuestasController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($template, $action, $view, $question,$templates_style)
+    protected function form($template, $action, $view, $question, $templates_style)
     {
         $options = Options::get();
         $params = compact('template', 'action', 'options','question','templates_style');

@@ -78,14 +78,13 @@ class MisEncuestasController extends Controller
             $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
             return view('mis_encuestas.index',compact('templates'));
         }
-        // $template_style = TemplatesStyles::get();
-
         $template = Template::find($id);
+        $templates_style = TemplatesStyle::get();
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
         $view = 'mis_encuestas.edit';
-
-        return $this->form($template, $action, $view, $question);
+        
+        return $this->form($template, $action, $view, $question, $templates_style);
     }
 
     /**
@@ -136,7 +135,7 @@ class MisEncuestasController extends Controller
      * @param  string  $view
      * @return \Illuminate\Http\Response
      */
-    protected function form($template, $action, $view,$question)
+    protected function form($template, $action, $view, $question, $templates_style)
     {
         $template->load('questions');
         //dd($template->questions[0]->content);
@@ -148,8 +147,8 @@ class MisEncuestasController extends Controller
         $options = Options::get();
         //dd($value);
         //dd($questions);
-        $params = compact('template', 'action', 'cont','options','question');
-        //dd($params);
+        $params = compact('template', 'action', 'cont', 'options', 'question', 'templates_style');
+        // dd($params);
 
         //echo json_encode($question->content);
         //die();
