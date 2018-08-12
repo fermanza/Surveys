@@ -28,6 +28,7 @@ Vue.component('vue-select', vueSelect);
 Vue.component('app-draggable', draggable);
 
 Vue.component('app-survey', require('./components/Survey.vue'));
+Vue.component('app-templates-style', require('./components/TemplatesStyle.vue'));
 Vue.component('app-survey-builder', require('./components/SurveyBuilder.vue'));
 Vue.component('app-root-element', require('./components/RootElement.vue'));
 Vue.component('app-survey-question', require('./components/SurveyQuestion.vue'));

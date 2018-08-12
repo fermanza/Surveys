@@ -28,8 +28,8 @@
 <template>
     <div :class="display ? '' : 'background-grey'" class="survey-question">
         <div class="controls">
-            <i v-if="display" @click="display = false" class="question-action text-success fa fa-pencil"></i>
-            <i @click="removeQuestion" class="question-action text-success fa fa-times"></i>
+            <i v-if="display" @click="display = false" class="question-action fa fa-pencil"></i>
+            <i @click="removeQuestion" class="question-action fa fa-times"></i>
         </div>
         <div class="component-container">
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>

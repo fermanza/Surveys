@@ -32,7 +32,7 @@ class CreateTemplatesStyleTable extends Migration
                     'small_image' => '/images/templates/default_small.png',
                     'font_type' => '',
                     'font_color' => '',
-                    'bar_color' => '',
+                    'bar_color' => '#fff',
                 ),
                 array(
                     'name' => 'Abstract',
