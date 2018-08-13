@@ -185,7 +185,7 @@
                      });
                 } else {
                     swal({
-                          title: 'Cambiar de Pública a Privada<br>Encuesta: {{ $template->name }}',
+                          title: 'Cambiar de Pública a Privada<br>Encuesta: {{ isset($template) ? $template->name : "" }}',
                           type: 'warning',
                           showCancelButton: true,
                           confirmButtonColor: '#3085d6',
