@@ -2,6 +2,7 @@
 
 return [
 
+	'edicionEncuesta' => 'Edit survey',
     'creacionEncuesta' => 'Survey creation',
 	'creaTuEncuesta' => 'Create your survey',
 	'creaDistribuye' => 'Create, distribute and analyze surveys and questionnaires',

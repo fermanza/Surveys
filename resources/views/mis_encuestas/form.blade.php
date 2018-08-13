@@ -31,7 +31,7 @@
                             <!-- start breadcrumb -->
                             <ul class="xs-text-center">
                                 <li><a href="{{ URL('/')}}" class="text-dark-gray"><i class="fa fa-home"></i></a></li>
-                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">Edición de encuesta</a></li>
+                                <li><a href="{{ URL('/encuestas')}}" class="text-dark-gray">@lang('home.edicionEncuesta')</a></li>
                             </ul>
                             <!-- end breadcrumb -->
                         </div>

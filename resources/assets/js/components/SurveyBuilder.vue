@@ -23,7 +23,7 @@
             <div class="survey-builder">
                 <div class="root-controls">
                     <div class="survey-question-type-title btn-green">
-                        <span class="display-big">Tipo de Pregunta</span><span class="display-small">TP</span> <i class="fa fa-question-circle"></i>
+                        <span class="display-big">{{$Lang.trans('Type of question')}}</span><span class="display-small">TP</span> <i class="fa fa-question-circle"></i>
                     </div>
                     <app-draggable :clone="clone" :list="rootElements" :options="{ group: { name: 'elements', pull: 'clone' }, sort: false }">
                         <div v-for="rootElement in rootElements" @click="addElement(rootElement)">
@@ -60,8 +60,8 @@
                 <div class="row">
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">
-                        <a :href="$Config.base_url+'/mis_encuestas'" class="btn btn-default">Cancelar</a>
-                        <button type="submit" class="btn">&nbsp;Guardar&nbsp;</button>
+                        <a :href="$Config.base_url+'/mis_encuestas'" class="btn btn-default">{{$Lang.trans('Cancel')}}</a>
+                        <button type="submit" class="btn">&nbsp;{{$Lang.trans('Save')}}&nbsp;</button>
                     </div>
                 </div>
             </div>
