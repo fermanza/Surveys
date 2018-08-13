@@ -61158,7 +61158,7 @@ var render = function() {
         [
           _c("img", {
             staticStyle: { display: "block" },
-            attrs: { src: template_style.small_image }
+            attrs: { src: _vm.$Config.base_url + template_style.small_image }
           }),
           _vm._v(" "),
           _vm.selected == template_style.id

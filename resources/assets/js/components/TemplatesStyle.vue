@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-for="template_style in templates_style" @click="selected = template_style.id">
-			<img :src="template_style.small_image" style="display: block" />
+			<img :src="$Config.base_url+template_style.small_image" style="display: block" />
 			<i class="fa fa-check" v-if="selected == template_style.id"></i>
 		</div>
 	</div>
