@@ -14,7 +14,7 @@
     min-height: 375px;
     max-width: 90%;
     margin: 0 auto;
-    background-image: url("{{ $ts->background }}");
+    background-image: url("{{ url($ts->background)}}");
     background-size: cover;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -34,7 +34,7 @@
         min-height: 375px;
         max-width: 95%;
         margin: 0 auto;
-        background-image: url("{{ $ts->background }}");
+        background-image: url("{{url($ts->background)}}");
         background-size: cover;
         padding-top: 5px;
         padding-bottom: 5px;
