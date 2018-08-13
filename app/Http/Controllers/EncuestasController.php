@@ -465,7 +465,8 @@ class EncuestasController extends Controller
     {
         $template=Template::where('hash','=',$token)->first();
         $question=Questions::where('template_id','=',$template->id)->first();
-        return view('encuestas.answer', compact('template','question'));
+        $template_style = TemplatesStyle::find($template->templates_style_id);
+        return view('encuestas.answer', compact('template','question', 'template_style'));
     }
 
     public function copyTemplate(Request $request)
