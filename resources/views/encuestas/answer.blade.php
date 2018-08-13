@@ -10,7 +10,7 @@
         min-height: 450px;
         max-width: 90%;
         margin: 0 auto;
-        background-image: url("{{ $template_style->background }}");
+        background-image: url("{{ url($template_style->background) }}");
         background-size: cover;
         padding-top: 25px;
         padding-bottom: 25px;
@@ -39,7 +39,7 @@
             min-height: 375px;
             max-width: 95%;
             margin: 0 auto;
-            background-image: url("{{ $template_style->background }}");
+            background-image: url("{{ url($template_style->background) }}");
             background-size: cover;
             padding-top: 20px;
             padding-bottom: 20px;
