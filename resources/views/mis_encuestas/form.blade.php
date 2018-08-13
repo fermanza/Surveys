@@ -51,12 +51,17 @@
             </div>
         </section>
 
+
+        @php
+          $templateRoute = url($template);
+        @endphp
+
     <div id="app">
       @if($question === null)
-        <app-survey-builder :live="false" :template="{{ $template }}" :templates_style="{{ $templates_style }}">
+        <app-survey-builder :live="false" :template="{{ $templateRoute }}" :templates_style="{{ $templates_style }}">
         </app-survey-builder>
       @else
-        <app-survey-builder :live="false" :template="{{ $template }}" :templates_style="{{ $templates_style }}" :initial-elements='{{ json_encode($question->content) }}'>
+        <app-survey-builder :live="false" :template="{{ $templateRoute }}" :templates_style="{{ $templates_style }}" :initial-elements='{{ json_encode($question->content) }}'>
         </app-survey-builder>
       @endif
     </div>
