@@ -161,7 +161,7 @@
             let template_id = $(this).data('id');
                 if($(this).val() == 0) {
                     swal({
-                          title: 'Cambiar de Privada a Pública<br>Encuesta: {{ $template->name }}',
+                          title: 'Cambiar de Privada a Pública<br>Encuesta: {{  $template ? $template->name : "" }}',
                           html: "<h6 style='font-size: 14px; text-align:justify;'>Al seleccionar la encuesta como P&uacute;blica usted est&aacute; solicitando que la misma se publique en el Blog de Survenia y est&eacute; expuesta abiertamente a todos los usuarios que ingresen a este sitio web. En caso que Ud. s&oacute;lo quiera publicarla para un grupo de personas de su elecci&oacute;n, cambie el tipo de encuesta a Privada.</h6>",
                           type: 'warning',
                           showCancelButton: true,
