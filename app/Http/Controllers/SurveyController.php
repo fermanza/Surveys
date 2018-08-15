@@ -26,7 +26,7 @@ class SurveyController extends Controller
         $discounts=DB::table("discounts")->where('user_id','=',$id)->sum('credits');
         $total = $creditos-$discounts;
         // $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
-        $templates = Template::all();
+        $templates = Template::latest()->get();
         return view('admin.surveys.index', compact('items','total','templates'));
     }
 

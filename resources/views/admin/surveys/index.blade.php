@@ -20,7 +20,7 @@
                         <th>@lang('mis_encuestas.tipoDePlan')</th>
                         <th>@lang('mis_encuestas.respuestas')</th>
                         <th>@lang('mis_encuestas.reportes')</th>
-                        <th>@lang('mis_encuestas.cerrarEncuesta')</th>
+                        <th>@lang('mis_encuestas.finalizarEncuesta')</th>
                         <th>@lang('mis_encuestas.editarEncuesta')</th>
                         <th>@lang('mis_encuestas.opciones')</th>
                     </tr>
