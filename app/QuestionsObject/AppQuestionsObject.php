@@ -32,7 +32,7 @@ class AppQuestionsObject
     public function getQuestionsObject($id)
     {
         $printQuestions = [];
-        $multiple = array('contact-information', 'multiple-text');
+        $multiple = array('contact-information', 'multiple-text', 'ranking');
         $matrix = array('matrix');
         $matrix_scale = array('matrix-scale');
         // Else -> single-text-box
