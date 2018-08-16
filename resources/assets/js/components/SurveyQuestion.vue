@@ -29,8 +29,8 @@
 <template>
     <div :class="display ? '' : 'background-grey'" class="survey-question">
         <div class="controls">
-            <i v-if="display" @click="display = false" :class="'survey-questions-icon-color-'+selected_template_style.name+' fa fa-pencil'"></i>
-            <i @click="removeQuestion" :class="'survey-questions-icon-color-'+selected_template_style.name+' fa fa-times'"></i>
+            <i v-if="display" @click="display = false" class="survey-questions-action-button fa fa-pencil"></i>
+            <i @click="removeQuestion" class="survey-questions-action-button fa fa-times"></i>
         </div>
         <div class="component-container">
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>
@@ -56,7 +56,9 @@
             index: {
                 required: true
             },
-            templates_style: ''
+            selected_template_style: {
+                required: true
+            },
         },
 
         data() {
@@ -72,11 +74,7 @@
 
             removeQuestion() {
                 Bus.$emit('remove-question', this.surveyElement.uid);
-            },
-
-            setTemplateStyle(selected_template_style) {
-                this.selected_template_style = selected_template_style;
-            },
+            }
         }
     }
 </script>

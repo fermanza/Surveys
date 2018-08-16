@@ -9,9 +9,6 @@
     color: {{ $ts->font_color }};
     font-family: {{ $ts->font_type }};
 }
-.survey-questions-icon-color-{{$ts->name}} {
-    color: {{ $ts->font_color }} !important;
-}
 .survey-questions-{{$ts->name}} {
     flex: 1;
     min-height: 375px;
@@ -23,6 +20,9 @@
     padding-bottom: 25px;
     padding-left: 20px;
     padding-right: 20px;
+}
+.survey-questions-{{$ts->name}} .survey-questions-action-button {
+    color: {{ $ts->font_color }} !important;
 }
 .bar-container-{{$ts->name}} {
     width: 90% !important;
