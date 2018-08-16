@@ -11,8 +11,10 @@ return [
     'tipoPlanEncuesta' => 'Tipo de plan de la encuesta',
     'gratis' => 'Gratuita',
     'tipoDeEncuesta' => 'Tipo de encuesta',
-    'publica' => 'Pública',
-    'privada' => 'Privada',
+   /* 'publica' => 'Pública',
+    'privada' => 'Privada',*/
+    'publica' => 'Publicar en el blog Survenia',
+    'privada' => 'No publicar en el blog Survenia',
     'crearEncuesta' => 'Crear encuesta',
     'encuesta' => 'Encuesta'
 ];

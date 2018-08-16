@@ -106,9 +106,10 @@
                                             <div class="col-md-4">
                                                 <div class="select-style big-select">
                                                     <select name="tipo" id="tipo" class="bg-transparent no-margin-bottom" required>
-                                                        <option value="">@lang('crear_encuesta.tipoDeEncuesta')</option>
-                                                        <option value="0">@lang('crear_encuesta.publica')</option>
+                                                        {{--<option value="">@lang('crear_encuesta.tipoDeEncuesta')</option>--}}
                                                         <option value="1">@lang('crear_encuesta.privada')</option>
+                                                        <option value="0">@lang('crear_encuesta.publica')</option>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>

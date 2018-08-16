@@ -11,8 +11,10 @@ return [
     'tipoPlanEncuesta' => 'Type of survey plan',
     'gratis' => 'Free',
     'tipoDeEncuesta' => 'Type of survey',
-    'publica' => 'Public',
-    'privada' => 'Private',
+    /*'publica' => 'Public',
+    'privada' => 'Private',*/
+    'publica' => "Post on Survenia's blog ",
+    'privada' => "Don't post on Survenia's blog",
     'crearEncuesta' => 'Create Survey',
     'encuesta' => 'Survey'
 

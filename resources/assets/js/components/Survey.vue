@@ -3,6 +3,18 @@
         margin: 5px 0;
         border-bottom: 1px solid #DBE8D1;
     }
+
+    .footer-logo {
+        text-align: center;
+    }
+    .footer-logo > p {
+        margin: 0;
+    }
+    .footer-logo > img {
+        width: 20%;
+    }
+
+
 </style>
 
 <template>
@@ -14,6 +26,16 @@
                 </div>
             </transition-group-translate-y>
             <div>
+
+                    <div class="row">
+                            <div class="col-md-3"></div>  
+                            <div class="col-md-6 footer-logo">
+                                    <p> {{ $Lang.trans('Powered by Survenia.com') }} </p>
+                                    <img :src="$Config.base_url+'/images/logo-survenia-color.png'">
+                            </div>
+                    </div>
+
+
                     <input type="hidden" name="answer" :value="questionsJson" />
                     <input type="hidden" name="template" :value="template_id" />
                     <br /><br />

@@ -15,6 +15,31 @@
     .root-controls {
         flex-basis: 250px;
     }
+
+    .footer-logo {
+        text-align: center;
+        margin-bottom: 6%;
+    }
+    .footer-logo > p {
+        margin: 0;
+    }
+    .footer-logo > img {
+        width: 20%;
+    }
+
+    .component-container > div > label {
+        font-size: 20px;
+    }
+
+    .container-footer {
+        width: 90% !important;
+        margin: 0 auto;
+        background: white;
+        padding: 15px;
+    }
+
+
+
 </style>
 
 <template>
@@ -42,7 +67,7 @@
                         <img :src="$Config.base_url+template.url" style="max-witdh: 350px; max-height: 500px;" />
                         <i @click="editLogo = true" class="question-action text-success fa fa-pencil"></i>
                     </div>
-                     <div v-show="editLogo" class="bar-container-Default" style="text-align: center;">
+                     <div v-show="editLogo" :class="'bar-container-'+selected_template_style.name"  style="text-align: center;">
                         <label>Logo</label>
                         <input type="file" name="surveyLogo" />
                     </div>
@@ -51,12 +76,20 @@
                             <app-survey-question v-show="!surveyElement.hide" :survey-element="surveyElement" :live="live" :index="index"></app-survey-question>
                         </div>
                     </app-draggable>
-                </div>
+                        <div class="row container-footer" >
+                                <div class="col-md-3 " ></div>  
+                                <div class="col-md-6 footer-logo">
+                                        <p> {{ $Lang.trans('Powered by Survenia.com') }} </p>
+                                        <img :src="$Config.base_url+'/images/logo-survenia-color.png'">
+                                </div>
+                        </div>
+                </div>  
             </div>
             <div>
                 <input type="hidden" name="questions" :value="questionsJson" />
                 <input type="hidden" name="templates_style_id" :value="selected_template_style.id" />
                 <input type="hidden" name="template" :value="template_id" />
+              
                 <div class="row">
                     <div class="col-md-3" ></div>
                     <div class="col-md-6" align="center">

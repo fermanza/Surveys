@@ -2,6 +2,8 @@
     textarea {
         resize: none;
     }
+
+
 </style>
 
 <template>

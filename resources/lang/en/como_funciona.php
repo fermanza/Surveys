@@ -27,7 +27,7 @@ return [
        Publish your survey link on your website, Facebook, Twitter or other social networking platforms, invite participants by email or publish your survey on our Blog, so that all users in Survenia have access. <br> <br>
        Participants can fill out the survey in any browser: it does not matter if it's on a desktop, laptop, tablet or smartphone.
        All our online surveys are optimized for mobile devices. <br> <br>
-       <b> All of our premium survey packages are unlimited in number of questions and answers. Survenia also does not limit you in the term, users can use the surveys they have acquired without time limits.' ",
+       <b> All of our premium survey packages are unlimited in number of questions and answers. With Survenia you can have the credits that you have to acquire in the way that suits you, you have a year to use them.' ",
        'analizaResultados' => 'Analyze the results',
 
        'puedesEmpezarAnalizar' => 'You can start analyzing the questions collected from the moment the first answer is received. You can see results for each question with diagrams and statistical data; you also have the possibility of performing advanced analysis, relating the answers and establishing filters. <br> <br>

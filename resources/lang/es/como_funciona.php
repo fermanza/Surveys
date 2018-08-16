@@ -31,7 +31,7 @@ return [
     'tanProntoComoActives' => 'Tan pronto como actives tu encuesta, podrás empezar a recopilar respuestas. Para cada una de tus encuestas recibirás un enlace, el cual puedes compartir tantas veces como quieras.<br><br>
                     Publica el enlace de tu encuesta en su sitio web, Facebook, Twitter u otras plataformas de redes sociales, invita a los participantes por correo electrónico o publica tu encuesta en nuestro Blog, para que todos los usuarios de Survenia tengan acceso.<br><br> 
                     Los participantes pueden llenar la encuesta en cualquier navegador: da igual que sea en un equipo de escritorio, portátil, tableta o teléfono inteligente. Todas nuestras encuestas en línea están optimizadas para dispositivos móviles.<br><br>
-                    <b>Todos nuestros paquetes de encuestas premium son ilimitados en cantidad de preguntas y respuestas. Survenia tampoco te limita en el plazo, los usuarios pueden disponer de las encuestas que hayan adquirido sin límites de tiempo.',
+                    <b>Todos nuestros paquetes de encuestas premium son ilimitados en cantidad de preguntas y respuestas. Con Survenia puedes disponer de los créditos que hayas adquirido en la forma que más te convenga, tienes un año para utilizarlos.</b>',
 
     'analizaResultados' => 'Analiza los resultados',
     'puedesEmpezarAnalizar' => 'Puedes empezar a analizar las preguntas recogidas desde el momento en el que se reciba la primera respuesta. Puedes ver resultados para cada pregunta con diagramas y datos estadísticos; también tienes la posibilidad de realizar análisis avanzados, relacionando las respuestas y estableciendo filtros.<br><br>
