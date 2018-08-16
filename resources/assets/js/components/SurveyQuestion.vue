@@ -29,8 +29,8 @@
 <template>
     <div :class="display ? '' : 'background-grey'" class="survey-question">
         <div class="controls">
-            <i v-if="display" @click="display = false" class="fa fa-pencil"></i>
-            <i @click="removeQuestion" class="fa fa-times"></i>
+            <i v-if="display" @click="display = false" class="survey-questions-action-button fa fa-pencil"></i>
+            <i @click="removeQuestion" class="survey-questions-action-button fa fa-times"></i>
         </div>
         <div class="component-container">
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>
@@ -55,7 +55,10 @@
             },
             index: {
                 required: true
-            }
+            },
+            selected_template_style: {
+                required: true
+            },
         },
 
         data() {
