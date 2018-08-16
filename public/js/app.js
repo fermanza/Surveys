@@ -71807,8 +71807,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         index: {
             required: true
-        },
-        templates_style: ''
+        }
     },
 
     data: function data() {
@@ -71824,9 +71823,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         removeQuestion: function removeQuestion() {
             __WEBPACK_IMPORTED_MODULE_0__Bus__["a" /* default */].$emit('remove-question', this.surveyElement.uid);
-        },
-        setTemplateStyle: function setTemplateStyle(selected_template_style) {
-            this.selected_template_style = selected_template_style;
         }
     }
 });
@@ -71849,10 +71845,7 @@ var render = function() {
       _c("div", { staticClass: "controls" }, [
         _vm.display
           ? _c("i", {
-              class:
-                "survey-questions-icon-color-" +
-                _vm.selected_template_style.name +
-                " fa fa-pencil",
+              staticClass: "fa fa-pencil",
               on: {
                 click: function($event) {
                   _vm.display = false
@@ -71862,10 +71855,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("i", {
-          class:
-            "survey-questions-icon-color-" +
-            _vm.selected_template_style.name +
-            " fa fa-times",
+          staticClass: "fa fa-times",
           on: { click: _vm.removeQuestion }
         })
       ]),
