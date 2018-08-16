@@ -22,8 +22,9 @@
     padding-right: 20px;
 }
 .survey-questions-{{$ts->name}} .survey-questions-action-button {
-    color: {{ $ts->font_color }} !important;
+    color: {{ $ts->icon_color }} !important;
 }
+
 .bar-container-{{$ts->name}} {
     width: 90% !important;
     margin: 0 auto;
