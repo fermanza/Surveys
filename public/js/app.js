@@ -71807,6 +71807,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         index: {
             required: true
+        },
+        selected_template_style: {
+            required: true
         }
     },
 
@@ -71845,7 +71848,7 @@ var render = function() {
       _c("div", { staticClass: "controls" }, [
         _vm.display
           ? _c("i", {
-              staticClass: "fa fa-pencil",
+              staticClass: "survey-questions-action-button fa fa-pencil",
               on: {
                 click: function($event) {
                   _vm.display = false
@@ -71855,7 +71858,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("i", {
-          staticClass: "fa fa-times",
+          staticClass: "survey-questions-action-button fa fa-times",
           on: { click: _vm.removeQuestion }
         })
       ]),
