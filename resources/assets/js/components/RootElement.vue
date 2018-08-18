@@ -7,6 +7,7 @@
         cursor: pointer;
     }
 
+
     @media screen and (max-width: 768px) {
         .element-title {
             display: none;

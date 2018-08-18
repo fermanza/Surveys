@@ -8,7 +8,6 @@
 
     .controls {
         position: absolute;
-        top: 0;
         right: 0;
     }
 
@@ -23,6 +22,9 @@
     .background-grey {
         background: #eee;
     }
+
+   
+
 
 </style>
 

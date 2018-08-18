@@ -5,6 +5,20 @@
 	flex-wrap: wrap;
 }
 
+@media (max-width: 767px) { 
+	.templates {
+		display: block;
+	}
+
+	.template-img {
+		width: 100% !important;
+		padding: 2px !important;
+		position: relative;
+	}
+}
+
+
+
 .template-img {
 	width: 50%;
 	padding: 10px;

@@ -20,12 +20,12 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
             <div>
                 <label>{{ $Lang.trans('Options') }}</label>
                 <div class="option-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                     <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
+                        <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
                     </div>
                     <div class="option-action">
                         <i @click="removeOption(index)" class="fa fa-minus text-success"></i>

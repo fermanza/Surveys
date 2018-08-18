@@ -10,11 +10,11 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
-            <textarea :name="surveyElement.uid" rows="4" v-model="surveyElement.answer" class="form-control"></textarea>
+            <textarea :name="surveyElement.uid" rows="4" v-model="surveyElement.answer" class="form-control border-radius-input"></textarea>
         </div>
     </div>
 </template>

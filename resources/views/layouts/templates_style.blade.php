@@ -21,9 +21,21 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.survey-questions-{{$ts->name}} .border-radius-input {
+    border-radius: {{ $ts->border_radius }}
+}
+
+
+
 .survey-questions-{{$ts->name}} .survey-questions-action-button {
     color: {{ $ts->icon_color }} !important;
+    font-size: 20px;
 }
+
+
+
+
 
 .bar-container-{{$ts->name}} {
     width: 90% !important;

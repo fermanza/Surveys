@@ -10,6 +10,19 @@
             background: #fafafa;
             padding: 5px;
         }
+
+        .root-controls {
+            flex-basis: 10% !important;
+        }
+
+        .templates {
+		    display: block;
+            width: 100%;
+	    }
+
+
+
+
     }
 
     .root-controls {
@@ -37,6 +50,7 @@
         background: white;
         padding: 15px;
     }
+
 
 
 

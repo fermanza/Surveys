@@ -20,11 +20,11 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
             <div class="field-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <div class="field-input">
                     <label>{{ $Lang.trans('Label') }}</label>
-                    <input type="text" v-model="surveyElement.config.list[index].title" class="form-control" />
+                    <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
                 </div>
                 <div class="field-action">
                     <i @click="removeField(index)" class="fa fa-minus text-success"></i>
@@ -38,7 +38,7 @@
             <label>{{ surveyElement.config.title }}</label>
             <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
                 <label>{{ field.title }}</label>
-                <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control" />
+                <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control border-radius-input" />
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
         </div>
         <div v-if="display">
             <label>{{ surveyElement.config.title }}</label>
-            <input type="text" :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control" />
+            <input type="text" :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input" />
         </div>
     </div>
 </template>
