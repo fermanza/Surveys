@@ -3,7 +3,7 @@
         position: relative;
         padding-top: 20px;
         margin: 5px 0;
-        border-bottom: 1px solid #DBE8D1;
+        border-bottom: 1px solid #DBE8D1; 
     }
 
     .controls {
@@ -22,14 +22,10 @@
     .background-grey {
         background: #eee;
     }
-
-   
-
-
 </style>
 
 <template>
-    <div :class="display ? '' : 'background-grey'" class="survey-question">
+    <div :class="display ? '' : 'background-grey'" class="survey-question double-border background-gray">
         <div class="controls">
             <i v-if="display" @click="display = false" class="survey-questions-action-button fa fa-pencil"></i>
             <i @click="removeQuestion" class="survey-questions-action-button fa fa-times"></i>

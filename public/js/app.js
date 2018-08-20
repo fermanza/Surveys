@@ -61436,7 +61436,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-builder[data-v-098e407a] {\n        display: flex;\n        background: #fafafa;\n        padding: 20px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-098e407a] {\n            display: flex;\n            background: #fafafa;\n            padding: 5px;\n}\n.root-controls[data-v-098e407a] {\n            flex-basis: 10% !important;\n}\n.templates[data-v-098e407a] {\n\t\t    display: block;\n            width: 100%;\n}\n}\n.root-controls[data-v-098e407a] {\n        flex-basis: 250px;\n}\n.footer-logo[data-v-098e407a] {\n        text-align: center;\n        margin-bottom: 6%;\n}\n.footer-logo > p[data-v-098e407a] {\n        margin: 0;\n}\n.footer-logo > img[data-v-098e407a] {\n        width: 20%;\n}\n.component-container > div > label[data-v-098e407a] {\n        font-size: 20px;\n}\n.container-footer[data-v-098e407a] {\n        width: 90% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 15px;\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.survey-builder[data-v-098e407a] {\n        display: flex;\n        background: #fafafa;\n        padding: 20px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-098e407a] {\n            display: flex;\n            background: #fafafa;\n            padding: 5px;\n}\n.root-controls[data-v-098e407a] {\n            flex-basis: 10% !important;\n}\n.templates[data-v-098e407a] {\n\t\t    display: block;\n            width: 100%;\n}\n}\n.root-controls[data-v-098e407a] {\n        flex-basis: 250px;\n}\n.footer-logo[data-v-098e407a] {\n        text-align: center;\n        margin-bottom: 6%;\n}\n.footer-logo > p[data-v-098e407a] {\n        margin: 0;\n}\n.footer-logo > img[data-v-098e407a] {\n        width: 20%;\n}\n.component-container > div > label[data-v-098e407a] {\n        font-size: 20px;\n}\n.container-footer[data-v-098e407a] {\n        width: 90% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 15px;\n}\n\n", ""]);
 
 // exports
 
@@ -61451,9 +61451,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__root_elements__ = __webpack_require__(196);
-//
-//
-//
 //
 //
 //
@@ -71871,7 +71868,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: relative;\n    padding-top: 20px;\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.controls[data-v-284e2097] {\n    position: absolute;\n    right: 0;\n}\n.question-action[data-v-284e2097] {\n    cursor: pointer;\n}\n.close-component[data-v-284e2097] {\n     border: 2px solid #70878C;\n}\n.background-grey[data-v-284e2097] {\n    background: #eee;\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: relative;\n    padding-top: 20px;\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.controls[data-v-284e2097] {\n    position: absolute;\n    right: 0;\n}\n.question-action[data-v-284e2097] {\n    cursor: pointer;\n}\n.close-component[data-v-284e2097] {\n     border: 2px solid #70878C;\n}\n.background-grey[data-v-284e2097] {\n    background: #eee;\n}\n", ""]);
 
 // exports
 
@@ -71883,10 +71880,6 @@ exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: re
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
-//
-//
-//
-//
 //
 //
 //
@@ -71976,7 +71969,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "survey-question",
+      staticClass: "survey-question double-border background-gray",
       class: _vm.display ? "" : "background-grey"
     },
     [
@@ -72506,7 +72499,9 @@ var render = function() {
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _c("label", { staticClass: "paddings" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
