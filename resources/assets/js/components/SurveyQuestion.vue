@@ -25,12 +25,12 @@
 </style>
 
 <template>
-    <div :class="display ? '' : 'background-grey'" class="survey-question double-border background-gray">
+    <div :class="display ? '' : 'background-grey'" class="survey-question double-border  background-gray">
         <div class="controls">
             <i v-if="display" @click="display = false" class="survey-questions-action-button fa fa-pencil"></i>
             <i @click="removeQuestion" class="survey-questions-action-button fa fa-times"></i>
         </div>
-        <div class="component-container">
+        <div class="component-container background-gray">
             <component :is="parseComponent(surveyElement)" :survey-element="surveyElement" :display="display" :live="live" :index="index"></component>
         </div>
   

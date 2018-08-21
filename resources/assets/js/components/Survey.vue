@@ -1,7 +1,7 @@
 <style scoped>
     .survey-question {
         margin: 5px 0;
-        border-bottom: 1px solid #DBE8D1;
+       border-bottom: 1px solid #DBE8D1;
     }
 
     .footer-logo {
@@ -21,7 +21,7 @@
     <div>
         <form :action="$Config.base_url+'/saveAnswer'" method="POST">
             <transition-group-translate-y>
-                <div v-for="element in surveyElements" :key="element.uid" class="survey-question">
+                <div v-for="element in surveyElements" :key="element.uid" class="survey-question double-border">
                     <component :is="parseComponent(element)" v-show="!element.hide" :survey-element="element" :display="true"></component>
                 </div>
             </transition-group-translate-y>

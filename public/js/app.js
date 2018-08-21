@@ -60842,7 +60842,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-7db5fc91] {\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.footer-logo[data-v-7db5fc91] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7db5fc91] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7db5fc91] {\n    width: 20%;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.survey-question[data-v-7db5fc91] {\n    margin: 5px 0;\n   border-bottom: 1px solid #DBE8D1;\n}\n.footer-logo[data-v-7db5fc91] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7db5fc91] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7db5fc91] {\n    width: 20%;\n}\n\n\n", ""]);
 
 // exports
 
@@ -61006,7 +61006,10 @@ var render = function() {
           _vm._l(_vm.surveyElements, function(element) {
             return _c(
               "div",
-              { key: element.uid, staticClass: "survey-question" },
+              {
+                key: element.uid,
+                staticClass: "survey-question double-border"
+              },
               [
                 _c(_vm.parseComponent(element), {
                   directives: [
@@ -71969,7 +71972,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "survey-question double-border background-gray",
+      staticClass: "survey-question double-border  background-gray",
       class: _vm.display ? "" : "background-grey"
     },
     [
@@ -71993,7 +71996,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "component-container" },
+        { staticClass: "component-container background-gray" },
         [
           _c(_vm.parseComponent(_vm.surveyElement), {
             tag: "component",

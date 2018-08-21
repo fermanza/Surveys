@@ -23,17 +23,15 @@
 }
 
 .survey-questions-{{$ts->name}} .double-border {
-@if( strtolower($ts->name) == "gray")
-    border-bottom: double #d0d0d0 5px !important;     
-@endif
+    border-bottom: {{$ts->border_bottom}}     
 }
+
 .survey-questions-{{$ts->name}} .background-gray {
 @if( strtolower($ts->name) == "abstract")
     background: #fafafa !important;     
     border-bottom: none !important;
 @endif
 }
-
 
 .survey-questions-{{$ts->name}} .border-radius-input {
     border-radius: {{ $ts->border_radius }}
