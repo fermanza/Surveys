@@ -34,16 +34,17 @@ class EncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    private $mail = "fermanza@gmail.com";
+    private $mail = "laura@rednodo.com";
 
     public function index()
     {
         $template = Template::find(1);
-        $id = Auth::id();
-        $user = DB::table('users')->where('id', '=', $id)->get();
-        //dd($user);
-
-        $templates = Template::where('type', 0)->get();
+        $user_id = Auth::id();
+        $user = DB::table('users')->where('id', '=', $user_id)->get();
+        
+        $templates = DB::table('template')->where([
+                    ['type', '=', '0'],
+                    ['user_id', '=', $user_id]])->get();
         return view('encuestas.index', compact('template','user','action', 'templates'));
     }
 
