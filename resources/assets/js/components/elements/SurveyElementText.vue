@@ -6,11 +6,15 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            </div>
         </div>
         <div v-if="display">
-            <label class="paddings">{{ surveyElement.config.title }}</label>
-            <input type="text" :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input" />
+            <label class="paddings background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <input type="text" :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input" />
+            </div>
         </div>
     </div>
 </template>

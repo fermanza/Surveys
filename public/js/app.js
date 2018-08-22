@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 80);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -175,9 +175,9 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 
 
-var base64 = __webpack_require__(113)
-var ieee754 = __webpack_require__(114)
-var isArray = __webpack_require__(46)
+var base64 = __webpack_require__(112)
+var ieee754 = __webpack_require__(113)
+var isArray = __webpack_require__(114)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -2168,7 +2168,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(99)
+var listToStyles = __webpack_require__(98)
 
 /*
 type StyleObject = {
@@ -2432,7 +2432,7 @@ function applyToTag (styleElement, obj) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(149).Buffer;
+    Buffer = __webpack_require__(150).Buffer;
   } catch (e) {
   }
 
@@ -5819,15 +5819,15 @@ function applyToTag (styleElement, obj) {
 
 var elliptic = exports;
 
-elliptic.version = __webpack_require__(155).version;
-elliptic.utils = __webpack_require__(156);
-elliptic.rand = __webpack_require__(68);
+elliptic.version = __webpack_require__(156).version;
+elliptic.utils = __webpack_require__(157);
+elliptic.rand = __webpack_require__(67);
 elliptic.curve = __webpack_require__(28);
-elliptic.curves = __webpack_require__(161);
+elliptic.curves = __webpack_require__(162);
 
 // Protocols
-elliptic.ec = __webpack_require__(169);
-elliptic.eddsa = __webpack_require__(173);
+elliptic.ec = __webpack_require__(170);
+elliptic.eddsa = __webpack_require__(174);
 
 
 /***/ }),
@@ -6330,7 +6330,7 @@ process.umask = function() { return 0; };
 
 "use strict";
 
-const cryptoRandomString = __webpack_require__(111);
+const cryptoRandomString = __webpack_require__(110);
 
 module.exports = () => cryptoRandomString(32);
 
@@ -6505,7 +6505,7 @@ var util = __webpack_require__(20);
 util.inherits = __webpack_require__(0);
 /*</replacement>*/
 
-var Readable = __webpack_require__(48);
+var Readable = __webpack_require__(47);
 var Writable = __webpack_require__(34);
 
 util.inherits(Duplex, Readable);
@@ -17367,11 +17367,11 @@ var asn1 = exports;
 
 asn1.bignum = __webpack_require__(6);
 
-asn1.define = __webpack_require__(177).define;
+asn1.define = __webpack_require__(178).define;
 asn1.base = __webpack_require__(24);
-asn1.constants = __webpack_require__(74);
-asn1.decoders = __webpack_require__(183);
-asn1.encoders = __webpack_require__(185);
+asn1.constants = __webpack_require__(73);
+asn1.decoders = __webpack_require__(184);
+asn1.encoders = __webpack_require__(186);
 
 
 /***/ }),
@@ -17380,10 +17380,10 @@ asn1.encoders = __webpack_require__(185);
 
 var base = exports;
 
-base.Reporter = __webpack_require__(180).Reporter;
-base.DecoderBuffer = __webpack_require__(73).DecoderBuffer;
-base.EncoderBuffer = __webpack_require__(73).EncoderBuffer;
-base.Node = __webpack_require__(181);
+base.Reporter = __webpack_require__(181).Reporter;
+base.DecoderBuffer = __webpack_require__(72).DecoderBuffer;
+base.EncoderBuffer = __webpack_require__(72).EncoderBuffer;
+base.Node = __webpack_require__(182);
 
 
 /***/ }),
@@ -17732,21 +17732,21 @@ module.exports = EVP_BytesToKey
 
 var curve = exports;
 
-curve.base = __webpack_require__(157);
-curve.short = __webpack_require__(158);
-curve.mont = __webpack_require__(159);
-curve.edwards = __webpack_require__(160);
+curve.base = __webpack_require__(158);
+curve.short = __webpack_require__(159);
+curve.mont = __webpack_require__(160);
+curve.edwards = __webpack_require__(161);
 
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var asn1 = __webpack_require__(176)
-var aesid = __webpack_require__(188)
-var fixProc = __webpack_require__(189)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var asn1 = __webpack_require__(177)
+var aesid = __webpack_require__(189)
+var fixProc = __webpack_require__(190)
 var ciphers = __webpack_require__(39)
-var compat = __webpack_require__(57)
+var compat = __webpack_require__(56)
 module.exports = parseKeys
 
 function parseKeys (buffer) {
@@ -17858,7 +17858,7 @@ function decrypt (data, password) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 var inherits = __webpack_require__(0)
-var HashBase = __webpack_require__(47)
+var HashBase = __webpack_require__(46)
 
 var ARRAY16 = new Array(16)
 
@@ -18036,10 +18036,10 @@ var inherits = __webpack_require__(0);
 
 inherits(Stream, EE);
 Stream.Readable = __webpack_require__(33);
-Stream.Writable = __webpack_require__(120);
-Stream.Duplex = __webpack_require__(121);
-Stream.Transform = __webpack_require__(122);
-Stream.PassThrough = __webpack_require__(123);
+Stream.Writable = __webpack_require__(121);
+Stream.Duplex = __webpack_require__(122);
+Stream.Transform = __webpack_require__(123);
+Stream.PassThrough = __webpack_require__(124);
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -18449,13 +18449,13 @@ function isUndefined(arg) {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(48);
+exports = module.exports = __webpack_require__(47);
 exports.Stream = exports;
 exports.Readable = exports;
 exports.Writable = __webpack_require__(34);
 exports.Duplex = __webpack_require__(15);
-exports.Transform = __webpack_require__(51);
-exports.PassThrough = __webpack_require__(119);
+exports.Transform = __webpack_require__(50);
+exports.PassThrough = __webpack_require__(120);
 
 
 /***/ }),
@@ -18535,12 +18535,12 @@ util.inherits = __webpack_require__(0);
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(118)
+  deprecate: __webpack_require__(119)
 };
 /*</replacement>*/
 
 /*<replacement>*/
-var Stream = __webpack_require__(49);
+var Stream = __webpack_require__(48);
 /*</replacement>*/
 
 /*<replacement>*/
@@ -18556,7 +18556,7 @@ function _isUint8Array(obj) {
 
 /*</replacement>*/
 
-var destroyImpl = __webpack_require__(50);
+var destroyImpl = __webpack_require__(49);
 
 util.inherits(Writable, Stream);
 
@@ -19462,7 +19462,7 @@ function simpleEnd(buf) {
 
 var Buffer = __webpack_require__(2).Buffer
 var inherits = __webpack_require__(0)
-var HashBase = __webpack_require__(47)
+var HashBase = __webpack_require__(46)
 
 var ARRAY16 = new Array(16)
 
@@ -19637,12 +19637,12 @@ var exports = module.exports = function SHA (algorithm) {
   return new Algorithm()
 }
 
-exports.sha = __webpack_require__(124)
-exports.sha1 = __webpack_require__(125)
-exports.sha224 = __webpack_require__(126)
-exports.sha256 = __webpack_require__(52)
-exports.sha384 = __webpack_require__(127)
-exports.sha512 = __webpack_require__(53)
+exports.sha = __webpack_require__(125)
+exports.sha1 = __webpack_require__(126)
+exports.sha224 = __webpack_require__(127)
+exports.sha256 = __webpack_require__(51)
+exports.sha384 = __webpack_require__(128)
+exports.sha512 = __webpack_require__(52)
 
 
 /***/ }),
@@ -19652,20 +19652,20 @@ exports.sha512 = __webpack_require__(53)
 "use strict";
 
 
-exports.utils = __webpack_require__(133);
-exports.Cipher = __webpack_require__(134);
-exports.DES = __webpack_require__(135);
-exports.CBC = __webpack_require__(136);
-exports.EDE = __webpack_require__(137);
+exports.utils = __webpack_require__(134);
+exports.Cipher = __webpack_require__(135);
+exports.DES = __webpack_require__(136);
+exports.CBC = __webpack_require__(137);
+exports.EDE = __webpack_require__(138);
 
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ciphers = __webpack_require__(138)
-var deciphers = __webpack_require__(146)
-var modes = __webpack_require__(63)
+var ciphers = __webpack_require__(139)
+var deciphers = __webpack_require__(147)
+var modes = __webpack_require__(62)
 
 function getCiphers () {
   return Object.keys(modes)
@@ -19683,17 +19683,17 @@ exports.listCiphers = exports.getCiphers = getCiphers
 /***/ (function(module, exports, __webpack_require__) {
 
 var modeModules = {
-  ECB: __webpack_require__(139),
-  CBC: __webpack_require__(140),
-  CFB: __webpack_require__(141),
-  CFB8: __webpack_require__(142),
-  CFB1: __webpack_require__(143),
-  OFB: __webpack_require__(144),
-  CTR: __webpack_require__(61),
-  GCM: __webpack_require__(61)
+  ECB: __webpack_require__(140),
+  CBC: __webpack_require__(141),
+  CFB: __webpack_require__(142),
+  CFB8: __webpack_require__(143),
+  CFB1: __webpack_require__(144),
+  OFB: __webpack_require__(145),
+  CTR: __webpack_require__(60),
+  GCM: __webpack_require__(60)
 }
 
-var modes = __webpack_require__(63)
+var modes = __webpack_require__(62)
 
 for (var key in modes) {
   modes[key].module = modeModules[modes[key].mode]
@@ -19757,9 +19757,9 @@ var hash = exports;
 
 hash.utils = __webpack_require__(10);
 hash.common = __webpack_require__(22);
-hash.sha = __webpack_require__(162);
-hash.ripemd = __webpack_require__(166);
-hash.hmac = __webpack_require__(167);
+hash.sha = __webpack_require__(163);
+hash.ripemd = __webpack_require__(167);
+hash.hmac = __webpack_require__(168);
 
 // Proxy hash functions to the main object
 hash.sha1 = hash.sha.sha1;
@@ -30793,7 +30793,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(83);
+__webpack_require__(82);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -30836,17 +30836,6 @@ module.exports = function(module) {
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30948,7 +30937,7 @@ module.exports = HashBase
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30983,7 +30972,7 @@ var pna = __webpack_require__(25);
 module.exports = Readable;
 
 /*<replacement>*/
-var isArray = __webpack_require__(46);
+var isArray = __webpack_require__(115);
 /*</replacement>*/
 
 /*<replacement>*/
@@ -31001,7 +30990,7 @@ var EElistenerCount = function (emitter, type) {
 /*</replacement>*/
 
 /*<replacement>*/
-var Stream = __webpack_require__(49);
+var Stream = __webpack_require__(48);
 /*</replacement>*/
 
 /*<replacement>*/
@@ -31023,7 +31012,7 @@ util.inherits = __webpack_require__(0);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(115);
+var debugUtil = __webpack_require__(116);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -31032,8 +31021,8 @@ if (debugUtil && debugUtil.debuglog) {
 }
 /*</replacement>*/
 
-var BufferList = __webpack_require__(116);
-var destroyImpl = __webpack_require__(50);
+var BufferList = __webpack_require__(117);
+var destroyImpl = __webpack_require__(49);
 var StringDecoder;
 
 util.inherits(Readable, Stream);
@@ -31974,14 +31963,14 @@ function indexOf(xs, x) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(32).EventEmitter;
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32061,7 +32050,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32281,7 +32270,7 @@ function done(stream, er, data) {
 }
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -32422,7 +32411,7 @@ module.exports = Sha256
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0)
@@ -32688,16 +32677,16 @@ module.exports = Sha512
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var inherits = __webpack_require__(0)
-var Legacy = __webpack_require__(128)
+var Legacy = __webpack_require__(129)
 var Base = __webpack_require__(13)
 var Buffer = __webpack_require__(1).Buffer
-var md5 = __webpack_require__(55)
+var md5 = __webpack_require__(54)
 var RIPEMD160 = __webpack_require__(36)
 
 var sha = __webpack_require__(37)
@@ -32757,7 +32746,7 @@ module.exports = function createHmac (alg, key) {
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MD5 = __webpack_require__(30)
@@ -32768,21 +32757,21 @@ module.exports = function (buffer) {
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = {"sha224WithRSAEncryption":{"sign":"rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"RSA-SHA224":{"sign":"ecdsa/rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"sha256WithRSAEncryption":{"sign":"rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"RSA-SHA256":{"sign":"ecdsa/rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"sha384WithRSAEncryption":{"sign":"rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"RSA-SHA384":{"sign":"ecdsa/rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"sha512WithRSAEncryption":{"sign":"rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA512":{"sign":"ecdsa/rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA1":{"sign":"rsa","hash":"sha1","id":"3021300906052b0e03021a05000414"},"ecdsa-with-SHA1":{"sign":"ecdsa","hash":"sha1","id":""},"sha256":{"sign":"ecdsa","hash":"sha256","id":""},"sha224":{"sign":"ecdsa","hash":"sha224","id":""},"sha384":{"sign":"ecdsa","hash":"sha384","id":""},"sha512":{"sign":"ecdsa","hash":"sha512","id":""},"DSA-SHA":{"sign":"dsa","hash":"sha1","id":""},"DSA-SHA1":{"sign":"dsa","hash":"sha1","id":""},"DSA":{"sign":"dsa","hash":"sha1","id":""},"DSA-WITH-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-WITH-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-WITH-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-WITH-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-RIPEMD160":{"sign":"dsa","hash":"rmd160","id":""},"ripemd160WithRSA":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}}
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.pbkdf2 = __webpack_require__(130)
-exports.pbkdf2Sync = __webpack_require__(60)
+exports.pbkdf2 = __webpack_require__(131)
+exports.pbkdf2Sync = __webpack_require__(59)
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -32817,7 +32806,7 @@ module.exports = function (password, salt, iterations, keylen) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {var defaultEncoding
@@ -32834,15 +32823,15 @@ module.exports = defaultEncoding
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var md5 = __webpack_require__(55)
+var md5 = __webpack_require__(54)
 var rmd160 = __webpack_require__(36)
 var sha = __webpack_require__(37)
 
-var checkParameters = __webpack_require__(58)
-var defaultEncoding = __webpack_require__(59)
+var checkParameters = __webpack_require__(57)
+var defaultEncoding = __webpack_require__(58)
 var Buffer = __webpack_require__(1).Buffer
 var ZEROS = Buffer.alloc(128)
 var sizes = {
@@ -32941,12 +32930,12 @@ module.exports = pbkdf2
 
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var xor = __webpack_require__(21)
 var Buffer = __webpack_require__(1).Buffer
-var incr32 = __webpack_require__(62)
+var incr32 = __webpack_require__(61)
 
 function getBlock (self) {
   var out = self._cipher.encryptBlockRaw(self._prev)
@@ -32977,7 +32966,7 @@ exports.encrypt = function (self, chunk) {
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports) {
 
 function incr32 (iv) {
@@ -32998,22 +32987,22 @@ module.exports = incr32
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = {"aes-128-ecb":{"cipher":"AES","key":128,"iv":0,"mode":"ECB","type":"block"},"aes-192-ecb":{"cipher":"AES","key":192,"iv":0,"mode":"ECB","type":"block"},"aes-256-ecb":{"cipher":"AES","key":256,"iv":0,"mode":"ECB","type":"block"},"aes-128-cbc":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes-192-cbc":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes-256-cbc":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes128":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes192":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes256":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes-128-cfb":{"cipher":"AES","key":128,"iv":16,"mode":"CFB","type":"stream"},"aes-192-cfb":{"cipher":"AES","key":192,"iv":16,"mode":"CFB","type":"stream"},"aes-256-cfb":{"cipher":"AES","key":256,"iv":16,"mode":"CFB","type":"stream"},"aes-128-cfb8":{"cipher":"AES","key":128,"iv":16,"mode":"CFB8","type":"stream"},"aes-192-cfb8":{"cipher":"AES","key":192,"iv":16,"mode":"CFB8","type":"stream"},"aes-256-cfb8":{"cipher":"AES","key":256,"iv":16,"mode":"CFB8","type":"stream"},"aes-128-cfb1":{"cipher":"AES","key":128,"iv":16,"mode":"CFB1","type":"stream"},"aes-192-cfb1":{"cipher":"AES","key":192,"iv":16,"mode":"CFB1","type":"stream"},"aes-256-cfb1":{"cipher":"AES","key":256,"iv":16,"mode":"CFB1","type":"stream"},"aes-128-ofb":{"cipher":"AES","key":128,"iv":16,"mode":"OFB","type":"stream"},"aes-192-ofb":{"cipher":"AES","key":192,"iv":16,"mode":"OFB","type":"stream"},"aes-256-ofb":{"cipher":"AES","key":256,"iv":16,"mode":"OFB","type":"stream"},"aes-128-ctr":{"cipher":"AES","key":128,"iv":16,"mode":"CTR","type":"stream"},"aes-192-ctr":{"cipher":"AES","key":192,"iv":16,"mode":"CTR","type":"stream"},"aes-256-ctr":{"cipher":"AES","key":256,"iv":16,"mode":"CTR","type":"stream"},"aes-128-gcm":{"cipher":"AES","key":128,"iv":12,"mode":"GCM","type":"auth"},"aes-192-gcm":{"cipher":"AES","key":192,"iv":12,"mode":"GCM","type":"auth"},"aes-256-gcm":{"cipher":"AES","key":256,"iv":12,"mode":"GCM","type":"auth"}}
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var aes = __webpack_require__(26)
 var Buffer = __webpack_require__(1).Buffer
 var Transform = __webpack_require__(13)
 var inherits = __webpack_require__(0)
-var GHASH = __webpack_require__(145)
+var GHASH = __webpack_require__(146)
 var xor = __webpack_require__(21)
-var incr32 = __webpack_require__(62)
+var incr32 = __webpack_require__(61)
 
 function xorTest (a, b) {
   var out = 0
@@ -33127,7 +33116,7 @@ module.exports = StreamCipher
 
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var aes = __webpack_require__(26)
@@ -33160,7 +33149,7 @@ module.exports = StreamCipher
 
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var randomBytes = __webpack_require__(16);
@@ -33169,7 +33158,7 @@ findPrime.simpleSieve = simpleSieve;
 findPrime.fermatTest = fermatTest;
 var BN = __webpack_require__(6);
 var TWENTYFOUR = new BN(24);
-var MillerRabin = __webpack_require__(67);
+var MillerRabin = __webpack_require__(66);
 var millerRabin = new MillerRabin();
 var ONE = new BN(1);
 var TWO = new BN(2);
@@ -33271,11 +33260,11 @@ function findPrime(bits, gen) {
 
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var bn = __webpack_require__(6);
-var brorand = __webpack_require__(68);
+var brorand = __webpack_require__(67);
 
 function MillerRabin(rand) {
   this.rand = rand || new brorand.Rand();
@@ -33392,7 +33381,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
 
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var r;
@@ -33450,7 +33439,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(150);
+    var crypto = __webpack_require__(151);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -33463,7 +33452,7 @@ if (typeof self === 'object') {
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33528,7 +33517,7 @@ utils.encode = function encode(arr, enc) {
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33584,7 +33573,7 @@ exports.g1_256 = g1_256;
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33592,7 +33581,7 @@ exports.g1_256 = g1_256;
 
 var utils = __webpack_require__(10);
 var common = __webpack_require__(22);
-var shaCommon = __webpack_require__(70);
+var shaCommon = __webpack_require__(69);
 var assert = __webpack_require__(8);
 
 var sum32 = utils.sum32;
@@ -33696,7 +33685,7 @@ SHA256.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34033,7 +34022,7 @@ function g1_512_lo(xh, xl) {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
@@ -34155,7 +34144,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var constants = exports;
@@ -34176,11 +34165,11 @@ constants._reverse = function reverse(map) {
   return res;
 };
 
-constants.der = __webpack_require__(182);
+constants.der = __webpack_require__(183);
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
@@ -34510,7 +34499,7 @@ function derDecodeLen(buf, primitive, fail) {
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
@@ -34811,13 +34800,13 @@ function encodeTag(tag, primitive, cls, reporter) {
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports) {
 
 module.exports = {"1.3.132.0.10":"secp256k1","1.3.132.0.33":"p224","1.2.840.10045.3.1.1":"p192","1.2.840.10045.3.1.7":"p256","1.3.132.0.34":"p384","1.3.132.0.35":"p521"}
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(19);
@@ -34839,7 +34828,7 @@ function i2ops(c) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports) {
 
 module.exports = function xor(a, b) {
@@ -34852,7 +34841,7 @@ module.exports = function xor(a, b) {
 };
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(6);
@@ -34868,27 +34857,27 @@ module.exports = withPublic;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(82);
+module.exports = __webpack_require__(81);
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuedraggable__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuedraggable__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuedraggable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_star_rating__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_star_rating__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_star_rating___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_star_rating__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_v_select2_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_v_select2_component__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_v_select2_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_v_select2_component__);
 
 
@@ -34916,27 +34905,27 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('star-rating', __WEBPACK_I
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('vue-select', __WEBPACK_IMPORTED_MODULE_4_v_select2_component___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-draggable', __WEBPACK_IMPORTED_MODULE_2_vuedraggable___default.a);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey', __webpack_require__(96));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-templates-style', __webpack_require__(102));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-builder', __webpack_require__(107));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-root-element', __webpack_require__(198));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-question', __webpack_require__(203));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-hider', __webpack_require__(208));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-text', __webpack_require__(213));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-header', __webpack_require__(218));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-textarea', __webpack_require__(223));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-dropdown', __webpack_require__(228));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-text', __webpack_require__(233));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-check', __webpack_require__(238));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-slider', __webpack_require__(243));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-image', __webpack_require__(248));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-contact-information', __webpack_require__(253));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-star-rating', __webpack_require__(258));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-ranking', __webpack_require__(263));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix', __webpack_require__(268));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix-scale', __webpack_require__(273));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey', __webpack_require__(95));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-templates-style', __webpack_require__(101));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-builder', __webpack_require__(106));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-root-element', __webpack_require__(199));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-question', __webpack_require__(204));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-hider', __webpack_require__(209));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-text', __webpack_require__(214));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-header', __webpack_require__(219));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-textarea', __webpack_require__(224));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-dropdown', __webpack_require__(229));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-text', __webpack_require__(234));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-multiple-check', __webpack_require__(239));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-slider', __webpack_require__(244));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-image', __webpack_require__(249));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-contact-information', __webpack_require__(254));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-star-rating', __webpack_require__(259));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-ranking', __webpack_require__(264));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix', __webpack_require__(269));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-survey-element-matrix-scale', __webpack_require__(274));
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transition-group-translate-y', __webpack_require__(278));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transition-group-translate-y', __webpack_require__(279));
 
 if (document.querySelectorAll('#app').length) {
     new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -34945,7 +34934,7 @@ if (document.querySelectorAll('#app').length) {
 }
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -35138,7 +35127,7 @@ if (document.querySelectorAll('#app').length) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -52251,7 +52240,7 @@ if (document.querySelectorAll('#app').length) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(45)(module)))
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52651,7 +52640,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }
 
   if (true) {
-    var Sortable = __webpack_require__(86);
+    var Sortable = __webpack_require__(85);
     module.exports = buildDraggable(Sortable);
   } else if (typeof define == "function" && define.amd) {
     define(['sortablejs'], function (Sortable) {
@@ -52664,7 +52653,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 })();
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
@@ -54215,22 +54204,22 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define("VueStarRating",[],e):"object"==typeof exports?exports.VueStarRating=e():t.VueStarRating=e()}(this,function(){return function(t){function e(n){if(r[n])return r[n].exports;var i=r[n]={i:n,l:!1,exports:{}};return t[n].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var r={};return e.m=t,e.c=r,e.i=function(t){return t},e.d=function(t,r,n){e.o(t,r)||Object.defineProperty(t,r,{configurable:!1,enumerable:!0,get:n})},e.n=function(t){var r=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(r,"a",r),r},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/dist/",e(e.s=4)}([function(t,e){function r(t,e){var r=t[1]||"",i=t[3];if(!i)return r;if(e&&"function"==typeof btoa){var o=n(i);return[r].concat(i.sources.map(function(t){return"/*# sourceURL="+i.sourceRoot+t+" */"})).concat([o]).join("\n")}return[r].join("\n")}function n(t){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(t))))+" */"}t.exports=function(t){var e=[];return e.toString=function(){return this.map(function(e){var n=r(e,t);return e[2]?"@media "+e[2]+"{"+n+"}":n}).join("")},e.i=function(t,r){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},i=0;i<this.length;i++){var o=this[i][0];"number"==typeof o&&(n[o]=!0)}for(i=0;i<t.length;i++){var a=t[i];"number"==typeof a[0]&&n[a[0]]||(r&&!a[2]?a[2]=r:r&&(a[2]="("+a[2]+") and ("+r+")"),e.push(a))}},e}},function(t,e){t.exports=function(t,e,r,n,i){var o,a=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(o=t,a=t.default);var u="function"==typeof a?a.options:a;e&&(u.render=e.render,u.staticRenderFns=e.staticRenderFns),n&&(u._scopeId=n);var d;if(i?(d=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},u._ssrRegister=d):r&&(d=r),d){var l=u.functional,c=l?u.render:u.beforeCreate;l?u.render=function(t,e){return d.call(e),c(t,e)}:u.beforeCreate=c?[].concat(c,d):[d]}return{esModule:o,exports:a,options:u}}},function(t,e,r){function n(t){for(var e=0;e<t.length;e++){var r=t[e],n=l[r.id];if(n){n.refs++;for(var i=0;i<n.parts.length;i++)n.parts[i](r.parts[i]);for(;i<r.parts.length;i++)n.parts.push(o(r.parts[i]));n.parts.length>r.parts.length&&(n.parts.length=r.parts.length)}else{for(var a=[],i=0;i<r.parts.length;i++)a.push(o(r.parts[i]));l[r.id]={id:r.id,refs:1,parts:a}}}}function i(){var t=document.createElement("style");return t.type="text/css",c.appendChild(t),t}function o(t){var e,r,n=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]');if(n){if(h)return g;n.parentNode.removeChild(n)}if(v){var o=p++;n=f||(f=i()),e=a.bind(null,n,o,!1),r=a.bind(null,n,o,!0)}else n=i(),e=s.bind(null,n),r=function(){n.parentNode.removeChild(n)};return e(t),function(n){if(n){if(n.css===t.css&&n.media===t.media&&n.sourceMap===t.sourceMap)return;e(t=n)}else r()}}function a(t,e,r,n){var i=r?"":n.css;if(t.styleSheet)t.styleSheet.cssText=m(e,i);else{var o=document.createTextNode(i),a=t.childNodes;a[e]&&t.removeChild(a[e]),a.length?t.insertBefore(o,a[e]):t.appendChild(o)}}function s(t,e){var r=e.css,n=e.media,i=e.sourceMap;if(n&&t.setAttribute("media",n),i&&(r+="\n/*# sourceURL="+i.sources[0]+" */",r+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),t.styleSheet)t.styleSheet.cssText=r;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(r))}}var u="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!u)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var d=r(14),l={},c=u&&(document.head||document.getElementsByTagName("head")[0]),f=null,p=0,h=!1,g=function(){},v="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,r){h=r;var i=d(t,e);return n(i),function(e){for(var r=[],o=0;o<i.length;o++){var a=i[o],s=l[a.id];s.refs--,r.push(s)}e?(i=d(t,e),n(i)):i=[];for(var o=0;o<r.length;o++){var s=r[o];if(0===s.refs){for(var u=0;u<s.parts.length;u++)s.parts[u]();delete l[s.id]}}}};var m=function(){var t=[];return function(e,r){return t[e]=r,t.filter(Boolean).join("\n")}}()},function(t,e,r){function n(t){r(13)}var i=r(1)(r(5),r(11),n,"data-v-34cbeed1",null);t.exports=i.exports},function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=r(3),i=function(t){return t&&t.__esModule?t:{default:t}}(n);e.default=i.default},function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=r(9),i=function(t){return t&&t.__esModule?t:{default:t}}(n);e.default={components:{star:i.default},model:{prop:"rating",event:"rating-selected"},props:{increment:{type:Number,default:1},rating:{type:Number,default:0},roundStartRating:{type:Boolean,default:!0},activeColor:{type:String,default:"#ffd055"},inactiveColor:{type:String,default:"#d8d8d8"},maxRating:{type:Number,default:5},starPoints:{type:Array,default:function(){return[]}},starSize:{type:Number,default:50},showRating:{type:Boolean,default:!0},readOnly:{type:Boolean,default:!1},textClass:{type:String,default:""},inline:{type:Boolean,default:!1},borderColor:{type:String,default:"#999"},borderWidth:{type:Number,default:0},roundedCorners:{type:Boolean,default:!1},padding:{type:Number,default:0},rtl:{type:Boolean,default:!1},fixedPoints:{type:Number,default:null},glow:{type:Number,default:0},glowColor:{type:String,default:"#fff"}},created:function(){this.step=100*this.increment,this.currentRating=this.rating,this.selectedRating=this.currentRating,this.createStars(this.roundStartRating)},methods:{setRating:function(t,e){if(!this.readOnly){var r=this.rtl?(100-t.position)/100:t.position/100;this.currentRating=(t.id+r-1).toFixed(2),this.currentRating=this.currentRating>this.maxRating?this.maxRating:this.currentRating,this.createStars(),e?(this.selectedRating=this.currentRating,this.$emit("rating-selected",this.selectedRating),this.ratingSelected=!0):this.$emit("current-rating",this.currentRating)}},resetRating:function(){this.readOnly||(this.currentRating=this.selectedRating,this.createStars(this.shouldRound))},createStars:function(){(!(arguments.length>0&&void 0!==arguments[0])||arguments[0])&&this.round();for(var t=0;t<this.maxRating;t++){var e=0;t<this.currentRating&&(e=this.currentRating-t>1?100:100*(this.currentRating-t)),this.$set(this.fillLevel,t,Math.round(e))}},round:function(){var t=1/this.increment;this.currentRating=Math.min(this.maxRating,Math.ceil(this.currentRating*t)/t)}},computed:{formattedRating:function(){return null===this.fixedPoints?this.currentRating:this.currentRating.toFixed(this.fixedPoints)},shouldRound:function(){return this.ratingSelected||this.roundStartRating},margin:function(){return this.padding+this.borderWidth}},watch:{rating:function(t){this.currentRating=t,this.selectedRating=t,this.createStars()}},data:function(){return{step:0,fillLevel:[],currentRating:0,selectedRating:0,ratingSelected:!1}}}},function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={props:{fill:{type:Number,default:0},points:{type:Array,default:function(){return[]}},size:{type:Number,default:50},starId:{type:Number,required:!0},activeColor:{type:String,required:!0},inactiveColor:{type:String,required:!0},borderColor:{type:String,default:"#000"},borderWidth:{type:Number,default:0},roundedCorners:{type:Boolean,default:!1},rtl:{type:Boolean,default:!1},glow:{type:Number,default:0},glowColor:{type:String,required:!1}},created:function(){this.starPoints=this.points.length?this.points:this.starPoints,this.calculatePoints(),this.grad=this.getRandomId(),this.glowId=this.getRandomId()},computed:{starPointsToString:function(){return this.starPoints.join(",")},getGradId:function(){return"url(#"+this.grad+")"},getSize:function(){var t=this.roundedCorners&&this.borderWidth<=0?parseInt(this.size)-parseInt(this.border):this.size;return parseInt(t)+parseInt(this.border)},getFill:function(){return this.rtl?100-this.fill+"%":this.fill+"%"},border:function(){return this.roundedCorners&&this.borderWidth<=0?6:this.borderWidth},getBorderColor:function(){return this.roundedCorners&&this.borderWidth<=0?this.fill<=0?this.inactiveColor:this.activeColor:this.borderColor},maxSize:function(){return this.starPoints.reduce(function(t,e){return Math.max(t,e)})},viewBox:function(){return"0 0 "+this.maxSize+" "+this.maxSize}},methods:{mouseMoving:function(t){this.$emit("star-mouse-move",{event:t,position:this.getPosition(t),id:this.starId})},getPosition:function(t){var e=.92*this.size,r=this.rtl?Math.min(t.offsetX,45):Math.max(t.offsetX,1),n=Math.round(100/e*r);return Math.min(n,100)},selected:function(t){this.$emit("star-selected",{id:this.starId,position:this.getPosition(t)})},getRandomId:function(){return Math.random().toString(36).substring(7)},calculatePoints:function(){var t=this;this.starPoints=this.starPoints.map(function(e){return t.size/t.maxSize*e+1.5*t.border})}},data:function(){return{starPoints:[19.8,2.2,6.6,43.56,39.6,17.16,0,17.16,33,43.56],grad:"",glowId:""}}}},function(t,e,r){e=t.exports=r(0)(void 0),e.push([t.i,".vue-star-rating-star[data-v-21f5376e]{overflow:visible!important}",""])},function(t,e,r){e=t.exports=r(0)(void 0),e.push([t.i,".vue-star-rating-star[data-v-34cbeed1]{display:inline-block}.vue-star-rating-pointer[data-v-34cbeed1]{cursor:pointer}.vue-star-rating[data-v-34cbeed1]{display:flex;align-items:center}.vue-star-rating-inline[data-v-34cbeed1]{display:inline-flex}.vue-star-rating-rating-text[data-v-34cbeed1]{margin-top:7px;margin-left:7px}.vue-star-rating-rtl[data-v-34cbeed1]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-34cbeed1]{margin-right:10px;direction:rtl}",""])},function(t,e,r){function n(t){r(12)}var i=r(1)(r(6),r(10),n,"data-v-21f5376e",null);t.exports=i.exports},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("svg",{staticClass:"vue-star-rating-star",attrs:{height:t.getSize,width:t.getSize,viewBox:t.viewBox},on:{mousemove:t.mouseMoving,click:t.selected}},[r("linearGradient",{attrs:{id:t.grad,x1:"0",x2:"100%",y1:"0",y2:"0"}},[r("stop",{attrs:{offset:t.getFill,"stop-color":t.rtl?t.inactiveColor:t.activeColor}}),t._v(" "),r("stop",{attrs:{offset:t.getFill,"stop-color":t.rtl?t.activeColor:t.inactiveColor}})],1),t._v(" "),r("filter",{attrs:{id:t.glowId,height:"130%",width:"130%",filterUnits:"userSpaceOnUse"}},[r("feGaussianBlur",{attrs:{stdDeviation:t.glow,result:"coloredBlur"}}),t._v(" "),r("feMerge",[r("feMergeNode",{attrs:{in:"coloredBlur"}}),t._v(" "),r("feMergeNode",{attrs:{in:"SourceGraphic"}})],1)],1),t._v(" "),r("polygon",{directives:[{name:"show",rawName:"v-show",value:t.fill>1,expression:"fill > 1"}],attrs:{points:t.starPointsToString,fill:t.getGradId,stroke:t.glowColor,filter:"url(#"+this.glowId+")"}}),t._v(" "),r("polygon",{attrs:{points:t.starPointsToString,fill:t.getGradId,stroke:t.getBorderColor,"stroke-width":t.border,"stroke-linejoin":t.roundedCorners?"round":"miter"}}),t._v(" "),r("polygon",{attrs:{points:t.starPointsToString,fill:t.getGradId}})],1)},staticRenderFns:[]}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("div",{class:["vue-star-rating",{"vue-star-rating-rtl":t.rtl},{"vue-star-rating-inline":t.inline}]},[r("div",{staticClass:"vue-star-rating",on:{mouseleave:t.resetRating}},[t._l(t.maxRating,function(e){return r("span",{key:e,class:[{"vue-star-rating-pointer":!t.readOnly},"vue-star-rating-star"],style:{"margin-right":t.margin+"px"}},[r("star",{attrs:{fill:t.fillLevel[e-1],size:t.starSize,points:t.starPoints,"star-id":e,step:t.step,"active-color":t.activeColor,"inactive-color":t.inactiveColor,"border-color":t.borderColor,"border-width":t.borderWidth,"rounded-corners":t.roundedCorners,rtl:t.rtl,glow:t.glow,"glow-color":t.glowColor},on:{"star-selected":function(e){t.setRating(e,!0)},"star-mouse-move":t.setRating}})],1)}),t._v(" "),t.showRating?r("span",{class:["vue-star-rating-rating-text",t.textClass]},[t._v(" "+t._s(t.formattedRating))]):t._e()],2)])},staticRenderFns:[]}},function(t,e,r){var n=r(7);"string"==typeof n&&(n=[[t.i,n,""]]),n.locals&&(t.exports=n.locals);r(2)("0ab8a16d",n,!0)},function(t,e,r){var n=r(8);"string"==typeof n&&(n=[[t.i,n,""]]),n.locals&&(t.exports=n.locals);r(2)("2e648ff1",n,!0)},function(t,e){t.exports=function(t,e){for(var r=[],n={},i=0;i<e.length;i++){var o=e[i],a=o[0],s=o[1],u=o[2],d=o[3],l={id:t+":"+i,css:s,media:u,sourceMap:d};n[a]?n[a].parts.push(l):r.push(n[a]={id:a,parts:[l]})}return r}}])});
 //# sourceMappingURL=star-rating.min.js.map
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(89)
+var __vue_script__ = __webpack_require__(88)
 /* template */
-var __vue_template__ = __webpack_require__(95)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54247,7 +54236,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules\\v-select2-component\\src\\Select2.vue"
+Component.options.__file = "node_modules/v-select2-component/src/Select2.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -54256,9 +54245,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5288c2cd", Component.options)
+    hotAPI.createRecord("data-v-3ae46f98", Component.options)
   } else {
-    hotAPI.reload("data-v-5288c2cd", Component.options)
+    hotAPI.reload("data-v-3ae46f98", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -54269,16 +54258,16 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_select2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_select2_dist_css_select2_min_css__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_select2_dist_css_select2_min_css__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_select2_dist_css_select2_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_select2_dist_css_select2_min_css__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -54376,7 +54365,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 });
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -60233,13 +60222,13 @@ S2.define('jquery.select2',[
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(92);
+var content = __webpack_require__(91);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -60247,7 +60236,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(93)(content, options);
+var update = __webpack_require__(92)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -60264,7 +60253,7 @@ if(false) {
 }
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60278,7 +60267,7 @@ exports.push([module.i, ".select2-container{box-sizing:border-box;display:inline
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -60324,7 +60313,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(94);
+var	fixUrls = __webpack_require__(93);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -60637,7 +60626,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports) {
 
 
@@ -60732,7 +60721,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60752,30 +60741,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5288c2cd", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3ae46f98", module.exports)
   }
 }
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(97)
+  __webpack_require__(96)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(100)
+var __vue_script__ = __webpack_require__(99)
 /* template */
-var __vue_template__ = __webpack_require__(101)
+var __vue_template__ = __webpack_require__(100)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-7db5fc91"
+var __vue_scopeId__ = "data-v-7f07ff51"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -60786,7 +60775,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Survey.vue"
+Component.options.__file = "resources/assets/js/components/Survey.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -60795,9 +60784,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7db5fc91", Component.options)
+    hotAPI.createRecord("data-v-7f07ff51", Component.options)
   } else {
-    hotAPI.reload("data-v-7db5fc91", Component.options)
+    hotAPI.reload("data-v-7f07ff51", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -60808,23 +60797,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(98);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("4b07c30b", content, false, {});
+var update = __webpack_require__(5)("ab2739e4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7db5fc91\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Survey.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7db5fc91\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Survey.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f07ff51\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Survey.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f07ff51\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Survey.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -60834,7 +60823,7 @@ if(false) {
 }
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60842,13 +60831,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-7db5fc91] {\n    margin: 5px 0;\n   border-bottom: 1px solid #DBE8D1;\n}\n.footer-logo[data-v-7db5fc91] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7db5fc91] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7db5fc91] {\n    width: 20%;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.survey-question[data-v-7f07ff51] {\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.footer-logo[data-v-7f07ff51] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7f07ff51] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7f07ff51] {\n    width: 20%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports) {
 
 /**
@@ -60881,18 +60870,12 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -60987,7 +60970,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61078,30 +61061,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7db5fc91", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7f07ff51", module.exports)
   }
 }
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(103)
+  __webpack_require__(102)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(105)
+var __vue_script__ = __webpack_require__(104)
 /* template */
-var __vue_template__ = __webpack_require__(106)
+var __vue_template__ = __webpack_require__(105)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-0b474d2f"
+var __vue_scopeId__ = "data-v-56ca8fef"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -61112,7 +61095,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\TemplatesStyle.vue"
+Component.options.__file = "resources/assets/js/components/TemplatesStyle.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -61121,9 +61104,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0b474d2f", Component.options)
+    hotAPI.createRecord("data-v-56ca8fef", Component.options)
   } else {
-    hotAPI.reload("data-v-0b474d2f", Component.options)
+    hotAPI.reload("data-v-56ca8fef", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -61134,23 +61117,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(104);
+var content = __webpack_require__(103);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("3eaa4563", content, false, {});
+var update = __webpack_require__(5)("672f0224", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0b474d2f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TemplatesStyle.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0b474d2f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TemplatesStyle.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56ca8fef\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TemplatesStyle.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56ca8fef\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TemplatesStyle.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -61160,7 +61143,7 @@ if(false) {
 }
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -61168,13 +61151,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.templates[data-v-0b474d2f] {\r\n\tdisplay: flex;\r\n\tflex-wrap: wrap;\n}\n@media (max-width: 767px) {\n.templates[data-v-0b474d2f] {\r\n\t\tdisplay: block;\n}\n.template-img[data-v-0b474d2f] {\r\n\t\twidth: 100% !important;\r\n\t\tpadding: 2px !important;\r\n\t\tposition: relative;\n}\n}\n.template-img[data-v-0b474d2f] {\r\n\twidth: 50%;\r\n\tpadding: 10px;\r\n\tposition: relative;\n}\n.check-container[data-v-0b474d2f] {\r\n\tpadding: 2px;\r\n\ttop: 10px;\r\n\tright: 10px;\r\n\tbackground-color: #5ba01f; \r\n\tcolor: white;\r\n\tposition: absolute;\n}\n.card-selected[data-v-0b474d2f] {\r\n\tborder: solid 3px #5ba01f;\r\n\tborder-radius: 5px;\n}\n.card[data-v-0b474d2f] {\r\n\tborder: solid 3px #eaeae7;\r\n\tborder-radius: 5px;\n}\n.container-card[data-v-0b474d2f] {\r\n   padding-left: 3px;\r\n   display: flex;\r\n   justify-content: space-around;\r\n   align-items: center;\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.templates[data-v-56ca8fef] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n}\n@media (max-width: 767px) {\n.templates[data-v-56ca8fef] {\n\t\tdisplay: block;\n}\n.template-img[data-v-56ca8fef] {\n\t\twidth: 100% !important;\n\t\tpadding: 2px !important;\n\t\tposition: relative;\n}\n}\n.template-img[data-v-56ca8fef] {\n\twidth: 50%;\n\tpadding: 10px;\n\tposition: relative;\n}\n.check-container[data-v-56ca8fef] {\n\tpadding: 2px;\n\ttop: 10px;\n\tright: 10px;\n\tbackground-color: #5ba01f; \n\tcolor: white;\n\tposition: absolute;\n}\n.card-selected[data-v-56ca8fef] {\n\tborder: solid 3px #5ba01f;\n\tborder-radius: 5px;\n}\n.card[data-v-56ca8fef] {\n\tborder: solid 3px #eaeae7;\n\tborder-radius: 5px;\n}\n.container-card[data-v-56ca8fef] {\n   padding-left: 3px;\n   display: flex;\n   justify-content: space-around;\n   align-items: center;\n}\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61289,7 +61272,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61349,30 +61332,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0b474d2f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-56ca8fef", module.exports)
   }
 }
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(108)
+  __webpack_require__(107)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(110)
+var __vue_script__ = __webpack_require__(109)
 /* template */
-var __vue_template__ = __webpack_require__(197)
+var __vue_template__ = __webpack_require__(198)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-098e407a"
+var __vue_scopeId__ = "data-v-1990b48c"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -61383,7 +61366,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\SurveyBuilder.vue"
+Component.options.__file = "resources/assets/js/components/SurveyBuilder.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -61392,9 +61375,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-098e407a", Component.options)
+    hotAPI.createRecord("data-v-1990b48c", Component.options)
   } else {
-    hotAPI.reload("data-v-098e407a", Component.options)
+    hotAPI.reload("data-v-1990b48c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -61405,23 +61388,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(109);
+var content = __webpack_require__(108);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("2314284c", content, false, {});
+var update = __webpack_require__(5)("2197fc3a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-098e407a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyBuilder.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-098e407a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyBuilder.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1990b48c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyBuilder.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1990b48c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyBuilder.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -61431,7 +61414,7 @@ if(false) {
 }
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -61439,13 +61422,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-builder[data-v-098e407a] {\n        display: flex;\n        background: #fafafa;\n        padding: 20px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-098e407a] {\n            display: flex;\n            background: #fafafa;\n            padding: 5px;\n}\n.root-controls[data-v-098e407a] {\n            flex-basis: 10% !important;\n}\n.templates[data-v-098e407a] {\n\t\t    display: block;\n            width: 100%;\n}\n}\n.root-controls[data-v-098e407a] {\n        flex-basis: 250px;\n}\n.footer-logo[data-v-098e407a] {\n        text-align: center;\n        margin-bottom: 6%;\n}\n.footer-logo > p[data-v-098e407a] {\n        margin: 0;\n}\n.footer-logo > img[data-v-098e407a] {\n        width: 20%;\n}\n.component-container > div > label[data-v-098e407a] {\n        font-size: 20px;\n}\n.container-footer[data-v-098e407a] {\n        width: 90% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 15px;\n}\n\n", ""]);
+exports.push([module.i, "\n.survey-builder[data-v-1990b48c] {\n    display: flex;\n    background: #fafafa;\n    padding: 20px;\n}\n.root-controls[data-v-1990b48c] {\n    flex-basis: 250px;\n}\n.footer-logo[data-v-1990b48c] {\n    text-align: center;\n    margin-bottom: 6%;\n}\n.footer-logo > p[data-v-1990b48c] {\n    margin: 0;\n}\n.footer-logo > img[data-v-1990b48c] {\n    width: 20%;\n}\n.component-container > div > label[data-v-1990b48c] {\n    font-size: 20px;\n}\n.container-footer[data-v-1990b48c] {\n    width: 90% !important;\n    margin: 0 auto;\n    background: white;\n    padding: 15px;\n    padding: 15px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-1990b48c] {\n        display: flex;\n        background: #fafafa;\n        padding: 5px;\n}\n.root-controls[data-v-1990b48c] {\n        flex-basis: 10% !important;\n}\n.templates[data-v-1990b48c] {\n        display: block;\n        width: 100%;\n}\n.container-footer[data-v-1990b48c] {\n        width: 95% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 10px;\n        padding: 10px;\n}\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61453,7 +61436,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__root_elements__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__root_elements__ = __webpack_require__(197);
+//
 //
 //
 //
@@ -61699,12 +61683,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(18)))
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-const crypto = __webpack_require__(112);
+const crypto = __webpack_require__(111);
 
 module.exports = len => {
 	if (!Number.isFinite(len)) {
@@ -61716,7 +61700,7 @@ module.exports = len => {
 
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61724,20 +61708,20 @@ module.exports = len => {
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(16)
 exports.createHash = exports.Hash = __webpack_require__(19)
-exports.createHmac = exports.Hmac = __webpack_require__(54)
+exports.createHmac = exports.Hmac = __webpack_require__(53)
 
-var algos = __webpack_require__(129)
+var algos = __webpack_require__(130)
 var algoKeys = Object.keys(algos)
 var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(algoKeys)
 exports.getHashes = function () {
   return hashes
 }
 
-var p = __webpack_require__(57)
+var p = __webpack_require__(56)
 exports.pbkdf2 = p.pbkdf2
 exports.pbkdf2Sync = p.pbkdf2Sync
 
-var aes = __webpack_require__(131)
+var aes = __webpack_require__(132)
 
 exports.Cipher = aes.Cipher
 exports.createCipher = aes.createCipher
@@ -61750,7 +61734,7 @@ exports.createDecipheriv = aes.createDecipheriv
 exports.getCiphers = aes.getCiphers
 exports.listCiphers = aes.listCiphers
 
-var dh = __webpack_require__(148)
+var dh = __webpack_require__(149)
 
 exports.DiffieHellmanGroup = dh.DiffieHellmanGroup
 exports.createDiffieHellmanGroup = dh.createDiffieHellmanGroup
@@ -61758,16 +61742,16 @@ exports.getDiffieHellman = dh.getDiffieHellman
 exports.createDiffieHellman = dh.createDiffieHellman
 exports.DiffieHellman = dh.DiffieHellman
 
-var sign = __webpack_require__(153)
+var sign = __webpack_require__(154)
 
 exports.createSign = sign.createSign
 exports.Sign = sign.Sign
 exports.createVerify = sign.createVerify
 exports.Verify = sign.Verify
 
-exports.createECDH = __webpack_require__(191)
+exports.createECDH = __webpack_require__(192)
 
-var publicEncrypt = __webpack_require__(192)
+var publicEncrypt = __webpack_require__(193)
 
 exports.publicEncrypt = publicEncrypt.publicEncrypt
 exports.privateEncrypt = publicEncrypt.privateEncrypt
@@ -61787,7 +61771,7 @@ exports.privateDecrypt = publicEncrypt.privateDecrypt
 //   }
 // })
 
-var rf = __webpack_require__(195)
+var rf = __webpack_require__(196)
 
 exports.randomFill = rf.randomFill
 exports.randomFillSync = rf.randomFillSync
@@ -61820,7 +61804,7 @@ exports.constants = {
 
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61978,7 +61962,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -62068,13 +62052,35 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
+/* 114 */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
 /* 115 */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+/* 116 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62083,7 +62089,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(1).Buffer;
-var util = __webpack_require__(117);
+var util = __webpack_require__(118);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -62159,13 +62165,13 @@ if (util && util.inspect && util.inspect.custom) {
 }
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {
@@ -62239,7 +62245,7 @@ function config (name) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62272,7 +62278,7 @@ function config (name) {
 
 module.exports = PassThrough;
 
-var Transform = __webpack_require__(51);
+var Transform = __webpack_require__(50);
 
 /*<replacement>*/
 var util = __webpack_require__(20);
@@ -62292,35 +62298,35 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 };
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(34);
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(15);
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(33).Transform
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(33).PassThrough
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -62420,7 +62426,7 @@ module.exports = Sha
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -62525,7 +62531,7 @@ module.exports = Sha1
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -62537,7 +62543,7 @@ module.exports = Sha1
  */
 
 var inherits = __webpack_require__(0)
-var Sha256 = __webpack_require__(52)
+var Sha256 = __webpack_require__(51)
 var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
@@ -62584,11 +62590,11 @@ module.exports = Sha224
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0)
-var SHA512 = __webpack_require__(53)
+var SHA512 = __webpack_require__(52)
 var Hash = __webpack_require__(17)
 var Buffer = __webpack_require__(1).Buffer
 
@@ -62647,7 +62653,7 @@ module.exports = Sha384
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62700,19 +62706,19 @@ module.exports = Hmac
 
 
 /***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(56)
-
-
-/***/ }),
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, process) {var checkParameters = __webpack_require__(58)
-var defaultEncoding = __webpack_require__(59)
-var sync = __webpack_require__(60)
+module.exports = __webpack_require__(55)
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {var checkParameters = __webpack_require__(57)
+var defaultEncoding = __webpack_require__(58)
+var sync = __webpack_require__(59)
 var Buffer = __webpack_require__(1).Buffer
 
 var ZERO_BUF
@@ -62814,13 +62820,13 @@ module.exports = function (password, salt, iterations, keylen, digest, callback)
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DES = __webpack_require__(132)
+var DES = __webpack_require__(133)
 var aes = __webpack_require__(39)
 var aesModes = __webpack_require__(40)
-var desModes = __webpack_require__(147)
+var desModes = __webpack_require__(148)
 var ebtk = __webpack_require__(27)
 
 function createCipher (suite, password) {
@@ -62887,7 +62893,7 @@ exports.listCiphers = exports.getCiphers = getCiphers
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var CipherBase = __webpack_require__(13)
@@ -62943,7 +62949,7 @@ DES.prototype._final = function () {
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63206,7 +63212,7 @@ exports.padSplit = function padSplit(num, size, group) {
 
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63354,7 +63360,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
 
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63504,7 +63510,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63576,7 +63582,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63638,13 +63644,13 @@ EDE.prototype._unpad = DES.prototype._unpad;
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MODES = __webpack_require__(40)
-var AuthCipher = __webpack_require__(64)
+var AuthCipher = __webpack_require__(63)
 var Buffer = __webpack_require__(1).Buffer
-var StreamCipher = __webpack_require__(65)
+var StreamCipher = __webpack_require__(64)
 var Transform = __webpack_require__(13)
 var aes = __webpack_require__(26)
 var ebtk = __webpack_require__(27)
@@ -63758,7 +63764,7 @@ exports.createCipher = createCipher
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports) {
 
 exports.encrypt = function (self, block) {
@@ -63771,7 +63777,7 @@ exports.decrypt = function (self, block) {
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var xor = __webpack_require__(21)
@@ -63794,7 +63800,7 @@ exports.decrypt = function (self, block) {
 
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(1).Buffer
@@ -63833,7 +63839,7 @@ exports.encrypt = function (self, data, decrypt) {
 
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(1).Buffer
@@ -63864,7 +63870,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(1).Buffer
@@ -63912,7 +63918,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(21)
@@ -63935,7 +63941,7 @@ exports.encrypt = function (self, chunk) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Buffer = __webpack_require__(1).Buffer
@@ -64030,13 +64036,13 @@ module.exports = GHASH
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var AuthCipher = __webpack_require__(64)
+var AuthCipher = __webpack_require__(63)
 var Buffer = __webpack_require__(1).Buffer
 var MODES = __webpack_require__(40)
-var StreamCipher = __webpack_require__(65)
+var StreamCipher = __webpack_require__(64)
 var Transform = __webpack_require__(13)
 var aes = __webpack_require__(26)
 var ebtk = __webpack_require__(27)
@@ -64160,7 +64166,7 @@ exports.createDecipheriv = createDecipheriv
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports) {
 
 exports['des-ecb'] = {
@@ -64190,13 +64196,13 @@ exports['des-ede'] = {
 
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var generatePrime = __webpack_require__(66)
-var primes = __webpack_require__(151)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var generatePrime = __webpack_require__(65)
+var primes = __webpack_require__(152)
 
-var DH = __webpack_require__(152)
+var DH = __webpack_require__(153)
 
 function getDiffieHellman (mod) {
   var prime = new Buffer(primes[mod].prime, 'hex')
@@ -64239,12 +64245,6 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 149 */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
 /* 150 */
 /***/ (function(module, exports) {
 
@@ -64254,21 +64254,27 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 /* 151 */
 /***/ (function(module, exports) {
 
-module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}}
+/* (ignored) */
 
 /***/ }),
 /* 152 */
+/***/ (function(module, exports) {
+
+module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}}
+
+/***/ }),
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(6);
-var MillerRabin = __webpack_require__(67);
+var MillerRabin = __webpack_require__(66);
 var millerRabin = new MillerRabin();
 var TWENTYFOUR = new BN(24);
 var ELEVEN = new BN(11);
 var TEN = new BN(10);
 var THREE = new BN(3);
 var SEVEN = new BN(7);
-var primes = __webpack_require__(66);
+var primes = __webpack_require__(65);
 var randomBytes = __webpack_require__(16);
 module.exports = DH;
 
@@ -64428,16 +64434,16 @@ function formatReturnValue(bn, enc) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(19)
 var stream = __webpack_require__(31)
 var inherits = __webpack_require__(0)
-var sign = __webpack_require__(154)
-var verify = __webpack_require__(190)
+var sign = __webpack_require__(155)
+var verify = __webpack_require__(191)
 
-var algorithms = __webpack_require__(56)
+var algorithms = __webpack_require__(55)
 Object.keys(algorithms).forEach(function (key) {
   algorithms[key].id = new Buffer(algorithms[key].id, 'hex')
   algorithms[key.toLowerCase()] = algorithms[key]
@@ -64526,16 +64532,16 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var createHmac = __webpack_require__(54)
+var createHmac = __webpack_require__(53)
 var crt = __webpack_require__(41)
 var EC = __webpack_require__(7).ec
 var BN = __webpack_require__(6)
 var parseKeys = __webpack_require__(29)
-var curves = __webpack_require__(77)
+var curves = __webpack_require__(76)
 
 function sign (hash, key, hashType, signType, tag) {
   var priv = parseKeys(key)
@@ -64678,13 +64684,13 @@ module.exports.makeKey = makeKey
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"elliptic","version":"6.4.0","description":"EC cryptography","main":"lib/elliptic.js","files":["lib"],"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","unit":"istanbul test _mocha --reporter=spec test/index.js","test":"npm run lint && npm run unit","version":"grunt dist && git add dist/"},"repository":{"type":"git","url":"git@github.com:indutny/elliptic"},"keywords":["EC","Elliptic","curve","Cryptography"],"author":"Fedor Indutny <fedor@indutny.com>","license":"MIT","bugs":{"url":"https://github.com/indutny/elliptic/issues"},"homepage":"https://github.com/indutny/elliptic","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"}}
+module.exports = {"_from":"elliptic@^6.0.0","_id":"elliptic@6.4.1","_inBundle":false,"_integrity":"sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"elliptic@^6.0.0","name":"elliptic","escapedName":"elliptic","rawSpec":"^6.0.0","saveSpec":null,"fetchSpec":"^6.0.0"},"_requiredBy":["/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz","_shasum":"c2d0b7776911b86722c632c3c06c60f2f819939a","_spec":"elliptic@^6.0.0","_where":"/Users/fermanza1/Code/workspace_lvl/Survenia/node_modules/browserify-sign","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"bundleDependencies":false,"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"deprecated":false,"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.1"}
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64693,7 +64699,7 @@ module.exports = {"name":"elliptic","version":"6.4.0","description":"EC cryptogr
 var utils = exports;
 var BN = __webpack_require__(6);
 var minAssert = __webpack_require__(8);
-var minUtils = __webpack_require__(69);
+var minUtils = __webpack_require__(68);
 
 utils.assert = minAssert;
 utils.toArray = minUtils.toArray;
@@ -64811,7 +64817,7 @@ utils.intFromLE = intFromLE;
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65193,7 +65199,7 @@ BasePoint.prototype.dblp = function dblp(k) {
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66120,7 +66126,6 @@ JPoint.prototype.eqXToP = function eqXToP(x) {
     if (this.x.cmp(rx) === 0)
       return true;
   }
-  return false;
 };
 
 JPoint.prototype.inspect = function inspect() {
@@ -66138,7 +66143,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66325,7 +66330,7 @@ Point.prototype.getX = function getX() {
 
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66405,10 +66410,10 @@ EdwardsCurve.prototype.pointFromY = function pointFromY(y, odd) {
   if (!y.red)
     y = y.toRed(this.red);
 
-  // x^2 = (y^2 - 1) / (d y^2 + 1)
+  // x^2 = (y^2 - c^2) / (c^2 d y^2 - a)
   var y2 = y.redSqr();
-  var lhs = y2.redSub(this.one);
-  var rhs = y2.redMul(this.d).redAdd(this.one);
+  var lhs = y2.redSub(this.c2);
+  var rhs = y2.redMul(this.d).redMul(this.c2).redSub(this.a);
   var x2 = lhs.redMul(rhs.redInvm());
 
   if (x2.cmp(this.zero) === 0) {
@@ -66422,7 +66427,7 @@ EdwardsCurve.prototype.pointFromY = function pointFromY(y, odd) {
   if (x.redSqr().redSub(x2).cmp(this.zero) !== 0)
     throw new Error('invalid point');
 
-  if (x.isOdd() !== odd)
+  if (x.fromRed().isOdd() !== odd)
     x = x.redNeg();
 
   return this.point(x, y);
@@ -66499,7 +66504,8 @@ Point.prototype.inspect = function inspect() {
 Point.prototype.isInfinity = function isInfinity() {
   // XXX This code assumes that zero is always zero in red
   return this.x.cmpn(0) === 0 &&
-         this.y.cmp(this.z) === 0;
+    (this.y.cmp(this.z) === 0 ||
+    (this.zOne && this.y.cmp(this.curve.c) === 0));
 };
 
 Point.prototype._extDbl = function _extDbl() {
@@ -66580,7 +66586,7 @@ Point.prototype._projDbl = function _projDbl() {
     // E = C + D
     var e = c.redAdd(d);
     // H = (c * Z1)^2
-    var h = this.curve._mulC(this.c.redMul(this.z)).redSqr();
+    var h = this.curve._mulC(this.z).redSqr();
     // J = E - 2 * H
     var j = e.redSub(h).redSub(h);
     // X3 = c * (B - E) * J
@@ -66756,7 +66762,6 @@ Point.prototype.eqXToP = function eqXToP(x) {
     if (this.x.cmp(rx) === 0)
       return true;
   }
-  return false;
 };
 
 // Compatibility with BaseCurve
@@ -66765,7 +66770,7 @@ Point.prototype.mixedAdd = Point.prototype.add;
 
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66938,7 +66943,7 @@ defineCurve('ed25519', {
 
 var pre;
 try {
-  pre = __webpack_require__(168);
+  pre = __webpack_require__(169);
 } catch (e) {
   pre = undefined;
 }
@@ -66977,21 +66982,21 @@ defineCurve('secp256k1', {
 
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.sha1 = __webpack_require__(163);
-exports.sha224 = __webpack_require__(164);
-exports.sha256 = __webpack_require__(71);
-exports.sha384 = __webpack_require__(165);
-exports.sha512 = __webpack_require__(72);
+exports.sha1 = __webpack_require__(164);
+exports.sha224 = __webpack_require__(165);
+exports.sha256 = __webpack_require__(70);
+exports.sha384 = __webpack_require__(166);
+exports.sha512 = __webpack_require__(71);
 
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66999,7 +67004,7 @@ exports.sha512 = __webpack_require__(72);
 
 var utils = __webpack_require__(10);
 var common = __webpack_require__(22);
-var shaCommon = __webpack_require__(70);
+var shaCommon = __webpack_require__(69);
 
 var rotl32 = utils.rotl32;
 var sum32 = utils.sum32;
@@ -67072,14 +67077,14 @@ SHA1.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(10);
-var SHA256 = __webpack_require__(71);
+var SHA256 = __webpack_require__(70);
 
 function SHA224() {
   if (!(this instanceof SHA224))
@@ -67109,7 +67114,7 @@ SHA224.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67117,7 +67122,7 @@ SHA224.prototype._digest = function digest(enc) {
 
 var utils = __webpack_require__(10);
 
-var SHA512 = __webpack_require__(72);
+var SHA512 = __webpack_require__(71);
 
 function SHA384() {
   if (!(this instanceof SHA384))
@@ -67151,7 +67156,7 @@ SHA384.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67304,7 +67309,7 @@ var sh = [
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67358,7 +67363,7 @@ Hmac.prototype.digest = function digest(enc) {
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -68144,20 +68149,20 @@ module.exports = {
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var BN = __webpack_require__(6);
-var HmacDRBG = __webpack_require__(170);
+var HmacDRBG = __webpack_require__(171);
 var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
 var assert = utils.assert;
 
-var KeyPair = __webpack_require__(171);
-var Signature = __webpack_require__(172);
+var KeyPair = __webpack_require__(172);
+var Signature = __webpack_require__(173);
 
 function EC(options) {
   if (!(this instanceof EC))
@@ -68391,14 +68396,14 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
 
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var hash = __webpack_require__(42);
-var utils = __webpack_require__(69);
+var utils = __webpack_require__(68);
 var assert = __webpack_require__(8);
 
 function HmacDRBG(options) {
@@ -68511,7 +68516,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68637,7 +68642,7 @@ KeyPair.prototype.inspect = function inspect() {
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68779,7 +68784,7 @@ Signature.prototype.toDER = function toDER(enc) {
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68790,8 +68795,8 @@ var elliptic = __webpack_require__(7);
 var utils = elliptic.utils;
 var assert = utils.assert;
 var parseBytes = utils.parseBytes;
-var KeyPair = __webpack_require__(174);
-var Signature = __webpack_require__(175);
+var KeyPair = __webpack_require__(175);
+var Signature = __webpack_require__(176);
 
 function EDDSA(curve) {
   assert(curve === 'ed25519', 'only tested with ed25519 so far');
@@ -68904,7 +68909,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
 
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69007,7 +69012,7 @@ module.exports = KeyPair;
 
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69080,7 +69085,7 @@ module.exports = Signature;
 
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69090,7 +69095,7 @@ module.exports = Signature;
 
 var asn1 = __webpack_require__(23)
 
-exports.certificate = __webpack_require__(187)
+exports.certificate = __webpack_require__(188)
 
 var RSAPrivateKey = asn1.define('RSAPrivateKey', function () {
   this.seq().obj(
@@ -69209,7 +69214,7 @@ exports.signature = asn1.define('signature', function () {
 
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var asn1 = __webpack_require__(23);
@@ -69232,7 +69237,7 @@ function Entity(name, body) {
 Entity.prototype._createNamed = function createNamed(base) {
   var named;
   try {
-    named = __webpack_require__(178).runInThisContext(
+    named = __webpack_require__(179).runInThisContext(
       '(function ' + this.name + '(entity) {\n' +
       '  this._initNamed(entity);\n' +
       '})'
@@ -69276,10 +69281,10 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
 
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var indexOf = __webpack_require__(179);
+var indexOf = __webpack_require__(180);
 
 var Object_keys = function (obj) {
     if (Object.keys) return Object.keys(obj)
@@ -69420,7 +69425,7 @@ exports.createContext = Script.createContext = function (context) {
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports) {
 
 
@@ -69435,7 +69440,7 @@ module.exports = function(arr, obj){
 };
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
@@ -69562,7 +69567,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Reporter = __webpack_require__(24).Reporter;
@@ -70202,10 +70207,10 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constants = __webpack_require__(74);
+var constants = __webpack_require__(73);
 
 exports.tagClass = {
   0: 'universal',
@@ -70250,23 +70255,23 @@ exports.tagByName = constants._reverse(exports.tag);
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var decoders = exports;
 
-decoders.der = __webpack_require__(75);
-decoders.pem = __webpack_require__(184);
+decoders.der = __webpack_require__(74);
+decoders.pem = __webpack_require__(185);
 
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
 var Buffer = __webpack_require__(2).Buffer;
 
-var DERDecoder = __webpack_require__(75);
+var DERDecoder = __webpack_require__(74);
 
 function PEMDecoder(entity) {
   DERDecoder.call(this, entity);
@@ -70315,22 +70320,22 @@ PEMDecoder.prototype.decode = function decode(data, options) {
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var encoders = exports;
 
-encoders.der = __webpack_require__(76);
-encoders.pem = __webpack_require__(186);
+encoders.der = __webpack_require__(75);
+encoders.pem = __webpack_require__(187);
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(0);
 
-var DEREncoder = __webpack_require__(76);
+var DEREncoder = __webpack_require__(75);
 
 function PEMEncoder(entity) {
   DEREncoder.call(this, entity);
@@ -70352,7 +70357,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70447,13 +70452,13 @@ module.exports = X509Certificate
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports) {
 
 module.exports = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2":"aes-128-cbc","2.16.840.1.101.3.4.1.3":"aes-128-ofb","2.16.840.1.101.3.4.1.4":"aes-128-cfb","2.16.840.1.101.3.4.1.21":"aes-192-ecb","2.16.840.1.101.3.4.1.22":"aes-192-cbc","2.16.840.1.101.3.4.1.23":"aes-192-ofb","2.16.840.1.101.3.4.1.24":"aes-192-cfb","2.16.840.1.101.3.4.1.41":"aes-256-ecb","2.16.840.1.101.3.4.1.42":"aes-256-cbc","2.16.840.1.101.3.4.1.43":"aes-256-ofb","2.16.840.1.101.3.4.1.44":"aes-256-cfb"}
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// adapted from https://github.com/apatil/pemstrip
@@ -70490,14 +70495,14 @@ module.exports = function (okey, password) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var BN = __webpack_require__(6)
 var EC = __webpack_require__(7).ec
 var parseKeys = __webpack_require__(29)
-var curves = __webpack_require__(77)
+var curves = __webpack_require__(76)
 
 function verify (sig, hash, key, signType, tag) {
   var pub = parseKeys(key)
@@ -70580,7 +70585,7 @@ module.exports = verify
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var elliptic = __webpack_require__(7)
@@ -70711,11 +70716,11 @@ function formatReturnValue (bn, enc, len) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.publicEncrypt = __webpack_require__(193);
-exports.privateDecrypt = __webpack_require__(194);
+exports.publicEncrypt = __webpack_require__(194);
+exports.privateDecrypt = __webpack_require__(195);
 
 exports.privateEncrypt = function privateEncrypt(key, buf) {
   return exports.publicEncrypt(key, buf, true);
@@ -70726,16 +70731,16 @@ exports.publicDecrypt = function publicDecrypt(key, buf) {
 };
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(29);
 var randomBytes = __webpack_require__(16);
 var createHash = __webpack_require__(19);
-var mgf = __webpack_require__(78);
-var xor = __webpack_require__(79);
+var mgf = __webpack_require__(77);
+var xor = __webpack_require__(78);
 var bn = __webpack_require__(6);
-var withPublic = __webpack_require__(80);
+var withPublic = __webpack_require__(79);
 var crt = __webpack_require__(41);
 
 var constants = {
@@ -70827,16 +70832,16 @@ function nonZero(len, crypto) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(29);
-var mgf = __webpack_require__(78);
-var xor = __webpack_require__(79);
+var mgf = __webpack_require__(77);
+var xor = __webpack_require__(78);
 var bn = __webpack_require__(6);
 var crt = __webpack_require__(41);
 var createHash = __webpack_require__(19);
-var withPublic = __webpack_require__(80);
+var withPublic = __webpack_require__(79);
 module.exports = function privateDecrypt(private_key, enc, reverse) {
   var padding;
   if (private_key.padding) {
@@ -70941,7 +70946,7 @@ function compare(a, b){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71057,7 +71062,7 @@ function randomFillSync (buf, offset, size) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(11)))
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71367,7 +71372,7 @@ var rootElements = [{
 /* harmony default export */ __webpack_exports__["a"] = (rootElements);
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71629,30 +71634,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-098e407a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1990b48c", module.exports)
   }
 }
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(199)
+  __webpack_require__(200)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(201)
+var __vue_script__ = __webpack_require__(202)
 /* template */
-var __vue_template__ = __webpack_require__(202)
+var __vue_template__ = __webpack_require__(203)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3f052513"
+var __vue_scopeId__ = "data-v-1b724b5a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -71663,7 +71668,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\RootElement.vue"
+Component.options.__file = "resources/assets/js/components/RootElement.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -71672,9 +71677,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3f052513", Component.options)
+    hotAPI.createRecord("data-v-1b724b5a", Component.options)
   } else {
-    hotAPI.reload("data-v-3f052513", Component.options)
+    hotAPI.reload("data-v-1b724b5a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -71685,23 +71690,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(200);
+var content = __webpack_require__(201);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("41c14359", content, false, {});
+var update = __webpack_require__(5)("d63116a0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f052513\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RootElement.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f052513\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RootElement.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1b724b5a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RootElement.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1b724b5a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RootElement.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -71711,7 +71716,7 @@ if(false) {
 }
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -71719,13 +71724,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.root-element[data-v-3f052513] {\n    font-size: 15px;\n    padding: 10px 15px;\n    border-bottom: 1px solid #d1d1d1;\n    color: #232323;\n    cursor: pointer;\n}\n@media screen and (max-width: 768px) {\n.element-title[data-v-3f052513] {\n        display: none;\n}\n}\n", ""]);
+exports.push([module.i, "\n.root-element[data-v-1b724b5a] {\n    font-size: 15px;\n    padding: 10px 15px;\n    border-bottom: 1px solid #d1d1d1;\n    color: #232323;\n    cursor: pointer;\n}\n@media screen and (max-width: 768px) {\n.element-title[data-v-1b724b5a] {\n        display: none;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71760,7 +71765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71781,30 +71786,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3f052513", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1b724b5a", module.exports)
   }
 }
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(204)
+  __webpack_require__(205)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(207)
 /* template */
-var __vue_template__ = __webpack_require__(207)
+var __vue_template__ = __webpack_require__(208)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-284e2097"
+var __vue_scopeId__ = "data-v-73d16357"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -71815,7 +71820,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\SurveyQuestion.vue"
+Component.options.__file = "resources/assets/js/components/SurveyQuestion.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -71824,9 +71829,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-284e2097", Component.options)
+    hotAPI.createRecord("data-v-73d16357", Component.options)
   } else {
-    hotAPI.reload("data-v-284e2097", Component.options)
+    hotAPI.reload("data-v-73d16357", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -71837,23 +71842,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(205);
+var content = __webpack_require__(206);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("2539b479", content, false, {});
+var update = __webpack_require__(5)("33721ac4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-284e2097\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyQuestion.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-284e2097\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyQuestion.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-73d16357\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyQuestion.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-73d16357\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyQuestion.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -71863,7 +71868,7 @@ if(false) {
 }
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -71871,23 +71876,18 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-284e2097] {\n    position: relative;\n    padding-top: 20px;\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.controls[data-v-284e2097] {\n    position: absolute;\n    right: 0;\n}\n.question-action[data-v-284e2097] {\n    cursor: pointer;\n}\n.close-component[data-v-284e2097] {\n     border: 2px solid #70878C;\n}\n.background-grey[data-v-284e2097] {\n    background: #eee;\n}\n", ""]);
+exports.push([module.i, "\n.survey-question[data-v-73d16357] {\n    position: relative;\n    padding-top: 20px;\n    border-bottom: 1px solid #DBE8D1;\n}\n.controls[data-v-73d16357] {\n    position: absolute;\n    right: 0;\n}\n.question-action[data-v-73d16357] {\n    cursor: pointer;\n}\n.close-component[data-v-73d16357] {\n     border: 2px solid #70878C;\n}\n.background-grey[data-v-73d16357] {\n    background: #eee;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -71962,7 +71962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71972,7 +71972,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "survey-question double-border  background-gray",
+      staticClass: "survey-question double-border",
       class: _vm.display ? "" : "background-grey"
     },
     [
@@ -71989,14 +71989,14 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("i", {
-          staticClass: "survey-questions-action-button fa fa-times",
+          staticClass: "survey-questions-action-button-margin fa fa-times",
           on: { click: _vm.removeQuestion }
         })
       ]),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "component-container background-gray" },
+        { staticClass: "component-container" },
         [
           _c(_vm.parseComponent(_vm.surveyElement), {
             tag: "component",
@@ -72037,30 +72037,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-284e2097", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-73d16357", module.exports)
   }
 }
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(209)
+  __webpack_require__(210)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(212)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(213)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-13ad6f8f"
+var __vue_scopeId__ = "data-v-7221b662"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72071,7 +72071,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\SurveyHider.vue"
+Component.options.__file = "resources/assets/js/components/SurveyHider.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72080,9 +72080,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-13ad6f8f", Component.options)
+    hotAPI.createRecord("data-v-7221b662", Component.options)
   } else {
-    hotAPI.reload("data-v-13ad6f8f", Component.options)
+    hotAPI.reload("data-v-7221b662", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72093,23 +72093,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(211);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("77922733", content, false, {});
+var update = __webpack_require__(5)("78b62d6c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-13ad6f8f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-13ad6f8f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7221b662\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyHider.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72119,7 +72119,7 @@ if(false) {
 }
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -72127,13 +72127,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.option-container[data-v-13ad6f8f] {\n    display: flex;\n    margin-bottom: 5px;\n}\n.option-select[data-v-13ad6f8f] {\n    flex: 1;\n}\n.option-label[data-v-13ad6f8f] {\n    flex-basis: 100px;\n}\n", ""]);
+exports.push([module.i, "\n.option-container[data-v-7221b662] {\n    display: flex;\n    margin-bottom: 5px;\n}\n.option-select[data-v-7221b662] {\n    flex: 1;\n}\n.option-label[data-v-7221b662] {\n    flex-basis: 100px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72228,7 +72228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72340,30 +72340,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-13ad6f8f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7221b662", module.exports)
   }
 }
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(214)
+  __webpack_require__(215)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(217)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(218)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-032cde61"
+var __vue_scopeId__ = "data-v-26a0332e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72374,7 +72374,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementText.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementText.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72383,9 +72383,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-032cde61", Component.options)
+    hotAPI.createRecord("data-v-26a0332e", Component.options)
   } else {
-    hotAPI.reload("data-v-032cde61", Component.options)
+    hotAPI.reload("data-v-26a0332e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72396,23 +72396,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(215);
+var content = __webpack_require__(216);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("025ddf30", content, false, {});
+var update = __webpack_require__(5)("7eb5727f", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-032cde61\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementText.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-032cde61\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementText.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26a0332e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementText.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26a0332e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementText.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72422,7 +72422,7 @@ if(false) {
 }
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -72436,11 +72436,15 @@ exports.push([module.i, "\n\n", ""]);
 
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -72464,7 +72468,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72476,57 +72480,65 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", { staticClass: "paddings" }, [
+          _c("label", { staticClass: "paddings background-gray" }, [
             _vm._v(_vm._s(_vm.surveyElement.config.title))
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.answer,
-                expression: "surveyElement.answer"
-              }
-            ],
-            staticClass: "form-control border-radius-input",
-            attrs: { type: "text", name: _vm.surveyElement.uid },
-            domProps: { value: _vm.surveyElement.answer },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.answer,
+                  expression: "surveyElement.answer"
                 }
-                _vm.$set(_vm.surveyElement, "answer", $event.target.value)
+              ],
+              staticClass: "form-control border-radius-input",
+              attrs: { type: "text", name: _vm.surveyElement.uid },
+              domProps: { value: _vm.surveyElement.answer },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.surveyElement, "answer", $event.target.value)
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e()
   ])
@@ -72537,30 +72549,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-032cde61", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-26a0332e", module.exports)
   }
 }
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(219)
+  __webpack_require__(220)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(221)
+var __vue_script__ = __webpack_require__(222)
 /* template */
-var __vue_template__ = __webpack_require__(222)
+var __vue_template__ = __webpack_require__(223)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-31e0f4c1"
+var __vue_scopeId__ = "data-v-45d24a4e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72571,7 +72583,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementHeader.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementHeader.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72580,9 +72592,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-31e0f4c1", Component.options)
+    hotAPI.createRecord("data-v-45d24a4e", Component.options)
   } else {
-    hotAPI.reload("data-v-31e0f4c1", Component.options)
+    hotAPI.reload("data-v-45d24a4e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72593,23 +72605,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(220);
+var content = __webpack_require__(221);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("407bcbf3", content, false, {});
+var update = __webpack_require__(5)("44296790", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31e0f4c1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementHeader.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-31e0f4c1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementHeader.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45d24a4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementHeader.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45d24a4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementHeader.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72619,7 +72631,7 @@ if(false) {
 }
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -72633,11 +72645,13 @@ exports.push([module.i, "\n\n", ""]);
 
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -72660,7 +72674,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72672,32 +72686,42 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(" " + _vm._s(_vm.$Lang.trans("Label")) + " ")]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
-      ? _c("div", [_c("h6", [_vm._v(_vm._s(_vm.surveyElement.config.title))])])
+      ? _c("div", [
+          _c("h6", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ])
+        ])
       : _vm._e()
   ])
 }
@@ -72707,30 +72731,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-31e0f4c1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-45d24a4e", module.exports)
   }
 }
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(224)
+  __webpack_require__(225)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(226)
+var __vue_script__ = __webpack_require__(227)
 /* template */
-var __vue_template__ = __webpack_require__(227)
+var __vue_template__ = __webpack_require__(228)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-e48ed824"
+var __vue_scopeId__ = "data-v-6aaaba3b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72741,7 +72765,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementTextarea.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementTextarea.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72750,9 +72774,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e48ed824", Component.options)
+    hotAPI.createRecord("data-v-6aaaba3b", Component.options)
   } else {
-    hotAPI.reload("data-v-e48ed824", Component.options)
+    hotAPI.reload("data-v-6aaaba3b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72763,23 +72787,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(225);
+var content = __webpack_require__(226);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("05e98a00", content, false, {});
+var update = __webpack_require__(5)("31b99334", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e48ed824\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementTextarea.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e48ed824\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementTextarea.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aaaba3b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementTextarea.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aaaba3b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementTextarea.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72789,7 +72813,7 @@ if(false) {
 }
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -72797,17 +72821,21 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\ntextarea[data-v-e48ed824] {\n    resize: none;\n}\n\n\n", ""]);
+exports.push([module.i, "\ntextarea[data-v-6aaaba3b] {\n    resize: none;\n}\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -72835,7 +72863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72847,55 +72875,65 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control border-radius-input",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              ],
+              staticClass: "form-control border-radius-input",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
           _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.answer,
-                expression: "surveyElement.answer"
-              }
-            ],
-            staticClass: "form-control border-radius-input",
-            attrs: { name: _vm.surveyElement.uid, rows: "4" },
-            domProps: { value: _vm.surveyElement.answer },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.answer,
+                  expression: "surveyElement.answer"
                 }
-                _vm.$set(_vm.surveyElement, "answer", $event.target.value)
+              ],
+              staticClass: "form-control border-radius-input",
+              attrs: { name: _vm.surveyElement.uid, rows: "4" },
+              domProps: { value: _vm.surveyElement.answer },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.surveyElement, "answer", $event.target.value)
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e()
   ])
@@ -72906,30 +72944,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e48ed824", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6aaaba3b", module.exports)
   }
 }
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(229)
+  __webpack_require__(230)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(231)
+var __vue_script__ = __webpack_require__(232)
 /* template */
-var __vue_template__ = __webpack_require__(232)
+var __vue_template__ = __webpack_require__(233)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-72f3dd45"
+var __vue_scopeId__ = "data-v-4fe60392"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72940,7 +72978,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementDropdown.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementDropdown.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -72949,9 +72987,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-72f3dd45", Component.options)
+    hotAPI.createRecord("data-v-4fe60392", Component.options)
   } else {
-    hotAPI.reload("data-v-72f3dd45", Component.options)
+    hotAPI.reload("data-v-4fe60392", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -72962,23 +73000,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(230);
+var content = __webpack_require__(231);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("4f4ee717", content, false, {});
+var update = __webpack_require__(5)("45706aae", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3dd45\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3dd45\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe60392\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementDropdown.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72988,7 +73026,7 @@ if(false) {
 }
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -72996,18 +73034,22 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.option-container[data-v-72f3dd45] {\n    display: flex;\n}\n.option-input[data-v-72f3dd45] {\n    flex: 1;\n}\n.option-action[data-v-72f3dd45] {\n    flex-basis: 25px;\n}\n.option-action[data-v-72f3dd45] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.option-container[data-v-4fe60392] {\n    display: flex;\n}\n.option-input[data-v-4fe60392] {\n    flex: 1;\n}\n.option-action[data-v-4fe60392] {\n    flex-basis: 25px;\n}\n.option-action[data-v-4fe60392] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
+//
+//
+//
+//
 //
 //
 //
@@ -73097,7 +73139,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73120,158 +73162,174 @@ var render = function() {
       [
         _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.surveyElement.config.title,
-              expression: "surveyElement.config.title"
-            }
-          ],
-          staticClass: "form-control border-radius-input",
-          attrs: { type: "text" },
-          domProps: { value: _vm.surveyElement.config.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
         _c(
           "div",
+          { staticClass: "questions-data-container" },
           [
-            _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
-            _vm._v(" "),
-            _vm._l(_vm.surveyElement.config.list, function(option, index) {
-              return _c("div", { staticClass: "option-container" }, [
-                _c("div", { staticClass: "option-input" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index],
-                        expression: "surveyElement.config.list[index]"
-                      }
-                    ],
-                    staticClass: "form-control border-radius-input",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.surveyElement.config.list[index] },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.surveyElement.config.list,
-                          index,
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "option-action" }, [
-                  _c("i", {
-                    staticClass: "fa fa-minus text-success",
-                    on: {
-                      click: function($event) {
-                        _vm.removeOption(index)
-                      }
-                    }
-                  })
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "a",
-                {
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.addOption($event)
-                    }
-                  }
-                },
-                [
-                  _vm._v("   "),
-                  _c("i", { staticClass: "fa fa-plus text-success" })
-                ]
-              )
-            ])
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c("app-survey-hider", {
-          attrs: {
-            "hide-config": _vm.surveyElement.config.hideConfig,
-            "survey-element-uid": _vm.surveyElement.uid,
-            answer: _vm.surveyElement.answer,
-            index: _vm.index
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm.display
-      ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
+            _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.surveyElement.answer,
-                  expression: "surveyElement.answer"
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
               ],
               staticClass: "form-control border-radius-input",
-              attrs: { name: _vm.surveyElement.uid },
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
               on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
                   _vm.$set(
-                    _vm.surveyElement,
-                    "answer",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
                   )
                 }
               }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v(_vm._s(_vm.$Lang.trans("Choose an option")))
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.list, function(option) {
-                return _c("option", { domProps: { value: option } }, [
-                  _vm._v(_vm._s(option))
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.list, function(option, index) {
+                  return _c("div", { staticClass: "option-container" }, [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.list[index],
+                            expression: "surveyElement.config.list[index]"
+                          }
+                        ],
+                        staticClass: "form-control border-radius-input",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.list[index]
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.list,
+                              index,
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-minus text-success",
+                        on: {
+                          click: function($event) {
+                            _vm.removeOption(index)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addOption($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
                 ])
-              })
-            ],
-            2
-          )
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("app-survey-hider", {
+              attrs: {
+                "hide-config": _vm.surveyElement.config.hideConfig,
+                "survey-element-uid": _vm.surveyElement.uid,
+                answer: _vm.surveyElement.answer,
+                index: _vm.index
+              }
+            })
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _vm.display
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.surveyElement.answer,
+                    expression: "surveyElement.answer"
+                  }
+                ],
+                staticClass: "form-control border-radius-input",
+                attrs: { name: _vm.surveyElement.uid },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.surveyElement,
+                      "answer",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v(_vm._s(_vm.$Lang.trans("Choose an option")))
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.list, function(option) {
+                  return _c("option", { domProps: { value: option } }, [
+                    _vm._v(_vm._s(option))
+                  ])
+                })
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e()
   ])
@@ -73282,30 +73340,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-72f3dd45", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4fe60392", module.exports)
   }
 }
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(234)
+  __webpack_require__(235)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(236)
+var __vue_script__ = __webpack_require__(237)
 /* template */
-var __vue_template__ = __webpack_require__(237)
+var __vue_template__ = __webpack_require__(238)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-18b006de"
+var __vue_scopeId__ = "data-v-2354345e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -73316,7 +73374,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementMultipleText.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementMultipleText.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -73325,9 +73383,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-18b006de", Component.options)
+    hotAPI.createRecord("data-v-2354345e", Component.options)
   } else {
-    hotAPI.reload("data-v-18b006de", Component.options)
+    hotAPI.reload("data-v-2354345e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -73338,23 +73396,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(235);
+var content = __webpack_require__(236);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("59217c08", content, false, {});
+var update = __webpack_require__(5)("ddae6818", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-18b006de\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleText.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-18b006de\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleText.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2354345e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleText.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2354345e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleText.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -73364,7 +73422,7 @@ if(false) {
 }
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -73372,19 +73430,23 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.field-container[data-v-18b006de] {\n    display: flex;\n}\n.field-input[data-v-18b006de] {\n    flex: 1;\n}\n.field-action[data-v-18b006de] {\n    flex-basis: 25px;\n}\n.field-action[data-v-18b006de] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.field-container[data-v-2354345e] {\n    display: flex;\n}\n.field-input[data-v-2354345e] {\n    flex: 1;\n}\n.field-action[data-v-2354345e] {\n    flex-basis: 25px;\n}\n.field-action[data-v-2354345e] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
 //
 //
 //
@@ -73464,7 +73526,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73473,117 +73535,123 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     !_vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.surveyElement.config.title,
-                  expression: "surveyElement.config.title"
-                }
-              ],
-              staticClass: "form-control border-radius-input",
-              attrs: { type: "text" },
-              domProps: { value: _vm.surveyElement.config.title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+      ? _c("div", [
+          _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.surveyElement.config.title,
+                    expression: "surveyElement.config.title"
                   }
-                  _vm.$set(
-                    _vm.surveyElement.config,
-                    "title",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.surveyElement.config.list, function(field, index) {
-              return _c(
-                "div",
-                { key: field.uid, staticClass: "field-container" },
-                [
-                  _c("div", { staticClass: "field-input" }, [
-                    _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.list[index].title,
-                          expression: "surveyElement.config.list[index].title"
-                        }
-                      ],
-                      staticClass: "form-control border-radius-input",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.list[index].title
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.surveyElement.config.list[index],
-                            "title",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "field-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-minus text-success",
-                      on: {
-                        click: function($event) {
-                          _vm.removeField(index)
-                        }
-                      }
-                    })
-                  ])
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "a",
-                {
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.addField($event)
+                ],
+                staticClass: "form-control border-radius-input",
+                attrs: { type: "text" },
+                domProps: { value: _vm.surveyElement.config.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
+                    _vm.$set(
+                      _vm.surveyElement.config,
+                      "title",
+                      $event.target.value
+                    )
                   }
-                },
-                [
-                  _vm._v("   "),
-                  _c("i", { staticClass: "fa fa-plus text-success" })
-                ]
-              )
-            ])
-          ],
-          2
-        )
+                }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.surveyElement.config.list, function(field, index) {
+                return _c(
+                  "div",
+                  { key: field.uid, staticClass: "field-container" },
+                  [
+                    _c("div", { staticClass: "field-input" }, [
+                      _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.list[index].title,
+                            expression: "surveyElement.config.list[index].title"
+                          }
+                        ],
+                        staticClass: "form-control border-radius-input",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.list[index].title
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "title",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-minus text-success",
+                        on: {
+                          click: function($event) {
+                            _vm.removeField(index)
+                          }
+                        }
+                      })
+                    ])
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "a",
+                  {
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addField($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v("   "),
+                    _c("i", { staticClass: "fa fa-plus text-success" })
+                  ]
+                )
+              ])
+            ],
+            2
+          )
+        ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-            _vm._v(" "),
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
             _vm._l(_vm.surveyElement.config.list, function(field, index) {
               return _c("div", { key: field.uid }, [
                 _c("label", [_vm._v(_vm._s(field.title))]),
@@ -73617,9 +73685,8 @@ var render = function() {
                 })
               ])
             })
-          ],
-          2
-        )
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -73629,30 +73696,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-18b006de", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2354345e", module.exports)
   }
 }
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(239)
+  __webpack_require__(240)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(241)
+var __vue_script__ = __webpack_require__(242)
 /* template */
-var __vue_template__ = __webpack_require__(242)
+var __vue_template__ = __webpack_require__(243)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-4cdc4c58"
+var __vue_scopeId__ = "data-v-c126c8b2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -73663,7 +73730,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementMultipleCheck.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementMultipleCheck.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -73672,9 +73739,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4cdc4c58", Component.options)
+    hotAPI.createRecord("data-v-c126c8b2", Component.options)
   } else {
-    hotAPI.reload("data-v-4cdc4c58", Component.options)
+    hotAPI.reload("data-v-c126c8b2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -73685,23 +73752,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(240);
+var content = __webpack_require__(241);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("a9f9baa4", content, false, {});
+var update = __webpack_require__(5)("9b74b9ec", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4cdc4c58\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleCheck.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4cdc4c58\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleCheck.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c126c8b2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleCheck.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c126c8b2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMultipleCheck.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -73711,7 +73778,7 @@ if(false) {
 }
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -73719,13 +73786,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.field-container[data-v-4cdc4c58] {\n    display: flex;\n}\n.field-input[data-v-4cdc4c58] {\n    flex: 1;\n}\n.field-action[data-v-4cdc4c58] {\n    flex-basis: 25px;\n}\n.field-action[data-v-4cdc4c58] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.field-container[data-v-c126c8b2] {\n    display: flex;\n}\n.field-input[data-v-c126c8b2] {\n    flex: 1;\n}\n.field-action[data-v-c126c8b2] {\n    flex-basis: 25px;\n}\n.field-action[data-v-c126c8b2] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73733,6 +73800,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Bus__ = __webpack_require__(14);
+//
+//
+//
+//
 //
 //
 //
@@ -73835,7 +73906,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73910,115 +73981,131 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.surveyElement.config.title,
-              expression: "surveyElement.config.title"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text" },
-          domProps: { value: _vm.surveyElement.config.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.surveyElement.config.list, function(field, index) {
-          return _c("div", { staticClass: "field-container" }, [
-            _c("div", { staticClass: "field-input" }, [
-              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.surveyElement.config.list[index],
-                    expression: "surveyElement.config.list[index]"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.surveyElement.config.list[index] },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.surveyElement.config.list,
-                      index,
-                      $event.target.value
-                    )
-                  }
+        _c(
+          "div",
+          { staticClass: "questions-data-container" },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-              })
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.surveyElement.config.list, function(field, index) {
+              return _c("div", { staticClass: "field-container" }, [
+                _c("div", { staticClass: "field-input" }, [
+                  _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.surveyElement.config.list[index],
+                        expression: "surveyElement.config.list[index]"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.surveyElement.config.list[index] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.surveyElement.config.list,
+                          index,
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "field-action" }, [
+                  _c("i", {
+                    staticClass: "fa fa-minus text-success",
+                    on: {
+                      click: function($event) {
+                        _vm.removeField(index)
+                      }
+                    }
+                  })
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "a",
+                {
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.addField($event)
+                    }
+                  }
+                },
+                [
+                  _vm._v("   "),
+                  _c("i", { staticClass: "fa fa-plus text-success" })
+                ]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "field-action" }, [
-              _c("i", {
-                staticClass: "fa fa-minus text-success",
-                on: {
-                  click: function($event) {
-                    _vm.removeField(index)
-                  }
+            _c("app-survey-hider", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.surveyElement.config.multiple,
+                  expression: "!surveyElement.config.multiple"
                 }
-              })
-            ])
-          ])
-        }),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.addField($event)
-                }
+              ],
+              attrs: {
+                "hide-config": _vm.surveyElement.config.hideConfig,
+                "survey-element-uid": _vm.surveyElement.uid,
+                answer: _vm.surveyElement.answer,
+                index: _vm.index
               }
-            },
-            [_vm._v("   "), _c("i", { staticClass: "fa fa-plus text-success" })]
-          )
-        ]),
-        _vm._v(" "),
-        _c("app-survey-hider", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.surveyElement.config.multiple,
-              expression: "!surveyElement.config.multiple"
-            }
+            })
           ],
-          attrs: {
-            "hide-config": _vm.surveyElement.config.hideConfig,
-            "survey-element-uid": _vm.surveyElement.uid,
-            answer: _vm.surveyElement.answer,
-            index: _vm.index
-          }
-        })
-      ],
-      2
+          2
+        )
+      ]
     ),
     _vm._v(" "),
     _vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-            _vm._v(" "),
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
             _vm._l(_vm.surveyElement.config.list, function(field, index) {
               return _c("div", [
                 _c(
@@ -74142,18 +74229,17 @@ var render = function() {
                               }
                             }),
                       _vm._v(
-                        "\n                    " +
+                        "\n                        " +
                           _vm._s(field) +
-                          "\n                "
+                          "\n                    "
                       )
                     ])
                   ]
                 )
               ])
             })
-          ],
-          2
-        )
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -74163,30 +74249,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4cdc4c58", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-c126c8b2", module.exports)
   }
 }
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(244)
+  __webpack_require__(245)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(246)
+var __vue_script__ = __webpack_require__(247)
 /* template */
-var __vue_template__ = __webpack_require__(247)
+var __vue_template__ = __webpack_require__(248)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-041d7dd6"
+var __vue_scopeId__ = "data-v-11e296a2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -74197,7 +74283,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementSlider.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementSlider.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -74206,9 +74292,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-041d7dd6", Component.options)
+    hotAPI.createRecord("data-v-11e296a2", Component.options)
   } else {
-    hotAPI.reload("data-v-041d7dd6", Component.options)
+    hotAPI.reload("data-v-11e296a2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -74219,23 +74305,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(245);
+var content = __webpack_require__(246);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("0d09a68a", content, false, {});
+var update = __webpack_require__(5)("1d1e5372", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-041d7dd6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementSlider.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-041d7dd6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementSlider.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e296a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementSlider.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-11e296a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementSlider.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -74245,7 +74331,7 @@ if(false) {
 }
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -74259,11 +74345,15 @@ exports.push([module.i, "\n\n", ""]);
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -74298,7 +74388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74310,144 +74400,166 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", [_vm._v("0%")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.zero,
-                expression: "surveyElement.config.zero"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.zero },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
                 }
-                _vm.$set(_vm.surveyElement.config, "zero", $event.target.value)
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", [_vm._v("50%")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.half,
-                expression: "surveyElement.config.half"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.half },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+            }),
+            _vm._v(" "),
+            _c("label", [_vm._v("0%")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.zero,
+                  expression: "surveyElement.config.zero"
                 }
-                _vm.$set(_vm.surveyElement.config, "half", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", [_vm._v("100%")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.full,
-                expression: "surveyElement.config.full"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.full },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.zero },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "zero",
+                    $event.target.value
+                  )
                 }
-                _vm.$set(_vm.surveyElement.config, "full", $event.target.value)
               }
-            }
-          })
+            }),
+            _vm._v(" "),
+            _c("label", [_vm._v("50%")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.half,
+                  expression: "surveyElement.config.half"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.half },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "half",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", [_vm._v("100%")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.full,
+                  expression: "surveyElement.config.full"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.full },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "full",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xs-4" }, [
-              _vm._v(_vm._s(_vm.surveyElement.config.zero) + " ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 text-center" }, [
-              _vm._v(_vm._s(_vm.surveyElement.config.half))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 text-right" }, [
-              _vm._v(_vm._s(_vm.surveyElement.config.full))
-            ])
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.answer,
-                expression: "surveyElement.answer"
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
+                _vm._v(_vm._s(_vm.surveyElement.config.zero) + " ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 text-center" }, [
+                _vm._v(_vm._s(_vm.surveyElement.config.half))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 text-right" }, [
+                _vm._v(_vm._s(_vm.surveyElement.config.full))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.answer,
+                  expression: "surveyElement.answer"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "range",
+                min: "0",
+                max: "100",
+                step: "1",
+                name: _vm.surveyElement.uid
+              },
+              domProps: { value: _vm.surveyElement.answer },
+              on: {
+                __r: function($event) {
+                  _vm.$set(_vm.surveyElement, "answer", $event.target.value)
+                }
               }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "range",
-              min: "0",
-              max: "100",
-              step: "1",
-              name: _vm.surveyElement.uid
-            },
-            domProps: { value: _vm.surveyElement.answer },
-            on: {
-              __r: function($event) {
-                _vm.$set(_vm.surveyElement, "answer", $event.target.value)
-              }
-            }
-          })
+            })
+          ])
         ])
       : _vm._e()
   ])
@@ -74458,30 +74570,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-041d7dd6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-11e296a2", module.exports)
   }
 }
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(249)
+  __webpack_require__(250)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(251)
+var __vue_script__ = __webpack_require__(252)
 /* template */
-var __vue_template__ = __webpack_require__(252)
+var __vue_template__ = __webpack_require__(253)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-6e8f94d7"
+var __vue_scopeId__ = "data-v-8cf24cac"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -74492,7 +74604,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementImage.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementImage.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -74501,9 +74613,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e8f94d7", Component.options)
+    hotAPI.createRecord("data-v-8cf24cac", Component.options)
   } else {
-    hotAPI.reload("data-v-6e8f94d7", Component.options)
+    hotAPI.reload("data-v-8cf24cac", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -74514,23 +74626,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(250);
+var content = __webpack_require__(251);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("1b1a323a", content, false, {});
+var update = __webpack_require__(5)("772612f9", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8f94d7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8f94d7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8cf24cac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8cf24cac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementImage.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -74540,7 +74652,7 @@ if(false) {
 }
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -74554,11 +74666,15 @@ exports.push([module.i, "\n\n", ""]);
 
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -74580,7 +74696,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74603,26 +74719,35 @@ var render = function() {
       [
         _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Image")))]),
         _vm._v(" "),
-        _c("input", {
-          attrs: { type: "file", name: "images[" + _vm.surveyElement.uid + "]" }
-        })
+        _c("div", { staticClass: "questions-data-container" }, [
+          _c("input", {
+            attrs: {
+              type: "file",
+              name: "images[" + _vm.surveyElement.uid + "]"
+            }
+          })
+        ])
       ]
     ),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
           !_vm.surveyElement.answer
-            ? _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Image")))])
+            ? _c("label", { staticClass: "background-gray" }, [
+                _vm._v(_vm._s(_vm.$Lang.trans("Image")))
+              ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.surveyElement.answer
-            ? _c("img", {
-                attrs: {
-                  src: _vm.$Config.base_url + _vm.surveyElement.answer,
-                  width: "250"
-                }
-              })
-            : _vm._e()
+          _c("div", { staticClass: "questions-data-container" }, [
+            _vm.surveyElement.answer
+              ? _c("img", {
+                  attrs: {
+                    src: _vm.$Config.base_url + _vm.surveyElement.answer,
+                    width: "250"
+                  }
+                })
+              : _vm._e()
+          ])
         ])
       : _vm._e()
   ])
@@ -74633,30 +74758,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6e8f94d7", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8cf24cac", module.exports)
   }
 }
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(254)
+  __webpack_require__(255)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(256)
+var __vue_script__ = __webpack_require__(257)
 /* template */
-var __vue_template__ = __webpack_require__(257)
+var __vue_template__ = __webpack_require__(258)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-7696b4c0"
+var __vue_scopeId__ = "data-v-56790fad"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -74667,7 +74792,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementContactInformation.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementContactInformation.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -74676,9 +74801,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7696b4c0", Component.options)
+    hotAPI.createRecord("data-v-56790fad", Component.options)
   } else {
-    hotAPI.reload("data-v-7696b4c0", Component.options)
+    hotAPI.reload("data-v-56790fad", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -74689,23 +74814,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(255);
+var content = __webpack_require__(256);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("58addebb", content, false, {});
+var update = __webpack_require__(5)("492b32e7", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7696b4c0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7696b4c0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56790fad\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56790fad\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementContactInformation.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -74715,7 +74840,7 @@ if(false) {
 }
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -74723,19 +74848,23 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.field-container[data-v-7696b4c0] {\n    display: flex;\n}\n.field-input[data-v-7696b4c0] {\n    flex: 1;\n}\n.field-action[data-v-7696b4c0] {\n    flex-basis: 25px;\n}\n.field-action[data-v-7696b4c0] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.field-container[data-v-56790fad] {\n    display: flex;\n}\n.field-input[data-v-56790fad] {\n    flex: 1;\n}\n.field-action[data-v-56790fad] {\n    flex-basis: 25px;\n}\n.field-action[data-v-56790fad] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
 //
 //
 //
@@ -74834,7 +74963,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74843,205 +74972,214 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     !_vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.surveyElement.config.title,
-                  expression: "surveyElement.config.title"
-                }
-              ],
-              staticClass: "form-control border-radius-input",
-              attrs: { type: "text" },
-              domProps: { value: _vm.surveyElement.config.title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+      ? _c("div", [
+          _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.surveyElement.config.title,
+                    expression: "surveyElement.config.title"
                   }
-                  _vm.$set(
-                    _vm.surveyElement.config,
-                    "title",
-                    $event.target.value
-                  )
+                ],
+                staticClass: "form-control border-radius-input",
+                attrs: { type: "text" },
+                domProps: { value: _vm.surveyElement.config.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.surveyElement.config,
+                      "title",
+                      $event.target.value
+                    )
+                  }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.surveyElement.config.list, function(field, index) {
-              return _c("div", { key: field.uid }, [
-                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("label", { staticClass: "checkbox-inline" }, [
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.surveyElement.config.list, function(field, index) {
+                return _c("div", { key: field.uid }, [
+                  _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "checkbox-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.surveyElement.config.list[index].include,
+                          expression: "surveyElement.config.list[index].include"
+                        }
+                      ],
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(
+                          _vm.surveyElement.config.list[index].include
+                        )
+                          ? _vm._i(
+                              _vm.surveyElement.config.list[index].include,
+                              null
+                            ) > -1
+                          : _vm.surveyElement.config.list[index].include
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a =
+                              _vm.surveyElement.config.list[index].include,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "include",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "include",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "include",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(_vm.$Lang.trans("Include")) +
+                        " \n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "checkbox-inline" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.surveyElement.config.list[index].required,
+                          expression:
+                            "surveyElement.config.list[index].required"
+                        }
+                      ],
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(
+                          _vm.surveyElement.config.list[index].required
+                        )
+                          ? _vm._i(
+                              _vm.surveyElement.config.list[index].required,
+                              null
+                            ) > -1
+                          : _vm.surveyElement.config.list[index].required
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a =
+                              _vm.surveyElement.config.list[index].required,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "required",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.surveyElement.config.list[index],
+                                  "required",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.surveyElement.config.list[index],
+                              "required",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(_vm.$Lang.trans("Required")) +
+                        " \n                "
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index].include,
-                        expression: "surveyElement.config.list[index].include"
+                        value: _vm.surveyElement.config.list[index].title,
+                        expression: "surveyElement.config.list[index].title"
                       }
                     ],
-                    attrs: { type: "checkbox" },
+                    staticClass: "form-control border-radius-input",
+                    attrs: { type: "text", disabled: true },
                     domProps: {
-                      checked: Array.isArray(
-                        _vm.surveyElement.config.list[index].include
-                      )
-                        ? _vm._i(
-                            _vm.surveyElement.config.list[index].include,
-                            null
-                          ) > -1
-                        : _vm.surveyElement.config.list[index].include
+                      value: _vm.surveyElement.config.list[index].title
                     },
                     on: {
-                      change: function($event) {
-                        var $$a = _vm.surveyElement.config.list[index].include,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.surveyElement.config.list[index],
-                                "include",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.surveyElement.config.list[index],
-                                "include",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
-                        } else {
-                          _vm.$set(
-                            _vm.surveyElement.config.list[index],
-                            "include",
-                            $$c
-                          )
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
+                        _vm.$set(
+                          _vm.surveyElement.config.list[index],
+                          "title",
+                          $event.target.value
+                        )
                       }
                     }
-                  }),
-                  _vm._v(
-                    "\n              " +
-                      _vm._s(_vm.$Lang.trans("Include")) +
-                      " \n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "checkbox-inline" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.surveyElement.config.list[index].required,
-                        expression: "surveyElement.config.list[index].required"
-                      }
-                    ],
-                    attrs: { type: "checkbox" },
-                    domProps: {
-                      checked: Array.isArray(
-                        _vm.surveyElement.config.list[index].required
-                      )
-                        ? _vm._i(
-                            _vm.surveyElement.config.list[index].required,
-                            null
-                          ) > -1
-                        : _vm.surveyElement.config.list[index].required
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.surveyElement.config.list[index].required,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              _vm.$set(
-                                _vm.surveyElement.config.list[index],
-                                "required",
-                                $$a.concat([$$v])
-                              )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.surveyElement.config.list[index],
-                                "required",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
-                          }
-                        } else {
-                          _vm.$set(
-                            _vm.surveyElement.config.list[index],
-                            "required",
-                            $$c
-                          )
-                        }
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n              " +
-                      _vm._s(_vm.$Lang.trans("Required")) +
-                      " \n            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.surveyElement.config.list[index].title,
-                      expression: "surveyElement.config.list[index].title"
-                    }
-                  ],
-                  staticClass: "form-control border-radius-input",
-                  attrs: { type: "text", disabled: true },
-                  domProps: {
-                    value: _vm.surveyElement.config.list[index].title
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.surveyElement.config.list[index],
-                        "title",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ])
-            })
-          ],
-          2
-        )
+                  })
+                ])
+              })
+            ],
+            2
+          )
+        ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-            _vm._v(" "),
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
             _vm._l(_vm.fieldsToInclude, function(field, index) {
               return _c("div", { key: field.uid }, [
                 _c("label", [_vm._v(_vm._s(field.title))]),
@@ -75178,9 +75316,8 @@ var render = function() {
                       })
               ])
             })
-          ],
-          2
-        )
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -75190,30 +75327,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7696b4c0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-56790fad", module.exports)
   }
 }
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(259)
+  __webpack_require__(260)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(261)
+var __vue_script__ = __webpack_require__(262)
 /* template */
-var __vue_template__ = __webpack_require__(262)
+var __vue_template__ = __webpack_require__(263)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3fc0f1c3"
+var __vue_scopeId__ = "data-v-ae7a8e60"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -75224,7 +75361,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementStarRating.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementStarRating.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -75233,9 +75370,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3fc0f1c3", Component.options)
+    hotAPI.createRecord("data-v-ae7a8e60", Component.options)
   } else {
-    hotAPI.reload("data-v-3fc0f1c3", Component.options)
+    hotAPI.reload("data-v-ae7a8e60", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -75246,23 +75383,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(260);
+var content = __webpack_require__(261);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("9b07f57e", content, false, {});
+var update = __webpack_require__(5)("0f1b3414", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3fc0f1c3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementStarRating.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3fc0f1c3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementStarRating.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ae7a8e60\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementStarRating.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ae7a8e60\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementStarRating.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -75272,7 +75409,7 @@ if(false) {
 }
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -75286,12 +75423,16 @@ exports.push([module.i, "\n\n", ""]);
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
+//
+//
+//
+//
 //
 //
 //
@@ -75326,7 +75467,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75349,58 +75490,73 @@ var render = function() {
       [
         _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.surveyElement.config.title,
-              expression: "surveyElement.config.title"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text" },
-          domProps: { value: _vm.surveyElement.config.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("app-survey-hider", {
-          attrs: {
-            "hide-config": _vm.surveyElement.config.hideConfig,
-            "survey-element-uid": _vm.surveyElement.uid,
-            answer: _vm.surveyElement.answer,
-            index: _vm.index
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm.display
-      ? _c(
+        _c(
           "div",
+          { staticClass: "questions-data-container" },
           [
-            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
             _vm._v(" "),
-            _c("star-rating", {
-              model: {
-                value: _vm.surveyElement.answer,
-                callback: function($$v) {
-                  _vm.$set(_vm.surveyElement, "answer", $$v)
-                },
-                expression: "surveyElement.answer"
+            _c("app-survey-hider", {
+              attrs: {
+                "hide-config": _vm.surveyElement.config.hideConfig,
+                "survey-element-uid": _vm.surveyElement.uid,
+                answer: _vm.surveyElement.answer,
+                index: _vm.index
               }
             })
           ],
           1
         )
+      ]
+    ),
+    _vm._v(" "),
+    _vm.display
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
+            [
+              _c("star-rating", {
+                model: {
+                  value: _vm.surveyElement.answer,
+                  callback: function($$v) {
+                    _vm.$set(_vm.surveyElement, "answer", $$v)
+                  },
+                  expression: "surveyElement.answer"
+                }
+              })
+            ],
+            1
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -75410,30 +75566,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3fc0f1c3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-ae7a8e60", module.exports)
   }
 }
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(264)
+  __webpack_require__(265)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(266)
+var __vue_script__ = __webpack_require__(267)
 /* template */
-var __vue_template__ = __webpack_require__(267)
+var __vue_template__ = __webpack_require__(268)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3870c932"
+var __vue_scopeId__ = "data-v-baabb576"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -75444,7 +75600,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementRanking.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementRanking.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -75453,9 +75609,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3870c932", Component.options)
+    hotAPI.createRecord("data-v-baabb576", Component.options)
   } else {
-    hotAPI.reload("data-v-3870c932", Component.options)
+    hotAPI.reload("data-v-baabb576", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -75466,23 +75622,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(265);
+var content = __webpack_require__(266);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("460f8d8a", content, false, {});
+var update = __webpack_require__(5)("0f35348f", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3870c932\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementRanking.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3870c932\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementRanking.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-baabb576\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementRanking.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-baabb576\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementRanking.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -75492,7 +75648,7 @@ if(false) {
 }
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -75500,21 +75656,19 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.option-container[data-v-3870c932] {\n    display: flex;\n}\n.option-input[data-v-3870c932] {\n    flex: 1;\n}\n.option-action[data-v-3870c932] {\n    flex-basis: 25px;\n}\n.option-action[data-v-3870c932] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.option-container[data-v-baabb576] {\n    display: flex;\n}\n.option-input[data-v-baabb576] {\n    flex: 1;\n}\n.option-action[data-v-baabb576] {\n    flex-basis: 25px;\n}\n.option-action[data-v-baabb576] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
-//
-//
 //
 //
 //
@@ -75631,7 +75785,7 @@ Array.prototype.unique = function (a) {
 });
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75643,112 +75797,122 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control border-radius-input",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              ],
+              staticClass: "form-control border-radius-input",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
               }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.list, function(field, index) {
-                return _c(
-                  "div",
-                  { key: field.uid, staticClass: "option-container" },
-                  [
-                    _c("div", { staticClass: "option-input" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.surveyElement.config.list[index].title,
-                            expression: "surveyElement.config.list[index].title"
-                          }
-                        ],
-                        staticClass: "form-control border-radius-input",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.surveyElement.config.list[index].title
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.list, function(field, index) {
+                  return _c(
+                    "div",
+                    { key: field.uid, staticClass: "option-container" },
+                    [
+                      _c("div", { staticClass: "option-input" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.surveyElement.config.list[index].title,
+                              expression:
+                                "surveyElement.config.list[index].title"
                             }
-                            _vm.$set(
-                              _vm.surveyElement.config.list[index],
-                              "title",
-                              $event.target.value
-                            )
+                          ],
+                          staticClass: "form-control border-radius-input",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.surveyElement.config.list[index].title
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.surveyElement.config.list[index],
+                                "title",
+                                $event.target.value
+                              )
+                            }
                           }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "option-action" }, [
-                      _c("i", {
-                        staticClass: "fa fa-minus text-success",
-                        on: {
-                          click: function($event) {
-                            _vm.removeOption(index)
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-action" }, [
+                        _c("i", {
+                          staticClass: "fa fa-minus text-success",
+                          on: {
+                            click: function($event) {
+                              _vm.removeOption(index)
+                            }
                           }
+                        })
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addOption($event)
                         }
-                      })
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.addOption($event)
                       }
-                    }
-                  },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
-                )
-              ])
-            ],
-            2
-          )
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
+                ])
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
-      ? _c(
-          "div",
-          [
-            _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
-            _vm._v(" "),
+      ? _c("div", [
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "questions-data-container" },
             _vm._l(_vm.surveyElement.config.list, function(field, index) {
               return _c("div", { key: field.uid }, [
                 _c("label", [_vm._v(_vm._s(field.title))]),
@@ -75789,9 +75953,8 @@ var render = function() {
                 })
               ])
             })
-          ],
-          2
-        )
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -75801,30 +75964,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3870c932", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-baabb576", module.exports)
   }
 }
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(269)
+  __webpack_require__(270)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(271)
+var __vue_script__ = __webpack_require__(272)
 /* template */
-var __vue_template__ = __webpack_require__(272)
+var __vue_template__ = __webpack_require__(273)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-47b3eff5"
+var __vue_scopeId__ = "data-v-5ba54582"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -75835,7 +75998,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementMatrix.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementMatrix.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -75844,9 +76007,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-47b3eff5", Component.options)
+    hotAPI.createRecord("data-v-5ba54582", Component.options)
   } else {
-    hotAPI.reload("data-v-47b3eff5", Component.options)
+    hotAPI.reload("data-v-5ba54582", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -75857,23 +76020,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(270);
+var content = __webpack_require__(271);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("1b105088", content, false, {});
+var update = __webpack_require__(5)("7617b89e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47b3eff5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrix.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47b3eff5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrix.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ba54582\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrix.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ba54582\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrix.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -75883,7 +76046,7 @@ if(false) {
 }
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -75891,19 +76054,23 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.option-container[data-v-47b3eff5] {\n    display: flex;\n}\n.option-input[data-v-47b3eff5] {\n    flex: 1;\n}\n.option-action[data-v-47b3eff5] {\n    flex-basis: 25px;\n}\n.option-action[data-v-47b3eff5] {\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.option-container[data-v-5ba54582] {\n    display: flex;\n}\n.option-input[data-v-5ba54582] {\n    flex: 1;\n}\n.option-action[data-v-5ba54582] {\n    flex-basis: 25px;\n}\n.option-action[data-v-5ba54582] {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
 //
 //
 //
@@ -76036,7 +76203,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76048,326 +76215,282 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Label")))]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "checkbox" }, [
-            _c("label", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.surveyElement.config.multiple,
-                    expression: "surveyElement.config.multiple"
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
-                ],
-                attrs: { type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(_vm.surveyElement.config.multiple)
-                    ? _vm._i(_vm.surveyElement.config.multiple, null) > -1
-                    : _vm.surveyElement.config.multiple
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.surveyElement.config.multiple,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 &&
-                          _vm.$set(
-                            _vm.surveyElement.config,
-                            "multiple",
-                            $$a.concat([$$v])
-                          )
-                      } else {
-                        $$i > -1 &&
-                          _vm.$set(
-                            _vm.surveyElement.config,
-                            "multiple",
-                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                          )
-                      }
-                    } else {
-                      _vm.$set(_vm.surveyElement.config, "multiple", $$c)
-                    }
-                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
                 }
-              }),
-              _vm._v(
-                "\n                  " +
-                  _vm._s(_vm.$Lang.trans("Allow multiple")) +
-                  "\n            "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Rows")))]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.rows, function(row, index) {
-                return _c(
-                  "div",
-                  { key: row.uid, staticClass: "option-container" },
-                  [
-                    _c("div", { staticClass: "option-input" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.surveyElement.config.rows[index].text,
-                            expression: "surveyElement.config.rows[index].text"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.surveyElement.config.rows[index].text
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.surveyElement.config.rows[index],
-                              "text",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "option-action" }, [
-                      _c("i", {
-                        staticClass: "fa fa-minus text-success",
-                        on: {
-                          click: function($event) {
-                            _vm.removeRow(index)
-                          }
-                        }
-                      })
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.addRow($event)
-                      }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "checkbox" }, [
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.surveyElement.config.multiple,
+                      expression: "surveyElement.config.multiple"
                     }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.surveyElement.config.multiple)
+                      ? _vm._i(_vm.surveyElement.config.multiple, null) > -1
+                      : _vm.surveyElement.config.multiple
                   },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
-                )
-              ])
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Columns")))]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.cols, function(col, index) {
-                return _c(
-                  "div",
-                  { key: col.uid, staticClass: "option-container" },
-                  [
-                    _c("div", { staticClass: "option-input" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.surveyElement.config.cols[index].text,
-                            expression: "surveyElement.config.cols[index].text"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.surveyElement.config.cols[index].text
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.surveyElement.config.multiple,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
                             _vm.$set(
-                              _vm.surveyElement.config.cols[index],
-                              "text",
-                              $event.target.value
+                              _vm.surveyElement.config,
+                              "multiple",
+                              $$a.concat([$$v])
                             )
-                          }
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.surveyElement.config,
+                              "multiple",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "option-action" }, [
-                      _c("i", {
-                        staticClass: "fa fa-minus text-success",
-                        on: {
-                          click: function($event) {
-                            _vm.removeCol(index)
-                          }
-                        }
-                      })
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  { attrs: { type: "button" }, on: { click: _vm.addCol } },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
+                      } else {
+                        _vm.$set(_vm.surveyElement.config, "multiple", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                      " +
+                    _vm._s(_vm.$Lang.trans("Allow multiple")) +
+                    "\n                "
                 )
               ])
-            ],
-            2
-          )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Rows")))]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.rows, function(row, index) {
+                  return _c(
+                    "div",
+                    { key: row.uid, staticClass: "option-container" },
+                    [
+                      _c("div", { staticClass: "option-input" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.surveyElement.config.rows[index].text,
+                              expression:
+                                "surveyElement.config.rows[index].text"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.surveyElement.config.rows[index].text
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.surveyElement.config.rows[index],
+                                "text",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-action" }, [
+                        _c("i", {
+                          staticClass: "fa fa-minus text-success",
+                          on: {
+                            click: function($event) {
+                              _vm.removeRow(index)
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addRow($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
+                ])
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Columns")))]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.cols, function(col, index) {
+                  return _c(
+                    "div",
+                    { key: col.uid, staticClass: "option-container" },
+                    [
+                      _c("div", { staticClass: "option-input" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.surveyElement.config.cols[index].text,
+                              expression:
+                                "surveyElement.config.cols[index].text"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.surveyElement.config.cols[index].text
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.surveyElement.config.cols[index],
+                                "text",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-action" }, [
+                        _c("i", {
+                          staticClass: "fa fa-minus text-success",
+                          on: {
+                            click: function($event) {
+                              _vm.removeCol(index)
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    { attrs: { type: "button" }, on: { click: _vm.addCol } },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
+                ])
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
           _vm._v(" "),
-          _c(
-            "table",
-            { staticClass: "table table-stripped" },
-            [
-              _c(
-                "tr",
-                [
-                  _c("td", [_vm._v(" ")]),
-                  _vm._v(" "),
-                  _vm._l(_vm.surveyElement.config.cols, function(col) {
-                    return _c("th", { key: col.uid }, [
-                      _vm._v(_vm._s(col.text))
-                    ])
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
-                return _c(
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c(
+              "table",
+              { staticClass: "table table-stripped" },
+              [
+                _c(
                   "tr",
-                  { key: row.uid },
                   [
-                    _c("th", [_vm._v(_vm._s(row.text))]),
+                    _c("td", [_vm._v(" ")]),
                     _vm._v(" "),
-                    _vm._l(_vm.surveyElement.config.cols, function(
-                      col,
-                      colIndex
-                    ) {
-                      return _c("td", { key: col.uid }, [
-                        (_vm.surveyElement.config.multiple
-                          ? "checkbox"
-                          : "radio") === "checkbox"
-                          ? _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.surveyElement.answer[row.uid],
-                                  expression: "surveyElement.answer[row.uid]"
-                                }
-                              ],
-                              attrs: { name: row.uid, type: "checkbox" },
-                              domProps: {
-                                value: col.uid,
-                                checked: Array.isArray(
-                                  _vm.surveyElement.answer[row.uid]
-                                )
-                                  ? _vm._i(
-                                      _vm.surveyElement.answer[row.uid],
-                                      col.uid
-                                    ) > -1
-                                  : _vm.surveyElement.answer[row.uid]
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.surveyElement.answer[row.uid],
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = col.uid,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.surveyElement.answer,
-                                          row.uid,
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.surveyElement.answer,
-                                          row.uid,
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(
-                                      _vm.surveyElement.answer,
-                                      row.uid,
-                                      $$c
-                                    )
-                                  }
-                                }
-                              }
-                            })
-                          : (_vm.surveyElement.config.multiple
-                              ? "checkbox"
-                              : "radio") === "radio"
+                    _vm._l(_vm.surveyElement.config.cols, function(col) {
+                      return _c(
+                        "th",
+                        { key: col.uid, staticClass: "font-color-data" },
+                        [_vm._v(_vm._s(col.text))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
+                  return _c(
+                    "tr",
+                    { key: row.uid },
+                    [
+                      _c("th", { staticClass: "font-color-data" }, [
+                        _vm._v(_vm._s(row.text))
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.surveyElement.config.cols, function(
+                        col,
+                        colIndex
+                      ) {
+                        return _c("td", { key: col.uid }, [
+                          (_vm.surveyElement.config.multiple
+                            ? "checkbox"
+                            : "radio") === "checkbox"
                             ? _c("input", {
                                 directives: [
                                   {
@@ -76377,65 +76500,127 @@ var render = function() {
                                     expression: "surveyElement.answer[row.uid]"
                                   }
                                 ],
-                                attrs: { name: row.uid, type: "radio" },
+                                attrs: { name: row.uid, type: "checkbox" },
                                 domProps: {
                                   value: col.uid,
-                                  checked: _vm._q(
-                                    _vm.surveyElement.answer[row.uid],
-                                    col.uid
+                                  checked: Array.isArray(
+                                    _vm.surveyElement.answer[row.uid]
                                   )
+                                    ? _vm._i(
+                                        _vm.surveyElement.answer[row.uid],
+                                        col.uid
+                                      ) > -1
+                                    : _vm.surveyElement.answer[row.uid]
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.$set(
-                                      _vm.surveyElement.answer,
-                                      row.uid,
+                                    var $$a = _vm.surveyElement.answer[row.uid],
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = col.uid,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.surveyElement.answer,
+                                            row.uid,
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.surveyElement.answer,
+                                            row.uid,
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
+                                    } else {
+                                      _vm.$set(
+                                        _vm.surveyElement.answer,
+                                        row.uid,
+                                        $$c
+                                      )
+                                    }
+                                  }
+                                }
+                              })
+                            : (_vm.surveyElement.config.multiple
+                                ? "checkbox"
+                                : "radio") === "radio"
+                              ? _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.surveyElement.answer[row.uid],
+                                      expression:
+                                        "surveyElement.answer[row.uid]"
+                                    }
+                                  ],
+                                  attrs: { name: row.uid, type: "radio" },
+                                  domProps: {
+                                    value: col.uid,
+                                    checked: _vm._q(
+                                      _vm.surveyElement.answer[row.uid],
                                       col.uid
                                     )
-                                  }
-                                }
-                              })
-                            : _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.surveyElement.answer[row.uid],
-                                    expression: "surveyElement.answer[row.uid]"
-                                  }
-                                ],
-                                attrs: {
-                                  name: row.uid,
-                                  type: _vm.surveyElement.config.multiple
-                                    ? "checkbox"
-                                    : "radio"
-                                },
-                                domProps: {
-                                  value: col.uid,
-                                  value: _vm.surveyElement.answer[row.uid]
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.$set(
+                                        _vm.surveyElement.answer,
+                                        row.uid,
+                                        col.uid
+                                      )
                                     }
-                                    _vm.$set(
-                                      _vm.surveyElement.answer,
-                                      row.uid,
-                                      $event.target.value
-                                    )
                                   }
-                                }
-                              })
-                      ])
-                    })
-                  ],
-                  2
-                )
-              })
-            ],
-            2
-          )
+                                })
+                              : _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.surveyElement.answer[row.uid],
+                                      expression:
+                                        "surveyElement.answer[row.uid]"
+                                    }
+                                  ],
+                                  attrs: {
+                                    name: row.uid,
+                                    type: _vm.surveyElement.config.multiple
+                                      ? "checkbox"
+                                      : "radio"
+                                  },
+                                  domProps: {
+                                    value: col.uid,
+                                    value: _vm.surveyElement.answer[row.uid]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.surveyElement.answer,
+                                        row.uid,
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                })
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e()
   ])
@@ -76446,30 +76631,30 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-47b3eff5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5ba54582", module.exports)
   }
 }
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(274)
+  __webpack_require__(275)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(276)
+var __vue_script__ = __webpack_require__(277)
 /* template */
-var __vue_template__ = __webpack_require__(277)
+var __vue_template__ = __webpack_require__(278)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-9f7488f6"
+var __vue_scopeId__ = "data-v-677cd618"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -76480,7 +76665,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\elements\\SurveyElementMatrixScale.vue"
+Component.options.__file = "resources/assets/js/components/elements/SurveyElementMatrixScale.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -76489,9 +76674,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9f7488f6", Component.options)
+    hotAPI.createRecord("data-v-677cd618", Component.options)
   } else {
-    hotAPI.reload("data-v-9f7488f6", Component.options)
+    hotAPI.reload("data-v-677cd618", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -76502,23 +76687,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(275);
+var content = __webpack_require__(276);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("6249ecd4", content, false, {});
+var update = __webpack_require__(5)("15de2f0a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f7488f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrixScale.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f7488f6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrixScale.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-677cd618\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrixScale.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-677cd618\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SurveyElementMatrixScale.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -76528,7 +76713,7 @@ if(false) {
 }
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -76536,19 +76721,23 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.option-container[data-v-9f7488f6] {\n    display: flex;\n}\n.option-input[data-v-9f7488f6] {\n    flex: 1;\n}\n.option-action[data-v-9f7488f6] {\n    flex-basis: 25px;\n}\n.option-action[data-v-9f7488f6] {\n    cursor: pointer;\n}\n.matrix-intersection[data-v-9f7488f6] {\n    padding: 0 2px;\n}\n", ""]);
+exports.push([module.i, "\n.option-container[data-v-677cd618] {\n    display: flex;\n}\n.option-input[data-v-677cd618] {\n    flex: 1;\n}\n.option-action[data-v-677cd618] {\n    flex-basis: 25px;\n}\n.option-action[data-v-677cd618] {\n    cursor: pointer;\n}\n.matrix-intersection[data-v-677cd618] {\n    padding: 0 2px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_unique_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_unique_string__);
+//
+//
+//
+//
 //
 //
 //
@@ -76721,7 +76910,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76733,365 +76922,387 @@ var render = function() {
       ? _c("div", [
           _c("label", [_vm._v(" " + _vm._s(_vm.$Lang.trans("Label")) + " ")]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.surveyElement.config.title,
-                expression: "surveyElement.config.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.surveyElement.config.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.surveyElement.config.title,
+                  expression: "surveyElement.config.title"
                 }
-                _vm.$set(_vm.surveyElement.config, "title", $event.target.value)
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.surveyElement.config.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.surveyElement.config,
+                    "title",
+                    $event.target.value
+                  )
+                }
               }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [
-                _vm._v(_vm._s(_vm.$Lang.trans("Name of the rows")))
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.rows, function(row, index) {
-                return _c(
-                  "div",
-                  { key: row.uid, staticClass: "option-container" },
-                  [
-                    _c("div", { staticClass: "option-input" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.surveyElement.config.rows[index].text,
-                            expression: "surveyElement.config.rows[index].text"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.surveyElement.config.rows[index].text
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [
+                  _vm._v(_vm._s(_vm.$Lang.trans("Name of the rows")))
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.rows, function(row, index) {
+                  return _c(
+                    "div",
+                    { key: row.uid, staticClass: "option-container" },
+                    [
+                      _c("div", { staticClass: "option-input" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.surveyElement.config.rows[index].text,
+                              expression:
+                                "surveyElement.config.rows[index].text"
                             }
-                            _vm.$set(
-                              _vm.surveyElement.config.rows[index],
-                              "text",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "option-action" }, [
-                      _c("i", {
-                        staticClass: "fa fa-minus text-success",
-                        on: {
-                          click: function($event) {
-                            _vm.removeRow(index)
-                          }
-                        }
-                      })
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.addRow($event)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
-                )
-              ])
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [
-                _vm._v(
-                  " " + _vm._s(_vm.$Lang.trans("Name of the columns")) + " "
-                )
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.cols, function(col, index) {
-                return _c(
-                  "div",
-                  { key: col.uid, staticClass: "option-container" },
-                  [
-                    _c("div", { staticClass: "option-input" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.surveyElement.config.cols[index].text,
-                            expression: "surveyElement.config.cols[index].text"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.surveyElement.config.cols[index].text
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.surveyElement.config.rows[index].text
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.surveyElement.config.rows[index],
+                                "text",
+                                $event.target.value
+                              )
                             }
-                            _vm.$set(
-                              _vm.surveyElement.config.cols[index],
-                              "text",
-                              $event.target.value
-                            )
                           }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "option-action" }, [
-                      _c("i", {
-                        staticClass: "fa fa-minus text-success",
-                        on: {
-                          click: function($event) {
-                            _vm.removeCol(index)
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-action" }, [
+                        _c("i", {
+                          staticClass: "fa fa-minus text-success",
+                          on: {
+                            click: function($event) {
+                              _vm.removeRow(index)
+                            }
                           }
-                        }
-                      })
-                    ])
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.addCol($event)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
-                )
-              ])
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.options, function(option, index) {
-                return _c("div", { staticClass: "option-container" }, [
-                  _c("div", { staticClass: "option-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.surveyElement.config.options[index],
-                          expression: "surveyElement.config.options[index]"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: {
-                        value: _vm.surveyElement.config.options[index]
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.surveyElement.config.options,
-                            index,
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "option-action" }, [
-                    _c("i", {
-                      staticClass: "fa fa-minus text-success",
+                        })
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
                       on: {
                         click: function($event) {
-                          _vm.removeOption(index)
+                          $event.preventDefault()
+                          return _vm.addRow($event)
                         }
                       }
-                    })
-                  ])
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
                 ])
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "a",
-                  {
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.addOption($event)
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [
+                  _vm._v(
+                    " " + _vm._s(_vm.$Lang.trans("Name of the columns")) + " "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.cols, function(col, index) {
+                  return _c(
+                    "div",
+                    { key: col.uid, staticClass: "option-container" },
+                    [
+                      _c("div", { staticClass: "option-input" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.surveyElement.config.cols[index].text,
+                              expression:
+                                "surveyElement.config.cols[index].text"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.surveyElement.config.cols[index].text
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.surveyElement.config.cols[index],
+                                "text",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-action" }, [
+                        _c("i", {
+                          staticClass: "fa fa-minus text-success",
+                          on: {
+                            click: function($event) {
+                              _vm.removeCol(index)
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addCol($event)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _vm._v("   "),
-                    _c("i", { staticClass: "fa fa-plus text-success" })
-                  ]
-                )
-              ])
-            ],
-            2
-          )
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
+                ])
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("label", [_vm._v(_vm._s(_vm.$Lang.trans("Options")))]),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.options, function(
+                  option,
+                  index
+                ) {
+                  return _c("div", { staticClass: "option-container" }, [
+                    _c("div", { staticClass: "option-input" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.surveyElement.config.options[index],
+                            expression: "surveyElement.config.options[index]"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.surveyElement.config.options[index]
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.surveyElement.config.options,
+                              index,
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "option-action" }, [
+                      _c("i", {
+                        staticClass: "fa fa-minus text-success",
+                        on: {
+                          click: function($event) {
+                            _vm.removeOption(index)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addOption($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("   "),
+                      _c("i", { staticClass: "fa fa-plus text-success" })
+                    ]
+                  )
+                ])
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", [_vm._v(_vm._s(_vm.surveyElement.config.title))]),
+          _c("label", { staticClass: "background-gray" }, [
+            _vm._v(_vm._s(_vm.surveyElement.config.title))
+          ]),
           _vm._v(" "),
-          _c(
-            "table",
-            { staticClass: "table table-stripped" },
-            [
-              _c(
-                "tr",
-                [
-                  _c("td", [_vm._v(" ")]),
-                  _vm._v(" "),
-                  _vm._l(_vm.surveyElement.config.cols, function(col) {
-                    return _c("th", { key: col.uid }, [
-                      _vm._v(_vm._s(col.text))
-                    ])
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
-                return _c(
+          _c("div", { staticClass: "questions-data-container" }, [
+            _c(
+              "table",
+              { staticClass: "table table-stripped" },
+              [
+                _c(
                   "tr",
-                  { key: row.uid },
                   [
-                    _c("th", [_vm._v(_vm._s(row.text))]),
+                    _c("td", [_vm._v(" ")]),
                     _vm._v(" "),
-                    _vm._l(_vm.surveyElement.config.cols, function(
-                      col,
-                      colIndex
-                    ) {
+                    _vm._l(_vm.surveyElement.config.cols, function(col) {
                       return _c(
-                        "td",
-                        { key: col.uid, staticClass: "matrix-intersection" },
-                        [
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value:
-                                    _vm.surveyElement.answer[row.uid][col.uid],
-                                  expression:
-                                    "surveyElement.answer[row.uid][col.uid]"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.surveyElement.answer[row.uid],
-                                    col.uid,
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c("option", { domProps: { value: null } }, [
-                                _vm._v(
-                                  _vm._s(_vm.$Lang.trans("Choose an option"))
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._l(_vm.surveyElement.config.options, function(
-                                option
-                              ) {
-                                return _c(
-                                  "option",
-                                  { domProps: { value: option } },
-                                  [_vm._v(_vm._s(option))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ]
+                        "th",
+                        { key: col.uid, staticClass: "font-color-data" },
+                        [_vm._v(_vm._s(col.text))]
                       )
                     })
                   ],
                   2
-                )
-              })
-            ],
-            2
-          )
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.surveyElement.config.rows, function(row, rowIndex) {
+                  return _c(
+                    "tr",
+                    { key: row.uid },
+                    [
+                      _c("th", { staticClass: "font-color-data" }, [
+                        _vm._v(_vm._s(row.text))
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.surveyElement.config.cols, function(
+                        col,
+                        colIndex
+                      ) {
+                        return _c(
+                          "td",
+                          { key: col.uid, staticClass: "matrix-intersection" },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.surveyElement.answer[row.uid][
+                                        col.uid
+                                      ],
+                                    expression:
+                                      "surveyElement.answer[row.uid][col.uid]"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.surveyElement.answer[row.uid],
+                                      col.uid,
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { domProps: { value: null } }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$Lang.trans("Choose an option"))
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(
+                                  _vm.surveyElement.config.options,
+                                  function(option) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: option } },
+                                      [_vm._v(_vm._s(option))]
+                                    )
+                                  }
+                                )
+                              ],
+                              2
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                })
+              ],
+              2
+            )
+          ])
         ])
       : _vm._e()
   ])
@@ -77102,24 +77313,24 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9f7488f6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-677cd618", module.exports)
   }
 }
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(279)
+  __webpack_require__(280)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(281)
+var __vue_script__ = __webpack_require__(282)
 /* template */
-var __vue_template__ = __webpack_require__(282)
+var __vue_template__ = __webpack_require__(283)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77136,7 +77347,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\transitions\\GroupTranslateY.vue"
+Component.options.__file = "resources/assets/js/components/transitions/GroupTranslateY.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -77145,9 +77356,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d70a8636", Component.options)
+    hotAPI.createRecord("data-v-32b74372", Component.options)
   } else {
-    hotAPI.reload("data-v-d70a8636", Component.options)
+    hotAPI.reload("data-v-32b74372", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -77158,23 +77369,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(280);
+var content = __webpack_require__(281);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("5d64b7a6", content, false, {});
+var update = __webpack_require__(5)("12bdfade", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d70a8636\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupTranslateY.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d70a8636\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupTranslateY.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-32b74372\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupTranslateY.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-32b74372\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GroupTranslateY.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -77184,7 +77395,7 @@ if(false) {
 }
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -77198,7 +77409,7 @@ exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n    transit
 
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77223,7 +77434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77243,7 +77454,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d70a8636", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-32b74372", module.exports)
   }
 }
 

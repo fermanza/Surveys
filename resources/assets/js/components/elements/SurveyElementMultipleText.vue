@@ -20,25 +20,29 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
-            <div class="field-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
-                <div class="field-input">
-                    <label>{{ $Lang.trans('Label') }}</label>
-                    <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
+                <div class="field-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
+                    <div class="field-input">
+                        <label>{{ $Lang.trans('Label') }}</label>
+                        <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
+                    </div>
+                    <div class="field-action">
+                        <i @click="removeField(index)" class="fa fa-minus text-success"></i>
+                    </div>
                 </div>
-                <div class="field-action">
-                    <i @click="removeField(index)" class="fa fa-minus text-success"></i>
+                <div>
+                    <a type="button" @click.prevent="addField">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
-            </div>
-            <div>
-                <a type="button" @click.prevent="addField">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
             </div>
         </div>
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
-                <label>{{ field.title }}</label>
-                <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control border-radius-input" />
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
+                    <label>{{ field.title }}</label>
+                    <input type="text" :name="field.uid" v-model="surveyElement.config.list[index].answer" class="form-control border-radius-input" />
+                </div>
             </div>
         </div>
     </div>

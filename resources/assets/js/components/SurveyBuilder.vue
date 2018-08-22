@@ -4,31 +4,9 @@
         background: #fafafa;
         padding: 20px;
     }
-    @media (max-width: 767px){
-        .survey-builder {
-            display: flex;
-            background: #fafafa;
-            padding: 5px;
-        }
-
-        .root-controls {
-            flex-basis: 10% !important;
-        }
-
-        .templates {
-		    display: block;
-            width: 100%;
-	    }
-
-
-
-
-    }
-
     .root-controls {
         flex-basis: 250px;
     }
-
     .footer-logo {
         text-align: center;
         margin-bottom: 6%;
@@ -43,12 +21,35 @@
     .component-container > div > label {
         font-size: 20px;
     }
-
     .container-footer {
         width: 90% !important;
         margin: 0 auto;
         background: white;
         padding: 15px;
+        padding: 15px;
+    }
+    @media (max-width: 767px){
+        .survey-builder {
+            display: flex;
+            background: #fafafa;
+            padding: 5px;
+        }
+
+        .root-controls {
+            flex-basis: 10% !important;
+        }
+
+        .templates {
+            display: block;
+            width: 100%;
+        }
+        .container-footer {
+            width: 95% !important;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            padding: 10px;
+        }
     }
 
 </style>

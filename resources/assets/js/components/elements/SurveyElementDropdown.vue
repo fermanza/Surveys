@@ -20,29 +20,33 @@
     <div>
         <div v-show="!display">
             <label>{{$Lang.trans('Label')}}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
-            <div>
-                <label>{{$Lang.trans('Options')}}</label>
-                <div class="option-container" v-for="(option, index) in surveyElement.config.list">
-                    <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.list[index]" class="form-control border-radius-input" />
-                    </div>
-                    <div class="option-action">
-                        <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
-                    </div>
-                </div>
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
                 <div>
-                    <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    <label>{{$Lang.trans('Options')}}</label>
+                    <div class="option-container" v-for="(option, index) in surveyElement.config.list">
+                        <div class="option-input">
+                            <input type="text" v-model="surveyElement.config.list[index]" class="form-control border-radius-input" />
+                        </div>
+                        <div class="option-action">
+                            <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    </div>
                 </div>
+                <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
             </div>
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
         </div>
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <select :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input">
-                <option :value="null">{{$Lang.trans('Choose an option')}}</option>
-                <option v-for="option in surveyElement.config.list" :value="option">{{ option }}</option>
-            </select>
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <select :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input">
+                    <option :value="null">{{$Lang.trans('Choose an option')}}</option>
+                    <option v-for="option in surveyElement.config.list" :value="option">{{ option }}</option>
+                </select>
+            </div>
         </div>
     </div>
 </template>

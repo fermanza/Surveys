@@ -22,9 +22,19 @@
         margin: 0 auto;
         min-height: 325px;
         background: white;
-        padding: 15px;
+        padding-bottom: 3px;
         color: {{ $template_style->font_color }};
         font-family: {{ $template_style->font_type }};
+        @if( strtolower($template_style->name) == "blue")
+            font-size: 18px;
+        @endif
+    }
+    .survey-questions-container .font-color-data {
+        font-family: {{ $template_style->font_type }};
+        @if( strtolower($template_style->name) == "gray")
+            color: {{ $template_style->font_color }};
+            font-size: 14px;
+        @endif
     }
     .bar-container {
         width: 90% !important;
@@ -32,6 +42,40 @@
         min-height: 50px;
         padding: 15px;
         background: {{ $template_style->bar_color }};
+    }
+    .survey-questions .double-border {
+        border-bottom: {{$template_style->border_bottom}}     
+    }
+    .survey-questions .background-gray {
+    @if( strtolower($template_style->name) == "abstract")
+        background: #fafafa !important;     
+        border-bottom: none !important;
+    @endif
+        display: block !important;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .survey-questions .border-radius-input {
+        border-radius: {{ $template_style->border_radius }}
+    }
+
+    .survey-questions .paddings {
+        padding-top: 23px;
+        padding-bottom: 16px;
+    }
+
+    .survey-questions .survey-questions-action-button {
+        color: {{ $template_style->icon_color }} !important;
+        font-size: 20px;
+    }
+    .questions-data-container{
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     @media (max-width: 767px){
         .survey-questions {
@@ -46,16 +90,57 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+        .survey-questions-container .font-color-data {
+            font-family: {{ $template_style->font_type }};
+            @if( strtolower($template_style->name) == "gray")
+                color: {{ $template_style->font_color }};
+                font-size: 12px;
+            @endif
+        }
         .survey-questions-container {
             width: 95% !important;
             margin: 0 auto;
             min-height: 325px;
             background: white;
-            padding: 10px;
+            color: {{ $template_style->font_color }};
+            font-family: {{ $template_style->font_type }};
+            padding-bottom: 3px;
+            @if( strtolower($template_style->name) == "blue")
+                font-size: 16px;
+            @endif
         }
-    }
-    .question-action {
-        cursor: pointer;
+        .survey-questions .double-border {
+            border-bottom: {{$template_style->border_bottom}}     
+        }
+        .bar-container {
+            width: 95% !important;
+            margin: 0 auto;
+            min-height: 50px;
+            padding: 15px;
+            background: {{ $template_style->bar_color }};
+        }
+        .survey-questions .background-gray {
+        @if( strtolower($template_style->name) == "abstract")
+            background: #fafafa !important;     
+            border-bottom: none !important;
+        @endif
+            display: block !important;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .survey-questions .border-radius-input {
+            border-radius: {{ $template_style->border_radius }}
+        }
+        .survey-questions .paddings {
+            padding-top: 23px;
+            padding-bottom: 16px;
+        }
+        .survey-questions .survey-questions-action-button {
+            color: {{ $template_style->icon_color }} !important;
+            font-size: 20px;
+        }
     }
 </style>
 

@@ -6,10 +6,12 @@
     <div>
         <div v-if="!display">
             <label> {{ $Lang.trans('Label') }} </label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control" />
+            </div>
         </div>
         <div v-if="display">
-            <h6>{{ surveyElement.config.title }}</h6>
+            <h6 class="background-gray">{{ surveyElement.config.title }}</h6>
         </div>
     </div>
 </template>

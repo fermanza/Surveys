@@ -24,69 +24,73 @@
     <div>
         <div v-if="!display">
             <label> {{ $Lang.trans('Label') }} </label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <div>
-                <label>{{ $Lang.trans('Name of the rows') }}</label>
-                <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
-                    <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
-                    </div>
-                    <div class="option-action">
-                        <i @click="removeRow(index)" class="fa fa-minus text-success"></i>
-                    </div>
-                </div>
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control" />
                 <div>
-                    <a type="button" @click.prevent="addRow">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
-                </div>
-            </div>
-            <br />
-            <div>
-                <label> {{ $Lang.trans('Name of the columns') }} </label>
-                <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
-                    <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
+                    <label>{{ $Lang.trans('Name of the rows') }}</label>
+                    <div class="option-container" v-for="(row, index) in surveyElement.config.rows" :key="row.uid">
+                        <div class="option-input">
+                            <input type="text" v-model="surveyElement.config.rows[index].text" class="form-control" />
+                        </div>
+                        <div class="option-action">
+                            <i @click="removeRow(index)" class="fa fa-minus text-success"></i>
+                        </div>
                     </div>
-                    <div class="option-action">
-                        <i @click="removeCol(index)" class="fa fa-minus text-success"></i>
+                    <div>
+                        <a type="button" @click.prevent="addRow">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                     </div>
                 </div>
+                <br />
                 <div>
-                    <a type="button" @click.prevent="addCol">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
-                </div>
-            </div>
-            <br />
-            <div>
-                <label>{{ $Lang.trans('Options') }}</label>
-                <div class="option-container" v-for="(option, index) in surveyElement.config.options">
-                    <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.options[index]" class="form-control" />
+                    <label> {{ $Lang.trans('Name of the columns') }} </label>
+                    <div class="option-container" v-for="(col, index) in surveyElement.config.cols" :key="col.uid">
+                        <div class="option-input">
+                            <input type="text" v-model="surveyElement.config.cols[index].text" class="form-control" />
+                        </div>
+                        <div class="option-action">
+                            <i @click="removeCol(index)" class="fa fa-minus text-success"></i>
+                        </div>
                     </div>
-                    <div class="option-action">
-                        <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
+                    <div>
+                        <a type="button" @click.prevent="addCol">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                     </div>
                 </div>
+                <br />
                 <div>
-                    <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    <label>{{ $Lang.trans('Options') }}</label>
+                    <div class="option-container" v-for="(option, index) in surveyElement.config.options">
+                        <div class="option-input">
+                            <input type="text" v-model="surveyElement.config.options[index]" class="form-control" />
+                        </div>
+                        <div class="option-action">
+                            <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <table class="table table-stripped">
-                <tr>
-                    <td>&nbsp;</td>
-                    <th v-for="col in surveyElement.config.cols" :key="col.uid">{{ col.text }}</th>
-                </tr>
-                <tr v-for="(row, rowIndex) in surveyElement.config.rows" :key="row.uid">
-                    <th>{{ row.text }}</th>
-                    <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid" class="matrix-intersection">
-                        <select v-model="surveyElement.answer[row.uid][col.uid]" class="form-control">
-                            <option :value="null">{{ $Lang.trans('Choose an option') }}</option>
-                            <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <table class="table table-stripped">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th v-for="col in surveyElement.config.cols" :key="col.uid" class="font-color-data">{{ col.text }}</th>
+                    </tr>
+                    <tr v-for="(row, rowIndex) in surveyElement.config.rows" :key="row.uid">
+                        <th class="font-color-data">{{ row.text }}</th>
+                        <td v-for="(col, colIndex) in surveyElement.config.cols" :key="col.uid" class="matrix-intersection">
+                            <select v-model="surveyElement.answer[row.uid][col.uid]" class="form-control">
+                                <option :value="null">{{ $Lang.trans('Choose an option') }}</option>
+                                <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>

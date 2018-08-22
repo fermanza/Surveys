@@ -6,12 +6,16 @@
     <div>
         <div v-show="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control" />
+                <app-survey-hider :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
+            </div>
         </div>
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <star-rating v-model="surveyElement.answer"></star-rating>
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <star-rating v-model="surveyElement.answer"></star-rating>
+            </div>
         </div>
     </div>
 </template>

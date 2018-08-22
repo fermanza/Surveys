@@ -25,29 +25,33 @@
                     {{ $Lang.trans('Allow multiple') }}
                 </label>
             </div>
-            <input type="text" v-model="surveyElement.config.title" class="form-control" />
-            <div class="field-container" v-for="(field, index) in surveyElement.config.list">
-                <div class="field-input">
-                    <label>{{ $Lang.trans('Label') }}</label>
-                    <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control" />
+                <div class="field-container" v-for="(field, index) in surveyElement.config.list">
+                    <div class="field-input">
+                        <label>{{ $Lang.trans('Label') }}</label>
+                        <input type="text" v-model="surveyElement.config.list[index]" class="form-control" />
+                    </div>
+                    <div class="field-action">
+                        <i @click="removeField(index)" class="fa fa-minus text-success"></i>
+                    </div>
                 </div>
-                <div class="field-action">
-                    <i @click="removeField(index)" class="fa fa-minus text-success"></i>
+                <div>
+                    <a type="button" @click.prevent="addField" >&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
                 </div>
+                <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
             </div>
-            <div>
-                <a type="button" @click.prevent="addField" >&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
-            </div>
-            <app-survey-hider v-show="!surveyElement.config.multiple" :hide-config="surveyElement.config.hideConfig" :survey-element-uid="surveyElement.uid" :answer="surveyElement.answer" :index="index"></app-survey-hider>
         </div>
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <div v-for="(field, index) in surveyElement.config.list">
-                <div :class="surveyElement.config.multiple ? 'checkbox' : 'radio'">
-                    <label>
-                        <input :type="surveyElement.config.multiple ? 'checkbox' : 'radio'" :name="surveyElement.uid" :value="field" v-model="surveyElement.answer" />
-                        {{ field }}
-                    </label>
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <div v-for="(field, index) in surveyElement.config.list">
+                    <div :class="surveyElement.config.multiple ? 'checkbox' : 'radio'">
+                        <label>
+                            <input :type="surveyElement.config.multiple ? 'checkbox' : 'radio'" :name="surveyElement.uid" :value="field" v-model="surveyElement.answer" />
+                            {{ field }}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

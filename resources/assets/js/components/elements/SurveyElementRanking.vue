@@ -20,35 +20,33 @@
     <div>
         <div v-if="!display">
             <label>{{ $Lang.trans('Label') }}</label>
-            <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
-            <div>
-                <label>{{ $Lang.trans('Options') }}</label>
-                <div class="option-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
-                    <div class="option-input">
-                        <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
-                    </div>
-                    <div class="option-action">
-                        <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
-                    </div>
-                </div>
+            <div class="questions-data-container">
+                <input type="text" v-model="surveyElement.config.title" class="form-control border-radius-input" />
                 <div>
-                    <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    <label>{{ $Lang.trans('Options') }}</label>
+                    <div class="option-container" v-for="(field, index) in surveyElement.config.list" :key="field.uid">
+                        <div class="option-input">
+                            <input type="text" v-model="surveyElement.config.list[index].title" class="form-control border-radius-input" />
+                        </div>
+                        <div class="option-action">
+                            <i @click="removeOption(index)" class="fa fa-minus text-success"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <a type="button" @click.prevent="addOption">&nbsp&nbsp&nbsp<i class="fa fa-plus text-success"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div v-if="display">
-            <label>{{ surveyElement.config.title }}</label>
-            <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
-                <label>{{ field.title }}</label>    
-                <input  :disabled="live == false"   :name="field.uid"  @keyup="check()"   v-model="surveyElement.config.list[index].answer" type="number" class="form-control" />
-        </div>  
-
-
-          <!-- <select v-model="surveyElement.answer" class="form-control">
-                <option :value="null">{{ $Lang.trans('Choose an option') }}</option>
-                <option v-for="option in surveyElement.config.options" :value="option">{{ option }}</option>
-            </select>  -->
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
+            <div class="questions-data-container">
+                <div v-for="(field, index) in surveyElement.config.list" :key="field.uid">
+                    <label>{{ field.title }}</label>    
+                    <input  :disabled="live == false"   :name="field.uid"  @keyup="check()"   v-model="surveyElement.config.list[index].answer" type="number" class="form-control" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
