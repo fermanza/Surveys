@@ -33,6 +33,9 @@ class EncuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $mail = "laura@rednodo.com";
+
     public function index()
     {
         $template = Template::find(1);
@@ -138,7 +141,7 @@ class EncuestasController extends Controller
         if($request->tipo == 0)
         {   // info@survenia.com   admin
             $user->name = 'Admin';
-            $user->email = 'laura@rednodo.com';
+            $user->email = $this->mail;
             $user->notify(new ApprovalNotification($user, $template));
 
            // return redirect()->route('encuestas_publicas.index');
@@ -277,7 +280,7 @@ class EncuestasController extends Controller
         if($template->type == 0)
         {   // info@survenia.com   admin
             $user->name = 'Admin';
-            $user->email = 'laura@rednodo.com';
+            $user->email = $this->mail;
             $user->notify(new ApprovalNotification($user, $template));
 
             // flash('<br><h6>Tu encuesta ha sido enviada para aprobación del administrador del sistema.</h6>')->success();
@@ -533,7 +536,7 @@ class EncuestasController extends Controller
         if($type == 0)
         {
             $user->name = 'Admin';
-            $user->email = 'laura@rednodo.com';
+            $user->email = $this->mail;
             $user->notify(new ApprovalNotification($user, $template));
         }
 
