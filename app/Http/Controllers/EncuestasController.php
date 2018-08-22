@@ -34,7 +34,7 @@ class EncuestasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    private $mail = "fermanza@gmail.com";
+    private $mail = "laura@rednodo.com";
 
     public function index()
     {
