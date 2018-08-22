@@ -1,9 +1,4 @@
 <style scoped>
-    .survey-question {
-        position: relative;
-        padding-top: 20px;
-        border-bottom: 1px solid #DBE8D1; 
-    }
     .controls {
         position: absolute;
         right: 0;

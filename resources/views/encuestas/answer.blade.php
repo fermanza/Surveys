@@ -22,6 +22,7 @@
         margin: 0 auto;
         min-height: 325px;
         background: white;
+        padding-top: 15px;
         padding-bottom: 3px;
         color: {{ $template_style->font_color }};
         font-family: {{ $template_style->font_type }};

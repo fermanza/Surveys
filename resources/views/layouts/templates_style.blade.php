@@ -1,5 +1,15 @@
 <style>
 @foreach($templates_style as $ts)
+.survey-questions-container-{{$ts->name}} .survey-question {
+    position: relative;
+    padding-top: 20px;
+    @if( strtolower($ts->name) == "blue")
+        border-bottom: 1px solid #ccc;
+    @endif
+    @if( strtolower($ts->name) == "default")
+        border-bottom: 1px solid #ccc;
+    @endif
+}
 .survey-questions-container-{{$ts->name}} {
     width: 90% !important;
     margin: 0 auto;

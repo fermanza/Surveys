@@ -71,14 +71,14 @@ class MisEncuestasController extends Controller
         // $ip = \Request::getClientIp();
         // dd($ip);
         $answerModel = DB::table("answer")->where("id_template", "=", $id)->get();
+        $user_id = Auth::id();
         if(count($answerModel) > 0){
             $noEditTemplatesWithAnswers = \Lang::get("editar_encuesta.noeditarencuestasconrespuestas");
             flash('<br /><h6>'.$noEditTemplatesWithAnswers.'</h6>')->error();
-            $id = Auth::id();
-            $templates = Template::where('user_id', '=', $id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+            $templates = Template::where('user_id', '=', $user_id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
             return view('mis_encuestas.index',compact('templates'));
         }
-        $template = Template::find($id);
+        $template = Template::where('user_id','=', $user_id)->latest()->get();
         $templates_style = TemplatesStyle::get();
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';

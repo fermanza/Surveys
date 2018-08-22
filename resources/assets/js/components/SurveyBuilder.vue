@@ -26,7 +26,8 @@
         margin: 0 auto;
         background: white;
         padding: 15px;
-        padding: 15px;
+        padding-top: 25px;
+        margin-top: -20px;
     }
     @media (max-width: 767px){
         .survey-builder {
@@ -48,7 +49,8 @@
             margin: 0 auto;
             background: white;
             padding: 10px;
-            padding: 10px;
+            padding-top: 20px;
+            margin-top: -20px;
         }
     }
 
