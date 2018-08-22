@@ -75,11 +75,10 @@ class MisEncuestasController extends Controller
         if(count($answerModel) > 0){
             $noEditTemplatesWithAnswers = \Lang::get("editar_encuesta.noeditarencuestasconrespuestas");
             flash('<br /><h6>'.$noEditTemplatesWithAnswers.'</h6>')->error();
-            $templates = Template::where('user_id', '=', $user_id)->where('approval', '=', '1')->orWhereNull('approval')->latest()->get();
+            $templates = Template::where('user_id', '=', $user_id)->latest()->get();
             return view('mis_encuestas.index',compact('templates'));
         }
-        $template = Template::where('user_id','=', $user_id)->latest()->get();
-        dd($template);
+        $template = Template::find($id);
         $templates_style = TemplatesStyle::get();
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
