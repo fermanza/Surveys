@@ -79,6 +79,7 @@ class MisEncuestasController extends Controller
             return view('mis_encuestas.index',compact('templates'));
         }
         $template = Template::where('user_id','=', $user_id)->latest()->get();
+        dd($template);
         $templates_style = TemplatesStyle::get();
         $question = Questions::where('template_id','=',$id)->first();
         $action = 'edit';
