@@ -612,7 +612,7 @@ class EncuestasController extends Controller
       //dd($request->all());
 
       $user->name = 'Admin';
-      $user->email = 'isanchez94@hotmail.com';
+      $user->email = $this->mail;
       $user->notify(new ContactForm($user, $request));
 
       $articulos=Articulo::orderBy('id', 'desc')->take(3)->get();
