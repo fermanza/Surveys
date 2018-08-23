@@ -11,7 +11,7 @@
             </div>
         </div>
         <div v-if="display">
-            <label class="paddings background-gray">{{ surveyElement.config.title }}</label>
+            <label class="background-gray">{{ surveyElement.config.title }}</label>
             <div class="questions-data-container">
                 <input type="text" :name="surveyElement.uid" v-model="surveyElement.answer" class="form-control border-radius-input" />
             </div>

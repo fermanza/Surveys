@@ -60831,7 +60831,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-question[data-v-7f07ff51] {\n    margin: 5px 0;\n    border-bottom: 1px solid #DBE8D1;\n}\n.footer-logo[data-v-7f07ff51] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7f07ff51] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7f07ff51] {\n    width: 20%;\n}\n", ""]);
+exports.push([module.i, "\n.footer-logo[data-v-7f07ff51] {\n    text-align: center;\n}\n.footer-logo > p[data-v-7f07ff51] {\n    margin: 0;\n}\n.footer-logo > img[data-v-7f07ff51] {\n    width: 20%;\n}\n", ""]);
 
 // exports
 
@@ -60876,10 +60876,6 @@ module.exports = function listToStyles (parentId, list) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Bus__ = __webpack_require__(14);
-//
-//
-//
-//
 //
 //
 //
@@ -61422,7 +61418,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.survey-builder[data-v-1990b48c] {\n    display: flex;\n    background: #fafafa;\n    padding: 20px;\n}\n.root-controls[data-v-1990b48c] {\n    flex-basis: 250px;\n}\n.footer-logo[data-v-1990b48c] {\n    text-align: center;\n    margin-bottom: 6%;\n}\n.footer-logo > p[data-v-1990b48c] {\n    margin: 0;\n}\n.footer-logo > img[data-v-1990b48c] {\n    width: 20%;\n}\n.component-container > div > label[data-v-1990b48c] {\n    font-size: 20px;\n}\n.container-footer[data-v-1990b48c] {\n    width: 90% !important;\n    margin: 0 auto;\n    background: white;\n    padding: 15px;\n    padding-top: 25px;\n    margin-top: -20px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-1990b48c] {\n        display: flex;\n        background: #fafafa;\n        padding: 5px;\n}\n.root-controls[data-v-1990b48c] {\n        flex-basis: 10% !important;\n}\n.templates[data-v-1990b48c] {\n        display: block;\n        width: 100%;\n}\n.container-footer[data-v-1990b48c] {\n        width: 95% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 10px;\n        padding-top: 20px;\n        margin-top: -20px;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.survey-builder[data-v-1990b48c] {\n    display: flex;\n    background: #fafafa;\n    padding: 20px;\n}\n.root-controls[data-v-1990b48c] {\n    flex-basis: 250px;\n}\n.footer-logo[data-v-1990b48c] {\n    text-align: center;\n    margin-bottom: 6%;\n}\n.footer-logo > p[data-v-1990b48c] {\n    margin: 0;\n}\n.footer-logo > img[data-v-1990b48c] {\n    width: 20%;\n}\n.component-container > div > label[data-v-1990b48c] {\n    font-size: 20px;\n}\n.container-footer[data-v-1990b48c] {\n    width: 90% !important;\n    margin: 0 auto;\n    background: white;\n    padding: 15px;\n    padding-top: 25px;\n    margin-top: -25px;\n}\n@media (max-width: 767px){\n.survey-builder[data-v-1990b48c] {\n        display: flex;\n        background: #fafafa;\n        padding: 5px;\n}\n.root-controls[data-v-1990b48c] {\n        flex-basis: 10% !important;\n}\n.templates[data-v-1990b48c] {\n        display: block;\n        width: 100%;\n}\n.container-footer[data-v-1990b48c] {\n        width: 95% !important;\n        margin: 0 auto;\n        background: white;\n        padding: 10px;\n        padding-top: 20px;\n        margin-top: -25px;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -72509,7 +72505,7 @@ var render = function() {
     _vm._v(" "),
     _vm.display
       ? _c("div", [
-          _c("label", { staticClass: "paddings background-gray" }, [
+          _c("label", { staticClass: "background-gray" }, [
             _vm._v(_vm._s(_vm.surveyElement.config.title))
           ]),
           _vm._v(" "),

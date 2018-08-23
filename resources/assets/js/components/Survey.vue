@@ -1,8 +1,4 @@
 <style scoped>
-    .survey-question {
-        margin: 5px 0;
-        border-bottom: 1px solid #DBE8D1;
-    }
     .footer-logo {
         text-align: center;
     }

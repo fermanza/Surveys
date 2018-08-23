@@ -45,7 +45,15 @@
         background: {{ $template_style->bar_color }};
     }
     .survey-questions .double-border {
-        border-bottom: {{$template_style->border_bottom}}     
+        border-bottom: {{$template_style->border_bottom}}
+    }
+    .survey-questions .survey-question {
+        margin: 5px 0;
+        @if( strtolower($template_style->name) == "blue")
+            border-bottom: 1px solid #ccc !important;
+        @elseif( strtolower($template_style->name) == "default")
+            border-bottom: 1px solid #ccc !important;
+        @endif
     }
     .survey-questions .background-gray {
     @if( strtolower($template_style->name) == "abstract")
@@ -111,7 +119,12 @@
             @endif
         }
         .survey-questions .double-border {
-            border-bottom: {{$template_style->border_bottom}}     
+            border-bottom: {{$template_style->border_bottom}}
+        @if( strtolower($template_style->name) == "blue")
+            border-bottom: 1px solid #ccc !important;
+        @elseif( strtolower($template_style->name) == "default")
+            border-bottom: 1px solid #ccc !important;
+        @endif
         }
         .bar-container {
             width: 95% !important;
