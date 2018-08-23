@@ -204,12 +204,9 @@
                     @if($articulos->count() > 0)
                     <div class="pag" align="right">
                             <p>Total de los artículos: {{ $articulos->count() }}</p>
-                            Anterior&nbsp;&nbsp;-&nbsp;&nbsp;Siguiente<br>
                             {{ $articulos->links() }}
                     </div>
                     @endif
-
-
                         <!-- end post item -->
                     </main>
 
