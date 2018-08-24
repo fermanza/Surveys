@@ -42,7 +42,7 @@
 	<div class="container">
      <form method="post" action="{{route('articulos.store')}}" enctype="multipart/form-data">			
 		<label>@lang('articulos.titulo')</label>
-		<input type="text" name="title">
+		<input type="text" name="title" required>
 
 		<label>@lang('articulos.subirImagen')</label>
 		<input type="file" name="img">

@@ -50,6 +50,8 @@ class ArticulosController extends Controller
         if($request->hasFile('img')) {
             $fileName = FileControl::storeSingleFile($request->img, 'articles');
             $request->img = "/articles/{$fileName}"; 
+        } else {
+            return back()->withInput();
         }
 
         
