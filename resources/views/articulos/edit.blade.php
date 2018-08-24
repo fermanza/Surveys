@@ -19,7 +19,7 @@
 		<label>@lang('articulos.titulo')</label>
 		<input type="text" name="title" value="{{ $articulo->title }}">
 		<div align="center">
-		 <img src="{{$articulo->img}}" style="width: auto !important; height: auto !important; max-width: 70%;">
+		 <img src="{{URL($articulo->img)}}" style="width: auto !important; height: auto !important; max-width: 60%;">
 		</div> 
 		<br>
 		<label>@lang('articulos.subirImagen')</label>
