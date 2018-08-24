@@ -8,6 +8,7 @@ use App\Articulo;
 use Auth;
 use DB;
 use Bitly;
+use Redirect;
 
 class ArticulosController extends Controller
 {
@@ -51,6 +52,20 @@ class ArticulosController extends Controller
             $request->img = "/articles/{$fileName}"; 
         }
 
+        
+        $repeatedArticle = Articulo::where('title', '=', $request->title)->first();
+        if( isset($repeatedArticle->title) ){
+            $flashMessageError = \Lang::get("editar_encuesta.articulo_repetido_error_message");
+            flash('<br /><h6>'.$flashMessageError.'</h6>')->error();
+
+          return view('articulos.create');
+        }
+        if( $request->title == null || $request->title == "" || $request->blog == null || $request->blog == "" ){
+            $flashMessageError = \Lang::get("editar_encuesta.blog_vacio");
+            flash('<br /><h6>'.$flashMessageError.'</h6>')->error();
+
+          return view('articulos.create');
+        }
 
         $articulo = new Articulo();
         $articulo->title = $request->title;

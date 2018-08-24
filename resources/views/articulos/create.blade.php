@@ -35,6 +35,8 @@
                 </div>
             </div>
         </section>
+        
+@include('flash::message')
 
 <section class="padding-25px-tb margin-bread">
 	<div class="container">

@@ -57,7 +57,7 @@
                             @if(Auth::check() == true)
                                 @if($user->id == 1)
                                 <div align="center">
-                                           <br><a class="temas-title" href="{{route('articulos.create')}}">@lang('articulos.crearArticulo')</a><br><br>
+                                   <br><a class="temas-title" href="{{route('articulos.create')}}">@lang('articulos.crearArticulo')</a><br><br>
                                 </div>
                                 @endif
                             @endif
