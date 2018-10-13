@@ -109,7 +109,7 @@
 
                                     <td> {{ $template->answersnumber }} </td>
                                     <td><a href="{{url('mis_encuestas/respuestas')}}/{{$template->id}}"><i class="fa fa-file"></i></a></td>
-                                    <td><a href=""><i class="fa fa-times"></i></a></td>
+                                    <td><a href="{{url('mis_encuestas/finalizar')}}/{{$template->id}}"><i class="fa fa-times"></i></a></td>
                                     <td><a href="{{ route('mis_encuestas.edit', [$template]) }}">
                                     <i class="fa fa-edit"></i>
                                     </a></td>

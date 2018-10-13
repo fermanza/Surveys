@@ -23,7 +23,10 @@ class MisEncuestasController extends Controller
     public function index(Request $request)
     {
         $id = Auth::id();
-        $templates = Template::where('user_id','=', $id)->latest()->get();
+        $templates = Template::
+            where([['user_id', '=', $id],['status', '=', '1']])
+            ->latest()->get();
+        // $templates = Template::where('user_id','=', $id)->latest()->get();
 
         return view('mis_encuestas.index',compact('templates'));
     }
@@ -58,6 +61,22 @@ class MisEncuestasController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function finalizar($id){
+
+        $template = Template::find($id);
+        $template -> status = '0';
+        $template -> save();
+
+        flash('<br><h6>Encuesta finalizada correctamente.</h6>')->success();
+
+        $id = Auth::id();
+        $templates = Template::
+            where([['user_id', '=', $id],['status', '=', '1']])
+            ->latest()->get();
+
+        return view('mis_encuestas.index',compact('templates'));
     }
 
     /**

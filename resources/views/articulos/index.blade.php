@@ -175,7 +175,7 @@
                                       <p id="preview">
                                         @php
                                            $articulo->body = str_limit($articulo->body, 40);
-                                           $articulo->body = str_finish($articulo->body, '...');
+                                           $articulo->body .= '...';
                                         @endphp
                                         {!! $articulo->body !!}
                                     </p>

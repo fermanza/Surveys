@@ -444,7 +444,7 @@ class EncuestasController extends Controller
         // dd($printQuestions);
         return view('mis_encuestas.respuestas',compact('template', 'printQuestions'));
     }
-
+    
     private function cleanQuestion($question)
     {
         if(strstr($question->name, 'star')) {
